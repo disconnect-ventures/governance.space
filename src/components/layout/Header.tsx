@@ -10,17 +10,22 @@ import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Logo from "../icons/Logo";
+import Link from "next/link";
 
 export const HeaderNavigationLink = ({
   children,
+  href = "",
 }: {
+  href: string;
   children: React.ReactNode;
 }) => {
   return (
     <NavigationMenuItem>
-      <NavigationMenuLink className="px-3 py-2 hover:text-blue-500 rounded-full border-border border">
-        {children}
-      </NavigationMenuLink>
+      <Link href={href} legacyBehavior passHref>
+        <NavigationMenuLink className="px-3 py-2 hover:text-blue-500 rounded-full border-border border whitespace-nowrap">
+          {children}
+        </NavigationMenuLink>
+      </Link>
     </NavigationMenuItem>
   );
 };
@@ -28,12 +33,39 @@ export const Header = () => {
   const navLinks = [
     {
       label: "Home",
+      href: "/",
     },
     {
       label: "DReps Directory",
+      href: "/dreps",
     },
     {
       label: "Governance Actions",
+      href: "/governance",
+    },
+    {
+      label: "Proposals",
+      href: "/proposals",
+    },
+    {
+      label: "Commitees Members",
+      href: "/comitee-members",
+    },
+    {
+      label: "Help",
+      href: "/help",
+    },
+    {
+      label: "Stats",
+      href: "/stats",
+    },
+    {
+      label: "Stats",
+      href: "/stats",
+    },
+    {
+      label: "+ More",
+      href: "/todo",
     },
   ];
 
@@ -69,13 +101,13 @@ export const Header = () => {
             <ChevronDown></ChevronDown>
           </div>
         </div>
-        <div className="py-4 border-t">
+        <div className="hidden md:block py-2 border-t">
           {/* Navigation Section */}
-          <div className="hidden lg:flex flex-1 justify-center">
+          <div className="h-max-content flex justify-center overflow-x-auto overflow-y-hidden">
             <NavigationMenu>
-              <NavigationMenuList>
+              <NavigationMenuList className="w-full flex  gap-4 my-4">
                 {navLinks.map((link, index) => (
-                  <HeaderNavigationLink key={index}>
+                  <HeaderNavigationLink key={index} href={link.href}>
                     {link.label}
                   </HeaderNavigationLink>
                 ))}
