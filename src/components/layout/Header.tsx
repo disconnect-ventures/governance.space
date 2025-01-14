@@ -9,6 +9,7 @@ import {
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import Logo from "../icons/Logo";
 
 export const HeaderNavigationLink = ({
   children,
@@ -42,10 +43,7 @@ export const Header = () => {
         <div className="flex flex-col md:flex-row items-center justify-between min-h-16 gap-4 pb-4 md:pb-0">
           {/* Logo and Search Section */}
           <div className="flex items-center flex-1 gap-4">
-            <div className="flex items-center">
-              <span className="text-xl font-semibold">🏛️ GOVERNANCE</span>
-              <span className="text-xl text-gray-500">SPACE</span>
-            </div>
+            <Logo />
 
             <div className="hidden md:flex relative max-w-sm">
               <Input type="text" placeholder="Search..." className="pl-8" />
