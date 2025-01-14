@@ -32,20 +32,10 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "~/components/ui/pagination";
+import { DRep } from "~/lib/dreps";
 
 export type DRepsDirectoryProps = {
-  dreps: Array<{
-    avatarUrl: string;
-    name: string;
-    id: string;
-    status: "Active" | "Inactive" | "Retired";
-    votingPower: string;
-    social: boolean;
-    delegators: number;
-    influencePower: string;
-    voting: number;
-    registrationDate: string;
-  }>;
+  dreps: Array<DRep>;
 };
 
 export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
