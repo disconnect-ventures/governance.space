@@ -22,7 +22,7 @@ import {
   EyeIcon,
 } from "lucide-react";
 import clsx from "clsx";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import {
   Pagination,
   PaginationContent,
@@ -82,8 +82,8 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
   };
 
   return (
-    <Card className="w-full max-w-7xl mx-auto">
-      <CardContent className="p-6">
+    <Card className="w-full max-w-7xl mx-auto rounded-none">
+      <CardContent className="p-6 md:px-12">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
             <Users className="h-6 w-6" />
