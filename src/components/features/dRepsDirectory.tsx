@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { Card, CardContent } from "~/components/ui/card";
 import {
   Table,
@@ -22,6 +23,15 @@ import {
 } from "lucide-react";
 import clsx from "clsx";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "~/components/ui/pagination";
 
 export type DRepsDirectoryProps = {
   dreps: Array<{
@@ -39,6 +49,38 @@ export type DRepsDirectoryProps = {
 };
 
 export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil(dreps.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentDreps = dreps.slice(startIndex, endIndex);
+
+  const getPageNumbers = () => {
+    const pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+      if (
+        i === 1 ||
+        i === totalPages ||
+        (i >= currentPage - 1 && i <= currentPage + 1)
+      ) {
+        pages.push(i);
+      } else if (i === currentPage - 2 || i === currentPage + 2) {
+        pages.push("...");
+      }
+    }
+    return [...new Set(pages)];
+  };
+
+  // Handle page change
+  const handlePageClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    page: number
+  ) => {
+    e.preventDefault();
+    setCurrentPage(page);
+  };
+
   return (
     <Card className="w-full max-w-7xl mx-auto">
       <CardContent className="p-6">
@@ -82,7 +124,7 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {dreps?.map((drep) => (
+            {currentDreps?.map((drep) => (
               <TableRow key={drep.id}>
                 <TableCell>
                   <div className="flex items-center gap-2">
@@ -136,6 +178,53 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
             ))}
           </TableBody>
         </Table>
+        <div className="mt-4">
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  href={`#page=${Math.max(currentPage - 1, 1)}`}
+                  onClick={(e) =>
+                    handlePageClick(e, Math.max(currentPage - 1, 1))
+                  }
+                  className={
+                    currentPage === 1 ? "pointer-events-none opacity-50" : ""
+                  }
+                />
+              </PaginationItem>
+
+              {getPageNumbers().map((pageNumber, index) => (
+                <PaginationItem key={index}>
+                  {pageNumber === "..." ? (
+                    <PaginationEllipsis />
+                  ) : (
+                    <PaginationLink
+                      href={`#page=${pageNumber}`}
+                      onClick={(e) => handlePageClick(e, Number(pageNumber))}
+                      isActive={currentPage === pageNumber}
+                    >
+                      {pageNumber}
+                    </PaginationLink>
+                  )}
+                </PaginationItem>
+              ))}
+
+              <PaginationItem>
+                <PaginationNext
+                  href={`#page=${Math.min(currentPage + 1, totalPages)}`}
+                  onClick={(e) =>
+                    handlePageClick(e, Math.min(currentPage + 1, totalPages))
+                  }
+                  className={
+                    currentPage === totalPages
+                      ? "pointer-events-none opacity-50"
+                      : ""
+                  }
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
       </CardContent>
     </Card>
   );
