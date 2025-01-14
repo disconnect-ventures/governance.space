@@ -1,0 +1,1314 @@
+{
+  "data": [
+    {
+      "id": 63,
+      "attributes": {
+        "prop_likes": 17,
+        "prop_dislikes": 1,
+        "prop_comments_number": 14,
+        "user_id": "118",
+        "createdAt": "2024-12-12T13:43:54.643Z",
+        "updatedAt": "2025-01-12T16:05:44.723Z",
+        "user_govtool_username": "atlashub",
+        "content": {
+          "id": 207,
+          "attributes": {
+            "proposal_id": "63",
+            "prop_rev_active": true,
+            "prop_abstract": "Central entities shall not exert undue influence under the label of a decentralized system.\n\nThat is, entities who own, manage or control considerable funds in the form of assets that are decisive for on-chain governance shall not dominate decision-making.\nE.g.,\n🔷 neither IOG nor Emurgo nor the Cardano Foundation shall act as (dominating) DReps or voters in the Catalyst Program\n🔷 votes should not be decided by single entities with large assets.\n\nThis proposal covers the issue of the role central entities should take in a general sense. It may eventually evolve into several CIPS or governance actions to be implemented on-chain as algorithmic measures.",
+            "prop_motivation": "Resolving the contradiction between central elements in a system and the idea of decentralization.\nCounteracting detrimental forms of behavior and intrinsic forms of of system failure.\nSpecifically the founding entities shall adhere to a code of good conduct and practice given their prominent role.\n\nAs an example: It should not be the case that CF votes with a voting power of 180M ₳ (obtained by \"fiat lux\" or \"deus ex machina\" with the genesis distrubution - an amount not earned through contributions or investments) in a Catalyst Fund where the average voting power of all other participants together is about 50M ₳. This situation effectively means that whatever CF votes for eventually wins and renders the whole voting pointless. \n\nIn particular, the following specific problem areas are addressed:\n✅ Keep central actors from undermining decentralization\n✅ Ensure the diversity, quality and quantity of on-chain activities and initiatives\n✅ Prevent self-interest and power games from dominating or derailing development\n✅ Maintain direction, stability and growth for the ecosystem\n✅ Foster transparent decision-making and allocation of funds",
+            "prop_rationale": "Possible measures for implementation:\n(Currently, this is an ongoing collection of ideas. Some may be better, others less suitable, some may have potential, others may prove detrimental upon closer examination.)\n🛡 Enabling **cummulative voting** as opposed to simple weighted voting in appropriate cases (such as Project Catalyst): Instead of voting for any number of proposals with full voting power, participants have to split their voting power among the proposals they want to vote for. For example, a central unit with a voting power of 180M can only use it once on a single proposal or has to distribute it across several proposals. This reduces the influence of big players and is also multi-wallet resistant (i.e. voters splitting their wallets for voting cannot gain any advantage from this). Additionally, cummulative voting counteracts the effects of purchased votes as voting power can only be sold and used once.\n🛡 **A (relative) upper limit for voting power**: If this limit is exceeded, voting power is restricted or participation in voting is excluded. This may be set generally or for specific votes. The limit should not be set as an absolute value (without empirical evidence) but rather as percentage of the total voting power used in a vote to determine the outcome. Example: If the voting power of an actor exceeds 30% of the total voting power used, it is reduced to this value as a limit.\nAlthough this approach may reduce excessive voting power, it may not eliminate undue influence (unless participation is not completely excluded which may also be inappropriate).\nExample: If a single voter uses a voting power of 180M ₳ against the rest of the community with a voting power of 50M ₳, the dominant voter with a reduction to 30% still has a voting power of 0.3 * (180M + 50M) = 69M, which is enough to decide the outcome.\nWhat remains is that this method can encourage participation as it becomes more likely for the rest of the community to stay competitive against voters with a substantial amount of voting power.\nIn the illustration with a dominant voter that has his voting power reduced to 30% of the total voting power used voting remains fair, if the rest of the community has at least 43% of the voting power of the dominant voter [0.3 * (x + y) = y which gives y as (0.3 / 0.7) * x]. When it comes to the example of a (single) dominant voter throwing a voting power of 180M ₳ into the ring and there is a reduction to 30% of the overall voting power, the rest of the community has to bring a voting power of more than 77M ₳ to obtain a fair result.\n🛡 **Relative upper limit with balanced voting power**: If the voting power of a participant exceeds a certain proportion of the total voting power used, it is reduced to that limit and the surplus is distributed proportionally to the other voters. This may eliminate undue influence. [Details and description TBD.]\n🛡 **A separate class of addresses for central entities** (such as the founding entities) or institutions that hold a guarantor position. This class only allows the rights in decentralized governance that are appropriate for these actors. The rights associated with these addresses may be adjusted over time or for specific votes.\n🛡 Measures to prevent or make it more difficult to vote multiple times with different wallets or identities (needs to be defined).\n🛡 Self-commitment by the founding entities to abstain from certain votes (such as voting in Project Catalyst) or roles (being a DRep) - a mechanism for this has to be defined.\n🛡 The deposit of a collateral that will be retained in the event of violations (needs further definition or refinemet).\n🛡 (Caution: here live mighty dragons) The possibility of suspending, annulling or rectifying votes in the event of irregularities (needs further definition or refinemet).",
+            "gov_action_type_id": "1",
+            "prop_name": "Framework for Central Entities in Decentralized Governance",
+            "is_draft": false,
+            "user_id": "118",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-25T11:01:04.244Z",
+            "updatedAt": "2024-12-25T11:01:04.244Z",
+            "proposal_links": [
+              {
+                "id": 267,
+                "prop_link": "https://x.com/bigpeyYT/status/1866864910992376061",
+                "prop_link_text": "CF Whistleblower Report"
+              },
+              {
+                "id": 268,
+                "prop_link": "https://www.youtube.com/watch?v=eemgH5ZleQw",
+                "prop_link_text": "Comment from Charles Hoskinson"
+              },
+              {
+                "id": 269,
+                "prop_link": "https://gov.tools/drep_directory/drep1nvuyn6ldjenkcnjd005qt76ygmxuv5x2l2ram7eud4uywtrhp7k",
+                "prop_link_text": "AtlasHub profile (proposer)"
+              }
+            ],
+            "proposal_withdrawals": [],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 188,
+      "attributes": {
+        "prop_likes": 6,
+        "prop_dislikes": 0,
+        "prop_comments_number": 1,
+        "user_id": "356",
+        "createdAt": "2024-12-23T17:28:53.805Z",
+        "updatedAt": "2025-01-11T08:50:36.727Z",
+        "user_govtool_username": "damienczapla",
+        "content": {
+          "id": 188,
+          "attributes": {
+            "proposal_id": "188",
+            "prop_rev_active": true,
+            "prop_abstract": "Amaru is an open-source project that aims to build a new fully interoperable block-producing node for improving the overall accessiblity and robustness of the Cardano network without compromising on its satefy and security. Amaru provides another perspective and solution for stake pool operators and developers alike, focusing on modularity and easy-of-use. The project is implemented mainly in Rust and aims to attract new contributors to the core maintenance of the ecosystem.\n\nThis proposal is designed to breakdown the objectives, scopes, timelines and costs pertaining to Amaru. It delivers the full vision behind the project and open the discussion regarding a Cardano treasury withdrawal to sustain its development.\n\nFor better viewing experience please use this link: https://hackmd.io/@PRAGMA-org/amaru-proposal\n\nDisclaimer: The following document is a DRAFT proposal for the Amaru project. It is a collective document that describes the vision and the needs of multiple entities/actors involved in the development of Amaru.\n\nThis proposal will evolve in January 2025 following changes of scopes and resources allocated to the project\n\nIt is meant as a starting point for discussing Cardano treasury withdrawals in alignment with the incoming constitution.\n\nAs such, we invite anyone interested to comment on the following document, and share feedback with us.\n\nResult of the estimation phase of our proposal: 6 FTEs + $60k (see https://hackmd.io/@PRAGMA-org/amaru-proposal for details)\n\nGiven our assumptions the valuation of this proposal based on a 200k$ base for an FTE, the estimation comes down to: 6 * 200k$ + 60 k$ = 1260k$\n\nGiven our assumption regarding our optimism bias (add 25% of contingency), the proposal submitted will be targetting: $1.578M as a result of the scopes covered in Amaru and ask for the equivalent in ADA at the time the treasury withdrawal is emitted.",
+            "prop_motivation": "Along the lines of the project, it aims to bring diversity and operational resilience to the Cardano network, improve the overall performance with no compromise regarding security and focus on operator experience by having a modular design.",
+            "prop_rationale": "For better viewing experience please use this link: https://hackmd.io/@PRAGMA-org/amaru-proposal\n\nThe result of applying every steps of the framework described and the mindset used on the project gave us the following:\n\nAchieved demos for Amaru so far are:\n- Chain-synchronization proof-of-concept in Dolos (30th May 2024)\n- First Amaru node experiment : Simple peer-to-peer network with a single block producer (22nd October 2024)\n- Amaru (20th Dec) - Ledger progress demo (20th December)\n\nThe demos that are currently forecasted are:\n- Amaru Q1 25 (Private testnet launch, Mempool simple implementation,  Networking peer discovery)\n- Amaru Q2 25 (Ledger full validation, Consensus tested, UTxO RPC implemented, Networking Inbound & Outbound)\n- Amaru Q3 25 (Ledger governance rules, Consensus full validation & conformance tested, Sundae Sync implemented, Complex mempool)\n- Amaru Q4 25 (Consensus block production, Mempool operator environment, Testnet tuning down, Ledger with Amaru as a trusted peer)",
+            "gov_action_type_id": "1",
+            "prop_name": "Amaru treasury withdrawal budget draft proposal (v0)",
+            "is_draft": false,
+            "user_id": "356",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-23T17:28:53.805Z",
+            "updatedAt": "2024-12-23T17:28:53.805Z",
+            "proposal_links": [
+              {
+                "id": 249,
+                "prop_link": "https://hackmd.io/@PRAGMA-org/amaru-proposal",
+                "prop_link_text": "Complete proposal draft"
+              },
+              {
+                "id": 248,
+                "prop_link": "https://github.com/pragma-org/amaru",
+                "prop_link_text": "Amaru project repo"
+              }
+            ],
+            "proposal_withdrawals": [
+              {
+                "id": 123,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 161,
+      "attributes": {
+        "prop_likes": 1,
+        "prop_dislikes": 4,
+        "prop_comments_number": 2,
+        "user_id": "581",
+        "createdAt": "2024-12-23T04:14:46.725Z",
+        "updatedAt": "2025-01-11T08:51:56.249Z",
+        "user_govtool_username": "bernadette81_1734926435788",
+        "content": {
+          "id": 161,
+          "attributes": {
+            "proposal_id": "161",
+            "prop_rev_active": true,
+            "prop_abstract": "animadverto cognatus vomer tero victus",
+            "prop_motivation": "arguo suffoco aranea ante vociferor",
+            "prop_rationale": "varius arca amoveo tamisium aeternus",
+            "gov_action_type_id": "1",
+            "prop_name": "Spoliatio sed verecundia laborum decens thalassinus.",
+            "is_draft": false,
+            "user_id": "581",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-23T04:14:46.725Z",
+            "updatedAt": "2024-12-23T04:14:46.725Z",
+            "proposal_links": [
+              {
+                "id": 220,
+                "prop_link": "https://indelible-characteristic.net/",
+                "prop_link_text": "husky-folklore"
+              }
+            ],
+            "proposal_withdrawals": [
+              {
+                "id": 96,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 153,
+      "attributes": {
+        "prop_likes": 0,
+        "prop_dislikes": 1,
+        "prop_comments_number": 0,
+        "user_id": "576",
+        "createdAt": "2024-12-23T04:13:11.878Z",
+        "updatedAt": "2024-12-29T09:00:35.595Z",
+        "user_govtool_username": "vivienne.bauch76_1734926409176",
+        "content": {
+          "id": 153,
+          "attributes": {
+            "proposal_id": "153",
+            "prop_rev_active": true,
+            "prop_abstract": "tempore tenax compello tunc comptus",
+            "prop_motivation": "cultellus acsi certus deleniti tabula",
+            "prop_rationale": "ab ab suadeo adulatio natus",
+            "gov_action_type_id": "1",
+            "prop_name": "Cohaero degenero veritatis tempus pariatur usitas.",
+            "is_draft": false,
+            "user_id": "576",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-23T04:13:11.913Z",
+            "updatedAt": "2024-12-23T04:13:11.913Z",
+            "proposal_links": [
+              {
+                "id": 212,
+                "prop_link": "https://hasty-thrush.org",
+                "prop_link_text": "proud-anxiety"
+              }
+            ],
+            "proposal_withdrawals": [
+              {
+                "id": 88,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 152,
+      "attributes": {
+        "prop_likes": 6,
+        "prop_dislikes": 2,
+        "prop_comments_number": 3,
+        "user_id": "49",
+        "createdAt": "2024-12-21T13:22:29.908Z",
+        "updatedAt": "2025-01-14T20:07:54.703Z",
+        "user_govtool_username": "rugmedaddy",
+        "content": {
+          "id": 152,
+          "attributes": {
+            "proposal_id": "152",
+            "prop_rev_active": true,
+            "prop_abstract": "It’s free and therefore an attack vector. Make it cost 2 ADA. The price of the HOSKY rugbowl. Donate the ADA to the treasury ftw",
+            "prop_motivation": "All the crappy spam that’s been submitted with nonsense content and no way to filter it. Even Reddit does this better ",
+            "prop_rationale": "Clean up the spam now before people actually wake up to governance and its implications for Cardano. \n\nHappy holidays everyone 🫂",
+            "gov_action_type_id": "1",
+            "prop_name": "Make a MinFee to make proposals on this site ",
+            "is_draft": false,
+            "user_id": "49",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-21T13:22:29.926Z",
+            "updatedAt": "2024-12-21T13:22:29.926Z",
+            "proposal_links": [],
+            "proposal_withdrawals": [
+              {
+                "id": 87,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 143,
+      "attributes": {
+        "prop_likes": 0,
+        "prop_dislikes": 4,
+        "prop_comments_number": 0,
+        "user_id": "537",
+        "createdAt": "2024-12-20T09:28:47.330Z",
+        "updatedAt": "2024-12-29T08:57:56.165Z",
+        "user_govtool_username": "jazmyn86_1734686194094",
+        "content": {
+          "id": 143,
+          "attributes": {
+            "proposal_id": "143",
+            "prop_rev_active": true,
+            "prop_abstract": "ubi curso chirographum denuo aeneus",
+            "prop_motivation": "decumbo uxor cedo cur in",
+            "prop_rationale": "utrimque toties cubo minus cornu",
+            "gov_action_type_id": "1",
+            "prop_name": "Dolore allatus aetas ducimus cerno decet.",
+            "is_draft": false,
+            "user_id": "537",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-20T09:28:47.330Z",
+            "updatedAt": "2024-12-20T09:28:47.330Z",
+            "proposal_links": [
+              {
+                "id": 203,
+                "prop_link": "https://subdued-drake.net/",
+                "prop_link_text": "broken-handover"
+              }
+            ],
+            "proposal_withdrawals": [
+              {
+                "id": 78,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 135,
+      "attributes": {
+        "prop_likes": 0,
+        "prop_dislikes": 5,
+        "prop_comments_number": 0,
+        "user_id": "532",
+        "createdAt": "2024-12-20T09:27:22.976Z",
+        "updatedAt": "2024-12-29T09:00:07.964Z",
+        "user_govtool_username": "weston_morissette18_1734686172",
+        "content": {
+          "id": 135,
+          "attributes": {
+            "proposal_id": "135",
+            "prop_rev_active": true,
+            "prop_abstract": "videlicet admoneo vesco terra repellat",
+            "prop_motivation": "sumo abeo tero rerum deputo",
+            "prop_rationale": "necessitatibus nam crepusculum aliqua xiphias",
+            "gov_action_type_id": "1",
+            "prop_name": "Copiose vicinus corrigo sub ipsa abundans.",
+            "is_draft": false,
+            "user_id": "532",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-20T09:27:23.005Z",
+            "updatedAt": "2024-12-20T09:27:23.005Z",
+            "proposal_links": [
+              {
+                "id": 195,
+                "prop_link": "https://sad-practice.net",
+                "prop_link_text": "clean-problem"
+              }
+            ],
+            "proposal_withdrawals": [
+              {
+                "id": 70,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 126,
+      "attributes": {
+        "prop_likes": 0,
+        "prop_dislikes": 2,
+        "prop_comments_number": 2,
+        "user_id": "526",
+        "createdAt": "2024-12-20T08:46:24.036Z",
+        "updatedAt": "2024-12-21T13:12:19.603Z",
+        "user_govtool_username": "mitchell74_1734683774308",
+        "content": {
+          "id": 126,
+          "attributes": {
+            "proposal_id": "126",
+            "prop_rev_active": true,
+            "prop_abstract": "accommodo acceptus desparatus alii eveniet",
+            "prop_motivation": "decor clarus illum verus recusandae",
+            "prop_rationale": "debeo cultura bonus denuo strenuus",
+            "gov_action_type_id": "1",
+            "prop_name": "Caveo amissio auctor adiuvo rem soluta.",
+            "is_draft": false,
+            "user_id": "526",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-20T08:46:24.036Z",
+            "updatedAt": "2024-12-20T08:46:24.036Z",
+            "proposal_links": [
+              {
+                "id": 186,
+                "prop_link": "https://distant-opossum.com",
+                "prop_link_text": "scented-herring"
+              }
+            ],
+            "proposal_withdrawals": [
+              {
+                "id": 61,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 118,
+      "attributes": {
+        "prop_likes": 0,
+        "prop_dislikes": 1,
+        "prop_comments_number": 0,
+        "user_id": "522",
+        "createdAt": "2024-12-20T08:45:14.996Z",
+        "updatedAt": "2024-12-20T20:25:41.034Z",
+        "user_govtool_username": "jaydon67_1734683757300",
+        "content": {
+          "id": 118,
+          "attributes": {
+            "proposal_id": "118",
+            "prop_rev_active": true,
+            "prop_abstract": "demergo cavus adulescens corroboro abscido",
+            "prop_motivation": "nulla talus amitto usitas sui",
+            "prop_rationale": "auxilium aedificium tantillus undique addo",
+            "gov_action_type_id": "1",
+            "prop_name": "Universe bestia validus aer xiphias patior.",
+            "is_draft": false,
+            "user_id": "522",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-20T08:45:15.039Z",
+            "updatedAt": "2024-12-20T08:45:15.039Z",
+            "proposal_links": [
+              {
+                "id": 178,
+                "prop_link": "https://bewitched-fibre.org/",
+                "prop_link_text": "notable-efficacy"
+              }
+            ],
+            "proposal_withdrawals": [
+              {
+                "id": 53,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 97,
+      "attributes": {
+        "prop_likes": 0,
+        "prop_dislikes": 0,
+        "prop_comments_number": 0,
+        "user_id": "472",
+        "createdAt": "2024-12-20T07:42:16.436Z",
+        "updatedAt": "2024-12-20T07:42:16.436Z",
+        "user_govtool_username": "zoila.nitzsche_1734680161175",
+        "content": {
+          "id": 97,
+          "attributes": {
+            "proposal_id": "97",
+            "prop_rev_active": true,
+            "prop_abstract": "admiratio crur viriliter delibero pel",
+            "prop_motivation": "audacia usque apostolus explicabo cunae",
+            "prop_rationale": "denuncio admoneo delinquo impedit adimpleo",
+            "gov_action_type_id": "1",
+            "prop_name": "Clamo tremo dolores id aliqua conqueror.",
+            "is_draft": false,
+            "user_id": "472",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-20T07:42:16.436Z",
+            "updatedAt": "2024-12-20T07:42:16.436Z",
+            "proposal_links": [
+              {
+                "id": 157,
+                "prop_link": "https://tough-actor.info/",
+                "prop_link_text": "long-term-chinchilla"
+              }
+            ],
+            "proposal_withdrawals": [
+              {
+                "id": 32,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 89,
+      "attributes": {
+        "prop_likes": 0,
+        "prop_dislikes": 0,
+        "prop_comments_number": 0,
+        "user_id": "469",
+        "createdAt": "2024-12-20T07:41:15.961Z",
+        "updatedAt": "2024-12-20T07:41:15.961Z",
+        "user_govtool_username": "karine_morissette72_1734680149",
+        "content": {
+          "id": 89,
+          "attributes": {
+            "proposal_id": "89",
+            "prop_rev_active": true,
+            "prop_abstract": "crepusculum appono cresco vestigium confugo",
+            "prop_motivation": "traho solutio thalassinus infit altus",
+            "prop_rationale": "advoco aestivus cribro circumvenio cotidie",
+            "gov_action_type_id": "1",
+            "prop_name": "Ancilla tempus comprehendo torqueo calculus ascisco.",
+            "is_draft": false,
+            "user_id": "469",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-20T07:41:15.980Z",
+            "updatedAt": "2024-12-20T07:41:15.980Z",
+            "proposal_links": [
+              {
+                "id": 149,
+                "prop_link": "https://remarkable-marketplace.net/",
+                "prop_link_text": "confused-excuse"
+              }
+            ],
+            "proposal_withdrawals": [
+              {
+                "id": 24,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 76,
+      "attributes": {
+        "prop_likes": 0,
+        "prop_dislikes": 0,
+        "prop_comments_number": 0,
+        "user_id": "432",
+        "createdAt": "2024-12-19T07:19:39.195Z",
+        "updatedAt": "2024-12-19T07:19:39.195Z",
+        "user_govtool_username": "jack_grimes63_1734592378084",
+        "content": {
+          "id": 76,
+          "attributes": {
+            "proposal_id": "76",
+            "prop_rev_active": true,
+            "prop_abstract": "autus vespillo suppono adduco verto",
+            "prop_motivation": "cunctatio unde teres crur ventito",
+            "prop_rationale": "a aggredior viridis volva consectetur",
+            "gov_action_type_id": "1",
+            "prop_name": "Tardus communis ipsa ulterius tremo paulatim.",
+            "is_draft": false,
+            "user_id": "432",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-19T07:19:39.195Z",
+            "updatedAt": "2024-12-19T07:19:39.195Z",
+            "proposal_links": [
+              {
+                "id": 136,
+                "prop_link": "https://gruesome-neonate.com/",
+                "prop_link_text": "speedy-fate"
+              }
+            ],
+            "proposal_withdrawals": [
+              {
+                "id": 11,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 70,
+      "attributes": {
+        "prop_likes": 0,
+        "prop_dislikes": 2,
+        "prop_comments_number": 2,
+        "user_id": "433",
+        "createdAt": "2024-12-19T07:18:59.520Z",
+        "updatedAt": "2024-12-21T13:11:12.039Z",
+        "user_govtool_username": "deborah67_1734592396305",
+        "content": {
+          "id": 70,
+          "attributes": {
+            "proposal_id": "70",
+            "prop_rev_active": true,
+            "prop_abstract": "dolor ara cernuus thermae addo",
+            "prop_motivation": "verto venustas voco spargo deorsum",
+            "prop_rationale": "accommodo architecto thymbra spiritus qui",
+            "gov_action_type_id": "1",
+            "prop_name": "Abundans speculum cunabula adfectus enim placeat.",
+            "is_draft": false,
+            "user_id": "433",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-19T07:18:59.550Z",
+            "updatedAt": "2024-12-19T07:18:59.550Z",
+            "proposal_links": [
+              {
+                "id": 130,
+                "prop_link": "https://complete-violet.org/",
+                "prop_link_text": "knobby-chairperson"
+              }
+            ],
+            "proposal_withdrawals": [
+              {
+                "id": 5,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 68,
+      "attributes": {
+        "prop_likes": 20,
+        "prop_dislikes": 1,
+        "prop_comments_number": 19,
+        "user_id": "116",
+        "createdAt": "2024-12-18T08:07:11.811Z",
+        "updatedAt": "2025-01-09T21:52:21.168Z",
+        "user_govtool_username": "rabit",
+        "content": {
+          "id": 68,
+          "attributes": {
+            "proposal_id": "68",
+            "prop_rev_active": true,
+            "prop_abstract": "In this document, we propose small but impactful changes to the current Delegation Strategy adopted in October 2023 by Cardano Foundation (CF). The aim of this proposal is to gauge Community sentiment around what we have considered to be a set of issues since the adoption of the new Delegation Strategy (October 2023).    \n####  \n\nSpecifically, we address four issues with CF's Delegation Strategy, which were all introduced without Community consultation and implemented unilaterally in October 2023:\n\n####  \n\n**i)** CF delegation is currently made up of few, large “packages”;  \n  \n  \n\n**ii)** CF delegation is currently awarded with no cap on existing stake in recipient Pool;  \n  \n\n**iii)** CF delegation is currently awarded as a result of a non-competitive process, with decisions made outside of public scrutiny and sometimes to pools who didn’t want delegation or didn’t intend to apply for it;  \n\n**iv)** CF delegation is currently awarded to Stake Pool Operators who received it the previous year.  \n####  \n\n***By voting on this proposal, voters can express their opinion on the following question:***  \n\n***Should CF Delegation Strategy be amended to include the changes proposed herein?***  \n####  \n####  \n  \n\n**The following are our proposed changes:**  \n####  \n\n\n\n**i)** CF delegation amount should be lowered to 10M ADA from the current 20M, which will also increase the number of Pools that receive the delegation;  \n\n**ii)**  CF delegation should be awarded to Pools which have maximum 10M ADA delegated to them;  \n\n**iii)** CF delegation should be an inclusive, competitive process, for which applicants should apply at every round;  \n\n**iv)** CF delegation should include a 12-month cooling off period.  \n####  \n  \nIn this proposal we will analyse each of the perceived weaknesses and provide motivation in the form of supporting evidence provided by subject-matter experts, as well as reference public discussions had with CF representatives in appropriate fora. Further, we shall provide a rationale for change requests, explaining why, in our view, proposed changes would strengthen the impact of CF delegation for the Stake Pool Operator Community.  \n####",
+            "prop_motivation": "Although this proposal was submitted in response to the announcement of the 2024 recipients of CF delegation (November 22, 2024), we wish to make it clear that it is NOT a criticism of the currently selected Pools. Rather, the proposal aims to focus on the PROCESS leading to the selection of Pools for CF delegation, in an attempt to make it more transparent and available to a wider group of Stake Pool Operators.  \n####  \nCardano Foundation (CF) is one of the Founding Entities of the Cardano Blockchain and has a pivotal role in shaping its public perception as well as its internal politics. This role is increasingly important as the Network progresses and evolves, particularly with the advent of On-Chain Governance features.  \n####  \nHow CF chooses to delegate its own ADA is ultimately a decision that rests with CF. Nevertheless, CF has a very central role in the Cardano Ecosystem and is perceived as a leading authority in all-matters Cardano. This is an aspect of CF's role in the Cardano Ecosystem that cannot be trivialized and only touted when convenient. On the contrary, CF's leadership and subject-matter expertise (perceived or realized) should be self-evident in every action and decision made by CF. CF should always represent the best interests of Cardano and its Community, including the interests of the wider Stake Pool Operator Community, even if those interests somehow conflict with CF's own.  \n####  \n For these reasons, how CF chooses to delegate their ADA is a matter of public relevance. Let's see how, in our view, the current Delegation Strategy adopted by CF in October 2023 might not be directly aligned with Cardano's best interests.  \n####  \n**i)** CF drastically reduced the number of pools they delegate to, by increasing the size of the delegation packages [1]. Delegation rounds used to be run every three months, with 44 pools selected each round, for a total of 176 pools per year: this is in stark contrast with the current 26 pools per year [1]. Before October 2023, CF had conducted seven delegation rounds, during which they received 1731 valid applications with an average of 65 pools shortlisted every round. In doing so, they delegated to 161 unique pools [1] which equates to an average of 23 new pools per round. Conversely, with the new strategy, only 30 Pools received delegation in 2023 and 26 Pools in 2024. Of the latter, only 6 were new: this shrunk the number of Pools receiving delegation from over 160 to 36 in 2 years.     \n####\nWhile this change may smoothen the delegation process and simplify CF’s operations (by having fewer wallets to move) it does nothing to support decentralization. Other changes to the delegation strategy, implemented simultaneously and unilaterally in October 2023, also smoothen the operational side of this delegation process, but we will return to those later in this document.\n####\nThe increase in delegation size from approximately 14M ADA in July 2023 to approximately 20M ADA in October of the same year, resulted, as we have seen, in fewer wallets to move and leaner operational requirements for CF, but also, necessarily, reduced the number of recipient Pools. We argue that this decision should be entirely reversed, by essentially doubling the number of wallets and halving the delegated amount. \n####\n10M ADA distributed to twice as many Pools would give a broader range of Operators the opportunity to reach an attractive mark of profitability for their delegators. This profitability mark, maintained for a finite period through CF delegation, would in turn provide marketing opportunities for more Stake Pool Operators to attract organic delegation [2]. We argue that, with the current influx of investment capital into Cardano, this is even more important than it has been in the past: it would allow this new capital to flow to a higher number of attractive Pools, thereby contributing to the decentralization of stake.  \n####\n**ii)** During last year’s delegation round (2023), CF Delegation inadvertently resulted in oversaturation of recipient Pools. We are aware of two such incidents: AOS and BERRY [3, 4], and the effects of these “mishaps” can be clearly seen on pool.pm or other explorers. This fact per-se is completely unacceptable, resulting in rewards being lost for all delegators to the recipient Pools, not just for CF. This was a direct consequence of the increase in delegation size and completely overlooked by those in charge of dispensing the CF delegation. Aside from being a very easy-to-avoid mistake (we have explorers on Cardano), this situation has much broader implications.\n####\nA Pool with maximum 10M ADA delegated to it at the time of receiving CF delegation, would increase in size to 20M ADA or less, for a whole year. During this time, the Operator might be able to further grow their Pool, thanks to the attractiveness of the CF delegation. This could be done with limited risk of oversaturating the Pool, even if during the delegation year K were to be increased, thereby lowering the saturation point of Pools.  \n####\n**Example:**\n#### \n*10M ADA or less Pool current delegation + 10M ADA CF delegation =  20M ADA for a year;* \n####\n*20M ADA in total delegation + 10M ADA for organic growth + 5M ADA cushion for additional growth = 35M ADA in delegation;* \n####\n*A Pool with 20M ADA will now have room for at least 10M ADA in organic growth over the year to stay under 35M ADA. This 35M ADA delegation goal, is set so the Pool will not be oversaturated if K is increased to 1,000 over the year of delegation.*\n####\nOn top of risking oversaturation of recipient Pools, not having a size cap also directly contradicts the very purpose that CF Delegation should have. The purpose of a rotating Delegation from any entity, is to bootstrap the operations and profitability of the recipient Pools [5]. It should not be a “forever delegation” and should provide an adequate level of profitability to the Pool’s delegators, to attract more organic delegation. This, at the very least, should be the expectation of the Strategy. So what would be a reasonable expectation in terms of organic delegation growth?\n####\nWith adequate marketing over 12 months, the recipient Pools should be expected to grow their delegation organically (thanks to the attractive profitability awarded by CF Delegation) to an amount that would make the eventual rotation of CF’s Delegation to a competitor Pool acceptable in terms of profitability of their operations. Let’s look at a practical example:\n####\nIf a Pool receives CF Delegation for 10M ADA, with current network parameters their profitability for delegators is expected to reach an attractive mark. If over the course of 12 months (the duration of CF Delegation) they manage to grow another 10M in organic delegation, when the CF Delegation is rotated out they are able to maintain this profitability in an independent way. \n####\nNaturally this is an ideal scenario. Nevertheless, CF should take this into account when devising their Strategy: they should leave enough room in the Pools they delegate to, so that the latter can, at least theoretically and in-line with the current saturation parameters, grow their delegation organically by as much as they have received “in-kind” from CF. \n####\nFurther, delegation should not be reasonably awarded to Pools which are already independent and profitable from an operations’ standpoint. Overlooking this sends the message that the delegation is for CF’s financial benefit and is to be considered a “token of appreciation” for work done, rather than being an attempt to bootstrap Pool profitability and consequently increase decentralization of stake. This is why we are proposing that CF set a cap on the size of the pools they delegate to.   \n####\nAs we have already noted, CF may choose to delegate as they see fit. However, if the intent of the CF delegation is to be a “token of appreciation” or simply a maximization of CF’s profit, then this intent should be explicitly stated in their reasoning for delegation. Being honest about their intentions for the delegation is a key point to support transparency regarding this entire program.\n####\n**iii)** Rotating delegation programs by the founding entities of Cardano are not novel. IOG started doing this in 2021 and CF had started back in 2020. Before October 2023, delegation rounds were independently applied for by all Pools wanting to be considered. Needless to say, the application process itself made the Delegation Strategy more democratic and also made it clear that “if you wish to be considered, you have to put some work in”. \n####\nWe are not suggesting that having an application form submitted every year by all Pools wanting to be considered would completely eliminate the lack of transparency in the choices. However, the current, publicly-declared internal cherry-picking of recipient pools [1] is the very definition of a non-transparent selection process. This complete lack of transparency in the choice of recipient Pools has raised some legitimate concerns about the credibility of CF [1, 6, 7], but it doesn’t have to be a forever problem.\n####\nHaving an application form to be filled in by all candidates every 12 months, and communicating this in a timely fashion in appropriate public fora is the first step to resolve the current lack of transparency. A second step would be to publicly announce the composition of the committee or group currently in charge of selecting Pools for delegation. If such a committee or group doesn’t currently exist within CF, it should be created and then its composition made publicly available. Having this information publicly available would mitigate some of the effects of the current lack of transparency, for example by reassuring the Community that no Stake Pool Operators are present in a committee or group charged with selecting Pools for delegation, which would constitute an obvious conflict of interest. \n####\nAs noted above, strong confidence in CF’s role as a founding entity in charge of many aspects of Cardano’s public perception and internal politics is ever more important in the era of Governance. Increasing the transparency of the process leading to the delegation of approximately 500M ADA could do a lot to strengthen Community confidence in CF.   \n####\n**iv)** Pools currently don’t even have to apply to get CF delegation: they are cherry-picked [1]. This resulted, in 2024, in a “sticky” CF delegation for 20 out of 30 Pools previously selected in 2023. Not rotating delegation to new pools every year restricts access to attractive profitability marks for all other Pools which may be eligible for delegation. Further, the lack of an application process and rotation of delegation, limit CF’s ability to keep tabs with the evolution of the Cardano ecosystem: applicants would bring new projects and new ideas to CF’s attention. This, combined with a 12-month rotation, would ensure that CF is delegating to the most current and eligible builders and contributors.\n####",
+            "prop_rationale": "The present proposal is merely an Info Action, aimed at gauging Community sentiment around what we perceive to be a set of issues with the current Cardano Foundation (CF) Delegation Strategy. As an Info Action, it shall have no direct effect on-chain. Nonetheless, we feel that this could spark a discussion around the topic and set the scene for changes to come into effect in 2025.\n#### \nSpecifically, to the points made above regarding the four characteristics of the CF Delegation Strategy that we propose to address:\n####\n**i)** In a recent call with Stake Pool Operators, CF admitted to the struggles of small Pools in attracting organic delegation and competing against larger Pool operations [8]. Although considering a plan of action to address this in 2025 and the three years following might have some merit, CF could back these public statements with actions having immediate effect.\n####\nInstead, CF representatives have recently called delegating smaller packages to more Pools “economic madness” and encouraged Community members to “do the maths” [9]. We agree that CF would incur a loss of profit by delegating smaller wallets to more pools, but we argue that the loss would be minimal and could be easily mitigated. Let’s look at some numbers to quantify this loss:  \n####\na) According to pool.pm data [10], CF currently controls 28 wallets containing 20M+ each for a total of over 570M ADA. These wallets are all delegated, and assuming a conservative 2.5% per annum return would generate over 14M ADA in returns every year.\n####\nb) For argument’s sake, let’s assume that the entirety of the minfee awarded to Pool Operators is detracted from CF (this is an incorrect assumption, as minfee is detracted from the rewards of all delegators to a Pool). Minfee is currently set at 170 ADA per epoch: if CF wishes to pay the bare minimum, they should delegate to Pools with the lowest possible minfee. This would result in a total minfee collected by the 29 Pools of: 170 ADA * 73 epochs * 29 Pools = ~360K ADA. Over 14M in returns of stake, this number is less than 2.5%. \n####\nWe agree that delegating to more Pools in smaller amounts would have CF incur higher amounts of fees, thereby resulting in a diminished return of ADA. However, we argue that doing so would bolster the message by CF, showing the Community that they are indeed helping Pools which need it, despite some minor financial loss. \n####\nFurther, CF could adopt a strategy to mitigate this loss of ADA and simultaneously help the Cardano Ecosystem as a whole, not just Stake Pools Operators. For example, using Decentralized Finance (DeFi) services available on Cardano would generate income for CF and transaction fees for the Network: to make up for the ~720K ADA lost to fees using DeFi, CF would need to find opportunities offering at least 0.1226% APY with the assumption of monthly compounding. Given the typical yields in Cardano's DeFi ecosystem, this would be feasible but might require careful selection of strategies. \n####\n**ii)** The benefits of introducing a maximum cap in the size of the recipient Stake Pools would be similar to those described above for point 1. Further, it would minimize the risk of embarrassing repetitions of unintentional oversaturation, and provide struggling Pools with the profitability mark that allows them to compete with larger operations.\n####\n**iii)** Adding transparency to the selection Process for Delegation would strengthen CF’s own claims of inclusivity and Community engagement. The benefits of this transcend the Delegation program: Stake Pool Operators are a vital part of the Community and some are very vocal. Having even just a few Stake Pool Operators scream unfairness every round of delegation is not healthy for CF’s credibility as a beacon to which the Cardano Community looks for many adoption and political matters.  \n####\nThe current criteria for delegation are not clearly defined or quantifiable, leaving room for subjective interpretation. Further, shortlisting and inclusion/exclusion of Pools goes completely unexplained, leading to perceptions of favouritism or bias. Also notable, is the absence of active mechanisms for gathering or incorporating feedback from the broader Community or Pool Operators regarding the delegation strategy.\n####\nCF could improve transparency by making scoring and evaluation metrics publicly available and providing detailed rationales for Pool selections or exclusions. Additionally, CF could release periodic reports that detail the impact of the delegation strategy, such as metrics on increased adoption, development activities, or network decentralisation. Gathering input from the Community through fora or surveys could further enhance alignment with stakeholders’ priorities, and a weighted voting mechanism could be introduced to complement the existing selection process. Promoting diversity by actively targeting Pools in underrepresented regions or run by smaller operators would also support decentralisation and inclusivity. Dynamic monitoring tools should be used to prevent over-concentration in specific Pools, and CF could commit to an annual review of their delegation strategy to evaluate its effectiveness, incorporating data and feedback from the previous period. By implementing these improvements, CF could build greater trust within the Community and better align its delegation practices with its stated goals of ecosystem growth and decentralization.  \n####\n**iv)** Pools previously awarded CF Delegation should have to wait 12 months before being eligible again. Rotating delegation to new pools every year, would allow more pools to benefit from the attractiveness provided by CF delegation. Further, this rotation would reinforce CF’s claim of supporting current efforts building on Cardano: Cardano, like the rest of the industry, is a very fast-evolving space, in which contributors and builders change and grow (or shrink). Delegating to Pools supporting the latest and best efforts to grow Cardano, should be one of CF’s priorities. \n####\nFurther, rotating the delegation regularly, would encourage CF to monitor the Pools they delegate to. Although it has been said that this happens [1], there are some valid reasons to doubt the thoroughness of this monitoring. There are Pools which have received delegation that failed to deliver rewards (despite the delegation) for not having met their pledge or having configuration issues. It is not our intention to single out any specific Operator, but data are on-chain and visible to everyone. We think Pools that receive CF delegation should have a spotless record when it comes to Pool maintenance, and that rotating delegation to new Pools every 12 months would encourage a more thorough assessment of those that do not. \n####\n**Further thoughts**\n####\nWe think that CF should re-introduce the requirement of being a Single Pool Operator in order to receive delegation. This was already the case before October 2023 and re-introducing it would negate any possibility of application by High-Leverage Pool-Splitters, known to be adversarial to decentralisation [11,12]. We acknowledge the important contributions made by some entities and individuals who run multiple Pools. Some of these contributions to the Cardano Ecosystem go way beyond the responsibilities intrinsic to the role of Stake Pool Operator and go back many years, enduring through less-than-favourable bear-market conditions that might have deterred less motivated individuals or entities.\n####\nHowever, high-leverage split-pools such as those operated by Centralized Exchanges do not participate in Governance or make any significant contributions to the Ecosystem. We are not suggesting that CF is presently considering delegating to any of these Pools, but the removal of the “Single Pool Operator” requirement for delegation by CF, makes it theoretically possible. We do not think that having Binance receive CF delegation would be a desirable outcome, even if they miraculously started contributing to Cardano’s Ecosystem growth.   \n####\nBy removing the “Single Pool Operator” requirement for delegation, CF makes it look like decentralization has taken a role of secondary importance compared to rewarding Builders and Contributors. We argue that decentralization of block production, and perhaps even more importantly, diversity of actors, should remain at the forefront of our aims as an Ecosystem. This becomes even more paramount in the era of Governance and at a time when Cardano is finally and rightfully being recognised as one of the Blockchains with the strongest Community and scientific foundations in the industry.\n####\nFurther, as any Pool Operator in the System would be able to attest to, running a Pool on Cardano, albeit profitable in some cases and market conditions, does not give you enough extra funding to independently develop new solutions and contributions to the Ecosystem. This is why we have Catalyst, and other funding opportunities for people who wish to build on Cardano. If CF truly wishes to support Builders and Contributors, they should set up competitive funding opportunities that have nothing to do with delegating to Pools.\n ####\nWhile Builders are important, they only make up a part of the entire Cardano Ecosystem. Now that the 2025 budget is in queue and funding will also be available through Intersect, Builders have this as an option for funding as well. The Cardano Ecosystem as a whole should be represented in the selection process, and there are many Operators who are contributing in their own ways besides building tools. Everyone who is contributing to Cardano deserves a fair shot at a CF delegation and to pitch their achievements in a CF application process. \n####\nCF could use the application process to narrow down Pools which qualify for delegation based on CF requirements. Random numbers could then be assigned to each shortlisted Pool and block hashes used publicly to select Pools randomly. This would remove all bias and has successfully been done before during the TeddySwap FISO [13].\n####\nWe hope that this Governance Info Action will spark some productive debate in the Cardano Community regarding the changes to CF’s Delegation Strategy proposed herein. \n####\n**Respectfully,**  \nRABIT, ECP *et al.*\n####\n**Acknowledgments**\n####\nWe would like to thank SPOs and other entities who have volunteered their time to provide feedback and shape this document in its present form. We will not name them, in order to respect their right to privacy, but their input has been of great help. *Thank you, you know who you are.*\n####\n**References:**\n####\n1 <https://forum.cardano.org/t/cardano-foundation-updates-delegation-strategy/122773>\n\n2 <https://iohk.io/en/blog/posts/2021/01/22/our-new-delegation-strategy-announcing-the-pools-we-are-supporting/>\n\n3 <https://x.com/intertreeJK/status/1719051087607407012>\n\n4 <https://x.com/CardanoNoodz/status/1719054888129184072>\n\n5 <https://iohk.io/en/blog/posts/2020/11/24/delegating-with-fresh-purpose/>\n\n6 <https://forum.cardano.org/t/announcing-the-stake-pools-chosen-for-november-2024/139205>\n\n7 <https://x.com/GrahamsNoPlus1/status/1860722898702397501?t=3N5ZBocIJipD8ID8hWyB6g&s=19>\n\n8 <https://x.com/intertreeJK/status/1854554095044141227>\n\n9 <https://x.com/adatainment/status/1860473512609132678>\n\n10 <https://pool.pm/cf/stake>\n\n11 <https://iohk.io/en/blog/posts/2020/11/13/the-general-perspective-on-staking-in-cardano/>\n\n12 <https://blogs.ed.ac.uk/blockchain/2022/04/19/pool-splitting-behaviour-and-equilibrium-properties-in-cardano-rewards-scheme/>\n\n13 <https://medium.com/@TeddySwapDEX/fair-initial-stakepool-offering-fiso-259848035acb>",
+            "gov_action_type_id": "1",
+            "prop_name": "Proposed changes to Cardano Foundation Delegation Strategy",
+            "is_draft": false,
+            "user_id": "116",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-12-18T08:07:11.811Z",
+            "updatedAt": "2024-12-18T08:07:11.811Z",
+            "proposal_links": [
+              {
+                "id": 122,
+                "prop_link": "https://forum.cardano.org/t/cardano-foundation-updates-delegation-strategy/122773",
+                "prop_link_text": "Cardano Foundation Delegation Strategy (October 2023)"
+              },
+              {
+                "id": 123,
+                "prop_link": "https://iohk.io/en/blog/posts/2021/01/22/our-new-delegation-strategy-announcing-the-pools-we-are-supporting/",
+                "prop_link_text": "IOG Delegation Strategy (January 2021)"
+              },
+              {
+                "id": 124,
+                "prop_link": "https://x.com/CardanoNoodz/status/1719054888129184072",
+                "prop_link_text": "BERRY oversaturation (October 2023)"
+              },
+              {
+                "id": 125,
+                "prop_link": "https://forum.cardano.org/t/announcing-the-stake-pools-chosen-for-november-2024/139205",
+                "prop_link_text": "Cardano Foundation Delegation choices (November 2024)"
+              },
+              {
+                "id": 126,
+                "prop_link": "https://x.com/GrahamsNoPlus1/status/1860722898702397501",
+                "prop_link_text": "Fairness, Decentralization and Transparency (GNP1 - November 2024)"
+              },
+              {
+                "id": 127,
+                "prop_link": "https://pool.pm/cf/stake",
+                "prop_link_text": "Cardano Foundation Wallets (pool.pm)"
+              },
+              {
+                "id": 128,
+                "prop_link": "https://medium.com/@TeddySwapDEX/fair-initial-stakepool-offering-fiso-259848035acb",
+                "prop_link_text": "TeddySwap FISO (January 2023)"
+              }
+            ],
+            "proposal_withdrawals": [
+              {
+                "id": 3,
+                "prop_receiving_address": null,
+                "prop_amount": null
+              }
+            ],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 59,
+      "attributes": {
+        "prop_likes": 0,
+        "prop_dislikes": 2,
+        "prop_comments_number": 0,
+        "user_id": "104",
+        "createdAt": "2024-11-21T11:50:27.584Z",
+        "updatedAt": "2024-12-04T16:28:55.688Z",
+        "user_govtool_username": "spannercode",
+        "content": {
+          "id": 29,
+          "attributes": {
+            "proposal_id": "59",
+            "prop_rev_active": true,
+            "prop_abstract": "Testing mainnetTesting mainnet",
+            "prop_motivation": "Testing mainnet",
+            "prop_rationale": "Testing mainnet",
+            "gov_action_type_id": "1",
+            "prop_name": "Testing mainnet",
+            "is_draft": false,
+            "user_id": "104",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-11-21T11:50:27.618Z",
+            "updatedAt": "2024-11-21T11:50:27.618Z",
+            "proposal_links": [],
+            "proposal_withdrawals": [],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 58,
+      "attributes": {
+        "prop_likes": 10,
+        "prop_dislikes": 1,
+        "prop_comments_number": 2,
+        "user_id": "6",
+        "createdAt": "2024-11-14T21:43:36.119Z",
+        "updatedAt": "2024-12-14T11:04:52.935Z",
+        "user_govtool_username": "lourde",
+        "content": {
+          "id": 28,
+          "attributes": {
+            "proposal_id": "58",
+            "prop_rev_active": true,
+            "prop_abstract": "Creation of a treasury / committee for basic and advanced blockchain education and standardized bundled source material that can be co created by the community.",
+            "prop_motivation": "The use of blockchain tech is spreading more and more each day. The Cardano Community and soon partner chain communities will all require basic blockchain education to better curate the experience. \n\n  Every community member onboards a new member with a different wallet, dApp recommendations, and various other aspects of the protocol they feel is important. If the community was offered standardized onboarding packages directly from the governing body they canhave the resources from day one with out fear of falling prey to predators in the Web3 space.",
+            "prop_rationale": "It allows for a transparent dedicated focus on education in the purview of the community and the infrastructure projects. As with other inceptions, this particular idea can and is encouraged to evolve to have a curated Educational roadmap  ie: SPO cohort classes or Defi Academies have already taken place throughout Cardanos build that infomation can help create a Roadmap and the proper tools recommended and project via Cardano Cube. Additionally the litany of educators in the community can aid in content and have compensation come from the treasury.",
+            "gov_action_type_id": "1",
+            "prop_name": "Blockchain education and onboarding committee / treasury",
+            "is_draft": false,
+            "user_id": "6",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-11-14T21:43:36.140Z",
+            "updatedAt": "2024-11-14T21:43:36.140Z",
+            "proposal_links": [],
+            "proposal_withdrawals": [],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 55,
+      "attributes": {
+        "prop_likes": 21,
+        "prop_dislikes": 2,
+        "prop_comments_number": 7,
+        "user_id": "255",
+        "createdAt": "2024-10-11T16:19:42.718Z",
+        "updatedAt": "2024-12-19T11:53:27.788Z",
+        "user_govtool_username": "atriumlab",
+        "content": {
+          "id": 25,
+          "attributes": {
+            "proposal_id": "55",
+            "prop_rev_active": true,
+            "prop_abstract": "The K parameter was created to limit the total number of ADA staked to one pool. The K parameter determines the saturation of stakepools. To calculate the saturation of stakepools you can take the total number of ADA and divide it by K. K is currently 500, and pool saturation is currently 74,551,771.86 ADA. Pool saturation will increase slightly each epoch as more ADA is minted each epoch from staking rewards.\n\nK also has a large effect on a0. a0 is another Cardano protocol parameter that determines ADA staking rewards per epoch. a0 is currently set at .3. If a stakepool operator pledges the enough ADA to saturate their pool they earn 30% more ADA rewards per epoch. If you pledge half of the pools saturation then they earn 15% more ADA rewards. Smaller pledges have a higher impact on staking rewards with a k parameter that's higher.",
+            "prop_motivation": "This governance action is by no means a suggestion of what Cardano protocol parameters should be modified to or if they should be modified at this time. The goal of this governance action is to increase governance participation before the next hardfork. You can register to be a dRep now with your own wallet, or delegate to another dRep today.",
+            "prop_rationale": "We believe that it's important to submit governance info actions to encourage community participation in Cardano's governance before more serious proposals are introduced. It's also important that people have a good understanding of what protocol parameters can change.",
+            "gov_action_type_id": "1",
+            "prop_name": "Should K be increased?",
+            "is_draft": false,
+            "user_id": "255",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-10-11T16:19:42.840Z",
+            "updatedAt": "2024-10-11T16:19:42.840Z",
+            "proposal_links": [
+              {
+                "id": 25,
+                "prop_link": "https://x.com/atrium_lab/status/1838654833806446773",
+                "prop_link_text": "Intro to Cardano Governance Video"
+              },
+              {
+                "id": 24,
+                "prop_link": "https://x.com/atrium_lab",
+                "prop_link_text": "Go to our articles to find the discussion thread."
+              },
+              {
+                "id": 26,
+                "prop_link": "https://alpha.atrium.io/education/what-is-cryptocurrency",
+                "prop_link_text": "Our Cardano Education Portal"
+              },
+              {
+                "id": 27,
+                "prop_link": "https://docs.cardano.org/about-cardano/explore-more/parameter-guide/",
+                "prop_link_text": "Official Cardano Protocol Parameters Documentation"
+              }
+            ],
+            "proposal_withdrawals": [],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 52,
+      "attributes": {
+        "prop_likes": 5,
+        "prop_dislikes": 18,
+        "prop_comments_number": 12,
+        "user_id": "240",
+        "createdAt": "2024-10-07T01:52:08.209Z",
+        "updatedAt": "2024-12-20T21:13:10.047Z",
+        "user_govtool_username": "pdcpalermo",
+        "content": {
+          "id": 22,
+          "attributes": {
+            "proposal_id": "52",
+            "prop_rev_active": true,
+            "prop_abstract": "This proposal seeks to introduce a constitutional clause requiring that 1% of Cardano's annual Treasury funds be allocated to a Universal Basic Income (UBI) program for every validated individual registered on the Cardano network. Over time, this initiative will significantly reshape Cardano's governance, positively impacting the lives of everyday people, promoting the adoption of ADA as a reserve currency, and enabling new consensus mechanisms. The ultimate goal is to align with Cardano's vision of empowering individuals with financial and identity rights.",
+            "prop_motivation": "1. Fostering a widely recognized Decentralized Identity (DID) System\n\nFor individuals to participate in the Cardano UBI program, they must possess a validated, unique identity that is widely recognized. This identity will serve as the foundation for a Proof of Personhood system. By building the UBI system on this premise, we will make the issuance of high-quality decentralized identities a financially sustainable and viable endeavor.\n\n2. Promoting Cardano adoption:\n\nOne major barrier to mainstream cryptocurrency adoption is the lack of a regular income stream in digital currencies. Most people currently need to convert their fiat currency to crypto, and there is a limited range of services offered on cryptocurrencies. With a global UBI program, every person in the world would be eligible to receive ADA, creating an organic demand for merchants to accept ADA and strengthening the ADA-to-fiat exchange ecosystem.\n\n3. Enabling a superior democratic system:\n\nCurrent democratic systems on Cardano are primarily asset-driven, where voting power is determined by the amount of ADA one holds. While lowering the barrier to vote is a step forward, it does not truly create a decentralized voting system. A genuinely decentralized governance model should incorporate multiple decision-making mechanisms to distribute resources and establish checks and balances. This proposal paves the way for developing a new governance system within Cardano.\nAlthough resource-based consensus has been effective for securing the ADA network, it falls short in fostering consensus for democratic decision-making. The \"one person, one vote\" principle is widely recognized as a fair and effective way to build consensus within communities, which can only be achieved with a strong identity system in place.\n\n4. Contributing to the eradication of poverty: \n\nIn practical terms, the UBI system will likely begin by distributing small amounts, perhaps a few cents or dollars per person. However, once this infrastructure is established, it will be revolutionary for humanity. With a system capable of distributing resources to every person globally, solving extreme poverty will depend on how much humanity is willing to allocate to the system and the strength of the identity verification processes across different regions.\n\n5. Decentralizing treasury asset decision-making:\n\nThe UBI system is not designed to fund the core infrastructure that Cardano needs, but allocating 1% of the treasury towards this initiative will not hinder its development. By directly distributing assets to users, we will achieve extreme decentralization, empowering individuals to make decisions that best benefit them—whether it’s purchasing essential goods or crowdfunding new application developments. This approach shifts decision-making power to the hands of everyday users, enabling a more democratic and decentralized governance.\n\nConclusion:\n\nThis project is bold in its ambition and has the potential to reshape the industry. Similar to the Apollo program, the goal of eradicating poverty may seem insurmountable, but striving towards this objective represents the most noble cause any cryptocurrency project could pursue. Cardano is uniquely positioned to take on this challenge, showcasing to the world how its advanced technology can heal broken democracies, empower communities, and help every individual on the planet achieve their full potential.",
+            "prop_rationale": "In the broader scope of Cardano investments, this proposal represents a relatively low-risk investiment, considering the immense potential and network effects it could generate. By committing a small portion of the Treasury to a UBI system, Cardano can make significant advanvcement in identity verification, adoption, and governance.\n\nAfter the decision this proposal is approved, resources should be allocated towards it. However, distribution should only begin once a valid identity solution meeting all Proof of Personhood criteria is implemented and has sufficient number of users are registered in the system. The funds should be send at a consistent and predictable rate, based on available resources. As the system matures, identity-driven democracy can play a more central role in Cardano's governance.\n\nStep 1: Define all requirements for the identity system, ensuring that resources are distributed only when enough identities meet these criteria.\n\nStep 2: Develop Localized Identity Solutions:\n\nCentralized KYC by Intersect:\n\nIntersect is already operating in various countries globally, and it could play a key role in verifying the identities of individuals who wish to join the Cardano UBI system. This could function similarly to a social network, where Intersect empowers its members to validate others’ identities. Once an identity meets all the required criteria, it is considered unique and valid within the system.\n\nLong-Term Solution:\n\nLink trusted identity sources such as Open Banking and government-issued IDs to Decentralized Identifiers (DIDs):\n\nBy linking trusted local identity to DIDs, Cardano can establish a robust, automated Proof of Personhood system. This system could operate alongside the social validation mechanism provided by Intersect, creating a complementary and multi-faceted approach to identity verification.\n\nStep 3: Integrate Identity into Cardano’s Governance System:\n\nOnce a reliable identity system is in place, it should be incorporated into Cardano’s democratic processes. This would include identity-driven elections for community values, project roadmaps, and budget allocations, ensuring a more decentralized and representative governance model.",
+            "gov_action_type_id": "1",
+            "prop_name": "Mandating 1% of the Annual Cardano Budget for a Universal Basic Income  Program",
+            "is_draft": false,
+            "user_id": "240",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-10-07T01:52:08.236Z",
+            "updatedAt": "2024-10-07T01:52:08.236Z",
+            "proposal_links": [
+              {
+                "id": 19,
+                "prop_link": "https://www.linkedin.com/in/product-manager-fintech/",
+                "prop_link_text": "Personal Linkedin"
+              },
+              {
+                "id": 20,
+                "prop_link": "https://github.com/pdcpalermo/CardanoRevolution",
+                "prop_link_text": "[TBD]Repository to store assets and articles about the topic"
+              }
+            ],
+            "proposal_withdrawals": [],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 51,
+      "attributes": {
+        "prop_likes": 15,
+        "prop_dislikes": 11,
+        "prop_comments_number": 20,
+        "user_id": "158",
+        "createdAt": "2024-09-19T06:18:40.017Z",
+        "updatedAt": "2025-01-03T01:05:09.097Z",
+        "user_govtool_username": "brodystringer",
+        "content": {
+          "id": 21,
+          "attributes": {
+            "proposal_id": "51",
+            "prop_rev_active": true,
+            "prop_abstract": "This proposal addresses the exclusion of ADA holders from submitting on-chain governance proposals due to the 100k ADA staking requirement. This exclusion, based on economic status, is contrary to the principles outlined in the Cardano draft constitution, particularly Article 2, Section 2, and Article 3, Section 6. These articles guarantee ADA holders the right to participate in governance processes and ensure transparency and protection from undue influence.\n\nWhile the 100k ADA staking requirement is currently necessary to prevent spam and DDOS attacks, it inadvertently excludes many ADA holders, undermining the inclusivity of the Cardano ecosystem. This proposal acknowledges the temporary necessity of this requirement but emphasizes the need for more inclusive methodologies in the future.\n\nThe proposed solutions include short-term measures, such as centralized KYC, crowdfunding within the GovTool DApp, and DRep-based submission methods, as well as the long-term implementation of DIDs (decentralized identifiers) to enable trustless KYC. These solutions aim to ensure broader participation in governance without compromising the blockchain's security and integrity, ultimately aligning the governance process with the Cardano ethos of inclusivity.",
+            "prop_motivation": "The Cardano blockchain's governance model is intended to be inclusive, providing all ADA holders with the opportunity to participate in decision-making processes. However, the current 100k ADA staking requirement for submitting on-chain governance proposals creates an exclusionary barrier based on economic status. This contradicts the Cardano draft constitution, specifically:\n\nArticle 2, Section 2: \"Members of the Cardano community who own ADA, as well as their appointed designees, are entitled to access and participate in the on-chain decision-making processes of the Cardano Blockchain ecosystem, including voting and taking part in on-chain governance regarding the Cardano Blockchain.\"\n\nArticle 3, Section 6: \"All owners of ADA shall have the right to ensure that the process for participating in, submitting, and voting on on-chain governance actions is open and transparent and is protected from undue influence and manipulation.\"\n\nThese constitutional guarantees are essential to the ethos of Cardano, which is founded on principles of decentralization, transparency, and inclusivity. The current 100k ADA staking requirement, while necessary to prevent malicious activities such as spam and DDOS attacks, excludes a significant portion of ADA holders from participating in governance. This exclusion is not only a practical concern but also an ethical issue that undermines the inclusive nature of the Cardano ecosystem.\n\nThe motivation behind this proposal is to address this exclusion and align the governance process with Cardano's foundational principles. The proposal recognizes the need for the 100k ADA staking requirement in the current technological context but insists that this requirement must be temporary. The long-term goal is to implement more inclusive methodologies that allow for broader participation without compromising the security and functionality of the blockchain.\n\nProblem Statement:\n\nExclusion of ADA Holders: The 100k ADA staking requirement effectively bars many ADA holders from submitting governance proposals, violating the inclusive principles outlined in the Cardano draft constitution.\n\nRisk of Malicious Activities: The current system is designed to prevent spam and DDOS attacks, but it inadvertently creates economic barriers that exclude a large portion of the community.\n\nEthical and Practical Concerns: The exclusionary nature of the current governance submission process is at odds with the Cardano ethos of decentralization and inclusivity.\n\nPurpose of the Proposal:\n\nThis proposal aims to create a governance system that balances the need for security with the principles of inclusivity and fairness. By introducing alternative methods for submitting governance proposals, the proposal seeks to expand participation while maintaining the integrity of the Cardano blockchain.",
+            "prop_rationale": "The rationale for this proposal is rooted in the need to reconcile the current governance process with the principles of inclusivity and fairness as outlined in the Cardano draft constitution. The 100k ADA staking requirement, while necessary to protect the blockchain from spam and DDOS attacks, creates an unintended consequence: it excludes a large portion of ADA holders from participating in governance. This exclusion contradicts the core values of Cardano, which emphasize open and transparent participation for all community members.\n\nThis proposal acknowledges the practical reasons for the staking requirement but argues that it should only be a temporary measure. The long-term goal is to implement more inclusive methodologies that allow for broader participation without compromising the security and functionality of the blockchain.\n\nShort-Term Solutions:\n\nCentralized KYC: A temporary centralized entity could perform KYC on individuals, allowing them to submit governance proposals. This approach would ensure that each person is limited to one proposal at a time, reducing the risk of spam while expanding participation.\n\nCrowdfunding in GovTool DApp: A crowdfunding feature would enable ADA holders to pool their resources to meet the 100k ADA requirement. This method ensures that individuals with smaller stakes can still contribute to governance proposals, fostering a more inclusive environment.\n\nDRep-Based Submissions: Allowing DReps with significant voting power to submit proposals ensures that only those with substantial community support can introduce governance actions. This reduces the overall load on the blockchain while maintaining the integrity of the governance process.\n\nLong-Term Solution:\n\nThe implementation of DIDs represents the ideal solution to the problem of exclusion. DIDs would enable trustless KYC, allowing each verified individual to submit one proposal at a time with a lower ADA staking requirement. This method preserves the security of the blockchain while eliminating the economic barriers currently in place.\n\nThis proposal recognizes the necessity of the 100k ADA staking requirement in the current technological context but insists that this requirement must be temporary. By implementing the short-term solutions proposed here and moving towards the adoption of DIDs, Cardano can create a governance system that is both secure and inclusive. This will not only align with the Cardano constitution but also uphold the broader ethos of the Cardano community, ensuring that all ADA holders have a voice in the governance process.",
+            "gov_action_type_id": "1",
+            "prop_name": "Enhancing Cardano Governance: Addressing the 100k ADA Requirement for Proposals",
+            "is_draft": false,
+            "user_id": "158",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-09-19T06:18:40.028Z",
+            "updatedAt": "2024-09-19T06:18:40.028Z",
+            "proposal_links": [],
+            "proposal_withdrawals": [],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 50,
+      "attributes": {
+        "prop_likes": 28,
+        "prop_dislikes": 3,
+        "prop_comments_number": 22,
+        "user_id": "158",
+        "createdAt": "2024-09-14T18:20:17.706Z",
+        "updatedAt": "2024-12-05T17:26:51.936Z",
+        "user_govtool_username": "brodystringer",
+        "content": {
+          "id": 20,
+          "attributes": {
+            "proposal_id": "50",
+            "prop_rev_active": true,
+            "prop_abstract": "This proposal aims to set a formal hard cap of 45 billion ADA tokens on the Cardano blockchain, ensuring no further issuance of tokens beyond this limit. This will protect ADA’s scarcity, preserve its long-term value, and align with the decentralized governance model of Cardano. By enshrining the hard cap through governance, the proposal guarantees economic stability for all stakeholders and promotes the sustainability of the network.",
+            "prop_motivation": "The current supply cap of 45 billion ADA tokens is not yet formalized as a governance-enforced hard limit, leaving open the possibility of future inflation or token issuance beyond this threshold. Such ambiguity could erode trust in the network’s tokenomics, potentially leading to inflation, which dilutes the value of existing holdings and introduces economic uncertainty.\n\nThis lack of formal governance over ADA’s maximum supply poses a long-term risk to the Cardano ecosystem. Without a hard cap, stakeholders have no guarantee that future governance actions won’t lead to inflationary pressures, damaging investor confidence, and undermining the sustainability of the network.",
+            "prop_rationale": "This problem is solved by formalizing the existing 45 billion ADA cap as a governance-enforced hard limit, preventing any further issuance of tokens. This will eliminate any ambiguity regarding ADA’s maximum supply and ensure that the network maintains a predictable and inflation-resistant monetary policy.\n\nBy enacting this hard cap through Cardano’s decentralized governance model, we allow ADA holders to protect the token’s value collectively. This governance-led approach ensures that economic stability is controlled by the community, preventing centralized actors or future decisions from altering the cap without broad consensus.\n\nThis change promotes long-term sustainability, as the fixed supply of ADA, combined with its staking rewards and transaction fees, will ensure that the network remains secure and economically sound without reliance on inflationary tactics.",
+            "gov_action_type_id": "1",
+            "prop_name": "Establishing a Governance-Enforced Hard Cap of 45 Billion ADA Tokens",
+            "is_draft": false,
+            "user_id": "158",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-09-14T18:20:17.715Z",
+            "updatedAt": "2024-09-14T18:20:17.715Z",
+            "proposal_links": [],
+            "proposal_withdrawals": [],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 47,
+      "attributes": {
+        "prop_likes": 4,
+        "prop_dislikes": 10,
+        "prop_comments_number": 15,
+        "user_id": "45",
+        "createdAt": "2024-09-09T02:55:22.583Z",
+        "updatedAt": "2024-12-04T03:34:40.914Z",
+        "user_govtool_username": "collin_mav100",
+        "content": {
+          "id": 17,
+          "attributes": {
+            "proposal_id": "47",
+            "prop_rev_active": true,
+            "prop_abstract": "For any Core Budget Proposal designed to improve core aspects of the Cardano Blockchain we must hire at least 2 companies to work cooperatively on each proposal. Any core bucket budget proposal must contain more than one entity with developers who will have full access to repos used to develop the project subject. ",
+            "prop_motivation": "We need more developers who are able to develop the core functionality on this blockchain. This is a key weakness right now that IOHK is really the center of core development on this blockchain. Any company or community that develops products/applications that include production code recognizes that you need cross-pollination between teams. The Tribal knowledge problem has already caused problems with key programmers leaving unsupported projects in this system. We need to decentralize this code creation pipeline. \n\nAdditionally this creates a natural auditing function for each proposal. If there are 2 or more separate entities on a proposal we will get reviews of all party efforts in each proposal from the other parties. \n\nThis will create a chance to create a solid auditing system. Once we have enough capable entities we can create a serious auditing system that random selects/rotates through entities. I would create 3 levels of Core Development entities which would boil down to Apprentice/Journeyman/Master. New development groups will need to go through an apprenticeship period. Groups that succeed and get positive reviews from partners can become journeyman entities. After a period of years a group could go to master status. This would allow us to create an auditing system to support DApp developers on this chain.",
+            "prop_rationale": "A core principle in this ecosystem  is decentralization and we need to decentralize development of the core functionality on this blockchain. \n\nA core principle we believe in is trustlessness. This proposal creates a built in auditing system. \n",
+            "gov_action_type_id": "1",
+            "prop_name": "Budget Guardrail: Core Budget Proposals Require 2 Contributors Each",
+            "is_draft": false,
+            "user_id": "45",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-09-09T02:55:22.593Z",
+            "updatedAt": "2024-09-09T02:55:22.593Z",
+            "proposal_links": [],
+            "proposal_withdrawals": [],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 45,
+      "attributes": {
+        "prop_likes": 1,
+        "prop_dislikes": 30,
+        "prop_comments_number": 21,
+        "user_id": "91",
+        "createdAt": "2024-09-08T11:33:38.542Z",
+        "updatedAt": "2025-01-08T15:22:29.569Z",
+        "user_govtool_username": "happystaking",
+        "content": {
+          "id": 15,
+          "attributes": {
+            "proposal_id": "45",
+            "prop_rev_active": true,
+            "prop_abstract": "Maximize the efficiency of treasury funds and allow withdrawals only when the ADA price is at or above 1 USD. ",
+            "prop_motivation": "Preventing the treasury from rapid depletion when the ADA price is low compared to the USD.\n\nMany if not all projects or companies building on Cardano use USD to calculate their cost and then convert that amount to ADA. In a bear market with low ADA prices this could lead to high amounts of ADA withdrawn and it may deplete the treasury at a high rate. In order to counter this it would be better to allow withdrawals only if the ADA price is relatively high.\n\nADA withdrawn from the treasury is better spent when ADA is strong against the USD, because less ADA is needed to get the same USD amount and more funds will remain the the treasury for future use.",
+            "prop_rationale": "A smart contract that handles treasury withdrawals should be implemented/modified and first consult an oracle before allowing the withdrawal to determine the ADA/USD price. The withdrawal is allowed only when the price of ADA is at or above 1 USD.",
+            "gov_action_type_id": "1",
+            "prop_name": "Allow treasury withdrawals only when the price of 1 ADA is at or above 1 USD",
+            "is_draft": false,
+            "user_id": "91",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-09-08T11:33:38.552Z",
+            "updatedAt": "2024-09-08T11:33:38.552Z",
+            "proposal_links": [],
+            "proposal_withdrawals": [],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 44,
+      "attributes": {
+        "prop_likes": 9,
+        "prop_dislikes": 6,
+        "prop_comments_number": 6,
+        "user_id": "48",
+        "createdAt": "2024-09-07T17:59:36.883Z",
+        "updatedAt": "2024-12-05T17:33:23.565Z",
+        "user_govtool_username": "cerkoryn",
+        "content": {
+          "id": 14,
+          "attributes": {
+            "proposal_id": "44",
+            "prop_rev_active": true,
+            "prop_abstract": "The Chang+1 hard fork should be called the Sadosky Hard Fork after Argentine mathematician Manuel Sadosky.",
+            "prop_motivation": "Cardano hard forks have traditionally been named after influential figures who advanced freedom, knowledge, and technological progress—values that underpin the Cardano ecosystem. The placeholder name \"Chang+1\" lacks the inspirational depth that a hard fork of this significance deserves. ",
+            "prop_rationale": "By naming it after Manuel Sadosky, an Argentine pioneer in computer science and mathematics, we align with Cardano's legacy of honoring visionary figures. Sadosky’s contributions to Latin America’s technological foundation make him an ideal namesake, especially as the Cardano Constitution is expected to be signed in Argentina around the same time as the hard fork. This connection between a historical figure and a momentous event in blockchain governance reinforces the importance of global innovation.  Finally, 'Sadosky' rhymes with 'Hosky,' paying homage to Cardano's beloved mutt and most widely recognized token, blending a nod to the ecosystem’s playful side with a tribute to a figure of profound intellectual impact.",
+            "gov_action_type_id": "1",
+            "prop_name": "Name the next hard fork \"Sadosky Hard Fork\"",
+            "is_draft": false,
+            "user_id": "48",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-09-07T17:59:36.901Z",
+            "updatedAt": "2024-09-07T17:59:36.901Z",
+            "proposal_links": [
+              {
+                "id": 18,
+                "prop_link": "https://en.wikipedia.org/wiki/Manuel_Sadosky",
+                "prop_link_text": "Manuel Sadosky - Wikipedia"
+              }
+            ],
+            "proposal_withdrawals": [],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 43,
+      "attributes": {
+        "prop_likes": 0,
+        "prop_dislikes": 12,
+        "prop_comments_number": 9,
+        "user_id": "50",
+        "createdAt": "2024-09-07T16:39:15.385Z",
+        "updatedAt": "2024-12-29T09:02:11.335Z",
+        "user_govtool_username": "acl",
+        "content": {
+          "id": 13,
+          "attributes": {
+            "proposal_id": "43",
+            "prop_rev_active": true,
+            "prop_abstract": "This proposal aims to enhance DJED's stability and increase its adoption within the Cardano ecosystem by allocating 2% of the 20% tax collected every epoch to the Cardano treasury for minting Shen coins. This allocation will directly support DJED's collateralization mechanism, ensuring that Shen reserves remain strong enough to maintain DJED's stability even during periods of market volatility. Additionally, 1% of the tax will be allocated towards offering transaction fee discounts when payments are made in DJED. This incentive is designed to drive DJED adoption by making it a more attractive option for everyday transactions.\n\nTo ensure sustainability, the discount system will implement mechanisms such as a dynamic discount rate based on available funds, transaction caps to limit the total amount of discounts provided in a given period, and a priority-based system to ensure fair distribution of discounts. If the allocated funds run low, an automatic treasury replenishment mechanism could be triggered, either temporarily diverting additional funds or adjusting the system's parameters. These changes will collectively strengthen DJED's role as a reliable, decentralized stablecoin while promoting its widespread use within the Cardano ecosystem.\n\nThe implementation of this proposal will require coordinated efforts across development, governance, infrastructure updates, security audits, and community engagement. It will involve developing new smart contracts for automatic Shen minting and transaction fee discounts, adjusting Cardano's ledger and node infrastructure, conducting rigorous security audits, and testing the new features on the testnet. Collaboration with DJED issuers (COTI), the Cardano treasury team, and the broader community will be essential to ensure a successful rollout. Education campaigns and detailed documentation will also be provided to help the community understand and interact with the new systems.",
+            "prop_motivation": "DJED, as an overcollateralized stablecoin on the Cardano network, plays a critical role in providing stability and liquidity within the ecosystem. However, its stability mechanism relies heavily on Shen, the reserve coin, to maintain an overcollateralization ratio between 400-800%. If Shen reserves become insufficient during periods of high volatility, DJED's stability could be compromised, undermining trust in the stablecoin.\n\nCurrently, there is no direct mechanism within the Cardano protocol to automatically support Shen reserves during these critical moments. This proposal introduces a solution by dedicating 2% of the treasury tax collected each epoch to automatically minting Shen coins, thereby maintaining strong reserves and enhancing DJED's stability.\n\nAdditionally, while DJED has strong potential as a stablecoin, its adoption for everyday transactions is limited. One way to encourage broader use of DJED is by offering transaction fee discounts for payments made in DJED. By allocating 1% of the treasury tax towards these discounts, this proposal incentivizes users to adopt DJED as a preferred payment method, driving greater utility and liquidity within the ecosystem.\n\nHowever, to ensure the sustainability of this discount mechanism, certain precautions must be taken. If the 1% allocation for discounts is exhausted too quickly due to high transaction volumes, the intended incentives could fail. Therefore, this proposal includes several mechanisms to manage the discount system sustainably:\n\nDynamic Discount Rate: The discount rate will be dynamically adjusted based on the remaining funds from the 1% allocation. If the funds run low, the discount rate will decrease to prevent depletion.\nTransaction Caps: A daily or epoch-based cap will limit the total amount of discounts provided. Once the cap is reached, no further discounts will be applied until the next period.\nPriority-based Discounts: Discounts will be prioritized for smaller transactions or distributed proportionally based on transaction size, ensuring that a wider range of users benefit from the incentive.\nTreasury Replenishment Mechanism: If the discount allocation runs low, an automatic replenishment mechanism could temporarily divert additional funds from the treasury or adjust the discount system’s parameters.\nBy implementing these mechanisms, the proposal aims to balance the dual objectives of promoting DJED usage and maintaining a sustainable treasury allocation system.",
+            "prop_rationale": "This proposal seeks to address two key issues: the stability of DJED and its broader adoption within the Cardano ecosystem.\n\n1. DJED Stability:\nDJED's stability is crucial for its role as a decentralized stablecoin. Its stability mechanism relies on maintaining a collateralization ratio between 400-800% with ADA, backed by Shen, the reserve coin. Without sufficient Shen reserves, DJED’s peg to its intended value could be threatened during periods of high market volatility. This would undermine trust in DJED as a stable asset within the Cardano ecosystem.\n\nBy allocating 2% of the treasury tax collected each epoch to mint Shen coins, this proposal directly strengthens DJED's collateralization. The additional Shen minted from the treasury will help maintain the reserve levels necessary to support DJED’s stability, ensuring that the stablecoin remains secure even in challenging market conditions. This mechanism will act as a decentralized safeguard, reinforcing the long-term viability of DJED.\n\n2. DJED Adoption:\nWhile DJED has strong potential as a stablecoin, incentivizing its use for everyday transactions is essential to drive liquidity and widespread adoption. Offering transaction fee discounts for payments made in DJED provides a tangible incentive for users to choose DJED over other options. However, this incentive system must be implemented sustainably to avoid depleting the 1% tax allocation prematurely.\n\nThe introduction of a dynamic discount rate, transaction caps, and priority-based discounts ensures that the discount mechanism remains flexible and adaptable to varying transaction volumes. By dynamically adjusting the discount rate and placing caps on the total amount of discounts provided, the system can handle high transaction volumes without exhausting its allocated funds too quickly. Priority-based discounts ensure that the incentives are fairly distributed across a wide range of users, increasing the likelihood of DJED adoption across different segments of the community.\n\nIn case the 1% allocation runs low, the treasury replenishment mechanism provides a safety net by temporarily diverting additional treasury funds or adjusting the discount system’s parameters. This allows for continued incentivization of DJED adoption without risking the depletion of the treasury.\n\nThe combination of these mechanisms ensures that both DJED stability and adoption are strengthened in a balanced and sustainable manner. This proposal leverages Cardano’s decentralized treasury system to address critical issues, enhancing the overall health and utility of the ecosystem.",
+            "gov_action_type_id": "1",
+            "prop_name": "Boosting DJED Stability and Adoption with Treasury Support and Fee Discounts",
+            "is_draft": false,
+            "user_id": "50",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-09-07T16:39:15.527Z",
+            "updatedAt": "2024-09-07T16:39:15.527Z",
+            "proposal_links": [
+              {
+                "id": 14,
+                "prop_link": "https://djed.xyz/restricted/faq",
+                "prop_link_text": "Djed FAQ"
+              },
+              {
+                "id": 15,
+                "prop_link": "https://eprint.iacr.org/2021/1069.pdf",
+                "prop_link_text": "Djed Paper"
+              },
+              {
+                "id": 16,
+                "prop_link": "https://iohk.io/en/research/library/papers/djed-a-formally-verified-crypto-backed-pegged-algorithmic-stablecoin/",
+                "prop_link_text": "Djed: A Formally Verified Crypto-Backed Pegged Algorithmic Stablecoin "
+              },
+              {
+                "id": 17,
+                "prop_link": "https://x.com/CardanoLand",
+                "prop_link_text": "CardanoLand"
+              }
+            ],
+            "proposal_withdrawals": [],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 40,
+      "attributes": {
+        "prop_likes": 2,
+        "prop_dislikes": 4,
+        "prop_comments_number": 4,
+        "user_id": "45",
+        "createdAt": "2024-09-06T22:49:41.254Z",
+        "updatedAt": "2024-11-10T20:51:06.758Z",
+        "user_govtool_username": "collin_mav100",
+        "content": {
+          "id": 10,
+          "attributes": {
+            "proposal_id": "40",
+            "prop_rev_active": true,
+            "prop_abstract": "1. Any proposal for budget allocations from this bucket must be tied to clearly defined on chain metrics that include on-chain wallet creation, on-chain DID creation, and on-chain transaction volume.\n\n2. Each proposal will be limited in size and accomplished in stages that start small and grow to a point where a critical mass can be achieved and the community formed becomes self sustaining. Once a community achieves critical mass it will be expected to sustain itself without further budget support. This guardrail will be elaborated on through this discussion.",
+            "prop_motivation": "We need to look to the future of the blockchain. That means expanding the user base and expanding decentralization. Decentralization of our society and actually reducing the concentration of wealth means breaking these initiatives into smaller and more decentralized efforts.\n\nOur chain will only succeed in it's primary mission if we are able to organize a critical mass of people to join this community and organize enough capital to maintain society free of fiat manipulation and free of the centralizing forces. \n\nThis means not just attracting casino activity from other chains. ",
+            "prop_rationale": "We have a community outreach and education budget. There have been very similar categories in Catalyst and this type of proposal has been abused. Awards in this category need to be more structured and results oriented. \"Marketing\" and \"Engagement\" and \"Influencers\"  can participate, but they need to actually show results on chain and they will need to start small and prove work and concept to unlock larger rewards. \n\nWe can make this proposal category more effective by enforcing transparency and accountability. We can market the power of this blockchain by demonstrating the ability to measure the effectiveness of marketing efforts that are notoriously soft and hard to measure across industry. Building the tools to directly measure all awarded outreach and education proposals will make this blockchain unique with the ability to gather anonymous marketing data while maintaining customer anonymity when desired. \n\nLastly by limiting the size of proposals in this category we can enforce decentralization. Building many smaller communities and bringing 10 smaller communities up to critical mass will bring much more initiative to the growth of the blockchain than 1 large group. \n",
+            "gov_action_type_id": "1",
+            "prop_name": "Outreach and Education Budget Guardrails",
+            "is_draft": false,
+            "user_id": "45",
+            "prop_submitted": false,
+            "prop_submission_tx_hash": null,
+            "prop_submission_date": null,
+            "createdAt": "2024-09-06T22:49:41.263Z",
+            "updatedAt": "2024-09-06T22:49:41.263Z",
+            "proposal_links": [],
+            "proposal_withdrawals": [],
+            "gov_action_type": {
+              "id": 1,
+              "attributes": {
+                "gov_action_type_name": "Info",
+                "createdAt": "2024-08-27T11:59:38.507Z",
+                "updatedAt": "2024-08-27T11:59:39.600Z",
+                "publishedAt": "2024-08-27T11:59:39.596Z"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

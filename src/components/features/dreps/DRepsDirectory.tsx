@@ -115,18 +115,18 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
           </TableHeader>
           <TableBody>
             {currentDreps?.map((drep) => (
-              <TableRow key={drep.id}>
+              <TableRow key={drep.drepId}>
                 <TableCell>
                   <div className="flex items-center gap-2">
                     <Avatar className="h-8 w-8">
-                      <AvatarImage src={drep.avatarUrl} />
+                      <AvatarImage src={drep.imageUrl ?? ""} />
                       <AvatarFallback>
-                        {drep.name.substring(0, 2)}
+                        {drep.givenName?.substring(0, 2)}
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <div className="font-medium">{drep.name}</div>
-                      <div className="text-sm text-gray-500">{drep.id}</div>
+                      <div className="font-medium">{drep.givenName}</div>
+                      <div className="text-sm text-gray-500">{drep.drepId}</div>
                     </div>
                   </div>
                 </TableCell>
@@ -152,10 +152,12 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
                     <Globe className="h-4 w-4 text-gray-400" />
                   </div>
                 </TableCell>
-                <TableCell>{drep.delegators}</TableCell>
-                <TableCell>{drep.influencePower}</TableCell>
-                <TableCell className="text-blue-600">{drep.voting}</TableCell>
-                <TableCell>{drep.registrationDate}</TableCell>
+                <TableCell>{/** drep.delegators */}</TableCell>
+                <TableCell>{drep.votingPower}</TableCell>
+                <TableCell className="text-blue-600">
+                  {/** drep.voting */}
+                </TableCell>
+                <TableCell>{drep.latestRegistrationDate}</TableCell>
                 <TableCell>
                   <div className="flex items-center gap-2">
                     <Star className="h-4 w-4 text-gray-400" />
