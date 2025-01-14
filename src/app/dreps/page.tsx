@@ -3,7 +3,6 @@ import {
   DRepsDirectory,
   DRepsDirectoryProps,
 } from "~/components/features/dreps/DRepsDirectory";
-import { CallToAction } from "~/components/layout/CallToAction";
 import { getDReps } from "~/lib/dreps";
 
 export default async function Home() {
@@ -11,7 +10,6 @@ export default async function Home() {
   return (
     <div className="space-y-4">
       <DRepsDirectory dreps={dreps as DRepsDirectoryProps["dreps"]} />
-      <CallToAction />
     </div>
   );
 }
