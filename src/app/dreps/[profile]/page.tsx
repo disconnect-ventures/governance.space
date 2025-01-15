@@ -23,15 +23,15 @@ export default async function DRepProfilePage({ params }: DRepProfileProps) {
   }
 
   return (
-    <div className="w-full">
-      <div className="flex flex-col lg:flex-row gap-4 w-full">
-        <div className="w-full flex flex-col gap-4">
+    <div className="w-full max-w-7xl mx-auto">
+      <div className="w-full flex flex-col lg:flex-row gap-4 justify-center">
+        <div className="lg:w-2/3 flex flex-col gap-4">
           <ProfileCard drep={drep} />
           <ProfileBody drep={drep} />
           <VotingHistory />
           <Comments drep={drep} />
         </div>
-        <div>
+        <div className="lg:min-w-1/3 flex-shrink-0">
           <ProfileInfo drep={drep} />
         </div>
       </div>
