@@ -60,7 +60,7 @@ export function Rating({ ratings, className }: RatingProps) {
                   <span className="w-16 text-sm whitespace-nowrap">
                     {stars} stars
                   </span>
-                  <Progress value={(count / total) * 100} className="h-2" />
+                  <Progress value={(count / total) * 100} />
                   <span className="w-8 text-sm text-right">{count}</span>
                 </div>
               ))}
