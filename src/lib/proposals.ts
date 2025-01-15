@@ -50,3 +50,7 @@ export type Proposal = {
 export async function getProposals() {
   return getMockProposals();
 }
+
+export async function getProposalsByUserId(id: string) {
+  return (await getProposals()).filter((p) => p.attributes.user_id === id);
+}
