@@ -33,13 +33,15 @@ import {
   PaginationPrevious,
 } from "~/components/ui/pagination";
 import { DRep } from "~/lib/dreps";
+import { useRouter } from "next/navigation";
 
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
 };
 
 export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const router = useRouter();
+  const [currentPage, setCurrentPage] = useState(1); // TODO: This pagination should be done through query params and avoid making this a client component
   const itemsPerPage = 10;
   const totalPages = Math.ceil(dreps.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -120,7 +122,11 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
           </TableHeader>
           <TableBody>
             {currentDreps?.map((drep) => (
-              <TableRow key={drep.drepId}>
+              <TableRow
+                key={drep.drepId}
+                onClick={() => router.push(`/dreps/${drep.drepId}`)}
+                className="cursor-pointer"
+              >
                 <TableCell>
                   <div className="flex items-center gap-2">
                     <Avatar className="h-8 w-8">
