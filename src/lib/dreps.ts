@@ -25,3 +25,8 @@ export type DRep = {
 export async function getDReps(): Promise<Array<DRep>> {
   return getMockDReps();
 }
+
+export async function getDRepById(id: string): Promise<DRep | null> {
+  const dreps = await getDReps();
+  return dreps.find((d) => d.drepId === id) ?? null;
+}
