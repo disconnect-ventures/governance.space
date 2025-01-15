@@ -1,0 +1,147 @@
+{
+  "data": [
+    {
+      "id": 251,
+      "attributes": {
+        "proposal_id": "63",
+        "comment_parent_id": null,
+        "user_id": "637",
+        "comment_text": "agree with the sentiment, would like to see more discussions on the specific numbers",
+        "createdAt": "2025-01-15T14:13:01.524Z",
+        "updatedAt": "2025-01-15T14:13:01.524Z",
+        "user_govtool_username": "goofycrisp",
+        "subcommens_number": 0
+      }
+    },
+    {
+      "id": 250,
+      "attributes": {
+        "proposal_id": "63",
+        "comment_parent_id": null,
+        "user_id": "217",
+        "comment_text": "agree with the sentiment, would like to see more discussions on the specific numbers",
+        "createdAt": "2025-01-15T11:24:43.031Z",
+        "updatedAt": "2025-01-15T11:24:43.031Z",
+        "user_govtool_username": "dumpling",
+        "subcommens_number": 0
+      }
+    },
+    {
+      "id": 246,
+      "attributes": {
+        "proposal_id": "63",
+        "comment_parent_id": null,
+        "user_id": "716",
+        "comment_text": "The most democratic mechanism is a relative upper limit with balanced voting power because:\nBalances the influence of big and small players.\nIt motivates the wider community to participate.\nIt maintains decentralization without completely excluding large players.\nThe second strong candidate is cumulative voting, which promotes more strategic decisions and reduces the risk of manipulation.",
+        "createdAt": "2025-01-11T08:27:09.057Z",
+        "updatedAt": "2025-01-11T08:27:09.057Z",
+        "user_govtool_username": "sankowskipawel",
+        "subcommens_number": 0
+      }
+    },
+    {
+      "id": 244,
+      "attributes": {
+        "proposal_id": "63",
+        "comment_parent_id": null,
+        "user_id": "687",
+        "comment_text": "I’m glad to see this conversation getting started. It’s difficult to answer these questions and even more challenging to determine a fair voting mechanism. Additionally, what qualifies as a central entity? Is it limited to founding entities, or does it include large CEXs, DApps, etc.? As far as voting mechanisms are concerned: The limits on voting power in proposals can easily be bypassed through wallet splitting. I tend to slightly favor cumulative voting, but I believe it would only work for funding initiatives like Catalyst. I don’t see how it could be applied to governance actions, such as parameter changes. Lastly, the argument that large entities with ‘skin in the game’ (due to significant investments) should have the right to exert influence because of their vested interests is a compelling one. I'd love to have this conversation moved forward with input from more people and with deeper conversations that cannot be conducted through the comments section here.",
+        "createdAt": "2025-01-04T21:30:06.954Z",
+        "updatedAt": "2025-01-04T21:30:06.954Z",
+        "user_govtool_username": "kostas_panagias",
+        "subcommens_number": 0
+      }
+    },
+    {
+      "id": 238,
+      "attributes": {
+        "proposal_id": "63",
+        "comment_parent_id": null,
+        "user_id": "648",
+        "comment_text": "On a more technical aspect, your proposal should define very clearly what you mean by central entity... You seem to define it by examples limited to funding entities, but any company may be a central entity e.g. SPOs (whatever it is a single or MPO), any DEFI protocol team org, ... does it relate to the legal definition of the specific location the organization is registered ? (In such case, Binance and Binance US may be different entities), does it relate to the extent of voting power ? (if I would have 1B, I would feel natural that my voice is heard more than someone have 10000 ADA, skin in the game...), does it relate to the way ADA were acquired (airdrop, giveaway, bought), ... clearly defining the framework will clarify extent and limit of mitigations and will give a better view of what could be reasonably done...",
+        "createdAt": "2024-12-29T08:49:53.170Z",
+        "updatedAt": "2024-12-29T08:49:53.170Z",
+        "user_govtool_username": "pnutwifhood",
+        "subcommens_number": 0
+      }
+    },
+    {
+      "id": 237,
+      "attributes": {
+        "proposal_id": "63",
+        "comment_parent_id": null,
+        "user_id": "648",
+        "comment_text": "Even if I understand concerns at the origin of the initiative, I am questioning why resources should be spent on proposed mitigations... I mean that governance voting power distribution is not more at risk of centralization than staking power distribution to secure the chain (which is even more critical), and none of actions above would prevent bad actors to use multiple DReps to bypass some of the proposed mitigation (the same way nothing prevent MPOs to drive multiple single SPOs). Cardano decentralization took time under the oversight of funding entities, and I strongly think that it will take time to better distribute voting power, however, I equally strongly think that community effort should be oriented towards ppl on-boarding rather than towards the development of complex rules and railguards which may not garantee what is the desired outcome... Finally, let put things in perspective, Avengers MPOs stand for 1.39B stake, Binance for 786M, and I am feel that CF, IOG and Emurgo have more aligned interests with community than CEXes to ensure cardano future, therefore, I amequally fine with hearing their voice as part of our governance if it can help to counter balance CEXes voice",
+        "createdAt": "2024-12-29T08:19:26.182Z",
+        "updatedAt": "2024-12-29T08:19:26.182Z",
+        "user_govtool_username": "pnutwifhood",
+        "subcommens_number": 1
+      }
+    },
+    {
+      "id": 235,
+      "attributes": {
+        "proposal_id": "63",
+        "comment_parent_id": null,
+        "user_id": "643",
+        "comment_text": "I agree that we need such measurements, and rather sooner than later. I think your proposals are all good starting points but they need further discussion. However I do not yet see how a relative upper limit (or even a concave voting power function) could resolve the problem of just splitting wallets (since as far as I know any diminishing/concave function is subadditive). However, large holders like the CF are probably encouraged to not engage in activities like splitting wallets for more voting power, and therefore the relative upper limit could indeed be a viable solution. But if there are \"bad actors\", can the splitting problem only be solved with some sort of oversight, identity integration or collateral deposit/escrow (which is all not optimal)? As for the cumulative voting option, could it introduce the problem that 1 ADA != 1 ADA depending on whether it was already used for voting? I was thinking about a voting-cooldown, that new and previously empty wallets could not vote right-away. However this seems more like introducing an unnecessary difficulty for new users that is easy to overcome by just waiting once. Some sort of community encouraged self-commitment by the founding entities could certainly be helpful, maybe even with some sort of \"escrow\"/deposit that the community could vote to send back to the treasury in case of violation?",
+        "createdAt": "2024-12-28T14:46:36.972Z",
+        "updatedAt": "2024-12-28T14:46:36.972Z",
+        "user_govtool_username": "drgov",
+        "subcommens_number": 2
+      }
+    },
+    {
+      "id": 233,
+      "attributes": {
+        "proposal_id": "63",
+        "comment_parent_id": null,
+        "user_id": "608",
+        "comment_text": "Be good to run a few inconsequential topics for vote to engade partisipation and observe results",
+        "createdAt": "2024-12-27T09:57:40.703Z",
+        "updatedAt": "2024-12-27T09:57:40.703Z",
+        "user_govtool_username": "whitehorse",
+        "subcommens_number": 0
+      }
+    },
+    {
+      "id": 165,
+      "attributes": {
+        "proposal_id": "63",
+        "comment_parent_id": null,
+        "user_id": "392",
+        "comment_text": "Glad this converstaion is happening. Here are few questions we should be asking ourselves as we consider this. 1. - If upper limits were implemented how would that impact the decisions of other large organizations and investors entering or considering developing on our platform? At the end of the day this is still a field of dreams and are anticipating a crowd to show up soon, so lets make it a warm and inviting place for big and small alike. 2. - Can it be enforced? Any solution that can be easily bypassed should not be considered. Limits on wallet size or identifying wallet owners both fall into this catagory. ",
+        "createdAt": "2024-12-17T02:08:08.793Z",
+        "updatedAt": "2024-12-17T02:08:08.793Z",
+        "user_govtool_username": "ben.hodlr",
+        "subcommens_number": 1
+      }
+    },
+    {
+      "id": 163,
+      "attributes": {
+        "proposal_id": "63",
+        "comment_parent_id": null,
+        "user_id": "116",
+        "comment_text": "I wholeheartedly agree with the Motivation provided in the proposal. I will be very interested to see how it evolves and shapes things to come, particularly give recent turns of events.",
+        "createdAt": "2024-12-16T17:29:06.237Z",
+        "updatedAt": "2024-12-16T17:29:06.237Z",
+        "user_govtool_username": "rabit",
+        "subcommens_number": 1
+      }
+    },
+    {
+      "id": 161,
+      "attributes": {
+        "proposal_id": "63",
+        "comment_parent_id": null,
+        "user_id": "118",
+        "comment_text": "This is provisional work in progress that needs to be refined in order to become a concise guideline.\nDeliverables include\n* What are \"central\" entities, i.e. how are they precisely defined (first ideas for this do exist),\n* What is expectet from these entities, what is permissible for them?\n* How is that enacted?\nThat clearly needs input from the community.",
+        "createdAt": "2024-12-13T22:40:15.562Z",
+        "updatedAt": "2024-12-13T22:40:15.562Z",
+        "user_govtool_username": "atlashub",
+        "subcommens_number": 0
+      }
+    }
+  ]
+}

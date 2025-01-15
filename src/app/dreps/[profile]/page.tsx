@@ -8,6 +8,7 @@ import { ProfileCard } from "~/components/features/profile/ProfileCard";
 import { ProfileBody } from "~/components/features/profile/ProfileBody";
 import { Comments } from "~/components/features/Comments";
 import { getProposals } from "~/lib/proposals";
+import { getComments } from "~/lib/comments";
 
 type DRepProfileProps = {
   params: Promise<{
@@ -19,6 +20,7 @@ export default async function DRepProfilePage({ params }: DRepProfileProps) {
   const { profile } = await params;
   const drep = await getDRepById(profile);
   const proposals = (await getProposals()).slice(0, 3);
+  const comments = (await getComments(-1)).slice(0, 3);
 
   if (!drep) {
     return notFound();
@@ -31,10 +33,10 @@ export default async function DRepProfilePage({ params }: DRepProfileProps) {
           <ProfileCard drep={drep} />
           <ProfileBody drep={drep} />
           <VotingHistory proposals={proposals} />
-          <Comments drep={drep} />
+          <Comments drep={drep} comments={comments} />
         </div>
         <div className="lg:w-1/3">
-          <ProfileInfo drep={drep} />
+          <ProfileInfo drep={drep} comments={comments} />
         </div>
       </div>
     </div>

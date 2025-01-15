@@ -24,9 +24,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
+import { Comment } from "~/lib/comments";
 
 type ProfileInfoProps = {
   drep: DRep;
+  comments: Array<Comment>;
 };
 
 export function ProfileInfo({ drep }: ProfileInfoProps) {
