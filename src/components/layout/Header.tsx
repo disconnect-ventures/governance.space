@@ -70,10 +70,9 @@ export const Header = () => {
   ];
 
   return (
-    <div className="w-full border-b">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center justify-between min-h-16 gap-4 pb-4 md:pb-0">
-          {/* Logo and Search Section */}
+    <div className="w-full border-b py-4 md:pb-0">
+      <div className="mx-auto px-4 md:px-8 max-w-7xl">
+        <div className="flex flex-col md:flex-row items-center justify-between min-h-16 gap-4">
           <div className="flex items-center flex-1 gap-4">
             <Logo />
 
@@ -83,7 +82,6 @@ export const Header = () => {
             </div>
           </div>
 
-          {/* Auth Section */}
           <div className="flex items-center gap-2">
             <Button variant="ghost">Sign in</Button>
             <Button>Create account</Button>
@@ -102,7 +100,6 @@ export const Header = () => {
           </div>
         </div>
         <div className="hidden md:block py-2 border-t">
-          {/* Navigation Section */}
           <div className="h-max-content flex justify-center overflow-x-auto overflow-y-hidden">
             <NavigationMenu>
               <NavigationMenuList className="w-full flex  gap-4 my-4">
