@@ -72,13 +72,18 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
   };
 
   return (
-    <Card className="w-full max-w-7xl mx-auto rounded-none">
-      <CardContent className="p-6 md:px-12">
+    <Card className="w-full max-w-7xl mx-auto shadow-none border-none bg-gray-100">
+      <CardContent className="p-0">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
-            <Users className="h-6 w-6" />
-            <h2 className="text-2xl font-bold">DReps Directory</h2>
-            <Badge variant="secondary" className="bg-gray-100">
+            <div className="p-2 rounded-full bg-gray-300">
+              <Users className="h-6 w-6" />
+            </div>
+            <h1 className="text-4xl font-bold">DReps Directory</h1>
+            <Badge
+              variant="secondary"
+              className="bg-gray-100 border-primary p-2 rounded-full"
+            >
               259 registered DReps
             </Badge>
           </div>
@@ -88,7 +93,7 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
           <div className="flex-1">
             <Input
               placeholder="Search DReps by name or ID"
-              className="w-full"
+              className="w-full bg-background"
             />
           </div>
           <Button variant="outline" className="gap-2">
@@ -99,7 +104,7 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
           </Button>
         </div>
 
-        <Table>
+        <Table className="bg-background">
           <TableHeader>
             <TableRow>
               <TableHead>DRep name</TableHead>

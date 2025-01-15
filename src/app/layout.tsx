@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "~/components/layout/Header";
 import { Footer } from "~/components/layout/Footer";
 import { CallToAction } from "~/components/features/CallToAction";
+import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,8 +32,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100vh] flex flex-col`}
       >
         <Header />
-        <main className="min-h-[50vh] flex flex-col gap-4 justify-between">
-          <div className="relative my-4 px-4 md:px-8">{children}</div>
+        <main className="min-h-[50vh] flex flex-col gap-4 justify-between bg-gray-100 pt-2">
+          <div className="relative my-4 px-4 md:px-8">
+            <Breadcrumbs />
+            {children}
+          </div>
           <CallToAction />
         </main>
         <Footer />

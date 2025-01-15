@@ -11,6 +11,9 @@ interface BreadcrumbItem {
 
 export const Breadcrumbs = () => {
   const pathname = usePathname();
+  if (pathname === "/") {
+    return null;
+  }
 
   const generateBreadcrumbs = (): BreadcrumbItem[] => {
     const paths = pathname.split("/").filter(Boolean);
@@ -35,7 +38,7 @@ export const Breadcrumbs = () => {
           <ChevronRight className="w-4 h-4" />
           <Link
             href={breadcrumb.href}
-            className={`hover:text-gray-900 ${
+            className={`text-ellipsis overflow-hidden hover:text-gray-900 ${
               index === breadcrumbs.length - 1
                 ? "font-medium text-gray-900"
                 : ""

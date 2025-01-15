@@ -2,7 +2,7 @@ import React from "react";
 
 export const CallToAction = () => {
   return (
-    <div className="flex flex-col items-center justify-center py-12 bg-gray-100 text-center px-4">
+    <div className="flex flex-col items-center justify-center py-12 bg-gray-200 text-center px-4">
       <a
         href="#"
         className="text-blue-600 text-sm font-medium hover:underline mb-2"
