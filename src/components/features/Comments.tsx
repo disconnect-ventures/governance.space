@@ -2,38 +2,17 @@
 import { Card, CardContent } from "~/components/ui/card";
 import { DRep } from "~/lib/dreps";
 import { Textarea } from "~/components/ui/textarea";
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
+import { Avatar, AvatarFallback } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
+import { Comment } from "~/lib/comments";
 
 type CommentsProps = {
   drep: DRep;
+  comments: Array<Comment>;
 };
 
-export function Comments({}: CommentsProps) {
-  const comments = [
-    {
-      id: 1,
-      author: "Maria Silva",
-      content:
-        "Excelente trabalho na última assembleia! Suas colocações foram muito pertinentes.",
-      timestamp: "2024-03-15T14:30:00Z",
-      likes: 12,
-      dislikes: 1,
-      avatarUrl: "",
-    },
-    {
-      id: 2,
-      author: "João Santos",
-      content:
-        "Gostaria de saber sua posição sobre o projeto de mobilidade urbana.",
-      timestamp: "2024-03-14T09:15:00Z",
-      likes: 8,
-      dislikes: 2,
-      avatarUrl: "",
-    },
-  ];
-
+export function Comments({ comments }: CommentsProps) {
   return (
     <Card className="w-full mx-auto">
       <CardContent className="p-6">
@@ -63,17 +42,23 @@ export function Comments({}: CommentsProps) {
             {comments.map((comment) => (
               <div key={comment.id} className="flex gap-4">
                 <Avatar className="w-10 h-10">
-                  <AvatarImage src={comment.avatarUrl} alt={comment.author} />
-                  <AvatarFallback>{comment.author[0]}</AvatarFallback>
+                  {/* <AvatarImage src={""} alt={comment.attributes.user_govtool_username} /> */}
+                  <AvatarFallback>
+                    {comment.attributes.user_govtool_username.substring(0, 2)}
+                  </AvatarFallback>
                 </Avatar>
                 <div className="flex-1 space-y-2">
                   <div className="flex items-center justify-between">
-                    <div className="font-medium">{comment.author}</div>
+                    <div className="font-medium">
+                      {comment.attributes.user_govtool_username}
+                    </div>
                     <div className="text-sm text-gray-500">
-                      {new Date(comment.timestamp).toDateString()}
+                      {new Date(comment.attributes.updatedAt).toDateString()}
                     </div>
                   </div>
-                  <p className="text-gray-700">{comment.content}</p>
+                  <p className="text-gray-700">
+                    {comment.attributes.comment_text}
+                  </p>
                   <div className="flex gap-4">
                     <Button
                       variant="ghost"
@@ -81,7 +66,7 @@ export function Comments({}: CommentsProps) {
                       className="flex items-center gap-1"
                     >
                       <ThumbsUp className="w-4 h-4" />
-                      <span>{comment.likes}</span>
+                      <span>0</span>
                     </Button>
                     <Button
                       variant="ghost"
@@ -89,7 +74,7 @@ export function Comments({}: CommentsProps) {
                       className="flex items-center gap-1"
                     >
                       <ThumbsDown className="w-4 h-4" />
-                      <span>{comment.dislikes}</span>
+                      <span>0</span>
                     </Button>
                   </div>
                 </div>
