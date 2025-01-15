@@ -7,7 +7,7 @@ import {
 import { Badge } from "~/components/ui/badge";
 import { getDReps } from "~/lib/dreps";
 
-export default async function Home() {
+export default async function DRepsDirectoryPage() {
   const dreps = await getDReps();
   return (
     <div className="space-y-4">
