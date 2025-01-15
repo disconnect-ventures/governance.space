@@ -10,6 +10,7 @@ import { Comments } from "~/components/features/Comments";
 import { getProposals } from "~/lib/proposals";
 import { getComments } from "~/lib/comments";
 import { Users } from "lucide-react";
+import { TopBar } from "~/components/layout/TopBar";
 
 type DRepProfileProps = {
   params: Promise<{
@@ -37,7 +38,8 @@ export default async function DRepProfilePage({ params }: DRepProfileProps) {
           <h1 className="text-4xl font-bold">DRep Profile</h1>
         </div>
       </div>
-      <div className="w-full flex flex-col lg:flex-row gap-4 px-4 justify-center">
+      <TopBar backHref="/dreps" />
+      <div className="w-full flex flex-col lg:flex-row gap-4 justify-center">
         <div className="lg:w-2/3 flex flex-col gap-4">
           <ProfileCard drep={drep} />
           <ProfileBody drep={drep} />
