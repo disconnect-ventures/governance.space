@@ -18,7 +18,6 @@ import {
   Star,
   MessageSquare,
   Globe,
-  Users,
   EyeIcon,
 } from "lucide-react";
 import clsx from "clsx";
@@ -76,21 +75,6 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
   return (
     <Card className="w-full max-w-7xl mx-auto shadow-none border-none bg-gray-100">
       <CardContent className="p-0">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-4">
-            <div className="p-2 rounded-full bg-gray-300">
-              <Users className="h-6 w-6" />
-            </div>
-            <h1 className="text-4xl font-bold">DReps Directory</h1>
-            <Badge
-              variant="secondary"
-              className="bg-gray-100 border-primary p-2 rounded-full"
-            >
-              259 registered DReps
-            </Badge>
-          </div>
-        </div>
-
         <div className="flex items-center gap-4 mb-6">
           <div className="flex-1">
             <Input
