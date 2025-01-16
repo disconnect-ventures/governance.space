@@ -75,7 +75,7 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
   return (
     <Card className="w-full mx-auto shadow-none border-none bg-gray-100">
       <CardContent className="p-0">
-        <div className="flex items-center gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-2 mb-6">
           <div className="flex-1">
             <Input
               placeholder="Search DReps by name or ID"
