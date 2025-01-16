@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <Header />
         <main className="min-h-[50vh] flex flex-col gap-4 justify-between bg-gray-100 pt-2">
-          <div className="relative my-4 px-4 md:px-8">
+          <div className="w-full max-w-7xl mx-auto relative my-4 px-4 md:px-8">
             <Breadcrumbs />
             {children}
           </div>
