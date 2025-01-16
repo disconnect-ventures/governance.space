@@ -21,7 +21,7 @@ export const ProposalHeader = ({ proposal }: ProposalHeaderProps) => {
           Governance Action Type
         </span>
         <Badge className="text-sm ml-auto bg-green-100 text-green-800">
-          Active
+          {content.attributes.prop_rev_active ? "ACTIVE" : "INACTIVE"}
         </Badge>
       </div>
 
