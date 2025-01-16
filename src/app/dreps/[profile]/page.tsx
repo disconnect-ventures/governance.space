@@ -9,8 +9,9 @@ import { ProfileBody } from "~/components/features/profile/ProfileBody";
 import { Comments } from "~/components/features/Comments";
 import { getProposals } from "~/lib/proposals";
 import { getComments } from "~/lib/comments";
-import { Users } from "lucide-react";
+import { User } from "lucide-react";
 import { TopBar } from "~/components/layout/TopBar";
+import { PageTitle } from "~/components/layout/PageTitle";
 
 type DRepProfileProps = {
   params: Promise<{
@@ -30,14 +31,7 @@ export default async function DRepProfilePage({ params }: DRepProfileProps) {
 
   return (
     <div className="w-full max-w-7xl mx-auto overflow-hidden">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-4">
-          <div className="p-2 rounded-full bg-gray-300">
-            <Users className="h-6 w-6" />
-          </div>
-          <h1 className="text-4xl font-bold">DRep Profile</h1>
-        </div>
-      </div>
+      <PageTitle icon={<User className="h-6 w-6" />} title="DRep Profile" />
       <TopBar backHref="/dreps" />
       <div className="w-full flex flex-col lg:flex-row gap-4 justify-center">
         <div className="lg:w-2/3 flex flex-col gap-4">
