@@ -1,4 +1,3 @@
-// ProposalContent.tsx
 import { Link } from "lucide-react";
 
 export const ProposalContent = () => {
