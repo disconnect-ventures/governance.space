@@ -6,16 +6,19 @@ import { ProposalTimeline } from "~/components/features/proposals/ProposalTimeli
 import { VotingSection } from "~/components/features/proposals/VotingSection";
 import { TopBar } from "~/components/layout/TopBar";
 import { Card, CardContent } from "~/components/ui/card";
-import { getProposals } from "~/lib/proposals";
+import { getProposalsById } from "~/lib/proposals";
 
 type ProposalDetailsProps = {
   params: Promise<{
-    proposal: string;
+    proposal: number;
   }>;
 };
 
-export default async function ProposalDetailsPage({}: ProposalDetailsProps) {
-  const proposal = (await getProposals()).at(0);
+export default async function ProposalDetailsPage({
+  params,
+}: ProposalDetailsProps) {
+  const { proposal: proposalId } = await params;
+  const proposal = await getProposalsById(proposalId);
 
   if (!proposal) {
     return notFound();

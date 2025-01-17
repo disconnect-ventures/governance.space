@@ -54,3 +54,9 @@ export async function getProposals() {
 export async function getProposalsByUserId(id: string) {
   return (await getProposals()).filter((p) => p.attributes.user_id === id);
 }
+
+export async function getProposalsById(id: number) {
+  const proposals = await getProposals();
+
+  return proposals.find((p) => p.id === Number(id));
+}
