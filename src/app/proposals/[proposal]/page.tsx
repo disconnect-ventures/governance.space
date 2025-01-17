@@ -14,15 +14,13 @@ type ProposalDetailsProps = {
   }>;
 };
 
-export default async function ProposalDetailsPage({
-  params,
-}: ProposalDetailsProps) {
+export default async function ProposalDetailsPage({}: ProposalDetailsProps) {
   const proposal = (await getProposals()).at(0);
 
   if (!proposal) {
     return notFound();
   }
-  
+
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="space-y-4 sm:space-y-6">
