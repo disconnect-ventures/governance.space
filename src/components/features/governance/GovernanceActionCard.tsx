@@ -2,7 +2,7 @@
 import React from "react";
 import { Card, CardContent } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
-import { Button } from "~/components/ui/button";
+import { buttonVariants } from "~/components/ui/button";
 import {
   Clock,
   Calendar,
@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { GovernanceAction } from "~/lib/governance-actions";
 import { GovernanceActionMetadata } from "~/lib/metadata";
+import Link from "next/link";
 
 const getTypeLabel = (type: GovernanceAction["type"]) => {
   switch (type) {
@@ -132,9 +133,14 @@ export const GovernanceActionCard = ({
           </div>
         </div>
 
-        <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-          View Details and Vote
-        </Button>
+        <div className="flex justify-center">
+          <Link
+            href={`/governance/${action.id}`}
+            className={` ${buttonVariants()} `}
+          >
+            View Details and Vote
+          </Link>
+        </div>
       </CardContent>
     </Card>
   );
