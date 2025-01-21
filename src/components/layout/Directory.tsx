@@ -80,12 +80,14 @@ export function Directory({ rows, container }: DirectoryProps) {
               className="w-full bg-background"
             />
           </div>
-          <Button variant="outline" className="gap-2">
-            <ArrowUpDown className="h-4 w-4" /> Sort
-          </Button>
-          <Button variant="outline" className="gap-2">
-            <Filter className="h-4 w-4" /> Filter
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" className="w-full">
+              <ArrowUpDown className="h-4 w-4" /> Sort
+            </Button>
+            <Button variant="outline" className="w-full">
+              <Filter className="h-4 w-4" /> Filter
+            </Button>
+          </div>
         </div>
 
         {container ? (
