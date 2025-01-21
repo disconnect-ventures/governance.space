@@ -6,6 +6,8 @@ import MockCommentsResult from "~/lib/fixtures/comments.json";
 import { GovernanceAction } from "./governance-actions";
 import { Proposal } from "~/lib/proposals";
 import { Comment } from "~/lib/comments";
+import { Metadata } from "./metadata";
+import GovernanceActionMetadataResponse from "~/lib/fixtures/governance-action-metadata.json";
 
 export function getMockDReps(): Array<DRep> {
   return MockDRepsResult.elements;
@@ -21,4 +23,8 @@ export function getMockProposals(): Array<Proposal> {
 
 export function getMockComments(): Array<Comment> {
   return MockCommentsResult.data;
+}
+
+export function getMockGovernanceActionMetadata(): Metadata {
+  return GovernanceActionMetadataResponse;
 }
