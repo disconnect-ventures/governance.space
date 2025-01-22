@@ -7,6 +7,8 @@ import { GovernanceTasks } from "~/components/features/governance/GovernanceTask
 import { GovernanceLinks } from "~/components/features/governance/GovernanceLinks";
 import { GovernanceHistory } from "~/components/features/governance/GovernanceHistory";
 import { GovernanceDocuments } from "~/components/features/governance/GovernanceDocuments";
+import { PageTitle } from "~/components/layout/PageTitle";
+import { BookOpenCheckIcon } from "lucide-react";
 
 const DOCUMENTS = [
   {
@@ -77,7 +79,14 @@ type GovernanceActionDetailsProps = {
 export default async function GovernanceActionDetailsPage({}: GovernanceActionDetailsProps) {
   return (
     <div className="">
-      <h1 className="text-2xl font-bold">Governance Action Detail</h1>
+      <PageTitle
+        title="Governace Action Details"
+        icon={
+          <div className="p-2 rounded-full bg-gray-300 w-12 h-12 flex flex-col justify-center items-center">
+            <BookOpenCheckIcon />
+          </div>
+        }
+      />
 
       <TopBar backHref="/proposals" />
 

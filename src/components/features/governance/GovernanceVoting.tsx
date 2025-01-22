@@ -14,7 +14,6 @@ export const GovernaceVoting = () => {
       { type: "abstain", amount: 4124.547 },
     ],
     threshold: 0.51,
-    currentProgress: 72,
   };
 
   const constitutionalCommitteeVotingData: GovernanceSectionVotingProps = {
@@ -25,7 +24,6 @@ export const GovernaceVoting = () => {
       { type: "abstain", amount: 1453.986 },
     ],
     threshold: 0.51,
-    currentProgress: 72,
   };
 
   const dRepsVotingData: GovernanceSectionVotingProps = {
@@ -36,7 +34,6 @@ export const GovernaceVoting = () => {
       { type: "abstain", amount: 2098.123 },
     ],
     threshold: 0.51,
-    currentProgress: 72,
   };
 
   return (

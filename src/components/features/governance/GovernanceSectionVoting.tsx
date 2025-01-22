@@ -10,7 +10,6 @@ export type GovernanceSectionVotingProps = {
   title: string;
   votes: VoteOption[];
   threshold: number;
-  currentProgress: number;
 };
 
 const formatAda = (amount: number) => {
@@ -56,7 +55,6 @@ export const GovernanceSectionVoting = ({
   title,
   votes,
   threshold,
-  currentProgress,
 }: GovernanceSectionVotingProps) => {
   return (
     <Card>
@@ -75,10 +73,14 @@ export const GovernanceSectionVoting = ({
           <div className="text-sm text-gray-600">
             THRESHOLD: {threshold.toFixed(2)}
           </div>
-          <div className="h-2 rounded-full bg-gray-200">
+          <div className="h-2 rounded-full bg-[#6B7280] relative">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-green-500 to-green-500 transition-all duration-300"
-              style={{ width: `${currentProgress}%` }}
+              className="h-full rounded-l-full bg-gradient-to-r from-green-500 to-green-500 absolute"
+              style={{ width: `${threshold * 100 - 5}%` }}
+            />
+            <div
+              className="h-full bg-red-500 absolute"
+              style={{ width: "30%", left: `${threshold * 100 - 5}%` }}
             />
           </div>
         </div>
