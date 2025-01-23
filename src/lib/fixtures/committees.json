@@ -1,46 +1,156 @@
 [
   {
-    "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg",
+    "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
     "name": "Cardano Japan",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "blue",
+    "committeeBadgeColor": "red",
     "member": {
-      "name": "YUTA",
-      "email": "yuta@gmail.com",
-      "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg"
+      "name": "Seira Yun",
+      "email": "yun@socious.io",
+      "avatar": "https://pbs.twimg.com/profile_images/1193865377412861952/tAJOwM-D_400x400.jpg"
     },
     "role": "Member",
     "country": "Japan",
-    "dRep": true,
+    "dRep": false,
     "sPO": false,
     "joined": "15/01/2023",
     "links": {
       "website": "",
-      "twitter": "",
+      "twitter": "https://x.com/seira_yun",
+      "github": "",
+      "linkedIn": "https://www.linkedin.com/in/seirayun/"
+    }
+  },
+  {
+    "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
+    "name": "Cardano Japan",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "red",
+    "member": {
+      "name": "Hix",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1800896272393773057/iyMzfN03_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "Japan",
+    "dRep": false,
+    "sPO": true,
+    "joined": "15/01/2023",
+    "links": {
+      "website": "https://coffeepool.jp/",
+      "twitter": "https://x.com/hix_coffeepool",
       "github": "",
       "linkedIn": ""
     }
   },
   {
-    "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg",
-    "name": "Cardano Atlantic Council",
-    "committee": "Technical Steering Committee",
-    "committeeBadgeColor": "yellow",
+    "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
+    "name": "Cardano Japan",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "red",
     "member": {
-      "name": "Rick McCracken DIGI",
-      "email": "email@gmail.com",
-      "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg"
+      "name": "Shusuke Wakuda",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1114194853951299584/6i0zo8qr_400x400.png"
+    },
+    "role": "Member",
+    "country": "Japan",
+    "dRep": false,
+    "sPO": true,
+    "joined": "",
+    "links": {
+      "website": "https://cardano-stakepool-aid.amebaownd.com/",
+      "twitter": "https://x.com/shuwaku2",
+      "github": "",
+      "linkedIn": "https://www.linkedin.com/in/%E4%BF%AE%E5%8F%B3-%E5%92%8C%E4%B9%85%E7%94%B0-a8778520b/"
+    }
+  },
+  {
+    "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
+    "name": "Cardano Japan",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "red",
+    "member": {
+      "name": "Rena Oishi",
+      "email": "mybartwork.rena@gmail.com",
+      "avatar": "https://pbs.twimg.com/profile_images/1524247852687720448/-w7AZfsb_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "Japan",
+    "dRep": false,
+    "sPO": false,
+    "joined": "",
+    "links": {
+      "website": "https://mybartworkrena.wixsite.com/mybartwork",
+      "twitter": "https://x.com/MYB_ArtWork",
+      "github": "",
+      "linkedIn": ""
+    }
+  },
+  {
+    "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
+    "name": "Cardano Japan",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "red",
+    "member": {
+      "name": "Hideki Takeshi",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1861568774031458304/-CEcz5zp_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "Japan",
+    "dRep": false,
+    "sPO": false,
+    "joined": "",
+    "links": {
+      "website": "https://line.me/ti/p/sNR94sWI7f",
+      "twitter": "https://x.com/Hideki_Takeshi",
+      "github": "",
+      "linkedIn": ""
+    }
+  },
+  {
+    "avatar": "https://pbs.twimg.com/profile_images/1805317719610269696/s1vn4Xof_400x400.jpg",
+    "name": "Cardano Atlantic Council",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "blue",
+    "member": {
+      "name": "Adam Dean",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1580638413983653888/C0Tk7LEM_400x400.jpg"
     },
     "role": "Member",
     "country": "United States",
-    "dRep": true,
-    "sPO": true,
+    "dRep": false,
+    "sPO": false,
     "joined": "15/01/2023",
     "links": {
       "website": "",
-      "twitter": "",
+      "twitter": "https://x.com/adamKDean",
       "github": "",
       "linkedIn": ""
+    }
+  },
+  {
+    "avatar": "https://pbs.twimg.com/profile_images/1805317719610269696/s1vn4Xof_400x400.jpg",
+    "name": "Cardano Atlantic Council",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "blue",
+    "member": {
+      "name": "Beatrice Anihiri",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1737030829857968128/ETXReILU_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "Norway",
+    "dRep": false,
+    "sPO": false,
+    "joined": "15/01/2023",
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/BeatriceAnihiri",
+      "github": "",
+      "linkedIn": "https://www.linkedin.com/in/beatrice-anihiri-182b15219/"
     }
   },
   {
