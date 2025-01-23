@@ -99,7 +99,7 @@ export const CommitteeMembersDirectory = ({
           <TableCell>
             <div className="flex gap-2 items-center">
               <Avatar className="h-8 w-8">
-                <AvatarImage src={committee.avatar ?? ""} />
+                <AvatarImage src={committee.member.avatar ?? ""} />
                 <AvatarFallback>
                   {committee.member.name?.substring(0, 2)}
                 </AvatarFallback>
