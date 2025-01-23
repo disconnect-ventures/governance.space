@@ -52,16 +52,20 @@ export const Header = () => {
       href: "/committees",
     },
     {
+      label: "Live Events",
+      href: "/live-events",
+    },
+    {
       label: "Help",
       href: "/help",
     },
     {
-      label: "Stats",
-      href: "/stats",
+      label: "Analytics",
+      href: "/analytics",
     },
     {
-      label: "Stats",
-      href: "/stats",
+      label: "About",
+      href: "/about",
     },
     {
       label: "+ More",
