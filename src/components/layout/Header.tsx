@@ -49,7 +49,7 @@ export const Header = () => {
     },
     {
       label: "Commitees Members",
-      href: "/comitee-members",
+      href: "/committees",
     },
     {
       label: "Help",

@@ -1,0 +1,134 @@
+[
+  {
+    "avatar": "",
+    "name": "Cardano Japan",
+    "committee": "Interim Constitution Committee",
+    "member": {
+      "name": "YUTA",
+      "email": "yuta@gmail.com"
+    },
+    "role": "Member",
+    "country": "Japan",
+    "dRep": true,
+    "sPO": false,
+    "joined": "15/01/2023",
+    "links": {
+      "thumbsUp": true,
+      "thumbsDown": false,
+      "website": "",
+      "twitter": "",
+      "github": "",
+      "linkedIn": ""
+    }
+  },
+  {
+    "avatar": "",
+    "name": "Cardano Atlantic Council",
+    "committee": "Technical Steering Committee",
+    "member": {
+      "name": "Rick McCracken DIGI",
+      "email": "email@gmail.com"
+    },
+    "role": "Member",
+    "country": "United States",
+    "dRep": true,
+    "sPO": true,
+    "joined": "15/01/2023",
+    "links": {
+      "thumbsUp": true,
+      "thumbsDown": true,
+      "website": "",
+      "twitter": "",
+      "github": "",
+      "linkedIn": ""
+    }
+  },
+  {
+    "avatar": "",
+    "name": "Eastern Cardano Council",
+    "committee": "Interim Constitution Committee",
+    "member": {
+      "name": "Mark Byers",
+      "email": "email@gmail.com"
+    },
+    "role": "Member",
+    "country": "Australia",
+    "dRep": true,
+    "sPO": false,
+    "joined": "15/01/2023",
+    "links": {
+      "thumbsUp": true,
+      "thumbsDown": true,
+      "website": "",
+      "twitter": "",
+      "github": "",
+      "linkedIn": ""
+    }
+  },
+  {
+    "avatar": "",
+    "name": "Input Output Global",
+    "committee": "Open Source Committee",
+    "member": {
+      "name": "Input Output Global",
+      "email": "email@gmail.com"
+    },
+    "role": "Member",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "joined": "15/01/2023",
+    "links": {
+      "thumbsUp": false,
+      "thumbsDown": false,
+      "website": "",
+      "twitter": "",
+      "github": "",
+      "linkedIn": ""
+    }
+  },
+  {
+    "avatar": "",
+    "name": "Input Output Global",
+    "committee": "Budget Committee",
+    "member": {
+      "name": "Input Output Global",
+      "email": "email@gmail.com"
+    },
+    "role": "Member",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "joined": "15/01/2023",
+    "links": {
+      "thumbsUp": false,
+      "thumbsDown": false,
+      "website": "",
+      "twitter": "",
+      "github": "",
+      "linkedIn": ""
+    }
+  },
+  {
+    "avatar": "",
+    "name": "Input Output Global",
+    "committee": "Civics Committee",
+    "member": {
+      "name": "Input Output Global",
+      "email": "email@gmail.com"
+    },
+    "role": "Member",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "joined": "15/01/2023",
+    "links": {
+      "thumbsUp": false,
+      "thumbsDown": false,
+      "website": "",
+      "twitter": "",
+      "github": "",
+      "linkedIn": ""
+    }
+  }
+]

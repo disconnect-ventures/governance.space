@@ -8,6 +8,8 @@ import { Proposal } from "~/lib/proposals";
 import { Comment } from "~/lib/comments";
 import { Metadata } from "./metadata";
 import GovernanceActionMetadataResponse from "~/lib/fixtures/governance-action-metadata.json";
+import { CommitteeMember } from "~/components/features/committees/CommitteeDirectory";
+import MockCommitteeMembers from "~/lib/fixtures/committees.json";
 
 export function getMockDReps(): Array<DRep> {
   return MockDRepsResult.elements;
@@ -27,4 +29,8 @@ export function getMockComments(): Array<Comment> {
 
 export function getMockGovernanceActionMetadata(): Metadata {
   return GovernanceActionMetadataResponse;
+}
+
+export function getMockCommitteeMembers(): CommitteeMember[] {
+  return MockCommitteeMembers;
 }
