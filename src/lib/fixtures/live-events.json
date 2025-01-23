@@ -1,0 +1,38 @@
+[
+  {
+    "name": "YUTA",
+    "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg",
+    "drepId": "drep1y2200we9c904un36tzaearntz",
+    "vote": "Yes",
+    "votingPower": 107487.105,
+    "voterRole": "Pool",
+    "type": "delegation",
+    "submissionEpoch": 534,
+    "transactionId": "85c47dd4b9a2e70",
+    "registrationDate": 1737659193243
+  },
+  {
+    "name": "YUTA",
+    "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg",
+    "drepId": "drep1y2200we9c904un36tzaearntz",
+    "vote": "No",
+    "votingPower": 107487.105,
+    "voterRole": "Pool",
+    "type": "delegation",
+    "submissionEpoch": 534,
+    "transactionId": "85c47dd4b9a2e70",
+    "registrationDate": 1737659193243
+  },
+  {
+    "name": "YUTA",
+    "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg",
+    "drepId": "drep1y2200we9c904un36tzaearntz",
+    "vote": "Abstain",
+    "votingPower": 107487.105,
+    "voterRole": "Pool",
+    "type": "delegation",
+    "submissionEpoch": 534,
+    "transactionId": "85c47dd4b9a2e70",
+    "registrationDate": 1737659193243
+  }
+]

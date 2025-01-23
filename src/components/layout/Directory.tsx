@@ -162,7 +162,7 @@ export function TableDirectory({ headers, rows }: TableDirectoryProps) {
           <TableHeader>
             <TableRow>
               {headers.map((header, index) => (
-                <TableHead key={index}>{header}</TableHead>
+                <TableHead key={index} className="whitespace-nowrap text-center">{header}</TableHead>
               ))}
             </TableRow>
           </TableHeader>
