@@ -10,6 +10,8 @@ import { Metadata } from "./metadata";
 import GovernanceActionMetadataResponse from "~/lib/fixtures/governance-action-metadata.json";
 import { CommitteeMember } from "~/components/features/committees/CommitteeDirectory";
 import MockCommitteeMembers from "~/lib/fixtures/committees.json";
+import MockLiveEvents from "~/lib/fixtures/live-events.json";
+import { LiveEvent } from "~/components/features/liveEvents/LiveEventsDirectory";
 
 export function getMockDReps(): Array<DRep> {
   return MockDRepsResult.elements;
@@ -33,4 +35,8 @@ export function getMockGovernanceActionMetadata(): Metadata {
 
 export function getMockCommitteeMembers(): CommitteeMember[] {
   return MockCommitteeMembers;
+}
+
+export function getMockLiveEvents(): LiveEvent[] {
+  return MockLiveEvents as LiveEvent[];
 }
