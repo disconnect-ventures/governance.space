@@ -6,20 +6,23 @@ import {
   GithubIcon,
   GlobeIcon,
   LinkedinIcon,
-  ThumbsDownIcon,
-  ThumbsUpIcon,
+  SquareCheckIcon,
   TwitterIcon,
+  XSquareIcon,
 } from "lucide-react";
 import { Badge } from "~/components/ui/badge";
 import Link from "next/link";
+import clsx from "clsx";
 
 export interface CommitteeMember {
   avatar: string;
   name: string;
   committee: string;
+  committeeBadgeColor: string;
   member: {
     name: string;
     email: string;
+    avatar: string;
   };
   role: string;
   country: string;
@@ -27,8 +30,6 @@ export interface CommitteeMember {
   sPO: boolean;
   joined: string;
   links: {
-    thumbsUp: boolean;
-    thumbsDown: boolean;
     website: string;
     twitter: string;
     github: string;
@@ -43,6 +44,15 @@ export type CommitteeMembersDirectoryProps = {
 export const CommitteeMembersDirectory = ({
   committeeMembers,
 }: CommitteeMembersDirectoryProps) => {
+  const colorMap = {
+    blue: "bg-blue-300 text-blue-600 hover:bg-blue-300 hover:text-blue-600",
+    yellow:
+      "bg-yellow-300 text-yellow-600 hover:bg-yellow-300 hover:text-yellow-600",
+    green:
+      "bg-green-300 text-green-600 hover:bg-green-300 hover:text-green-600",
+    red: "bg-red-300 text-red-600 hover:bg-red-300 hover:text-red-600",
+  };
+
   return (
     <TableDirectory
       headers={[
@@ -74,14 +84,19 @@ export const CommitteeMembersDirectory = ({
             </div>
           </TableCell>
           <TableCell>
-            <Badge className="w-full rounded-full px-4 whitespace-nowrap">
+            <Badge
+              className={clsx(
+                "w-full rounded-full px-4 whitespace-nowrap",
+                colorMap[committee.committeeBadgeColor as keyof typeof colorMap]
+              )}
+            >
               <span className="mx-auto">{committee.committee}</span>
             </Badge>
           </TableCell>
           <TableCell>
             <div className="flex gap-2 items-center">
               <Avatar className="h-8 w-8">
-                {/* <AvatarImage src={committee.avatar ?? ""} /> */}
+                <AvatarImage src={committee.avatar ?? ""} />
                 <AvatarFallback>
                   {committee.member.name?.substring(0, 2)}
                 </AvatarFallback>
@@ -100,10 +115,18 @@ export const CommitteeMembersDirectory = ({
             {committee.country}
           </TableCell>
           <TableCell>
-            {<ThumbsUpIcon className="h-5 w-5 text-green-500" />}
+            {committee.dRep ? (
+              <SquareCheckIcon className="h-5 w-5 text-green-500" />
+            ) : (
+              <XSquareIcon className="h-5 w-5 text-red-500" />
+            )}
           </TableCell>
           <TableCell>
-            {<ThumbsDownIcon className="h-5 w-5 text-red-500" />}
+            {committee.sPO ? (
+              <SquareCheckIcon className="h-5 w-5 text-green-500" />
+            ) : (
+              <XSquareIcon className="h-5 w-5 text-red-500" />
+            )}
           </TableCell>
           <TableCell>{committee.joined}</TableCell>
           <TableCell>
