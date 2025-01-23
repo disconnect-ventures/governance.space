@@ -1,9 +1,9 @@
+"use client";
 import React from "react";
 import { TableCell, TableRow } from "~/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { TableDirectory } from "~/components/layout/Directory";
 import {
-  GithubIcon,
   GlobeIcon,
   LinkedinIcon,
   SquareCheckIcon,
@@ -15,6 +15,7 @@ import Link from "next/link";
 import clsx from "clsx";
 
 export interface CommitteeMember {
+  url: string;
   avatar: string;
   name: string;
   committee: string;
@@ -28,11 +29,9 @@ export interface CommitteeMember {
   country: string;
   dRep: boolean;
   sPO: boolean;
-  joined: string;
   links: {
     website: string;
     twitter: string;
-    github: string;
     linkedIn: string;
   };
 }
@@ -64,7 +63,6 @@ export const CommitteeMembersDirectory = ({
         "Country",
         "DRep",
         "SPO",
-        "Joined",
         "Links",
       ]}
       rows={committeeMembers.map((committee, index) => (
@@ -78,9 +76,13 @@ export const CommitteeMembersDirectory = ({
                 </AvatarFallback>
               </Avatar>
               <div>
-                <div className="font-medium whitespace-nowrap">
+                <Link
+                  href={committee.url}
+                  target="_blank"
+                  className="font-medium whitespace-nowrap hover:underline"
+                >
                   {committee.name}
-                </div>
+                </Link>
               </div>
             </div>
           </TableCell>
@@ -106,7 +108,13 @@ export const CommitteeMembersDirectory = ({
               <div>
                 <div className="font-medium">{committee.member.name}</div>
                 <div className="text-sm text-gray-500">
-                  {committee.member.email}
+                  <a
+                    className="hover:underline"
+                    href={`mailto:${committee.member.email}`}
+                    target="_blank"
+                  >
+                    {committee.member.email}
+                  </a>
                 </div>
               </div>
             </div>
@@ -129,22 +137,23 @@ export const CommitteeMembersDirectory = ({
               <XSquareIcon className="h-5 w-5 text-red-500" />
             )}
           </TableCell>
-          <TableCell>{committee.joined}</TableCell>
           <TableCell>
             <div className="flex items-center gap-2 text-gray-500">
-              <Link href={committee.links.website} target="_blank">
-                <GlobeIcon className="h-4 w-4" />
-              </Link>
-              <Link href={committee.links.linkedIn} target="_blank">
-                <LinkedinIcon className="h-4 w-4" />
-              </Link>
-              <Link href={committee.links.twitter} target="_blank">
-                <TwitterIcon className="h-4 w-4" />
-              </Link>
-
-              <Link href={committee.links.github} target="_blank">
-                <GithubIcon className="h-4 w-4" />
-              </Link>
+              {committee.links.website && (
+                <Link href={committee.links.website} target="_blank">
+                  <GlobeIcon className="h-4 w-4" />
+                </Link>
+              )}
+              {committee.links.linkedIn && (
+                <Link href={committee.links.linkedIn} target="_blank">
+                  <LinkedinIcon className="h-4 w-4" />
+                </Link>
+              )}
+              {committee.links.twitter && (
+                <Link href={committee.links.twitter} target="_blank">
+                  <TwitterIcon className="h-4 w-4" />
+                </Link>
+              )}
             </div>
           </TableCell>
         </TableRow>
