@@ -11,6 +11,7 @@ export type ProposalDirectoryProps = {
 export function ProposalDirectory({ proposals }: ProposalDirectoryProps) {
   return (
     <Directory
+      searchPlaceholder="Search proposals..."
       rows={proposals.map((proposal, index) => (
         <ProposalCard key={index} proposal={proposal} />
       ))}

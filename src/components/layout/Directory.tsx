@@ -24,11 +24,17 @@ import {
 type DirectoryProps = {
   container?: (children: React.ReactNode) => React.ReactNode;
   rows: React.ReactNode[];
+  itemsPerPage?: number;
+  searchPlaceholder: string;
 };
 
-export function Directory({ rows, container }: DirectoryProps) {
+export function Directory({
+  rows,
+  container,
+  itemsPerPage = 15,
+  searchPlaceholder,
+}: DirectoryProps) {
   const [currentPage, setCurrentPage] = useState(1); // TODO: This pagination should be done through query params and avoid making this a client component
-  const itemsPerPage = useMemo(() => 10, []);
   const totalPages = useMemo(
     () => Math.ceil(rows.length / itemsPerPage),
     [rows, itemsPerPage]
@@ -76,7 +82,7 @@ export function Directory({ rows, container }: DirectoryProps) {
         <div className="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-2 mb-6">
           <div className="flex-1">
             <Input
-              placeholder="Search Actions by name or ID"
+              placeholder={searchPlaceholder}
               className="w-full bg-background"
             />
           </div>
@@ -154,15 +160,27 @@ type TableDirectoryProps = DirectoryProps & {
   headers: string[];
 };
 
-export function TableDirectory({ headers, rows }: TableDirectoryProps) {
+export function TableDirectory({
+  headers,
+  rows,
+  itemsPerPage,
+  searchPlaceholder,
+}: TableDirectoryProps) {
   return (
     <Directory
+      itemsPerPage={itemsPerPage}
+      searchPlaceholder={searchPlaceholder}
       container={(children) => (
         <Table className="bg-background">
           <TableHeader>
             <TableRow>
               {headers.map((header, index) => (
-                <TableHead key={index} className="whitespace-nowrap text-center">{header}</TableHead>
+                <TableHead
+                  key={index}
+                  className="whitespace-nowrap text-center"
+                >
+                  {header}
+                </TableHead>
               ))}
             </TableRow>
           </TableHeader>

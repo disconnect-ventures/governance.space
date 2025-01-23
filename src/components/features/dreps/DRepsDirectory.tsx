@@ -19,6 +19,7 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
 
   return (
     <TableDirectory
+      searchPlaceholder={"Search DReps by name or ID"}
       headers={[
         "DRep name",
         "Status",

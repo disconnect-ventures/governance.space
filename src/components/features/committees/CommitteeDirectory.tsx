@@ -55,6 +55,7 @@ export const CommitteeMembersDirectory = ({
 
   return (
     <TableDirectory
+      searchPlaceholder="Search members..."
       headers={[
         "Groups",
         "Committee",
