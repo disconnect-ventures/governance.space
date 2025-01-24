@@ -4,7 +4,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
     "name": "Cardano Japan",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "red",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Seira Yun",
       "email": "yun@socious.io",
@@ -25,7 +25,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
     "name": "Cardano Japan",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "red",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Hix",
       "email": "",
@@ -46,7 +46,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
     "name": "Cardano Japan",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "red",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Shusuke Wakuda",
       "email": "",
@@ -67,7 +67,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
     "name": "Cardano Japan",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "red",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Rena Oishi",
       "email": "mybartwork.rena@gmail.com",
@@ -88,7 +88,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
     "name": "Cardano Japan",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "red",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Hideki Takeshi",
       "email": "",
@@ -241,7 +241,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1826848828634415104/VKGHkmLj_400x400.jpg",
     "name": "Eastern Cardano Council",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "orange",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Jo Allum",
       "email": "",
@@ -262,7 +262,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1826848828634415104/VKGHkmLj_400x400.jpg",
     "name": "Eastern Cardano Council",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "orange",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Mark Byers",
       "email": "",
@@ -283,7 +283,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1826848828634415104/VKGHkmLj_400x400.jpg",
     "name": "Eastern Cardano Council",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "orange",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Oscar Hong (West)",
       "email": "",
@@ -304,7 +304,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1826848828634415104/VKGHkmLj_400x400.jpg",
     "name": "Eastern Cardano Council",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "orange",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Phil Lewis",
       "email": "",
@@ -325,7 +325,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1826848828634415104/VKGHkmLj_400x400.jpg",
     "name": "Eastern Cardano Council",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "orange",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Ha Nguyen",
       "email": "",
@@ -346,7 +346,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1826848828634415104/VKGHkmLj_400x400.jpg",
     "name": "Eastern Cardano Council",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "orange",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Yuki (YUTA) Oishi",
       "email": "",
@@ -367,7 +367,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1594970126801068033/E9KmfgO6_400x400.jpg",
     "name": "Input Output Global",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "red",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Input Output Global",
       "email": "",
@@ -409,7 +409,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1688730191043153920/amcNzVcf_400x400.jpg",
     "name": "EMURGO",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "black",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "EMURGO",
       "email": "",
@@ -430,7 +430,7 @@
     "avatar": "https://pbs.twimg.com/profile_images/1679073885189226497/-FU9YQnO_400x400.jpg",
     "name": "Intersect",
     "committee": "Interim Constitution Committee",
-    "committeeBadgeColor": "yellow",
+    "committeeBadgeColor": "blue",
     "member": {
       "name": "Intersect",
       "email": "",
@@ -444,6 +444,552 @@
       "website": "https://www.intersectmbo.org/",
       "twitter": "https://x.com/intersectmbo",
       "linkedIn": "https://www.linkedin.com/company/intersectmbo"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Budget Committee",
+    "committeeBadgeColor": "green",
+    "member": {
+      "name": "Steve Lupien",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/681108843959574528/4pvGdhYe_400x400.jpg"
+    },
+    "role": "Chair",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/stevelupien",
+      "linkedIn": "https://www.linkedin.com/in/steven-c-lupien/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Budget Committee",
+    "committeeBadgeColor": "green",
+    "member": {
+      "name": "Lawrence Clarke",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1830355816370540544/KoDpRBB6_400x400.jpg"
+    },
+    "role": "Secretary",
+    "country": "United Kingdom",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/LozClark01",
+      "linkedIn": "https://www.linkedin.com/in/lozclark/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Budget Committee",
+    "committeeBadgeColor": "green",
+    "member": {
+      "name": "Kriss Baird",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1383501006567133185/YgKqcybT_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "United Kingdom",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://projectcatalyst.io/",
+      "twitter": "https://x.com/krissbaird",
+      "linkedIn": "https://www.linkedin.com/in/krissbaird"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Budget Committee",
+    "committeeBadgeColor": "green",
+    "member": {
+      "name": "J.J. Siler",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1445109831862468610/_s8iNkZr_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://iohk.io/",
+      "twitter": "https://x.com/jj_siler",
+      "linkedIn": "https://www.linkedin.com/in/j-j-s-b3191113/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Budget Committee",
+    "committeeBadgeColor": "green",
+    "member": {
+      "name": "Mercy Fordwoo",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQFEFEuNipe41w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1553114596278?e=1743033600&v=beta&t=th7VV7PbwhUH5lz69qlbRFuWSPvieQxBB-xbMapomr8"
+    },
+    "role": "Voting Member",
+    "country": "Africa",
+    "dRep": true,
+    "sPO": false,
+    "links": {
+      "website": "https://www.wada.org/",
+      "twitter": "https://x.com/wada_org",
+      "linkedIn": "https://www.linkedin.com/in/mercy-tachie-menson-77b10931/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Budget Committee",
+    "committeeBadgeColor": "green",
+    "member": {
+      "name": "Jose Velazquez",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1815506035488002048/e8P5XNrq_400x400.jpg"
+    },
+    "role": "Voting Member  ",
+    "country": "Paraguay",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://www.cardanonations.org/",
+      "twitter": "https://x.com/jrv97_velazquez",
+      "linkedIn": ""
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Budget Committee",
+    "committeeBadgeColor": "green",
+    "member": {
+      "name": "Kristijan Kowalsky",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1813857601316114432/16dsfjOB_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Croatia",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/KrisKowalsky",
+      "linkedIn": "https://www.linkedin.com/in/kriskowalsky"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Budget Committee",
+    "committeeBadgeColor": "green",
+    "member": {
+      "name": "Pepe Otegui",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1735032327426736129/EyhoRVJS_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Argentina",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/pepeotegui",
+      "linkedIn": ""
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Budget Committee",
+    "committeeBadgeColor": "green",
+    "member": {
+      "name": "Rita Mistry",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/C5103AQEErV8_mvJirg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1517561695057?e=1743033600&v=beta&t=jp4YR_Wmj0PdOa5scD6RW7uVeQ7l67eAg-nP2V5c85s"
+    },
+    "role": "SME",
+    "country": "Switzerland",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": "https://www.linkedin.com/in/rita-mistry-spada-01971960/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Budget Committee",
+    "committeeBadgeColor": "green",
+    "member": {
+      "name": "Lloyd Duhon",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1522341142255357957/32OSJ32R_400x400.jpg"
+    },
+    "role": "SME",
+    "country": "United States",
+    "dRep": true,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/radioastro",
+      "linkedIn": "https://www.linkedin.com/in/lloyd-duhon/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Civics Committee",
+    "committeeBadgeColor": "yellow",
+    "member": {
+      "name": "Michael Madoff",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1658562930093457410/pbYr-wgr_400x400.jpg"
+    },
+    "role": "Interim Chair",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/michael_madoff",
+      "linkedIn": "https://www.linkedin.com/in/michaelmadoff/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Civics Committee",
+    "committeeBadgeColor": "yellow",
+    "member": {
+      "name": "Danielle Stanko",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQHD6LVmuH5p5w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1709136294897?e=1743033600&v=beta&t=gQH7ZOBu3rRkfj6YPTu_6vVRwa5n8Gt6bwTwvj7scho"
+    },
+    "role": "Interim Secretary",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": "https://www.linkedin.com/in/daniellestanko/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Civics Committee",
+    "committeeBadgeColor": "yellow",
+    "member": {
+      "name": "Reshan Fernando",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/D5603AQFtpdnHmrJxLg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1704964345716?e=1743033600&v=beta&t=jAB2uQLMhY93n8QQij6z4qNBsLuErKoA_yQxhEbUUeM"
+    },
+    "role": "Voting Member",
+    "country": "Sri Lanka",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://www.coinceylon.com/",
+      "twitter": "https://x.com/reshfer",
+      "linkedIn": "https://www.linkedin.com/in/nicholas-reshan-fernando-379b541b0/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Civics Committee",
+    "committeeBadgeColor": "yellow",
+    "member": {
+      "name": "Eystein Magnus Hansen",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/C5103AQHwfA6QfXfKYA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516934459209?e=1743033600&v=beta&t=qrlzSInBocAH3WcRKBIF4JTQQsZsUkKup-cDy306m_4"
+    },
+    "role": "Voting Member",
+    "country": "Norway",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/hansen_eystein",
+      "linkedIn": "https://www.linkedin.com/in/eystein-hansen-93376756/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Civics Committee",
+    "committeeBadgeColor": "yellow",
+    "member": {
+      "name": "Taichi Yokoyama",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/D5603AQGcR0RklOS_9Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1688291907034?e=1743033600&v=beta&t=5nsCfAWks1TCCfRH5W2h4VIKZizjm6TFJ1PNJnXH-7I"
+    },
+    "role": "Voting Member",
+    "country": "Japan",
+    "dRep": false,
+    "sPO": true,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/taichiyokoyama_",
+      "linkedIn": "https://www.linkedin.com/in/mryokoyama/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Civics Committee",
+    "committeeBadgeColor": "yellow",
+    "member": {
+      "name": "Jose Miguel De Gamboa",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/C5603AQHYM9xvr_TQAA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1654478740072?e=1743033600&v=beta&t=Ju2XcR-jdkDo-T_gHoaZknpY7XilcdQszXg7R7TSI4M"
+    },
+    "role": "Voting Member",
+    "country": "Colombia",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/bitcows",
+      "linkedIn": "https://www.linkedin.com/in/jose-miguel-de-gamboa/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Civics Committee",
+    "committeeBadgeColor": "yellow",
+    "member": {
+      "name": "Daniela Alves",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1880655543896883200/KcybI4fM_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Brazil",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/DanielaHubBr",
+      "linkedIn": "https://www.linkedin.com/in/daniela-alves-ri"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Civics Committee",
+    "committeeBadgeColor": "yellow",
+    "member": {
+      "name": "Mercy Fordwoo",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQFEFEuNipe41w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1553114596278?e=1743033600&v=beta&t=th7VV7PbwhUH5lz69qlbRFuWSPvieQxBB-xbMapomr8"
+    },
+    "role": "Voting Member",
+    "country": "Africa",
+    "dRep": true,
+    "sPO": false,
+    "links": {
+      "website": "https://www.wada.org/",
+      "twitter": "https://x.com/wada_org",
+      "linkedIn": "https://www.linkedin.com/in/mercy-tachie-menson-77b10931/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Civics Committee",
+    "committeeBadgeColor": "yellow",
+    "member": {
+      "name": "Takeshi Ohishi",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1521208550512594954/sd32W6fs_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/ohishi",
+      "linkedIn": "https://www.linkedin.com/in/tksohishi/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Civics Committee",
+    "committeeBadgeColor": "yellow",
+    "member": {
+      "name": "Nicolas Cerny",
+      "email": "",
+      "avatar": "https://us1.discourse-cdn.com/flex015/uploads/cardano/optimized/3X/6/a/6a798bcd5fa74ba46435868a7045c1eadf635d24_2_150x177.jpeg"
+    },
+    "role": "Voting Member",
+    "country": "Austria",
+    "dRep": true,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/NicolasC3rny",
+      "linkedIn": "https://www.linkedin.com/in/nicolas-cerny-892754193/"
+    }
+  },
+  {
+    "url": "#",
+    "avatar": "#",
+    "name": "#",
+    "committee": "#",
+    "committeeBadgeColor": "blue",
+    "member": {
+      "name": "#",
+      "email": "",
+      "avatar": "#"
+    },
+    "role": "Member",
+    "country": "#",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": ""
+    }
+  },
+  {
+    "url": "#",
+    "avatar": "#",
+    "name": "#",
+    "committee": "#",
+    "committeeBadgeColor": "blue",
+    "member": {
+      "name": "#",
+      "email": "",
+      "avatar": "#"
+    },
+    "role": "Member",
+    "country": "#",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": ""
+    }
+  },
+  {
+    "url": "#",
+    "avatar": "#",
+    "name": "#",
+    "committee": "#",
+    "committeeBadgeColor": "blue",
+    "member": {
+      "name": "#",
+      "email": "",
+      "avatar": "#"
+    },
+    "role": "Member",
+    "country": "#",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": ""
+    }
+  },
+  {
+    "url": "#",
+    "avatar": "#",
+    "name": "#",
+    "committee": "#",
+    "committeeBadgeColor": "blue",
+    "member": {
+      "name": "#",
+      "email": "",
+      "avatar": "#"
+    },
+    "role": "Member",
+    "country": "#",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": ""
+    }
+  },
+  {
+    "url": "#",
+    "avatar": "#",
+    "name": "#",
+    "committee": "#",
+    "committeeBadgeColor": "blue",
+    "member": {
+      "name": "#",
+      "email": "",
+      "avatar": "#"
+    },
+    "role": "Member",
+    "country": "#",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": ""
+    }
+  },
+  {
+    "url": "#",
+    "avatar": "#",
+    "name": "#",
+    "committee": "#",
+    "committeeBadgeColor": "blue",
+    "member": {
+      "name": "#",
+      "email": "",
+      "avatar": "#"
+    },
+    "role": "Member",
+    "country": "#",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": ""
     }
   },
   {
