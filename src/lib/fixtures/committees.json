@@ -1,6 +1,6 @@
 [
   {
-    "url": "https://cardano.org/",
+    "url": "https://x.com/Cardanojp_icc",
     "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
     "name": "Cardano Japan",
     "committee": "Interim Constitution Committee",
@@ -21,7 +21,7 @@
     }
   },
   {
-    "url": "https://cardano.org/",
+    "url": "https://x.com/Cardanojp_icc",
     "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
     "name": "Cardano Japan",
     "committee": "Interim Constitution Committee",
@@ -42,7 +42,7 @@
     }
   },
   {
-    "url": "https://cardano.org/",
+    "url": "https://x.com/Cardanojp_icc",
     "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
     "name": "Cardano Japan",
     "committee": "Interim Constitution Committee",
@@ -63,7 +63,7 @@
     }
   },
   {
-    "url": "https://cardano.org/",
+    "url": "https://x.com/Cardanojp_icc",
     "avatar": "https://pbs.twimg.com/profile_images/1849588030082043904/j9Cjy9U0_400x400.jpg",
     "name": "Cardano Japan",
     "committee": "Interim Constitution Committee",
@@ -105,7 +105,7 @@
     }
   },
   {
-    "url": "https://cardano.org/",
+    "url": "https://x.com/CardanoAtlantic",
     "avatar": "https://pbs.twimg.com/profile_images/1805317719610269696/s1vn4Xof_400x400.jpg",
     "name": "Cardano Atlantic Council",
     "committee": "Interim Constitution Committee",
@@ -127,7 +127,7 @@
     }
   },
   {
-    "url": "https://cardano.org/",
+    "url": "https://x.com/CardanoAtlantic",
     "avatar": "https://pbs.twimg.com/profile_images/1805317719610269696/s1vn4Xof_400x400.jpg",
     "name": "Cardano Atlantic Council",
     "committee": "Interim Constitution Committee",
@@ -149,82 +149,316 @@
     }
   },
   {
-    "url": "https://cardano.org/",
-    "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg",
-    "name": "Eastern Cardano Council",
+    "url": "https://x.com/CardanoAtlantic",
+    "avatar": "https://pbs.twimg.com/profile_images/1805317719610269696/s1vn4Xof_400x400.jpg",
+    "name": "Cardano Atlantic Council",
     "committee": "Interim Constitution Committee",
     "committeeBadgeColor": "blue",
     "member": {
-      "name": "Mark Byers",
-      "email": "email@gmail.com",
-      "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg"
+      "name": "Mike Hornan",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1829909270038544384/IDUhyJ5b_400x400.jpg"
     },
     "role": "Member",
-    "country": "Australia",
-    "dRep": true,
+    "country": "Canada",
+    "dRep": false,
+    "sPO": true,
+
+    "links": {
+      "website": "https://able-pool.io/",
+      "twitter": "https://x.com/Hornan7",
+      "linkedIn": "https://www.linkedin.com/in/beatrice-anihiri-182b15219/"
+    }
+  },
+  {
+    "url": "https://x.com/CardanoAtlantic",
+    "avatar": "https://pbs.twimg.com/profile_images/1805317719610269696/s1vn4Xof_400x400.jpg",
+    "name": "Cardano Atlantic Council",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "blue",
+    "member": {
+      "name": "Jennifer Brito",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1774175757482254336/w1KlpdpQ_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "United States",
+    "dRep": false,
     "sPO": false,
 
     "links": {
       "website": "",
-      "twitter": "",
-      "linkedIn": ""
+      "twitter": "https://x.com/Jennycitalinda",
+      "linkedIn": "https://www.linkedin.com/in/jenny-brito-6064311b/"
     }
   },
   {
-    "url": "https://cardano.org/",
-    "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg",
-    "name": "Input Output Global",
-    "committee": "Open Source Committee",
-    "committeeBadgeColor": "green",
+    "url": "https://x.com/CardanoAtlantic",
+    "avatar": "https://pbs.twimg.com/profile_images/1805317719610269696/s1vn4Xof_400x400.jpg",
+    "name": "Cardano Atlantic Council",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "blue",
     "member": {
-      "name": "Input Output Global",
-      "email": "email@gmail.com",
-      "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg"
+      "name": "Thiago Nunes",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1356088579911462916/Iim1FJW3_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "Brazil",
+    "dRep": false,
+    "sPO": true,
+
+    "links": {
+      "website": "https://www.youtube.com/c/OurosTech",
+      "twitter": "https://x.com/tsnnst",
+      "linkedIn": "https://br.linkedin.com/in/thiago-s-nunes"
+    }
+  },
+  {
+    "url": "https://x.com/CardanoAtlantic",
+    "avatar": "https://pbs.twimg.com/profile_images/1805317719610269696/s1vn4Xof_400x400.jpg",
+    "name": "Cardano Atlantic Council",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "blue",
+    "member": {
+      "name": "Richard McCracken",
+      "email": "contact@digi.pro",
+      "avatar": "https://pbs.twimg.com/profile_images/1818096207970922496/_QWjBWNT_400x400.jpg"
     },
     "role": "Member",
     "country": "United States",
     "dRep": false,
-    "sPO": false,
+    "sPO": true,
+
     "links": {
-      "website": "",
-      "twitter": "",
+      "website": "https://digi.pro/",
+      "twitter": "https://x.com/RichardMcCrackn",
       "linkedIn": ""
     }
   },
   {
-    "url": "https://cardano.org/",
-    "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg",
+    "url": "https://x.com/EasternCardano",
+    "avatar": "https://pbs.twimg.com/profile_images/1826848828634415104/VKGHkmLj_400x400.jpg",
+    "name": "Eastern Cardano Council",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Jo Allum",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1431440282789183488/Mq87LQUo_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "New Zealand",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/yojoflo",
+      "linkedIn": "https://www.linkedin.com/in/joallum/"
+    }
+  },
+  {
+    "url": "https://x.com/EasternCardano",
+    "avatar": "https://pbs.twimg.com/profile_images/1826848828634415104/VKGHkmLj_400x400.jpg",
+    "name": "Eastern Cardano Council",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Mark Byers",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1591155299695546368/TK2rbcUX_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "Australia",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://www.selfdriven.foundation/",
+      "twitter": "https://x.com/selfdrivenMark",
+      "linkedIn": "https://www.linkedin.com/in/marknbyers/"
+    }
+  },
+  {
+    "url": "https://x.com/EasternCardano",
+    "avatar": "https://pbs.twimg.com/profile_images/1826848828634415104/VKGHkmLj_400x400.jpg",
+    "name": "Eastern Cardano Council",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Oscar Hong (West)",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1638552992373948418/lj9u1J2Q_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "South Korea",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/OscarW3st",
+      "linkedIn": "https://www.linkedin.com/in/oscar-west/"
+    }
+  },
+  {
+    "url": "https://x.com/EasternCardano",
+    "avatar": "https://pbs.twimg.com/profile_images/1826848828634415104/VKGHkmLj_400x400.jpg",
+    "name": "Eastern Cardano Council",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Phil Lewis",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1435258650667274242/b5XwPuyV_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "Australia",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://empowa.io/links/",
+      "twitter": "https://x.com/phillewisit",
+      "linkedIn": "https://www.linkedin.com/in/phillewisit/"
+    }
+  },
+  {
+    "url": "https://x.com/EasternCardano",
+    "avatar": "https://pbs.twimg.com/profile_images/1826848828634415104/VKGHkmLj_400x400.jpg",
+    "name": "Eastern Cardano Council",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Ha Nguyen",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1772556106054922240/bI6zpmwt_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "Vietnam",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/Hahero7",
+      "linkedIn": "https://www.linkedin.com/in/nguyen-thi-ha-45b108233/"
+    }
+  },
+  {
+    "url": "https://x.com/EasternCardano",
+    "avatar": "https://pbs.twimg.com/profile_images/1826848828634415104/VKGHkmLj_400x400.jpg",
+    "name": "Eastern Cardano Council",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Yuki (YUTA) Oishi",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "Japan",
+    "dRep": true,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/yuta_cryptox",
+      "linkedIn": "https://www.linkedin.com/in/yuki-oishi-883031196/"
+    }
+  },
+  {
+    "url": "https://iohk.io/",
+    "avatar": "https://pbs.twimg.com/profile_images/1594970126801068033/E9KmfgO6_400x400.jpg",
     "name": "Input Output Global",
-    "committee": "Budget Committee",
+    "committee": "Interim Constitution Committee",
     "committeeBadgeColor": "red",
     "member": {
       "name": "Input Output Global",
-      "email": "email@gmail.com",
-      "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg"
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1594970126801068033/E9KmfgO6_400x400.jpg"
     },
     "role": "Member",
     "country": "United States",
     "dRep": false,
     "sPO": false,
     "links": {
-      "website": "",
-      "twitter": "",
-      "linkedIn": ""
+      "website": "https://iohk.io/",
+      "twitter": "https://x.com/inputoutputHK",
+      "linkedIn": "https://www.linkedin.com/company/input-output-global"
     }
   },
   {
-    "url": "https://cardano.org/",
-    "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg",
-    "name": "Input Output Global",
-    "committee": "Civics Committee",
+    "url": "https://www.cardanofoundation.org/",
+    "avatar": "https://pbs.twimg.com/profile_images/1765479184586166272/cziOm5PO_400x400.png",
+    "name": "Cardano Foundation",
+    "committee": "Interim Constitution Committee",
     "committeeBadgeColor": "blue",
     "member": {
-      "name": "Input Output Global",
-      "email": "email@gmail.com",
-      "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg"
+      "name": "Cardano Foundation",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1765479184586166272/cziOm5PO_400x400.png"
     },
     "role": "Member",
-    "country": "United States",
+    "country": "Switzerland",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://www.cardanofoundation.org/",
+      "twitter": "https://x.com/Cardano_CF",
+      "linkedIn": "https://www.linkedin.com/company/cardano-foundation/"
+    }
+  },
+  {
+    "url": "https://www.emurgo.io/",
+    "avatar": "https://pbs.twimg.com/profile_images/1688730191043153920/amcNzVcf_400x400.jpg",
+    "name": "EMURGO",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "black",
+    "member": {
+      "name": "EMURGO",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1688730191043153920/amcNzVcf_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "Singapore",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://www.emurgo.io/",
+      "twitter": "https://x.com/emurgo_io",
+      "linkedIn": "https://www.linkedin.com/company/emurgo-io"
+    }
+  },
+  {
+    "url": "https://www.intersectmbo.org/",
+    "avatar": "https://pbs.twimg.com/profile_images/1679073885189226497/-FU9YQnO_400x400.jpg",
+    "name": "Intersect",
+    "committee": "Interim Constitution Committee",
+    "committeeBadgeColor": "yellow",
+    "member": {
+      "name": "Intersect",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1679073885189226497/-FU9YQnO_400x400.jpg"
+    },
+    "role": "Member",
+    "country": "Worldwide",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://www.intersectmbo.org/",
+      "twitter": "https://x.com/intersectmbo",
+      "linkedIn": "https://www.linkedin.com/company/intersectmbo"
+    }
+  },
+  {
+    "url": "#",
+    "avatar": "#",
+    "name": "#",
+    "committee": "#",
+    "committeeBadgeColor": "blue",
+    "member": {
+      "name": "#",
+      "email": "",
+      "avatar": "#"
+    },
+    "role": "Member",
+    "country": "#",
     "dRep": false,
     "sPO": false,
     "links": {
