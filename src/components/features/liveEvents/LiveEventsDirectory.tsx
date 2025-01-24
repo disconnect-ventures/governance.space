@@ -59,7 +59,7 @@ export const LiveEventsDirectory = ({
     <TableDirectory
       searchPlaceholder="Search by name or ID"
       headers={[
-        "Name",
+        "DRep Name",
         "Vote",
         "Voting Power",
         "Voter Role",
