@@ -119,11 +119,10 @@
     "country": "United States",
     "dRep": false,
     "sPO": false,
-
     "links": {
       "website": "",
       "twitter": "https://x.com/adamKDean",
-      "linkedIn": ""
+      "linkedIn": "https://www.linkedin.com/in/the-real-adam-dean/"
     }
   },
   {
@@ -141,7 +140,6 @@
     "country": "Norway",
     "dRep": false,
     "sPO": false,
-
     "links": {
       "website": "",
       "twitter": "https://x.com/BeatriceAnihiri",
@@ -163,7 +161,6 @@
     "country": "Canada",
     "dRep": false,
     "sPO": true,
-
     "links": {
       "website": "https://able-pool.io/",
       "twitter": "https://x.com/Hornan7",
@@ -185,7 +182,6 @@
     "country": "United States",
     "dRep": false,
     "sPO": false,
-
     "links": {
       "website": "",
       "twitter": "https://x.com/Jennycitalinda",
@@ -207,7 +203,6 @@
     "country": "Brazil",
     "dRep": false,
     "sPO": true,
-
     "links": {
       "website": "https://www.youtube.com/c/OurosTech",
       "twitter": "https://x.com/tsnnst",
@@ -544,7 +539,7 @@
     "role": "Voting Member",
     "country": "Africa",
     "dRep": true,
-    "sPO": false,
+    "sPO": true,
     "links": {
       "website": "https://www.wada.org/",
       "twitter": "https://x.com/wada_org",
@@ -817,7 +812,7 @@
     "role": "Voting Member",
     "country": "Africa",
     "dRep": true,
-    "sPO": false,
+    "sPO": true,
     "links": {
       "website": "https://www.wada.org/",
       "twitter": "https://x.com/wada_org",
@@ -867,18 +862,249 @@
     }
   },
   {
-    "url": "#",
-    "avatar": "#",
-    "name": "#",
-    "committee": "#",
-    "committeeBadgeColor": "blue",
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
     "member": {
-      "name": "#",
+      "name": "Nori Nishigaya",
       "email": "",
-      "avatar": "#"
+      "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQGJoRagyXNTXA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1568328469823?e=1743033600&v=beta&t=8zRhnnH1EwVgkewFH5GCyn0LfxI2EbfSiRPC2PP3Fjk"
     },
-    "role": "Member",
-    "country": "#",
+    "role": "Chair",
+    "country": "Canada",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/Xeeban",
+      "linkedIn": "https://www.linkedin.com/in/nishigaya/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Darlington Wleh",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1524443092442652676/9svZtuoy_400x400.jpg"
+    },
+    "role": "Co-Chair",
+    "country": "United States",
+    "dRep": false,
+    "sPO": true,
+    "links": {
+      "website": "https://www.lidonation.com/fr",
+      "twitter": "https://x.com/profd2004",
+      "linkedIn": "https://www.linkedin.com/in/profd2004/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Terence McCutcheon",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1833174708742758400/qtzP85Vd_400x400.jpg"
+    },
+    "role": "Secretary",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/Tmacqt87",
+      "linkedIn": "https://www.linkedin.com/in/terence-mccutcheon-4b3139a1/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Katarina Ciric",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1867737087606181888/xMlf5xXb_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Serbia",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/katarinaciric17",
+      "linkedIn": "https://www.linkedin.com/in/your-favorite-it-partner/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Yuki (YUTA) Oishi",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1406865098153467908/8QDIBheE_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Japan",
+    "dRep": true,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/yuta_cryptox",
+      "linkedIn": "https://www.linkedin.com/in/yuki-oishi-883031196/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Ben Hart",
+      "email": "",
+      "avatar": ""
+    },
+    "role": "Voting Member",
+    "country": "Canada",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://www.mlabs.city/",
+      "twitter": "https://x.com/MLabs10",
+      "linkedIn": "https://www.linkedin.com/in/ben-hart-10386a295/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Matthew Capps",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1392010609974185987/7wqPkOOh_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/cryptstitution",
+      "linkedIn": "https://www.linkedin.com/in/matthew-capps-b1b515178/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Ha Nguyen",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1772556106054922240/bI6zpmwt_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Vietnam",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/Hahero7",
+      "linkedIn": "https://www.linkedin.com/in/nguyen-thi-ha-45b108233/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Sheldon Hunt",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1732530410150674432/KVtFxVqj_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Singapore",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/_MrHunt_",
+      "linkedIn": "https://www.linkedin.com/in/sheldonhunt/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Sanjaya W",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1846517793442963456/W1h6rCXU_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Sri Lanka",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/SanjayWOfficial",
+      "linkedIn": "https://www.linkedin.com/in/sanjaya-wanigasekera-361605a7/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Akheel Fouze",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1060552383585898497/50rg1ZzX_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Sri Lanka",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/Akheelfouze",
+      "linkedIn": "https://www.linkedin.com/in/akheel-fouze-fcilt-a6969984/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Karen Wickham",
+      "email": "",
+      "avatar": ""
+    },
+    "role": "Intersect Committee Liaison",
+    "country": "",
     "dRep": false,
     "sPO": false,
     "links": {
@@ -888,18 +1114,18 @@
     }
   },
   {
-    "url": "#",
-    "avatar": "#",
-    "name": "#",
-    "committee": "#",
-    "committeeBadgeColor": "blue",
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
     "member": {
-      "name": "#",
+      "name": "Kuldip Chana",
       "email": "",
-      "avatar": "#"
+      "avatar": ""
     },
-    "role": "Member",
-    "country": "#",
+    "role": "Intersect Membership Analyst",
+    "country": "",
     "dRep": false,
     "sPO": false,
     "links": {
@@ -909,45 +1135,612 @@
     }
   },
   {
-    "url": "#",
-    "avatar": "#",
-    "name": "#",
-    "committee": "#",
-    "committeeBadgeColor": "blue",
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Open Source Committee",
+    "committeeBadgeColor": "black",
     "member": {
-      "name": "#",
+      "name": "Sandip Pandey",
       "email": "",
-      "avatar": "#"
+      "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQGDSiOpqJOlTQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1532324602444?e=1743033600&v=beta&t=Tk30BaZZel1qGrkWa3zY5_LrUeX-Vek1Q52o-Aq4O1Y"
     },
-    "role": "Member",
-    "country": "#",
+    "role": "Vice Chair",
+    "country": "Netherlands",
     "dRep": false,
     "sPO": false,
     "links": {
       "website": "",
       "twitter": "",
+      "linkedIn": "https://www.linkedin.com/in/sandippandey/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Open Source Committee",
+    "committeeBadgeColor": "black",
+    "member": {
+      "name": "Christian Taylor",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1796521286279045120/UJjeK8vu_400x400.jpg"
+    },
+    "role": "Representative",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/DeOpenSourceGuy",
+      "linkedIn": "https://www.linkedin.com/in/christian-taylor-766b01b1/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Open Source Committee",
+    "committeeBadgeColor": "black",
+    "member": {
+      "name": "Terence McCutcheon",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1833174708742758400/qtzP85Vd_400x400.jpg"
+    },
+    "role": "Secretary",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/Tmacqt87",
+      "linkedIn": "https://www.linkedin.com/in/terence-mccutcheon-4b3139a1/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Open Source Committee",
+    "committeeBadgeColor": "black",
+    "member": {
+      "name": "Adam Dean",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1580638413983653888/C0Tk7LEM_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/adamKDean",
+      "linkedIn": "https://www.linkedin.com/in/the-real-adam-dean/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Open Source Committee",
+    "committeeBadgeColor": "black",
+    "member": {
+      "name": "Sebastian Pabon",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1799115029054119937/gf1rbRHS_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Colombia",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/SebastianPabonB",
+      "linkedIn": "https://www.linkedin.com/in/seb-pabon"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Open Source Committee",
+    "committeeBadgeColor": "black",
+    "member": {
+      "name": "Pedro Lucas",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1725870213327953920/Lj2hf_Q-_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Portugal",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://45b.io/",
+      "twitter": "https://x.com/pedrolucasnet",
+      "linkedIn": "https://www.linkedin.com/in/pedrohlucas/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Open Source Committee",
+    "committeeBadgeColor": "black",
+    "member": {
+      "name": "Johnny Kelly",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1785188396849049600/oh7r5LDS_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "United Kingdom",
+    "dRep": true,
+    "sPO": true,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/intertreeJK",
+      "linkedIn": "https://www.linkedin.com/in/intertreejk/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Open Source Committee",
+    "committeeBadgeColor": "black",
+    "member": {
+      "name": "Robin Boening",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/708591635769266176/aaj0YWGu_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Berlin",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/robinboening",
+      "linkedIn": "https://www.linkedin.com/in/robin-b%C3%B6ning-25725485/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Open Source Committee",
+    "committeeBadgeColor": "black",
+    "member": {
+      "name": "Nicolas Henin",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1439199080203304965/bSWE9Yez_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "Cyprus",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/nhenin",
+      "linkedIn": "https://www.linkedin.com/in/nhenin/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Open Source Committee",
+    "committeeBadgeColor": "black",
+    "member": {
+      "name": "Diane Mueller",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/C5603AQHvRVDRhVjvcA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1600113650306?e=1743033600&v=beta&t=Z-guZUH9vGm6P7evsO0xyMZyXShM2zc-ARNMz9YQl9Y"
+    },
+    "role": "Voting Member",
+    "country": "Canada",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": "https://www.linkedin.com/in/muellerdiane/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Open Source Committee",
+    "committeeBadgeColor": "black",
+    "member": {
+      "name": "Moritz Angermann",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQHpZ5_Kp8vsGA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1517699480078?e=1743033600&v=beta&t=qd4RjCwgfhovbyXrGavKhFN5S40hY7IF6UZJ-VeK2yQ"
+    },
+    "role": "Voting Member",
+    "country": "Singapore",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": "https://www.linkedin.com/in/mangermann/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Samuel Leathers",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1475749626439512068/d8Ye73LR_400x400.jpg"
+    },
+    "role": "Chair",
+    "country": "United States",
+    "dRep": false,
+    "sPO": true,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/therealdisasm",
+      "linkedIn": "https://www.linkedin.com/in/samuel-leathers-444b4a7a/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Kyle Solomon",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1638931426660823045/pcryVwIg_400x400.jpg"
+    },
+    "role": "Co-Chair",
+    "country": "Dominica",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/adosiawolf",
+      "linkedIn": "https://www.linkedin.com/in/kesolomon/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Lorenzo Bruno",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1665628433819348993/ulOqnvmR_400x400.jpg"
+    },
+    "role": "Secretary",
+    "country": "United Kingdom",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://www.lorenzobruno.uk/",
+      "twitter": "https://x.com/br1_lorenzo",
+      "linkedIn": "https://www.linkedin.com/in/lorenzo-br1/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Romain Pellerin",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1853515699265671168/hSZZ_NY7_400x400.jpg"
+    },
+    "role": "Voting Member",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/rom1_pellerin",
+      "linkedIn": "https://www.linkedin.com/in/romainpellerin/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Mike Ward",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQETKZIgwVLOvg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1633943011943?e=1743033600&v=beta&t=Tcx-Q_vxgHXSm8Hd1EAYcOYM_4m5P1p2pQKlqk4fk2g"
+    },
+    "role": "Voting Member",
+    "country": "United Kingdom",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": "https://www.linkedin.com/in/mward/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Naushad Fouze",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1635516526395793410/7zLvMi3B_400x400.png"
+    },
+    "role": "Voting Member",
+    "country": "Sri Lanka",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/MkFuz9",
       "linkedIn": ""
     }
   },
   {
-    "url": "#",
-    "avatar": "#",
-    "name": "#",
-    "committee": "#",
-    "committeeBadgeColor": "blue",
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
     "member": {
-      "name": "#",
+      "name": "Juan Sierra",
       "email": "",
-      "avatar": "#"
+      "avatar": "https://pbs.twimg.com/profile_images/1591291642690027520/nyP7Ktu__400x400.jpg"
     },
-    "role": "Member",
-    "country": "#",
+    "role": "Voting Member",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/jsierrax",
+      "linkedIn": "https://www.linkedin.com/in/sierrajuan/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Bartłomiej Kącicki",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/D4D03AQGZdFmbWYbkiA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1678454537404?e=1743033600&v=beta&t=ZgB-B_H_lY8ApIJlWx_4TXnWV1SVi4vgoS4lWA7ZHdQ"
+    },
+    "role": "SME",
+    "country": "Poland",
     "dRep": false,
     "sPO": false,
     "links": {
       "website": "",
       "twitter": "",
-      "linkedIn": ""
+      "linkedIn": "https://www.linkedin.com/in/bkacicki/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Adam Dean",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1580638413983653888/C0Tk7LEM_400x400.jpg"
+    },
+    "role": "SME",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/adamKDean",
+      "linkedIn": "https://www.linkedin.com/in/the-real-adam-dean/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Maciej Krasowski",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1340382646149541894/p2DLAGAM_400x400.jpg"
+    },
+    "role": "SME",
+    "country": "Poland",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/maciejkrasowski",
+      "linkedIn": "https://www.linkedin.com/in/maciejkrasowski/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Alexandru Dochioiu",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1862165149634772992/IrXvu1RR_400x400.jpg"
+    },
+    "role": "SME",
+    "country": "United Kingdom",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/alex_vespr",
+      "linkedIn": "https://www.linkedin.com/in/alexandru-dochioiu/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Dynal Patel",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1115581102184435712/CClyKo2G_400x400.png"
+    },
+    "role": "SME",
+    "country": "South Africa",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://realfi.co/",
+      "twitter": "https://x.com/dynalpatel",
+      "linkedIn": "https://www.linkedin.com/in/dynalpatel/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Zachary Soesbee",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQF4JBHsRyIqmQ/profile-displayphoto-shrink_800_800/B4EZOhOXyyH0Ac-/0/1733576740167?e=1743033600&v=beta&t=BXxfPsnh89-gPdPnJyGz2JOHamMxX7Abdq3ADyUtf2Y"
+    },
+    "role": "SME",
+    "country": "United States",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": "https://www.linkedin.com/in/zachary-soesbee-4a5ab317a/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Alex Apeldoorn",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/C4D03AQG0q_nVsOcjgw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516951490514?e=1743033600&v=beta&t=1pnRSQvrn7JiAnfo-lWoENzYnYde9pSHfnDNsh-7-wk"
+    },
+    "role": "SME",
+    "country": "United Kingdom",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": "https://www.linkedin.com/in/alex-apeldoorn-27886321/"
+    }
+  },
+    {
+    "url": "",
+    "avatar": "",
+    "name": "N/A",
+    "committee": "Membership & Community Committee",
+    "committeeBadgeColor": "orange",
+    "member": {
+      "name": "Ben Hart",
+      "email": "",
+      "avatar": ""
+    },
+    "role": "SME",
+    "country": "Canada",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "https://www.mlabs.city/",
+      "twitter": "https://x.com/MLabs10",
+      "linkedIn": "https://www.linkedin.com/in/ben-hart-10386a295/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Fergie Miller",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1735227942114852864/iBnzvn4x_400x400.jpg"
+    },
+    "role": "SME",
+    "country": "United Kingdom",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/fergiemiller",
+      "linkedIn": "https://www.linkedin.com/in/fergiemiller/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Neil Davis",
+      "email": "",
+      "avatar": "https://media.licdn.com/dms/image/v2/C5603AQFq5R24vKUqxA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516253177307?e=1743033600&v=beta&t=K3gIeFd6qgNok5OoayNEmTZi6b_nM73O6Nu9KbGxKyw"
+    },
+    "role": "SME",
+    "country": "United Kingdom",
+    "dRep": true,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "",
+      "linkedIn": "https://www.linkedin.com/in/neildavies0/"
+    }
+  },
+  {
+    "url": "",
+    "avatar": "",
+    "name": "",
+    "committee": "Product Committee",
+    "committeeBadgeColor": "purple",
+    "member": {
+      "name": "Federico Weill",
+      "email": "",
+      "avatar": "https://pbs.twimg.com/profile_images/1725927646314266624/-HKB5_nN_400x400.jpg"
+    },
+    "role": "SME",
+    "country": "Argentina",
+    "dRep": false,
+    "sPO": false,
+    "links": {
+      "website": "",
+      "twitter": "https://x.com/FedeWeill",
+      "linkedIn": "https://www.linkedin.com/in/federico-weill-84b0281b/"
     }
   },
   {
