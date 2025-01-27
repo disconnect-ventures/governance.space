@@ -7,6 +7,7 @@ import { CallToAction } from "~/components/features/CallToAction";
 import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 import { Toaster } from "~/components/ui/toaster";
 import { AnnouncementBar } from "~/components/layout/AnnouncementBar";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId="GTM-W47W68BT" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100vh] flex flex-col`}
       >
