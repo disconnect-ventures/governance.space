@@ -2,7 +2,6 @@
 import { RadioIcon } from "lucide-react";
 import { LiveEventsDirectory } from "~/components/features/liveEvents/LiveEventsDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
-import { Badge } from "~/components/ui/badge";
 import { getMockLiveEvents } from "~/lib/mock";
 
 export default async function LiveEventsPage() {
@@ -16,13 +15,9 @@ export default async function LiveEventsPage() {
             <RadioIcon />
           </div>
         }
+        info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor odio, laoreet ac eros eu, euismod sollicitudin nulla. Nam sed sem massa. Nunc sit amet porta neque. Vivamus nibh magna, tristique at justo eget, hendrerit convallis risus. Vivamus eleifend felis quis tristique porttitor. Maecenas ornare molestie lobortis. Quisque at ultricies augue."
+        badge="200 events in the last 24h"
       >
-        <Badge
-          variant="secondary"
-          className="bg-gray-100 border-foreground p-2 rounded-full"
-        >
-          200 events in the last 24h
-        </Badge>
       </PageTitle>
       <LiveEventsDirectory liveEvents={liveEvents} />
     </div>

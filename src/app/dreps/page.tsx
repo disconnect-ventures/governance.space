@@ -5,21 +5,18 @@ import {
   DRepsDirectoryProps,
 } from "~/components/features/dreps/DRepsDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
-import { Badge } from "~/components/ui/badge";
 import { getDReps } from "~/lib/dreps";
 
 export default async function DRepsDirectoryPage() {
   const dreps = await getDReps();
   return (
     <div className="space-y-4">
-      <PageTitle title={"DReps Directory"} icon={<UsersIcon />}>
-        <Badge
-          variant="secondary"
-          className="bg-gray-100 border-foreground p-2 rounded-full"
-        >
-          259 registered DReps
-        </Badge>
-      </PageTitle>
+      <PageTitle
+        title={"DReps Directory"}
+        icon={<UsersIcon />}
+        badge="259 registered DReps"
+        info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor odio, laoreet ac eros eu, euismod sollicitudin nulla. Nam sed sem massa. Nunc sit amet porta neque. Vivamus nibh magna, tristique at justo eget, hendrerit convallis risus. Vivamus eleifend felis quis tristique porttitor. Maecenas ornare molestie lobortis. Quisque at ultricies augue."
+      ></PageTitle>
       <DRepsDirectory dreps={dreps as DRepsDirectoryProps["dreps"]} />
     </div>
   );
