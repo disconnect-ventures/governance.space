@@ -88,7 +88,7 @@ export function Footer() {
           <div>© 2024 Governance Space</div>
           <div className="flex space-x-4">
             <Link href="/privacy-policy">Privacy Policy</Link>
-            <Link href="/terms-of-use">Terms of Use</Link>
+            <Link href="/terms">Terms of Use</Link>
             <Link href="/cookie-policy">Cookie Policy</Link>
           </div>
           <div className="flex items-center space-x-2">
