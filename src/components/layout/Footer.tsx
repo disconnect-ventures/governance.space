@@ -15,28 +15,28 @@ export function Footer() {
     {
       title: "EXPLORE",
       links: [
-        { title: "Others", path: "/others" },
-        { title: "Governance Actions", path: "/governance-actions" },
+        { title: "DReps", path: "/dreps" },
+        { title: "Governance Actions", path: "/governance" },
         { title: "Proposals", path: "/proposals" },
-        { title: "Committee Members", path: "/committee-members" },
+        { title: "Committee Members", path: "/committees" },
       ],
     },
     {
       title: "GOVERNANCE",
       links: [
+        { title: "Live Events", path: "/live-events" },
+        { title: "Analytics", path: "/analytics" },
         { title: "Help", path: "/help" },
-        { title: "Stats", path: "/stats" },
         { title: "About", path: "/about" },
-        { title: "Contact", path: "/contact" },
       ],
     },
     {
       title: "LINKS",
       links: [
-        { title: "interNFT", path: "/internft" },
-        { title: "Cardano", path: "/cardano" },
-        { title: "Cardano Constitution", path: "/cardano-constitution" },
-        { title: "Interim Constitution", path: "/interim-constitution" },
+        { title: "Intersect", path: "https://intersectmbo.org/" },
+        { title: "Cardano", path: "https://cardano.org/" },
+        { title: "Constitution Committee Portal", path: "https://constitution.gov.tools/en" },
+        { title: "Interim Constitution", path: "https://constitution.gov.tools/en/interim-constitution" },
       ],
     },
   ];
@@ -53,10 +53,10 @@ export function Footer() {
               </span>
             </div>
             <div className="text-sm text-gray-600 mt-2">
-              Cardano Voltaire CIP-1694 Offical Transparency & Community Portal
+              Cardano Voltaire CIP-1694 Offical Transparency & Community Portal.
             </div>
             <div className="flex items-center space-x-2">
-              <span>Built on</span>
+              <span className="text-sm text-gray-600 mt-2">Built on</span>
               <span className="font-bold text-blue-600">CARDANO</span>
             </div>
           </div>
