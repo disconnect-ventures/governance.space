@@ -67,10 +67,6 @@ export const Header = () => {
       label: "About",
       href: "/about",
     },
-    {
-      label: "+ More",
-      href: "/todo",
-    },
   ];
 
   return (
@@ -87,8 +83,8 @@ export const Header = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button variant="ghost">Sign in</Button>
-            <Button>Create account</Button>
+//            <Button variant="ghost">Sign in</Button>
+            <Button>Connect Wallet</Button>
           </div>
 
           <div className="lg:flex items-center hidden">
