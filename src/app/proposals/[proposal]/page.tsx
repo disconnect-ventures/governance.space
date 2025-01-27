@@ -1,9 +1,11 @@
+import { FileTextIcon, HandHelpingIcon } from "lucide-react";
 import { notFound } from "next/navigation";
 import { ProposalContent } from "~/components/features/proposals/ProposalContent";
 import { ProposalHeader } from "~/components/features/proposals/ProposalHeader";
 import { ProposalIdentification } from "~/components/features/proposals/ProposalIdentification";
 import { ProposalTimeline } from "~/components/features/proposals/ProposalTimeline";
 import { VotingSection } from "~/components/features/proposals/VotingSection";
+import { PageTitle } from "~/components/layout/PageTitle";
 import { TopBar } from "~/components/layout/TopBar";
 import { Card, CardContent } from "~/components/ui/card";
 import { getProposalsById } from "~/lib/proposals";
@@ -27,9 +29,16 @@ export default async function ProposalDetailsPage({
   return (
     <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="space-y-4 sm:space-y-6">
-        <h1 className="text-2xl sm:text-3xl font-bold pt-4 sm:pt-6">
-          Proposal Details
-        </h1>
+        <PageTitle
+          title="Proposal Details"
+          icon={
+            <div className="p-2 rounded-full bg-gray-300 w-12 h-12 flex flex-col justify-center items-center">
+              <FileTextIcon className="w-5 h-5 relative top-1" />
+              <HandHelpingIcon className="w-6 h-6" />
+            </div>
+          }
+          info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor odio, laoreet ac eros eu, euismod sollicitudin nulla. Nam sed sem massa. Nunc sit amet porta neque. Vivamus nibh magna, tristique at justo eget, hendrerit convallis risus. Vivamus eleifend felis quis tristique porttitor. Maecenas ornare molestie lobortis. Quisque at ultricies augue."
+        />
 
         <TopBar backHref="/proposals" />
 
