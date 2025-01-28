@@ -73,23 +73,23 @@ export const Header = () => {
   return (
     <div className="w-full border-b py-4 md:pb-0">
       <div className="mx-auto px-4 md:px-8 max-w-7xl">
-        <div className="flex flex-col md:flex-row items-center justify-between min-h-16 gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-between min-h-16 gap-2">
           <div
-            className="w-full grid md:flex items-center flex-1 gap-4"
+            className="w-full grid md:flex items-center gap-2"
             style={{ gridTemplateColumns: ".1fr 1fr .1fr" }}
           >
             <SidebarTrigger className="md:hidden" />
-            <div className="mx-auto md:mx-0">
+            <div className="mx-auto md:mx-0 md:w-fit">
               <Logo />
             </div>
-            <div className="hidden md:flex relative max-w-sm">
+            <div className="hidden md:flex relative max-w-sm md:w-44">
               <Input type="text" placeholder="Search..." className="pl-8" />
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
             </div>
           </div>
 
           <div className="hidden md:flex items-center gap-2">
-            <Button variant="ghost">Sign in</Button>
+            <Button variant="ghost">Become a DRep</Button>
             <Button>Connect Wallet</Button>
           </div>
 
