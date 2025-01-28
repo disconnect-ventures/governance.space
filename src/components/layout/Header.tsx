@@ -74,9 +74,14 @@ export const Header = () => {
     <div className="w-full border-b py-4 md:pb-0">
       <div className="mx-auto px-4 md:px-8 max-w-7xl">
         <div className="flex flex-col md:flex-row items-center justify-between min-h-16 gap-4">
-          <div className="flex items-center flex-1 gap-4">
-            <SidebarTrigger className="absolute left-4 md:hidden" />
-            <Logo />
+          <div
+            className="w-full grid md:flex items-center flex-1 gap-4"
+            style={{ gridTemplateColumns: ".1fr 1fr .1fr" }}
+          >
+            <SidebarTrigger className="md:hidden" />
+            <div className="mx-auto md:mx-0">
+              <Logo />
+            </div>
             <div className="hidden md:flex relative max-w-sm">
               <Input type="text" placeholder="Search..." className="pl-8" />
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
