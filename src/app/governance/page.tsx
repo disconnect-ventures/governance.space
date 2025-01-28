@@ -17,7 +17,7 @@ export default async function GovernancePage() {
             <BookOpenCheckIcon />
           </div>
         }
-        info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor odio, laoreet ac eros eu, euismod sollicitudin nulla. Nam sed sem massa. Nunc sit amet porta neque. Vivamus nibh magna, tristique at justo eget, hendrerit convallis risus. Vivamus eleifend felis quis tristique porttitor. Maecenas ornare molestie lobortis. Quisque at ultricies augue."
+        info="Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period. See all the Governance Actions submitted on chain."
       ></PageTitle>
       <GovernanceActionDirectory governanceActions={governanceActions} />
     </div>
