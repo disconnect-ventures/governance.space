@@ -83,7 +83,7 @@ export const Header = () => {
           </div>
 
           <div className="flex items-center gap-2">
-//            <Button variant="ghost">Sign in</Button>
+            <Button variant="ghost">Sign in</Button>
             <Button>Connect Wallet</Button>
           </div>
 
