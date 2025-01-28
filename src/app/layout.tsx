@@ -8,6 +8,8 @@ import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 import { Toaster } from "~/components/ui/toaster";
 import { AnnouncementBar } from "~/components/layout/AnnouncementBar";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { SidebarProvider } from "~/components/ui/sidebar";
+import { AppSidebar } from "~/components/layout/AppSidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,17 +37,22 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100vh] flex flex-col`}
       >
-        <AnnouncementBar />
-        <Header />
-        <main className="min-h-[50vh] flex flex-col gap-4 justify-between bg-gray-100 pt-2">
-          <div className="w-full max-w-7xl mx-auto relative my-4 px-4 md:px-8">
-            <Breadcrumbs />
-            {children}
+        <SidebarProvider>
+          <div className="w-full">
+            <AnnouncementBar />
+            <Header />
+            <AppSidebar />
+            <main className="min-h-[50vh] flex flex-col gap-4 justify-between bg-gray-100 pt-2">
+              <div className="w-full max-w-7xl mx-auto relative my-4 px-4 md:px-8">
+                <Breadcrumbs />
+                {children}
+              </div>
+              <CallToAction />
+            </main>
+            <Toaster />
+            <Footer />
           </div>
-          <CallToAction />
-        </main>
-        <Toaster />
-        <Footer />
+        </SidebarProvider>
       </body>
     </html>
   );

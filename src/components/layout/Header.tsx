@@ -11,6 +11,46 @@ import { Input } from "~/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Logo from "../icons/Logo";
 import Link from "next/link";
+import { SidebarTrigger } from "../ui/sidebar";
+
+export const headerNavLinks = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "DReps Directory",
+    href: "/dreps",
+  },
+  {
+    label: "Governance Actions",
+    href: "/governance",
+  },
+  {
+    label: "Proposals",
+    href: "/proposals",
+  },
+  {
+    label: "Committees Members",
+    href: "/committees",
+  },
+  {
+    label: "Live Events",
+    href: "/live-events",
+  },
+  {
+    label: "Analytics",
+    href: "/analytics",
+  },
+  {
+    label: "Help",
+    href: "/help",
+  },
+  {
+    label: "About",
+    href: "/about",
+  },
+];
 
 export const HeaderNavigationLink = ({
   children,
@@ -30,52 +70,13 @@ export const HeaderNavigationLink = ({
   );
 };
 export const Header = () => {
-  const navLinks = [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "DReps Directory",
-      href: "/dreps",
-    },
-    {
-      label: "Governance Actions",
-      href: "/governance",
-    },
-    {
-      label: "Proposals",
-      href: "/proposals",
-    },
-    {
-      label: "Committees Members",
-      href: "/committees",
-    },
-    {
-      label: "Live Events",
-      href: "/live-events",
-    },
-    {
-      label: "Analytics",
-      href: "/analytics",
-    },
-    {
-      label: "Help",
-      href: "/help",
-    },
-    {
-      label: "About",
-      href: "/about",
-    },
-  ];
-
   return (
     <div className="w-full border-b py-4 md:pb-0">
       <div className="mx-auto px-4 md:px-8 max-w-7xl">
         <div className="flex flex-col md:flex-row items-center justify-between min-h-16 gap-4">
           <div className="flex items-center flex-1 gap-4">
+            <SidebarTrigger className="absolute left-4 md:hidden" />
             <Logo />
-
             <div className="hidden md:flex relative max-w-sm">
               <Input type="text" placeholder="Search..." className="pl-8" />
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
@@ -103,7 +104,7 @@ export const Header = () => {
           <div className="h-max-content flex justify-center overflow-x-auto overflow-y-hidden">
             <NavigationMenu>
               <NavigationMenuList className="w-full flex  gap-4 my-4">
-                {navLinks.map((link, index) => (
+                {headerNavLinks.map((link, index) => (
                   <HeaderNavigationLink key={index} href={link.href}>
                     {link.label}
                   </HeaderNavigationLink>
