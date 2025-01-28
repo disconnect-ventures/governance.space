@@ -15,7 +15,7 @@ export default async function DRepsDirectoryPage() {
         title={"DReps Directory"}
         icon={<UsersIcon />}
         badge="259 registered DReps"
-        info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor odio, laoreet ac eros eu, euismod sollicitudin nulla. Nam sed sem massa. Nunc sit amet porta neque. Vivamus nibh magna, tristique at justo eget, hendrerit convallis risus. Vivamus eleifend felis quis tristique porttitor. Maecenas ornare molestie lobortis. Quisque at ultricies augue."
+        info="Delegated Representatives (DReps) are ADA holders who registered on-chain to allow other members of the community to delegate their voting power to them, so that they can vote on their behalf. They are are like 'parlimentary representatives' in the Governance system."
       ></PageTitle>
       <DRepsDirectory dreps={dreps as DRepsDirectoryProps["dreps"]} />
     </div>
