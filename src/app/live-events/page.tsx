@@ -15,7 +15,7 @@ export default async function LiveEventsPage() {
             <RadioIcon />
           </div>
         }
-        info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor odio, laoreet ac eros eu, euismod sollicitudin nulla. Nam sed sem massa. Nunc sit amet porta neque. Vivamus nibh magna, tristique at justo eget, hendrerit convallis risus. Vivamus eleifend felis quis tristique porttitor. Maecenas ornare molestie lobortis. Quisque at ultricies augue."
+        info="See all governance events in real time."
         badge="200 events in the last 24h"
       >
       </PageTitle>
