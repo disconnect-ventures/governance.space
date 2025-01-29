@@ -14,6 +14,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://governancespace.com"),
   title: "Governance Space",
   description: "All-in-One Governance Platform",
   openGraph: {
