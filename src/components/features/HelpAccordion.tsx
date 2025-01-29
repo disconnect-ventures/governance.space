@@ -9,7 +9,12 @@ import {
 
 export function HelpAccordion() {
   return (
-    <Accordion type="single" collapsible className="w-full space-y-2">
+    <Accordion
+      type="single"
+      collapsible
+      className="w-full space-y-2"
+      defaultValue="governance"
+    >
       <AccordionItem
         value="governance"
         className="border-none rounded-lg bg-white p-4"
@@ -18,7 +23,12 @@ export function HelpAccordion() {
           Governance
         </AccordionTrigger>
         <AccordionContent>
-          <Accordion type="single" collapsible className="w-full space-y-2">
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full space-y-2"
+            defaultValue="voting-power-usage"
+          >
             <AccordionItem value="voting-power-usage" className="border-none">
               <AccordionTrigger className="hover:no-underline">
                 Ways to use your Voting Power?
