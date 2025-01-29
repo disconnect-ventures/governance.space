@@ -1,4 +1,4 @@
-import { BookOpenCheckIcon } from "lucide-react";
+import { MessageCircleQuestion } from "lucide-react";
 
 import { HelpAccordion } from "~/components/features/HelpAccordion";
 import { PageTitle } from "~/components/layout/PageTitle";
@@ -6,12 +6,12 @@ import { Input } from "~/components/ui/input";
 
 export default async function HelpPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div>
       <PageTitle
         title="Help"
         icon={
           <div className="p-2 rounded-full bg-gray-300 w-12 h-12 flex flex-col justify-center items-center">
-            <BookOpenCheckIcon />
+            <MessageCircleQuestion />
           </div>
         }
       />
