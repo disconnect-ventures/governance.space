@@ -9,6 +9,17 @@ import { GovernanceHistory } from "~/components/features/governance/GovernanceHi
 import { GovernanceDocuments } from "~/components/features/governance/GovernanceDocuments";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { BookOpenCheckIcon } from "lucide-react";
+import { Metadata } from "next";
+
+export async function generateMetadata(
+  { params, }: GovernanceActionDetailsProps
+): Promise<Metadata> {
+  const actionId = (await params).action;
+  return {
+    title: `Governance Space - Governance Action ${actionId}`,
+    description: "All-in-One Governance Platform",
+  }
+}
 
 const DOCUMENTS = [
   {

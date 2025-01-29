@@ -1,8 +1,13 @@
-// https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=34-1870&t=GGJEhGlKd8rVords-4
 import { BookOpenCheckIcon } from "lucide-react";
+import { Metadata } from "next";
 import { GovernanceActionDirectory } from "~/components/features/governance/GovernanceActionDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { getGovernanceActions } from "~/lib/governance-actions";
+
+export const metadata: Metadata = {
+  title: "Governance Space - Governance Actions",
+  description: "All-in-One Governance Platform",
+};
 
 export default async function GovernancePage() {
   let governanceActions = await getGovernanceActions();

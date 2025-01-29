@@ -1,4 +1,5 @@
 import { FileTextIcon, HandHelpingIcon } from "lucide-react";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProposalContent } from "~/components/features/proposals/ProposalContent";
 import { ProposalHeader } from "~/components/features/proposals/ProposalHeader";
@@ -9,6 +10,16 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { TopBar } from "~/components/layout/TopBar";
 import { Card, CardContent } from "~/components/ui/card";
 import { getProposalsById } from "~/lib/proposals";
+
+export async function generateMetadata(
+  { params, }: ProposalDetailsProps
+): Promise<Metadata> {
+  const proposalId = (await params).proposal;
+  return {
+    title: `Governance Space - Proposal ${proposalId}`,
+    description: "All-in-One Governance Platform",
+  }
+}
 
 type ProposalDetailsProps = {
   params: Promise<{

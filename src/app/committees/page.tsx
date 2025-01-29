@@ -1,10 +1,15 @@
-// https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=34-1870&t=GGJEhGlKd8rVords-4
 import { UserIcon } from "lucide-react";
+import { Metadata } from "next";
 import { CommitteeMembersDirectory } from "~/components/features/committees/CommitteeDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { getMockCommitteeMembers } from "~/lib/mock";
 
-export default async function GovernancePage() {
+export const metadata: Metadata = {
+  title: "Governance Space - Committees",
+  description: "All-in-One Governance Platform",
+};
+
+export default async function CommitteesPage() {
   const committees = getMockCommitteeMembers();
   return (
     <div className="space-y-4">

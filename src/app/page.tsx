@@ -1,7 +1,10 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Governance Space - Homepage",
+  description: "All-in-One Governance Platform",
+};
+
 export default function Home() {
-  return (
-    <div className="space-y-4">
-      Homepage
-    </div>
-  );
+  return <div className="space-y-4">Homepage</div>;
 }
