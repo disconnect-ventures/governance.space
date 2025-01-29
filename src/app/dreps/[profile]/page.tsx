@@ -1,5 +1,3 @@
-// https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=34-1458&t=GGJEhGlKd8rVords-4
-
 import { getDRepById } from "~/lib/dreps";
 import { notFound } from "next/navigation";
 import { VotingHistory } from "~/components/features/profile/VotingHistory";
@@ -12,6 +10,17 @@ import { getComments } from "~/lib/comments";
 import { User } from "lucide-react";
 import { TopBar } from "~/components/layout/TopBar";
 import { PageTitle } from "~/components/layout/PageTitle";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: DRepProfileProps): Promise<Metadata> {
+  const profileId = (await params).profile;
+  return {
+    title: `Governance Space - DRep Profile ${profileId}`,
+    description: "All-in-One Governance Platform",
+  };
+}
 
 type DRepProfileProps = {
   params: Promise<{

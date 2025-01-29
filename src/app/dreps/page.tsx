@@ -1,11 +1,16 @@
-// https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=30-346&t=GGJEhGlKd8rVords-4
 import { UsersIcon } from "lucide-react";
+import { Metadata } from "next";
 import {
   DRepsDirectory,
   DRepsDirectoryProps,
 } from "~/components/features/dreps/DRepsDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { getDReps } from "~/lib/dreps";
+
+export const metadata: Metadata = {
+  title: "Governance Space - DReps Directory",
+  description: "All-in-One Governance Platform",
+};
 
 export default async function DRepsDirectoryPage() {
   const dreps = await getDReps();

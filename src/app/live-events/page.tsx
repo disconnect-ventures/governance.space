@@ -1,8 +1,13 @@
-// https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=34-1870&t=GGJEhGlKd8rVords-4
 import { RadioIcon } from "lucide-react";
+import { Metadata } from "next";
 import { LiveEventsDirectory } from "~/components/features/liveEvents/LiveEventsDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { getMockLiveEvents } from "~/lib/mock";
+
+export const metadata: Metadata = {
+  title: "Governance Space - Live Events",
+  description: "All-in-One Governance Platform",
+};
 
 export default async function LiveEventsPage() {
   const liveEvents = getMockLiveEvents();

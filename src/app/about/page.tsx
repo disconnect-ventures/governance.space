@@ -1,7 +1,13 @@
 import { BookOpenCheckIcon, StarIcon } from "lucide-react";
+import { Metadata } from "next";
 import { PageTitle } from "~/components/layout/PageTitle";
 
-export default async function AnalyticsPage() {
+export const metadata: Metadata = {
+  title: "Governance Space - About",
+  description: "All-in-One Governance Platform",
+};
+
+export default async function AboutPage() {
   return (
     <div className="">
       <PageTitle

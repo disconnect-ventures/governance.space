@@ -1,9 +1,15 @@
 // https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=34-2282&t=GGJEhGlKd8rVords-4
 
 import { FileTextIcon, HandHelpingIcon } from "lucide-react";
+import { Metadata } from "next";
 import { ProposalDirectory } from "~/components/features/proposals/ProposalDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { getProposals } from "~/lib/proposals";
+
+export const metadata: Metadata = {
+  title: "Governance Space - Proposals",
+  description: "All-in-One Governance Platform",
+};
 
 export default async function ProposalsPage() {
   const proposals = await getProposals();

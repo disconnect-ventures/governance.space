@@ -1,5 +1,11 @@
 import { BookOpenCheckIcon } from "lucide-react";
+import { Metadata } from "next";
 import { PageTitle } from "~/components/layout/PageTitle";
+
+export const metadata: Metadata = {
+  title: "Governance Space - Privacy Policy",
+  description: "All-in-One Governance Platform",
+};
 
 export default async function PrivacyPolicyPage() {
   return (
