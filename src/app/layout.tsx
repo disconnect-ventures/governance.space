@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import { Header } from "~/components/layout/Header";
 import { Footer } from "~/components/layout/Footer";
 import { CallToAction } from "~/components/features/CallToAction";
@@ -10,16 +8,10 @@ import { AnnouncementBar } from "~/components/layout/AnnouncementBar";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { SidebarProvider } from "~/components/ui/sidebar";
 import { AppSidebar } from "~/components/layout/AppSidebar";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Governance Space",
@@ -27,8 +19,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Governance Space",
     description: "All-in-One Governance Platform",
-    images: ["/open-graph.png"]
-  }
+    images: ["/open-graph.png"],
+  },
 };
 
 export default function RootLayout({
@@ -40,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <GoogleTagManager gtmId="GTM-W47W68BT" />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-[100vh] flex flex-col`}
+        className={`${inter.className} antialiased min-h-[100vh] flex flex-col`}
       >
         <SidebarProvider>
           <div className="w-full">
