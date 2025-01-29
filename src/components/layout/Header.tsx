@@ -73,7 +73,7 @@ export const Header = () => {
   return (
     <div className="w-full border-b py-4 md:pb-0">
       <div className="mx-auto px-4 md:px-8 max-w-7xl">
-        <div className="flex flex-col md:flex-row items-center justify-between min-h-16 gap-2">
+        <div className="flex flex-col md:flex-row items-center justify-between md:min-h-16 gap-2">
           <div
             className="w-full grid md:flex items-center gap-2"
             style={{ gridTemplateColumns: ".1fr 1fr .1fr" }}
