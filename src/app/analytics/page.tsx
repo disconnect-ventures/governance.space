@@ -1,4 +1,4 @@
-import { BookOpenCheckIcon, StarIcon } from "lucide-react";
+import { BookOpenCheckIcon } from "lucide-react";
 import { PageTitle } from "~/components/layout/PageTitle";
 
 export default async function AnalyticsPage() {
@@ -14,11 +14,8 @@ export default async function AnalyticsPage() {
       />
 
       <div className="mt-6 space-y-6 text-gray-700">
-        <p>
-         Page under development.
-        </p>
+        <p>Page under development.</p>
       </div>
-      
     </div>
   );
 }
