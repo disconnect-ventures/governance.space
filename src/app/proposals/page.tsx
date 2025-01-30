@@ -24,7 +24,7 @@ export default async function ProposalsPage() {
           </div>
         }
         badge="12 registered proposals"
-        info="Participate in discussions and decision-making processes guided by community governance. See all the proposed governance actions."
+        info="Participate in discussions and decision-making processes guided by community governance."
       ></PageTitle>
       <ProposalDirectory proposals={proposals} />
     </div>
