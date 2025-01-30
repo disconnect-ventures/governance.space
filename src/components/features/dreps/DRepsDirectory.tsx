@@ -57,13 +57,21 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
               className={clsx(
                 drep.status === "Active" && "bg-green-100 text-green-800",
                 drep.status === "Retired" && "bg-yellow-100 text-yellow-800",
-                drep.status === "Inactive" && "bg-red-100 text-red-800"
+                drep.status === "Inactive" && "bg-red-100 text-red-800",
               )}
             >
               {drep.status}
             </Badge>
           </TableCell>
-          <TableCell className="text-blue-600">{drep.votingPower}</TableCell>
+          <TableCell className="text-blue-600">
+            <Badge className="bg-[#FAF5FF] text-[#1E40AF]">
+              <span className="mr-1">₳</span>
+              {new Intl.NumberFormat("en-US", {
+                minimumFractionDigits: 3,
+                maximumFractionDigits: 3,
+              }).format(drep.votingPower)}
+            </Badge>
+          </TableCell>
           <TableCell>
             <div className="flex gap-2">
               <MessageSquare className="h-4 w-4 text-gray-400" />
@@ -73,7 +81,11 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
           <TableCell>{/** drep.delegators */}</TableCell>
           <TableCell>{drep.votingPower}</TableCell>
           <TableCell className="text-blue-600">{/** drep.voting */}</TableCell>
-          <TableCell>{drep.latestRegistrationDate}</TableCell>
+          <TableCell>
+            {new Date(drep.latestRegistrationDate)
+              .toLocaleDateString("fr-CA")
+              .replace(/-/g, "/")}
+          </TableCell>
           <TableCell>
             <div className="flex items-center gap-2">
               <Star className="h-4 w-4 text-gray-400" />
