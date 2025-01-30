@@ -39,8 +39,9 @@ export function Footer() {
       links: [
         { title: "Intersect", path: "https://intersectmbo.org/" },
         { title: "Cardano", path: "https://cardano.org/" },
+
         {
-          title: "Constitution Committee Portal",
+          title: "Const. Committee Portal",
           path: "https://constitution.gov.tools/en",
         },
         {
@@ -70,8 +71,11 @@ export function Footer() {
               </div>
             </div>
             <div className="text-sm text-gray-600 mt-2">
-               <p>All-in-One Governance Platform.</p>
-               <p>Cardano Voltaire CIP-1694 Offical Transparency & Community Portal.</p>
+              <p>All-in-One Governance Platform.</p>
+              <p>
+                Cardano Voltaire CIP-1694 Offical Transparency & Community
+                Portal.
+              </p>
             </div>
             <div className="flex items-center gap-2 mt-2">
               <span className="text-sm text-gray-600">Built on:</span>
