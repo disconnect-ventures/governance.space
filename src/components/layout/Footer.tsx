@@ -1,5 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import Logo from "~/components/icons/Logo";
+import CardanoLogo from "../../../public/cardano-logo.svg";
+import { Twitter } from "lucide-react";
 
 export type MenuSection = {
   title: string;
@@ -35,8 +38,14 @@ export function Footer() {
       links: [
         { title: "Intersect", path: "https://intersectmbo.org/" },
         { title: "Cardano", path: "https://cardano.org/" },
-        { title: "Constitution Committee Portal", path: "https://constitution.gov.tools/en" },
-        { title: "Interim Constitution", path: "https://constitution.gov.tools/en/interim-constitution" },
+        {
+          title: "Constitution Committee Portal",
+          path: "https://constitution.gov.tools/en",
+        },
+        {
+          title: "Interim Constitution",
+          path: "https://constitution.gov.tools/en/interim-constitution",
+        },
       ],
     },
   ];
@@ -51,13 +60,30 @@ export function Footer() {
               <span className="font-semibold text-xl">
                 <Logo />
               </span>
+              <div>
+                <div className="p-2 bg-gray-100 rounded-sm">
+                  <Link href="https://x.com/governancevote ">
+                    <Twitter />
+                  </Link>
+                </div>
+              </div>
             </div>
             <div className="text-sm text-gray-600 mt-2">
               Cardano Voltaire CIP-1694 Offical Transparency & Community Portal.
             </div>
-            <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-600 mt-2">Built on</span>
-              <span className="font-bold text-blue-600">CARDANO</span>
+            <div className="flex items-center gap-2 mt-2">
+              <span className="text-sm text-gray-600">Built on:</span>
+              <Image
+                src={CardanoLogo}
+                alt="Cardano's logo"
+                width={140}
+                className="object-contain"
+              />
+            </div>
+            <div className="mt-1">
+              <span className="text-sm text-gray-600">
+                hello@governancespace.com
+              </span>
             </div>
           </div>
 
