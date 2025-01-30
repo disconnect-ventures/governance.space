@@ -20,33 +20,29 @@ export default async function AboutPage() {
       />
 
       <div className="mt-6 space-y-6 text-gray-700">
+
+        <p>All-in-One Governance Platform.</p>
+          
+        <p>Cardano Voltaire CIP-1694 Offical Transparency & Community Portal.</p>
+          
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-          auctor cursus nisi, vitae aliquam nulla tempor vitae. Ut metus tortor,
-          aliquet id mi sit amet, condimentum tristique urna. Proin nec justo et
-          lorem laoreet efficitur et vitae nisi. Cras pellentesque laoreet
-          metus, a malesuada orci consectetur eget. Vivamus quis arcu metus.
+        <span className="text-sm text-gray-600">Built on:</span>
+        <Link href="https://cardano.org/" target="_blank">
+          <Image
+            src={CardanoLogo}
+            alt="Cardano's logo"
+            width={140}
+            className="object-contain"
+          />
+        </Link>
         </p>
+
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-          auctor cursus nisi, vitae aliquam nulla tempor vitae. Ut metus tortor,
-          aliquet id mi sit amet, condimentum tristique urna.
+        <Link href="mailto:hello@governancespace.com" className="text-sm text-gray-600">
+        hello@governancespace.com
+        </Link>
         </p>
-        <p>
-          Vivamus quis arcu metus. Cras pellentesque laoreet metus, a malesuada
-          orci consectetur eget. Ut metus tortor, aliquet id mi sit amet,
-          condimentum tristique urna.
-        </p>
-        <p>
-          Proin nec justo et lorem laoreet efficitur et vitae nisi. Cras
-          pellentesque laoreet metus, a malesuada orci consectetur eget. Vivamus
-          quis arcu metus.
-        </p>
-        <p>
-          Vivamus quis arcu metus. Cras pellentesque laoreet metus, a malesuada
-          orci consectetur eget. Ut metus tortor, aliquet id mi sit amet,
-          condimentum tristique urna.
-        </p>
+          
       </div>
 
       <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
