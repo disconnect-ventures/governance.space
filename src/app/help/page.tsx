@@ -1,5 +1,5 @@
 import { MessageCircleQuestion } from "lucide-react";
-
+import { Metadata } from "next";
 import { HelpAccordion } from "~/components/features/HelpAccordion";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { Input } from "~/components/ui/input";
