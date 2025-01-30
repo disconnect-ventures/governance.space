@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "~/components/icons/Logo";
-import CardanoLogo from "../../../public/cardano-logo.svg";
 import { Twitter } from "lucide-react";
+
+import CardanoLogo from "../../../public/cardano-logo.svg";
+import Logo from "~/components/icons/Logo";
 
 export type MenuSection = {
   title: string;
@@ -52,7 +53,7 @@ export function Footer() {
 
   return (
     <footer className="bg-white py-8 border-t border-gray-200">
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row justify-between gap-4">
           {/* Logo and Built on section */}
           <div className="mb-8 md:mb-0">
@@ -73,21 +74,25 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-2 mt-2">
               <span className="text-sm text-gray-600">Built on:</span>
-              <Image
-                src={CardanoLogo}
-                alt="Cardano's logo"
-                width={140}
-                className="object-contain"
-              />
+              <Link href="https://cardano.org/">
+                <Image
+                  src={CardanoLogo}
+                  alt="Cardano's logo"
+                  width={140}
+                  className="object-contain"
+                />
+              </Link>
             </div>
             <div className="mt-1">
-              <span className="text-sm text-gray-600">
+              <Link
+                href="mailto:hello@governancespace.com"
+                className="text-sm text-gray-600"
+              >
                 hello@governancespace.com
-              </span>
+              </Link>
             </div>
           </div>
 
-          {/* Menu sections */}
           <div className="grid md:grid-cols-3 gap-8">
             {menu.map(({ title, links }, index) => (
               <div key={index} className="flex flex-col">
@@ -109,7 +114,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom section */}
         <div className="mt-8 pt-4 border-t border-gray-200 flex flex-wrap justify-between items-center text-sm text-gray-600">
           <div>© 2024 Governance Space</div>
           <div className="flex space-x-4">
