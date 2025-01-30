@@ -1,8 +1,13 @@
 import { MessageCircleQuestion } from "lucide-react";
-
+import { Metadata } from "next";
 import { HelpAccordion } from "~/components/features/HelpAccordion";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { Input } from "~/components/ui/input";
+
+export const metadata: Metadata = {
+  title: "Governance Space - Help",
+  description: "All-in-One Governance Platform",
+};
 
 export default async function HelpPage() {
   return (
