@@ -48,7 +48,7 @@ export default async function ProposalDetailsPage({
               <HandHelpingIcon className="w-6 h-6" />
             </div>
           }
-          info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor odio, laoreet ac eros eu, euismod sollicitudin nulla. Nam sed sem massa. Nunc sit amet porta neque. Vivamus nibh magna, tristique at justo eget, hendrerit convallis risus. Vivamus eleifend felis quis tristique porttitor. Maecenas ornare molestie lobortis. Quisque at ultricies augue."
+          info="Participate in discussions and decision-making processes guided by community governance."
         />
 
         <TopBar backHref="/proposals" />
