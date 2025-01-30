@@ -7,7 +7,7 @@ export function AnnouncementBar() {
       <span className="text-sm">
         <AlertCircleIcon className="h-4 w-4 text-yellow-600 inline mr-2" />
         This site is under development and will officially launch on February
-        3rd at 21:30 UTC at Epoch 536.
+        3rd at 21:45 UTC at Epoch 536.
       </span>
     </div>
   );
