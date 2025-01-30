@@ -5,7 +5,7 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { getMockCommitteeMembers } from "~/lib/mock";
 
 export const metadata: Metadata = {
-  title: "Governance Space - Committees",
+  title: "Governance Space - Committees Members",
   description: "All-in-One Governance Platform",
 };
 
