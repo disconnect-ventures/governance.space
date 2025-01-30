@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { PageTitle } from "~/components/layout/PageTitle";
 
 export const metadata: Metadata = {
-  title: "Governance Space - Cookies",
+  title: "Governance Space - Cookies Policy",
   description: "All-in-One Governance Platform",
 };
 
