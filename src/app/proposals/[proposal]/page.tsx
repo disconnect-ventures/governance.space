@@ -38,7 +38,7 @@ export default async function ProposalDetailsPage({
   }
 
   return (
-    <div className="space-y-5">
+    <div>
       <PageTitle
         title="Proposal Details"
         icon={
