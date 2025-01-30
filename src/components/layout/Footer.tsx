@@ -63,7 +63,7 @@ export function Footer() {
               </span>
               <div>
                 <div className="p-2 bg-gray-100 rounded-sm">
-                  <Link href="https://x.com/governancevote ">
+                  <Link href="https://x.com/governancevote" target="_blank">
                     <Twitter />
                   </Link>
                 </div>
@@ -74,7 +74,7 @@ export function Footer() {
             </div>
             <div className="flex items-center gap-2 mt-2">
               <span className="text-sm text-gray-600">Built on:</span>
-              <Link href="https://cardano.org/">
+              <Link href="https://cardano.org/" target="_blank">
                 <Image
                   src={CardanoLogo}
                   alt="Cardano's logo"
