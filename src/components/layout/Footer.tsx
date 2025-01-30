@@ -70,7 +70,8 @@ export function Footer() {
               </div>
             </div>
             <div className="text-sm text-gray-600 mt-2">
-              Cardano Voltaire CIP-1694 Offical Transparency & Community Portal.
+               <p>All-in-One Governance Platform.</p>
+               <p>Cardano Voltaire CIP-1694 Offical Transparency & Community Portal.</p>
             </div>
             <div className="flex items-center gap-2 mt-2">
               <span className="text-sm text-gray-600">Built on:</span>
@@ -115,7 +116,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-4 border-t border-gray-200 flex flex-wrap justify-between items-center text-sm text-gray-600">
-          <div>© 2024 Governance Space</div>
+          <div>© 2025 Governance Space</div>
           <div className="flex space-x-4">
             <Link href="/privacy-policy">Privacy Policy</Link>
             <Link href="/terms">Terms of Use</Link>
