@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { ChevronDown, Search } from "lucide-react";
 import {
@@ -12,6 +13,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Logo from "../icons/Logo";
 import Link from "next/link";
 import { SidebarTrigger } from "../ui/sidebar";
+import { Separator } from "../ui/separator";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 export const headerNavLinks = [
   {
@@ -55,14 +59,22 @@ export const headerNavLinks = [
 export const HeaderNavigationLink = ({
   children,
   href = "",
+  active,
 }: {
   href: string;
+  active: boolean;
   children: React.ReactNode;
 }) => {
   return (
     <NavigationMenuItem>
       <Link href={href} legacyBehavior passHref>
-        <NavigationMenuLink className="px-3 py-2 hover:text-blue-500 rounded-full border-border border whitespace-nowrap">
+        <NavigationMenuLink
+          className={clsx(
+            "px-3 py-2 hover:text-blue-500 rounded-full border-border border whitespace-nowrap",
+            active &&
+              "bg-gray-800 text-gray-200 focus:bg-gray-800 focus:text-gray-200"
+          )}
+        >
           {children}
         </NavigationMenuLink>
       </Link>
@@ -70,8 +82,9 @@ export const HeaderNavigationLink = ({
   );
 };
 export const Header = () => {
+  const pathname = usePathname();
   return (
-    <div className="w-full border-b py-4 md:pb-0">
+    <div className="w-full border-b py-4 md:pb-0 sticky top-0 z-40 bg-background">
       <div className="mx-auto px-4 md:px-8 max-w-7xl">
         <div className="flex flex-col md:flex-row items-center justify-between md:min-h-16 gap-2">
           <div
@@ -105,12 +118,17 @@ export const Header = () => {
             <ChevronDown></ChevronDown>
           </div>
         </div>
-        <div className="hidden md:block py-2 border-t">
+        <Separator className="hidden md:block w-[100vw] absolute left-0" />
+        <div className="hidden md:block">
           <div className="h-max-content flex justify-center overflow-x-auto overflow-y-hidden">
             <NavigationMenu>
               <NavigationMenuList className="w-full flex  gap-4 my-4">
                 {headerNavLinks.map((link, index) => (
-                  <HeaderNavigationLink key={index} href={link.href}>
+                  <HeaderNavigationLink
+                    key={index}
+                    href={link.href}
+                    active={pathname === link.href}
+                  >
                     {link.label}
                   </HeaderNavigationLink>
                 ))}

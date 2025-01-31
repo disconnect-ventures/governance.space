@@ -18,6 +18,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
+import { usePathname } from "next/navigation";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -111,6 +112,16 @@ const SidebarProvider = React.forwardRef<
       window.addEventListener("keydown", handleKeyDown);
       return () => window.removeEventListener("keydown", handleKeyDown);
     }, [toggleSidebar]);
+
+    // Close sidebar whenever user changes path
+    const pathname = usePathname();
+    React.useEffect(() => {
+      if (isMobile) {
+        setOpenMobile(false);
+      } else {
+        setOpen(false);
+      }
+    }, [pathname, isMobile, setOpen]);
 
     // We add a state so that we can do data-state="expanded" or "collapsed".
     // This makes it easier to style the sidebar with Tailwind classes.
