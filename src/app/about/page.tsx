@@ -1,5 +1,7 @@
 import { BookOpenCheckIcon, StarIcon } from "lucide-react";
 import { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { PageTitle } from "~/components/layout/PageTitle";
 
 export const metadata: Metadata = {
@@ -20,29 +22,33 @@ export default async function AboutPage() {
       />
 
       <div className="mt-6 space-y-6 text-gray-700">
-
         <p>All-in-One Governance Platform.</p>
-          
-        <p>Cardano Voltaire CIP-1694 Offical Transparency & Community Portal.</p>
-          
+
         <p>
-        <span className="text-sm text-gray-600">Built on:</span>
-        <Link href="https://cardano.org/" target="_blank">
-          <Image
-            src={CardanoLogo}
-            alt="Cardano's logo"
-            width={140}
-            className="object-contain"
-          />
-        </Link>
+          Cardano Voltaire CIP-1694 Offical Transparency & Community Portal.
         </p>
 
         <p>
-        <Link href="mailto:hello@governancespace.com" className="text-sm text-gray-600">
-        hello@governancespace.com
-        </Link>
+          <span className="text-sm text-gray-600">Built on:</span>
+          <Link href="https://cardano.org/" target="_blank">
+            <Image
+              src={"/cardano-logo.svg"}
+              alt="Cardano's logo"
+              width={140}
+              height={30}
+              className="object-contain"
+            />
+          </Link>
         </p>
-          
+
+        <p>
+          <Link
+            href="mailto:hello@governancespace.com"
+            className="text-sm text-gray-600"
+          >
+            hello@governancespace.com
+          </Link>
+        </p>
       </div>
 
       <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
