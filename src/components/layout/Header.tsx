@@ -107,7 +107,7 @@ export const Header = () => {
           </div>
         </div>
         <Separator className="hidden md:block w-[100vw] absolute left-0" />
-        <div className="hidden md:block py-2">
+        <div className="hidden md:block">
           <div className="h-max-content flex justify-center overflow-x-auto overflow-y-hidden">
             <NavigationMenu>
               <NavigationMenuList className="w-full flex  gap-4 my-4">
