@@ -26,7 +26,7 @@ export function AppSidebar() {
           <SidebarGroup className="h-full">
             <SidebarGroupContent className="h-full flex flex-col gap-4">
               <div className="relative max-w-sm">
-                <Input type="text" placeholder="Search..." className="pl-8" />
+                <Input type="text" placeholder="Search..." className="pl-8" tabIndex={-1} />
                 <SearchIcon className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
               </div>
               <SidebarMenu>
