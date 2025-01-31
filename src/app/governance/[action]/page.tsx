@@ -11,14 +11,14 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { BookOpenCheckIcon } from "lucide-react";
 import { Metadata } from "next";
 
-export async function generateMetadata(
-  { params, }: GovernanceActionDetailsProps
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: GovernanceActionDetailsProps): Promise<Metadata> {
   const actionId = (await params).action;
   return {
     title: `Governance Space - Governance Action ${actionId}`,
     description: "All-in-One Governance Platform",
-  }
+  };
 }
 
 const DOCUMENTS = [
@@ -89,7 +89,7 @@ type GovernanceActionDetailsProps = {
 
 export default async function GovernanceActionDetailsPage({}: GovernanceActionDetailsProps) {
   return (
-    <div className="">
+    <div>
       <PageTitle
         title="Governace Action Details"
         icon={
@@ -100,7 +100,7 @@ export default async function GovernanceActionDetailsPage({}: GovernanceActionDe
         info="Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period."
       />
 
-      <TopBar backHref="/proposals" />
+      <TopBar backHref="/governance" />
 
       <Card>
         <GovernanceHeader />
