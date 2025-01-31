@@ -82,9 +82,7 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
           <TableCell>{drep.votingPower}</TableCell>
           <TableCell className="text-blue-600">{/** drep.voting */}</TableCell>
           <TableCell>
-            {new Date(drep.latestRegistrationDate)
-              .toLocaleDateString("fr-CA")
-              .replace(/-/g, "/")}
+            {new Date(drep.latestRegistrationDate).toLocaleDateString("pt-BR")}
           </TableCell>
           <TableCell>
             <div className="flex items-center gap-2">
