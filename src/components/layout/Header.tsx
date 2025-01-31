@@ -12,6 +12,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Logo from "../icons/Logo";
 import Link from "next/link";
 import { SidebarTrigger } from "../ui/sidebar";
+import { Separator } from "../ui/separator";
 
 export const headerNavLinks = [
   {
@@ -105,7 +106,8 @@ export const Header = () => {
             <ChevronDown></ChevronDown>
           </div>
         </div>
-        <div className="hidden md:block py-2 border-t">
+        <Separator className="hidden md:block w-[100vw] absolute left-0" />
+        <div className="hidden md:block py-2">
           <div className="h-max-content flex justify-center overflow-x-auto overflow-y-hidden">
             <NavigationMenu>
               <NavigationMenuList className="w-full flex  gap-4 my-4">
