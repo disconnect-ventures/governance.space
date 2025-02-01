@@ -89,7 +89,11 @@ export const Header = () => {
           </div>
 
           <div className="hidden md:flex items-center gap-2">
-            <Button variant="ghost">Become a DRep</Button>
+            <Button variant="ghost">
+              <Link href="https://gov.tools/register_drep" target="_blank">
+              Become a DRep
+              </Link>
+            </Button>
             <Button>Connect Wallet</Button>
           </div>
 
