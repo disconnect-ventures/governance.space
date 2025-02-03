@@ -1,3 +1,5 @@
+"use client";
+
 // https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=50-19603&t=GGJEhGlKd8rVords-4
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { DRep } from "~/lib/dreps";
@@ -12,6 +14,10 @@ type ProfileCardProps = {
 };
 
 export function ProfileCard({ drep }: ProfileCardProps) {
+  function handleCopyDRepId() {
+    navigator.clipboard.writeText(drep.drepId);
+  }
+
   return (
     <Card className="w-full bg-white shadow-sm space-y-2">
       <CardHeader className="pb-4">
@@ -60,7 +66,7 @@ export function ProfileCard({ drep }: ProfileCardProps) {
             {drep.drepId}
           </span>
           <button
-            // onClick={handleCopyDRepId}
+            onClick={handleCopyDRepId}
             className="p-1 hover:bg-gray-100 rounded"
           >
             <Copy className="w-4 h-4" />
