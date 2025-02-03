@@ -96,13 +96,7 @@ const MetricsDisplay = ({ data }: { data: MetricsData }) => {
   };
 
   return (
-    <div className="p-6">
-      <div className="mb-6 text-sm text-muted-foreground">
-        <span>Home</span>
-        <span className="mx-2">/</span>
-        <span>Analytics</span>
-      </div>
-
+    <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
         {metrics.map((metric, index) => (
           <Card key={index} className="bg-card shadow-none hover:bg-accent/50">
