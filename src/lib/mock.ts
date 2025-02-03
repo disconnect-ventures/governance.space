@@ -12,6 +12,8 @@ import { CommitteeMember } from "~/components/features/committees/CommitteeDirec
 import MockCommitteeMembers from "~/lib/fixtures/committees.json";
 import MockLiveEvents from "~/lib/fixtures/live-events.json";
 import { LiveEvent } from "~/components/features/liveEvents/LiveEventsDirectory";
+import MockMetricsResult from "./fixtures/metrics.json";
+import { MetricsData } from "./analytics";
 
 export function getMockDReps(): Array<DRep> {
   return MockDRepsResult.elements;
@@ -39,4 +41,8 @@ export function getMockCommitteeMembers(): CommitteeMember[] {
 
 export function getMockLiveEvents(): LiveEvent[] {
   return MockLiveEvents as LiveEvent[];
+}
+
+export function getMockMetrics(): MetricsData {
+  return MockMetricsResult;
 }

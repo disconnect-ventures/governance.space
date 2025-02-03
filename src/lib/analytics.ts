@@ -1,0 +1,30 @@
+// src/lib/analytics.ts
+export interface MetricsData {
+  currentTime: string;
+  currentEpoch: number;
+  currentBlock: number;
+  uniqueDelegators: number;
+  totalDelegations: number;
+  totalGovernanceActions: number;
+  totalDRepVotes: number;
+  totalRegisteredDReps: number;
+  totalStakeControlledByDReps: number;
+  totalStakeControlledBySPOs: number;
+  totalActiveDReps: number;
+  totalInactiveDReps: number;
+  totalActiveCIP119CompliantDReps: number;
+  totalRegisteredDirectVoters: number;
+  alwaysAbstainVotingPower: number;
+  alwaysNoConfidenceVotingPower: number;
+  networkName: string;
+  supply: number;
+  treasury: number;
+  circulation: number;
+  rewards: number;
+  reserves: number;
+  deposits: number;
+  total: number;
+  alwaysAbstain: number;
+  noConfidence: number;
+  dreps: number;
+}
