@@ -26,7 +26,12 @@ export function AppSidebar() {
           <SidebarGroup className="h-full">
             <SidebarGroupContent className="h-full flex flex-col gap-4">
               <div className="relative max-w-sm">
-                <Input type="text" placeholder="Search..." className="pl-8" tabIndex={-1} />
+                <Input
+                  type="text"
+                  placeholder="Search..."
+                  className="pl-8"
+                  tabIndex={-1}
+                />
                 <SearchIcon className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
               </div>
               <SidebarMenu>
@@ -37,7 +42,7 @@ export function AppSidebar() {
                         href={item.href}
                         className={clsx(
                           pathname === item.href &&
-                            "bg-gray-800 text-gray-200 focus:bg-gray-800 focus:text-gray-200"
+                            "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950"
                         )}
                       >
                         <span>{item.label}</span>

@@ -72,7 +72,7 @@ export const HeaderNavigationLink = ({
           className={clsx(
             "px-3 py-2 hover:text-blue-500 rounded-full border-border border whitespace-nowrap",
             active &&
-              "bg-gray-800 text-gray-200 focus:bg-gray-800 focus:text-gray-200"
+              "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950"
           )}
         >
           {children}
