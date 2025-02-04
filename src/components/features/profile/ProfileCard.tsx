@@ -1,11 +1,12 @@
-// https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=50-19603&t=GGJEhGlKd8rVords-4
+import { ArrowRightCircle, Star } from "lucide-react";
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { DRep } from "~/lib/dreps";
+
 import { Avatar } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 import { Card, CardHeader, CardContent } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
-import { ArrowRightCircle, Copy, Star } from "lucide-react";
+import CopyToClipboard from "../CopyToClipboard";
 
 type ProfileCardProps = {
   drep: DRep;
@@ -59,12 +60,7 @@ export function ProfileCard({ drep }: ProfileCardProps) {
           <span className="w-full sm:w-fit text-ellipsis overflow-hidden">
             {drep.drepId}
           </span>
-          <button
-            // onClick={handleCopyDRepId}
-            className="p-1 hover:bg-gray-100 rounded"
-          >
-            <Copy className="w-4 h-4" />
-          </button>
+          <CopyToClipboard value={drep.drepId} />
         </div>
 
         <p className="mt-4 text-gray-600 line-clamp-2">{drep.objectives}</p>
