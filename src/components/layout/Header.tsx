@@ -7,7 +7,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "~/components/ui/navigation-menu";
-import { Button } from "~/components/ui/button";
+import { Button, buttonVariants } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Logo from "../icons/Logo";
@@ -102,11 +102,13 @@ export const Header = () => {
           </div>
 
           <div className="hidden md:flex items-center gap-2">
-            <Button variant="ghost">
-              <Link href="https://gov.tools/register_drep" target="_blank">
+            <Link
+              href="https://gov.tools/register_drep"
+              target="_blank"
+              className={buttonVariants({ variant: "ghost" })}
+            >
               Become a DRep
-              </Link>
-            </Button>
+            </Link>
             <Button>Connect Wallet</Button>
           </div>
 
