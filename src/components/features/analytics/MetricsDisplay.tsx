@@ -18,15 +18,14 @@ const MetricsDisplay = ({ data }: { data: MetricsData }) => {
   };
 
   const metrics = [
-    { icon: <Users />, label: "Unique Delegators", value: data.uniqueDelegators },
+    { icon: <Users />, label: "Delegators", value: data.uniqueDelegators },
     { icon: <Database />, label: "Total DReps", value: data.totalRegisteredDReps },
     { icon: <Vote />, label: "DRep Votes", value: data.totalDRepVotes },
     { icon: <Award />, label: "Active DReps", value: data.totalActiveDReps },
     {
       icon: <Clock />,
-      label: "Current Epoch",
-      value: data.currentEpoch,
-      subValue: `Block ${data.currentBlock}`,
+      label: "Gov Actions",
+      value: data.totalGovernanceActions,
     },
   ];
 
@@ -80,6 +79,44 @@ const MetricsDisplay = ({ data }: { data: MetricsData }) => {
     { position: "Deposits", amount: data.deposits },
   ];
 
+  const epochMetricsData = [
+    {
+      item: "Total DReps",
+      value: data.dashboard.metrics.totalDReps.value,
+      change: data.dashboard.metrics.totalDReps.change,
+    },
+    {
+      item: "Total Delegators",
+      value: data.dashboard.metrics.totalDelegators.value,
+      change: data.dashboard.metrics.totalDelegators.change,
+    },
+    {
+      item: "New DReps",
+      value: data.dashboard.metrics.newDReps.value,
+      change: data.dashboard.metrics.newDReps.change,
+    },
+    {
+      item: "New Delegators",
+      value: data.dashboard.metrics.newDelegators.value,
+      change: data.dashboard.metrics.newDelegators.change,
+    },
+    {
+      item: "Delegation Rate",
+      value: data.dashboard.metrics.delegationRate.value,
+      change: data.dashboard.metrics.delegationRate.change,
+    },
+    {
+      item: "Active Delegated",
+      value: data.dashboard.metrics.activeDelegated.value,
+      change: data.dashboard.metrics.activeDelegated.change,
+    },
+    {
+      item: "Abstain/No Confidence",
+      value: data.dashboard.metrics.abstainNoConfidence.value,
+      change: data.dashboard.metrics.abstainNoConfidence.change,
+    },
+  ];
+
   const getGovernanceColor = (index: number) => {
     switch (index) {
       case 0:
@@ -108,9 +145,6 @@ const MetricsDisplay = ({ data }: { data: MetricsData }) => {
                 <div>
                   <p className="text-sm text-muted-foreground">{metric.label}</p>
                   <p className="text-2xl font-bold mt-1">{formatNumber(metric.value)}</p>
-                  {metric.subValue && (
-                    <p className="text-sm text-muted-foreground mt-1">{metric.subValue}</p>
-                  )}
                 </div>
               </div>
             </CardContent>
@@ -211,7 +245,7 @@ const MetricsDisplay = ({ data }: { data: MetricsData }) => {
         </Card>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <Card className="shadow-none">
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-6">Cardano Tokenomics </h3>
@@ -284,6 +318,52 @@ const MetricsDisplay = ({ data }: { data: MetricsData }) => {
           </CardContent>
         </Card>
       </div>
+
+      <Card className="shadow-none">
+        <CardContent className="p-6">
+          <h3 className="text-lg font-semibold mb-6">Epoch {data.dashboard.epoch} Metrics</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="text-left py-3 text-sm font-medium text-muted-foreground">#Item</th>
+                  <th className="text-center py-3 text-sm font-medium text-muted-foreground">
+                    Epoch {data.dashboard.epoch}
+                  </th>
+                  <th className="text-right py-3 text-sm font-medium text-muted-foreground">
+                    Changed
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {epochMetricsData.map((row) => {
+                  const isError =
+                    row.item === "Active Delegated" || row.item === "Abstain/No Confidence";
+                  const isWarning = row.item === "Delegation Rate";
+
+                  return (
+                    <tr key={row.item} className="hover:bg-accent/50">
+                      <td className="py-4 text-sm">{row.item}</td>
+                      <td className="py-4 text-sm text-center font-medium">{row.value}</td>
+                      <td
+                        className={`py-4 text-sm text-right font-medium ${
+                          isError
+                            ? "text-destructive"
+                            : isWarning
+                              ? "text-orange-500"
+                              : "text-green-500"
+                        }`}
+                      >
+                        {row.change}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };

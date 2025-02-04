@@ -1,4 +1,3 @@
-// src/lib/analytics.ts
 export interface MetricsData {
   currentTime: string;
   currentEpoch: number;
@@ -27,4 +26,43 @@ export interface MetricsData {
   alwaysAbstain: number;
   noConfidence: number;
   dreps: number;
+  dashboard: {
+    epoch: number;
+    metrics: {
+      totalDReps: {
+        value: number;
+        change: string;
+      };
+      totalDelegators: {
+        value: number;
+        change: string;
+      };
+      newDReps: {
+        value: number;
+        change: string;
+      };
+      newDelegators: {
+        value: number;
+        change: string;
+      };
+      delegationRate: {
+        value: string;
+        change: string;
+      };
+      activeDelegated: {
+        value: string;
+        change: string;
+      };
+      abstainNoConfidence: {
+        value: string;
+        change: string;
+      };
+    };
+    votingPowerByRegion: {
+      Asia: string;
+      Europe: string;
+      Unknown: string;
+      Africa: string;
+    };
+  };
 }
