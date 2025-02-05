@@ -8,13 +8,18 @@ import clsx from "clsx";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { DRep } from "~/lib/dreps";
 import { useRouter } from "next/navigation";
-import { TableDirectory } from "~/components/layout/Directory";
+import { DirectoryProps, TableDirectory } from "~/components/layout/Directory";
 
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
-};
+} & Pick<DirectoryProps, "page" | "pageSize" | "totalResults">;
 
-export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
+export const DRepsDirectory = ({
+  dreps,
+  totalResults,
+  page,
+  pageSize,
+}: DRepsDirectoryProps) => {
   const router = useRouter();
 
   return (
@@ -31,6 +36,9 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
         "Registration Date",
         "Actions",
       ]}
+      page={page}
+      pageSize={pageSize}
+      totalResults={totalResults}
       rows={dreps.map((drep) => (
         <TableRow
           key={drep.drepId}
@@ -57,7 +65,7 @@ export const DRepsDirectory = ({ dreps }: DRepsDirectoryProps) => {
               className={clsx(
                 drep.status === "Active" && "bg-green-100 text-green-800",
                 drep.status === "Retired" && "bg-yellow-100 text-yellow-800",
-                drep.status === "Inactive" && "bg-red-100 text-red-800",
+                drep.status === "Inactive" && "bg-red-100 text-red-800"
               )}
             >
               {drep.status}
