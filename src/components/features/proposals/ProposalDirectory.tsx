@@ -12,6 +12,9 @@ export function ProposalDirectory({ proposals }: ProposalDirectoryProps) {
   return (
     <Directory
       searchPlaceholder="Search proposals..."
+      page={0}
+      pageSize={15}
+      totalResults={0}
       rows={proposals.map((proposal, index) => (
         <ProposalCard key={index} proposal={proposal} />
       ))}

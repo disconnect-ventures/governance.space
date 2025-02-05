@@ -65,6 +65,9 @@ export const CommitteeMembersDirectory = ({
         "SPO",
         "Links",
       ]}
+      page={0}
+      pageSize={15}
+      totalResults={0}
       rows={committeeMembers.map((committee, index) => (
         <TableRow key={index}>
           <TableCell>
