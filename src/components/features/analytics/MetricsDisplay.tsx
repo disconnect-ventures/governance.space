@@ -4,8 +4,14 @@ import { Users, Database, Vote, Award, Clock } from "lucide-react";
 import { MetricsData } from "~/lib/analytics";
 import { formatNumber, formatStake } from "./utils/formatters";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { DRep } from "~/lib/dreps";
 
-const MetricsDisplay = ({ data }: { data: MetricsData }) => {
+interface MetricsDisplayProps {
+  data: MetricsData;
+  drepList: DRep[];
+}
+
+const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
   const chartColors = {
     dreps: "hsl(var(--chart-1))",
     spos: "hsl(var(--chart-2))",
@@ -248,37 +254,6 @@ const MetricsDisplay = ({ data }: { data: MetricsData }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <Card className="shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold mb-6">Cardano Tokenomics </h3>
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-3 text-sm font-medium text-muted-foreground">
-                    Position
-                  </th>
-                  <th className="text-right py-3 text-sm font-medium text-muted-foreground">
-                    Amount in ADA
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {tokenomicsData.map((row) => (
-                  <tr
-                    key={row.position}
-                    className="border-b border-border last:border-0 hover:bg-accent/50"
-                  >
-                    <td className="py-4 text-sm">{row.position}</td>
-                    <td className="py-4 text-sm text-right font-medium">
-                      {formatNumber(row.amount)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </CardContent>
-        </Card>
-
-        <Card className="shadow-none">
-          <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-2">Governance Delegation </h3>
             <p className="text-sm text-muted-foreground mb-6">
               ADA taking part in Governance as of today by category in relation to the circulating
@@ -317,53 +292,130 @@ const MetricsDisplay = ({ data }: { data: MetricsData }) => {
             </div>
           </CardContent>
         </Card>
-      </div>
 
-      <Card className="shadow-none">
-        <CardContent className="p-6">
-          <h3 className="text-lg font-semibold mb-6">Epoch {data.dashboard.epoch} Metrics</h3>
-          <div className="overflow-x-auto">
+        <Card className="shadow-none">
+          <CardContent className="p-6">
+            <h3 className="text-lg font-semibold mb-6">Cardano Tokenomics </h3>
             <table className="w-full">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left py-3 text-sm font-medium text-muted-foreground">#Item</th>
-                  <th className="text-center py-3 text-sm font-medium text-muted-foreground">
-                    Epoch {data.dashboard.epoch}
+                  <th className="text-left py-3 text-sm font-medium text-muted-foreground">
+                    Position
                   </th>
                   <th className="text-right py-3 text-sm font-medium text-muted-foreground">
-                    Changed
+                    Amount in ADA
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-border">
-                {epochMetricsData.map((row) => {
-                  const isError =
-                    row.item === "Active Delegated" || row.item === "Abstain/No Confidence";
-                  const isWarning = row.item === "Delegation Rate";
-
-                  return (
-                    <tr key={row.item} className="hover:bg-accent/50">
-                      <td className="py-4 text-sm">{row.item}</td>
-                      <td className="py-4 text-sm text-center font-medium">{row.value}</td>
-                      <td
-                        className={`py-4 text-sm text-right font-medium ${
-                          isError
-                            ? "text-destructive"
-                            : isWarning
-                              ? "text-orange-500"
-                              : "text-green-500"
-                        }`}
-                      >
-                        {row.change}
-                      </td>
-                    </tr>
-                  );
-                })}
+              <tbody>
+                {tokenomicsData.map((row) => (
+                  <tr
+                    key={row.position}
+                    className="border-b border-border last:border-0 hover:bg-accent/50"
+                  >
+                    <td className="py-4 text-sm">{row.position}</td>
+                    <td className="py-4 text-sm text-right font-medium">
+                      {formatNumber(row.amount)}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Card className="shadow-none">
+          <CardContent className="p-6">
+            <h3 className="text-lg font-semibold mb-6">Top 10 DReps</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-3 text-sm font-medium text-muted-foreground">
+                      DRep Name
+                    </th>
+                    <th className="text-center py-3 text-sm font-medium text-muted-foreground">
+                      Status
+                    </th>
+                    <th className="text-right py-3 text-sm font-medium text-muted-foreground">
+                      Voting Power
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {drepList?.slice(0, 10).map((drep, index) => (
+                    <tr key={drep.drepId} className="hover:bg-accent/50">
+                      <td className="py-4 text-sm">{`${index + 1}º ${drep.givenName || "Anonymous DRep"}`}</td>
+                      <td className="py-4 text-sm text-center">
+                        <span
+                          className={`px-2 py-1 rounded-full text-xs ${
+                            drep.status === "Active"
+                              ? "bg-green-100 text-green-800"
+                              : drep.status === "Inactive"
+                                ? "bg-yellow-100 text-yellow-800"
+                                : "bg-red-100 text-red-800"
+                          }`}
+                        >
+                          {drep.status}
+                        </span>
+                      </td>
+                      <td className="py-4 text-sm text-right font-medium">
+                        ₳ {formatNumber(drep.votingPower)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow-none">
+          <CardContent className="p-6">
+            <h3 className="text-lg font-semibold mb-6">Epoch {data.dashboard.epoch} Metrics</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-3 text-sm font-medium text-muted-foreground">
+                      #Item
+                    </th>
+                    <th className="text-center py-3 text-sm font-medium text-muted-foreground">
+                      Epoch {data.dashboard.epoch}
+                    </th>
+                    <th className="text-right py-3 text-sm font-medium text-muted-foreground">
+                      Changed
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {epochMetricsData.map((row) => {
+                    const isError =
+                      row.item === "Active Delegated" || row.item === "Abstain/No Confidence";
+                    const isWarning = row.item === "Delegation Rate";
+
+                    return (
+                      <tr key={row.item} className="hover:bg-accent/50">
+                        <td className="py-4 text-sm">{row.item}</td>
+                        <td className="py-4 text-sm text-center font-medium">{row.value}</td>
+                        <td
+                          className={`py-4 text-sm text-right font-medium ${
+                            isError ? "text-destructive" : "text-green-500"
+                          }`}
+                        >
+                          {isError ? `-${row.change}` : `+${row.change}`}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };
