@@ -25,5 +25,44 @@
   "total": 5526803251.241753,
   "alwaysAbstain": 2390729766.632512,
   "noConfidence": 140485275.613988,
-  "dreps": 2995588208.9952526
+  "dreps": 2995588208.9952526,
+  "dashboard": {
+    "epoch": 537,
+    "metrics": {
+      "totalDReps": {
+        "value": 778,
+        "change": "4%"
+      },
+      "totalDelegators": {
+        "value": 26028,
+        "change": "9%"
+      },
+      "newDReps": {
+        "value": 34,
+        "change": "62%"
+      },
+      "newDelegators": {
+        "value": 2331,
+        "change": "97%"
+      },
+      "delegationRate": {
+        "value": "9.21%",
+        "change": "8%"
+      },
+      "activeDelegated": {
+        "value": "3.24B",
+        "change": "8%"
+      },
+      "abstainNoConfidence": {
+        "value": "2.73B",
+        "change": "48%"
+      }
+    },
+    "votingPowerByRegion": {
+      "Asia": "45.94%",
+      "Europe": "17.54%",
+      "Unknown": "16.79%",
+      "Africa": "0.37%"
+    }
+  }
 }
