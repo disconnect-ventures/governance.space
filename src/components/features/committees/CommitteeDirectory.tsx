@@ -2,7 +2,7 @@
 import React from "react";
 import { TableCell, TableRow } from "~/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
-import { TableDirectory } from "~/components/layout/Directory";
+import { DirectorySearchParams, TableDirectory } from "~/components/layout/Directory";
 import {
   GlobeIcon,
   LinkedinIcon,
@@ -38,10 +38,12 @@ export interface CommitteeMember {
 
 export type CommitteeMembersDirectoryProps = {
   committeeMembers: Array<CommitteeMember>;
+  params: DirectorySearchParams;
 };
 
 export const CommitteeMembersDirectory = ({
   committeeMembers,
+  params,
 }: CommitteeMembersDirectoryProps) => {
   const colorMap = {
     blue: "bg-blue-300 text-blue-600 hover:bg-blue-300 hover:text-blue-600",
@@ -65,9 +67,7 @@ export const CommitteeMembersDirectory = ({
         "SPO",
         "Links",
       ]}
-      page={0}
-      pageSize={15}
-      totalResults={0}
+      params={params}
       rows={committeeMembers.map((committee, index) => (
         <TableRow key={index}>
           <TableCell>

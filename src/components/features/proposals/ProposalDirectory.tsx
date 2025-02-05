@@ -2,19 +2,18 @@
 import React from "react";
 import { Proposal } from "~/lib/proposals";
 import ProposalCard from "./ProposalCard";
-import { Directory } from "~/components/layout/Directory";
+import { Directory, DirectorySearchParams } from "~/components/layout/Directory";
 
 export type ProposalDirectoryProps = {
   proposals: Array<Proposal>;
+  params: DirectorySearchParams;
 };
 
-export function ProposalDirectory({ proposals }: ProposalDirectoryProps) {
+export function ProposalDirectory({ proposals, params }: ProposalDirectoryProps) {
   return (
     <Directory
       searchPlaceholder="Search proposals..."
-      page={0}
-      pageSize={15}
-      totalResults={0}
+      params={params}
       rows={proposals.map((proposal, index) => (
         <ProposalCard key={index} proposal={proposal} />
       ))}

@@ -8,18 +8,17 @@ import clsx from "clsx";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { DRep } from "~/lib/dreps";
 import { useRouter } from "next/navigation";
-import { DirectoryProps, TableDirectory } from "~/components/layout/Directory";
+import {
+  DirectorySearchParams,
+  TableDirectory,
+} from "~/components/layout/Directory";
 
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
-} & Pick<DirectoryProps, "page" | "pageSize" | "totalResults">;
+  params: DirectorySearchParams;
+};
 
-export const DRepsDirectory = ({
-  dreps,
-  totalResults,
-  page,
-  pageSize,
-}: DRepsDirectoryProps) => {
+export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
   const router = useRouter();
 
   return (
@@ -36,9 +35,7 @@ export const DRepsDirectory = ({
         "Registration Date",
         "Actions",
       ]}
-      page={page}
-      pageSize={pageSize}
-      totalResults={totalResults}
+      params={params}
       rows={dreps.map((drep) => (
         <TableRow
           key={drep.drepId}
