@@ -1,10 +1,10 @@
-import { getMockDReps } from "./mock";
+import { baseApiUrl, fetchApi } from ".";
 
 export type DRep = {
   isScriptBased: boolean;
   drepId: string;
   view: string;
-  status: "Active" | "Inactive" | "Retired" | string;
+  status: "Active" | "Inactive" | "Retired";
   url: string;
   metadataHash: string;
   deposit: number;
@@ -22,11 +22,40 @@ export type DRep = {
   imageHash: string | null;
 };
 
-export async function getDReps(): Promise<Array<DRep>> {
-  return getMockDReps();
+export type DRepListResponse = {
+  elements: Array<DRep>;
+  page: number;
+  pageSize: number;
+  total: number;
+};
+
+export type DRepSortOption =
+  | "Random"
+  | "RegistrationDate"
+  | "VotingPower"
+  | "Status";
+
+export type DRepFilterOption = DRep["status"];
+
+export async function getDReps(
+  page: number,
+  pageSize: number,
+  sort: DRepSortOption,
+  filters: DRepFilterOption[]
+): Promise<DRepListResponse> {
+  const url = new URL("/drep/list", baseApiUrl);
+  Object.entries({ page, pageSize, sort }).forEach(([key, value]) =>
+    url.searchParams.append(key, value.toString())
+  );
+  if (filters.length) {
+    filters.forEach((value) => url.searchParams.append("status[]", value));
+  }
+
+  const response = await fetchApi<DRepListResponse>(url);
+  return response;
 }
 
+// eslint-disable-next-line
 export async function getDRepById(id: string): Promise<DRep | null> {
-  const dreps = await getDReps();
-  return dreps.find((d) => d.drepId === id) ?? null;
+  return null;
 }
