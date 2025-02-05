@@ -3,21 +3,24 @@ import React from "react";
 import { GovernanceAction } from "~/lib/governance-actions";
 import { GovernanceActionCard } from "./GovernanceActionCard";
 import { getMockGovernanceActionMetadata } from "~/lib/mock";
-import { Directory } from "~/components/layout/Directory";
+import {
+  Directory,
+  DirectorySearchParams,
+} from "~/components/layout/Directory";
 
 type GovernanceActionDirectoryProps = {
   governanceActions: Array<GovernanceAction>;
+  params: DirectorySearchParams;
 };
 
 export function GovernanceActionDirectory({
   governanceActions,
+  params,
 }: GovernanceActionDirectoryProps) {
   return (
     <Directory
       searchPlaceholder="Search"
-      page={0}
-      pageSize={15}
-      totalResults={0}
+      params={params}
       rows={governanceActions.map((action, index) => {
         const metadata = getMockGovernanceActionMetadata(); // TODO
         const status = "In Progress"; // TODO

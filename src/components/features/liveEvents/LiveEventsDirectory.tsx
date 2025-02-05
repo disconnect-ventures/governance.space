@@ -1,7 +1,7 @@
 import React from "react";
 import { TableCell, TableRow } from "~/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
-import { TableDirectory } from "~/components/layout/Directory";
+import { DirectorySearchParams, TableDirectory } from "~/components/layout/Directory";
 import { capitalize } from "~/lib/utils";
 import { Badge } from "~/components/ui/badge";
 import { CircleCheck, CircleMinusIcon, CircleXIcon } from "lucide-react";
@@ -22,10 +22,12 @@ export interface LiveEvent {
 
 export type LiveEventsDirectoryProps = {
   liveEvents: Array<LiveEvent>;
+  params: DirectorySearchParams;
 };
 
 export const LiveEventsDirectory = ({
   liveEvents,
+  params,
 }: LiveEventsDirectoryProps) => {
   const getVoteBadge = (vote: LiveEvent["vote"]) => {
     switch (vote) {
@@ -68,9 +70,7 @@ export const LiveEventsDirectory = ({
         "Transaction",
         "Registration Date",
       ]}
-      page={0}
-      pageSize={15}
-      totalResults={0}
+      params={params}
       rows={liveEvents.map((liveEvent, index) => {
         const registrationDate = new Date(liveEvent.registrationDate);
         return (

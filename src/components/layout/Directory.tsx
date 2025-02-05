@@ -20,33 +20,43 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/ui/table";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export type DirectoryProps = {
   container?: (children: React.ReactNode) => React.ReactNode;
   rows: React.ReactNode[];
-  totalResults: number;
   searchPlaceholder: string;
-  page: number;
-  pageSize: number;
+  params: DirectorySearchParams;
+};
+
+export type DirectorySearchParams<S = string, F = string[]> = {
+  page?: number;
+  pageSize?: number;
+  totalResults?: number;
+  sort?: S;
+  filters?: F;
 };
 
 export function Directory({
   rows,
   container,
-  totalResults,
-  page,
-  pageSize,
+  params,
   searchPlaceholder,
 }: DirectoryProps) {
+  const { page = 0, pageSize = 15, totalResults = 0 } = params;
   const totalPages = useMemo(
     () => Math.ceil(totalResults / pageSize),
     [totalResults, pageSize]
   );
   const pathname = usePathname();
-  const params = useSearchParams();
   const query: Map<string, string | string[]> = useMemo(
-    () => new Map(params),
+    () =>
+      new Map(
+        Object.entries(params).map(([key, value]) => [
+          key,
+          Array.isArray(value) ? value : String(value),
+        ])
+      ),
     [params]
   );
 
@@ -70,14 +80,19 @@ export function Directory({
 
   const getNewUrl = (newParams: Map<string, string | string[]>) => {
     const newQuery = new Map(query);
-    newParams.entries().forEach(([key, value]) => newQuery.set(key, value));
-    const newParamString = [...newQuery.entries()]
+
+    for (const [key, value] of newParams.entries()) {
+      newQuery.set(key, value);
+    }
+
+    const newParamString = Array.from(newQuery.entries())
       .map(([key, value]) =>
         Array.isArray(value)
           ? value.map((v) => `${key}=${v}`).join("&")
           : `${key}=${value}`
       )
       .join("&");
+
     return pathname + `?${newParamString}`;
   };
 
@@ -165,15 +180,12 @@ type TableDirectoryProps = DirectoryProps & {
 export function TableDirectory({
   headers,
   rows,
-  pageSize,
-  page,
+  params,
   searchPlaceholder,
-  totalResults,
 }: TableDirectoryProps) {
   return (
     <Directory
-      pageSize={pageSize}
-      page={page}
+      params={params}
       searchPlaceholder={searchPlaceholder}
       container={(children) => (
         <Table className="bg-background">
@@ -193,7 +205,6 @@ export function TableDirectory({
         </Table>
       )}
       rows={rows}
-      totalResults={totalResults}
     ></Directory>
   );
 }
