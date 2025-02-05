@@ -24,6 +24,11 @@ export const metadata: Metadata = {
   },
 };
 
+export type PageProps<Params = undefined> = {
+  params: Promise<Params>;
+  searchParams?: Promise<{ [key: string]: string | undefined }>;
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{

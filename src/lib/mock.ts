@@ -14,7 +14,7 @@ import MockLiveEvents from "~/lib/fixtures/live-events.json";
 import { LiveEvent } from "~/components/features/liveEvents/LiveEventsDirectory";
 
 export function getMockDReps(): Array<DRep> {
-  return MockDRepsResult.elements;
+  return MockDRepsResult.elements as Array<DRep>;
 }
 
 export function getMockGovernanceActions(): Array<GovernanceAction> {
