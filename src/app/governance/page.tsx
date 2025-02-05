@@ -1,5 +1,6 @@
 import { BookOpenCheckIcon } from "lucide-react";
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { GovernanceActionDirectory } from "~/components/features/governance/GovernanceActionDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { getGovernanceActions } from "~/lib/governance-actions";
@@ -24,7 +25,9 @@ export default async function GovernancePage() {
         }
         info="Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period."
       ></PageTitle>
-      <GovernanceActionDirectory governanceActions={governanceActions} />
+      <Suspense fallback={null}>
+        <GovernanceActionDirectory governanceActions={governanceActions} />
+      </Suspense>
     </div>
   );
 }

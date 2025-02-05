@@ -1,5 +1,6 @@
 import { UserIcon } from "lucide-react";
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { CommitteeMembersDirectory } from "~/components/features/committees/CommitteeDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { getMockCommitteeMembers } from "~/lib/mock";
@@ -22,9 +23,11 @@ export default async function CommitteesPage() {
         }
         info="Meet the Cardano community members who are participating in all existing committees."
       ></PageTitle>
-      <CommitteeMembersDirectory
-        committeeMembers={[...committees, ...committees, ...committees]}
-      />
+      <Suspense fallback={null}>
+        <CommitteeMembersDirectory
+          committeeMembers={[...committees, ...committees, ...committees]}
+        />
+      </Suspense>
     </div>
   );
 }

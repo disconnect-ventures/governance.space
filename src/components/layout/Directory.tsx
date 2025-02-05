@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Card, CardContent } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
@@ -20,61 +20,66 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/ui/table";
+import { usePathname, useSearchParams } from "next/navigation";
 
-type DirectoryProps = {
+export type DirectoryProps = {
   container?: (children: React.ReactNode) => React.ReactNode;
   rows: React.ReactNode[];
-  itemsPerPage?: number;
+  totalResults: number;
   searchPlaceholder: string;
+  page: number;
+  pageSize: number;
 };
 
 export function Directory({
   rows,
   container,
-  itemsPerPage = 15,
+  totalResults,
+  page,
+  pageSize,
   searchPlaceholder,
 }: DirectoryProps) {
-  const [currentPage, setCurrentPage] = useState(1); // TODO: This pagination should be done through query params and avoid making this a client component
   const totalPages = useMemo(
-    () => Math.ceil(rows.length / itemsPerPage),
-    [rows, itemsPerPage]
+    () => Math.ceil(totalResults / pageSize),
+    [totalResults, pageSize]
   );
-  const startIndex = useMemo(
-    () => (currentPage - 1) * itemsPerPage,
-    [currentPage, itemsPerPage]
-  );
-  const endIndex = useMemo(
-    () => startIndex + itemsPerPage,
-    [startIndex, itemsPerPage]
-  );
-  const currentActions = useMemo(
-    () => rows.slice(startIndex, endIndex),
-    [rows, startIndex, endIndex]
+  const pathname = usePathname();
+  const params = useSearchParams();
+  const query: Map<string, string | string[]> = useMemo(
+    () => new Map(params),
+    [params]
   );
 
+  // TODO: simplify logic here
   const getPageNumbers = useCallback(() => {
     const pages = [];
-    for (let i = 1; i <= totalPages; i++) {
-      if (
-        i === 1 ||
-        i === totalPages ||
-        (i >= currentPage - 1 && i <= currentPage + 1)
-      ) {
+    const buffer = 2;
+    for (let i = 0; i < totalPages; i++) {
+      if (i === 0 || Math.abs(page - i) < buffer) {
         pages.push(i);
-      } else if (i === currentPage - 2 || i === currentPage + 2) {
+      } else {
         pages.push("...");
       }
     }
-    return [...new Set(pages)];
-  }, [totalPages, currentPage]);
+    return [
+      ...new Set(pages),
+      ...(totalPages - page > buffer && page > buffer ? ["..."] : []),
+      ...(totalPages - page > buffer ? [totalPages - 1] : []),
+    ];
+  }, [totalPages, page]);
 
-  const handlePageClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>, page: number) => {
-      e.preventDefault();
-      setCurrentPage(page);
-    },
-    []
-  );
+  const getNewUrl = (newParams: Map<string, string | string[]>) => {
+    const newQuery = new Map(query);
+    newParams.entries().forEach(([key, value]) => newQuery.set(key, value));
+    const newParamString = [...newQuery.entries()]
+      .map(([key, value]) =>
+        Array.isArray(value)
+          ? value.map((v) => `${key}=${v}`).join("&")
+          : `${key}=${value}`
+      )
+      .join("&");
+    return pathname + `?${newParamString}`;
+  };
 
   return (
     <Card className="w-full mx-auto shadow-none border-none bg-gray-100">
@@ -97,11 +102,9 @@ export function Directory({
         </div>
 
         {container ? (
-          container(currentActions)
+          container(rows)
         ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ">
-            {currentActions}
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ">{rows}</div>
         )}
 
         <div className="mt-4">
@@ -109,13 +112,10 @@ export function Directory({
             <PaginationContent>
               <PaginationItem>
                 <PaginationPrevious
-                  href={`#page=${Math.max(currentPage - 1, 1)}`}
-                  onClick={(e) =>
-                    handlePageClick(e, Math.max(currentPage - 1, 1))
-                  }
-                  className={
-                    currentPage === 1 ? "pointer-events-none opacity-50" : ""
-                  }
+                  href={getNewUrl(
+                    new Map([["page", Math.max(page - 1, 0).toString()]])
+                  )}
+                  className={page === 0 ? "pointer-events-none opacity-50" : ""}
                 />
               </PaginationItem>
 
@@ -125,9 +125,10 @@ export function Directory({
                     <PaginationEllipsis />
                   ) : (
                     <PaginationLink
-                      href={`#page=${pageNumber}`}
-                      onClick={(e) => handlePageClick(e, Number(pageNumber))}
-                      isActive={currentPage === pageNumber}
+                      href={getNewUrl(
+                        new Map([["page", pageNumber.toString()]])
+                      )}
+                      isActive={page === pageNumber}
                     >
                       {pageNumber}
                     </PaginationLink>
@@ -137,12 +138,13 @@ export function Directory({
 
               <PaginationItem>
                 <PaginationNext
-                  href={`#page=${Math.min(currentPage + 1, totalPages)}`}
-                  onClick={(e) =>
-                    handlePageClick(e, Math.min(currentPage + 1, totalPages))
-                  }
+                  href={getNewUrl(
+                    new Map([
+                      ["page", Math.min(page + 1, totalPages - 1).toString()],
+                    ])
+                  )}
                   className={
-                    currentPage === totalPages
+                    page === totalPages - 1
                       ? "pointer-events-none opacity-50"
                       : ""
                   }
@@ -163,12 +165,15 @@ type TableDirectoryProps = DirectoryProps & {
 export function TableDirectory({
   headers,
   rows,
-  itemsPerPage,
+  pageSize,
+  page,
   searchPlaceholder,
+  totalResults,
 }: TableDirectoryProps) {
   return (
     <Directory
-      itemsPerPage={itemsPerPage}
+      pageSize={pageSize}
+      page={page}
       searchPlaceholder={searchPlaceholder}
       container={(children) => (
         <Table className="bg-background">
@@ -188,6 +193,7 @@ export function TableDirectory({
         </Table>
       )}
       rows={rows}
+      totalResults={totalResults}
     ></Directory>
   );
 }

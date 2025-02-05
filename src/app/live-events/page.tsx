@@ -1,5 +1,6 @@
 import { RadioIcon } from "lucide-react";
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { LiveEventsDirectory } from "~/components/features/liveEvents/LiveEventsDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { getMockLiveEvents } from "~/lib/mock";
@@ -22,9 +23,10 @@ export default async function LiveEventsPage() {
         }
         info="See all governance events in real time."
         badge="200 events in the last 24h"
-      >
-      </PageTitle>
-      <LiveEventsDirectory liveEvents={liveEvents} />
+      ></PageTitle>
+      <Suspense fallback={null}>
+        <LiveEventsDirectory liveEvents={liveEvents} />
+      </Suspense>
     </div>
   );
 }

@@ -68,6 +68,9 @@ export const LiveEventsDirectory = ({
         "Transaction",
         "Registration Date",
       ]}
+      page={0}
+      pageSize={15}
+      totalResults={0}
       rows={liveEvents.map((liveEvent, index) => {
         const registrationDate = new Date(liveEvent.registrationDate);
         return (

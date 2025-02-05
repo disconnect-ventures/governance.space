@@ -2,6 +2,7 @@
 
 import { FileTextIcon, HandHelpingIcon } from "lucide-react";
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { ProposalDirectory } from "~/components/features/proposals/ProposalDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { getProposals } from "~/lib/proposals";
@@ -26,7 +27,9 @@ export default async function ProposalsPage() {
         badge="12 registered proposals"
         info="Participate in discussions and decision-making processes guided by community governance."
       ></PageTitle>
-      <ProposalDirectory proposals={proposals} />
+      <Suspense fallback={null}>
+        <ProposalDirectory proposals={proposals} />
+      </Suspense>
     </div>
   );
 }

@@ -31,6 +31,9 @@ export default async function DRepsDirectoryPage({
       ></PageTitle>
       <DRepsDirectory
         dreps={dreps.elements}
+        totalResults={dreps.total}
+        page={page}
+        pageSize={pageSize}
       />
     </div>
   );

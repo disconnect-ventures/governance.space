@@ -15,6 +15,9 @@ export function GovernanceActionDirectory({
   return (
     <Directory
       searchPlaceholder="Search"
+      page={0}
+      pageSize={15}
+      totalResults={0}
       rows={governanceActions.map((action, index) => {
         const metadata = getMockGovernanceActionMetadata(); // TODO
         const status = "In Progress"; // TODO
