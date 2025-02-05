@@ -16,7 +16,7 @@ import MockMetricsResult from "./fixtures/metrics.json";
 import { MetricsData } from "./analytics";
 
 export function getMockDReps(): Array<DRep> {
-  return MockDRepsResult.elements;
+  return MockDRepsResult.elements as Array<DRep>;
 }
 
 export function getMockGovernanceActions(): Array<GovernanceAction> {
