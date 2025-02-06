@@ -23,6 +23,12 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
 
   return (
     <TableDirectory
+      sortOptions={[
+        { value: "Random", label: "Random" },
+        { value: "RegistrationDate", label: "Registration Date" },
+        { value: "VotingPower", label: "Voting Power" },
+        { value: "Status", label: "Status" },
+      ]}
       searchPlaceholder={"Search DReps by name or ID"}
       headers={[
         "DRep name",
