@@ -49,7 +49,7 @@ export type DirectorySearchParams<S = string, F = string[]> = {
   filters?: F;
 };
 
-const SEARCH_THROTTLE_MS = 1000;
+const SEARCH_THROTTLE_MS = 200;
 
 export function Directory({
   rows,
@@ -145,9 +145,12 @@ export function Directory({
     (newSearch: string) => {
       const newUrl = getNewUrl({ search: newSearch, page: "0" });
       router.push(newUrl);
+      if (searchUpdateTimeout !== null) {
+        clearTimeout(searchUpdateTimeout);
+      }
       setSearchUpdateTimeout(null);
     },
-    [router, getNewUrl]
+    [router, getNewUrl, searchUpdateTimeout]
   );
 
   const triggerSearchUpdate = useCallback(
@@ -179,6 +182,11 @@ export function Directory({
               onChange={(event) => {
                 setSearch(event.target.value);
                 triggerSearchUpdate(event.target.value);
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  setSearchParam(event.currentTarget.value);
+                }
               }}
             />
           </div>
