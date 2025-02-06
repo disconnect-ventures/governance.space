@@ -20,13 +20,22 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/ui/table";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
+import { Label } from "../ui/label";
+
+export type DirectorySortOption = {
+  value: string;
+  label: string;
+};
 
 export type DirectoryProps = {
   container?: (children: React.ReactNode) => React.ReactNode;
   rows: React.ReactNode[];
   searchPlaceholder: string;
   params: DirectorySearchParams;
+  sortOptions?: Array<DirectorySortOption>;
 };
 
 export type DirectorySearchParams<S = string, F = string[]> = {
@@ -42,8 +51,10 @@ export function Directory({
   container,
   params,
   searchPlaceholder,
+  sortOptions,
 }: DirectoryProps) {
   const { page = 0, pageSize = 15, totalResults = 0 } = params;
+  const router = useRouter();
   const totalPages = useMemo(
     () => Math.ceil(totalResults / pageSize),
     [totalResults, pageSize]
@@ -78,23 +89,34 @@ export function Directory({
     ];
   }, [totalPages, page]);
 
-  const getNewUrl = (newParams: Map<string, string | string[]>) => {
-    const newQuery = new Map(query);
+  const getNewUrl = useCallback(
+    (newParams: Map<string, string | string[]>) => {
+      const newQuery = new Map(query);
 
-    for (const [key, value] of newParams.entries()) {
-      newQuery.set(key, value);
-    }
+      for (const [key, value] of newParams.entries()) {
+        newQuery.set(key, value);
+      }
 
-    const newParamString = Array.from(newQuery.entries())
-      .map(([key, value]) =>
-        Array.isArray(value)
-          ? value.map((v) => `${key}=${v}`).join("&")
-          : `${key}=${value}`
-      )
-      .join("&");
+      const newParamString = Array.from(newQuery.entries())
+        .map(([key, value]) =>
+          Array.isArray(value)
+            ? value.map((v) => `${key}=${v}`).join("&")
+            : `${key}=${value}`
+        )
+        .join("&");
 
-    return pathname + `?${newParamString}`;
-  };
+      return pathname + `?${newParamString}`;
+    },
+    [query, pathname]
+  );
+
+  const setSortParam = useCallback(
+    (sortValue: string) => {
+      const newUrl = getNewUrl(new Map([["sort", sortValue]]));
+      router.push(newUrl);
+    },
+    [router, getNewUrl]
+  );
 
   return (
     <Card className="w-full mx-auto shadow-none border-none bg-gray-100">
@@ -107,9 +129,28 @@ export function Directory({
             />
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" className="w-full">
-              <ArrowUpDown className="h-4 w-4" /> Sort
-            </Button>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline">
+                  <ArrowUpDown className="h-4 w-4" /> Sort
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-80 flex flex-col gap-2">
+                <span className="font-semibold">Sort</span>
+                <RadioGroup defaultValue={params.sort}>
+                  {sortOptions?.map(({ label, value }) => (
+                    <div key={value} className="flex items-center space-x-2">
+                      <RadioGroupItem
+                        id={value}
+                        value={value}
+                        onClick={() => setSortParam(value)}
+                      />
+                      <Label htmlFor={value}>{label}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </PopoverContent>
+            </Popover>
             <Button variant="outline" className="w-full">
               <Filter className="h-4 w-4" /> Filter
             </Button>
@@ -177,16 +218,9 @@ type TableDirectoryProps = DirectoryProps & {
   headers: string[];
 };
 
-export function TableDirectory({
-  headers,
-  rows,
-  params,
-  searchPlaceholder,
-}: TableDirectoryProps) {
+export function TableDirectory({ headers, ...props }: TableDirectoryProps) {
   return (
     <Directory
-      params={params}
-      searchPlaceholder={searchPlaceholder}
       container={(children) => (
         <Table className="bg-background">
           <TableHeader>
@@ -204,7 +238,7 @@ export function TableDirectory({
           <TableBody>{children}</TableBody>
         </Table>
       )}
-      rows={rows}
+      {...props}
     ></Directory>
   );
 }
