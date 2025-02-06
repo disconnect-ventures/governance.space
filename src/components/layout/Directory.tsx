@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import { Card, CardContent } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
@@ -44,9 +44,12 @@ export type DirectorySearchParams<S = string, F = string[]> = {
   page?: number;
   pageSize?: number;
   totalResults?: number;
+  search?: string;
   sort?: S;
   filters?: F;
 };
+
+const SEARCH_THROTTLE_MS = 1000;
 
 export function Directory({
   rows,
@@ -57,6 +60,10 @@ export function Directory({
   filterOptions,
 }: DirectoryProps) {
   const { page = 0, pageSize = 15, totalResults = 0 } = params;
+  const [search, setSearch] = useState(params.search ?? "");
+  const [searchUpdateTimeout, setSearchUpdateTimeout] =
+    useState<NodeJS.Timeout | null>(null);
+
   const router = useRouter();
   const totalPages = useMemo(
     () => Math.ceil(totalResults / pageSize),
@@ -134,6 +141,26 @@ export function Directory({
     [router, getNewUrl, query]
   );
 
+  const setSearchParam = useCallback(
+    (newSearch: string) => {
+      const newUrl = getNewUrl({ search: newSearch, page: "0" });
+      router.push(newUrl);
+    },
+    [router, getNewUrl]
+  );
+
+  const triggerSearchUpdate = useCallback(
+    (search: string) => {
+      if (searchUpdateTimeout) {
+        clearTimeout(searchUpdateTimeout);
+      }
+      setSearchUpdateTimeout(
+        setTimeout(() => setSearchParam(search), SEARCH_THROTTLE_MS)
+      );
+    },
+    [searchUpdateTimeout, setSearchParam]
+  );
+
   return (
     <Card className="w-full mx-auto shadow-none border-none bg-gray-100">
       <CardContent className="p-0">
@@ -142,6 +169,11 @@ export function Directory({
             <Input
               placeholder={searchPlaceholder}
               className="w-full bg-background"
+              value={search}
+              onChange={(event) => {
+                setSearch(event.target.value);
+                triggerSearchUpdate(event.target.value);
+              }}
             />
           </div>
           <div className="flex gap-2">

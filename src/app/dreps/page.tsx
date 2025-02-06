@@ -19,7 +19,8 @@ export default async function DRepsDirectoryPage({
   const sort = (searchParams["sort"] as DRepSortOption) ?? "Random";
   const filters = (searchParams["filters"]?.split(",") ??
     []) as DRepFilterOption[];
-  const dreps = await getDReps(page, pageSize, sort, filters);
+  const search = searchParams["search"] ?? "";
+  const dreps = await getDReps(page, pageSize, search, sort, filters);
 
   return (
     <div className="space-y-4">
@@ -35,6 +36,7 @@ export default async function DRepsDirectoryPage({
           page,
           pageSize,
           sort,
+          search,
           totalResults: dreps.total,
           filters,
         }}
