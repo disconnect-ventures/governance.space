@@ -40,11 +40,7 @@ export default async function DRepProfilePage({ params }: DRepProfileProps) {
 
   return (
     <div className="w-full max-w-7xl mx-auto overflow-hidden">
-      <PageTitle
-        icon={<User className="h-6 w-6" />}
-        title="DRep Profile"
-        info="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dolor odio, laoreet ac eros eu, euismod sollicitudin nulla. Nam sed sem massa. Nunc sit amet porta neque. Vivamus nibh magna, tristique at justo eget, hendrerit convallis risus. Vivamus eleifend felis quis tristique porttitor. Maecenas ornare molestie lobortis. Quisque at ultricies augue."
-      />
+      <PageTitle icon={<User className="h-6 w-6" />} title="DRep Profile" />
       <TopBar backHref="/dreps" />
       <div className="w-full flex flex-col lg:flex-row gap-4 justify-center">
         <div className="lg:w-2/3 flex flex-col gap-4">
