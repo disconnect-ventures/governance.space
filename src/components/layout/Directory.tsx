@@ -24,8 +24,9 @@ import { usePathname, useRouter } from "next/navigation";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
+import { Checkbox } from "../ui/checkbox";
 
-export type DirectorySortOption = {
+export type DirectoryParamOption = {
   value: string;
   label: string;
 };
@@ -35,7 +36,8 @@ export type DirectoryProps = {
   rows: React.ReactNode[];
   searchPlaceholder: string;
   params: DirectorySearchParams;
-  sortOptions?: Array<DirectorySortOption>;
+  sortOptions?: Array<DirectoryParamOption>;
+  filterOptions?: Array<DirectoryParamOption>;
 };
 
 export type DirectorySearchParams<S = string, F = string[]> = {
@@ -52,6 +54,7 @@ export function Directory({
   params,
   searchPlaceholder,
   sortOptions,
+  filterOptions,
 }: DirectoryProps) {
   const { page = 0, pageSize = 15, totalResults = 0 } = params;
   const router = useRouter();
@@ -95,7 +98,11 @@ export function Directory({
     (newParams: Record<string, string>) => {
       const newQuery = new URLSearchParams(query);
       for (const [key, value] of Object.entries(newParams)) {
-        newQuery.set(key, value);
+        if (!!value) {
+          newQuery.set(key, value);
+        } else {
+          newQuery.delete(key);
+        }
       }
       return `${pathname}?${newQuery.toString()}`;
     },
@@ -108,6 +115,23 @@ export function Directory({
       router.push(newUrl);
     },
     [router, getNewUrl]
+  );
+
+  const setFilterParam = useCallback(
+    (filterValue: string, checked: boolean) => {
+      const currentFilters = new Set(query.get("filters")?.split(","));
+      if (checked) {
+        currentFilters.add(filterValue);
+      } else {
+        currentFilters.delete(filterValue);
+      }
+
+      const newUrl = getNewUrl({
+        filters: Array.from(currentFilters.values()).join(","),
+      });
+      router.push(newUrl);
+    },
+    [router, getNewUrl, query]
   );
 
   return (
@@ -143,9 +167,35 @@ export function Directory({
                 </RadioGroup>
               </PopoverContent>
             </Popover>
-            <Button variant="outline" className="w-full">
-              <Filter className="h-4 w-4" /> Filter
-            </Button>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button variant="outline" className="w-full">
+                  <Filter className="h-4 w-4" /> Filter
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-80 flex flex-col gap-2">
+                <span className="font-semibold">Filter</span>
+                {filterOptions?.map(({ label, value }) => (
+                  <div key={value} className="flex items-center space-x-2">
+                    <Checkbox
+                      id={value}
+                      value={value}
+                      defaultChecked={query
+                        .get("filters")
+                        ?.split(",")
+                        .includes(value)}
+                      onCheckedChange={(checked) =>
+                        setFilterParam(
+                          value,
+                          checked === "indeterminate" ? false : checked
+                        )
+                      }
+                    />
+                    <Label htmlFor={value}>{label}</Label>
+                  </div>
+                ))}
+              </PopoverContent>
+            </Popover>
           </div>
         </div>
 
