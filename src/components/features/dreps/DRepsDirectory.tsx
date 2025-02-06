@@ -29,6 +29,11 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
         { value: "VotingPower", label: "Voting Power" },
         { value: "Status", label: "Status" },
       ]}
+      filterOptions={[
+        { value: "Active", label: "Active" },
+        { value: "Inactive", label: "Inactive" },
+        { value: "Retired", label: "Retired" },
+      ]}
       searchPlaceholder={"Search DReps by name or ID"}
       headers={[
         "DRep name",
