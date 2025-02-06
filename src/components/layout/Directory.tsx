@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Card, CardContent } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
@@ -145,6 +145,7 @@ export function Directory({
     (newSearch: string) => {
       const newUrl = getNewUrl({ search: newSearch, page: "0" });
       router.push(newUrl);
+      setSearchUpdateTimeout(null);
     },
     [router, getNewUrl]
   );
@@ -160,6 +161,11 @@ export function Directory({
     },
     [searchUpdateTimeout, setSearchParam]
   );
+
+  // Reset search state to match query
+  useEffect(() => {
+    setSearch(query.get("search") ?? "");
+  }, [query]);
 
   return (
     <Card className="w-full mx-auto shadow-none border-none bg-gray-100">
