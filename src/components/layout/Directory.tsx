@@ -60,13 +60,15 @@ export function Directory({
     [totalResults, pageSize]
   );
   const pathname = usePathname();
-  const query: Map<string, string | string[]> = useMemo(
+  const query = useMemo(
     () =>
-      new Map(
-        Object.entries(params).map(([key, value]) => [
-          key,
-          Array.isArray(value) ? value : String(value),
-        ])
+      new URLSearchParams(
+        Object.entries(params)
+          .map(([key, value]) => [
+            key,
+            Array.isArray(value) ? value.join(",") : value.toString(),
+          ])
+          .filter(([, value]) => Boolean(value))
       ),
     [params]
   );
@@ -90,29 +92,19 @@ export function Directory({
   }, [totalPages, page]);
 
   const getNewUrl = useCallback(
-    (newParams: Map<string, string | string[]>) => {
-      const newQuery = new Map(query);
-
-      for (const [key, value] of newParams.entries()) {
+    (newParams: Record<string, string>) => {
+      const newQuery = new URLSearchParams(query);
+      for (const [key, value] of Object.entries(newParams)) {
         newQuery.set(key, value);
       }
-
-      const newParamString = Array.from(newQuery.entries())
-        .map(([key, value]) =>
-          Array.isArray(value)
-            ? value.map((v) => `${key}=${v}`).join("&")
-            : `${key}=${value}`
-        )
-        .join("&");
-
-      return pathname + `?${newParamString}`;
+      return `${pathname}?${newQuery.toString()}`;
     },
     [query, pathname]
   );
 
   const setSortParam = useCallback(
     (sortValue: string) => {
-      const newUrl = getNewUrl(new Map([["sort", sortValue]]));
+      const newUrl = getNewUrl({ sort: sortValue });
       router.push(newUrl);
     },
     [router, getNewUrl]
@@ -168,9 +160,7 @@ export function Directory({
             <PaginationContent>
               <PaginationItem>
                 <PaginationPrevious
-                  href={getNewUrl(
-                    new Map([["page", Math.max(page - 1, 0).toString()]])
-                  )}
+                  href={getNewUrl({ page: Math.max(page - 1, 0).toString() })}
                   className={page === 0 ? "pointer-events-none opacity-50" : ""}
                 />
               </PaginationItem>
@@ -181,9 +171,9 @@ export function Directory({
                     <PaginationEllipsis />
                   ) : (
                     <PaginationLink
-                      href={getNewUrl(
-                        new Map([["page", pageNumber.toString()]])
-                      )}
+                      href={getNewUrl({
+                        page: pageNumber.toString(),
+                      })}
                       isActive={page === pageNumber}
                     >
                       {pageNumber}
@@ -194,11 +184,9 @@ export function Directory({
 
               <PaginationItem>
                 <PaginationNext
-                  href={getNewUrl(
-                    new Map([
-                      ["page", Math.min(page + 1, totalPages - 1).toString()],
-                    ])
-                  )}
+                  href={getNewUrl({
+                    page: Math.min(page + 1, totalPages - 1).toString(),
+                  })}
                   className={
                     page === totalPages - 1
                       ? "pointer-events-none opacity-50"
