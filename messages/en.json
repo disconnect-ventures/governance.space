@@ -35,7 +35,7 @@
       "alert-text": "This site is under development and will officially launch on February 3rd at 21:45 UTC at Epoch 536." 
     },  
     "Header": {
-        "become-drep": "This site is under development and will officially launch on February 3rd at 21:45 UTC at Epoch 536.", 
+        "become-drep": "Become a DRep", 
         "connect-wallet": "Connect Wallet",
         "title_home": "Home",
         "title_dreps": "DReps Directory",
