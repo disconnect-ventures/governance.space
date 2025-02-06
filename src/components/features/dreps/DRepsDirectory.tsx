@@ -13,6 +13,7 @@ import {
   TableDirectory,
 } from "~/components/layout/Directory";
 import { formatVotingPower, truncateMiddle } from "~/lib/utils";
+import { useTranslations } from "next-intl";
 
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
@@ -21,6 +22,7 @@ export type DRepsDirectoryProps = {
 
 export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
   const router = useRouter();
+  const t = useTranslations("PageDReps");
 
   return (
     <TableDirectory
@@ -39,16 +41,17 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
         { value: "Inactive", label: "Inactive" },
         { value: "Retired", label: "Retired" },
       ]}
-      searchPlaceholder={"Search DReps by name or ID"}
+      searchPlaceholder={t("search")}
       headers={[
-        "DRep name",
-        "Status",
-        "Voting Power",
-        "Social",
-        "Delegators",
-        "Influence Power",
-        "Registration Date",
-        "Actions",
+        t("drep-name"),
+        t("status"),
+        t("voting-power"),
+        t("social"),
+        t("delegators"),
+        t("influence-power"),
+        t("voting"),
+        t("registration-date"),
+        t("actions"),
       ]}
       params={params}
       rows={dreps.map((drep) => (
