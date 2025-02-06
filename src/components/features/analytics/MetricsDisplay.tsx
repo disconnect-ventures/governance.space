@@ -391,7 +391,6 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
                   {epochMetricsData.map((row) => {
                     const isError =
                       row.item === "Active Delegated" || row.item === "Abstain/No Confidence";
-                    const isWarning = row.item === "Delegation Rate";
 
                     return (
                       <tr key={row.item}>
