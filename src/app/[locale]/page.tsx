@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { useTranslations } from 'next-intl'
 
 export const metadata: Metadata = {
   title: "Governance Space - All-in-One Governance Platform",
@@ -6,5 +7,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <div className="space-y-4">Homepage</div>;
+  const t = useTranslations("HomePage");
+
+  return <div className="space-y-4">{t("title")}</div>;
 }
