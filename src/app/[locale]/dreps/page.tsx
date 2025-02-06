@@ -1,9 +1,9 @@
-import { UsersIcon } from "lucide-react";
 import { Metadata } from "next";
 import { DRepsDirectory } from "~/components/features/dreps/DRepsDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { DRepFilterOption, DRepSortOption, getDReps } from "~/lib/dreps";
 import { PageProps } from "../layout";
+import { UsersIcon } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Governance Space - DReps Directory",
