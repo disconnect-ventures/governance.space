@@ -40,12 +40,14 @@ export type DRepFilterOption = DRep["status"];
 export async function getDReps(
   page: number,
   pageSize: number,
+  search: string,
   sort: DRepSortOption,
   filters: DRepFilterOption[]
 ): Promise<DRepListResponse> {
   const url = new URL("/drep/list", baseApiUrl);
-  Object.entries({ page, pageSize, sort }).forEach(([key, value]) =>
-    url.searchParams.append(key, value.toString())
+  Object.entries({ page, pageSize, search, sort }).forEach(
+    ([key, value]) =>
+      value !== "" && url.searchParams.append(key, value.toString())
   );
   if (filters.length) {
     filters.forEach((value) => url.searchParams.append("status[]", value));
