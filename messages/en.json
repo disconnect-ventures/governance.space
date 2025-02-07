@@ -29,7 +29,8 @@
     "pending": "Pending",
     "yes": "Yes",
     "no": "No",
-    "abstain": "Abstain"
+    "abstain": "Abstain",
+    "item": "Item"
   },
   "AnnouncementBar": {
     "alert-text": "This site is under development and will officially launch on February 3rd at 21:45 UTC at Epoch 536."
@@ -160,7 +161,6 @@
     "drep-name": "DRep Name",
     "vote": "Vote",
     "voting-power": "Voting Power",
-    "type": "Type",
     "submission-epoch": "Submission Epoch",
     "transaction": "Transaction"
   },
@@ -193,7 +193,6 @@
     "status": "Active",
     "epoch-metrics": "Epoch Metrics",
     "epoch": "Epoch",
-    "item": "Item",
     "changed": "Changed"
   },
   "PageHelp": {
