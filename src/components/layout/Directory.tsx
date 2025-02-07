@@ -189,7 +189,7 @@ export function Directory({
       clearSearchDebounceTimeout();
     };
   }, [clearSearchDebounceTimeout]);
-  
+
   return (
     <Card className="w-full mx-auto shadow-none border-none bg-gray-100">
       <CardContent className="p-0">
@@ -215,11 +215,11 @@ export function Directory({
           <div className="flex gap-2">
             <Popover>
               <PopoverTrigger asChild>
-                <Button variant="outline">
+                <Button variant="outline" className="w-full">
                   <ArrowUpDown className="h-4 w-4" /> Sort
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-80 flex flex-col gap-2">
+              <PopoverContent className="w-80 flex flex-col gap-2 ml-4 mx-4 md:mx-8">
                 <span className="font-semibold">Sort</span>
                 <RadioGroup defaultValue={params.sort}>
                   {sortOptions?.map(({ label, value }) => (
@@ -241,7 +241,7 @@ export function Directory({
                   <Filter className="h-4 w-4" /> Filter
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-80 flex flex-col gap-2">
+              <PopoverContent className="w-80 flex flex-col gap-2 mx-4 md:mx-8">
                 <span className="font-semibold">Filter</span>
                 {filterOptions?.map(({ label, value }) => (
                   <div key={value} className="flex items-center space-x-2">
