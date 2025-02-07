@@ -1,5 +1,11 @@
 "use client";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Card, CardContent } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
@@ -49,7 +55,7 @@ export type DirectorySearchParams<S = string, F = string[]> = {
   filters?: F;
 };
 
-const SEARCH_THROTTLE_MS = 200;
+const SEARCH_DEBOUNCE_MS = 200;
 
 export function Directory({
   rows,
@@ -61,8 +67,8 @@ export function Directory({
 }: DirectoryProps) {
   const { page = 0, pageSize = 15, totalResults = 0 } = params;
   const [search, setSearch] = useState(params.search ?? "");
-  const [searchUpdateTimeout, setSearchUpdateTimeout] =
-    useState<NodeJS.Timeout | null>(null);
+  const isTyping = useRef(false);
+  const searchUpdateTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const router = useRouter();
   const totalPages = useMemo(
@@ -141,35 +147,49 @@ export function Directory({
     [router, getNewUrl, query]
   );
 
+  const clearSearchDebounceTimeout = useCallback(() => {
+    if (searchUpdateTimeout.current) {
+      clearTimeout(searchUpdateTimeout.current);
+    }
+  }, []);
+
   const setSearchParam = useCallback(
     (newSearch: string) => {
       const newUrl = getNewUrl({ search: newSearch, page: "0" });
+      clearSearchDebounceTimeout();
+      searchUpdateTimeout.current = null;
       router.push(newUrl);
-      if (searchUpdateTimeout !== null) {
-        clearTimeout(searchUpdateTimeout);
-      }
-      setSearchUpdateTimeout(null);
     },
-    [router, getNewUrl, searchUpdateTimeout]
+    [router, getNewUrl, searchUpdateTimeout, clearSearchDebounceTimeout]
   );
 
   const triggerSearchUpdate = useCallback(
     (search: string) => {
-      if (searchUpdateTimeout) {
-        clearTimeout(searchUpdateTimeout);
-      }
-      setSearchUpdateTimeout(
-        setTimeout(() => setSearchParam(search), SEARCH_THROTTLE_MS)
+      clearSearchDebounceTimeout();
+      searchUpdateTimeout.current = setTimeout(
+        () => setSearchParam(search),
+        SEARCH_DEBOUNCE_MS
       );
     },
-    [searchUpdateTimeout, setSearchParam]
+    [searchUpdateTimeout, setSearchParam, clearSearchDebounceTimeout]
   );
 
-  // Reset search state to match query
   useEffect(() => {
-    setSearch(query.get("search") ?? "");
-  }, [query]);
+    if (
+      !isTyping.current &&
+      !searchUpdateTimeout.current &&
+      query.get("search") !== search
+    ) {
+      setSearch(query.get("search") ?? "");
+    }
+  }, [search, query]);
 
+  useEffect(() => {
+    return () => {
+      clearSearchDebounceTimeout();
+    };
+  }, [clearSearchDebounceTimeout]);
+  
   return (
     <Card className="w-full mx-auto shadow-none border-none bg-gray-100">
       <CardContent className="p-0">
@@ -184,10 +204,12 @@ export function Directory({
                 triggerSearchUpdate(event.target.value);
               }}
               onKeyDown={(event) => {
+                isTyping.current = true;
                 if (event.key === "Enter") {
                   setSearchParam(event.currentTarget.value);
                 }
               }}
+              onBlur={() => (isTyping.current = false)}
             />
           </div>
           <div className="flex gap-2">
