@@ -15,3 +15,11 @@ export function formatVotingPower(input: number) {
   if (input >= 1e3) return (input / 1e3).toFixed(2) + "K";
   return input.toFixed(2);
 }
+
+export const truncateMiddle = (input: string, maxLength: number): string => {
+  if (input.length <= maxLength) return input;
+  const half = Math.floor((maxLength - 3) / 2);
+  const start = input.slice(0, half);
+  const end = input.slice(-half);
+  return `${start}...${end}`;
+};
