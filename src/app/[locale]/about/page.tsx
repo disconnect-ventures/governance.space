@@ -23,11 +23,7 @@ export default async function AboutPage() {
 
       <div className="mt-6 space-y-6 text-gray-700">
         <p>All-in-One Governance Platform.</p>
-
-        <p>
-          Cardano Voltaire CIP-1694 Offical Transparency & Community Portal.
-        </p>
-
+        
         <p>
           <span className="text-sm text-gray-600">Built on:</span>
           <Link href="https://cardano.org/" target="_blank">
