@@ -10,6 +10,7 @@ export function capitalize(input: string) {
 }
 
 export function formatVotingPower(input: number) {
+  input = input / 1e6; // Divide by 1000000 to account for api without explicit fracional part
   if (input >= 1e9) return (input / 1e9).toFixed(2) + "B";
   if (input >= 1e6) return (input / 1e6).toFixed(2) + "M";
   if (input >= 1e3) return (input / 1e3).toFixed(2) + "K";
