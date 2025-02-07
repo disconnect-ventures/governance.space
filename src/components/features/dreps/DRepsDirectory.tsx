@@ -12,7 +12,7 @@ import {
   DirectorySearchParams,
   TableDirectory,
 } from "~/components/layout/Directory";
-import { formatVotingPower } from "~/lib/utils";
+import { formatVotingPower, truncateMiddle } from "~/lib/utils";
 
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
@@ -67,7 +67,9 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
               </Avatar>
               <div>
                 <div className="font-medium">{drep.givenName}</div>
-                <div className="text-sm text-gray-500">{drep.drepId}</div>
+                <div className="text-sm text-gray-500">
+                  {truncateMiddle(drep.view, 21)}
+                </div>
               </div>
             </div>
           </TableCell>
