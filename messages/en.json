@@ -219,6 +219,6 @@
   },
   "PageAbout": {
     "description": "About Governance Space",
-    "long-description": "All-in-One Governance Platform. Cardano Voltaire CIP-1694 Offical Transparency & Community Portal."
+    "long-description": "All-in-One Governance Platform."
   }
 }
