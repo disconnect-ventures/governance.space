@@ -21,13 +21,14 @@ export default async function DRepsDirectoryPage({
     []) as DRepFilterOption[];
   const search = searchParams["search"] ?? "";
   const dreps = await getDReps(page, pageSize, search, sort, filters);
+  const { total: totalDReps } = await getDReps(0, 1, "", "Random", []);
 
   return (
     <div className="space-y-4">
       <PageTitle
         title={"DReps Directory"}
         icon={<UsersIcon />}
-        badge="259 registered DReps"
+        badge={`${totalDReps} registered DReps`}
         info="Delegated Representatives (DReps) are ADA holders who registered on-chain to allow other members of the community to delegate their voting power to them, so that they can vote on their behalf. They are are like 'parlimentary representatives' in the Governance system."
       ></PageTitle>
       <DRepsDirectory
