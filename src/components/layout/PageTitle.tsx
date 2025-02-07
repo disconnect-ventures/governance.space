@@ -30,7 +30,7 @@ export function PageTitle({
             variant="secondary"
             className="bg-gray-100 border-foreground p-2 rounded-full"
           >
-            259 registered DReps
+            {badge}
           </Badge>
         )}
         {info && (
