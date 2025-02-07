@@ -12,6 +12,7 @@ import {
   DirectorySearchParams,
   TableDirectory,
 } from "~/components/layout/Directory";
+import { formatVotingPower } from "~/lib/utils";
 
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
@@ -46,7 +47,6 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
         "Social",
         "Delegators",
         "Influence Power",
-        "Voting",
         "Registration Date",
         "Actions",
       ]}
@@ -84,12 +84,9 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
             </Badge>
           </TableCell>
           <TableCell className="text-blue-600">
-            <Badge className="bg-[#FAF5FF] text-[#1E40AF]">
+            <Badge className="bg-[#FAF5FF] text-[#1E40AF] hover:bg-[#FAF5FF]">
               <span className="mr-1">₳</span>
-              {new Intl.NumberFormat("en-US", {
-                minimumFractionDigits: 3,
-                maximumFractionDigits: 3,
-              }).format(drep.votingPower)}
+              {formatVotingPower(drep.votingPower ?? 0)}
             </Badge>
           </TableCell>
           <TableCell>
@@ -100,7 +97,6 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
           </TableCell>
           <TableCell>{/** drep.delegators */}</TableCell>
           <TableCell>{drep.votingPower}</TableCell>
-          <TableCell className="text-blue-600">{/** drep.voting */}</TableCell>
           <TableCell>
             {new Date(drep.latestRegistrationDate).toLocaleDateString("en-US")}
           </TableCell>
