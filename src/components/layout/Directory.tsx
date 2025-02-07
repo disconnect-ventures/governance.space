@@ -42,6 +42,8 @@ export type DirectoryProps = {
   rows: React.ReactNode[];
   searchPlaceholder: string;
   params: DirectorySearchParams;
+  sortPopoverTitle?: string;
+  filterPopoverTitle?: string;
   sortOptions?: Array<DirectoryParamOption>;
   filterOptions?: Array<DirectoryParamOption>;
 };
@@ -62,6 +64,8 @@ export function Directory({
   container,
   params,
   searchPlaceholder,
+  sortPopoverTitle,
+  filterPopoverTitle,
   sortOptions,
   filterOptions,
 }: DirectoryProps) {
@@ -220,7 +224,9 @@ export function Directory({
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-80 flex flex-col gap-2 ml-4 mx-4 md:mx-8">
-                <span className="font-semibold">Sort</span>
+                <span className="font-semibold">
+                  {sortPopoverTitle || "Sort"}
+                </span>
                 <RadioGroup defaultValue={params.sort}>
                   {sortOptions?.map(({ label, value }) => (
                     <div key={value} className="flex items-center space-x-2">
@@ -242,7 +248,9 @@ export function Directory({
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-80 flex flex-col gap-2 mx-4 md:mx-8">
-                <span className="font-semibold">Filter</span>
+                <span className="font-semibold">
+                  {filterPopoverTitle || "Filter"}
+                </span>
                 {filterOptions?.map(({ label, value }) => (
                   <div key={value} className="flex items-center space-x-2">
                     <Checkbox
