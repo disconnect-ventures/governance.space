@@ -25,10 +25,14 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
     <TableDirectory
       sortOptions={[
         { value: "Random", label: "Random" },
-        { value: "RegistrationDate", label: "Registration Date" },
-        { value: "VotingPower", label: "Voting Power" },
+        {
+          value: "RegistrationDate",
+          label: "Registration Date (Newest to Oldest)",
+        },
+        { value: "VotingPower", label: "Voting Power (Higher to Lower)" },
         { value: "Status", label: "Status" },
       ]}
+      filterPopoverTitle="DRep Status"
       filterOptions={[
         { value: "Active", label: "Active" },
         { value: "Inactive", label: "Inactive" },
