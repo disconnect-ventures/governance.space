@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Search, Wallet } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -72,7 +72,7 @@ export const HeaderNavigationLink = ({
           className={clsx(
             "px-3 py-2 hover:text-blue-500 rounded-full border-border border whitespace-nowrap",
             active &&
-              "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950"
+              "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950",
           )}
         >
           {children}
@@ -109,7 +109,10 @@ export const Header = () => {
             >
               Become a DRep
             </Link>
-            <Button>Connect Wallet</Button>
+            <Button>
+              <Wallet className="h-4 w-4" /> {/* Adicionando o ícone */}
+              Connect Wallet
+            </Button>
           </div>
 
           <div className="lg:flex items-center hidden">
