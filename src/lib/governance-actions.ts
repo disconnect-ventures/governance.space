@@ -74,7 +74,6 @@ export async function getGovernanceActions(
     filters.forEach((value) => url.searchParams.append("type[]", value));
   }
 
-  console.log({ url });
   const response = await fetchApi<ApiResponse<GovernanceAction>>(url);
   return response;
 }
