@@ -31,7 +31,7 @@ type DRepProfileProps = {
 export default async function DRepProfilePage({ params }: DRepProfileProps) {
   const { profile } = await params;
   const drep = await getDRepById(profile);
-  const proposals = (await getProposals()).slice(0, 3);
+  const proposals = (await getProposals(0, 3, "", "desc", [])).data;
   const comments = (await getComments(-1)).slice(0, 3);
 
   if (!drep) {

@@ -2,14 +2,21 @@
 import React from "react";
 import { Proposal } from "~/lib/proposals";
 import ProposalCard from "./ProposalCard";
-import { Directory, DirectorySearchParams } from "~/components/layout/Directory";
+import {
+  Directory,
+  DirectorySearchParams,
+} from "~/components/layout/Directory";
 
 export type ProposalDirectoryProps = {
   proposals: Array<Proposal>;
   params: DirectorySearchParams;
 };
 
-export function ProposalDirectory({ proposals, params }: ProposalDirectoryProps) {
+export function ProposalDirectory({
+  proposals,
+  params,
+}: ProposalDirectoryProps) {
+  console.log(params);
   return (
     <Directory
       searchPlaceholder="Search proposals..."
