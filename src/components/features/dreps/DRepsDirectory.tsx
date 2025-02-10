@@ -53,8 +53,8 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
       params={params}
       rows={dreps.map((drep) => (
         <TableRow
-          key={drep.drepId}
-          onClick={() => router.push(`/dreps/${drep.drepId}`)}
+          key={drep.view}
+          onClick={() => router.push(`/dreps/${drep.view}`)}
           className="cursor-pointer"
         >
           <TableCell>
