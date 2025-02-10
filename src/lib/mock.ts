@@ -20,7 +20,7 @@ export function getMockDReps(): Array<DRep> {
 }
 
 export function getMockGovernanceActions(): Array<GovernanceAction> {
-  return MockGovernanceActionsResult.elements;
+  return MockGovernanceActionsResult.elements as Array<GovernanceAction>;
 }
 
 export function getMockProposals(): Array<Proposal> {

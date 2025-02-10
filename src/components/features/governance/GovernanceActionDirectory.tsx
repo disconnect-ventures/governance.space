@@ -21,6 +21,27 @@ export function GovernanceActionDirectory({
     <Directory
       searchPlaceholder="Search"
       params={params}
+      sortOptions={[
+        { value: "SoonestToExpire", label: "Soon to Expire" },
+        {
+          value: "NewestCreated",
+          label: "Newest First",
+        },
+        {
+          value: "MostYesVotes",
+          label: 'Highest Amount of "Yes" votes',
+        },
+      ]}
+      filterPopoverTitle="Governance Action Type"
+      filterOptions={[
+        { value: "NoConfidence", label: "No Confidence" },
+        { value: "NewCommittee", label: "New Committee" },
+        { value: "NewConstitution", label: "New Constitution" },
+        { value: "HardForkInitiation", label: "Hard Fork Initiation" },
+        { value: "ParameterChange", label: "Parameter Change" },
+        { value: "TreasuryWithdrawals", label: "Treasury Withdrawals" },
+        { value: "InfoAction", label: "Info Action" },
+      ]}
       rows={governanceActions.map((action, index) => {
         const metadata = getMockGovernanceActionMetadata(); // TODO
         const status = "In Progress"; // TODO
