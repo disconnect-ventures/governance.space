@@ -25,6 +25,7 @@ import {
   TooltipTrigger,
 } from "~/components/ui/tooltip";
 import { Comment } from "~/lib/comments";
+import { formatVotingPower } from "~/lib/utils";
 
 type ProfileInfoProps = {
   drep: DRep;
@@ -52,7 +53,8 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
                   key={"2"}
                   className="bg-purple-100 text-purple-800 rounded-full"
                 >
-                  A107,487.105
+                  <span className="mr-1">₳</span>
+                  {formatVotingPower(drep.votingPower ?? 0)}
                 </Badge>
               ),
               icon: <VoteIcon className="h-4 w-4" />,
