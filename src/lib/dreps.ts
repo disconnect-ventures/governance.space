@@ -1,4 +1,4 @@
-import { baseApiUrl, fetchApi } from ".";
+import { ApiResponse, baseApiUrl, fetchApi } from ".";
 
 export type DRep = {
   isScriptBased: boolean;
@@ -22,12 +22,7 @@ export type DRep = {
   imageHash: string | null;
 };
 
-export type DRepListResponse = {
-  elements: Array<DRep>;
-  page: number;
-  pageSize: number;
-  total: number;
-};
+export type DRepListResponse = ApiResponse<DRep>;
 
 export type DRepSortOption =
   | "Random"
