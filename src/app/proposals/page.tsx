@@ -2,7 +2,11 @@ import { FileTextIcon, HandHelpingIcon } from "lucide-react";
 import { Metadata } from "next";
 import { ProposalDirectory } from "~/components/features/proposals/ProposalDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
-import { getProposals, ProposalSortOrderOption } from "~/lib/proposals";
+import {
+  getGovernanceActionProposalTypes,
+  getProposals,
+  ProposalSortOrderOption,
+} from "~/lib/proposals";
 import { PageProps } from "../layout";
 
 export const metadata: Metadata = {
@@ -13,6 +17,7 @@ export const metadata: Metadata = {
 export default async function ProposalsPage({
   searchParams: searchParamsPromise,
 }: PageProps) {
+  const proposalTypes = await getGovernanceActionProposalTypes();
   const searchParams = (await searchParamsPromise) ?? {};
   const page = parseInt(searchParams["page"] ?? "0");
   const pageSize = parseInt(searchParams["pageSize"] ?? "20");
@@ -45,10 +50,14 @@ export default async function ProposalsPage({
       ></PageTitle>
       <ProposalDirectory
         proposals={data}
+        proposalTypes={proposalTypes.data}
         params={{
           page,
           pageSize,
           totalResults: meta.pagination.total,
+          sort,
+          search,
+          filters: filters.map(String),
         }}
       />
     </div>
