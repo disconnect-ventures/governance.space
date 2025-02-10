@@ -311,10 +311,13 @@ export function Directory({
               <PaginationItem>
                 <PaginationNext
                   href={getNewUrl({
-                    page: Math.min(page + 1, totalPages - 1).toString(),
+                    page: Math.min(
+                      page + 1,
+                      Math.max(totalPages - 1, 0)
+                    ).toString(),
                   })}
                   className={
-                    page === totalPages - 1
+                    page === Math.max(totalPages - 1, 0)
                       ? "pointer-events-none opacity-50"
                       : ""
                   }
