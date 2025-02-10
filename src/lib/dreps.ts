@@ -57,7 +57,9 @@ export async function getDReps(
   return response;
 }
 
-// eslint-disable-next-line
 export async function getDRepById(id: string): Promise<DRep | null> {
-  return null;
+  const res = await getDReps(0, 1, id, "RegistrationDate", []).catch(
+    () => null
+  );
+  return res?.elements.length ? res?.elements[0] : null;
 }
