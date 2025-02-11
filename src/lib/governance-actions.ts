@@ -1,4 +1,4 @@
-import { ApiResponse, baseApiUrl, fetchApi } from ".";
+import { ApiResponse, baseApiUrl, CACHE_CONFIG, fetchApi } from ".";
 
 export type GovernanceAction = {
   id: string;
@@ -74,8 +74,11 @@ export async function getGovernanceActions(
     filters.forEach((value) => url.searchParams.append("type[]", value));
   }
 
-  const response = await fetchApi<ApiResponse<GovernanceAction>>(url);
-  return response;
+  return await fetchApi<ApiResponse<GovernanceAction>>(url, {
+    next: {
+      tags: [CACHE_CONFIG.tags.governanceAction],
+    },
+  });
 }
 
 export async function getNoConfidenceActions(
