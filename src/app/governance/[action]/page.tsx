@@ -10,6 +10,10 @@ import { GovernanceDocuments } from "~/components/features/governance/Governance
 import { PageTitle } from "~/components/layout/PageTitle";
 import { BookOpenCheckIcon } from "lucide-react";
 import { Metadata } from "next";
+import {
+  getGovernanceActions,
+  GovernanceActionFilterOption,
+} from "~/lib/governance-actions";
 
 export async function generateMetadata({
   params,
@@ -19,6 +23,46 @@ export async function generateMetadata({
     title: `Governance Space - Governance Action ${actionId}`,
     description: "All-in-One Governance Platform",
   };
+}
+
+export async function generateStaticParams() {
+  let page = 0;
+  const pageSize = 50;
+  const search = "";
+  const sort = "NewestCreated";
+  const filters: GovernanceActionFilterOption[] = [];
+
+  const firstPage = await getGovernanceActions(
+    page++,
+    pageSize,
+    search,
+    sort,
+    filters
+  );
+  const totalPages = Math.ceil(firstPage.total / pageSize);
+
+  const nextPages = (
+    await Promise.all(
+      Array.from({ length: totalPages - 1 }).map(async () => {
+        try {
+          const data = await getGovernanceActions(
+            page++,
+            pageSize,
+            search,
+            sort,
+            filters
+          );
+          return data.elements;
+        } catch {
+          return [];
+        }
+      })
+    )
+  ).flat();
+
+  return [...firstPage.elements, ...nextPages].map((p) => ({
+    action: p.id,
+  }));
 }
 
 const DOCUMENTS = [
