@@ -113,7 +113,8 @@ export async function getProposalsByUserId(id: string) {
   return null;
 }
 
-// eslint-disable-next-line
 export async function getProposalsById(id: number) {
-  return null;
+  const url = new URL(`/api/proposals/${id}`, "https://be.pdf.gov.tools");
+  const response = await fetchApi<{ data: Proposal; meta: {} }>(url);
+  return response;
 }

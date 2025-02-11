@@ -31,7 +31,7 @@ export default async function ProposalDetailsPage({
   params,
 }: ProposalDetailsProps) {
   const { proposal: proposalId } = await params;
-  const proposal = await getProposalsById(proposalId);
+  const { data: proposal } = await getProposalsById(proposalId);
 
   if (!proposal) {
     return notFound();
