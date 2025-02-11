@@ -1,4 +1,4 @@
-import { getDRepById } from "~/lib/dreps";
+import { DRepFilterOption, getDRepById, getDReps } from "~/lib/dreps";
 import { notFound } from "next/navigation";
 import { VotingHistory } from "~/components/features/profile/VotingHistory";
 import { ProfileInfo } from "~/components/features/profile/ProfileInfo";
@@ -27,6 +27,34 @@ type DRepProfileProps = {
     profile: string;
   }>;
 };
+
+export async function generateStaticParams() {
+  let page = 0;
+  const pageSize = 50;
+  const search = "";
+  const sort = "RegistrationDate";
+  const filters: DRepFilterOption[] = [];
+
+  const firstPage = await getDReps(page++, pageSize, search, sort, filters);
+  const totalPages = Math.ceil(firstPage.total / pageSize);
+
+  const nextPages = (
+    await Promise.all(
+      Array.from({ length: totalPages - 1 }).map(async () => {
+        try {
+          const data = await getDReps(page++, pageSize, search, sort, filters);
+          return data.elements;
+        } catch {
+          return [];
+        }
+      })
+    )
+  ).flat();
+
+  return [...firstPage.elements, ...nextPages].map((p) => ({
+    profile: p.view,
+  }));
+}
 
 export default async function DRepProfilePage({ params }: DRepProfileProps) {
   const { profile } = await params;

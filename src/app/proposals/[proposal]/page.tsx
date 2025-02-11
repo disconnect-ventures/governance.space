@@ -9,7 +9,7 @@ import { VotingSection } from "~/components/features/proposals/VotingSection";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { TopBar } from "~/components/layout/TopBar";
 import { Card, CardContent } from "~/components/ui/card";
-import { getProposalsById } from "~/lib/proposals";
+import { getProposals, getProposalsById } from "~/lib/proposals";
 
 export async function generateMetadata({
   params,
@@ -19,6 +19,40 @@ export async function generateMetadata({
     title: `Governance Space - Proposal ${proposalId}`,
     description: "All-in-One Governance Platform",
   };
+}
+
+export async function generateStaticParams() {
+  let page = 0;
+  const pageSize = 50;
+  const search = "";
+  const sort = "desc";
+  const filters: number[] = [];
+
+  const firstPage = await getProposals(page++, pageSize, search, sort, filters);
+  const totalPages = firstPage.meta.pagination.pageCount;
+
+  const nextPages = (
+    await Promise.all(
+      Array.from({ length: totalPages - 1 }).map(async () => {
+        try {
+          const { data } = await getProposals(
+            page++,
+            pageSize,
+            search,
+            sort,
+            filters
+          );
+          return data;
+        } catch {
+          return [];
+        }
+      })
+    )
+  ).flat();
+
+  return [...firstPage.data, ...nextPages].map((p) => ({
+    proposal: p.id.toString(),
+  }));
 }
 
 type ProposalDetailsProps = {
