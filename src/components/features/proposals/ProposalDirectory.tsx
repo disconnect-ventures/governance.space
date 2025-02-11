@@ -22,10 +22,12 @@ export function ProposalDirectory({
     <Directory
       searchPlaceholder="Search proposals..."
       params={params}
+      sortPopoverTitle="Sort by Creation Date"
       sortOptions={[
         { label: "Descending", value: "desc" },
         { label: "Ascending", value: "Asc" },
       ]}
+      filterPopoverTitle="Filter by Action Type"
       filterOptions={[
         ...proposalTypes.map((p) => ({
           label: p.attributes.gov_action_type_name,
