@@ -1,4 +1,4 @@
-import { fetchApi } from ".";
+import { CACHE_CONFIG, fetchApi } from ".";
 
 export type Proposal = {
   id: number;
@@ -108,6 +108,7 @@ export async function getProposals(
   return response;
 }
 
+// TODO
 // eslint-disable-next-line
 export async function getProposalsByUserId(id: string) {
   return null;
@@ -115,6 +116,8 @@ export async function getProposalsByUserId(id: string) {
 
 export async function getProposalsById(id: number) {
   const url = new URL(`/api/proposals/${id}`, "https://be.pdf.gov.tools");
-  const response = await fetchApi<{ data: Proposal; meta: {} }>(url);
+  const response = await fetchApi<{ data: Proposal; meta: {} }>(url, {
+    next: { tags: [CACHE_CONFIG.tags.proposal] },
+  });
   return response;
 }

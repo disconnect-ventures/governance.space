@@ -1,4 +1,4 @@
-import { ApiResponse, baseApiUrl, fetchApi } from ".";
+import { ApiResponse, baseApiUrl, CACHE_CONFIG, fetchApi } from ".";
 
 export type DRep = {
   isScriptBased: boolean;
@@ -48,7 +48,11 @@ export async function getDReps(
     filters.forEach((value) => url.searchParams.append("status[]", value));
   }
 
-  const response = await fetchApi<DRepListResponse>(url);
+  const response = await fetchApi<DRepListResponse>(url, {
+    next: {
+      tags: [CACHE_CONFIG.tags.dreps],
+    },
+  });
   return response;
 }
 
