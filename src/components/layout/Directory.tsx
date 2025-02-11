@@ -128,7 +128,7 @@ export function Directory({
 
   const setSortParam = useCallback(
     (sortValue: string) => {
-      const newUrl = getNewUrl({ sort: sortValue });
+      const newUrl = getNewUrl({ sort: sortValue, page: "0" });
       router.push(newUrl);
     },
     [router, getNewUrl]
@@ -144,6 +144,7 @@ export function Directory({
       }
 
       const newUrl = getNewUrl({
+        page: "0",
         filters: Array.from(currentFilters.values()).join(","),
       });
       router.push(newUrl);
