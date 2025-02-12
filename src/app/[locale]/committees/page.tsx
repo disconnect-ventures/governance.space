@@ -20,7 +20,7 @@ export default async function CommitteesPage() {
             <UserIcon />
           </div>
         }
-        info="Meet the Cardano community members who are participating in all existing committees."
+        translationPage="PageCommittees"
       ></PageTitle>
       <CommitteeMembersDirectory
         committeeMembers={[...committees, ...committees, ...committees]}

@@ -47,7 +47,7 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
             variant="secondary"
             className={clsx(
               "p-2 rounded-full",
-              `bg-${statusBadgeColor}-100 text-${statusBadgeColor}-800`
+              `bg-${statusBadgeColor}-100 text-${statusBadgeColor}-800`,
             )}
           >
             {isProposalActive ? "ACTIVE" : "INACTIVE"}
@@ -85,7 +85,7 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
             variant="outline"
             className={clsx(
               "text-lg px-6 rounded-full",
-              `bg-${badgeColor}-100 text-${badgeColor}-800`
+              `bg-${badgeColor}-100 text-${badgeColor}-800`,
             )}
           >
             {

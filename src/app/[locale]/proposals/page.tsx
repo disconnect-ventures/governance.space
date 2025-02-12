@@ -31,7 +31,7 @@ export default async function ProposalsPage({
     pageSize,
     search,
     sort,
-    filters
+    filters,
   );
   const { meta: totalMeta } = await getProposals(0, 1, "", "asc", []);
 
@@ -45,8 +45,8 @@ export default async function ProposalsPage({
             <HandHelpingIcon className="w-6 h-6" />
           </div>
         }
-        badge={`${totalMeta.pagination.total} registered proposals`}
-        info="Participate in discussions and decision-making processes guided by community governance."
+        rowCount={totalMeta.pagination.total}
+        translationPage="PageProposals"
       ></PageTitle>
       <ProposalDirectory
         proposals={data}

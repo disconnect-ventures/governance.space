@@ -2,7 +2,10 @@
 import React from "react";
 import { TableCell, TableRow } from "~/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
-import { DirectorySearchParams, TableDirectory } from "~/components/layout/Directory";
+import {
+  DirectorySearchParams,
+  TableDirectory,
+} from "~/components/layout/Directory";
 import {
   GlobeIcon,
   LinkedinIcon,
@@ -93,7 +96,9 @@ export const CommitteeMembersDirectory = ({
             <Badge
               className={clsx(
                 "w-full rounded-full px-4 whitespace-nowrap",
-                colorMap[committee.committeeBadgeColor as keyof typeof colorMap]
+                colorMap[
+                  committee.committeeBadgeColor as keyof typeof colorMap
+                ],
               )}
             >
               <span className="mx-auto">{committee.committee}</span>

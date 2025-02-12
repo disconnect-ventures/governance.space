@@ -25,10 +25,6 @@ export default async function AboutPage() {
         <p>All-in-One Governance Platform.</p>
 
         <p>
-          Cardano Voltaire CIP-1694 Offical Transparency & Community Portal.
-        </p>
-
-        <p>
           <span className="text-sm text-gray-600">Built on:</span>
           <Link href="https://cardano.org/" target="_blank">
             <Image
