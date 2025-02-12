@@ -47,7 +47,7 @@ export async function generateStaticParams() {
         } catch {
           return [];
         }
-      })
+      }),
     )
   ).flat();
 
@@ -68,7 +68,11 @@ export default async function DRepProfilePage({ params }: DRepProfileProps) {
 
   return (
     <div className="w-full max-w-7xl mx-auto overflow-hidden">
-      <PageTitle icon={<User className="h-6 w-6" />} title="DRep Profile" />
+      <PageTitle
+        icon={<User className="h-6 w-6" />}
+        title="DRep Profile"
+        translationPage="PageDRepsDetails"
+      />
       <TopBar backHref="/dreps" />
       <div className="w-full flex flex-col lg:flex-row gap-4 justify-center">
         <div className="lg:w-2/3 flex flex-col gap-4">

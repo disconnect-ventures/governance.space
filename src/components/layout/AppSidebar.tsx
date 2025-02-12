@@ -42,7 +42,7 @@ export function AppSidebar() {
                         href={item.href}
                         className={clsx(
                           pathname === item.href &&
-                            "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950"
+                            "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950",
                         )}
                       >
                         <span>{item.label}</span>

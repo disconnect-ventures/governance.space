@@ -31,9 +31,15 @@ export default async function GovernancePage({
     pageSize,
     search,
     sort,
-    filters
+    filters,
   );
-  // const { total: totalGovernanceActions } = await getGovernanceActions(0, 1, "", "NewestCreated", []);
+  const { total: totalGovernanceActions } = await getGovernanceActions(
+    0,
+    1,
+    "",
+    "NewestCreated",
+    [],
+  );
 
   return (
     <div className="space-y-4">
@@ -44,7 +50,8 @@ export default async function GovernancePage({
             <BookOpenCheckIcon />
           </div>
         }
-        info="Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period."
+        rowCount={totalGovernanceActions}
+        translationPage="PageGovernanceActions"
       ></PageTitle>
       <GovernanceActionDirectory
         governanceActions={governanceActions.elements}

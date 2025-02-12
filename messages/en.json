@@ -82,7 +82,7 @@
   "PageDReps": {
     "description": "Delegated Representatives",
     "long-description": "Delegated Representatives (DReps) are ADA holders who registered on-chain to allow other members of the community to delegate their voting power to them, so that they can vote on their behalf. They are are like 'parlimentary representatives' in the Governance system.",
-    "registered_dreps": "registered DReps",
+    "badge_text": "{count} registered DReps",
     "search": "Search DReps by name or ID",
     "drep-name": "DRep Name",
     "voting-power": "Voting Power",
@@ -97,7 +97,6 @@
   },
   "PageDRepsDetails": {
     "description": "DRep Profile",
-    "long-description": "Meet details about the DRep.",
     "drep-id": "DRep ID",
     "send-message": "Send message",
     "delegate-voting-power": "Delegate Voting Power",
@@ -118,6 +117,7 @@
   "PageGovernanceActions": {
     "description": "Governance Actions in Governance",
     "long-description": "Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period.",
+    "badge_text": "{count} registered governance actions",
     "governance-action-id": "Governance Action ID",
     "cip-129-governance-action-id": "(CIP-129) Governance Action ID"
   },
@@ -134,6 +134,7 @@
   "PageProposals": {
     "description": "Proposals in Governance",
     "long-description": "Participate in discussions and decision-making processes guided by community governance.",
+    "badge_text": "{count} registered proposals",
     "cip-129-action-id": "CIP-129 Action ID"
   },
   "PageProposalsDetails": {
@@ -158,6 +159,7 @@
   "PageLiveEvents": {
     "description": "Live Events in Governance",
     "long-description": "See all governance events in real time.",
+    "badge_text": "{count} events in the last 24h",
     "drep-name": "DRep Name",
     "vote": "Vote",
     "voting-power": "Voting Power",

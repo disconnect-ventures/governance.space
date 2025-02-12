@@ -20,8 +20,8 @@ export default async function LiveEventsPage() {
             <RadioIcon />
           </div>
         }
-        info="See all governance events in real time."
-        badge="200 events in the last 24h"
+        translationPage="PageLiveEvents"
+        rowCount={liveEvents.length}
       ></PageTitle>
       <LiveEventsDirectory liveEvents={liveEvents} params={{}} />
     </div>

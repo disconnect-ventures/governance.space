@@ -28,8 +28,8 @@ export default async function DRepsDirectoryPage({
       <PageTitle
         title={"DReps Directory"}
         icon={<UsersIcon />}
-        badge={`${totalDReps} registered DReps`}
-        info="Delegated Representatives (DReps) are ADA holders who registered on-chain to allow other members of the community to delegate their voting power to them, so that they can vote on their behalf. They are are like 'parlimentary representatives' in the Governance system."
+        rowCount={totalDReps}
+        translationPage="PageDReps"
       ></PageTitle>
       <DRepsDirectory
         dreps={dreps.elements}

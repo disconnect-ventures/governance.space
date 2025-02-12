@@ -26,7 +26,7 @@ const getTypeLabel = (type: GovernanceAction["type"]) => {
 
 const getStatusBadge = (
   status: "Pending" | "In Progress" | "Completed",
-  className?: string
+  className?: string,
 ) => {
   const variants = {
     Pending: "bg-yellow-100 text-yellow-800",
