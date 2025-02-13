@@ -21,6 +21,8 @@ export function PageTitle({
   translationPage,
 }: PageTitleProps) {
   const t = useTranslations(translationPage);
+  const pageInfo = t("long-description");
+  const badgeText = t("badge_text", { count: rowCount });
 
   return (
     <div className="flex items-center justify-between mb-6">
@@ -30,21 +32,22 @@ export function PageTitle({
         </div>
         <h1 className="text-4xl font-bold">{title}</h1>
 
-        {rowCount && "nao tem count" && (
+        {rowCount && badgeText && (
           <Badge
             variant="secondary"
             className="bg-gray-100 border-foreground p-2 rounded-full"
           >
-            {t("badge_text", { count: rowCount })}
+            {badgeText}
           </Badge>
         )}
-        {t("long-description") && (
+
+        {pageInfo && (
           <div className="p-3 bg-gray-200 rounded text-gray-600 w-full">
             <p>
               <span className="inline-flex items-center mr-2">
                 <InfoIcon className="w-4 h-4 relative" />
               </span>
-              {t("long-description")}
+              {pageInfo}
             </p>
           </div>
         )}
