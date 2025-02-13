@@ -19,6 +19,7 @@ export default async function AboutPage() {
             <BookOpenCheckIcon />
           </div>
         }
+        translationPage="PageAbout"
       />
 
       <div className="mt-6 space-y-6 text-gray-700">

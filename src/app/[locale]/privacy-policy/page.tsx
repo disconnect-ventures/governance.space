@@ -17,6 +17,7 @@ export default async function PrivacyPolicyPage() {
             <BookOpenCheckIcon />
           </div>
         }
+        translationPage="" // TODO
       />
 
       <div className="mt-6 space-y-6 text-gray-700">

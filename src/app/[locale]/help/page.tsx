@@ -19,6 +19,7 @@ export default async function HelpPage() {
             <MessageCircleQuestion />
           </div>
         }
+        translationPage="PageHelp"
       />
 
       <div className="max-w-3xl mx-auto">
