@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { ChevronDown, Search, Wallet } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { ChevronDown, Search } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -16,6 +16,7 @@ import { SidebarTrigger } from "../ui/sidebar";
 import { Separator } from "../ui/separator";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
+import { CardanoWallet, useWallet } from "@meshsdk/react";
 
 export const headerNavLinks = [
   {
@@ -83,6 +84,20 @@ export const HeaderNavigationLink = ({
 };
 export const Header = () => {
   const pathname = usePathname();
+  const [balance, setBalance] = useState<string>();
+  const { wallet, connected } = useWallet();
+
+  useEffect(() => {
+    async function fetchBalance() {
+      if (wallet && connected) {
+        const balance = await wallet.getLovelace();
+        setBalance(balance);
+      }
+    }
+
+    fetchBalance();
+  }, [wallet, connected]);
+
   return (
     <div className="w-full border-b py-4 md:pb-0 sticky top-0 z-40 bg-background">
       <div className="mx-auto px-4 md:px-8 max-w-7xl">
@@ -109,10 +124,14 @@ export const Header = () => {
             >
               Become a DRep
             </Link>
-            <Button>
-              <Wallet className="h-4 w-4" /> {/* Adicionando o ícone */}
-              Connect Wallet
-            </Button>
+
+            <CardanoWallet />
+
+            {connected && (
+              <Button size="sm" className="cursor-default">
+                Voting power: ₳{balance}
+              </Button>
+            )}
           </div>
 
           <div className="lg:flex items-center hidden">
