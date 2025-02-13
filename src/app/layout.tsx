@@ -9,7 +9,9 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import { SidebarProvider } from "~/components/ui/sidebar";
 import { AppSidebar } from "~/components/layout/AppSidebar";
 import { Inter } from "next/font/google";
+import ClientProvider from "~/hooks/MeshProvider"; // Importando o novo Provider
 import "./globals.css";
+import "@meshsdk/react/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,20 +43,22 @@ export default function RootLayout({
         className={`${inter.className} antialiased min-h-[100vh] flex flex-col`}
       >
         <SidebarProvider>
-          <div className="w-full">
-            <AnnouncementBar />
-            <Header />
-            <AppSidebar />
-            <main className="min-h-[50vh] flex flex-col gap-4 justify-between bg-gray-100 pt-2">
-              <div className="w-full max-w-7xl mx-auto relative my-4 px-4 md:px-8">
-                <Breadcrumbs />
-                {children}
-              </div>
-              <CallToAction />
-            </main>
-            <Toaster />
-            <Footer />
-          </div>
+          <ClientProvider>
+            <div className="w-full">
+              <AnnouncementBar />
+              <Header />
+              <AppSidebar />
+              <main className="min-h-[50vh] flex flex-col gap-4 justify-between bg-gray-100 pt-2">
+                <div className="w-full max-w-7xl mx-auto relative my-4 px-4 md:px-8">
+                  <Breadcrumbs />
+                  {children}
+                </div>
+                <CallToAction />
+              </main>
+              <Toaster />
+              <Footer />
+            </div>
+          </ClientProvider>
         </SidebarProvider>
       </body>
     </html>
