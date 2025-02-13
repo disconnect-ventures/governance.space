@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { DRepsDirectory } from "~/components/features/dreps/DRepsDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { DRepFilterOption, DRepSortOption, getDReps } from "~/lib/dreps";
-import { PageProps } from "../layout";
+import { PageProps } from "../../layout";
 
 export const metadata: Metadata = {
   title: "Governance Space - DReps Directory",

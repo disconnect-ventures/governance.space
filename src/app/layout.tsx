@@ -12,8 +12,13 @@ import { Inter } from "next/font/google";
 import ClientProvider from "~/hooks/MeshProvider"; // Importando o novo Provider
 import "./globals.css";
 import "@meshsdk/react/styles.css";
+import { i18n, Locale } from "~/config/i18n";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export async function generateStaticParams() {
+  return i18n.locales.map((locale) => ({ lang: locale }));
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://governancespace.com"),
@@ -27,17 +32,21 @@ export const metadata: Metadata = {
 };
 
 export type PageProps<Params = undefined> = {
-  params: Promise<Params>;
+  params: Params;
   searchParams?: Promise<{ [key: string]: string | undefined }>;
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function RootLayout(
+  props: {
+    children: React.ReactNode;
+    params: Promise<{lang: Locale }>;
+  }
+) {
+  const params = await props.params;
+  const { children } = props;
+
   return (
-    <html lang="en">
+    <html lang={params.lang}>
       <GoogleTagManager gtmId="GTM-W47W68BT" />
       <body
         className={`${inter.className} antialiased min-h-[100vh] flex flex-col`}

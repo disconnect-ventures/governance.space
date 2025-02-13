@@ -7,7 +7,7 @@ import {
   GovernanceActionFilterOption,
   GovernanceActionSortOption,
 } from "~/lib/governance-actions";
-import { PageProps } from "../layout";
+import { PageProps } from "../../layout";
 
 export const metadata: Metadata = {
   title: "Governance Space - Governance Actions",
