@@ -130,7 +130,8 @@
     "previous-governance-action-id": "ID da Ação de Governança Anterior",
     "votes-submitted-by": "Votos enviados para esta Ação de Governança por",
     "spos": "SPOs",
-    "constitutional-committee": "Comitê Constitucional"
+    "constitutional-committee": "Comitê Constitucional",
+    "long-description": "Qualquer pessoa que possua ADA em uma carteira pode propor uma Ação de Governança. Para enviar uma Ação de Governança, o proponente deve pagar um depósito reembolsável de 100.000 ADA. O depósito será devolvido automaticamente à carteira do proponente após a conclusão do período de votação."
   },
   "PageProposals": {
     "description": "Propostas de Governança",

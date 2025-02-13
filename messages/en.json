@@ -129,7 +129,8 @@
     "previous-governance-action-id": "Previous Governance Action ID",
     "votes-submitted-by": "Votes submitted for this Governance Action By",
     "spos": "SPOs",
-    "constitutional-committee": "Constitutional Committee"
+    "constitutional-committee": "Constitutional Committee",
+    "long-description": "Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period."
   },
   "PageProposals": {
     "description": "Proposals in Governance",
