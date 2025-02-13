@@ -7,7 +7,7 @@ import {
   getProposals,
   ProposalSortOrderOption,
 } from "~/lib/proposals";
-import { PageProps } from "../layout";
+import { PageProps } from "../../layout";
 
 export const metadata: Metadata = {
   title: "Governance Space - Proposals",
