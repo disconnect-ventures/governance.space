@@ -2,7 +2,10 @@
 import React from "react";
 import { TableCell, TableRow } from "~/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
-import { DirectorySearchParams, TableDirectory } from "~/components/layout/Directory";
+import {
+  DirectorySearchParams,
+  TableDirectory,
+} from "~/components/layout/Directory";
 import {
   GlobeIcon,
   LinkedinIcon,
@@ -11,7 +14,7 @@ import {
   XSquareIcon,
 } from "lucide-react";
 import { Badge } from "~/components/ui/badge";
-import Link from "next/link";
+import Link from "~/components/features/Link";
 import clsx from "clsx";
 
 export interface CommitteeMember {

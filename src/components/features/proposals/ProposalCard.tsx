@@ -5,7 +5,7 @@ import { Eye, MessageSquare, Calendar } from "lucide-react";
 import { buttonVariants } from "~/components/ui/button";
 import { Proposal } from "~/lib/proposals";
 import clsx from "clsx";
-import Link from "next/link";
+import Link from "~/components/features/Link";
 
 export type ProposalCardProps = {
   proposal: Proposal;

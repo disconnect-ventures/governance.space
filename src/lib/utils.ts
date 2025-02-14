@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { i18n, Locale } from "~/config/i18n";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -24,3 +25,22 @@ export const truncateMiddle = (input: string, maxLength: number): string => {
   const end = input.slice(-half);
   return `${start}...${end}`;
 };
+
+export function localizePath(locale: Locale, path: string) {
+  const urlParts = path.slice(1).split("/");
+  const locales = i18n.locales.map((l) => l.key);
+
+  // Absolute path, don't modify
+  if (!path.startsWith("/")) {
+    return path;
+  }
+
+  // Replace locale if present
+  if (urlParts.length && locales.includes(urlParts[0] as Locale)) {
+    return `/${locale}/` + urlParts.slice(1).join("/");
+  }
+
+  const normalizedPath = path.startsWith("/") ? path.slice(1) : path;
+
+  return `/${locale}/${normalizedPath}`;
+}
