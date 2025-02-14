@@ -154,17 +154,18 @@
     "role": "Role",
     "country": "Country",
     "drep": "DRep",
+    "member": "Member",
     "spo": "SPO",
     "links": "Links"
   },
   "pageLiveEvents": {
     "description": "Live Events in Governance",
     "longDescription": "See all governance events in real time.",
-    "badge_text": "{count} events in the last 24h",
-    "drep-name": "DRep Name",
+    "badgeText": "{count} events in the last 24h",
+    "drepName": "DRep Name",
     "vote": "Vote",
-    "voting-power": "Voting Power",
-    "submission-epoch": "Submission Epoch",
+    "votingPower": "Voting Power",
+    "submissionEpoch": "Submission Epoch",
     "transaction": "Transaction"
   },
   "pageAnalytics": {

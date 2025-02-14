@@ -152,6 +152,7 @@
     "longDescription": "Conheça os membros da comunidade Cardano que participam de todos os comitês existentes.",
     "groups": "Grupos",
     "committee": "Comitê",
+    "member": "Membro",
     "role": "Função",
     "country": "País",
     "drep": "DRep",
@@ -161,11 +162,11 @@
   "pageLiveEvents": {
     "description": "Eventos ao Vivo na Governança",
     "longDescription": "Veja todos os eventos de governança em tempo real.",
-    "drep-name": "Nome do DRep",
-    "badge_text": "{count} eventos nas últimas 24hrs",
+    "drepName": "Nome do DRep",
+    "badgeText": "{count} eventos nas últimas 24hrs",
     "vote": "Voto",
-    "voting-power": "Poder de Voto",
-    "submission-epoch": "Época de Submissão",
+    "votingPower": "Poder de Voto",
+    "submissionEpoch": "Época de Submissão",
     "transaction": "Transação"
   },
   "pageAnalytics": {
