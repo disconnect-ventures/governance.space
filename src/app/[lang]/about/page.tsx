@@ -32,7 +32,7 @@ export default async function AboutPage() {
           <span className="text-sm text-gray-600">Built on:</span>
           <Link href="https://cardano.org/" target="_blank">
             <Image
-              src={"/cardano-logo.svg"}
+              src={"/assets/cardano-logo.svg"}
               alt="Cardano's logo"
               width={140}
               height={30}

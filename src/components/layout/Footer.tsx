@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "~/components/features/Link";
 import { Twitter } from "lucide-react";
 
-import CardanoLogo from "../../../public/cardano-logo.svg";
+import CardanoLogo from "../../../public/assets/cardano-logo.svg";
 import Logo from "~/components/icons/Logo";
 
 export type MenuSection = {

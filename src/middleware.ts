@@ -37,6 +37,7 @@ export function middleware(request: NextRequest) {
       "/apple-icon.png",
       "/favicon.ico",
     ].includes(pathname)
+    || pathname.startsWith("/assets") // Workaround for i18n breaking the public folder
   )
     return;
 

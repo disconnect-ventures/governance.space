@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Governance Space",
     description: "All-in-One Governance Platform",
-    images: ["/open-graph.png"],
+    images: ["/assets/open-graph.png"],
   },
 };
 
