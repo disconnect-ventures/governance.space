@@ -15,9 +15,26 @@ import clsx from "clsx";
 import { Input } from "../ui/input";
 import { SearchIcon } from "lucide-react";
 import { Button } from "../ui/button";
+import { CardanoWallet, useWallet } from "@meshsdk/react";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export function AppSidebar() {
   const pathname = usePathname();
+
+  const [balance, setBalance] = useState<string>();
+  const { wallet, connected } = useWallet();
+
+  useEffect(() => {
+    async function fetchBalance() {
+      if (wallet && connected) {
+        const balance = await wallet.getLovelace();
+        setBalance(balance);
+      }
+    }
+
+    fetchBalance();
+  }, [wallet, connected]);
 
   return (
     <div className="md:hidden">
@@ -42,7 +59,7 @@ export function AppSidebar() {
                         href={item.href}
                         className={clsx(
                           pathname === item.href &&
-                            "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950"
+                            "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950",
                         )}
                       >
                         <span>{item.label}</span>
@@ -53,7 +70,12 @@ export function AppSidebar() {
               </SidebarMenu>
               <div className="flex flex-col gap-2 mt-auto">
                 <Button variant="ghost">Become a DRep</Button>
-                <Button>Connect Wallet</Button>
+                <CardanoWallet />
+                {connected && (
+                  <Button size="sm" className="cursor-default">
+                    Voting power: ₳{balance}
+                  </Button>
+                )}
               </div>
             </SidebarGroupContent>
           </SidebarGroup>
