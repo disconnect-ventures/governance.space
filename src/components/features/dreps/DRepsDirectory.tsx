@@ -12,7 +12,8 @@ import {
   DirectorySearchParams,
   TableDirectory,
 } from "~/components/layout/Directory";
-import { formatVotingPower, truncateMiddle } from "~/lib/utils";
+import { formatVotingPower, localizePath, truncateMiddle } from "~/lib/utils";
+import { useLocale } from "~/hooks/use-locale";
 
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
@@ -21,6 +22,7 @@ export type DRepsDirectoryProps = {
 
 export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
   const router = useRouter();
+  const { locale } = useLocale();
 
   return (
     <TableDirectory
@@ -54,7 +56,9 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
       rows={dreps.map((drep) => (
         <TableRow
           key={drep.view}
-          onClick={() => router.push(`/dreps/${drep.view}`)}
+          onClick={() =>
+            router.push(localizePath(locale, `/dreps/${drep.view}`))
+          }
           className="cursor-pointer"
         >
           <TableCell>

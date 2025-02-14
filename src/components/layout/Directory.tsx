@@ -31,6 +31,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { Checkbox } from "../ui/checkbox";
+import { useLocale } from "~/hooks/use-locale";
+import { localizePath } from "~/lib/utils";
 
 export type DirectoryParamOption = {
   value: string;
@@ -75,6 +77,8 @@ export function Directory({
   const searchUpdateTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const router = useRouter();
+  const { locale } = useLocale();
+
   const totalPages = useMemo(
     () => Math.ceil(totalResults / pageSize),
     [totalResults, pageSize]
@@ -121,9 +125,9 @@ export function Directory({
           newQuery.delete(key);
         }
       }
-      return `${pathname}?${newQuery.toString()}`;
+      return localizePath(locale, `${pathname}?${newQuery.toString()}`);
     },
-    [query, pathname]
+    [query, pathname, locale]
   );
 
   const setSortParam = useCallback(
