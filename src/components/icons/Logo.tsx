@@ -7,7 +7,7 @@ export default function Logo() {
       <Link className="w-full" href="/" aria-label="Home">
         <div className="flex items-center whitespace-nowrap focus:text-inherit">
           <Image
-            src={"/icon-512.png"}
+            src={"/assets/icon-512.png"}
             height={512}
             width={512}
             alt="logo-icon"

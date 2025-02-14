@@ -1,11 +1,11 @@
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
+import { Avatar, AvatarFallback } from "~/components/ui/avatar";
 import { Eye, MessageSquare, Calendar } from "lucide-react";
 import { buttonVariants } from "~/components/ui/button";
 import { Proposal } from "~/lib/proposals";
 import clsx from "clsx";
-import Link from "~/components/features/Link";
+import Link from "next/link";
 
 export type ProposalCardProps = {
   proposal: Proposal;
@@ -56,7 +56,7 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
 
         <div className="flex gap-4 items-center">
           <Avatar className="h-10 w-10">
-            <AvatarImage src="/placeholder-avatar.jpg" />
+            {/* <AvatarImage src="/placeholder-avatar.jpg" /> */} { /** TODO: Fetch user and display proper avatar here */}
             <AvatarFallback>{username.substring(0, 2)}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col ">
