@@ -40,13 +40,13 @@ export async function generateStaticParams() {
             pageSize,
             search,
             sort,
-            filters
+            filters,
           );
           return data;
         } catch {
           return [];
         }
-      })
+      }),
     )
   ).flat();
 
@@ -81,7 +81,7 @@ export default async function ProposalDetailsPage({
             <HandHelpingIcon className="w-6 h-6" />
           </div>
         }
-        info="Participate in discussions and decision-making processes guided by community governance."
+        translationPage="pageProposalsDetails"
       />
       <TopBar backHref="/proposals" />
       <Card className="mb-4">
