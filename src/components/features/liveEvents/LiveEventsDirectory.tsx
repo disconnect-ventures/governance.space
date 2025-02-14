@@ -1,11 +1,17 @@
+"use client";
+
 import React from "react";
 import { TableCell, TableRow } from "~/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
-import { DirectorySearchParams, TableDirectory } from "~/components/layout/Directory";
+import {
+  DirectorySearchParams,
+  TableDirectory,
+} from "~/components/layout/Directory";
 import { capitalize } from "~/lib/utils";
 import { Badge } from "~/components/ui/badge";
 import { CircleCheck, CircleMinusIcon, CircleXIcon } from "lucide-react";
 import CopyToClipboard from "../CopyToClipboard";
+import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 export interface LiveEvent {
   name: string;
@@ -57,17 +63,21 @@ export const LiveEventsDirectory = ({
     }
   };
 
+  const {
+    dictionary: { pageLiveEvents },
+  } = useTranslation();
+
   return (
     <TableDirectory
       searchPlaceholder="Search by name or ID"
       headers={[
-        "DRep Name",
-        "Vote",
-        "Voting Power",
+        pageLiveEvents.drepName,
+        pageLiveEvents.vote,
+        pageLiveEvents.votingPower,
         "Voter Role",
         "Type",
-        "Submission Epoch",
-        "Transaction",
+        pageLiveEvents.submissionEpoch,
+        pageLiveEvents.transaction,
         "Registration Date",
       ]}
       params={params}

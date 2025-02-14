@@ -16,6 +16,7 @@ import {
 import { Badge } from "~/components/ui/badge";
 import Link from "~/components/features/Link";
 import clsx from "clsx";
+import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 export interface CommitteeMember {
   url: string;
@@ -57,18 +58,22 @@ export const CommitteeMembersDirectory = ({
     red: "bg-red-300 text-red-600 hover:bg-red-300 hover:text-red-600",
   };
 
+  const {
+    dictionary: { pageCommittees },
+  } = useTranslation();
+
   return (
     <TableDirectory
       searchPlaceholder="Search members..."
       headers={[
-        "Groups",
-        "Committee",
-        "Member",
-        "Role",
-        "Country",
-        "DRep",
-        "SPO",
-        "Links",
+        pageCommittees.groups,
+        pageCommittees.committee,
+        pageCommittees.member,
+        pageCommittees.role,
+        pageCommittees.country,
+        pageCommittees.drep,
+        pageCommittees.spo,
+        pageCommittees.links,
       ]}
       params={params}
       rows={committeeMembers.map((committee, index) => (
@@ -96,7 +101,9 @@ export const CommitteeMembersDirectory = ({
             <Badge
               className={clsx(
                 "w-full rounded-full px-4 whitespace-nowrap",
-                colorMap[committee.committeeBadgeColor as keyof typeof colorMap]
+                colorMap[
+                  committee.committeeBadgeColor as keyof typeof colorMap
+                ],
               )}
             >
               <span className="mx-auto">{committee.committee}</span>
