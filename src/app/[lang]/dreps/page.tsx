@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { DRepsDirectory } from "~/components/features/dreps/DRepsDirectory";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { DRepFilterOption, DRepSortOption, getDReps } from "~/lib/dreps";
-import { PageProps } from "../../layout";
+import { PageProps } from "../layout";
 
 export const metadata: Metadata = {
   title: "Governance Space - DReps Directory",
@@ -29,7 +29,7 @@ export default async function DRepsDirectoryPage({
         title={"DReps Directory"}
         icon={<UsersIcon />}
         badge={`${totalDReps} registered DReps`}
-        info="Delegated Representatives (DReps) are ADA holders who registered on-chain to allow other members of the community to delegate their voting power to them, so that they can vote on their behalf. They are are like 'parlimentary representatives' in the Governance system."
+        translationPage="pageDReps"
       ></PageTitle>
       <DRepsDirectory
         dreps={dreps.elements}

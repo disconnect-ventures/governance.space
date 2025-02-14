@@ -37,7 +37,7 @@ export async function generateStaticParams() {
     pageSize,
     search,
     sort,
-    filters
+    filters,
   );
   const totalPages = Math.ceil(firstPage.total / pageSize);
 
@@ -50,13 +50,13 @@ export async function generateStaticParams() {
             pageSize,
             search,
             sort,
-            filters
+            filters,
           );
           return data.elements;
         } catch {
           return [];
         }
-      })
+      }),
     )
   ).flat();
 
@@ -141,7 +141,7 @@ export default async function GovernanceActionDetailsPage({}: GovernanceActionDe
             <BookOpenCheckIcon />
           </div>
         }
-        info="Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period."
+        translationPage="pageGovernanceActionsDetails"
       />
 
       <TopBar backHref="/governance" />
