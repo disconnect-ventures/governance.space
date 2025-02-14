@@ -19,7 +19,7 @@ import { getDictionary } from "~/config/dictionaries";
 const inter = Inter({ subsets: ["latin"] });
 
 export async function generateStaticParams() {
-  return i18n.locales.map((locale) => ({ lang: locale }));
+  return i18n.locales.map((locale) => ({ lang: locale.key }));
 }
 
 export const metadata: Metadata = {

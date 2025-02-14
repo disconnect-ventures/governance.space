@@ -17,6 +17,7 @@ import { Separator } from "../ui/separator";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { CardanoWallet, useWallet } from "@meshsdk/react";
+import LocaleSwitch from "../features/LocaleSwitch";
 
 export const headerNavLinks = [
   {
@@ -73,7 +74,7 @@ export const HeaderNavigationLink = ({
           className={clsx(
             "px-3 py-2 hover:text-blue-500 rounded-full border-border border whitespace-nowrap",
             active &&
-              "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950",
+              "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950"
           )}
         >
           {children}
@@ -82,6 +83,7 @@ export const HeaderNavigationLink = ({
     </NavigationMenuItem>
   );
 };
+
 export const Header = () => {
   const pathname = usePathname();
   const [balance, setBalance] = useState<string>();
@@ -101,6 +103,9 @@ export const Header = () => {
   return (
     <div className="w-full border-b py-4 md:pb-0 sticky top-0 z-40 bg-background">
       <div className="mx-auto px-4 md:px-8 max-w-7xl">
+        <div className="flex justify-end">
+          <LocaleSwitch />
+        </div>
         <div className="flex flex-col md:flex-row items-center justify-between md:min-h-16 gap-2">
           <div
             className="w-full grid md:flex items-center gap-2"
