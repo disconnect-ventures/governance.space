@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Link from "~/components/features/Link";
 
 export default function Logo() {
   return (

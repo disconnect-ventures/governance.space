@@ -1,5 +1,5 @@
 import { Link as LinkIcon } from "lucide-react";
-import Link from "next/link";
+import Link from "~/components/features/Link";
 import { Proposal } from "~/lib/proposals";
 
 interface ProposalContentProps {

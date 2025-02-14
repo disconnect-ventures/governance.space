@@ -14,8 +14,7 @@ import {
 } from "lucide-react";
 import { GovernanceAction } from "~/lib/governance-actions";
 import { GovernanceActionMetadata } from "~/lib/metadata";
-import Link from "next/link";
-import { useLocalizedPath } from "~/hooks/use-localized-path";
+import Link from "~/components/features/Link";
 import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 const getTypeLabel = (type: GovernanceAction["type"]) => {
@@ -29,7 +28,7 @@ const getTypeLabel = (type: GovernanceAction["type"]) => {
 
 const getStatusBadge = (
   status: "Pending" | "In Progress" | "Completed",
-  className?: string,
+  className?: string
 ) => {
   const variants = {
     Pending: "bg-yellow-100 text-yellow-800",
@@ -77,7 +76,6 @@ export const GovernanceActionCard = ({
   const standard = "CIP-129"; // TODO
   const governanceActionId =
     "gov_action1pvv5wmjqhwa4u85vu9f4ydmzu2mgt8n7et967ph2urhx53r70xusqnmm525"; // TODO
-  const { getLocalizedPath } = useLocalizedPath();
   const { dictionary } = useTranslation();
 
   return (
@@ -140,7 +138,7 @@ export const GovernanceActionCard = ({
 
         <div className="flex justify-center">
           <Link
-            href={getLocalizedPath(`/governance/${action.id}`)}
+            href={`/governance/${action.id}`}
             className={` ${buttonVariants()} `}
           >
             {dictionary.general["view-details-and-vote"]}

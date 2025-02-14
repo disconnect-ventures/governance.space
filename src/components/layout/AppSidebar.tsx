@@ -9,7 +9,7 @@ import {
   SidebarMenuItem,
 } from "~/components/ui/sidebar";
 import { headerNavLinks } from "./Header";
-import Link from "next/link";
+import Link from "~/components/features/Link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { Input } from "../ui/input";
