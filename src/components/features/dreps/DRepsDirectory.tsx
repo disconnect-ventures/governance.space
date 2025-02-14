@@ -14,6 +14,7 @@ import {
 } from "~/components/layout/Directory";
 import { formatVotingPower, localizePath, truncateMiddle } from "~/lib/utils";
 import { useLocale } from "~/hooks/use-locale";
+import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
@@ -23,6 +24,9 @@ export type DRepsDirectoryProps = {
 export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
   const router = useRouter();
   const { locale } = useLocale();
+  const {
+    dictionary: { pageDReps, general },
+  } = useTranslation();
 
   return (
     <TableDirectory
@@ -41,16 +45,16 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
         { value: "Inactive", label: "Inactive" },
         { value: "Retired", label: "Retired" },
       ]}
-      searchPlaceholder={"Search DReps by name or ID"}
+      searchPlaceholder={pageDReps.search}
       headers={[
-        "DRep name",
-        "Status",
-        "Voting Power",
-        "Social",
-        "Delegators",
-        "Influence Power",
-        "Registration Date",
-        "Actions",
+        pageDReps.drepName,
+        pageDReps.status,
+        pageDReps.votingPower,
+        pageDReps.social,
+        pageDReps.delegators,
+        pageDReps.influencePower,
+        pageDReps.registrationDate,
+        pageDReps.actions,
       ]}
       params={params}
       rows={dreps.map((drep) => (
@@ -83,7 +87,7 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
               className={clsx(
                 drep.status === "Active" && "bg-green-100 text-green-800",
                 drep.status === "Retired" && "bg-yellow-100 text-yellow-800",
-                drep.status === "Inactive" && "bg-red-100 text-red-800"
+                drep.status === "Inactive" && "bg-red-100 text-red-800",
               )}
             >
               {drep.status}
@@ -110,7 +114,7 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
             <div className="flex items-center gap-2">
               <Star className="h-4 w-4 text-gray-400" />
               <Button variant="secondary" size="sm" className="gap-1">
-                <EyeIcon className="h-4 w-4" /> Details
+                <EyeIcon className="h-4 w-4" /> {general.details}
               </Button>
             </div>
           </TableCell>
