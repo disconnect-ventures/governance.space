@@ -18,6 +18,7 @@ import { Button } from "../ui/button";
 import { CardanoWallet, useWallet } from "@meshsdk/react";
 import { useState } from "react";
 import { useEffect } from "react";
+import LocaleSwitch from "../features/LocaleSwitch";
 
 export function AppSidebar() {
   const pathname = usePathname();
@@ -59,7 +60,7 @@ export function AppSidebar() {
                         href={item.href}
                         className={clsx(
                           pathname === item.href &&
-                            "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950",
+                            "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950"
                         )}
                       >
                         <span>{item.label}</span>
@@ -76,6 +77,9 @@ export function AppSidebar() {
                     Voting power: ₳{balance}
                   </Button>
                 )}
+              </div>
+              <div>
+                <LocaleSwitch />
               </div>
             </SidebarGroupContent>
           </SidebarGroup>

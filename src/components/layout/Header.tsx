@@ -103,7 +103,7 @@ export const Header = () => {
   return (
     <div className="w-full border-b py-4 md:pb-0 sticky top-0 z-40 bg-background">
       <div className="mx-auto px-4 md:px-8 max-w-7xl">
-        <div className="flex justify-end">
+        <div className="hidden md:flex justify-end">
           <LocaleSwitch />
         </div>
         <div className="flex flex-col md:flex-row items-center justify-between md:min-h-16 gap-2">
