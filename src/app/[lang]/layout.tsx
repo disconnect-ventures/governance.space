@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   },
 };
 
-export type PageProps<Params = undefined> = {
-  params: Params;
+export type PageProps<Params = {}> = {
+  params: Promise<{ lang: Locale } & Params>;
   searchParams?: Promise<{ [key: string]: string | undefined }>;
 };
 
