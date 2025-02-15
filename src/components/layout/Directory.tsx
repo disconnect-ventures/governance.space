@@ -33,6 +33,7 @@ import { Label } from "../ui/label";
 import { Checkbox } from "../ui/checkbox";
 import { useLocale } from "~/hooks/use-locale";
 import { localizePath } from "~/lib/utils";
+import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 export type DirectoryParamOption = {
   value: string;
@@ -78,6 +79,7 @@ export function Directory({
 
   const router = useRouter();
   const { locale } = useLocale();
+  const { dictionary } = useTranslation();
 
   const totalPages = useMemo(
     () => Math.ceil(totalResults / pageSize),
@@ -225,12 +227,12 @@ export function Directory({
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="outline" className="w-full">
-                  <ArrowUpDown className="h-4 w-4" /> Sort
+                  <ArrowUpDown className="h-4 w-4" /> {dictionary.general.sort}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-80 flex flex-col gap-2 ml-4 mx-4 md:mx-8">
                 <span className="font-semibold">
-                  {sortPopoverTitle || "Sort"}
+                  {sortPopoverTitle || dictionary.general.sort}
                 </span>
                 <RadioGroup defaultValue={params.sort}>
                   {sortOptions?.map(({ label, value }) => (
@@ -249,7 +251,7 @@ export function Directory({
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="outline" className="w-full">
-                  <Filter className="h-4 w-4" /> Filter
+                  <Filter className="h-4 w-4" /> {dictionary.general.filter}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-80 flex flex-col gap-2 mx-4 md:mx-8">

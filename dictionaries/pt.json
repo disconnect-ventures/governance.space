@@ -82,7 +82,7 @@
   "pageDReps": {
     "description": "Representantes Delegados",
     "longDescription": "Os Representantes Delegados (DReps) são detentores de ADA que se registraram on-chain para permitir que outros membros da comunidade deleguem seu poder de voto a eles, para que possam votar em seu nome. Eles são como 'representantes parlamentares' no sistema de governança.",
-    "badgeText": "{count} DReps registrados",
+    "badgeText": "DReps registrados",
     "search": "Buscar DReps por nome ou ID",
     "drepName": "Nome do DRep",
     "votingPower": "Poder de Voto",
