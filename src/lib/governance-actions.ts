@@ -1,4 +1,5 @@
-import { ApiResponse, baseApiUrl, CACHE_CONFIG, fetchApi } from ".";
+import { ApiResponse, CACHE_CONFIG, fetchApi } from ".";
+import { API_BASE_URL } from "./constants";
 
 export type GovernanceAction = {
   id: string;
@@ -64,7 +65,7 @@ export async function getGovernanceActions(
   sort: GovernanceActionSortOption,
   filters: GovernanceActionFilterOption[]
 ): Promise<ApiResponse<GovernanceAction>> {
-  const url = new URL("/proposal/list", baseApiUrl);
+  const url = new URL("/proposal/list", API_BASE_URL);
   Object.entries({ page, pageSize, search, sort }).forEach(
     ([key, value]) =>
       value !== "" && url.searchParams.append(key, value.toString())
