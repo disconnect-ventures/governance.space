@@ -1,14 +1,14 @@
-// https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=34-1870&t=GGJEhGlKd8rVords-4
 import React from "react";
 import { GovernanceAction } from "~/lib/governance-actions";
 import { GovernanceActionCard } from "./GovernanceActionCard";
-import { getMockGovernanceActionMetadata } from "~/lib/mock";
 import {
   Directory,
   DirectorySearchParams,
 } from "~/components/layout/Directory";
+import { Metadata } from "~/lib/metadata";
 
 type GovernanceActionDirectoryProps = {
+  metadata: Record<string, Metadata | null>;
   governanceActions: Array<GovernanceAction>;
   params: DirectorySearchParams;
 };
@@ -16,6 +16,7 @@ type GovernanceActionDirectoryProps = {
 export function GovernanceActionDirectory({
   governanceActions,
   params,
+  metadata,
 }: GovernanceActionDirectoryProps) {
   return (
     <Directory
@@ -43,14 +44,13 @@ export function GovernanceActionDirectory({
         { value: "InfoAction", label: "Info Action" },
       ]}
       rows={governanceActions.map((action, index) => {
-        const metadata = getMockGovernanceActionMetadata(); // TODO
-        const status = "In Progress"; // TODO
+        const isExpired = new Date(action.expiryDate) < new Date();
         return (
           <GovernanceActionCard
             key={index}
             action={action}
-            status={status}
-            metadata={metadata.metadata}
+            status={isExpired ? "Completed" : "In Progress"}
+            metadata={metadata[action.id]}
           />
         );
       })}

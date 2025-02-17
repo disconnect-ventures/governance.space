@@ -1,19 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { Card, CardContent } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 import { buttonVariants } from "~/components/ui/button";
 import {
   Clock,
   Calendar,
-  EyeIcon,
   ClockIcon,
   CircleCheckBig,
   CircleAlert,
 } from "lucide-react";
 import { GovernanceAction } from "~/lib/governance-actions";
-import { GovernanceActionMetadata } from "~/lib/metadata";
+import { Metadata } from "~/lib/metadata";
 import Link from "~/components/features/Link";
 import { useTranslation } from "~/hooks/use-translation/use-translation";
 
@@ -69,14 +68,19 @@ export const GovernanceActionCard = ({
   metadata,
 }: {
   action: GovernanceAction;
-  metadata: GovernanceActionMetadata;
-  status: "Pending" | "In Progress" | "Completed";
+  metadata: Metadata | null;
+  status: "In Progress" | "Completed";
 }) => {
-  const views = 404; // TODO
-  const standard = "CIP-129"; // TODO
-  const governanceActionId =
-    "gov_action1pvv5wmjqhwa4u85vu9f4ydmzu2mgt8n7et967ph2urhx53r70xusqnmm525"; // TODO
   const { dictionary } = useTranslation();
+  // const views = 404; // TODO
+  const title = useMemo(
+    () => (action.title || metadata ? metadata?.metadata.title : "No title"),
+    [action, metadata]
+  );
+  const abstract = useMemo(
+    () => action.abstract || metadata?.metadata.abstract,
+    [action, metadata]
+  );
 
   return (
     <Card className="mb-4">
@@ -85,20 +89,18 @@ export const GovernanceActionCard = ({
           <Badge variant="outline" className="font-normal bg-blue-200 p-2">
             {getTypeLabel(action.type)}
           </Badge>
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <div className="flex items-center justify-center text-xs text-gray-600">
               <EyeIcon className="h-4" />
               {views}
             </div>
-          </div>
+          </div> */}
           {getStatusBadge(status, "ml-auto")}
         </div>
 
-        <h3 className="text-lg font-semibold mb-2">{metadata.title}</h3>
+        <h3 className="text-lg font-semibold mb-2">{title}</h3>
 
-        <p className="text-sm text-gray-600 mb-4 line-clamp-2">
-          {metadata.abstract}
-        </p>
+        <p className="text-sm text-gray-600 mb-4 line-clamp-2">{abstract}</p>
 
         <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-600">
           <div className="flex items-center gap-2">
@@ -122,17 +124,13 @@ export const GovernanceActionCard = ({
         </div>
 
         <div className="text-gray-600 space-y-2 mb-4">
-          <div className="text-sm">
+          {/* <div className="text-sm">
             <span className="font-semibold">Governance Action ID:</span>
-            <div className="font-mono text-xs break-all">{action.txHash}</div>
-          </div>
+            <div className="font-mono text-xs break-all">{action.id}</div>
+          </div> */}
           <div className="text-sm">
-            <span className="font-semibold">
-              ({standard}) Governance Action ID:
-            </span>
-            <div className="font-mono text-xs break-all">
-              {governanceActionId}
-            </div>
+            <span className="font-semibold">Legacy Governance Action ID:</span>
+            <div className="font-mono text-xs break-all">{action.txHash}</div>
           </div>
         </div>
 
