@@ -1,4 +1,9 @@
-import { getMockGovernanceActionMetadata } from "./mock";
+import { METADATA_BASE_URL } from "./constants";
+
+export enum MetadataStandard {
+  CIP108 = "CIP108",
+  CIP119 = "CIP119",
+}
 
 interface Reference {
   "@type": string;
@@ -20,12 +25,29 @@ export interface Metadata {
 }
 
 export async function getGovernanceActionMetadata(
-  // eslint-disable-next-line
   hash: string,
-  // eslint-disable-next-line
   standard: string,
-  // eslint-disable-next-line
-  url: string
-): Promise<Metadata> {
-  return getMockGovernanceActionMetadata();
+  objectUrl: string
+): Promise<Metadata | null> {
+  try {
+    const url = new URL("/validate", METADATA_BASE_URL);
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        url: objectUrl,
+        hash,
+        standard,
+      }),
+    });
+    if (!response.ok) {
+      return null;
+    }
+    const data = (await response.json()) as Metadata;
+    return data;
+  } catch {
+    return null;
+  }
 }
