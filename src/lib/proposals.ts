@@ -1,4 +1,5 @@
 import { CACHE_CONFIG, fetchApi } from ".";
+import { PDF_API_URL } from "./constants";
 
 export type Proposal = {
   id: number;
@@ -68,7 +69,7 @@ export async function getGovernanceActionProposalTypes(): Promise<
   ProposalResponse<ProposalType>
 > {
   const response = await fetch(
-    "https://be.pdf.gov.tools/api/governance-action-types",
+    `${PDF_API_URL}/api/governance-action-types`,
     {}
   );
   const data = (await response.json()) as ProposalResponse<ProposalType>;
@@ -82,7 +83,7 @@ export async function getProposals(
   sortOrder: ProposalSortOrderOption,
   actionType: number[]
 ) {
-  const url = new URL("/api/proposals", "https://be.pdf.gov.tools");
+  const url = new URL("/api/proposals", PDF_API_URL);
 
   if (actionType.length) {
     let filterIndex = 0;
@@ -115,7 +116,7 @@ export async function getProposalsByUserId(id: string) {
 }
 
 export async function getProposalsById(id: number) {
-  const url = new URL(`/api/proposals/${id}`, "https://be.pdf.gov.tools");
+  const url = new URL(`/api/proposals/${id}`, PDF_API_URL);
   const response = await fetchApi<{ data: Proposal; meta: {} }>(url, {
     next: { tags: [CACHE_CONFIG.tags.proposal] },
   });

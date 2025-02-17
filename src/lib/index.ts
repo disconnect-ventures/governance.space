@@ -1,4 +1,3 @@
-export const baseApiUrl = "https://be.gov.tools";
 
 export type ApiResponse<Element> = {
   elements: Array<Element>;
