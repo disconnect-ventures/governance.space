@@ -11,7 +11,7 @@ import {
   CircleCheckBig,
   CircleAlert,
 } from "lucide-react";
-import { GovernanceAction } from "~/lib/governance-actions";
+import { getActionIdUrl, GovernanceAction } from "~/lib/governance-actions";
 import { Metadata } from "~/lib/metadata";
 import Link from "~/components/features/Link";
 import { useTranslation } from "~/hooks/use-translation/use-translation";
@@ -136,7 +136,10 @@ export const GovernanceActionCard = ({
 
         <div className="flex justify-center">
           <Link
-            href={`/governance/${action.id}`}
+            href={`/governance/${getActionIdUrl(
+              action.txHash,
+              action.index.toString()
+            )}`}
             className={` ${buttonVariants()} `}
           >
             {dictionary.general["view-details-and-vote"]}

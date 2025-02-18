@@ -11,9 +11,13 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { BookOpenCheckIcon } from "lucide-react";
 import { Metadata } from "next";
 import {
+  getGovernanceActionById,
   getGovernanceActions,
   GovernanceActionFilterOption,
 } from "~/lib/governance-actions";
+import { PageProps } from "../../layout";
+import { notFound } from "next/navigation";
+import { getGovernanceActionMetadata, MetadataStandard } from "~/lib/metadata";
 
 export async function generateMetadata({
   params,
@@ -37,7 +41,7 @@ export async function generateStaticParams() {
     pageSize,
     search,
     sort,
-    filters,
+    filters
   );
   const totalPages = Math.ceil(firstPage.total / pageSize);
 
@@ -50,13 +54,13 @@ export async function generateStaticParams() {
             pageSize,
             search,
             sort,
-            filters,
+            filters
           );
           return data.elements;
         } catch {
           return [];
         }
-      }),
+      })
     )
   ).flat();
 
@@ -125,13 +129,24 @@ const HISTORY_ENTRIES = [
   },
 ];
 
-type GovernanceActionDetailsProps = {
-  params: Promise<{
-    action: string;
-  }>;
-};
+type GovernanceActionDetailsProps = PageProps<{ action: string }>;
 
-export default async function GovernanceActionDetailsPage({}: GovernanceActionDetailsProps) {
+export default async function GovernanceActionDetailsPage({
+  params: paramsPromise,
+}: GovernanceActionDetailsProps) {
+  const params = await paramsPromise;
+  const proposal = await getGovernanceActionById(params.action);
+  const action = proposal?.proposal;
+  if (!action) {
+    return notFound();
+  }
+
+  const metadata = await getGovernanceActionMetadata(
+    action.metadataHash,
+    MetadataStandard.CIP108,
+    action.url
+  );
+
   return (
     <div>
       <PageTitle
@@ -147,7 +162,7 @@ export default async function GovernanceActionDetailsPage({}: GovernanceActionDe
       <TopBar backHref="/governance" />
 
       <Card>
-        <GovernanceHeader />
+        <GovernanceHeader action={action} metadata={metadata} />
         <Separator />
         <GovernaceVoting />
         <Separator />
