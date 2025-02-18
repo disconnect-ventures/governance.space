@@ -83,25 +83,6 @@ const DOCUMENTS = [
   },
 ];
 
-const SUPPORTING_LINKS = [
-  {
-    title: "CIP-0122",
-    url: "https://github.com/cardano-foundation/CIPs/tree/master/CIP-0122",
-  },
-  {
-    title: "CIP-1547",
-    url: "https://github.com/cardano-foundation/CIPs/tree/master/CIP-1547",
-  },
-  {
-    title: "CIP-1694",
-    url: "https://github.com/cardano-foundation/CIPs/tree/master/CIP-1694",
-  },
-  {
-    title: "CIP-0654",
-    url: "https://github.com/cardano-foundation/CIPs/tree/master/CIP-0654",
-  },
-];
-
 const GOVERNANCE_TASKS = [
   {
     description: "Levantamento de requisitos",
@@ -147,6 +128,7 @@ export default async function GovernanceActionDetailsPage({
     MetadataStandard.CIP108,
     action.url
   );
+  const references = metadata?.metadata.references ?? [];
 
   return (
     <div>
@@ -173,7 +155,7 @@ export default async function GovernanceActionDetailsPage({
         <Separator />
         <GovernanceTasks tasks={GOVERNANCE_TASKS} />
         <Separator />
-        <GovernanceLinks links={SUPPORTING_LINKS} />
+        <GovernanceLinks links={references} />
       </Card>
     </div>
   );
