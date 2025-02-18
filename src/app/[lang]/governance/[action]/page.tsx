@@ -11,6 +11,7 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { BookOpenCheckIcon } from "lucide-react";
 import { Metadata } from "next";
 import {
+  getActionIdUrl,
   getGovernanceActionById,
   getGovernanceActions,
   GovernanceActionFilterOption,
@@ -65,7 +66,7 @@ export async function generateStaticParams() {
   ).flat();
 
   return [...firstPage.elements, ...nextPages].map((p) => ({
-    action: p.id,
+    action: getActionIdUrl(p.txHash, p.index.toString()),
   }));
 }
 
