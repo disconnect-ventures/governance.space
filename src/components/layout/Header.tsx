@@ -74,7 +74,7 @@ export const HeaderNavigationLink = ({
           className={clsx(
             "px-3 py-2 hover:text-blue-500 rounded-full border-border border whitespace-nowrap",
             active &&
-              "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950"
+              "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950",
           )}
         >
           {children}
@@ -92,8 +92,9 @@ export const Header = () => {
   useEffect(() => {
     async function fetchBalance() {
       if (wallet && connected) {
-        const balance = await wallet.getLovelace();
-        setBalance(balance);
+        const balance = await wallet.getBalance();
+        const ada = (Number(balance[0].quantity) / 1000000).toFixed(2);
+        setBalance(ada);
       }
     }
 
@@ -133,8 +134,8 @@ export const Header = () => {
             <CardanoWallet />
 
             {connected && (
-              <Button size="sm" className="cursor-default">
-                Voting power: ₳{balance}
+              <Button size="sm" className="cursor-default gap-1">
+                Voting power: <b>₳{balance}</b>
               </Button>
             )}
           </div>
