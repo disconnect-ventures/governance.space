@@ -5,7 +5,7 @@ export enum MetadataStandard {
   CIP119 = "CIP119",
 }
 
-interface Reference {
+export interface Reference {
   "@type": string;
   label: string;
   uri: string;
