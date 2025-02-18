@@ -152,3 +152,26 @@ export async function getInfoActionActions(
 ) {
   return getGovernanceActions(page, pageSize, search, sort, ["InfoAction"]);
 }
+
+export function getActionIdUrl(txHash: string, index: string | number) {
+  return encodeURIComponent(`${txHash}#${index}`);
+}
+
+export async function getGovernanceActionById(
+  actionId: string,
+  drepId?: string
+) {
+  try {
+    const url = new URL("/proposal/get/" + actionId, API_BASE_URL);
+
+    if (drepId) url.searchParams.append("drepId", drepId);
+
+    return await fetchApi<{ proposal: GovernanceAction; vote: unknown }>(url, {
+      next: {
+        tags: [CACHE_CONFIG.tags.governanceAction],
+      },
+    });
+  } catch {
+    return null;
+  }
+}
