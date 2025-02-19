@@ -1,0 +1,20 @@
+steps:
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    args:
+      - run
+      - services
+      - delete
+      - pr-$_PR_NUMBER-preview
+      - '--platform=managed'
+      - '--region=$_DEPLOY_REGION'
+      - '--quiet'
+    id: DeleteService
+    entrypoint: gcloud
+options:
+  logging: CLOUD_LOGGING_ONLY
+substitutions:
+  _DEPLOY_REGION: us-central1
+  _PLATFORM: managed
+tags:
+  - gcp-cloud-build-deploy-cloud-run
+  - pull-request-cleanup
