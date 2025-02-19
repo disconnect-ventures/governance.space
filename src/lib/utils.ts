@@ -19,6 +19,17 @@ export function formatVotingPower(input: number) {
   return input.toFixed(2);
 }
 
+export const formatAda = (amount: number | string) => {
+  return `₳ ${
+    typeof amount === "string"
+      ? amount
+      : amount.toLocaleString("en-US", {
+          minimumFractionDigits: 3,
+          maximumFractionDigits: 3,
+        })
+  }`;
+};
+
 export const truncateMiddle = (input: string, maxLength: number): string => {
   if (input.length <= maxLength) return input;
   const half = Math.floor((maxLength - 3) / 2);
