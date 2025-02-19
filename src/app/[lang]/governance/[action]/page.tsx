@@ -148,14 +148,14 @@ export default async function GovernanceActionDetailsPage({
         <GovernanceHeader action={action} metadata={metadata} />
         <Separator />
         <GovernaceVoting />
+        <GovernanceLinks links={references} />
         <Separator />
         <GovernanceDocuments documents={DOCUMENTS} />
         <Separator />
-        <GovernanceHistory entries={HISTORY_ENTRIES} />
-        <Separator />
         <GovernanceTasks tasks={GOVERNANCE_TASKS} />
         <Separator />
-        <GovernanceLinks links={references} />
+        <GovernanceHistory entries={HISTORY_ENTRIES} />
+        <Separator />
       </Card>
     </div>
   );
