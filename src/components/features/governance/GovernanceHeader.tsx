@@ -3,6 +3,7 @@ import { Badge } from "~/components/ui/badge";
 import { Card, CardContent } from "~/components/ui/card";
 import { GovernanceAction } from "~/lib/governance-actions";
 import { Metadata } from "~/lib/metadata";
+import CopyToClipboard from "../CopyToClipboard";
 
 type VersionDetailProps = {
   label: string;
@@ -10,9 +11,10 @@ type VersionDetailProps = {
 };
 
 const VersionDetail = ({ label, value }: VersionDetailProps) => (
-  <div>
-    <p className="text-muted-foreground">{label}</p>
-    <p className="font-bold">{value}</p>
+  <div className="w-64 flex gap-2 items-center">
+    <p className="text-muted-foreground pr-2">{label}</p>
+    <p className="font-bold overflow-hidden text-ellipsis">{value}</p>
+    <CopyToClipboard value={value} />
   </div>
 );
 
@@ -57,12 +59,12 @@ export const GovernanceHeader = ({
           <CardContent className="w-auto p-4">
             <h3 className="font-semibold mb-4">Version details</h3>
             <div className="space-y-3">
-              <VersionDetail label="Current version:" value="10.10" />
-              <VersionDetail label="Proposed version:" value="11.10" />
-              {action.prevGovActionIndex && (
+              <VersionDetail label="Current Hash:" value={action.txHash} />
+              {/* <VersionDetail label="Proposed version:" value="11.10" /> */}
+              {action.prevGovActionTxHash !== null && (
                 <VersionDetail
-                  label="Previous Governance Action ID:"
-                  value={action.prevGovActionIndex.toString()}
+                  label="Previous Hash:"
+                  value={action.prevGovActionTxHash}
                 />
               )}
             </div>
