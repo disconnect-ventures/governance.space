@@ -6,6 +6,7 @@ import { buttonVariants } from "~/components/ui/button";
 import { Proposal } from "~/lib/proposals";
 import clsx from "clsx";
 import Link from "next/link";
+import { calculateEpochNumber, formatDate } from "~/lib/utils";
 
 export type ProposalCardProps = {
   proposal: Proposal;
@@ -30,6 +31,11 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
 
   const badgeColor = getProposalBadgeColor();
   const statusBadgeColor = getStatusBadgeColor();
+
+  const createdDate = proposal.attributes.createdAt;
+  const createdEpoch = calculateEpochNumber(createdDate);
+  const updatedAt = proposal.attributes.updatedAt;
+  const updatedEpoch = calculateEpochNumber(updatedAt);
 
   return (
     <Card className="w-full flex flex-col mx-auto">
@@ -56,7 +62,8 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
 
         <div className="flex gap-4 items-center">
           <Avatar className="h-10 w-10">
-            {/* <AvatarImage src="/placeholder-avatar.jpg" /> */} { /** TODO: Fetch user and display proper avatar here */}
+            {/* <AvatarImage src="/placeholder-avatar.jpg" /> */}{" "}
+            {/** TODO: Fetch user and display proper avatar here */}
             <AvatarFallback>{username.substring(0, 2)}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col ">
@@ -108,11 +115,21 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
 
           <div className="flex items-center space-x-2">
             <Calendar className="h-4 w-4" />
-            <span>Submitted: 31st Oct 2024 (Epoch 504)</span>
+            <span>
+              Submitted:{" "}
+              <span className="font-semibold">
+                {formatDate(createdDate, createdEpoch)}
+              </span>
+            </span>
           </div>
           <div className="flex items-center space-x-2">
             <Calendar className="h-4 w-4" />
-            <span>Expires: 30th Dec 2024 (Epoch 565)</span>
+            <span>
+              Updated:{" "}
+              <span className="font-semibold">
+                {formatDate(updatedAt, updatedEpoch)}
+              </span>
+            </span>
           </div>
         </div>
 

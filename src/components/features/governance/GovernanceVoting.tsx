@@ -4,8 +4,10 @@ import {
   GovernanceSectionVotingProps,
 } from "./GovernanceSectionVoting";
 import { Progress } from "~/components/ui/progress";
+import { GovernanceAction } from "~/lib/governance-actions";
+import { formatDate } from "~/lib/utils";
 
-export const GovernaceVoting = () => {
+export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
   const sposVotingData: GovernanceSectionVotingProps = {
     title: "SPOS",
     votes: [
@@ -65,18 +67,16 @@ export const GovernaceVoting = () => {
             <div className="flex flex-wrap items-center gap-2">
               <Calendar className="h-5 w-5 text-gray-400 flex-shrink-0" />
               <span className="text-gray-500 font-bold">Submitted:</span>
-              <span className="text-[#4B5563]">31st Oct 2024</span>
-              <span className="text-sm font-thin text-[#4B5563]">
-                (Epoch 504)
+              <span className="text-[#4B5563]">
+                {formatDate(action.createdDate, action.createdEpochNo)}
               </span>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
               <Clock className="h-5 w-5 text-gray-400 flex-shrink-0" />
               <span className="text-gray-500 font-bold">Expires:</span>
-              <span className="text-[#4B5563]">30th Dec 2024</span>
-              <span className="text-sm font-thin text-[#4B5563]">
-                (Epoch 565)
+              <span className="text-[#4B5563]">
+                {formatDate(action.expiryDate, action.expiryEpochNo)}
               </span>
             </div>
           </div>

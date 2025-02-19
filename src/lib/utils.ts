@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { i18n, Locale } from "~/config/i18n";
+import { EPOCH_LENGTH_MS, FIRST_EPOCH_START } from "./constants";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -44,3 +45,31 @@ export function localizePath(locale: Locale, path: string) {
 
   return `/${locale}/${normalizedPath}`;
 }
+
+export function calculateEpochNumber(
+  timestamp: number | string = Date.now()
+): number {
+  if (typeof timestamp === "string") {
+    timestamp = new Date(timestamp).getTime();
+  }
+  const msSinceStart = timestamp - FIRST_EPOCH_START;
+  return Math.floor(msSinceStart / EPOCH_LENGTH_MS);
+}
+
+export const formatDate = (
+  date: string,
+  epoch: number,
+  options?: Intl.DateTimeFormatOptions
+) => {
+  const formattedDate = new Date(date).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "UTC",
+    timeZoneName: "short",
+    ...options,
+  });
+  return `${formattedDate} (Epoch ${epoch})`;
+};
