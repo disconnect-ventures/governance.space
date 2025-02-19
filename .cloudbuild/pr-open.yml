@@ -9,6 +9,10 @@ steps:
       - '--path=.'
     id: Buildpack
     entrypoint: pack
+    env:
+      - 'API_BASE_URL=${_API_BASE_URL}'
+      - 'API_PDF_BASE_URL=${_API_PDF_BASE_URL}'
+      - 'METADATA_BASE_URL=${_METADATA_BASE_URL}'
   - name: gcr.io/cloud-builders/docker
     args:
       - push
@@ -26,6 +30,7 @@ steps:
       - >-
         --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID,pr-number=$_PR_NUMBER
       - '--region=$_DEPLOY_REGION'
+      - '--set-env-vars=API_BASE_URL=${_API_BASE_URL},API_PDF_BASE_URL=${_API_PDF_BASE_URL},METADATA_BASE_URL=${_METADATA_BASE_URL}'
       - '--allow-unauthenticated'
       - '--quiet'
     id: Deploy
