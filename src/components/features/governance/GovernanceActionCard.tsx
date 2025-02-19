@@ -15,6 +15,7 @@ import { getActionIdUrl, GovernanceAction } from "~/lib/governance-actions";
 import { Metadata } from "~/lib/metadata";
 import Link from "~/components/features/Link";
 import { useTranslation } from "~/hooks/use-translation/use-translation";
+import { formatDate } from "~/lib/utils";
 
 const getTypeLabel = (type: GovernanceAction["type"]) => {
   switch (type) {
@@ -51,15 +52,6 @@ const getStatusBadge = (
       <span>{status}</span>
     </Badge>
   );
-};
-
-const formatDate = (date: string, epoch: number) => {
-  const formattedDate = new Date(date).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-  return `${formattedDate} (Epoch ${epoch})`;
 };
 
 export const GovernanceActionCard = ({

@@ -147,7 +147,7 @@ export default async function GovernanceActionDetailsPage({
       <Card>
         <GovernanceHeader action={action} metadata={metadata} />
         <Separator />
-        <GovernaceVoting />
+        <GovernaceVoting action={action}  />
         <GovernanceLinks links={references} />
         <Separator />
         <GovernanceDocuments documents={DOCUMENTS} />
