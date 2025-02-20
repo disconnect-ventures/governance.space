@@ -63,6 +63,8 @@ export const GovernanceHeader = ({
     () => new Date(action.expiryDate) < new Date(),
     [action]
   );
+  const actionId = `${action.txHash}#${action.index}`;
+  const prevActionId = `${action.prevGovActionTxHash}#${action.prevGovActionTxHash}`;
 
   return (
     <CardContent className="p-6">
@@ -112,13 +114,9 @@ export const GovernanceHeader = ({
           <CardContent className="w-auto p-4">
             <h3 className="font-semibold mb-4">Version details</h3>
             <div className="space-y-3">
-              <VersionDetail label="Current Hash:" value={action.txHash} />
-              {/* <VersionDetail label="Proposed version:" value="11.10" /> */}
-              {action.prevGovActionTxHash !== null && (
-                <VersionDetail
-                  label="Previous Hash:"
-                  value={action.prevGovActionTxHash}
-                />
+              <VersionDetail label="Current Hash:" value={actionId} />
+              {prevActionId !== null && (
+                <VersionDetail label="Previous Id:" value={prevActionId} />
               )}
             </div>
           </CardContent>
