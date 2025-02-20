@@ -30,6 +30,9 @@ export function PageTitle({
   translationPage,
 }: PageTitleProps) {
   const { dictionary } = useTranslation();
+  const longDescription = translationPage
+    ? dictionary[translationPage].longDescription
+    : "";
 
   return (
     <div className="flex items-center justify-between mb-6">
@@ -47,13 +50,13 @@ export function PageTitle({
             {badge}
           </Badge>
         )}
-        {translationPage && (
+        {longDescription && (
           <div className="p-3 bg-gray-200 rounded text-gray-600 w-full">
             <p>
               <span className="inline-flex items-center mr-2">
                 <InfoIcon className="w-4 h-4 relative" />
               </span>
-              {dictionary[translationPage].longDescription}
+              {longDescription}
             </p>
           </div>
         )}
