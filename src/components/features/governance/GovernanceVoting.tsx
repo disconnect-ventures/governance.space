@@ -52,6 +52,10 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
   const currentProgress = Date.now() - new Date(action.createdDate).getTime();
   const progressPercentage = (currentProgress / totalDuration) * 100;
 
+  const daysPassed = Math.floor(currentProgress / (1000 * 60 * 60 * 24));
+  const totalDays = Math.floor(totalDuration / (1000 * 60 * 60 * 24));
+  const daysRemaining = totalDays - daysPassed;
+
   return (
     <div className="m-8 bg-white">
       <h2 className="text-lg font-bold mb-6">
@@ -96,7 +100,7 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
           </div>
         </div>
 
-        <div className="w-full md:flex-1">
+        <div className="w-full md:flex-1 flex flex-col gap-2">
           <div className="space-y-2">
             <div className="flex justify-between">
               <p className="text-gray-600">Deadline</p>
@@ -109,6 +113,18 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
               className="h-2"
               color="#2563EB"
             />
+          </div>
+          <div>
+            <p className="text-sm text-gray-600">
+              {daysPassed} / {totalDays} days
+              {daysRemaining > 0 ? (
+                <span className="text-[#2563EB] ml-1">
+                  ({daysRemaining} days remaining)
+                </span>
+              ) : (
+                <span className="text-red-500 ml-1">(Expired)</span>
+              )}
+            </p>
           </div>
         </div>
       </div>
