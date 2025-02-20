@@ -56,6 +56,8 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
   const totalDays = Math.floor(totalDuration / (1000 * 60 * 60 * 24));
   const daysRemaining = totalDays - daysPassed;
 
+  const actionId = `${action.txHash}#${action.index}`;
+
   return (
     <div className="m-8 bg-white">
       <h2 className="text-lg font-bold mb-6">
@@ -76,9 +78,9 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
 
           <div className="flex items-center gap-2 mb-8">
             <code className="text-xs sm:text-sm font-mono break-all">
-              {truncateMiddle(action.txHash, 25)}
+              {truncateMiddle(actionId, 25)}
             </code>
-            <CopyToClipboard value={action.txHash} />
+            <CopyToClipboard value={actionId} />
           </div>
 
           <div className="space-y-3">
