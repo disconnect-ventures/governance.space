@@ -27,9 +27,10 @@ export const metadata: Metadata = {
   title: "Governance Space",
   description: "All-in-One Governance Platform",
   openGraph: {
+    url: "https://governancespace.com",
     title: "Governance Space",
     description: "All-in-One Governance Platform",
-    images: ["/assets/open-graph.png"],
+    images: [{ url: "/assets/open-graph.png", width: 1512, height: 589 }],
   },
 };
 
@@ -49,9 +50,7 @@ export default async function RootLayout(props: {
   return (
     <html lang={params.lang}>
       <GoogleTagManager gtmId="GTM-W47W68BT" />
-      <body
-        className={`${inter.className} antialiased min-h-[100vh] flex flex-col`}
-      >
+      <body className={`${inter.className} antialiased min-h-[100vh] flex flex-col`}>
         <TranslationProvider value={{ dictionary, locale: params.lang }}>
           <SidebarProvider>
             <ClientProvider>
