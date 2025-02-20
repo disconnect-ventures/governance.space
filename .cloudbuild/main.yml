@@ -7,6 +7,9 @@ steps:
       - '--builder=gcr.io/buildpacks/builder:v1'
       - '--network=cloudbuild'
       - '--path=.'
+      - '--env=API_BASE_URL=${_API_BASE_URL}'
+      - '--env=API_PDF_BASE_URL=${_API_PDF_BASE_URL}'
+      - '--env=METADATA_BASE_URL=${_METADATA_BASE_URL}'
     id: Buildpack
     entrypoint: pack
     env:
