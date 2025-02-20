@@ -4,6 +4,8 @@ import { Card, CardContent } from "~/components/ui/card";
 import { GovernanceAction } from "~/lib/governance-actions";
 import { Metadata } from "~/lib/metadata";
 import CopyToClipboard from "../CopyToClipboard";
+import { formatCamelCase } from "~/lib/utils";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 
 type VersionDetailProps = {
   label: string;
@@ -11,7 +13,7 @@ type VersionDetailProps = {
 };
 
 const VersionDetail = ({ label, value }: VersionDetailProps) => (
-  <div className="w-64 flex gap-2 items-center flex-col overflow-hidden">
+  <div className="w-64 flex gap-2 items-start flex-col overflow-hidden">
     <p className="text-muted-foreground pr-2">{label}</p>
     <div className="w-full flex gap-2 items-center">
       <p className="font-bold w-full overflow-hidden text-ellipsis">{value}</p>
@@ -35,27 +37,83 @@ export const GovernanceHeader = ({
     () => action.abstract || metadata?.metadata.abstract,
     [action, metadata]
   );
+  const motivation = useMemo(() => action.motivation, [action]);
+  const rationale = useMemo(() => action.rationale, [action]);
+  const isExpired = useMemo(
+    () => new Date(action.expiryDate) < new Date(),
+    [action]
+  );
 
   return (
     <CardContent className="p-6">
       <div className="flex items-center gap-4 mb-4 text-center w-full">
         <Badge variant="secondary" className="text-sm bg-[#C5D0EC] color-black">
-          Hard Fork
+          {/* TODO: Add translations */}
+          {formatCamelCase(action.type)}
         </Badge>
         <span className="text-sm text-muted-foreground">
           Governance Action Type
         </span>
         <Badge className="text-sm ml-auto bg-green-100 text-green-800">
-          In progress
+          {isExpired ? "Completed" : "In Progress"}
         </Badge>
       </div>
 
       <h2 className="text-2xl font-bold mb-4">{title}</h2>
 
       <div className="flex flex-col sm:flex-row gap-3 justify-between items-start">
-        <p className="text-muted-foreground mb-4 w-full sm:max-w-xl">
-          {abstract}
-        </p>
+        <Tabs defaultValue="abstract" className="w-full">
+          <TabsList className="bg-background border-b rounded-none w-full justify-start">
+            <TabsTrigger
+              value="abstract"
+              className="data-[state=active]:shadow-none data-[state=active]:scale-125"
+            >
+              Abstract
+            </TabsTrigger>
+            <TabsTrigger
+              value="motivation"
+              className="data-[state=active]:shadow-none data-[state=active]:scale-125"
+            >
+              Motivation
+            </TabsTrigger>
+            <TabsTrigger
+              value="rationale"
+              className="data-[state=active]:shadow-none data-[state=active]:scale-125"
+            >
+              Rationale
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent
+            value="abstract"
+            className="min-h-40vh h-full max-h-[60vh] overflow-y-auto"
+          >
+            <div className="h-full">
+              <p className="text-muted-foreground mb-4 w-full sm:max-w-xl">
+                {abstract}
+              </p>
+            </div>
+          </TabsContent>
+          <TabsContent
+            value="motivation"
+            className="max-h-[60vh] overflow-y-auto"
+          >
+            <div className="h-full">
+              <p className="text-muted-foreground mb-4 w-full sm:max-w-xl">
+                {motivation}
+              </p>
+            </div>
+          </TabsContent>
+          <TabsContent
+            value="rationale"
+            className="max-h-[60vh] overflow-y-auto"
+          >
+            <div className="h-full">
+              <p className="text-muted-foreground mb-4 w-full sm:max-w-xl">
+                {rationale}
+              </p>
+            </div>
+          </TabsContent>
+        </Tabs>
 
         <Card>
           <CardContent className="w-auto p-4">

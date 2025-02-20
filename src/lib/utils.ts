@@ -19,6 +19,10 @@ export function formatVotingPower(input: number) {
   return input.toFixed(2);
 }
 
+export function formatCamelCase(input: string) {
+  return input.replace(/([a-z])([A-Z])/g, "$1 $2");
+}
+
 export const formatAda = (amount: number | string) => {
   return `₳ ${
     typeof amount === "string"

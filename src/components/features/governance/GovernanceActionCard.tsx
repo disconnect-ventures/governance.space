@@ -74,6 +74,7 @@ export const GovernanceActionCard = ({
     [action, metadata]
   );
 
+
   return (
     <Card className="mb-4">
       <CardContent className="pt-6">
