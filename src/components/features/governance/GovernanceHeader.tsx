@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { Suspense, useMemo } from "react";
 import { Badge } from "~/components/ui/badge";
 import { Card, CardContent } from "~/components/ui/card";
 import { GovernanceAction } from "~/lib/governance-actions";
@@ -8,6 +8,7 @@ import { formatCamelCase } from "~/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import Latex from "react-latex-next";
 import "katex/dist/katex.min.css";
+import markdownToHtml from "~/lib/markdown";
 
 type VersionDetailProps = {
   label: string;
@@ -22,6 +23,17 @@ const VersionDetail = ({ label, value }: VersionDetailProps) => (
       <CopyToClipboard value={value} />
     </div>
   </div>
+);
+
+const InfoTab = async (value: string, text: string) => (
+  <Suspense fallback={null}>
+    <TabsContent
+      value={value}
+      className="min-h-40vh h-full max-h-[60vh] overflow-y-auto"
+    >
+      <Latex>{await markdownToHtml(text)}</Latex>
+    </TabsContent>
+  </Suspense>
 );
 
 export const GovernanceHeader = ({
@@ -50,18 +62,6 @@ export const GovernanceHeader = ({
   const isExpired = useMemo(
     () => new Date(action.expiryDate) < new Date(),
     [action]
-  );
-
-  const InfoTab = useCallback(
-    (value: string, text: string) => (
-      <TabsContent
-        value={value}
-        className="min-h-40vh h-full max-h-[60vh] overflow-y-auto"
-      >
-        <Latex>{text}</Latex>
-      </TabsContent>
-    ),
-    []
   );
 
   return (
