@@ -15,15 +15,10 @@ import { getActionIdUrl, GovernanceAction } from "~/lib/governance-actions";
 import { Metadata } from "~/lib/metadata";
 import Link from "~/components/features/Link";
 import { useTranslation } from "~/hooks/use-translation/use-translation";
-import { formatDate } from "~/lib/utils";
+import { formatCamelCase, formatDate } from "~/lib/utils";
 
 const getTypeLabel = (type: GovernanceAction["type"]) => {
-  switch (type) {
-    case "HardForkInitiation":
-      return "Hard Fork";
-    default:
-      return type;
-  }
+  return formatCamelCase(type);
 };
 
 const getStatusBadge = (
@@ -73,7 +68,6 @@ export const GovernanceActionCard = ({
     () => action.abstract || metadata?.metadata.abstract,
     [action, metadata]
   );
-
 
   return (
     <Card className="mb-4">
