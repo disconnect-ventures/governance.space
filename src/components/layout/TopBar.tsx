@@ -14,7 +14,7 @@ type TopBarProps = {
 
 export function TopBar({
   backHref,
-  shareUrl = typeof window !== "undefined" ? window.location.href : "",
+  shareUrl = "https://governancespace.com",
   shareTitle = typeof window !== "undefined" ? document.title : "",
 }: TopBarProps) {
   const [copied, setCopied] = useState(false);
@@ -27,8 +27,8 @@ export function TopBar({
       const encodedTitle = encodeURIComponent(shareTitle);
       const shareUrls = {
         twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-        linkedin: `https://www.linkedin.com/sharing/share-offsite/?mini=true&url=${encodedUrl}&title=${encodedTitle}&source=${window.location.hostname}`,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&text=${encodedTitle}`,
+        linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}&text=${encodedTitle}`,
       };
       window.open(shareUrls[platform as keyof typeof shareUrls], "_blank", "width=600,height=400");
     };
