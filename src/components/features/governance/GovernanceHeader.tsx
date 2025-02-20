@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { Badge } from "~/components/ui/badge";
 import { Card, CardContent } from "~/components/ui/card";
 import { GovernanceAction } from "~/lib/governance-actions";
@@ -6,6 +6,8 @@ import { Metadata } from "~/lib/metadata";
 import CopyToClipboard from "../CopyToClipboard";
 import { formatCamelCase } from "~/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
+import Latex from "react-latex-next";
+import "katex/dist/katex.min.css";
 
 type VersionDetailProps = {
   label: string;
@@ -37,11 +39,29 @@ export const GovernanceHeader = ({
     () => action.abstract || metadata?.metadata.abstract,
     [action, metadata]
   );
-  const motivation = useMemo(() => action.motivation, [action]);
-  const rationale = useMemo(() => action.rationale, [action]);
+  const motivation = useMemo(
+    () => action.motivation || metadata?.metadata.motivation,
+    [action, metadata]
+  );
+  const rationale = useMemo(
+    () => action.rationale || metadata?.metadata.rationale,
+    [action, metadata]
+  );
   const isExpired = useMemo(
     () => new Date(action.expiryDate) < new Date(),
     [action]
+  );
+
+  const InfoTab = useCallback(
+    (value: string, text: string) => (
+      <TabsContent
+        value={value}
+        className="min-h-40vh h-full max-h-[60vh] overflow-y-auto"
+      >
+        <Latex>{text}</Latex>
+      </TabsContent>
+    ),
+    []
   );
 
   return (
@@ -83,36 +103,9 @@ export const GovernanceHeader = ({
               Rationale
             </TabsTrigger>
           </TabsList>
-          <TabsContent
-            value="abstract"
-            className="min-h-40vh h-full max-h-[60vh] overflow-y-auto"
-          >
-            <div className="h-full">
-              <p className="text-muted-foreground mb-4 w-full sm:max-w-xl">
-                {abstract}
-              </p>
-            </div>
-          </TabsContent>
-          <TabsContent
-            value="motivation"
-            className="max-h-[60vh] overflow-y-auto"
-          >
-            <div className="h-full">
-              <p className="text-muted-foreground mb-4 w-full sm:max-w-xl">
-                {motivation}
-              </p>
-            </div>
-          </TabsContent>
-          <TabsContent
-            value="rationale"
-            className="max-h-[60vh] overflow-y-auto"
-          >
-            <div className="h-full">
-              <p className="text-muted-foreground mb-4 w-full sm:max-w-xl">
-                {rationale}
-              </p>
-            </div>
-          </TabsContent>
+          {InfoTab("abstract", abstract ?? "")}
+          {InfoTab("motivation", motivation ?? "")}
+          {InfoTab("rationale", rationale ?? "")}
         </Tabs>
 
         <Card>
