@@ -11,10 +11,12 @@ type VersionDetailProps = {
 };
 
 const VersionDetail = ({ label, value }: VersionDetailProps) => (
-  <div className="w-64 flex gap-2 items-center">
+  <div className="w-64 flex gap-2 items-center flex-col overflow-hidden">
     <p className="text-muted-foreground pr-2">{label}</p>
-    <p className="font-bold overflow-hidden text-ellipsis">{value}</p>
-    <CopyToClipboard value={value} />
+    <div className="w-full flex gap-2 items-center">
+      <p className="font-bold w-full overflow-hidden text-ellipsis">{value}</p>
+      <CopyToClipboard value={value} />
+    </div>
   </div>
 );
 
