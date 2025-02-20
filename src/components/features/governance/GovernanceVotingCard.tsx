@@ -3,6 +3,7 @@ import { Card, CardContent } from "~/components/ui/card";
 
 type VoteOption = {
   count: number;
+  label?: string;
 };
 
 export type GovernanceVotingCardProps = {
@@ -52,9 +53,12 @@ export const GovernanceVotingCard = ({
         </div>
 
         <div className="space-y-3 mb-6">
-          {Object.entries(votes).map(([type, { count }], index) => {
-            const { icon, text, colorClass } =
-              config[type as keyof typeof config];
+          {Object.entries(votes).map(([type, { count, label }], index) => {
+            const {
+              icon,
+              text: defaultLabel,
+              colorClass,
+            } = config[type as keyof typeof config];
 
             return (
               <div
@@ -65,7 +69,9 @@ export const GovernanceVotingCard = ({
                   className={`flex items-center justify-center gap-2 ${colorClass}`}
                 >
                   {icon}
-                  <span className="font-bold">{text}</span>
+                  <span className="font-bold">
+                    {label?.toUpperCase() ?? defaultLabel}
+                  </span>
                 </div>
                 <span className="font-bold text-sm">
                   {formatValue ? formatValue(count) : count}

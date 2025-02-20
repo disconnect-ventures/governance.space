@@ -28,9 +28,9 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
   const constitutionalCommitteeVotingData: GovernanceVotingCardProps = {
     title: "Constitutional Committee",
     votes: {
-      yes: { count: action.ccYesVotes },
-      no: { count: action.ccNoVotes },
-      abstain: { count: action.ccAbstainVotes },
+      yes: { label: "Constitutional", count: action.ccYesVotes },
+      no: { label: "Unconstitutional", count: action.ccNoVotes },
+      abstain: { label: "Abstain", count: action.ccAbstainVotes },
     },
     threshold: 0.51,
   };
@@ -66,7 +66,9 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
 
       <div className="w-full flex flex-col md:flex-row gap-8 mt-6">
         <div className="w-full md:flex-1">
-          <p className="mb-4 font-bold text-gray-600">Governance Action ID:</p>
+          <p className="mb-4 font-bold text-gray-600">
+            Legacy Governance Action ID:
+          </p>
 
           <div className="flex items-center gap-2 mb-8">
             <code className="text-xs sm:text-sm font-mono break-all">
