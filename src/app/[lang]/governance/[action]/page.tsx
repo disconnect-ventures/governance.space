@@ -11,9 +11,14 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { BookOpenCheckIcon } from "lucide-react";
 import { Metadata } from "next";
 import {
+  getActionIdUrl,
+  getGovernanceActionById,
   getGovernanceActions,
   GovernanceActionFilterOption,
 } from "~/lib/governance-actions";
+import { PageProps } from "../../layout";
+import { notFound } from "next/navigation";
+import { getGovernanceActionMetadata, MetadataStandard } from "~/lib/metadata";
 
 export async function generateMetadata({
   params,
@@ -37,7 +42,7 @@ export async function generateStaticParams() {
     pageSize,
     search,
     sort,
-    filters,
+    filters
   );
   const totalPages = Math.ceil(firstPage.total / pageSize);
 
@@ -50,18 +55,18 @@ export async function generateStaticParams() {
             pageSize,
             search,
             sort,
-            filters,
+            filters
           );
           return data.elements;
         } catch {
           return [];
         }
-      }),
+      })
     )
   ).flat();
 
   return [...firstPage.elements, ...nextPages].map((p) => ({
-    action: p.id,
+    action: getActionIdUrl(p.txHash, p.index.toString()),
   }));
 }
 
@@ -75,25 +80,6 @@ const DOCUMENTS = [
     fileName: "Procedimentos.docx",
     fileType: "Word Document",
     href: "/documents/procedures.docx",
-  },
-];
-
-const SUPPORTING_LINKS = [
-  {
-    title: "CIP-0122",
-    url: "https://github.com/cardano-foundation/CIPs/tree/master/CIP-0122",
-  },
-  {
-    title: "CIP-1547",
-    url: "https://github.com/cardano-foundation/CIPs/tree/master/CIP-1547",
-  },
-  {
-    title: "CIP-1694",
-    url: "https://github.com/cardano-foundation/CIPs/tree/master/CIP-1694",
-  },
-  {
-    title: "CIP-0654",
-    url: "https://github.com/cardano-foundation/CIPs/tree/master/CIP-0654",
   },
 ];
 
@@ -125,13 +111,25 @@ const HISTORY_ENTRIES = [
   },
 ];
 
-type GovernanceActionDetailsProps = {
-  params: Promise<{
-    action: string;
-  }>;
-};
+type GovernanceActionDetailsProps = PageProps<{ action: string }>;
 
-export default async function GovernanceActionDetailsPage({}: GovernanceActionDetailsProps) {
+export default async function GovernanceActionDetailsPage({
+  params: paramsPromise,
+}: GovernanceActionDetailsProps) {
+  const params = await paramsPromise;
+  const proposal = await getGovernanceActionById(params.action);
+  const action = proposal?.proposal;
+  if (!action) {
+    return notFound();
+  }
+
+  const metadata = await getGovernanceActionMetadata(
+    action.metadataHash,
+    MetadataStandard.CIP108,
+    action.url
+  );
+  const references = metadata?.metadata.references ?? [];
+
   return (
     <div>
       <PageTitle
@@ -147,17 +145,17 @@ export default async function GovernanceActionDetailsPage({}: GovernanceActionDe
       <TopBar backHref="/governance" />
 
       <Card>
-        <GovernanceHeader />
+        <GovernanceHeader action={action} metadata={metadata} />
         <Separator />
-        <GovernaceVoting />
+        <GovernaceVoting action={action}  />
+        <GovernanceLinks links={references} />
         <Separator />
         <GovernanceDocuments documents={DOCUMENTS} />
         <Separator />
-        <GovernanceHistory entries={HISTORY_ENTRIES} />
-        <Separator />
         <GovernanceTasks tasks={GOVERNANCE_TASKS} />
         <Separator />
-        <GovernanceLinks links={SUPPORTING_LINKS} />
+        <GovernanceHistory entries={HISTORY_ENTRIES} />
+        <Separator />
       </Card>
     </div>
   );

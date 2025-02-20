@@ -1,5 +1,9 @@
+import { useMemo } from "react";
 import { Badge } from "~/components/ui/badge";
 import { Card, CardContent } from "~/components/ui/card";
+import { GovernanceAction } from "~/lib/governance-actions";
+import { Metadata } from "~/lib/metadata";
+import CopyToClipboard from "../CopyToClipboard";
 
 type VersionDetailProps = {
   label: string;
@@ -7,13 +11,29 @@ type VersionDetailProps = {
 };
 
 const VersionDetail = ({ label, value }: VersionDetailProps) => (
-  <div>
-    <p className="text-muted-foreground">{label}</p>
-    <p className="font-bold">{value}</p>
+  <div className="w-64 flex gap-2 items-center">
+    <p className="text-muted-foreground pr-2">{label}</p>
+    <p className="font-bold overflow-hidden text-ellipsis">{value}</p>
+    <CopyToClipboard value={value} />
   </div>
 );
 
-export const GovernanceHeader = () => {
+export const GovernanceHeader = ({
+  action,
+  metadata,
+}: {
+  action: GovernanceAction;
+  metadata: Metadata | null;
+}) => {
+  const title = useMemo(
+    () => (action.title || metadata ? metadata?.metadata.title : "No title"),
+    [action, metadata]
+  );
+  const abstract = useMemo(
+    () => action.abstract || metadata?.metadata.abstract,
+    [action, metadata]
+  );
+
   return (
     <CardContent className="p-6">
       <div className="flex items-center gap-4 mb-4 text-center w-full">
@@ -28,33 +48,25 @@ export const GovernanceHeader = () => {
         </Badge>
       </div>
 
-      <h2 className="text-2xl font-bold mb-4">
-        Hard Fork to Protocol Version 10 (Plomin Hard Fork)
-      </h2>
+      <h2 className="text-2xl font-bold mb-4">{title}</h2>
 
       <div className="flex flex-col sm:flex-row gap-3 justify-between items-start">
         <p className="text-muted-foreground mb-4 w-full sm:max-w-xl">
-          We propose to upgrade Cardano mainnet to Protocol Version 10. This
-          upgrade will be achieved via a Hard Fork (called Plomin). Following
-          the upgrade: The Cardano mainnet protocol will be upgraded to Major
-          Version 10 and Minor Version 0; All 7 governance actions that are
-          described in CIP-1694 will be enabled; DRep voting will be enabled on
-          all 7 governance actions; SPO voting will be enabled on all applicable
-          governance actions, as defined in CIP-1694; Constitutional Committee
-          voting will be enabled on all applicable governance actions, also as
-          defined in CIP-1694; Staking rewards can be accumulated as usual, but
-          can only be withdrawn following delegation to a DRep (including the
-          pre-defined abstain/no-confidence options); Several new Plutus
-          primitives will be available.
+          {abstract}
         </p>
 
         <Card>
           <CardContent className="w-auto p-4">
             <h3 className="font-semibold mb-4">Version details</h3>
             <div className="space-y-3">
-              <VersionDetail label="Current version:" value="10.10" />
-              <VersionDetail label="Proposed version:" value="11.10" />
-              <VersionDetail label="Previous Governance Action ID:" value="-" />
+              <VersionDetail label="Current Hash:" value={action.txHash} />
+              {/* <VersionDetail label="Proposed version:" value="11.10" /> */}
+              {action.prevGovActionTxHash !== null && (
+                <VersionDetail
+                  label="Previous Hash:"
+                  value={action.prevGovActionTxHash}
+                />
+              )}
             </div>
           </CardContent>
         </Card>

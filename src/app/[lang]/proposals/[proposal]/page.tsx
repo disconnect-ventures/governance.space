@@ -10,6 +10,7 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { TopBar } from "~/components/layout/TopBar";
 import { Card, CardContent } from "~/components/ui/card";
 import { getProposals, getProposalsById } from "~/lib/proposals";
+import { calculateEpochNumber } from "~/lib/utils";
 
 export async function generateMetadata({
   params,
@@ -40,13 +41,13 @@ export async function generateStaticParams() {
             pageSize,
             search,
             sort,
-            filters,
+            filters
           );
           return data;
         } catch {
           return [];
         }
-      }),
+      })
     )
   ).flat();
 
@@ -66,6 +67,11 @@ export default async function ProposalDetailsPage({
 }: ProposalDetailsProps) {
   const { proposal: proposalId } = await params;
   const { data: proposal } = await getProposalsById(proposalId);
+
+  const createdDate = proposal.attributes.createdAt;
+  const createdEpoch = calculateEpochNumber(createdDate);
+  const updatedAt = proposal.attributes.updatedAt;
+  const updatedEpoch = calculateEpochNumber(updatedAt);
 
   if (!proposal) {
     return notFound();
@@ -94,7 +100,12 @@ export default async function ProposalDetailsPage({
                 <ProposalIdentification />
               </div>
               <div className="w-full lg:col-span-2">
-                <ProposalTimeline />
+                <ProposalTimeline
+                  createdTime={createdDate}
+                  createdEpoch={createdEpoch}
+                  updateDate={updatedAt}
+                  updateEpoch={updatedEpoch}
+                />
               </div>
             </div>
 

@@ -1,4 +1,5 @@
-import { ApiResponse, baseApiUrl, CACHE_CONFIG, fetchApi } from ".";
+import { ApiResponse, CACHE_CONFIG, fetchApi } from ".";
+import { API_BASE_URL } from "./constants";
 
 export type DRep = {
   isScriptBased: boolean;
@@ -39,7 +40,7 @@ export async function getDReps(
   sort: DRepSortOption,
   filters: DRepFilterOption[]
 ): Promise<DRepListResponse> {
-  const url = new URL("/drep/list", baseApiUrl);
+  const url = new URL("/drep/list", API_BASE_URL);
   Object.entries({ page, pageSize, search, sort }).forEach(
     ([key, value]) =>
       value !== "" && url.searchParams.append(key, value.toString())

@@ -134,7 +134,7 @@
   },
   "pageProposals": {
     "description": "Proposals in Governance",
-    "longDescription": "danilo Participate in discussions and decision-making processes guided by community governance.",
+    "longDescription": "Participate in discussions and decision-making processes guided by community governance.",
     "badge_text": "{count} registered proposals",
     "cip-129-action-id": "CIP-129 Action ID"
   },

@@ -1,5 +1,3 @@
-export const baseApiUrl = "https://be.gov.tools";
-
 export type ApiResponse<Element> = {
   elements: Array<Element>;
   page: number;
@@ -27,6 +25,7 @@ export async function fetchApi<T>(
       ...options?.next,
     },
   });
+  // TODO: handle not ok
   const data = (await response.json()) as T;
   return data;
 }

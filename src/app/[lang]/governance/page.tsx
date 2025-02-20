@@ -8,6 +8,11 @@ import {
   GovernanceActionSortOption,
 } from "~/lib/governance-actions";
 import { PageProps } from "../layout";
+import {
+  getGovernanceActionMetadata,
+  Metadata as ApiMetadata,
+  MetadataStandard,
+} from "~/lib/metadata";
 
 export const metadata: Metadata = {
   title: "Governance Space - Governance Actions",
@@ -31,9 +36,21 @@ export default async function GovernancePage({
     pageSize,
     search,
     sort,
-    filters,
+    filters
   );
   // const { total: totalGovernanceActions } = await getGovernanceActions(0, 1, "", "NewestCreated", []);
+
+  const metadata: Record<string, ApiMetadata | null> = {};
+  await Promise.all(
+    governanceActions.elements.map(async (action) => {
+      const data = await getGovernanceActionMetadata(
+        action.metadataHash,
+        MetadataStandard.CIP108,
+        action.url
+      );
+      metadata[action.id] = data;
+    })
+  );
 
   return (
     <div className="space-y-4">
@@ -56,6 +73,7 @@ export default async function GovernancePage({
           totalResults: governanceActions.total,
           filters,
         }}
+        metadata={metadata}
       />
     </div>
   );

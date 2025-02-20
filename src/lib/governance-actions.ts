@@ -1,4 +1,5 @@
-import { ApiResponse, baseApiUrl, CACHE_CONFIG, fetchApi } from ".";
+import { ApiResponse, CACHE_CONFIG, fetchApi } from ".";
+import { API_BASE_URL } from "./constants";
 
 export type GovernanceAction = {
   id: string;
@@ -64,7 +65,7 @@ export async function getGovernanceActions(
   sort: GovernanceActionSortOption,
   filters: GovernanceActionFilterOption[]
 ): Promise<ApiResponse<GovernanceAction>> {
-  const url = new URL("/proposal/list", baseApiUrl);
+  const url = new URL("/proposal/list", API_BASE_URL);
   Object.entries({ page, pageSize, search, sort }).forEach(
     ([key, value]) =>
       value !== "" && url.searchParams.append(key, value.toString())
@@ -150,4 +151,27 @@ export async function getInfoActionActions(
   sort: GovernanceActionSortOption
 ) {
   return getGovernanceActions(page, pageSize, search, sort, ["InfoAction"]);
+}
+
+export function getActionIdUrl(txHash: string, index: string | number) {
+  return encodeURIComponent(`${txHash}#${index}`);
+}
+
+export async function getGovernanceActionById(
+  actionId: string,
+  drepId?: string
+) {
+  try {
+    const url = new URL("/proposal/get/" + actionId, API_BASE_URL);
+
+    if (drepId) url.searchParams.append("drepId", drepId);
+
+    return await fetchApi<{ proposal: GovernanceAction; vote: unknown }>(url, {
+      next: {
+        tags: [CACHE_CONFIG.tags.governanceAction],
+      },
+    });
+  } catch {
+    return null;
+  }
 }

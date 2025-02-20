@@ -1,13 +1,10 @@
 import { ExternalLink } from "lucide-react";
 import { CardContent } from "~/components/ui/card";
-
-type SupportLink = {
-  title: string;
-  url: string;
-};
+import { Reference } from "~/lib/metadata";
+import Link from "../Link";
 
 type GovernanceLinksProps = {
-  links: SupportLink[];
+  links: Reference[];
 };
 
 export const GovernanceLinks = ({ links }: GovernanceLinksProps) => {
@@ -17,9 +14,9 @@ export const GovernanceLinks = ({ links }: GovernanceLinksProps) => {
 
       <div className="grid grid-cols-2 gap-4">
         {links.map((link, index) => (
-          <a
+          <Link
             key={index}
-            href={link.url}
+            href={link.uri}
             className="group block p-4 border rounded-lg border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
@@ -27,18 +24,18 @@ export const GovernanceLinks = ({ links }: GovernanceLinksProps) => {
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0 flex-1">
                 <p className="mb-1 font-medium text-gray-900 flex items-center gap-2">
-                  {link.title}
+                  {link.label}
                   <ExternalLink
                     className="w-4 h-4 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
                   />
                 </p>
                 <span className="text-gray-500 text-sm break-all">
-                  {link.url}
+                  {link.uri}
                 </span>
               </div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </CardContent>
