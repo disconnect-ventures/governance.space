@@ -27,7 +27,7 @@ export function TopBar({
       const encodedTitle = encodeURIComponent(shareTitle);
       const shareUrls = {
         twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&text=${encodedTitle}`,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`,
         linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}&text=${encodedTitle}`,
       };
       window.open(shareUrls[platform as keyof typeof shareUrls], "_blank", "width=600,height=400");
