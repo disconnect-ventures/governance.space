@@ -14,6 +14,7 @@ import clsx from "clsx";
 import CopyToClipboard from "../features/CopyToClipboard";
 import { PUBLIC_APP_DOMAIN } from "~/lib/constants";
 import { usePathname, useSearchParams } from "next/navigation";
+import { withSuspense } from "~/lib/withSuspense";
 
 type TopBarProps = {
   backHref?: string;
@@ -25,7 +26,7 @@ const getShareUrl = (path: string, params: string) => {
   return `${PUBLIC_APP_DOMAIN}${path}${params ? `?${params}` : ""}`;
 };
 
-export function TopBar({ backHref, ...props }: TopBarProps) {
+export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
   const path = usePathname();
   const searchParams = useSearchParams();
   const shareUrl = useMemo(
@@ -83,4 +84,4 @@ export function TopBar({ backHref, ...props }: TopBarProps) {
       </div>
     </div>
   );
-}
+});
