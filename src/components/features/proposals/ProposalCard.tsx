@@ -8,7 +8,7 @@ import {
   ThumbsDownIcon,
 } from "lucide-react";
 import { buttonVariants } from "~/components/ui/button";
-import { getProposalBadgeColor, Proposal } from "~/lib/proposals";
+import { Proposal } from "~/lib/proposals";
 import clsx from "clsx";
 import Link from "~/components/features/Link";
 import { calculateEpochNumber, formatDate } from "~/lib/utils";
@@ -28,12 +28,17 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
     proposal.attributes.content.attributes.gov_action_type.attributes
       .gov_action_type_name;
 
-  const getStatusBadgeColor = () => {
-    return isProposalActive ? "green" : "red";
+  const getStatusBadgeClasses = () => {
+    return isProposalActive
+      ? "bg-green-500/20 text-green-500"
+      : "bg-red-500/20 text-red-500";
   };
 
-  const badgeColor = getProposalBadgeColor(actionType);
-  const statusBadgeColor = getStatusBadgeColor();
+  const getActionTypeBadgeClasses = () => {
+    return actionType === "Info"
+      ? "bg-primary/20 text-primary"
+      : "bg-muted text-muted-foreground";
+  };
 
   const createdDate = proposal.attributes.createdAt;
   const createdEpoch = calculateEpochNumber(createdDate);
@@ -41,23 +46,20 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
   const updatedEpoch = calculateEpochNumber(updatedAt);
 
   return (
-    <Card className="w-full flex flex-col mx-auto">
+    <Card className="w-full flex flex-col mx-auto border-border bg-card">
       <CardHeader className="space-y-4">
         <div className="flex items-start justify-between">
           <div className="space-y-1">
             <div className="text-sm text-muted-foreground">
               # ID: {proposalId}
             </div>
-            <h2 className="text-2xl font-semibold leading-[1.5rem] h-[3rem] overflow-hidden">
+            <h2 className="text-2xl text-foreground font-semibold leading-[1.5rem] h-[3rem] overflow-hidden">
               {proposal.attributes.content.attributes.prop_name}
             </h2>
           </div>
           <Badge
             variant="secondary"
-            className={clsx(
-              "p-2 rounded-full",
-              `bg-${statusBadgeColor}-100 text-${statusBadgeColor}-800`
-            )}
+            className={clsx("p-2 rounded-full", getStatusBadgeClasses())}
           >
             {isProposalActive
               ? dictionary.general.active.toUpperCase()
@@ -67,11 +69,9 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
 
         <div className="flex gap-4 items-center">
           <Avatar className="h-10 w-10">
-            {/* <AvatarImage src="/placeholder-avatar.jpg" /> */}{" "}
-            {/** TODO: Fetch user and display proper avatar here */}
             <AvatarFallback>{username.substring(0, 2)}</AvatarFallback>
           </Avatar>
-          <div className="flex flex-col ">
+          <div className="flex flex-col">
             <div className="flex gap-x-4 items-center flex-wrap">
               <div className="font-medium">{username}</div>
               <div className="text-sm text-muted-foreground">
@@ -83,7 +83,7 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
       </CardHeader>
 
       <CardContent className="h-full flex flex-col gap-4 justify-between">
-        <div className="max-h-48 h-full overflow-y-auto text-gray-700 bg-gray-100 p-4 rounded">
+        <div className="max-h-48 h-full overflow-y-auto text-muted-foreground bg-muted/50 p-4 rounded-lg">
           <p>{proposal.attributes.content.attributes.prop_abstract}</p>
         </div>
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
@@ -91,7 +91,7 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
             variant="outline"
             className={clsx(
               "text-lg px-6 rounded-full",
-              `bg-${badgeColor}-100 text-${badgeColor}-800`
+              getActionTypeBadgeClasses()
             )}
           >
             {actionType}
@@ -99,7 +99,7 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
           <div className="text-muted-foreground">Governance Action Type</div>
         </div>
 
-        <div className="grid grid-cols-3 justify-between sm:space-y-0 text-sm gap-4">
+        <div className="grid grid-cols-3 justify-between sm:space-y-0 text-sm gap-4 text-muted-foreground">
           <div className="flex items-center space-x-2">
             <ThumbsUpIcon className="h-4 w-4" />
             <span>{proposal.attributes.prop_likes} likes</span>
@@ -113,7 +113,7 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
             <span>{proposal.attributes.prop_comments_number} comments</span>
           </div>
 
-          <div className="col-span-full space-y-2">
+          <div className="col-span-full space-y-2 text-foreground">
             <div className="flex items-center space-x-2">
               <Calendar className="h-4 w-4" />
               <span>

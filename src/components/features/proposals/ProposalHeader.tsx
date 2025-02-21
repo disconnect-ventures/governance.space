@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { Badge } from "~/components/ui/badge";
 import {
   CalendarIcon,
@@ -7,7 +8,6 @@ import {
 } from "lucide-react";
 import { formatDate } from "~/lib/utils";
 import { getProposalBadgeColor } from "~/lib/proposals";
-import clsx from "clsx";
 
 interface ProposalHeaderProps {
   type: string;

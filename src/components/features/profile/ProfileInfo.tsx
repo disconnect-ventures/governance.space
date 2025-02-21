@@ -43,7 +43,7 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <Card>
+      <Card className="bg-card text-card-foreground">
         <CardContent className="pt-6 space-y-4">
           {[
             {
@@ -51,18 +51,18 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
               value: (
                 <Badge
                   key={"2"}
-                  className="bg-purple-100 text-purple-800 rounded-full"
+                  className="bg-purple-500/10 text-purple-500 dark:bg-purple-500/20 dark:text-purple-400 rounded-full"
                 >
                   <span className="mr-1">₳</span>
                   {formatVotingPower(drep.votingPower ?? 0)}
                 </Badge>
               ),
-              icon: <VoteIcon className="h-4 w-4" />,
+              icon: <VoteIcon className="h-4 w-4 text-muted-foreground" />,
             },
             // {
             //   label: "Delegators",
             //   value: "3,350",
-            //   icon: <UsersIcon className="h-4 w-4" />,
+            //   icon: <UsersIcon className="h-4 w-4 text-muted-foreground" />,
             // },
             // {
             //   label: (
@@ -71,9 +71,9 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
             //       <TooltipProvider delayDuration={300}>
             //         <Tooltip>
             //           <TooltipTrigger>
-            //             <InfoIcon className="h-4 w-4 text-gray-400" />
+            //             <InfoIcon className="h-4 w-4 text-muted-foreground" />
             //           </TooltipTrigger>
-            //           <TooltipContent>
+            //           <TooltipContent className="bg-popover text-popover-foreground">
             //             <p>Percentage of total voting power</p>
             //           </TooltipContent>
             //         </Tooltip>
@@ -81,23 +81,20 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
             //     </>
             //   ),
             //   value: "2.54%",
-            //   icon: <MessageSquareIcon className="h-4 w-4" />,
+            //   icon: <MessageSquareIcon className="h-4 w-4 text-muted-foreground" />,
             // },
             // {
             //   label: "Voting",
             //   value: "120",
-            //   icon: <MegaphoneIcon className="h-4 w-4" />,
+            //   icon: <MegaphoneIcon className="h-4 w-4 text-muted-foreground" />,
             // },
           ].map(({ label, value, icon }, index) => (
-            <div
-              key={index}
-              className="w-full flex justify-between items-center gap-8"
-            >
-              <span className="text-sm text-gray-600 inline-flex items-center gap-2">
+            <div key={index} className="w-full flex justify-between items-center gap-8">
+              <span className="text-sm text-muted-foreground inline-flex items-center gap-2">
                 {icon}
                 {label}
               </span>
-              <span className="font-medium text-ellipsis overflow-hidden">
+              <span className="font-medium text-ellipsis overflow-hidden text-foreground">
                 {value}
               </span>
             </div>
@@ -106,7 +103,7 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
       </Card>
 
       {/* <Card>
-        <CardHeader>Contacts</CardHeader>
+        <CardHeader  className="text-foreground">Contacts</CardHeader>
         <CardContent>
           {[
             { label: "Twitter", icon: TwitterIcon },
@@ -116,37 +113,36 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
             <Link
               key={index}
               href="#"
-              className="w-full flex justify-start gap-2"
+              className="w-full flex justify-start gap-2 py-2 hover:bg-accent text-foreground hover:text-accent-foreground"
             >
-              <Icon className="h-4 w-4" />
+              <Icon className="h-4 w-4 text-muted-foreground" />
               <span>{label}</span>
             </Link>
           ))}
         </CardContent>
       </Card> */}
 
-      <Card>
-        <CardHeader>Info</CardHeader>
+      <Card className="bg-card text-card-foreground">
+        <CardHeader className="text-foreground">Info</CardHeader>
         <CardContent className="space-y-3">
           {/* <div className="text-sm">
-            <span className="text-gray-600">
+            <span className="text-muted-foreground">
               <MailIcon className="inline h-4 w-4"></MailIcon> Email:
             </span>
-            <span className="ml-2">yutacreate@gmail.com</span>
+            <span className="ml-2 text-foreground">yutacreate@gmail.com</span>
           </div> */}
           <div className="text-sm">
-            <span className="text-gray-600">
-              <MapPinIcon className="inline h-4 w-4"></MapPinIcon> Registration
-              date:
+            <span className="text-muted-foreground">
+              <MapPinIcon className="inline h-4 w-4 mr-1"></MapPinIcon> Registration date:
             </span>
-            <span className="ml-2">
+            <span className="ml-2 text-foreground">
               {new Date(drep.latestRegistrationDate).toDateString()}
             </span>
           </div>
         </CardContent>
       </Card>
-      {/* <Card>
-        <CardHeader>Supporting Links</CardHeader>
+      {/* <Card className="bg-card text-card-foreground">
+        <CardHeader className="text-foreground">Supporting Links</CardHeader>
         <CardContent className="space-y-3">
 
           {[
@@ -158,9 +154,9 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
             <Link
               key={index}
               href="#"
-              className="w-full flex justify-start gap-2"
+              className="w-full flex justify-start gap-2 py-2 hover:bg-accent text-foreground hover:text-accent-foreground"
             >
-              <LinkIcon className="h-4 w-4" />
+              <LinkIcon className="h-4 w-4 text-muted-foreground" />
               <span>{label}</span>
             </Link>
           ))}

@@ -22,22 +22,24 @@ const formatDate = (dateString: string) => {
 
 export const GovernanceHistory = ({ entries }: GovernanceHistoryProps) => {
   return (
-    <CardContent className="p-6">
-      <h2 className="mb-4 text-lg font-medium">History</h2>
+    <CardContent className="p-6 dark:bg-gray-800 dark:border-gray-700">
+      <h2 className="mb-4 text-lg font-medium dark:text-gray-100">History</h2>
       <ComingSoon>
         <div className="space-y-1">
           {entries.map((entry, index) => (
             <div
               key={index}
-              className="flex items-start p-2 gap-4 rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex items-start p-2 gap-4 rounded-lg
+                hover:bg-gray-50 dark:hover:bg-gray-700
+                transition-colors"
             >
               <History
-                className="w-7 h-7 text-gray-400 mt-1 flex-shrink-0"
+                className="w-7 h-7 text-gray-400 dark:text-gray-500 mt-1 flex-shrink-0"
                 aria-hidden="true"
               />
               <div className="min-w-0 flex-1">
-                <p className="text-gray-600 font-medium">{entry.action}</p>
-                <span className="text-gray-500 text-sm">
+                <p className="text-gray-600 dark:text-gray-300 font-medium">{entry.action}</p>
+                <span className="text-gray-500 dark:text-gray-400 text-sm">
                   {entry.author} - {formatDate(entry.date)}
                 </span>
               </div>

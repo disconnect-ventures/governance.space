@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "~/components/features/Link";
 import { Twitter } from "lucide-react";
-
 import CardanoLogo from "../../../public/assets/cardano-logo.svg";
 import Logo from "~/components/icons/Logo";
 import LocaleSwitch from "../features/LocaleSwitch";
@@ -41,7 +40,6 @@ export function Footer() {
       links: [
         { title: "Intersect", path: "https://intersectmbo.org/" },
         { title: "Cardano", path: "https://cardano.org/" },
-
         {
           title: "Const. Committee Portal",
           path: "https://constitution.gov.tools/en",
@@ -55,29 +53,34 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-white py-8 border-t border-gray-200">
+    <footer className="bg-card py-8 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
+        {/* Top Section */}
         <div className="flex flex-col md:flex-row justify-between gap-4">
-          {/* Logo and Built on section */}
+          {/* Logo and Info Section */}
           <div className="mb-8 md:mb-0">
             <div className="flex items-center space-x-2 mb-4">
               <span className="font-semibold text-xl">
                 <Logo />
               </span>
               <div>
-                <div className="p-2 bg-gray-100 rounded-sm">
+                <div className="p-2 bg-muted rounded-sm hover:bg-muted/80 transition-colors">
                   <Link href="https://x.com/governancevote" target="_blank">
-                    <Twitter />
+                    <Twitter className="text-muted-foreground hover:text-foreground transition-colors" />
                   </Link>
                 </div>
               </div>
             </div>
-            <div className="text-sm text-gray-600 mt-2">
+            <div className="text-sm text-muted-foreground mt-2">
               <p>All-in-One Governance Platform.</p>
             </div>
             <div className="flex items-center gap-2 mt-2">
-              <span className="text-sm text-gray-600">Built on:</span>
-              <Link href="https://cardano.org/" target="_blank">
+              <span className="text-sm text-muted-foreground">Built on:</span>
+              <Link
+                href="https://cardano.org/"
+                target="_blank"
+                className="transition-opacity hover:opacity-80"
+              >
                 <Image
                   src={CardanoLogo}
                   alt="Cardano's logo"
@@ -89,23 +92,25 @@ export function Footer() {
             <div className="mt-1">
               <Link
                 href="mailto:hello@governancespace.com"
-                className="text-sm text-gray-600"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 hello@governancespace.com
               </Link>
             </div>
           </div>
 
+          {/* Menu Grid */}
           <div className="grid md:grid-cols-3 gap-8">
             {menu.map(({ title, links }, index) => (
               <div key={index} className="flex flex-col">
-                <h4 className="font-semibold mb-4">{title}</h4>
+                <h4 className="font-semibold mb-4 text-foreground">{title}</h4>
                 <ul className="space-y-2">
-                  {links.map(({ title, path }, linkIndex) => (
+                  {links.map(({ title, path, newTab }, linkIndex) => (
                     <li key={linkIndex}>
                       <Link
                         href={path}
-                        className="text-gray-600 hover:text-gray-900"
+                        target={newTab ? "_blank" : undefined}
+                        className="text-muted-foreground hover:text-foreground transition-colors"
                       >
                         {title}
                       </Link>
@@ -117,12 +122,20 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-4 border-t border-gray-200 flex flex-wrap justify-between items-center text-sm text-gray-600">
+        {/* Bottom Section */}
+        <div className="mt-8 pt-4 border-t border-border flex flex-wrap justify-between items-center gap-4 text-sm text-muted-foreground">
           <div>© 2025 Governance Space</div>
-          <div className="flex space-x-4">
-            <Link href="/privacy-policy">Privacy Policy</Link>
-            <Link href="/terms">Terms of Use</Link>
-            <Link href="/cookie-policy">Cookie Policy</Link>
+
+          <div className="flex flex-wrap gap-4">
+            <Link href="/privacy-policy" className="hover:text-foreground transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-foreground transition-colors">
+              Terms of Use
+            </Link>
+            <Link href="/cookie-policy" className="hover:text-foreground transition-colors">
+              Cookie Policy
+            </Link>
           </div>
           <div className="flex items-center space-x-2">
             <LocaleSwitch />
