@@ -9,7 +9,7 @@ import {
   MoreVertical,
   LinkIcon,
 } from "lucide-react";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 import CopyToClipboard from "../features/CopyToClipboard";
 import { PUBLIC_APP_DOMAIN } from "~/lib/constants";
@@ -29,11 +29,21 @@ const getShareUrl = (path: string, params: string) => {
 export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
   const path = usePathname();
   const searchParams = useSearchParams();
+  const [documentTitle, setDocumentTitle] = useState("");
+
+  useEffect(() => {
+    setDocumentTitle(document.title);
+  }, [path, searchParams]);
+
   const shareUrl = useMemo(
     () => props.shareUrl || getShareUrl(path, searchParams.toString()),
     [path, searchParams, props]
   );
-  const shareTitle = useMemo(() => props.shareTitle || document.title, [props]);
+  const shareTitle = useMemo(
+    () => props.shareTitle || documentTitle,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [props, path, searchParams]
+  );
 
   const baseIconClasses = "w-4 h-4 inline cursor-pointer";
   const encodedUrl = useMemo(() => encodeURIComponent(shareUrl), [shareUrl]);
