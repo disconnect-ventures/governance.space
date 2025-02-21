@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { ChevronDown, Search } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -8,8 +7,6 @@ import {
   NavigationMenuList,
 } from "~/components/ui/navigation-menu";
 import { Button, buttonVariants } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Logo from "../icons/Logo";
 import Link from "~/components/features/Link";
 import { SidebarTrigger } from "../ui/sidebar";
@@ -116,10 +113,10 @@ export const Header = () => {
             <div className="mx-auto md:mx-0 md:w-fit">
               <Logo />
             </div>
-            <div className="hidden md:flex relative max-w-sm md:w-44">
+            {/* <div className="hidden md:flex relative max-w-sm md:w-44">
               <Input type="text" placeholder="Search..." className="pl-8" />
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
-            </div>
+            </div> */}
           </div>
 
           <div className="hidden md:flex items-center gap-2">
@@ -140,7 +137,7 @@ export const Header = () => {
             )}
           </div>
 
-          <div className="lg:flex items-center hidden">
+          {/* <div className="lg:flex items-center hidden">
             <Avatar className="h-8 w-8">
               <AvatarImage
                 src={
@@ -150,7 +147,7 @@ export const Header = () => {
               <AvatarFallback>{"DV"}</AvatarFallback>
             </Avatar>
             <ChevronDown></ChevronDown>
-          </div>
+          </div> */}
         </div>
         <Separator className="hidden md:block w-[100vw] absolute left-0" />
         <div className="hidden md:block">

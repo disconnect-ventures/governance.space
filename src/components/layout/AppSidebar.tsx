@@ -12,17 +12,17 @@ import { headerNavLinks } from "./Header";
 import Link from "~/components/features/Link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
-import { Input } from "../ui/input";
-import { SearchIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import { CardanoWallet, useWallet } from "@meshsdk/react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useEffect } from "react";
 import LocaleSwitch from "../features/LocaleSwitch";
+import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 export function AppSidebar() {
   const pathname = usePathname();
-
+  const { dictionary } = useTranslation();
+  const headerTranslations = useMemo(() => dictionary.header, [dictionary]);
   const [balance, setBalance] = useState<string>();
   const { wallet, connected } = useWallet();
 
@@ -43,7 +43,7 @@ export function AppSidebar() {
         <SidebarContent className="pb-8">
           <SidebarGroup className="h-full">
             <SidebarGroupContent className="h-full flex flex-col gap-4">
-              <div className="relative max-w-sm">
+              {/* <div className="relative max-w-sm">
                 <Input
                   type="text"
                   placeholder="Search..."
@@ -51,7 +51,7 @@ export function AppSidebar() {
                   tabIndex={-1}
                 />
                 <SearchIcon className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
-              </div>
+              </div> */}
               <SidebarMenu>
                 {headerNavLinks.map((item, index) => (
                   <SidebarMenuItem key={index}>
@@ -70,11 +70,11 @@ export function AppSidebar() {
                 ))}
               </SidebarMenu>
               <div className="flex flex-col gap-2 mt-auto">
-                <Button variant="ghost">Become a DRep</Button>
+                <Button variant="ghost">{headerTranslations.becomeDrep}</Button>
                 <CardanoWallet />
                 {connected && (
                   <Button size="sm" className="cursor-default">
-                    Voting power: ₳{balance}
+                    {dictionary.pageDReps.votingPower}: ₳{balance}
                   </Button>
                 )}
               </div>

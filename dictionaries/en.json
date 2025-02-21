@@ -36,24 +36,24 @@
     "alert-text": "This site is under development and will be officially launched on February 10, 2025."
   },
   "header": {
-    "become-drep": "Become a DRep",
-    "connect-wallet": "Connect Wallet",
-    "title_home": "Home",
-    "title_dreps": "DReps Directory",
-    "title_governance-actions": "Governance Actions",
-    "title_proposals": "Proposals",
-    "title_committees": "Committees Members",
-    "title_live-events": "Live Events",
-    "title_analytics": "Analytics",
-    "title_help": "Help",
-    "title_about": "About"
+    "becomeDrep": "Become a DRep",
+    "connectWallet": "Connect Wallet",
+    "titleHome": "Home",
+    "titleDreps": "DReps Directory",
+    "titleGovernanceActions": "Governance Actions",
+    "titleProposals": "Proposals",
+    "titleCommittees": "Committees Members",
+    "titleLiveEvents": "Live Events",
+    "titleAnalytics": "Analytics",
+    "titleHelp": "Help",
+    "titleAbout": "About"
   },
   "newsletter": {
-    "newsletter_cta": "Governance Space on Cardano Blockchain",
-    "newsletter_title": "Are You Ready to Participate?",
-    "newsletter_description": "Building Together to Drive Cardano Forward.",
-    "newsletter_your-email": "Your email address",
-    "newsletter_button": "Subscribe"
+    "newsletterCta": "Governance Space on Cardano Blockchain",
+    "newsletterTitle": "Are You Ready to Participate?",
+    "newsletterDescription": "Building Together to Drive Cardano Forward.",
+    "newsletterYourEmail": "Your email address",
+    "newsletterButton": "Subscribe"
   },
   "footer": {
     "built_on": "Built on",
