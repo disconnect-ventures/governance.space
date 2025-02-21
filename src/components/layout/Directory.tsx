@@ -34,6 +34,7 @@ import { Checkbox } from "../ui/checkbox";
 import { useLocale } from "~/hooks/use-locale";
 import { localizePath } from "~/lib/utils";
 import { useTranslation } from "~/hooks/use-translation/use-translation";
+import clsx from "clsx";
 
 export type DirectoryParamOption = {
   value: string;
@@ -340,9 +341,14 @@ export function Directory({
 
 type TableDirectoryProps = DirectoryProps & {
   headers: string[];
+  headerAlign?: "start" | "center" | "end";
 };
 
-export function TableDirectory({ headers, ...props }: TableDirectoryProps) {
+export function TableDirectory({
+  headers,
+  headerAlign = "start",
+  ...props
+}: TableDirectoryProps) {
   return (
     <Directory
       container={(children) => (
@@ -352,7 +358,14 @@ export function TableDirectory({ headers, ...props }: TableDirectoryProps) {
               {headers.map((header, index) => (
                 <TableHead
                   key={index}
-                  className="whitespace-nowrap text-center"
+                  className={clsx(
+                    "whitespace-nowrap",
+                    headerAlign === "start"
+                      ? "text-start"
+                      : headerAlign === "center"
+                      ? "text-center"
+                      : "text-end"
+                  )}
                 >
                   {header}
                 </TableHead>
