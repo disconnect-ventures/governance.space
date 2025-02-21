@@ -15,6 +15,8 @@ import "@meshsdk/react/styles.css";
 import { i18n, Locale } from "~/config/i18n";
 import { TranslationProvider } from "~/hooks/use-translation/translation-context";
 import { getDictionary } from "~/config/dictionaries";
+import clsx from "clsx";
+import { cookies } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,12 +48,17 @@ export default async function RootLayout(props: {
   const params = await props.params;
   const { children } = props;
   const dictionary = await getDictionary(params.lang);
+  const cookieStore = await cookies(); // TODO: Remove need for accessing cookies here.
+  const theme = cookieStore.get("theme");
 
   return (
-    <html lang={params.lang}>
+    <html lang={params.lang} suppressHydrationWarning>
       <GoogleTagManager gtmId="GTM-W47W68BT" />
       <body
-        className={`${inter.className} antialiased min-h-[100vh] flex flex-col`}
+        className={clsx(
+          `${inter.className} antialiased min-h-[100vh] flex flex-col`,
+          theme
+        )}
       >
         <TranslationProvider value={{ dictionary, locale: params.lang }}>
           <SidebarProvider>
