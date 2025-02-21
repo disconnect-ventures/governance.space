@@ -12,9 +12,7 @@ import { Card, CardContent } from "~/components/ui/card";
 import { getProposals, getProposalsById } from "~/lib/proposals";
 import { calculateEpochNumber } from "~/lib/utils";
 
-export async function generateMetadata({
-  params,
-}: ProposalDetailsProps): Promise<Metadata> {
+export async function generateMetadata({ params }: ProposalDetailsProps): Promise<Metadata> {
   const proposalId = (await params).proposal;
   return {
     title: `Governance Space - Proposal ${proposalId}`,
@@ -36,18 +34,12 @@ export async function generateStaticParams() {
     await Promise.all(
       Array.from({ length: totalPages - 1 }).map(async () => {
         try {
-          const { data } = await getProposals(
-            page++,
-            pageSize,
-            search,
-            sort,
-            filters
-          );
+          const { data } = await getProposals(page++, pageSize, search, sort, filters);
           return data;
         } catch {
           return [];
         }
-      })
+      }),
     )
   ).flat();
 
@@ -62,9 +54,7 @@ type ProposalDetailsProps = {
   }>;
 };
 
-export default async function ProposalDetailsPage({
-  params,
-}: ProposalDetailsProps) {
+export default async function ProposalDetailsPage({ params }: ProposalDetailsProps) {
   const { proposal: proposalId } = await params;
   const { data: proposal } = await getProposalsById(proposalId);
 
@@ -89,11 +79,11 @@ export default async function ProposalDetailsPage({
   }
 
   return (
-    <div>
+    <div className="bg-background text-foreground">
       <PageTitle
         title="Proposal Details"
         icon={
-          <div className="p-2 rounded-full bg-gray-300 w-12 h-12 flex flex-col justify-center items-center">
+          <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <FileTextIcon className="w-5 h-5 relative top-1" />
             <HandHelpingIcon className="w-6 h-6" />
           </div>
@@ -101,7 +91,7 @@ export default async function ProposalDetailsPage({
         translationPage="pageProposalsDetails"
       />
       <TopBar backHref="/proposals" />
-      <Card className="mb-4">
+      <Card className="mb-4 bg-card text-card-foreground">
         <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           <div className="grid gap-4 sm:gap-6">
             <ProposalHeader
@@ -138,7 +128,7 @@ export default async function ProposalDetailsPage({
           </div>
         </CardContent>
       </Card>
-      <Card className="mb-4 sm:mb-6">
+      <Card className="mb-4 sm:mb-6 bg-card text-card-foreground">
         <CardContent className="p-4 sm:p-6">
           <VotingSection />
         </CardContent>

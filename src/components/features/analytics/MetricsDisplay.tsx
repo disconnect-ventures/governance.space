@@ -142,7 +142,7 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
         {metrics.map((metric, index) => (
-          <Card key={index} className="bg-card shadow-none">
+          <Card key={index} className="bg-card text-card-foreground shadow-none">
             <CardContent className="p-6">
               <div className="flex gap-4">
                 <div className="p-2 bg-primary/10 rounded-lg text-primary">
@@ -150,7 +150,9 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">{metric.label}</p>
-                  <p className="text-2xl font-bold mt-1">{formatNumber(metric.value)}</p>
+                  <p className="text-2xl font-bold text-foreground mt-1">
+                    {formatNumber(metric.value)}
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -159,9 +161,9 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <Card className="shadow-none">
+        <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold mb-6">Stake Distribution</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">Stake Distribution</h3>
             <div className="h-32">
               <ResponsiveContainer>
                 <BarChart data={stakeData} layout="vertical" margin={{ right: 80, left: 60 }}>
@@ -197,9 +199,9 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
           </CardContent>
         </Card>
 
-        <Card className="shadow-none">
+        <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold mb-6">Voting Power</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">Voting Power</h3>
             <div className="flex">
               <div className="h-32 flex-1">
                 <ResponsiveContainer>
@@ -242,7 +244,7 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
                       />
                       <span className="text-sm text-muted-foreground">{item.name}</span>
                     </div>
-                    <span className="text-sm font-medium">{item.formatted}</span>
+                    <span className="text-sm font-medium text-foreground">{item.formatted}</span>
                   </div>
                 ))}
               </div>
@@ -252,9 +254,9 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <Card className="shadow-none">
+        <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold mb-2">Governance Delegation </h3>
+            <h3 className="text-lg font-semibold text-foreground mb-2">Governance Delegation </h3>
             <p className="text-sm text-muted-foreground mb-6">
               ADA taking part in Governance as of today by category in relation to the circulating
               supply of ADA on Cardano
@@ -285,7 +287,7 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
                       />
                       <span className="text-sm text-muted-foreground">{item.name}</span>
                     </div>
-                    <span className="text-sm font-medium">({item.percentage}%)</span>
+                    <span className="text-sm font-medium text-foreground">({item.percentage}%)</span>
                   </div>
                 ))}
               </div>
@@ -293,9 +295,9 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
           </CardContent>
         </Card>
 
-        <Card className="shadow-none">
+        <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold mb-6">Cardano Tokenomics </h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">Cardano Tokenomics </h3>
             <table className="w-full">
               <thead>
                 <tr className="border-b border-border">
@@ -310,8 +312,8 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
               <tbody>
                 {tokenomicsData.map((row) => (
                   <tr key={row.position} className="border-b border-border last:border-0">
-                    <td className="py-4 text-sm">{row.position}</td>
-                    <td className="py-4 text-sm text-right font-medium">
+                    <td className="py-4 text-sm text-foreground">{row.position}</td>
+                    <td className="py-4 text-sm text-right font-medium text-foreground">
                       {formatNumber(row.amount)}
                     </td>
                   </tr>
@@ -323,9 +325,9 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card className="shadow-none">
+        <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold mb-6">Top 10 DReps</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">Top 10 DReps</h3>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
@@ -344,21 +346,21 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
                 <tbody className="divide-y divide-border">
                   {drepList?.slice(0, 10).map((drep, index) => (
                     <tr key={drep.drepId}>
-                      <td className="py-4 text-sm">{`${index + 1}º ${drep.givenName || "Anonymous DRep"}`}</td>
+                      <td className="py-4 text-sm text-foreground">{`${index + 1}º ${drep.givenName || "Anonymous DRep"}`}</td>
                       <td className="py-4 text-sm text-center">
                         <span
                           className={`px-2 py-1 rounded-full text-xs ${
                             drep.status === "Active"
-                              ? "bg-green-100 text-green-800"
+                              ? "bg-green-500/10 text-green-500 dark:bg-green-500/20 dark:text-green-400"
                               : drep.status === "Inactive"
-                                ? "bg-yellow-100 text-yellow-800"
-                                : "bg-red-100 text-red-800"
+                                ? "bg-yellow-500/10 text-yellow-500 dark:bg-yellow-500/20 dark:text-yellow-400"
+                                : "bg-red-500/10 text-red-500 dark:bg-red-500/20 dark:text-red-400"
                           }`}
                         >
                           {drep.status}
                         </span>
                       </td>
-                      <td className="py-4 text-sm text-right font-medium">
+                      <td className="py-4 text-sm text-right font-medium text-foreground">
                         ₳ {formatNumber(drep.votingPower)}
                       </td>
                     </tr>
@@ -369,9 +371,11 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
           </CardContent>
         </Card>
 
-        <Card className="shadow-none">
+        <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold mb-6">Epoch {data.dashboard.epoch} Metrics</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">
+              Epoch {data.dashboard.epoch} Metrics
+            </h3>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
@@ -394,11 +398,15 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
 
                     return (
                       <tr key={row.item}>
-                        <td className="py-4 text-sm">{row.item}</td>
-                        <td className="py-4 text-sm text-center font-medium">{row.value}</td>
+                        <td className="py-4 text-sm text-foreground">{row.item}</td>
+                        <td className="py-4 text-sm text-center font-medium text-foreground">
+                          {row.value}
+                        </td>
                         <td
                           className={`py-4 text-sm text-right font-medium ${
-                            isError ? "text-destructive" : "text-green-500"
+                            isError
+                              ? "text-red-500 dark:text-red-400"
+                              : "text-green-500 dark:text-green-400"
                           }`}
                         >
                           {isError ? `-${row.change}` : `+${row.change}`}

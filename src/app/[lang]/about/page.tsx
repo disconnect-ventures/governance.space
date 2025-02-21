@@ -12,17 +12,16 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
   return (
-    <div className="">
+    <div className="bg-background text-foreground dark:bg-background dark:text-foreground">
       <PageTitle
         title="About"
         icon={
-          <div className="p-2 rounded-full bg-gray-300 w-12 h-12 flex flex-col justify-center items-center">
-            <BookOpenCheckIcon />
+          <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
+            <BookOpenCheckIcon className="text-foreground" />
           </div>
         }
       />
-
-      <div className="mt-6 space-y-6 text-gray-700">
+      <div className="mt-6 space-y-6 text-foreground dark:text-foreground/80">
         <p>All-in-One Governance Platform.</p>
         <ComingSoon>
           <p>
@@ -44,7 +43,10 @@ export default async function AboutPage() {
               { name: "Steven Laff", role: "SPO" },
               { name: "Steven Laff", role: "Member" },
             ].map((testimonial, index) => (
-              <div key={index} className="text-center space-y-4">
+              <div
+                key={index}
+                className="text-center space-y-4 p-6 bg-card dark:bg-card/50 rounded-lg shadow-sm"
+              >
                 <div className="flex justify-center">
                   {[...Array(5)].map((_, starIndex) => (
                     <StarIcon
@@ -53,11 +55,16 @@ export default async function AboutPage() {
                     />
                   ))}
                 </div>
-                <p className="text-gray-600">Este é um teste de depoimento</p>
-                <p className="font-semibold">
+                <p className="text-muted-foreground dark:text-muted-foreground/80">
+                  Este é um teste de depoimento
+                </p>
+                <p className="font-semibold text-foreground dark:text-foreground/90">
                   {testimonial.name} - {testimonial.role}
                 </p>
-                <a href="#" className="text-blue-600 hover:underline">
+                <a
+                  href="#"
+                  className="text-primary hover:underline dark:text-primary/90"
+                >
                   Ir para o Portal
                 </a>
               </div>
@@ -66,7 +73,9 @@ export default async function AboutPage() {
         </ComingSoon>
 
         <p>
-          <span className="text-sm text-gray-600">Built on:</span>
+          <span className="text-sm text-muted-foreground dark:text-muted-foreground/80">
+            Built on:
+          </span>
           <Link href="https://cardano.org/" target="_blank">
             <Image
               src={"/assets/cardano-logo.svg"}
@@ -77,11 +86,10 @@ export default async function AboutPage() {
             />
           </Link>
         </p>
-
         <p>
           <Link
             href="mailto:hello@governancespace.com"
-            className="text-sm text-gray-600"
+            className="text-sm text-muted-foreground dark:text-muted-foreground/80"
           >
             hello@governancespace.com
           </Link>

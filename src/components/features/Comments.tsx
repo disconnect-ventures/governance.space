@@ -1,4 +1,3 @@
-// https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=50-19796&t=GGJEhGlKd8rVords-4
 import { Card, CardContent } from "~/components/ui/card";
 import { DRep } from "~/lib/dreps";
 import { Textarea } from "~/components/ui/textarea";
@@ -15,57 +14,57 @@ type CommentsProps = {
 
 export function Comments({ comments }: CommentsProps) {
   return (
-    <Card className="w-full mx-auto">
+    <Card className="w-full mx-auto bg-card text-card-foreground">
       <CardContent className="p-6">
         <div className="space-y-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold">
+            <h2 className="text-xl font-semibold text-foreground">
               Comments ({comments.length})
             </h2>
           </div>
-
           <div className="space-y-4 mb-6">
             <div className="flex gap-4">
               <Textarea
                 placeholder="Ask the DRep a question..."
-                className="min-h-[100px]"
+                className="min-h-[100px] bg-background text-foreground border-border placeholder:text-muted-foreground"
               />
             </div>
             <div className="flex justify-end">
-              <Button className="flex items-center gap-2 bg-blue-600" disabled>
+              <Button
+                className="flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
+                disabled
+              >
                 <Send className="w-4 h-4" />
                 Submit Comment
               </Button>
             </div>
           </div>
-
           <div className="space-y-6">
             <ComingSoon>
               {comments.map((comment) => (
                 <div key={comment.id} className="flex gap-4">
                   <Avatar className="w-10 h-10">
-                    {/* <AvatarImage src={""} alt={comment.attributes.user_govtool_username} /> */}
-                    <AvatarFallback>
+                    <AvatarFallback className="bg-muted text-muted-foreground">
                       {comment.attributes.user_govtool_username.substring(0, 2)}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1 space-y-2">
                     <div className="flex items-center justify-between">
-                      <div className="font-medium">
+                      <div className="font-medium text-foreground">
                         {comment.attributes.user_govtool_username}
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-muted-foreground">
                         {new Date(comment.attributes.updatedAt).toDateString()}
                       </div>
                     </div>
-                    <p className="text-gray-700">
+                    <p className="text-foreground">
                       {comment.attributes.comment_text}
                     </p>
                     <div className="flex gap-4">
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="flex items-center gap-1"
+                        className="flex items-center gap-1 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
                       >
                         <ThumbsUp className="w-4 h-4" />
                         <span>0</span>
@@ -73,7 +72,7 @@ export function Comments({ comments }: CommentsProps) {
                       <Button
                         variant="ghost"
                         size="sm"
-                        className="flex items-center gap-1"
+                        className="flex items-center gap-1 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
                       >
                         <ThumbsDown className="w-4 h-4" />
                         <span>0</span>

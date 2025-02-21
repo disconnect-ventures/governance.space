@@ -4,13 +4,7 @@ import React, { useMemo } from "react";
 import { Card, CardContent } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 import { buttonVariants } from "~/components/ui/button";
-import {
-  Clock,
-  Calendar,
-  ClockIcon,
-  CircleCheckBig,
-  CircleAlert,
-} from "lucide-react";
+import { Clock, Calendar, Clock as ClockIcon, CircleCheckBig, CircleAlert } from "lucide-react";
 import { getActionIdUrl, GovernanceAction } from "~/lib/governance-actions";
 import { Metadata } from "~/lib/metadata";
 import Link from "~/components/features/Link";
@@ -21,14 +15,11 @@ const getTypeLabel = (type: GovernanceAction["type"]) => {
   return formatCamelCase(type);
 };
 
-const getStatusBadge = (
-  status: "Pending" | "In Progress" | "Completed",
-  className?: string
-) => {
+const getStatusBadge = (status: "Pending" | "In Progress" | "Completed", className?: string) => {
   const variants = {
-    Pending: "bg-yellow-100 text-yellow-800",
-    "In Progress": "bg-blue-100 text-blue-800",
-    Completed: "bg-green-100 text-green-800",
+    Pending: "bg-yellow-500/10 text-yellow-400 dark:bg-yellow-500/20 dark:text-yellow-300",
+    "In Progress": "bg-blue-500/10 text-blue-400 dark:bg-blue-500/20 dark:text-blue-300",
+    Completed: "bg-green-500/10 text-green-400 dark:bg-green-500/20 dark:text-green-300",
   };
 
   const icons = {
@@ -62,34 +53,28 @@ export const GovernanceActionCard = ({
   // const views = 404; // TODO
   const title = useMemo(
     () => (action.title || metadata ? metadata?.metadata.title : "No title"),
-    [action, metadata]
+    [action, metadata],
   );
-  const abstract = useMemo(
-    () => action.abstract || metadata?.metadata.abstract,
-    [action, metadata]
-  );
+  const abstract = useMemo(() => action.abstract || metadata?.metadata.abstract, [action, metadata]);
 
   return (
-    <Card className="mb-4">
+    <Card className="mb-4 dark:bg-gray-800 dark:border-gray-700">
       <CardContent className="pt-6">
         <div className="flex items-center gap-2 mb-2">
-          <Badge variant="outline" className="font-normal bg-blue-200 p-2">
+          <Badge
+            variant="outline"
+            className="font-normal bg-blue-200 dark:bg-blue-900/50 p-2 dark:text-blue-300"
+          >
             {getTypeLabel(action.type)}
           </Badge>
-          {/* <div className="flex items-center gap-2">
-            <div className="flex items-center justify-center text-xs text-gray-600">
-              <EyeIcon className="h-4" />
-              {views}
-            </div>
-          </div> */}
           {getStatusBadge(status, "ml-auto")}
         </div>
 
-        <h3 className="text-lg font-semibold mb-2">{title}</h3>
+        <h3 className="text-lg font-semibold mb-2 dark:text-gray-100">{title}</h3>
 
-        <p className="text-sm text-gray-600 mb-4 line-clamp-2">{abstract}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">{abstract}</p>
 
-        <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-600">
+        <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-600 dark:text-gray-400">
           <div className="flex items-center gap-2">
             <Calendar className="h-4 w-4" />
             <span>
@@ -110,11 +95,7 @@ export const GovernanceActionCard = ({
           </div>
         </div>
 
-        <div className="text-gray-600 space-y-2 mb-4">
-          {/* <div className="text-sm">
-            <span className="font-semibold">Governance Action ID:</span>
-            <div className="font-mono text-xs break-all">{action.id}</div>
-          </div> */}
+        <div className="text-gray-600 dark:text-gray-400 space-y-2 mb-4">
           <div className="text-sm">
             <span className="font-semibold">Legacy Governance Action ID:</span>
             <div className="font-mono text-xs break-all">{action.txHash}</div>
@@ -123,11 +104,8 @@ export const GovernanceActionCard = ({
 
         <div className="flex justify-center">
           <Link
-            href={`/governance/${getActionIdUrl(
-              action.txHash,
-              action.index.toString()
-            )}`}
-            className={` ${buttonVariants()} `}
+            href={`/governance/${getActionIdUrl(action.txHash, action.index.toString())}`}
+            className={`${buttonVariants()} dark:bg-blue-600 dark:text-gray-100 dark:hover:bg-blue-500`}
           >
             {dictionary.general["view-details-and-vote"]}
           </Link>

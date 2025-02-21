@@ -1,16 +1,8 @@
 import { Calendar, Clock } from "lucide-react";
-import {
-  GovernanceVotingCard,
-  GovernanceVotingCardProps,
-} from "./GovernanceVotingCard";
+import { GovernanceVotingCard, GovernanceVotingCardProps } from "./GovernanceVotingCard";
 import { Progress } from "~/components/ui/progress";
 import { GovernanceAction } from "~/lib/governance-actions";
-import {
-  formatAda,
-  formatDate,
-  formatVotingPower,
-  truncateMiddle,
-} from "~/lib/utils";
+import { formatAda, formatDate, formatVotingPower, truncateMiddle } from "~/lib/utils";
 import CopyToClipboard from "../CopyToClipboard";
 
 export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
@@ -47,8 +39,7 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
   };
 
   const totalDuration =
-    new Date(action.expiryDate).getTime() -
-    new Date(action.createdDate).getTime();
+    new Date(action.expiryDate).getTime() - new Date(action.createdDate).getTime();
   const currentProgress = Date.now() - new Date(action.createdDate).getTime();
   const progressPercentage = (currentProgress / totalDuration) * 100;
 
@@ -59,8 +50,8 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
   const actionId = `${action.txHash}#${action.index}`;
 
   return (
-    <div className="m-8 bg-white">
-      <h2 className="text-lg font-bold mb-6">
+    <div className="m-8 bg-white dark:bg-gray-900">
+      <h2 className="text-lg font-bold mb-6 dark:text-gray-100">
         Votes submitted for this Governance Action By:
       </h2>
 
@@ -72,12 +63,12 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
 
       <div className="w-full flex flex-col md:flex-row gap-8 mt-6">
         <div className="w-full md:flex-1">
-          <p className="mb-4 font-bold text-gray-600">
+          <p className="mb-4 font-bold text-gray-600 dark:text-gray-400">
             Legacy Governance Action ID:
           </p>
 
           <div className="flex items-center gap-2 mb-8">
-            <code className="text-xs sm:text-sm font-mono break-all">
+            <code className="text-xs sm:text-sm font-mono break-all dark:text-gray-300">
               {truncateMiddle(actionId, 25)}
             </code>
             <CopyToClipboard value={actionId} />
@@ -85,17 +76,17 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
 
           <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2">
-              <Calendar className="h-5 w-5 text-gray-400 flex-shrink-0" />
-              <span className="text-gray-500 font-bold">Submitted:</span>
-              <span className="text-[#4B5563]">
+              <Calendar className="h-5 w-5 text-gray-400 dark:text-gray-600 flex-shrink-0" />
+              <span className="text-gray-500 dark:text-gray-400 font-bold">Submitted:</span>
+              <span className="text-[#4B5563] dark:text-gray-300">
                 {formatDate(action.createdDate, action.createdEpochNo)}
               </span>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
-              <Clock className="h-5 w-5 text-gray-400 flex-shrink-0" />
-              <span className="text-gray-500 font-bold">Expires:</span>
-              <span className="text-[#4B5563]">
+              <Clock className="h-5 w-5 text-gray-400 dark:text-gray-600 flex-shrink-0" />
+              <span className="text-gray-500 dark:text-gray-400 font-bold">Expires:</span>
+              <span className="text-[#4B5563] dark:text-gray-300">
                 {formatDate(action.expiryDate, action.expiryEpochNo)}
               </span>
             </div>
@@ -105,26 +96,22 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
         <div className="w-full md:flex-1 flex flex-col gap-2">
           <div className="space-y-2">
             <div className="flex justify-between">
-              <p className="text-gray-600">Deadline</p>
-              <span className="font-medium text-[#2563EB]">
+              <p className="text-gray-600 dark:text-gray-400">Deadline</p>
+              <span className="font-medium text-[#2563EB] dark:text-blue-400">
                 {progressPercentage.toFixed(2)} %
               </span>
             </div>
-            <Progress
-              value={progressPercentage}
-              className="h-2"
-              color="#2563EB"
-            />
+            <Progress value={progressPercentage} className="h-2" color="#2563EB" />
           </div>
           <div>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               {daysPassed} / {totalDays} days
               {daysRemaining > 0 ? (
-                <span className="text-[#2563EB] ml-1">
+                <span className="text-[#2563EB] dark:text-blue-400 ml-1">
                   ({daysRemaining} days remaining)
                 </span>
               ) : (
-                <span className="text-red-500 ml-1">(Expired)</span>
+                <span className="text-red-500 dark:text-red-400 ml-1">(Expired)</span>
               )}
             </p>
           </div>

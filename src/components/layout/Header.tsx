@@ -17,42 +17,15 @@ import { CardanoWallet, useWallet } from "@meshsdk/react";
 import LocaleSwitch from "../features/LocaleSwitch";
 
 export const headerNavLinks = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "DReps Directory",
-    href: "/dreps",
-  },
-  {
-    label: "Governance Actions",
-    href: "/governance",
-  },
-  {
-    label: "Proposals",
-    href: "/proposals",
-  },
-  {
-    label: "Committees Members",
-    href: "/committees",
-  },
-  {
-    label: "Live Events",
-    href: "/live-events",
-  },
-  {
-    label: "Analytics",
-    href: "/analytics",
-  },
-  {
-    label: "Help",
-    href: "/help",
-  },
-  {
-    label: "About",
-    href: "/about",
-  },
+  { label: "Home", href: "/" },
+  { label: "DReps Directory", href: "/dreps" },
+  { label: "Governance Actions", href: "/governance" },
+  { label: "Proposals", href: "/proposals" },
+  { label: "Committees Members", href: "/committees" },
+  { label: "Live Events", href: "/live-events" },
+  { label: "Analytics", href: "/analytics" },
+  { label: "Help", href: "/help" },
+  { label: "About", href: "/about" },
 ];
 
 export const HeaderNavigationLink = ({
@@ -69,9 +42,8 @@ export const HeaderNavigationLink = ({
       <Link href={href} legacyBehavior passHref>
         <NavigationMenuLink
           className={clsx(
-            "px-3 py-2 hover:text-blue-500 rounded-full border-border border whitespace-nowrap",
-            active &&
-              "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950",
+            "px-3 py-2 rounded-full border-border border whitespace-nowrap text-muted-foreground hover:text-foreground transition-colors",
+            active && "bg-secondary text-foreground",
           )}
         >
           {children}
@@ -99,7 +71,7 @@ export const Header = () => {
   }, [wallet, connected]);
 
   return (
-    <div className="w-full border-b py-4 md:pb-0 sticky top-0 z-40 bg-background">
+    <div className="w-full border-b border-border py-4 md:pb-0 sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto px-4 md:px-8 max-w-7xl">
         <div className="hidden md:flex justify-end">
           <LocaleSwitch />
@@ -114,8 +86,8 @@ export const Header = () => {
               <Logo />
             </div>
             {/* <div className="hidden md:flex relative max-w-sm md:w-44">
-              <Input type="text" placeholder="Search..." className="pl-8" />
-              <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
+              <Input type="text" placeholder="Search..." className="pl-8 bg-background" />
+              <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
             </div> */}
           </div>
 
@@ -123,7 +95,7 @@ export const Header = () => {
             <Link
               href="https://gov.tools/register_drep"
               target="_blank"
-              className={buttonVariants({ variant: "ghost" })}
+              className={buttonVariants({ variant: "outline" })}
             >
               Become a DRep
             </Link>
@@ -131,7 +103,11 @@ export const Header = () => {
             <CardanoWallet />
 
             {connected && (
-              <Button size="sm" className="cursor-default gap-1">
+              <Button
+                size="sm"
+                variant="secondary"
+                className="cursor-default gap-1 text-secondary-foreground"
+              >
                 Voting power: <b>₳{balance}</b>
               </Button>
             )}
@@ -139,27 +115,21 @@ export const Header = () => {
 
           {/* <div className="lg:flex items-center hidden">
             <Avatar className="h-8 w-8">
-              <AvatarImage
-                src={
-                  "https://avatars.githubusercontent.com/t/11181162?s=116&v=4"
-                }
-              />
-              <AvatarFallback>{"DV"}</AvatarFallback>
+              <AvatarImage src="https://avatars.githubusercontent.com/t/11181162?s=116&v=4" />
+              <AvatarFallback>DV</AvatarFallback>
             </Avatar>
             <ChevronDown></ChevronDown>
           </div> */}
         </div>
+
         <Separator className="hidden md:block w-[100vw] absolute left-0" />
+
         <div className="hidden md:block">
           <div className="h-max-content flex justify-center overflow-x-auto overflow-y-hidden">
             <NavigationMenu>
-              <NavigationMenuList className="w-full flex  gap-4 my-4">
+              <NavigationMenuList className="w-full flex gap-4 my-4">
                 {headerNavLinks.map((link, index) => (
-                  <HeaderNavigationLink
-                    key={index}
-                    href={link.href}
-                    active={pathname === link.href}
-                  >
+                  <HeaderNavigationLink key={index} href={link.href} active={pathname === link.href}>
                     {link.label}
                   </HeaderNavigationLink>
                 ))}

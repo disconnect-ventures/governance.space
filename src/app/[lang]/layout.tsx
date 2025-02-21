@@ -54,12 +54,7 @@ export default async function RootLayout(props: {
   return (
     <html lang={params.lang} suppressHydrationWarning>
       <GoogleTagManager gtmId="GTM-W47W68BT" />
-      <body
-        className={clsx(
-          `${inter.className} antialiased min-h-[100vh] flex flex-col`,
-          theme
-        )}
-      >
+      <body className={clsx(`${inter.className} antialiased min-h-[100vh] flex flex-col`, theme)}>
         <TranslationProvider value={{ dictionary, locale: params.lang }}>
           <SidebarProvider>
             <ClientProvider>
@@ -67,7 +62,7 @@ export default async function RootLayout(props: {
                 <AnnouncementBar />
                 <Header />
                 <AppSidebar />
-                <main className="min-h-[50vh] flex flex-col gap-4 justify-between bg-gray-100 pt-2">
+                <main className="min-h-[50vh] flex flex-col gap-4 justify-between bg-background pt-2">
                   <div className="w-full max-w-7xl mx-auto relative my-4 px-4 md:px-8">
                     <Breadcrumbs />
                     {children}
