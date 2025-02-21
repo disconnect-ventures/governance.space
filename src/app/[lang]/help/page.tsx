@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 
 export default async function HelpPage() {
   return (
-    <div>
+    <div className="bg-background text-foreground">
       <PageTitle
         title="Help"
         icon={
-          <div className="p-2 rounded-full bg-gray-300 w-12 h-12 flex flex-col justify-center items-center">
+          <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <MessageCircleQuestion />
           </div>
         }
@@ -26,7 +26,10 @@ export default async function HelpPage() {
           <Input
             type="text"
             placeholder="Search..."
-            className="w-full h-12 rounded-md bg-white border border-gray-200 px-6 text-base placeholder:text-gray-400 focus-visible:ring-offset-0 focus-visible:ring-0 focus-visible:border-gray-400"
+            className="w-full h-12 rounded-md bg-card text-card-foreground border-input
+            placeholder:text-muted-foreground focus-visible:ring-ring
+            focus-visible:ring-offset-background focus-visible:ring-2
+            focus-visible:ring-offset-2"
           />
 
           <div className="mt-6">

@@ -20,7 +20,7 @@ export const ProposalContent = ({ proposal }: ProposalContentProps) => {
           ["Rational", prop_rationale],
         ].map(([label, link]) => (
           <div key={label}>
-            <h3 className="font-medium mb-2">{label}</h3>
+            <h3 className="font-medium mb-2 text-foreground">{label}</h3>
             <p className="text-muted-foreground mb-4">{link}</p>
           </div>
         ))}
@@ -33,10 +33,12 @@ export const ProposalContent = ({ proposal }: ProposalContentProps) => {
                 <Link
                   key={index}
                   href={prop_link}
-                  className="flex items-center gap-2 transition-colors"
+                  className="flex items-center gap-2 transition-colors hover:text-primary"
                 >
-                  <LinkIcon className="w-4 h-4 text-indigo-500" />
-                  <span className="text-indigo-600">{prop_link_text}</span>
+                  <LinkIcon className="w-4 h-4 text-primary" />
+                  <span className="text-primary hover:text-primary/80">
+                    {prop_link_text}
+                  </span>
                 </Link>
               ))}
             </div>

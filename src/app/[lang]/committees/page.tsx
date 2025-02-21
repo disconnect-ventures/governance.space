@@ -12,16 +12,16 @@ export const metadata: Metadata = {
 export default async function CommitteesPage() {
   const committees = getMockCommitteeMembers();
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 bg-background text-foreground dark:bg-background dark:text-foreground">
       <PageTitle
         title="Committees Members"
         icon={
-          <div className="p-2 rounded-full bg-gray-300 w-12 h-12 flex flex-col justify-center items-center">
-            <UserIcon />
+          <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
+            <UserIcon className="text-foreground" />
           </div>
         }
         translationPage="pageCommittees"
-      ></PageTitle>
+      />
       <CommitteeMembersDirectory
         committeeMembers={[...committees, ...committees, ...committees]}
         params={{}}

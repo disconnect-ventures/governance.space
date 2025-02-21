@@ -12,6 +12,7 @@ interface BreadcrumbItem {
 
 export const Breadcrumbs = () => {
   const pathname = usePathname();
+
   if (pathname === "/") {
     return null;
   }
@@ -34,20 +35,17 @@ export const Breadcrumbs = () => {
   const breadcrumbs = generateBreadcrumbs();
 
   return (
-    <nav className="flex items-center space-x-1 text-sm text-gray-500 mb-4">
-      <Link href="/" className="flex items-center hover:text-gray-900">
+    <nav className="flex items-center space-x-1 text-sm text-muted-foreground mb-4">
+      <Link href="/" className="flex items-center hover:text-foreground">
         <span>Home</span>
       </Link>
-
       {breadcrumbs.map((breadcrumb, index) => (
         <React.Fragment key={breadcrumb.href}>
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-4 h-4 text-muted-foreground" />
           <Link
             href={breadcrumb.href}
-            className={`text-ellipsis overflow-hidden hover:text-gray-900 ${
-              index === breadcrumbs.length - 1
-                ? "font-medium text-gray-900"
-                : ""
+            className={`text-ellipsis overflow-hidden hover:text-foreground ${
+              index === breadcrumbs.length - 1 ? "font-medium text-foreground" : ""
             }`}
           >
             {breadcrumb.label}

@@ -19,26 +19,15 @@ export const metadata: Metadata = {
   description: "All-in-One Governance Platform",
 };
 
-export default async function GovernancePage({
-  searchParams: searchParamsPromise,
-}: PageProps) {
+export default async function GovernancePage({ searchParams: searchParamsPromise }: PageProps) {
   const searchParams = (await searchParamsPromise) ?? {};
   const page = parseInt(searchParams["page"] ?? "0");
   const pageSize = parseInt(searchParams["pageSize"] ?? "20");
-  const sort =
-    (searchParams["sort"] as GovernanceActionSortOption) ?? "NewestCreated";
-  const filters = (searchParams["filters"]?.split(",") ??
-    []) as GovernanceActionFilterOption[];
+  const sort = (searchParams["sort"] as GovernanceActionSortOption) ?? "NewestCreated";
+  const filters = (searchParams["filters"]?.split(",") ?? []) as GovernanceActionFilterOption[];
   const search = searchParams["search"] ?? "";
 
-  const governanceActions = await getGovernanceActions(
-    page,
-    pageSize,
-    search,
-    sort,
-    filters
-  );
-  // const { total: totalGovernanceActions } = await getGovernanceActions(0, 1, "", "NewestCreated", []);
+  const governanceActions = await getGovernanceActions(page, pageSize, search, sort, filters);
 
   const metadata: Record<string, ApiMetadata | null> = {};
   await Promise.all(
@@ -46,18 +35,18 @@ export default async function GovernancePage({
       const data = await getGovernanceActionMetadata(
         action.metadataHash,
         MetadataStandard.CIP108,
-        action.url
+        action.url,
       );
       metadata[action.id] = data;
-    })
+    }),
   );
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 bg-background text-foreground">
       <PageTitle
         title="Governance Actions"
         icon={
-          <div className="p-2 rounded-full bg-gray-300 w-12 h-12 flex flex-col justify-center items-center">
+          <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <BookOpenCheckIcon />
           </div>
         }
