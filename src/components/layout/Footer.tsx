@@ -4,6 +4,7 @@ import { Twitter } from "lucide-react";
 
 import CardanoLogo from "../../../public/assets/cardano-logo.svg";
 import Logo from "~/components/icons/Logo";
+import ThemeSwitcher from "../features/ThemeSwitch";
 
 export type MenuSection = {
   title: string;
@@ -127,7 +128,7 @@ export function Footer() {
             <select className="bg-transparent">
               <option>English (US)</option>
             </select>
-            <button className="p-2">Light mode</button>
+            <ThemeSwitcher />
           </div>
         </div>
       </div>
