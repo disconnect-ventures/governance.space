@@ -1,7 +1,10 @@
 import React from "react";
 import { GovernanceAction } from "~/lib/governance-actions";
 import { GovernanceActionCard } from "./GovernanceActionCard";
-import { Directory, DirectorySearchParams } from "~/components/layout/Directory";
+import {
+  Directory,
+  DirectorySearchParams,
+} from "~/components/layout/Directory";
 import { Metadata } from "~/lib/metadata";
 
 type GovernanceActionDirectoryProps = {
@@ -48,11 +51,9 @@ export function GovernanceActionDirectory({
             action={action}
             status={isExpired ? "Completed" : "In Progress"}
             metadata={metadata[action.id]}
-            // className="rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
           />
         );
       })}
-      // className="dark:bg-gray-900 dark:text-gray-100 rounded-xl overflow-hidden shadow-lg"
     />
   );
 }
