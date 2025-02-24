@@ -8,7 +8,7 @@ import {
   ThumbsDownIcon,
 } from "lucide-react";
 import { buttonVariants } from "~/components/ui/button";
-import { Proposal } from "~/lib/proposals";
+import { getProposalBadgeColor, Proposal } from "~/lib/proposals";
 import clsx from "clsx";
 import Link from "next/link";
 import { calculateEpochNumber, formatDate } from "~/lib/utils";
@@ -26,24 +26,11 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
     proposal.attributes.content.attributes.gov_action_type.attributes
       .gov_action_type_name;
 
-  const getProposalBadgeColor = () => {
-    switch (actionType.toLowerCase()) {
-      case "info action":
-        return "purple";
-      case "no confidence":
-        return "red";
-      case "treasury requests":
-        return "yellow";
-      default:
-        return "gray";
-    }
-  };
-
   const getStatusBadgeColor = () => {
     return isProposalActive ? "green" : "red";
   };
 
-  const badgeColor = getProposalBadgeColor();
+  const badgeColor = getProposalBadgeColor(actionType);
   const statusBadgeColor = getStatusBadgeColor();
 
   const createdDate = proposal.attributes.createdAt;

@@ -73,6 +73,17 @@ export default async function ProposalDetailsPage({
   const updatedAt = proposal.attributes.updatedAt;
   const updatedEpoch = calculateEpochNumber(updatedAt);
 
+  const title = proposal.attributes.content.attributes.prop_name;
+  const username = proposal.attributes.user_govtool_username;
+  const isProposalActive =
+    proposal.attributes.content.attributes.prop_rev_active;
+  const actionType =
+    proposal.attributes.content.attributes.gov_action_type.attributes
+      .gov_action_type_name;
+  const likes = proposal.attributes.prop_likes;
+  const dislikes = proposal.attributes.prop_dislikes;
+  const commentCount = proposal.attributes.prop_comments_number;
+
   if (!proposal) {
     return notFound();
   }
@@ -93,11 +104,25 @@ export default async function ProposalDetailsPage({
       <Card className="mb-4">
         <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           <div className="grid gap-4 sm:gap-6">
-            <ProposalHeader proposal={proposal} />
+            <ProposalHeader
+              title={title}
+              isActive={isProposalActive}
+              type={actionType}
+              createdDate={createdDate}
+              createdEpoch={createdEpoch}
+              updatedAt={updatedAt}
+              updatedEpoch={updatedEpoch}
+              likes={likes}
+              dislikes={dislikes}
+              commentCount={commentCount}
+            />
 
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr]">
-              <div className="w-full">
-                <ProposalIdentification />
+              <div className="w-full col-span-full">
+                <ProposalIdentification
+                  id={proposalId.toString()}
+                  authorName={username}
+                />
               </div>
               <div className="w-full lg:col-span-2">
                 <ProposalTimeline

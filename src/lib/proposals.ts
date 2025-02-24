@@ -1,6 +1,18 @@
 import { CACHE_CONFIG, fetchApi } from ".";
 import { PDF_API_URL } from "./constants";
 
+export const getProposalBadgeColor = (actionType: string) => {
+  switch (actionType.toLowerCase()) {
+    case "info action":
+      return "purple";
+    case "no confidence":
+      return "red";
+    case "treasury requests":
+      return "yellow";
+    default:
+      return "gray";
+  }
+};
 export type Proposal = {
   id: number;
   attributes: {
@@ -34,7 +46,7 @@ export type Proposal = {
           prop_link_text: string;
         }>;
         proposal_withdrawals: Array<unknown>; // TODO
-        proposal_constitution_content: unknown;
+        proposal_constitution_content?: unknown;
         gov_action_type: ProposalType;
       };
     };

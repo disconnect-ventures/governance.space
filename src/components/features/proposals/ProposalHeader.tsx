@@ -1,41 +1,96 @@
 import { Badge } from "~/components/ui/badge";
-import { Eye, MessageSquare } from "lucide-react";
-import { Proposal } from "~/lib/proposals";
+import {
+  CalendarIcon,
+  MessageSquareIcon,
+  ThumbsDownIcon,
+  ThumbsUpIcon,
+} from "lucide-react";
+import { formatDate } from "~/lib/utils";
+import { getProposalBadgeColor } from "~/lib/proposals";
+import clsx from "clsx";
 
 interface ProposalHeaderProps {
-  proposal: Proposal;
+  type: string;
+  isActive: boolean;
+  title: string;
+  createdDate: string;
+  createdEpoch: number;
+  updatedAt: string;
+  updatedEpoch: number;
+  commentCount: number;
+  dislikes: number;
+  likes: number;
 }
 
-export const ProposalHeader = ({ proposal }: ProposalHeaderProps) => {
-  const {
-    attributes: { content },
-  } = proposal;
+export const ProposalHeader = ({
+  type,
+  isActive,
+  title,
+  createdDate,
+  createdEpoch,
+  updatedAt,
+  updatedEpoch,
+  likes,
+  dislikes,
+  commentCount,
+}: ProposalHeaderProps) => {
+  const badgeColor = getProposalBadgeColor(type);
 
   return (
     <div>
       <div className="flex items-center gap-4 mb-4 text-center w-full">
-        <Badge variant="secondary" className="text-sm bg-[#C5D0EC] color-black">
-          Hard Fork
+        <Badge
+          variant="secondary"
+          className={clsx(
+            "text-lg px-6 rounded-full",
+            `bg-${badgeColor}-100 text-${badgeColor}-800`
+          )}
+        >
+          {type}
         </Badge>
         <span className="text-sm text-muted-foreground">
           Governance Action Type
         </span>
         <Badge className="text-sm ml-auto bg-green-100 text-green-800">
-          {content.attributes.prop_rev_active ? "ACTIVE" : "INACTIVE"}
+          {isActive ? "ACTIVE" : "INACTIVE"}
         </Badge>
       </div>
 
-      <h2 className="text-2xl font-bold mb-4">{content.attributes.prop_name}</h2>
+      <h2 className="text-2xl font-bold mb-4">{title}</h2>
 
-      <div className="flex items-center gap-4 mb-4">
-        <Badge className="text-sm bg-[#F3E8FF] text-[#6B21A8] w-min sm:inline-block sm:w-auto">
-          Community Governance
-        </Badge>
-        <div className="flex items-center gap-1.5">
-          <Eye />
-          <span className="text-sm">1234</span>
-          <MessageSquare />
-          <span className="text-sm">45</span>
+      <div className="grid grid-cols-3 justify-between sm:space-y-0 text-sm gap-4">
+        <div className="flex items-center space-x-2">
+          <ThumbsUpIcon className="h-4 w-4" />
+          <span>{likes} likes</span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <ThumbsDownIcon className="h-4 w-4" />
+          <span>{dislikes} dislikes</span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <MessageSquareIcon className="h-4 w-4" />
+          <span>{commentCount} comments</span>
+        </div>
+
+        <div className="col-span-full space-y-2">
+          <div className="flex items-center space-x-2">
+            <CalendarIcon className="h-4 w-4" />
+            <span>
+              Submitted:{" "}
+              <span className="font-semibold">
+                {formatDate(createdDate, createdEpoch)}
+              </span>
+            </span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <CalendarIcon className="h-4 w-4" />
+            <span>
+              Updated:{" "}
+              <span className="font-semibold">
+                {formatDate(updatedAt, updatedEpoch)}
+              </span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
