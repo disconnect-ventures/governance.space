@@ -17,8 +17,7 @@ export const ProposalIdentification = ({
           {id}
         </span>
       </div>
-
-      <div className="w-full p-4 sm:p-6 flex items-start gap-4 bg-[#F9FAFB] rounded-lg">
+      <div className="w-full p-4 sm:p-6 flex items-start gap-4 bg-card rounded-lg border border-border">
         <Avatar className="h-8 w-8 shrink-0">
           {/* <AvatarImage src="https://avatars.githubusercontent.com/t/11181162?s=116&v=4" /> */}
           <AvatarFallback>{authorName.substring(0, 2)}</AvatarFallback>

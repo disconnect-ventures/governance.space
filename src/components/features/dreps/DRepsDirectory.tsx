@@ -63,7 +63,7 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
           onClick={() =>
             router.push(localizePath(locale, `/dreps/${drep.view}`))
           }
-          className="cursor-pointer"
+          className="cursor-pointer hover:bg-muted/50"
         >
           <TableCell>
             <div className="flex items-center gap-2">
@@ -74,8 +74,10 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
                 </AvatarFallback>
               </Avatar>
               <div>
-                <div className="font-medium">{drep.givenName}</div>
-                <div className="text-sm text-gray-500">
+                <div className="font-medium text-foreground">
+                  {drep.givenName}
+                </div>
+                <div className="text-sm text-muted-foreground">
                   {truncateMiddle(drep.view, 21)}
                 </div>
               </div>
@@ -85,24 +87,24 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
             <Badge
               variant={drep.status === "Active" ? "default" : "secondary"}
               className={clsx(
-                drep.status === "Active" && "bg-green-100 text-green-800",
-                drep.status === "Retired" && "bg-yellow-100 text-yellow-800",
-                drep.status === "Inactive" && "bg-red-100 text-red-800"
+                drep.status === "Active" && "bg-green-500/20 text-green-500",
+                drep.status === "Retired" && "bg-yellow-500/20 text-yellow-500",
+                drep.status === "Inactive" && "bg-red-500/20 text-red-500"
               )}
             >
               {drep.status}
             </Badge>
           </TableCell>
-          <TableCell className="text-blue-600">
-            <Badge className="bg-[#FAF5FF] text-[#1E40AF] hover:bg-[#FAF5FF]">
+          <TableCell>
+            <Badge className="bg-primary/20 text-primary hover:bg-primary/30">
               <span className="mr-1">₳</span>
               {formatVotingPower(drep.votingPower ?? 0)}
             </Badge>
           </TableCell>
           {/* <TableCell>
             <div className="flex gap-2">
-              <MessageSquare className="h-4 w-4 text-gray-400" />
-              <Globe className="h-4 w-4 text-gray-400" />
+              <MessageSquare className="h-4 w-4 text-muted-foreground" />
+              <Globe className="h-4 w-4 text-muted-foreground" />
             </div>
           </TableCell> */}
           {/* <TableCell>* drep.delegators</TableCell> */}

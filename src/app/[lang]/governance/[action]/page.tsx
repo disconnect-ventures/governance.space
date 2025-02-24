@@ -20,9 +20,7 @@ import { PageProps } from "../../layout";
 import { notFound } from "next/navigation";
 import { getGovernanceActionMetadata, MetadataStandard } from "~/lib/metadata";
 
-export async function generateMetadata({
-  params,
-}: GovernanceActionDetailsProps): Promise<Metadata> {
+export async function generateMetadata({ params }: GovernanceActionDetailsProps): Promise<Metadata> {
   const actionId = (await params).action;
   return {
     title: `Governance Space - Governance Action ${actionId}`,
@@ -37,31 +35,19 @@ export async function generateStaticParams() {
   const sort = "NewestCreated";
   const filters: GovernanceActionFilterOption[] = [];
 
-  const firstPage = await getGovernanceActions(
-    page++,
-    pageSize,
-    search,
-    sort,
-    filters
-  );
+  const firstPage = await getGovernanceActions(page++, pageSize, search, sort, filters);
   const totalPages = Math.ceil(firstPage.total / pageSize);
 
   const nextPages = (
     await Promise.all(
       Array.from({ length: totalPages - 1 }).map(async () => {
         try {
-          const data = await getGovernanceActions(
-            page++,
-            pageSize,
-            search,
-            sort,
-            filters
-          );
+          const data = await getGovernanceActions(page++, pageSize, search, sort, filters);
           return data.elements;
         } catch {
           return [];
         }
-      })
+      }),
     )
   ).flat();
 
@@ -126,16 +112,16 @@ export default async function GovernanceActionDetailsPage({
   const metadata = await getGovernanceActionMetadata(
     action.metadataHash,
     MetadataStandard.CIP108,
-    action.url
+    action.url,
   );
   const references = metadata?.metadata.references ?? [];
 
   return (
-    <div>
+    <div className="bg-background text-foreground">
       <PageTitle
         title="Governace Action Details"
         icon={
-          <div className="p-2 rounded-full bg-gray-300 w-12 h-12 flex flex-col justify-center items-center">
+          <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <BookOpenCheckIcon />
           </div>
         }
@@ -144,18 +130,17 @@ export default async function GovernanceActionDetailsPage({
 
       <TopBar backHref="/governance" />
 
-      <Card>
+      <Card className="bg-card text-card-foreground rounded-xl overflow-hidden">
         <GovernanceHeader action={action} metadata={metadata} />
-        <Separator />
-        <GovernaceVoting action={action}  />
+        <Separator className="bg-border" />
+        <GovernaceVoting action={action} />
         <GovernanceLinks links={references} />
-        <Separator />
+        <Separator className="bg-border" />
         <GovernanceDocuments documents={DOCUMENTS} />
-        <Separator />
+        <Separator className="bg-border" />
         <GovernanceTasks tasks={GOVERNANCE_TASKS} />
-        <Separator />
+        <Separator className="bg-border" />
         <GovernanceHistory entries={HISTORY_ENTRIES} />
-        <Separator />
       </Card>
     </div>
   );

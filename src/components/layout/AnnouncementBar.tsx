@@ -1,14 +1,12 @@
-import { AlertCircleIcon } from "lucide-react";
-
+// components/layout/AnnouncementBar.tsx
 export function AnnouncementBar() {
   return (
-    <div className="bg-blue-200 text-center px-2 md:px-4 py-1">
-      <div className="w-fit"></div>
-      <span className="text-sm">
-        <AlertCircleIcon className="h-4 w-4 text-yellow-600 inline mr-2" />
-        This site is under development and will officially launch on February
-        23rd at 21:45 UTC at Epoch 542.
-      </span>
+    <div className="w-full bg-primary/10 text-primary px-4 py-2 text-sm text-center">
+      <div className="flex items-center justify-center gap-2">
+        <span>⚡</span>
+        This site is under development and will officially launch on February 23rd at 21:45 UTC at
+        Epoch 542.
+      </div>
     </div>
   );
 }
