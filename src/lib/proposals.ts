@@ -34,6 +34,7 @@ export type Proposal = {
           prop_link_text: string;
         }>;
         proposal_withdrawals: Array<unknown>; // TODO
+        proposal_constitution_content: unknown;
         gov_action_type: ProposalType;
       };
     };
