@@ -9,6 +9,7 @@ interface ProposalContentProps {
 export const ProposalContent = ({ proposal }: ProposalContentProps) => {
   const { prop_rationale, prop_abstract, prop_motivation } =
     proposal.attributes.content.attributes;
+  const proposalLinks = proposal.attributes.content.attributes.proposal_links;
 
   return (
     <div className="space-y-6">
@@ -24,25 +25,23 @@ export const ProposalContent = ({ proposal }: ProposalContentProps) => {
           </div>
         ))}
 
-        <div>
-          <h3 className="font-medium mb-2">Supporting links</h3>
-          <div className="space-y-3">
-            {[
-              "Documentação de Governança",
-              "Histórico de Propostas",
-              "Discussão no Fórum",
-            ].map((label, index) => (
-              <Link
-                key={index}
-                href="#"
-                className="flex items-center gap-2 transition-colors"
-              >
-                <LinkIcon className="w-4 h-4 text-indigo-500" />
-                <span className="text-indigo-600">{label}</span>
-              </Link>
-            ))}
+        {proposalLinks.length ? (
+          <div>
+            <h3 className="font-medium mb-2">Supporting links</h3>
+            <div className="space-y-3">
+              {proposalLinks.map(({ prop_link_text, prop_link }, index) => (
+                <Link
+                  key={index}
+                  href={prop_link}
+                  className="flex items-center gap-2 transition-colors"
+                >
+                  <LinkIcon className="w-4 h-4 text-indigo-500" />
+                  <span className="text-indigo-600">{prop_link_text}</span>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );
