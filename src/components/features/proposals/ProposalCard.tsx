@@ -1,7 +1,12 @@
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 import { Avatar, AvatarFallback } from "~/components/ui/avatar";
-import { Eye, MessageSquare, Calendar } from "lucide-react";
+import {
+  MessageSquare,
+  Calendar,
+  ThumbsUpIcon,
+  ThumbsDownIcon,
+} from "lucide-react";
 import { buttonVariants } from "~/components/ui/button";
 import { Proposal } from "~/lib/proposals";
 import clsx from "clsx";
@@ -22,7 +27,16 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
       .gov_action_type_name;
 
   const getProposalBadgeColor = () => {
-    return actionType === "Info" ? "purple" : "gray";
+    switch (actionType.toLowerCase()) {
+      case "info action":
+        return "purple";
+      case "no confidence":
+        return "red";
+      case "treasury requests":
+        return "yellow";
+      default:
+        return "gray";
+    }
   };
 
   const getStatusBadgeColor = () => {
@@ -45,7 +59,7 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
             <div className="text-sm text-muted-foreground">
               # ID: {proposalId}
             </div>
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-2xl font-semibold leading-[1.5rem] h-[3rem] overflow-hidden">
               {proposal.attributes.content.attributes.prop_name}
             </h2>
           </div>
@@ -71,21 +85,13 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
               <div className="font-medium">{username}</div>
               <div className="text-sm text-muted-foreground">Author</div>
             </div>
-            <div className="text-sm text-muted-foreground overflow-hidden text-ellipsis">
-              <span className="mr-1 text-lg font-semibold text-gray-900">
-                #
-              </span>{" "}
-              CIP-129 Action ID: gov_action1pvv5wmjqhwa4u85vu9f4
-            </div>
           </div>
         </div>
       </CardHeader>
 
       <CardContent className="h-full flex flex-col gap-4 justify-between">
-        <div className="max-h-48 overflow-y-auto">
-          <p className="text-gray-700 bg-gray-100 p-4 rounded">
-            {proposal.attributes.content.attributes.prop_abstract}
-          </p>
+        <div className="max-h-48 h-full overflow-y-auto text-gray-700 bg-gray-100 p-4 rounded">
+          <p>{proposal.attributes.content.attributes.prop_abstract}</p>
         </div>
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
           <Badge
@@ -95,41 +101,44 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
               `bg-${badgeColor}-100 text-${badgeColor}-800`
             )}
           >
-            {
-              proposal.attributes.content.attributes.gov_action_type.attributes
-                .gov_action_type_name
-            }
+            {actionType}
           </Badge>
           <div className="text-muted-foreground">Governance Action Type</div>
         </div>
 
-        <div className="grid grid-cols-2 justify-between sm:space-y-0 text-sm gap-4">
+        <div className="grid grid-cols-3 justify-between sm:space-y-0 text-sm gap-4">
           <div className="flex items-center space-x-2">
-            <Eye className="h-4 w-4" />
-            <span>{proposal.attributes.prop_likes} views</span>
+            <ThumbsUpIcon className="h-4 w-4" />
+            <span>{proposal.attributes.prop_likes} likes</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <ThumbsDownIcon className="h-4 w-4" />
+            <span>{proposal.attributes.prop_dislikes} dislikes</span>
           </div>
           <div className="flex items-center space-x-2">
             <MessageSquare className="h-4 w-4" />
             <span>{proposal.attributes.prop_comments_number} comments</span>
           </div>
 
-          <div className="flex items-center space-x-2">
-            <Calendar className="h-4 w-4" />
-            <span>
-              Submitted:{" "}
-              <span className="font-semibold">
-                {formatDate(createdDate, createdEpoch)}
+          <div className="col-span-full space-y-2">
+            <div className="flex items-center space-x-2">
+              <Calendar className="h-4 w-4" />
+              <span>
+                Submitted:{" "}
+                <span className="font-semibold">
+                  {formatDate(createdDate, createdEpoch)}
+                </span>
               </span>
-            </span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Calendar className="h-4 w-4" />
-            <span>
-              Updated:{" "}
-              <span className="font-semibold">
-                {formatDate(updatedAt, updatedEpoch)}
+            </div>
+            <div className="flex items-center space-x-2">
+              <Calendar className="h-4 w-4" />
+              <span>
+                Updated:{" "}
+                <span className="font-semibold">
+                  {formatDate(updatedAt, updatedEpoch)}
+                </span>
               </span>
-            </span>
+            </div>
           </div>
         </div>
 
