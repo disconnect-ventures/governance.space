@@ -4,26 +4,26 @@ import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { DRep } from "~/lib/dreps";
 import { Rating } from "../Rating";
 import {
-  GlobeIcon,
-  TwitterIcon,
-  LinkedinIcon,
-  LinkIcon,
+  // GlobeIcon,
+  // TwitterIcon,
+  // LinkedinIcon,
+  // LinkIcon,
   MapPinIcon,
-  MailIcon,
-  InfoIcon,
-  MegaphoneIcon,
-  MessageSquareIcon,
-  UsersIcon,
+  // MailIcon,
+  // InfoIcon,
+  // MegaphoneIcon,
+  // MessageSquareIcon,
+  // UsersIcon,
   VoteIcon,
 } from "lucide-react";
 import { Badge } from "~/components/ui/badge";
-import Link from "~/components/features/Link";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "~/components/ui/tooltip";
+// import Link from "~/components/features/Link";
+// import {
+//   Tooltip,
+//   TooltipContent,
+//   TooltipProvider,
+//   TooltipTrigger,
+// } from "~/components/ui/tooltip";
 import { Comment } from "~/lib/comments";
 import { formatVotingPower } from "~/lib/utils";
 
@@ -59,35 +59,35 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
               ),
               icon: <VoteIcon className="h-4 w-4" />,
             },
-            {
-              label: "Delegators",
-              value: "3,350",
-              icon: <UsersIcon className="h-4 w-4" />,
-            },
-            {
-              label: (
-                <>
-                  Influence Power
-                  <TooltipProvider delayDuration={300}>
-                    <Tooltip>
-                      <TooltipTrigger>
-                        <InfoIcon className="h-4 w-4 text-gray-400" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Percentage of total voting power</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </>
-              ),
-              value: "2.54%",
-              icon: <MessageSquareIcon className="h-4 w-4" />,
-            },
-            {
-              label: "Voting",
-              value: "120",
-              icon: <MegaphoneIcon className="h-4 w-4" />,
-            },
+            // {
+            //   label: "Delegators",
+            //   value: "3,350",
+            //   icon: <UsersIcon className="h-4 w-4" />,
+            // },
+            // {
+            //   label: (
+            //     <>
+            //       Influence Power
+            //       <TooltipProvider delayDuration={300}>
+            //         <Tooltip>
+            //           <TooltipTrigger>
+            //             <InfoIcon className="h-4 w-4 text-gray-400" />
+            //           </TooltipTrigger>
+            //           <TooltipContent>
+            //             <p>Percentage of total voting power</p>
+            //           </TooltipContent>
+            //         </Tooltip>
+            //       </TooltipProvider>
+            //     </>
+            //   ),
+            //   value: "2.54%",
+            //   icon: <MessageSquareIcon className="h-4 w-4" />,
+            // },
+            // {
+            //   label: "Voting",
+            //   value: "120",
+            //   icon: <MegaphoneIcon className="h-4 w-4" />,
+            // },
           ].map(({ label, value, icon }, index) => (
             <div
               key={index}
@@ -105,7 +105,7 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
         </CardContent>
       </Card>
 
-      <Card>
+      {/* <Card>
         <CardHeader>Contacts</CardHeader>
         <CardContent>
           {[
@@ -123,17 +123,17 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
             </Link>
           ))}
         </CardContent>
-      </Card>
+      </Card> */}
 
       <Card>
         <CardHeader>Info</CardHeader>
         <CardContent className="space-y-3">
-          <div className="text-sm">
+          {/* <div className="text-sm">
             <span className="text-gray-600">
               <MailIcon className="inline h-4 w-4"></MailIcon> Email:
             </span>
             <span className="ml-2">yutacreate@gmail.com</span>
-          </div>
+          </div> */}
           <div className="text-sm">
             <span className="text-gray-600">
               <MapPinIcon className="inline h-4 w-4"></MapPinIcon> Registration
@@ -145,9 +145,10 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
           </div>
         </CardContent>
       </Card>
-      <Card>
+      {/* <Card>
         <CardHeader>Supporting Links</CardHeader>
         <CardContent className="space-y-3">
+
           {[
             "Work Proposal Document",
             "Activity History",
@@ -164,7 +165,7 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
             </Link>
           ))}
         </CardContent>
-      </Card>
+      </Card> */}
 
       <Rating ratings={ratings} />
     </div>
