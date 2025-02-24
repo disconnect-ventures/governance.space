@@ -1,4 +1,4 @@
-import { ArrowRightCircle, Star } from "lucide-react";
+import { ArrowRightCircle } from "lucide-react";
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { DRep } from "~/lib/dreps";
 
@@ -30,9 +30,9 @@ export function ProfileCard({ drep }: ProfileCardProps) {
             <div className="flex-1 flex flex-col gap-2">
               <div className="flex items-center gap-2">
                 <h2 className="text-xl font-bold">{drep.givenName}</h2>
-                <span className="text-yellow-400">
+                {/* <span className="text-yellow-400">
                   <Star></Star>
-                </span>
+                </span> */}
               </div>
 
               <Badge
@@ -45,8 +45,10 @@ export function ProfileCard({ drep }: ProfileCardProps) {
           </div>
 
           <div className="flex flex-wrap gap-2 justify-start md:justify-end md:ml-auto">
-            <Button variant="outline">Send message</Button>
-            <Button className="bg-blue-600 hover:bg-blue-700">
+            <Button variant="outline" disabled>
+              Send message
+            </Button>
+            <Button className="bg-blue-600 hover:bg-blue-700" disabled>
               <ArrowRightCircle />
               Delegate Voting Power
             </Button>

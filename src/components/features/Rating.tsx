@@ -2,6 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Star } from "lucide-react";
 import { Progress } from "~/components/ui/progress";
+import ComingSoon from "../layout/ComingSoon";
 
 type RatingProps = {
   ratings: {
@@ -33,38 +34,42 @@ export function Rating({ ratings, className }: RatingProps) {
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
-          <div className="flex items-baseline space-x-2">
-            <span className="text-4xl font-bold">{average}</span>
-            <div className="flex items-center">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={`h-5 w-5 ${
-                    i < Math.floor(average)
-                      ? "fill-yellow-400 text-yellow-400"
-                      : "fill-gray-200 text-gray-200"
-                  }`}
-                />
-              ))}
+          <ComingSoon>
+            <div className="flex items-baseline space-x-2">
+              <span className="text-4xl font-bold">{average}</span>
+              <div className="flex items-center">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`h-5 w-5 ${
+                      i < Math.floor(average)
+                        ? "fill-yellow-400 text-yellow-400"
+                        : "fill-gray-200 text-gray-200"
+                    }`}
+                  />
+                ))}
+              </div>
+              <span className="text-sm text-gray-500 whitespace-nowrap">
+                {total} reviews
+              </span>
             </div>
-            <span className="text-sm text-gray-500 whitespace-nowrap">
-              {total} reviews
-            </span>
-          </div>
 
-          <div className="space-y-2">
-            {Object.entries(ratings)
-              .sort(([starsA], [starsB]) => parseInt(starsB) - parseInt(starsA))
-              .map(([stars, { count }]) => (
-                <div key={stars} className="flex items-center gap-2">
-                  <span className="w-16 text-sm whitespace-nowrap">
-                    {stars} stars
-                  </span>
-                  <Progress value={(count / total) * 100} color="#facc15" />
-                  <span className="w-8 text-sm text-right">{count}</span>
-                </div>
-              ))}
-          </div>
+            <div className="space-y-2">
+              {Object.entries(ratings)
+                .sort(
+                  ([starsA], [starsB]) => parseInt(starsB) - parseInt(starsA)
+                )
+                .map(([stars, { count }]) => (
+                  <div key={stars} className="flex items-center gap-2">
+                    <span className="w-16 text-sm whitespace-nowrap">
+                      {stars} stars
+                    </span>
+                    <Progress value={(count / total) * 100} color="#facc15" />
+                    <span className="w-8 text-sm text-right">{count}</span>
+                  </div>
+                ))}
+            </div>
+          </ComingSoon>
         </div>
       </CardContent>
     </Card>
