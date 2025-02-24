@@ -2,7 +2,7 @@
 
 import React from "react";
 import { TableCell, TableRow } from "~/components/ui/table";
-import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
+import { Avatar, AvatarFallback } from "~/components/ui/avatar";
 import {
   DirectorySearchParams,
   TableDirectory,
@@ -69,6 +69,7 @@ export const LiveEventsDirectory = ({
 
   return (
     <TableDirectory
+      showParams={false}
       searchPlaceholder="Search by name or ID"
       headers={[
         pageLiveEvents.drepName,
@@ -87,13 +88,13 @@ export const LiveEventsDirectory = ({
           <TableRow key={index}>
             <TableCell className="flex items-center gap-2 max-w-[200px]">
               <Avatar className="h-8 w-8">
-                <AvatarImage src={liveEvent.avatar ?? ""} />
+                {/* <AvatarImage src={liveEvent.avatar ?? ""} /> */}
                 <AvatarFallback>
                   {liveEvent.name?.substring(0, 2)}
                 </AvatarFallback>
               </Avatar>
               <div className="truncate">
-                <div className="font-medium">{liveEvent.name}</div>
+                <div className="font-medium">DRep {index}</div>
                 <div className="text-sm text-gray-500 overflow-hidden text-ellipsis">
                   {liveEvent.drepId}
                 </div>

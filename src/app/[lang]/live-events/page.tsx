@@ -1,6 +1,7 @@
 import { RadioIcon } from "lucide-react";
 import { Metadata } from "next";
 import { LiveEventsDirectory } from "~/components/features/liveEvents/LiveEventsDirectory";
+import ComingSoon from "~/components/layout/ComingSoon";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { getMockLiveEvents } from "~/lib/mock";
 
@@ -23,7 +24,9 @@ export default async function LiveEventsPage() {
         translationPage="pageLiveEvents"
         badge="200 events in the last 24h"
       ></PageTitle>
-      <LiveEventsDirectory liveEvents={liveEvents} params={{}} />
+      <ComingSoon>
+        <LiveEventsDirectory liveEvents={liveEvents} params={{}} />
+      </ComingSoon>
     </div>
   );
 }
