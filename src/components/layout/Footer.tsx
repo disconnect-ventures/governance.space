@@ -4,6 +4,7 @@ import { Twitter } from "lucide-react";
 
 import CardanoLogo from "../../../public/assets/cardano-logo.svg";
 import Logo from "~/components/icons/Logo";
+import LocaleSwitch from "../features/LocaleSwitch";
 
 export type MenuSection = {
   title: string;
@@ -123,11 +124,8 @@ export function Footer() {
             <Link href="/cookie-policy">Cookie Policy</Link>
           </div>
           <div className="flex items-center space-x-2">
-            <span>Language & region:</span>
-            <select className="bg-transparent">
-              <option>English (US)</option>
-            </select>
-            <button className="p-2">Light mode</button>
+            <LocaleSwitch />
+            {/* <button className="p-2">Light mode</button> */}
           </div>
         </div>
       </div>
