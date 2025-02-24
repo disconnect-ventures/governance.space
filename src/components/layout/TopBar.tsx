@@ -5,12 +5,11 @@ import {
   Twitter,
   Facebook,
   Linkedin,
-  Bookmark,
-  MoreVertical,
+  // Bookmark,
+  // MoreVertical,
   LinkIcon,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import clsx from "clsx";
 import CopyToClipboard from "../features/CopyToClipboard";
 import { PUBLIC_APP_DOMAIN } from "~/lib/constants";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -68,6 +67,7 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
     <div className="flex justify-between gap-8">
       <BackButton href={backHref} />
       <div className="flex gap-4 items-center">
+        <span>Share:</span>
         <div className="space-x-2">
           <Twitter
             className={baseIconClasses}
@@ -88,8 +88,8 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
             value={shareUrl}
             icon={<LinkIcon className={baseIconClasses} />}
           />
-          <Bookmark className={clsx(baseIconClasses, "text-green-500")} />
-          <MoreVertical className={baseIconClasses} />
+          {/* <Bookmark className={clsx(baseIconClasses, "text-green-500")} /> */}
+          {/* <MoreVertical className={baseIconClasses} /> */}
         </div>
       </div>
     </div>

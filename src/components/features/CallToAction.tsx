@@ -1,3 +1,4 @@
+import { ArrowRightIcon } from "lucide-react";
 import React from "react";
 
 export const CallToAction = () => {
@@ -7,7 +8,8 @@ export const CallToAction = () => {
         href="#"
         className="text-blue-600 text-sm font-medium hover:underline mb-2"
       >
-        Governance Space on Cardano Blockchain →
+        Governance Space on Cardano Blockchain{" "}
+        <ArrowRightIcon className="h-4 w-4 inline" />
       </a>
       <h1 className="text-2xl font-bold mb-2">Are You Ready to Participate?</h1>
       <p className="text-gray-600 mb-6">
