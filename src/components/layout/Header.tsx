@@ -155,15 +155,15 @@ export const Header = () => {
             style={{ gridTemplateColumns: ".1fr 1fr .1fr" }}
           >
             <SidebarTrigger className="md:hidden" />
-            <div className="mx-auto md:mx-0 md:w-fit">
+            <div className="mx-auto md:mx-0 md:w-fit min-w-fit">
               <Logo />
             </div>
-            <div className="hidden md:flex w-full">
+            <div className="hidden md:inline-flex">
               <HeaderSearchBar />
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2 flex-wrap w-full justify-end">
             <Link
               href="https://gov.tools/register_drep"
               target="_blank"
