@@ -1,15 +1,7 @@
 "use client";
-
 import { BackButton } from "./BackButton";
-import {
-  Twitter,
-  Facebook,
-  Linkedin,
-  // Bookmark,
-  // MoreVertical,
-  LinkIcon,
-} from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { Twitter, Facebook, Linkedin, LinkIcon, CheckCircle } from "lucide-react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import CopyToClipboard from "../features/CopyToClipboard";
 import { PUBLIC_APP_DOMAIN } from "~/lib/constants";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -21,6 +13,8 @@ type TopBarProps = {
   shareTitle?: string;
 };
 
+type SocialPlatform = "facebook" | "twitter" | "linkedin";
+
 const getShareUrl = (path: string, params: string) => {
   return `${PUBLIC_APP_DOMAIN}${path}${params ? `?${params}` : ""}`;
 };
@@ -30,37 +24,106 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
   const searchParams = useSearchParams();
   const [documentTitle, setDocumentTitle] = useState("");
 
+  const [activePlatform, setActivePlatform] = useState<SocialPlatform | null>(null);
+  const [showHelper, setShowHelper] = useState(false);
+  const [textCopied, setTextCopied] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const TOOLTIP_DURATION = 20000;
+
   useEffect(() => {
     setDocumentTitle(document.title);
+
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
   }, [path, searchParams]);
 
   const shareUrl = useMemo(
     () => props.shareUrl || getShareUrl(path, searchParams.toString()),
-    [path, searchParams, props]
+    [path, searchParams, props],
   );
+
   const shareTitle = useMemo(
     () => props.shareTitle || documentTitle,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [props, path, searchParams]
+    [props.shareTitle, documentTitle],
   );
 
   const baseIconClasses = "w-4 h-4 inline cursor-pointer";
   const encodedUrl = useMemo(() => encodeURIComponent(shareUrl), [shareUrl]);
-  const encodedTitle = useMemo(
-    () => encodeURIComponent(shareTitle),
-    [shareTitle]
-  );
+  const encodedTitle = useMemo(() => encodeURIComponent(shareTitle), [shareTitle]);
+
   const shareUrls = useMemo(
     () => ({
-      twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}&quote=${encodedTitle}`,
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}&text=${encodedTitle}`,
+      twitter: `https://twitter.com/intent/tweet?`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?`,
     }),
-    [encodedUrl, encodedTitle]
+    [encodedUrl, encodedTitle],
   );
 
-  const handleShare = (platform: keyof typeof shareUrls) => {
-    window.open(shareUrls[platform], "_blank", "width=600,height=400");
+  const getShareText = (platform: SocialPlatform): string => {
+    switch (platform) {
+      case "twitter":
+        return `${shareTitle}\n${shareUrl}`;
+      case "facebook":
+        return `${shareTitle}\n${shareUrl}`;
+      case "linkedin":
+        return `${shareTitle}\n${shareUrl}`;
+      default:
+        return `${shareTitle}\n${shareUrl}`;
+    }
+  };
+
+  const getPlatformInstructions = (platform: SocialPlatform): string => {
+    switch (platform) {
+      case "twitter":
+        return "Twitter will open in a moment. Please paste the text into the tweet field.";
+      case "facebook":
+        return "Facebook will open in a moment. Please paste the text into the post field.";
+      case "linkedin":
+        return "LinkedIn will open in a moment. Please paste the text when sharing.";
+      default:
+        return "Please paste the copied text when the sharing window opens.";
+    }
+  };
+
+  const handleShare = (platform: SocialPlatform) => {
+    setActivePlatform(platform);
+
+    const shareText = getShareText(platform);
+
+    navigator.clipboard
+      .writeText(shareText)
+      .then(() => {
+        setTextCopied(true);
+        setShowHelper(true);
+
+        if (timerRef.current) {
+          clearTimeout(timerRef.current);
+        }
+
+        timerRef.current = setTimeout(() => {
+          window.open(shareUrls[platform], `${platform}-share-dialog`, "width=626,height=436");
+        }, 800);
+
+        timerRef.current = setTimeout(() => {
+          setShowHelper(false);
+          setTextCopied(false);
+          setActivePlatform(null);
+        }, TOOLTIP_DURATION);
+      })
+      .catch((err) => {
+        console.error(`Failed to copy text for ${platform}:`, err);
+        window.open(shareUrls[platform], `${platform}-share-dialog`, "width=626,height=436");
+      });
+  };
+
+  const closeHelper = () => {
+    setShowHelper(false);
+    setActivePlatform(null);
   };
 
   return (
@@ -68,19 +131,42 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
       <BackButton href={backHref} />
       <div className="flex gap-4 items-center">
         <span>Share:</span>
-        <div className="space-x-2">
-          <Twitter
-            className={baseIconClasses}
-            onClick={() => handleShare("twitter")}
-          />
-          <Facebook
-            className={baseIconClasses}
-            onClick={() => handleShare("facebook")}
-          />
-          <Linkedin
-            className={baseIconClasses}
-            onClick={() => handleShare("linkedin")}
-          />
+        <div className="space-x-2 relative">
+          <span className="relative inline-block">
+            <Twitter className={baseIconClasses} onClick={() => handleShare("twitter")} />
+          </span>
+
+          <span className="relative inline-block">
+            <Facebook className={baseIconClasses} onClick={() => handleShare("facebook")} />
+          </span>
+
+          <span className="relative inline-block">
+            <Linkedin className={baseIconClasses} onClick={() => handleShare("linkedin")} />
+          </span>
+
+          {showHelper && activePlatform && (
+            <div className="absolute right-0 top-6 w-64 p-3 bg-card dark:bg-card text-card-foreground dark:text-card-foreground rounded shadow-lg border border-border dark:border-border z-50 text-left">
+              <div className="flex justify-between items-center mb-2">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle className="w-4 h-4 text-primary dark:text-primary" />
+                  <span className="text-sm font-medium">Text copied!</span>
+                </div>
+                <button
+                  onClick={closeHelper}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  ×
+                </button>
+              </div>
+
+              <p className="text-xs mb-2">{getPlatformInstructions(activePlatform)}</p>
+
+              <div className="text-xs bg-muted dark:bg-muted text-muted-foreground dark:text-muted-foreground px-2 py-1 rounded flex items-center gap-1.5">
+                <span className="font-medium capitalize">{activePlatform}</span>
+                <span>Press Ctrl+V (or ⌘+V) to paste</span>
+              </div>
+            </div>
+          )}
         </div>
         <div className="space-x-2">
           <CopyToClipboard
@@ -88,8 +174,6 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
             value={shareUrl}
             icon={<LinkIcon className={baseIconClasses} />}
           />
-          {/* <Bookmark className={clsx(baseIconClasses, "text-green-500")} /> */}
-          {/* <MoreVertical className={baseIconClasses} /> */}
         </div>
       </div>
     </div>
