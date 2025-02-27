@@ -35,7 +35,7 @@ export default function LocaleSwitch() {
       onValueChange={(value: Locale) => router.push(redirectedPathname(value))}
       defaultValue={locale?.key}
     >
-      <SelectTrigger className="min-w-fit border-none bg-none shadow-none">
+      <SelectTrigger className="min-w-fit border-none bg-none shadow-none w-fit">
         <SelectValue>
           <span className="space-x-2">
             {" "}
