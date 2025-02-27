@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -9,12 +9,17 @@ import {
 import { Button, buttonVariants } from "~/components/ui/button";
 import Logo from "../icons/Logo";
 import Link from "~/components/features/Link";
-import { SidebarTrigger } from "../ui/sidebar";
+import { SidebarTrigger, useSidebar } from "../ui/sidebar";
 import { Separator } from "../ui/separator";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
 import { CardanoWallet, useWallet } from "@meshsdk/react";
 import LocaleSwitch from "../features/LocaleSwitch";
+import { Input } from "../ui/input";
+import { useTranslation } from "~/hooks/use-translation/use-translation";
+import { SearchIcon } from "lucide-react";
+import { localizePath } from "~/lib/utils";
+import { Locale } from "~/config/i18n";
 
 export const headerNavLinks = [
   {
@@ -81,6 +86,49 @@ export const HeaderNavigationLink = ({
   );
 };
 
+type HeaderSearchBarProps = {
+  onSubmit?: () => void;
+};
+
+export const HeaderSearchBar = ({ onSubmit }: HeaderSearchBarProps) => {
+  const [search, setSearch] = useState("");
+  const { dictionary, locale } = useTranslation();
+  const router = useRouter();
+  const { setOpen, setOpenMobile } = useSidebar();
+
+  const redirectToSearch = useCallback(
+    (newSearch: string) => {
+      setOpen(false);
+      setOpenMobile(false);
+      const newUrl = `/dreps?search=${encodeURIComponent(newSearch)}`;
+      router.push(localizePath(locale as Locale, newUrl));
+      onSubmit?.();
+    },
+    [router, locale, setOpen, onSubmit, setOpenMobile]
+  );
+
+  return (
+    <div className="relative max-w-sm md:w-44">
+      <Input
+        placeholder={dictionary.general.search}
+        className="w-full bg-background"
+        value={search}
+        onChange={(event) => {
+          setSearch(event.target.value);
+        }}
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            redirectToSearch(event.currentTarget.value);
+          }
+        }}
+      />
+      <SearchIcon
+        className="absolute right-2 top-2.5 h-4 w-4 text-gray-500"
+        onClick={() => redirectToSearch(search)}
+      />
+    </div>
+  );
+};
 export const Header = () => {
   const pathname = usePathname();
   const [balance, setBalance] = useState<string>();
@@ -110,10 +158,9 @@ export const Header = () => {
             <div className="mx-auto md:mx-0 md:w-fit">
               <Logo />
             </div>
-            {/* <div className="hidden md:flex relative max-w-sm md:w-44">
-              <Input type="text" placeholder="Search..." className="pl-8" />
-              <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
-            </div> */}
+            <div className="hidden md:flex w-full">
+              <HeaderSearchBar />
+            </div>
           </div>
 
           <div className="hidden md:flex items-center gap-2">
