@@ -36,6 +36,7 @@
     "negotiator": "^1.0.0",
     "next": "15.1.4",
     "react": "^19.0.0",
+    "react-circle-flags": "^0.0.23",
     "react-dom": "^19.0.0",
     "react-latex-next": "^3.0.0",
     "recharts": "^2.15.1",
