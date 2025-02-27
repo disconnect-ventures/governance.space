@@ -8,7 +8,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "~/components/ui/sidebar";
-import { headerNavLinks } from "./Header";
+import { headerNavLinks, HeaderSearchBar } from "./Header";
 import Link from "~/components/features/Link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
@@ -43,15 +43,7 @@ export function AppSidebar() {
         <SidebarContent className="pb-8">
           <SidebarGroup className="h-full">
             <SidebarGroupContent className="h-full flex flex-col gap-4">
-              {/* <div className="relative max-w-sm">
-                <Input
-                  type="text"
-                  placeholder="Search..."
-                  className="pl-8"
-                  tabIndex={-1}
-                />
-                <SearchIcon className="absolute left-2 top-2.5 h-4 w-4 text-gray-500" />
-              </div> */}
+              <HeaderSearchBar />
               <SidebarMenu>
                 {headerNavLinks.map((item, index) => (
                   <SidebarMenuItem key={index}>
