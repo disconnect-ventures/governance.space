@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useCallback, useMemo } from "react";
+import { CircleFlagLanguage } from "react-circle-flags";
 
 export default function LocaleSwitch() {
   const pathname = usePathname();
@@ -32,14 +33,32 @@ export default function LocaleSwitch() {
   return (
     <Select
       onValueChange={(value: Locale) => router.push(redirectedPathname(value))}
+      defaultValue={locale?.key}
     >
-      <SelectTrigger className="w-[140px]">
-        <SelectValue placeholder={locale?.label ?? "Select language"} />
+      <SelectTrigger className="min-w-fit border-none bg-none shadow-none">
+        <SelectValue>
+          <span className="space-x-2">
+            {" "}
+            {locale && (
+              <CircleFlagLanguage
+                languageCode={locale?.key}
+                className="w-8 h-8 inline"
+              />
+            )}
+            <span className="md:hidden">{locale?.label}</span>
+          </span>
+        </SelectValue>
       </SelectTrigger>
-      <SelectContent>
-        {i18n.locales.map(({ label, key }) => (
+      <SelectContent className="max-w-fit">
+        {i18n.locales.map(({ key, label }) => (
           <SelectItem value={key} key={key}>
-            {label}
+            <span className="space-x-2">
+              <CircleFlagLanguage
+                languageCode={key}
+                className="w-8 h-8 inline"
+              />
+              <span className="md:hidden">{label}</span>
+            </span>
           </SelectItem>
         ))}
       </SelectContent>

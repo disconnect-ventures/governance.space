@@ -1,8 +1,8 @@
 export const i18n = {
-  defaultLocale: "en",
+  defaultLocale: "en-us",
   locales: [
-    { label: "English", key: "en" },
-    { label: "Portuguese", key: "pt" },
+    { label: "English", key: "en-us" },
+    { label: "Portuguese", key: "pt-br" },
   ],
 } as const;
 
