@@ -57,7 +57,7 @@ export default function LocaleSwitch() {
                 languageCode={key}
                 className="w-8 h-8 inline"
               />
-              <span className="md:hidden">{label}</span>
+              <span className="">{label}</span>
             </span>
           </SelectItem>
         ))}
