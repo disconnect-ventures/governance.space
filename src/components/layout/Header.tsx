@@ -110,7 +110,7 @@ export const HeaderSearchBar = ({ onSubmit }: HeaderSearchBarProps) => {
   return (
     <div className="relative w-full lg:w-64">
       <Input
-        placeholder={dictionary.general.search}
+        placeholder={dictionary.pageDReps.search}
         className="w-full bg-background"
         value={search}
         onChange={(event) => {
