@@ -8,6 +8,8 @@ const dictionaries = {
     import("../../dictionaries/pt.json").then((module) => module.default),
 };
 
+export type Dictionary = Awaited<ReturnType<typeof getDictionary>>;
+
 export const getDictionary = async (locale: Locale) => {
   const language = (await dictionaries[locale]?.()) ?? dictionaries["en-us"]();
   return language;

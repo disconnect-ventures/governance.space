@@ -8,6 +8,7 @@ import {
   ProposalSortOrderOption,
 } from "~/lib/proposals";
 import { PageProps } from "../layout";
+import { getDictionary } from "~/config/dictionaries";
 
 export const metadata: Metadata = {
   title: "Governance Space - Proposals",
@@ -15,8 +16,10 @@ export const metadata: Metadata = {
 };
 
 export default async function ProposalsPage({
+  params: paramsPromise,
   searchParams: searchParamsPromise,
 }: PageProps) {
+  const params = await paramsPromise;
   const proposalTypes = await getGovernanceActionProposalTypes();
   const searchParams = (await searchParamsPromise) ?? {};
   const page = parseInt(searchParams["page"] ?? "0");
@@ -31,9 +34,10 @@ export default async function ProposalsPage({
     pageSize,
     search,
     sort,
-    filters,
+    filters
   );
   const { meta: totalMeta } = await getProposals(0, 1, "", "asc", []);
+  const dictionary = await getDictionary(params.lang);
 
   return (
     <div className="space-y-4">
@@ -59,6 +63,7 @@ export default async function ProposalsPage({
           search,
           filters: filters.map(String),
         }}
+        dictionary={dictionary}
       />
     </div>
   );

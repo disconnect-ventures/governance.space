@@ -10,14 +10,16 @@ import {
 import { buttonVariants } from "~/components/ui/button";
 import { getProposalBadgeColor, Proposal } from "~/lib/proposals";
 import clsx from "clsx";
-import Link from "next/link";
+import Link from "~/components/features/Link";
 import { calculateEpochNumber, formatDate } from "~/lib/utils";
+import { Dictionary } from "~/config/dictionaries";
 
 export type ProposalCardProps = {
   proposal: Proposal;
+  dictionary: Dictionary;
 };
 
-const ProposalCard = ({ proposal }: ProposalCardProps) => {
+const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
   const username = proposal.attributes.user_govtool_username;
   const proposalId = proposal.attributes.content.attributes.proposal_id;
   const isProposalActive =
@@ -57,7 +59,9 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
               `bg-${statusBadgeColor}-100 text-${statusBadgeColor}-800`
             )}
           >
-            {isProposalActive ? "ACTIVE" : "INACTIVE"}
+            {isProposalActive
+              ? dictionary.general.active.toUpperCase()
+              : dictionary.general.inactive.toUpperCase()}
           </Badge>
         </div>
 
@@ -70,7 +74,9 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
           <div className="flex flex-col ">
             <div className="flex gap-x-4 items-center flex-wrap">
               <div className="font-medium">{username}</div>
-              <div className="text-sm text-muted-foreground">Author</div>
+              <div className="text-sm text-muted-foreground">
+                {dictionary.general.author}
+              </div>
             </div>
           </div>
         </div>
@@ -133,7 +139,7 @@ const ProposalCard = ({ proposal }: ProposalCardProps) => {
           href={`/proposals/${proposal.id}`}
           className={buttonVariants({ variant: "default" })}
         >
-          View Details and Vote
+          {dictionary.general["view-details-and-vote"]}
         </Link>
       </CardContent>
     </Card>
