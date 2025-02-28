@@ -6,17 +6,20 @@ import {
   Directory,
   DirectorySearchParams,
 } from "~/components/layout/Directory";
+import { Dictionary } from "~/config/dictionaries";
 
 export type ProposalDirectoryProps = {
   proposals: Array<Proposal>;
   params: DirectorySearchParams;
   proposalTypes: Array<ProposalType>;
+  dictionary: Dictionary;
 };
 
-export function ProposalDirectory({
+export async function ProposalDirectory({
   proposals,
   params,
   proposalTypes,
+  dictionary,
 }: ProposalDirectoryProps) {
   return (
     <Directory
@@ -35,7 +38,7 @@ export function ProposalDirectory({
         })),
       ]}
       rows={proposals.map((proposal, index) => (
-        <ProposalCard key={index} proposal={proposal} />
+        <ProposalCard key={index} proposal={proposal} dictionary={dictionary} />
       ))}
     ></Directory>
   );
