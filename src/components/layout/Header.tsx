@@ -108,7 +108,7 @@ export const HeaderSearchBar = ({ onSubmit }: HeaderSearchBarProps) => {
   );
 
   return (
-    <div className="relative max-w-sm md:w-44">
+    <div className="relative w-full lg:w-64">
       <Input
         placeholder={dictionary.general.search}
         className="w-full bg-background"
@@ -151,7 +151,7 @@ export const Header = () => {
       <div className="mx-auto px-4 md:px-8 max-w-7xl">
         <div className="flex flex-col md:flex-row items-center justify-between md:min-h-16 gap-2">
           <div
-            className="w-full grid md:flex items-center gap-2"
+            className="w-full grid md:flex items-center gap-4"
             style={{ gridTemplateColumns: ".1fr 1fr .1fr" }}
           >
             <SidebarTrigger className="md:hidden" />
@@ -163,7 +163,7 @@ export const Header = () => {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-2 flex-wrap w-full justify-end">
+          <div className="hidden md:flex items-center gap-2 flex-wrap w-fit lg:w-full min-w-[40%] justify-end">
             <Link
               href="https://gov.tools/register_drep"
               target="_blank"
