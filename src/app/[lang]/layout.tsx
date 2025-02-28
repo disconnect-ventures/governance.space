@@ -50,9 +50,7 @@ export default async function RootLayout(props: {
   return (
     <html lang={params.lang}>
       <GoogleTagManager gtmId="GTM-W47W68BT" />
-      <body
-        className={`${inter.className} antialiased min-h-[100vh] flex flex-col`}
-      >
+      <body className={`${inter.className} antialiased min-h-[100vh] flex flex-col`}>
         <TranslationProvider value={{ dictionary, locale: params.lang }}>
           <SidebarProvider>
             <ClientProvider>
