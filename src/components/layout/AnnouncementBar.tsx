@@ -6,7 +6,7 @@ import Link from "../features/Link";
 export function AnnouncementBar() {
   const { dictionary } = useTranslation();
   return (
-    <div className="bg-blue-200 text-center px-2 md:px-4 py-1">
+    <div className="bg-blue-200 dark:bg-blue-900 text-foreground text-center px-2 md:px-4 py-1">
       <div className="w-fit"></div>
       <span className="text-sm">
         <AlertCircleIcon className="h-4 w-4 text-yellow-600 inline mr-2" />

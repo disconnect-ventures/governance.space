@@ -9,7 +9,7 @@ type GovernanceLinksProps = {
 
 export const GovernanceLinks = ({ links }: GovernanceLinksProps) => {
   return (
-    <CardContent className="p-6 dark:bg-gray-800 dark:border-gray-700">
+    <CardContent className="p-6">
       <h2 className="mb-4 text-lg font-medium dark:text-gray-100">Supporting links</h2>
       <div className="grid grid-cols-2 gap-4">
         {links.map((link, index) => (

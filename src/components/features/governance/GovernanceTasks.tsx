@@ -13,12 +13,15 @@ interface GovernanceTasksProps {
 
 export const GovernanceTasks = ({ tasks }: GovernanceTasksProps) => {
   return (
-    <CardContent className="p-6 dark:bg-gray-800 dark:border-gray-700">
+    <CardContent className="p-6 ">
       <h2 className="mb-4 text-lg font-medium dark:text-gray-100">Tasks</h2>
       <ComingSoon>
         <div className="space-y-3">
           {tasks.map((task, index) => (
-            <div key={index} className="flex items-center gap-3 group transition-colors">
+            <div
+              key={index}
+              className="flex items-center gap-3 group transition-colors"
+            >
               <SquareCheckBig
                 className={`${
                   task.completed

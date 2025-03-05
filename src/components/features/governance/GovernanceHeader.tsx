@@ -27,7 +27,10 @@ const VersionDetail = ({ label, value }: VersionDetailProps) => (
 
 const InfoTab = async (value: string, text: string) => (
   <Suspense fallback={null}>
-    <TabsContent value={value} className="min-h-40vh h-full max-h-[60vh] overflow-y-auto">
+    <TabsContent
+      value={value}
+      className="min-h-40vh h-full max-h-[60vh] overflow-y-auto"
+    >
       <Latex>{await markdownToHtml(text)}</Latex>
     </TabsContent>
   </Suspense>
@@ -42,23 +45,29 @@ export const GovernanceHeader = ({
 }) => {
   const title = useMemo(
     () => (action.title || metadata ? metadata?.metadata.title : "No title"),
-    [action, metadata],
+    [action, metadata]
   );
-  const abstract = useMemo(() => action.abstract || metadata?.metadata.abstract, [action, metadata]);
+  const abstract = useMemo(
+    () => action.abstract || metadata?.metadata.abstract,
+    [action, metadata]
+  );
   const motivation = useMemo(
     () => action.motivation || metadata?.metadata.motivation,
-    [action, metadata],
+    [action, metadata]
   );
   const rationale = useMemo(
     () => action.rationale || metadata?.metadata.rationale,
-    [action, metadata],
+    [action, metadata]
   );
-  const isExpired = useMemo(() => new Date(action.expiryDate) < new Date(), [action]);
+  const isExpired = useMemo(
+    () => new Date(action.expiryDate) < new Date(),
+    [action]
+  );
   const actionId = `${action.txHash}#${action.index}`;
   const prevActionId = `${action.prevGovActionTxHash}#${action.prevGovActionTxHash}`;
 
   return (
-    <CardContent className="p-6 dark:bg-gray-800 dark:border-gray-700">
+    <CardContent className="p-6">
       <div className="flex items-center gap-4 mb-4 text-center w-full">
         <Badge
           variant="secondary"
@@ -84,7 +93,7 @@ export const GovernanceHeader = ({
 
       <div className="flex flex-col sm:flex-row gap-3 justify-between items-start">
         <Tabs defaultValue="abstract" className="w-full">
-          <TabsList className="bg-background border-b rounded-none w-full justify-start dark:bg-gray-800 dark:border-gray-700">
+          <TabsList className="bg-background border-b border-border rounded-none w-full justify-start">
             <TabsTrigger
               value="abstract"
               className="data-[state=active]:shadow-none data-[state=active]:scale-125 dark:text-gray-300 dark:data-[state=active]:text-white"
@@ -111,10 +120,14 @@ export const GovernanceHeader = ({
 
         <Card className="dark:bg-gray-800 dark:border-gray-700">
           <CardContent className="w-auto p-4">
-            <h3 className="font-semibold mb-4 dark:text-gray-100">Version details</h3>
+            <h3 className="font-semibold mb-4 dark:text-gray-100">
+              Version details
+            </h3>
             <div className="space-y-3">
               <VersionDetail label="Current Hash:" value={actionId} />
-              {prevActionId !== null && <VersionDetail label="Previous Id:" value={prevActionId} />}
+              {prevActionId !== null && (
+                <VersionDetail label="Previous Id:" value={prevActionId} />
+              )}
             </div>
           </CardContent>
         </Card>
