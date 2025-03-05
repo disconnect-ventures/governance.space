@@ -12,9 +12,7 @@ import { TopBar } from "~/components/layout/TopBar";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { Metadata } from "next";
 
-export async function generateMetadata({
-  params,
-}: DRepProfileProps): Promise<Metadata> {
+export async function generateMetadata({ params }: DRepProfileProps): Promise<Metadata> {
   const profileId = (await params).profile;
   return {
     title: `Governance Space - DRep Profile ${profileId}`,
@@ -47,7 +45,7 @@ export async function generateStaticParams() {
         } catch {
           return [];
         }
-      })
+      }),
     )
   ).flat();
 

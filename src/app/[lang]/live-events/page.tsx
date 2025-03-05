@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 export default async function LiveEventsPage() {
   const liveEvents = getMockLiveEvents();
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 bg-background text-foreground">
       <PageTitle
         title="Live Events"
         icon={
-          <div className="p-2 rounded-full bg-gray-300 w-12 h-12 flex flex-col justify-center items-center">
+          <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <RadioIcon />
           </div>
         }

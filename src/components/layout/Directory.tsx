@@ -35,6 +35,7 @@ import { useLocale } from "~/hooks/use-locale";
 import { localizePath } from "~/lib/utils";
 import { useTranslation } from "~/hooks/use-translation/use-translation";
 import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export type DirectoryParamOption = {
   value: string;
@@ -51,6 +52,7 @@ export type DirectoryProps = {
   filterPopoverTitle?: string;
   sortOptions?: Array<DirectoryParamOption>;
   filterOptions?: Array<DirectoryParamOption>;
+  className?: string;
 };
 
 export type DirectorySearchParams<S = string, F = string[]> = {
@@ -74,6 +76,7 @@ export function Directory({
   sortOptions,
   filterOptions,
   showParams = true,
+  className,
 }: DirectoryProps) {
   const { page = 0, pageSize = 15, totalResults = 0 } = params;
   const [search, setSearch] = useState(params.search ?? "");
@@ -205,7 +208,12 @@ export function Directory({
   }, [clearSearchDebounceTimeout]);
 
   return (
-    <Card className="w-full mx-auto shadow-none border-none bg-gray-100">
+    <Card
+      className={twMerge(
+        "w-full mx-auto shadow-none border-none bg-card",
+        className
+      )}
+    >
       <CardContent className="p-0">
         {showParams && (
           <div className="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-2 mb-6">

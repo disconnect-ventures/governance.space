@@ -25,8 +25,7 @@ export default async function ProposalsPage({
   const page = parseInt(searchParams["page"] ?? "0");
   const pageSize = parseInt(searchParams["pageSize"] ?? "20");
   const sort = (searchParams["sort"] as ProposalSortOrderOption) ?? "desc";
-  const filters =
-    searchParams["filters"]?.split(",").map((f) => parseInt(f)) ?? [];
+  const filters = searchParams["filters"]?.split(",").map((f) => parseInt(f)) ?? [];
   const search = searchParams["search"] ?? "";
 
   const { data, meta } = await getProposals(
@@ -40,11 +39,11 @@ export default async function ProposalsPage({
   const dictionary = await getDictionary(params.lang);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 bg-background text-foreground">
       <PageTitle
         title="Proposals"
         icon={
-          <div className="p-2 rounded-full bg-gray-300 w-12 h-12 flex flex-col justify-center items-center">
+          <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <FileTextIcon className="w-5 h-5 relative top-1" />
             <HandHelpingIcon className="w-6 h-6" />
           </div>

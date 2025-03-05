@@ -33,13 +33,12 @@ export function AppSidebar() {
         setBalance(balance);
       }
     }
-
     fetchBalance();
   }, [wallet, connected]);
 
   return (
     <div className="md:hidden">
-      <Sidebar>
+      <Sidebar className="bg-sidebar text-sidebar-foreground">
         <SidebarContent className="pb-8">
           <SidebarGroup className="h-full">
             <SidebarGroupContent className="h-full flex flex-col gap-4">
@@ -51,8 +50,9 @@ export function AppSidebar() {
                       <Link
                         href={item.href}
                         className={clsx(
+                          "hover:bg-accent hover:text-accent-foreground",
                           pathname === item.href &&
-                            "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950"
+                            "bg-primary/10 text-primary focus:bg-primary/10 focus:text-primary"
                         )}
                       >
                         <span>{item.label}</span>
@@ -62,10 +62,18 @@ export function AppSidebar() {
                 ))}
               </SidebarMenu>
               <div className="flex flex-col gap-2 mt-auto">
-                <Button variant="ghost">{headerTranslations.becomeDrep}</Button>
+                <Button
+                  variant="ghost"
+                  className="hover:bg-accent hover:text-accent-foreground"
+                >
+                  {headerTranslations.becomeDrep}
+                </Button>
                 <CardanoWallet />
                 {connected && (
-                  <Button size="sm" className="cursor-default">
+                  <Button
+                    size="sm"
+                    className="cursor-default bg-secondary text-secondary-foreground"
+                  >
                     {dictionary.pageDReps.votingPower}: ₳{balance}
                   </Button>
                 )}

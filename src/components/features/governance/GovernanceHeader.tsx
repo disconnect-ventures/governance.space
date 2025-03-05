@@ -69,38 +69,46 @@ export const GovernanceHeader = ({
   return (
     <CardContent className="p-6">
       <div className="flex items-center gap-4 mb-4 text-center w-full">
-        <Badge variant="secondary" className="text-sm bg-[#C5D0EC] color-black">
-          {/* TODO: Add translations */}
+        <Badge
+          variant="secondary"
+          className="text-sm bg-[#C5D0EC] color-black dark:bg-blue-900/50 dark:text-blue-300"
+        >
           {formatCamelCase(action.type)}
         </Badge>
-        <span className="text-sm text-muted-foreground">
+        <span className="text-sm text-muted-foreground dark:text-gray-400">
           Governance Action Type
         </span>
-        <Badge className="text-sm ml-auto bg-green-100 text-green-800">
+        <Badge
+          className={`text-sm ml-auto ${
+            isExpired
+              ? "bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-400"
+              : "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-400"
+          }`}
+        >
           {isExpired ? "Completed" : "In Progress"}
         </Badge>
       </div>
 
-      <h2 className="text-2xl font-bold mb-4">{title}</h2>
+      <h2 className="text-2xl font-bold mb-4 dark:text-gray-100">{title}</h2>
 
       <div className="flex flex-col sm:flex-row gap-3 justify-between items-start">
         <Tabs defaultValue="abstract" className="w-full">
-          <TabsList className="bg-background border-b rounded-none w-full justify-start">
+          <TabsList className="bg-background border-b border-border rounded-none w-full justify-start">
             <TabsTrigger
               value="abstract"
-              className="data-[state=active]:shadow-none data-[state=active]:scale-125"
+              className="data-[state=active]:shadow-none data-[state=active]:scale-125 dark:text-gray-300 dark:data-[state=active]:text-white"
             >
               Abstract
             </TabsTrigger>
             <TabsTrigger
               value="motivation"
-              className="data-[state=active]:shadow-none data-[state=active]:scale-125"
+              className="data-[state=active]:shadow-none data-[state=active]:scale-125 dark:text-gray-300 dark:data-[state=active]:text-white"
             >
               Motivation
             </TabsTrigger>
             <TabsTrigger
               value="rationale"
-              className="data-[state=active]:shadow-none data-[state=active]:scale-125"
+              className="data-[state=active]:shadow-none data-[state=active]:scale-125 dark:text-gray-300 dark:data-[state=active]:text-white"
             >
               Rationale
             </TabsTrigger>
@@ -110,9 +118,11 @@ export const GovernanceHeader = ({
           {InfoTab("rationale", rationale ?? "")}
         </Tabs>
 
-        <Card>
+        <Card className="dark:bg-gray-800 dark:border-gray-700">
           <CardContent className="w-auto p-4">
-            <h3 className="font-semibold mb-4">Version details</h3>
+            <h3 className="font-semibold mb-4 dark:text-gray-100">
+              Version details
+            </h3>
             <div className="space-y-3">
               <VersionDetail label="Current Hash:" value={actionId} />
               {prevActionId !== null && (

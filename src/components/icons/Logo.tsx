@@ -13,10 +13,8 @@ export default function Logo() {
             alt="logo-icon"
             className="h-10 w-10"
           />
-          <span className="text-xl font-semibold text-gray-800">
-            GOVERNANCE
-          </span>
-          <span className="text-xl text-gray-500">SPACE</span>
+          <span className="text-xl font-semibold text-foreground">GOVERNANCE</span>
+          <span className="text-xl text-muted-foreground">SPACE</span>
         </div>
       </Link>
     </div>

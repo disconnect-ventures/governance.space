@@ -7,13 +7,22 @@ export const VotingSection = () => {
       <h2 className="text-xl sm:text-2xl font-bold">Cast Your Vote</h2>
       <ComingSoon>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <Button className="w-full bg-[#DCFCE7] text-black hover:bg-[#DCFCE7]/90">
+          <Button
+            variant="secondary"
+            className="w-full bg-green-500/20 text-green-500 hover:bg-green-500/30"
+          >
             YES
           </Button>
-          <Button className="w-full bg-[#FEE2E2] text-black hover:bg-[#FEE2E2]/90">
+          <Button
+            variant="secondary"
+            className="w-full bg-red-500/20 text-red-500 hover:bg-red-500/30"
+          >
             NO
           </Button>
-          <Button className="w-full bg-[#F3F4F6] text-black hover:bg-[#F3F4F6]/90">
+          <Button
+            variant="secondary"
+            className="w-full bg-muted text-muted-foreground hover:bg-muted/80"
+          >
             ABSTAIN
           </Button>
         </div>

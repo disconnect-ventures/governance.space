@@ -1,4 +1,5 @@
 "use client";
+import clsx from "clsx";
 import NextLink from "next/link";
 import { useMemo } from "react";
 import { useLocale } from "~/hooks/use-locale";
@@ -15,5 +16,11 @@ export default function Link(props: LinkProps) {
     return props.href;
   }, [props]);
 
-  return <NextLink {...props} href={localizePath(locale, href)} />;
+  return (
+    <NextLink
+      {...props}
+      className={clsx("transition-colors", props.className)}
+      href={localizePath(locale, href)}
+    />
+  );
 }
