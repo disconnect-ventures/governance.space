@@ -76,12 +76,7 @@ export const GovernanceActionCard = ({
   );
 
   return (
-    <Card
-      className={twMerge(
-        "mb-4 dark:bg-gray-800 dark:border-gray-700",
-        className
-      )}
-    >
+    <Card className={twMerge("mb-4", className)}>
       <CardContent className="pt-6">
         <div className="flex items-center gap-2 mb-2">
           <Badge
@@ -135,7 +130,7 @@ export const GovernanceActionCard = ({
               action.txHash,
               action.index.toString()
             )}`}
-            className={`${buttonVariants()} dark:bg-blue-600 dark:text-gray-100 dark:hover:bg-blue-500`}
+            className={`${buttonVariants()}`}
           >
             {dictionary.general["view-details-and-vote"]}
           </Link>

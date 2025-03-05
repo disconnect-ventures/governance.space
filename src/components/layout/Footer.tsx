@@ -64,9 +64,9 @@ export function Footer() {
                 <Logo />
               </span>
               <div>
-                <div className="p-2 bg-muted rounded-sm hover:bg-muted/80 transition-colors">
+                <div className="p-2 bg-muted rounded-sm hover:bg-muted/80">
                   <Link href="https://x.com/governancevote" target="_blank">
-                    <Twitter className="text-muted-foreground hover:text-foreground transition-colors" />
+                    <Twitter className="text-muted-foreground hover:text-foreground" />
                   </Link>
                 </div>
               </div>
@@ -92,7 +92,7 @@ export function Footer() {
             <div className="mt-1">
               <Link
                 href="mailto:hello@governancespace.com"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-foreground "
               >
                 hello@governancespace.com
               </Link>
@@ -110,7 +110,7 @@ export function Footer() {
                       <Link
                         href={path}
                         target={newTab ? "_blank" : undefined}
-                        className="text-muted-foreground hover:text-foreground transition-colors"
+                        className="text-muted-foreground hover:text-foreground "
                       >
                         {title}
                       </Link>
@@ -127,22 +127,13 @@ export function Footer() {
           <div>© 2025 Governance Space</div>
 
           <div className="flex flex-wrap gap-4">
-            <Link
-              href="/privacy-policy"
-              className="hover:text-foreground transition-colors"
-            >
+            <Link href="/privacy-policy" className="hover:text-foreground ">
               Privacy Policy
             </Link>
-            <Link
-              href="/terms"
-              className="hover:text-foreground transition-colors"
-            >
+            <Link href="/terms" className="hover:text-foreground ">
               Terms of Use
             </Link>
-            <Link
-              href="/cookie-policy"
-              className="hover:text-foreground transition-colors"
-            >
+            <Link href="/cookie-policy" className="hover:text-foreground ">
               Cookie Policy
             </Link>
           </div>

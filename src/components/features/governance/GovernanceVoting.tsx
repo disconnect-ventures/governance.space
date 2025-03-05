@@ -50,7 +50,7 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
   const actionId = `${action.txHash}#${action.index}`;
 
   return (
-    <div className="m-8 bg-white dark:bg-gray-900">
+    <div className="m-8">
       <h2 className="text-lg font-bold mb-6 dark:text-gray-100">
         Votes submitted for this Governance Action By:
       </h2>

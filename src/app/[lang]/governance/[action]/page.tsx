@@ -132,7 +132,7 @@ export default async function GovernanceActionDetailsPage({
 
       <Card className="bg-card text-card-foreground rounded-xl overflow-hidden">
         <GovernanceHeader action={action} metadata={metadata} />
-        <Separator className="bg-border" />
+        <Separator className="bg-border my-4" />
         <GovernaceVoting action={action} />
         <GovernanceLinks links={references} />
         <Separator className="bg-border" />

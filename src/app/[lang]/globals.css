@@ -4,6 +4,10 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -82,7 +86,6 @@
     @apply border-border;
   }
 
-  /* Updated body styles with background and text colors */
   body {
     @apply bg-background text-foreground;
   }
@@ -159,10 +162,4 @@ button[class*="mesh"],
 div[class*="mesh"] button {
   @apply !bg-primary !text-primary-foreground hover:!bg-primary/90 !important;
   @apply !rounded-md !px-4 !py-2 !text-sm !font-medium !border-none !important;
-}
-
-/* Force any dialog/modal content to follow theme */
-div[class*="dialog-content"],
-div[class*="modal-content"] {
-  @apply !bg-card !border !border-border !text-foreground !important;
 }
