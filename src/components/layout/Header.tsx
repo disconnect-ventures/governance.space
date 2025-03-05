@@ -175,7 +175,11 @@ export const Header = () => {
             <NavigationMenu>
               <NavigationMenuList className="w-full flex gap-4 my-4">
                 {headerNavLinks.map((link, index) => (
-                  <HeaderNavigationLink key={index} href={link.href} active={pathname === link.href}>
+                  <HeaderNavigationLink
+                    key={index}
+                    href={link.href}
+                    active={pathname === link.href}
+                  >
                     {link.label}
                   </HeaderNavigationLink>
                 ))}

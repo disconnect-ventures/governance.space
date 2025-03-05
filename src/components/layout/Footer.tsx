@@ -4,7 +4,7 @@ import { Twitter } from "lucide-react";
 import CardanoLogo from "../../../public/assets/cardano-logo.svg";
 import Logo from "~/components/icons/Logo";
 import LocaleSwitch from "../features/LocaleSwitch";
-import ThemeSwitcher from "../features/ThemeSwitch";
+import { ThemeSwitcher } from "../features/ThemeSwitch";
 
 export type MenuSection = {
   title: string;
@@ -127,13 +127,22 @@ export function Footer() {
           <div>© 2025 Governance Space</div>
 
           <div className="flex flex-wrap gap-4">
-            <Link href="/privacy-policy" className="hover:text-foreground transition-colors">
+            <Link
+              href="/privacy-policy"
+              className="hover:text-foreground transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms" className="hover:text-foreground transition-colors">
+            <Link
+              href="/terms"
+              className="hover:text-foreground transition-colors"
+            >
               Terms of Use
             </Link>
-            <Link href="/cookie-policy" className="hover:text-foreground transition-colors">
+            <Link
+              href="/cookie-policy"
+              className="hover:text-foreground transition-colors"
+            >
               Cookie Policy
             </Link>
           </div>

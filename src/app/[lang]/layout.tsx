@@ -9,14 +9,14 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import { SidebarProvider } from "~/components/ui/sidebar";
 import { AppSidebar } from "~/components/layout/AppSidebar";
 import { Inter } from "next/font/google";
-import ClientProvider from "~/hooks/MeshProvider"; // Importando o novo Provider
+import ClientProvider from "~/hooks/MeshProvider";
 import "./globals.css";
 import "@meshsdk/react/styles.css";
 import { i18n, Locale } from "~/config/i18n";
 import { TranslationProvider } from "~/hooks/use-translation/translation-context";
 import { getDictionary } from "~/config/dictionaries";
 import clsx from "clsx";
-import { cookies } from "next/headers";
+import ThemeScript from "~/lib/ThemeScript";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -48,13 +48,18 @@ export default async function RootLayout(props: {
   const params = await props.params;
   const { children } = props;
   const dictionary = await getDictionary(params.lang);
-  const cookieStore = await cookies(); // TODO: Remove need for accessing cookies here.
-  const theme = cookieStore.get("theme");
 
   return (
     <html lang={params.lang} suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
       <GoogleTagManager gtmId="GTM-W47W68BT" />
-      <body className={clsx(`${inter.className} antialiased min-h-[100vh] flex flex-col`, theme)}>
+      <body
+        className={clsx(
+          `${inter.className} antialiased min-h-[100vh] flex flex-col`
+        )}
+      >
         <TranslationProvider value={{ dictionary, locale: params.lang }}>
           <SidebarProvider>
             <ClientProvider>

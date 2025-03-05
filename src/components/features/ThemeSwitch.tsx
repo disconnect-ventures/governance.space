@@ -1,27 +1,27 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "../ui/button";
-import clsx from "clsx";
+import dynamic from "next/dynamic";
 
-const ThemeSwitcher = () => {
-  const [theme, setTheme] = useState("light");
+export const ThemeSwitcher = dynamic(
+  () => import("~/components/features/ThemeSwitch"),
+  {
+    ssr: true,
+    loading: () => <div>Loading ... </div>,
+  }
+);
+
+const ThemeSwitcherButton = () => {
+  const [theme, setTheme] = useState(global.window?.__theme || "light");
+  const isDark = theme === "dark";
 
   useEffect(() => {
-    // Check for system preference or stored theme on mount
-    const storedTheme = localStorage.getItem("theme");
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const initialTheme = storedTheme || systemTheme;
-    setTheme(initialTheme);
-    document.documentElement.classList.toggle("dark", initialTheme === "dark");
+    global.window.__onThemeChange = setTheme;
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    document.documentElement.classList.toggle("dark");
-    document.body.className = clsx("antialiased min-h-[100vh] flex flex-col", newTheme);
-    localStorage.setItem("theme", newTheme);
+    global.window?.__setPreferredTheme(isDark ? "light" : "dark");
   };
 
   return (
@@ -48,4 +48,4 @@ const ThemeSwitcher = () => {
   );
 };
 
-export default ThemeSwitcher;
+export default ThemeSwitcherButton;
