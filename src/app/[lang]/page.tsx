@@ -4,6 +4,51 @@ import { Button } from "~/components/ui/button";
 import { Dictionary, getDictionary } from "~/config/dictionaries";
 import { PageProps } from "./layout";
 
+interface FeatureCardProps {
+  title: string;
+  description: string;
+}
+
+const FeatureCard = ({ title, description }: FeatureCardProps) => {
+  return (
+    <div className="bg-white dark:bg-card rounded-lg shadow-sm p-6 border border-border">
+      <h3 className="text-xl font-semibold mb-3 text-foreground">{title}</h3>
+      <p className="text-muted-foreground">{description}</p>
+    </div>
+  );
+};
+
+const FeaturesSection = ({
+  title,
+  subtitle,
+  features,
+}: Dictionary["homepage"]["features"]) => {
+  return (
+    <section className="py-16 md:py-24">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+            {title}
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            {subtitle}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto">
+          {features.map((feature, index) => (
+            <FeatureCard
+              key={index}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Banner = ({
   title,
   description,
@@ -72,6 +117,7 @@ export default async function IndexPage({ params: paramsPromise }: PageProps) {
   return (
     <div>
       <Banner {...dictionary.homepage.banner} />
+      <FeaturesSection {...dictionary.homepage.features} />
     </div>
   );
 }
