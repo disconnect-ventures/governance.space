@@ -39,7 +39,7 @@
       "buttonMain": "Get Started Now",
       "buttonSecondary": "Learn More"
     },
-    "features": {
+    "whyChooseUs": {
       "title": "Why Choose Our Platform?",
       "subtitle": "A complete solution for decentralized governance focused on transparency, security, and ease of use.",
       "features": [
@@ -58,6 +58,41 @@
         {
           "title": "Expert Support",
           "description": "A technical team ready to assist with platform implementation and usage."
+        }
+      ]
+    },
+    "features": {
+      "title": "Main Functionalities",
+      "features": [
+        {
+          "title": "Multi-Chain",
+          "description": "Support for multiple blockchains, starting with Cardano and expanding to other networks.",
+          "icon": "blocks"
+        },
+        {
+          "title": "Voting System",
+          "description": "Transparent and auditable voting process with permanent record on the blockchain.",
+          "icon": "vote"
+        },
+        {
+          "title": "DRep Management",
+          "description": "Complete system for delegate representatives with accountability.",
+          "icon": "users"
+        },
+        {
+          "title": "Analytics",
+          "description": "Dashboards and detailed analyses for tracking proposals and votes.",
+          "icon": "chart"
+        },
+        {
+          "title": "Discussions",
+          "description": "Space for community debate and interaction on proposals.",
+          "icon": "message"
+        },
+        {
+          "title": "Security",
+          "description": "Advanced protection and complete auditability of all operations.",
+          "icon": "shield"
         }
       ]
     }
