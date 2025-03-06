@@ -38,6 +38,28 @@
       "description": "Uma plataforma completa de governança blockchain multi-chain para DAOs, projetos e instituições que buscam transparência, segurança e eficiência em seus processos decisórios.",
       "buttonMain": "Começar Agora",
       "buttonSecondary": "Saiba Mais"
+    },
+    "features": {
+      "title": "Por que escolher nossa plataforma?",
+      "subtitle": "Uma solução completa para governança descentralizada com foco em transparência, segurança e facilidade de uso.",
+      "features": [
+        {
+          "title": "Transparência Total",
+          "description": "Todas as decisões e votos são registrados na blockchain, garantindo total auditabilidade."
+        },
+        {
+          "title": "Fácil Implementação",
+          "description": "Sistema whitelabel pronto para uso, adaptável às necessidades da sua organização."
+        },
+        {
+          "title": "Segurança Primeiro",
+          "description": "Proteção avançada e verificação em múltiplas camadas para todas as operações."
+        },
+        {
+          "title": "Suporte Especializado",
+          "description": "Equipe técnica preparada para auxiliar na implementação e uso da plataforma."
+        }
+      ]
     }
   },
   "announcementBar": {
