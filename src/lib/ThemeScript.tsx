@@ -45,7 +45,12 @@ function code() {
 
 export default function ThemeScript() {
   useLayoutEffect(() => {
-    const theme = localStorage.getItem("theme") as "dark" | "light";
+    const storedTheme = localStorage.getItem("theme") as "dark" | "light";
+    const theme = window.__theme
+      ? window.__theme
+      : storedTheme
+      ? storedTheme
+      : "light";
     window.__setPreferredTheme(theme);
   }, []);
   return <script dangerouslySetInnerHTML={{ __html: `(${code})();` }} />;
