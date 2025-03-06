@@ -102,7 +102,7 @@ const Banner = ({
   buttonSecondary,
 }: Dictionary["homepage"]["banner"]) => {
   return (
-    <div className="w-full bg-background bg-gradient-to-b from-blue-50 to-white py-16 md:py-24  rounded">
+    <div className="w-full bg-background bg-gradient-to-b from-blue-50 to-white dark:from-blue-950 dark:background py-16 md:py-24  rounded">
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-8">
           <div className="w-full md:w-fit md:max-w-1/2 space-y-4">
