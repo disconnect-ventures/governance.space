@@ -1,3 +1,7 @@
+"use client";
+
+import { useLayoutEffect } from "react";
+
 type Theme = "light" | "dark";
 
 declare global {
@@ -40,5 +44,9 @@ function code() {
 }
 
 export default function ThemeScript() {
+  useLayoutEffect(() => {
+    const theme = localStorage.getItem("theme") as "dark" | "light";
+    window.__setPreferredTheme(theme);
+  }, []);
   return <script dangerouslySetInnerHTML={{ __html: `(${code})();` }} />;
 }
