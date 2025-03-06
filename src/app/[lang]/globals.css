@@ -89,6 +89,73 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full transition-colors duration-200;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+
+  ::-webkit-scrollbar-corner {
+    @apply bg-transparent;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+  }
+
+  .hover-scroll {
+    scrollbar-width: none;
+  }
+
+  .hover-scroll::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  .hover-scroll:hover {
+    scrollbar-width: thin;
+  }
+
+  .hover-scroll:hover::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .thin-scroll::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .horizontal-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  @media (pointer: coarse) {
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      min-height: 40px;
+    }
+  }
 }
 
 /* Smooth transitions for theme switching */
