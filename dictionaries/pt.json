@@ -32,6 +32,14 @@
     "abstain": "Abstenção",
     "item": "Item"
   },
+  "homepage": {
+    "banner": {
+      "title": "Governança Descentralizada para Todos",
+      "description": "Uma plataforma completa de governança blockchain multi-chain para DAOs, projetos e instituições que buscam transparência, segurança e eficiência em seus processos decisórios.",
+      "buttonMain": "Começar Agora",
+      "buttonSecondary": "Saiba Mais"
+    }
+  },
   "announcementBar": {
     "alertText": "Este site está em desenvolvimento e será lançado oficialmente no dia 10 de fevereiro de 2025.",
     "feedbackText": "Este site está em constante desenvolvimento, mas gostaríamos de ouvir seu feedback para melhorá-lo. Participe da pesquisa!"
