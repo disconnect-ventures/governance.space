@@ -26,7 +26,6 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
 
   const [activePlatform, setActivePlatform] = useState<SocialPlatform | null>(null);
   const [showHelper, setShowHelper] = useState(false);
-  const [textCopied, setTextCopied] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const TOOLTIP_DURATION = 20000;
@@ -52,8 +51,6 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
   );
 
   const baseIconClasses = "w-4 h-4 inline cursor-pointer";
-  const encodedUrl = useMemo(() => encodeURIComponent(shareUrl), [shareUrl]);
-  const encodedTitle = useMemo(() => encodeURIComponent(shareTitle), [shareTitle]);
 
   const shareUrls = useMemo(
     () => ({
@@ -61,7 +58,7 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
       facebook: `https://www.facebook.com/sharer/sharer.php?`,
       linkedin: `https://www.linkedin.com/sharing/share-offsite/?`,
     }),
-    [encodedUrl, encodedTitle],
+    [],
   );
 
   const getShareText = (platform: SocialPlatform): string => {
@@ -98,7 +95,6 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
     navigator.clipboard
       .writeText(shareText)
       .then(() => {
-        setTextCopied(true);
         setShowHelper(true);
 
         if (timerRef.current) {
@@ -111,7 +107,6 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
 
         timerRef.current = setTimeout(() => {
           setShowHelper(false);
-          setTextCopied(false);
           setActivePlatform(null);
         }, TOOLTIP_DURATION);
       })
