@@ -145,7 +145,9 @@ export const Header = () => {
               Become a DRep
             </Link>
 
-            <CardanoWallet />
+            <div className="dark:text-background">
+              <CardanoWallet />
+            </div>
 
             {connected && (
               <Button
