@@ -53,7 +53,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-card py-8 border-t border-border mt-64">
+    <footer className="bg-card py-8 border-t border-border">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         {/* Top Section */}
         <div className="flex flex-col md:flex-row justify-between gap-4">

@@ -69,11 +69,11 @@ export default async function RootLayout(props: {
                 <Header />
                 <AppSidebar />
                 <main className="min-h-[50vh] flex flex-col gap-4 justify-between bg-background pt-2">
-                  <div className="w-full max-w-7xl mx-auto relative my-4 px-4 md:px-8">
+                  <div className="w-full max-w-7xl mx-auto relative my-4 px-4 md:px-8 mb-64">
                     <Breadcrumbs />
                     {children}
                   </div>
-                  <CallToAction />
+                  <CallToAction/>
                 </main>
                 <Toaster />
                 <Footer />
