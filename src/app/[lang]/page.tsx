@@ -103,7 +103,7 @@ const Banner = ({
 }: Dictionary["homepage"]["banner"]) => {
   return (
     <div className="w-full bg-background bg-gradient-to-b from-blue-50 to-white dark:from-blue-950 dark:background py-16 md:py-24  rounded">
-      <div className="container mx-auto px-4 md:px-8">
+      <div className="container mx-auto px-4 lg:px-8 xl:px-16">
         <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-8">
           <div className="w-full md:w-fit md:max-w-1/2 space-y-4">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
@@ -125,15 +125,17 @@ const Banner = ({
             </div>
           </div>
 
-          <div className="w-full md:w-1/2 relative">
-            <div className="relative aspect-[4/3] w-full max-w-md mx-auto">
+          <div className="w-full relative">
+            <div className="relative aspect-[3/2] w-full mx-auto">
               <div className="absolute inset-0 rounded-lg overflow-hidden shadow-xl">
                 <Image
-                  src="/assets/icon-512.png"
+                  src="/assets/governance.png"
                   alt="Dashboard de governança blockchain"
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
+                  // width={1000}
+                  // height={494}
+                  sizes="(max-width: 1000px) 100vw, 50vw"
+                  className="object-cover rounded"
                   priority
                 />
               </div>
