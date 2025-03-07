@@ -68,7 +68,9 @@ export function AppSidebar() {
                 >
                   {headerTranslations.becomeDrep}
                 </Button>
-                <CardanoWallet />
+                <div className="dark:text-background">
+                  <CardanoWallet />
+                </div>
                 {connected && (
                   <Button
                     size="sm"
