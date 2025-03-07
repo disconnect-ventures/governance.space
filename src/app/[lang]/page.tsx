@@ -1,6 +1,6 @@
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
-import { Button } from "~/components/ui/button";
+import { buttonVariants } from "~/components/ui/button";
 import { Dictionary, getDictionary } from "~/config/dictionaries";
 import { PageProps } from "./layout";
 import {
@@ -11,6 +11,8 @@ import {
   Users,
   Vote,
 } from "lucide-react";
+import Link from "next/link";
+import clsx from "clsx";
 
 interface FeatureItemProps {
   title: string;
@@ -113,15 +115,24 @@ const Banner = ({
               {description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Button className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground">
+              <Link
+                className={clsx(
+                  buttonVariants(),
+                  "w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground"
+                )}
+                href="/dreps"
+              >
                 {buttonMain} <ArrowRightIcon className="ml-2 h-4 w-4" />
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full sm:w-auto border-border hover:bg-accent hover:text-accent-foreground"
+              </Link>
+              <Link
+                href="/help"
+                className={clsx(
+                  buttonVariants({ variant: "outline" }),
+                  "w-full sm:w-auto border-border hover:bg-accent hover:text-accent-foreground"
+                )}
               >
                 {buttonSecondary}
-              </Button>
+              </Link>
             </div>
           </div>
 
