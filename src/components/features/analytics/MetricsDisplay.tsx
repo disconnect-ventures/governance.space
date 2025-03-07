@@ -191,8 +191,8 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
             className="bg-card text-card-foreground shadow-none"
           >
             <CardContent className="p-6">
-              <div className="flex gap-4">
-                <div className="p-2 bg-primary/10 rounded-lg text-primary">
+              <div className="flex gap-4 items-center">
+                <div className="p-2 bg-primary/10 rounded-lg text-primary h-fit">
                   {React.cloneElement(metric.icon, { className: "h-5 w-5" })}
                 </div>
                 <div>
