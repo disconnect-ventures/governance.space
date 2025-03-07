@@ -1,12 +1,14 @@
-import { getMockMetrics, getMockDReps } from "~/lib/mock";
-import AnalyticsClient from "./client";
+import MetricsDisplay from "~/components/features/analytics/MetricsDisplay";
+import { getMetrics } from "~/lib/analytics";
+import { getDReps } from "~/lib/dreps";
 
-export default function AnalyticsPage() {
-  const metrics = getMockMetrics();
-  const dreps = getMockDReps();
+export default async function AnalyticsPage() {
+  const metrics = await getMetrics();
+  const dreps = await getDReps(0, 10, "", "VotingPower", []);
+
   return (
-    <main className="flex min-h-screen flex-col">
-      <AnalyticsClient initialData={metrics} drepList={dreps} />
-    </main>
+    <div className="flex min-h-screen flex-col">
+      <MetricsDisplay data={metrics} drepList={dreps.elements} />
+    </div>
   );
 }
