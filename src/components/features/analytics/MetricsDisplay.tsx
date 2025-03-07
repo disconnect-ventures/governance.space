@@ -4,16 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Users, Database, Vote, Award, Clock } from "lucide-react";
 import { MetricsData } from "~/lib/analytics";
 import { formatNumber, formatStake } from "./utils/formatters";
-// import {
-//   BarChart,
-//   Bar,
-//   XAxis,
-//   YAxis,
-//   ResponsiveContainer,
-//   PieChart,
-//   Pie,
-//   Cell,
-// } from "recharts";
 import { DRep } from "~/lib/dreps";
 import {
   Bar,
