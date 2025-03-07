@@ -4,9 +4,9 @@ import Link from "~/components/features/Link"; // assuming you're using your cus
 
 export const CallToAction = () => {
   return (
-    <div className="flex flex-col items-center justify-center py-12 bg-secondary text-center px-4">
+    <div className="flex flex-col items-center justify-center py-12 bg-secondary text-center px-4 ">
       <Link
-        href="#"
+        href="https://governance.beehiiv.com/subscribe"
         className="text-primary text-sm font-medium hover:text-primary/90 transition-colors mb-2 whitespace-nowrap"
       >
         Governance Space on Cardano Blockchain{" "}
