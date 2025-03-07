@@ -1,10 +1,32 @@
+"use client";
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, Database, Vote, Award, Clock } from "lucide-react";
 import { MetricsData } from "~/lib/analytics";
 import { formatNumber, formatStake } from "./utils/formatters";
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+// import {
+//   BarChart,
+//   Bar,
+//   XAxis,
+//   YAxis,
+//   ResponsiveContainer,
+//   PieChart,
+//   Pie,
+//   Cell,
+// } from "recharts";
 import { DRep } from "~/lib/dreps";
+import {
+  Bar,
+  BarChart,
+  Cell,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { getMockMetrics } from "~/lib/mock";
+import ComingSoon from "~/components/layout/ComingSoon";
 
 interface MetricsDisplayProps {
   data: MetricsData;
@@ -12,6 +34,11 @@ interface MetricsDisplayProps {
 }
 
 const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
+  // TODO
+  const mockData = getMockMetrics();
+  const circulation = 35949488472 * 1e6;
+
+  const epoch = data.currentEpoch;
   const chartColors = {
     dreps: "hsl(var(--chart-1))",
     spos: "hsl(var(--chart-2))",
@@ -25,7 +52,11 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
 
   const metrics = [
     { icon: <Users />, label: "Delegators", value: data.uniqueDelegators },
-    { icon: <Database />, label: "Total DReps", value: data.totalRegisteredDReps },
+    {
+      icon: <Database />,
+      label: "Total DReps",
+      value: data.totalRegisteredDReps,
+    },
     { icon: <Vote />, label: "DRep Votes", value: data.totalDRepVotes },
     { icon: <Award />, label: "Active DReps", value: data.totalActiveDReps },
     {
@@ -53,73 +84,86 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
     },
   ];
 
-  const notTakingPart = data.circulation - (data.dreps + data.alwaysAbstain + data.noConfidence);
+  const notTakingPart =
+    circulation -
+    (data.totalStakeControlledByDReps +
+      data.alwaysAbstainVotingPower +
+      data.alwaysNoConfidenceVotingPower);
+
   const governanceData = [
     {
       name: "Not taking part in Governance",
       value: notTakingPart,
-      percentage: ((notTakingPart / data.circulation) * 100).toFixed(2),
+      percentage: ((notTakingPart / circulation) * 100).toFixed(2),
     },
     {
       name: "Active dReps",
-      value: data.dreps,
-      percentage: ((data.dreps / data.circulation) * 100).toFixed(2),
+      value: data.totalStakeControlledByDReps,
+      percentage: (
+        (data.totalStakeControlledByDReps / circulation) *
+        100
+      ).toFixed(2),
     },
     {
       name: "Always Abstain",
-      value: data.alwaysAbstain,
-      percentage: ((data.alwaysAbstain / data.circulation) * 100).toFixed(2),
+      value: data.alwaysAbstainVotingPower,
+      percentage: ((data.alwaysAbstainVotingPower / circulation) * 100).toFixed(
+        2
+      ),
     },
     {
       name: "No-Confidence",
-      value: data.noConfidence,
-      percentage: ((data.noConfidence / data.circulation) * 100).toFixed(2),
+      value: data.alwaysNoConfidenceVotingPower,
+      percentage: (
+        (data.alwaysNoConfidenceVotingPower / circulation) *
+        100
+      ).toFixed(2),
     },
   ];
 
   const tokenomicsData = [
-    { position: "Circulation", amount: data.circulation },
-    { position: "Treasury", amount: data.treasury },
-    { position: "Reserves", amount: data.reserves },
-    { position: "Rewards", amount: data.rewards },
-    { position: "Deposits", amount: data.deposits },
+    { position: "Circulation", amount: circulation },
+    { position: "Treasury", amount: mockData.treasury },
+    { position: "Reserves", amount: mockData.reserves },
+    { position: "Rewards", amount: mockData.rewards },
+    { position: "Deposits", amount: mockData.deposits },
   ];
 
   const epochMetricsData = [
     {
       item: "Total DReps",
-      value: data.dashboard.metrics.totalDReps.value,
-      change: data.dashboard.metrics.totalDReps.change,
+      value: mockData.dashboard.metrics.totalDReps.value,
+      change: mockData.dashboard.metrics.totalDReps.change,
     },
     {
       item: "Total Delegators",
-      value: data.dashboard.metrics.totalDelegators.value,
-      change: data.dashboard.metrics.totalDelegators.change,
+      value: mockData.dashboard.metrics.totalDelegators.value,
+      change: mockData.dashboard.metrics.totalDelegators.change,
     },
     {
       item: "New DReps",
-      value: data.dashboard.metrics.newDReps.value,
-      change: data.dashboard.metrics.newDReps.change,
+      value: mockData.dashboard.metrics.newDReps.value,
+      change: mockData.dashboard.metrics.newDReps.change,
     },
     {
       item: "New Delegators",
-      value: data.dashboard.metrics.newDelegators.value,
-      change: data.dashboard.metrics.newDelegators.change,
+      value: mockData.dashboard.metrics.newDelegators.value,
+      change: mockData.dashboard.metrics.newDelegators.change,
     },
     {
       item: "Delegation Rate",
-      value: data.dashboard.metrics.delegationRate.value,
-      change: data.dashboard.metrics.delegationRate.change,
+      value: mockData.dashboard.metrics.delegationRate.value,
+      change: mockData.dashboard.metrics.delegationRate.change,
     },
     {
       item: "Active Delegated",
-      value: data.dashboard.metrics.activeDelegated.value,
-      change: data.dashboard.metrics.activeDelegated.change,
+      value: mockData.dashboard.metrics.activeDelegated.value,
+      change: mockData.dashboard.metrics.activeDelegated.change,
     },
     {
       item: "Abstain/No Confidence",
-      value: data.dashboard.metrics.abstainNoConfidence.value,
-      change: data.dashboard.metrics.abstainNoConfidence.change,
+      value: mockData.dashboard.metrics.abstainNoConfidence.value,
+      change: mockData.dashboard.metrics.abstainNoConfidence.change,
     },
   ];
 
@@ -142,14 +186,19 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
         {metrics.map((metric, index) => (
-          <Card key={index} className="bg-card text-card-foreground shadow-none">
+          <Card
+            key={index}
+            className="bg-card text-card-foreground shadow-none"
+          >
             <CardContent className="p-6">
               <div className="flex gap-4">
                 <div className="p-2 bg-primary/10 rounded-lg text-primary">
                   {React.cloneElement(metric.icon, { className: "h-5 w-5" })}
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">{metric.label}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {metric.label}
+                  </p>
                   <p className="text-2xl font-bold text-foreground mt-1">
                     {formatNumber(metric.value)}
                   </p>
@@ -163,15 +212,24 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">Stake Distribution</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">
+              Stake Distribution
+            </h3>
             <div className="h-32">
               <ResponsiveContainer>
-                <BarChart data={stakeData} layout="vertical" margin={{ right: 80, left: 60 }}>
+                <BarChart
+                  data={stakeData}
+                  layout="vertical"
+                  margin={{ right: 80, left: 60 }}
+                >
                   <XAxis type="number" hide />
                   <YAxis
                     type="category"
                     dataKey="name"
-                    tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
+                    tick={{
+                      fill: "hsl(var(--muted-foreground))",
+                      fontSize: 12,
+                    }}
                     width={50}
                   />
                   <Bar
@@ -189,7 +247,9 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
                     {stakeData.map((_, index) => (
                       <Cell
                         key={`cell-${index}`}
-                        fill={index === 0 ? chartColors.dreps : chartColors.spos}
+                        fill={
+                          index === 0 ? chartColors.dreps : chartColors.spos
+                        }
                       />
                     ))}
                   </Bar>
@@ -201,7 +261,9 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
 
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">Voting Power</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">
+              Voting Power
+            </h3>
             <div className="flex">
               <div className="h-32 flex-1">
                 <ResponsiveContainer>
@@ -231,7 +293,10 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
               </div>
               <div className="flex-1 flex flex-col justify-center space-y-4">
                 {votingPowerData.map((item, index) => (
-                  <div key={index} className="flex items-center justify-between">
+                  <div
+                    key={index}
+                    className="flex items-center justify-between"
+                  >
                     <div className="flex items-center gap-2">
                       <div
                         className="w-3 h-3 rounded-full"
@@ -242,9 +307,13 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
                               : chartColors.votingPowerNoConfidence,
                         }}
                       />
-                      <span className="text-sm text-muted-foreground">{item.name}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {item.name}
+                      </span>
                     </div>
-                    <span className="text-sm font-medium text-foreground">{item.formatted}</span>
+                    <span className="text-sm font-medium text-foreground">
+                      {item.formatted}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -256,16 +325,23 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-2">Governance Delegation </h3>
+            <h3 className="text-lg font-semibold text-foreground mb-2">
+              Governance Delegation{" "}
+            </h3>
             <p className="text-sm text-muted-foreground mb-6">
-              ADA taking part in Governance as of today by category in relation to the circulating
-              supply of ADA on Cardano
+              ADA taking part in Governance as of today by category in relation
+              to the circulating supply of ADA on Cardano
             </p>
             <div className="flex">
               <div className="h-48 flex-1">
                 <ResponsiveContainer>
                   <PieChart>
-                    <Pie data={governanceData} dataKey="value" startAngle={90} endAngle={-270}>
+                    <Pie
+                      data={governanceData}
+                      dataKey="value"
+                      startAngle={90}
+                      endAngle={-270}
+                    >
                       {governanceData.map((_, index) => (
                         <Cell
                           key={`cell-${index}`}
@@ -279,15 +355,22 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
               </div>
               <div className="flex-1 flex flex-col justify-center space-y-3">
                 {governanceData.map((item, index) => (
-                  <div key={index} className="flex items-center justify-between">
+                  <div
+                    key={index}
+                    className="flex items-center justify-between"
+                  >
                     <div className="flex items-center gap-2">
                       <div
                         className="w-3 h-3 rounded-full"
                         style={{ backgroundColor: getGovernanceColor(index) }}
                       />
-                      <span className="text-sm text-muted-foreground">{item.name}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {item.name}
+                      </span>
                     </div>
-                    <span className="text-sm font-medium text-foreground">({item.percentage}%)</span>
+                    <span className="text-sm font-medium text-foreground">
+                      ({item.percentage}%)
+                    </span>
                   </div>
                 ))}
               </div>
@@ -297,29 +380,38 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
 
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">Cardano Tokenomics </h3>
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left py-3 text-sm font-medium text-muted-foreground">
-                    Position
-                  </th>
-                  <th className="text-right py-3 text-sm font-medium text-muted-foreground">
-                    Amount in ADA
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {tokenomicsData.map((row) => (
-                  <tr key={row.position} className="border-b border-border last:border-0">
-                    <td className="py-4 text-sm text-foreground">{row.position}</td>
-                    <td className="py-4 text-sm text-right font-medium text-foreground">
-                      {formatNumber(row.amount)}
-                    </td>
+            <h3 className="text-lg font-semibold text-foreground mb-6">
+              Cardano Tokenomics{" "}
+            </h3>
+            <ComingSoon>
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-3 text-sm font-medium text-muted-foreground">
+                      Position
+                    </th>
+                    <th className="text-right py-3 text-sm font-medium text-muted-foreground">
+                      Amount in ADA
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {tokenomicsData.map((row) => (
+                    <tr
+                      key={row.position}
+                      className="border-b border-border last:border-0"
+                    >
+                      <td className="py-4 text-sm text-foreground">
+                        {row.position}
+                      </td>
+                      <td className="py-4 text-sm text-right font-medium text-foreground">
+                        {formatNumber(row.amount)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </ComingSoon>
           </CardContent>
         </Card>
       </div>
@@ -327,7 +419,9 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">Top 10 DReps</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">
+              Top 10 DReps
+            </h3>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
@@ -346,15 +440,17 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
                 <tbody className="divide-y divide-border">
                   {drepList?.slice(0, 10).map((drep, index) => (
                     <tr key={drep.drepId}>
-                      <td className="py-4 text-sm text-foreground">{`${index + 1}º ${drep.givenName || "Anonymous DRep"}`}</td>
+                      <td className="py-4 text-sm text-foreground">{`${
+                        index + 1
+                      }º ${drep.givenName || "Anonymous DRep"}`}</td>
                       <td className="py-4 text-sm text-center">
                         <span
                           className={`px-2 py-1 rounded-full text-xs ${
                             drep.status === "Active"
                               ? "bg-green-500/10 text-green-500 dark:bg-green-500/20 dark:text-green-400"
                               : drep.status === "Inactive"
-                                ? "bg-yellow-500/10 text-yellow-500 dark:bg-yellow-500/20 dark:text-yellow-400"
-                                : "bg-red-500/10 text-red-500 dark:bg-red-500/20 dark:text-red-400"
+                              ? "bg-yellow-500/10 text-yellow-500 dark:bg-yellow-500/20 dark:text-yellow-400"
+                              : "bg-red-500/10 text-red-500 dark:bg-red-500/20 dark:text-red-400"
                           }`}
                         >
                           {drep.status}
@@ -370,53 +466,58 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
             </div>
           </CardContent>
         </Card>
-
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold text-foreground mb-6">
-              Epoch {data.dashboard.epoch} Metrics
+              Epoch {epoch} Metrics
             </h3>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-3 text-sm font-medium text-muted-foreground">
-                      #Item
-                    </th>
-                    <th className="text-center py-3 text-sm font-medium text-muted-foreground">
-                      Epoch {data.dashboard.epoch}
-                    </th>
-                    <th className="text-right py-3 text-sm font-medium text-muted-foreground">
-                      Changed
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-border">
-                  {epochMetricsData.map((row) => {
-                    const isError =
-                      row.item === "Active Delegated" || row.item === "Abstain/No Confidence";
+            <ComingSoon>
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-3 text-sm font-medium text-muted-foreground">
+                        #Item
+                      </th>
+                      <th className="text-center py-3 text-sm font-medium text-muted-foreground">
+                        Epoch {epoch}
+                      </th>
+                      <th className="text-right py-3 text-sm font-medium text-muted-foreground">
+                        Changed
+                      </th>
+                    </tr>
+                  </thead>
 
-                    return (
-                      <tr key={row.item}>
-                        <td className="py-4 text-sm text-foreground">{row.item}</td>
-                        <td className="py-4 text-sm text-center font-medium text-foreground">
-                          {row.value}
-                        </td>
-                        <td
-                          className={`py-4 text-sm text-right font-medium ${
-                            isError
-                              ? "text-red-500 dark:text-red-400"
-                              : "text-green-500 dark:text-green-400"
-                          }`}
-                        >
-                          {isError ? `-${row.change}` : `+${row.change}`}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+                  <tbody className="divide-y divide-border">
+                    {epochMetricsData.map((row) => {
+                      const isError =
+                        row.item === "Active Delegated" ||
+                        row.item === "Abstain/No Confidence";
+
+                      return (
+                        <tr key={row.item}>
+                          <td className="py-4 text-sm text-foreground">
+                            {row.item}
+                          </td>
+                          <td className="py-4 text-sm text-center font-medium text-foreground">
+                            {row.value}
+                          </td>
+                          <td
+                            className={`py-4 text-sm text-right font-medium ${
+                              isError
+                                ? "text-red-500 dark:text-red-400"
+                                : "text-green-500 dark:text-green-400"
+                            }`}
+                          >
+                            {isError ? `-${row.change}` : `+${row.change}`}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </ComingSoon>
           </CardContent>
         </Card>
       </div>
