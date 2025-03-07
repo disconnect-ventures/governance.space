@@ -173,6 +173,7 @@ export default async function IndexPage({ params: paramsPromise }: PageProps) {
         features={dictionary.homepage.features.features}
         variant="grid"
       />
+
     </div>
   );
 }

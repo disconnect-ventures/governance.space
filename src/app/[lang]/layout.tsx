@@ -17,6 +17,7 @@ import { TranslationProvider } from "~/hooks/use-translation/translation-context
 import { getDictionary } from "~/config/dictionaries";
 import clsx from "clsx";
 import ThemeScript from "~/lib/ThemeScript";
+import { CallToAction } from "~/components/features/CallToAction";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -72,7 +73,7 @@ export default async function RootLayout(props: {
                     <Breadcrumbs />
                     {children}
                   </div>
-                  {/* <CallToAction /> */}
+                  <CallToAction />
                 </main>
                 <Toaster />
                 <Footer />
