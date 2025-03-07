@@ -6,6 +6,7 @@ import { Button } from "~/components/ui/button";
 import { Card, CardHeader, CardContent } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 import CopyToClipboard from "../CopyToClipboard";
+import clsx from "clsx";
 
 type ProfileCardProps = {
   drep: DRep;
@@ -27,16 +28,18 @@ export function ProfileCard({ drep }: ProfileCardProps) {
             </div>
             <div className="flex-1 flex flex-col gap-2">
               <div className="flex items-center gap-2">
-                <h2 className="text-xl font-bold text-foreground">
-                  {drep.givenName}
-                </h2>
+                <h2 className="text-xl font-bold text-foreground">{drep.givenName}</h2>
                 {/* <span className="text-yellow-400">
                   <Star></Star>
                 </span> */}
               </div>
               <Badge
-                variant="secondary"
-                className="w-fit bg-green-500/10 text-green-500 dark:bg-green-500/20 dark:text-green-400 hover:bg-green-500/20 dark:hover:bg-green-500/30 rounded-full"
+                variant={drep.status === "Active" ? "default" : "secondary"}
+                className={clsx(
+                  drep.status === "Active" && "bg-green-500/20 text-green-500 w-fit rounded-full",
+                  drep.status === "Retired" && "bg-yellow-500/20 text-yellow-500 w-fit rounded-full",
+                  drep.status === "Inactive" && "bg-red-500/20 text-red-500 w-fit rounded-full",
+                )}
               >
                 {drep.status}
               </Badge>
@@ -50,10 +53,7 @@ export function ProfileCard({ drep }: ProfileCardProps) {
             >
               Send message
             </Button>
-            <Button
-              className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2"
-              disabled
-            >
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2" disabled>
               <ArrowRightCircle />
               Delegate Voting Power
             </Button>
@@ -68,9 +68,7 @@ export function ProfileCard({ drep }: ProfileCardProps) {
           </span>
           <CopyToClipboard value={drep.drepId} />
         </div>
-        <p className="mt-4 text-muted-foreground line-clamp-2">
-          {drep.objectives}
-        </p>
+        <p className="mt-4 text-muted-foreground line-clamp-2">{drep.objectives}</p>
       </CardContent>
     </Card>
   );
