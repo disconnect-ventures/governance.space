@@ -11,7 +11,7 @@ import Logo from "../icons/Logo";
 import Link from "~/components/features/Link";
 import { SidebarTrigger, useSidebar } from "../ui/sidebar";
 import { Separator } from "../ui/separator";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
 import { CardanoWallet, useWallet } from "@meshsdk/react";
 import LocaleSwitch from "../features/LocaleSwitch";
@@ -103,6 +103,8 @@ export const HeaderSearchBar = ({ onSubmit }: HeaderSearchBarProps) => {
   );
 };
 export const Header = () => {
+  const params = useParams();
+  const locale = (params.lang?.toString() ?? "en-us") as Locale;
   const pathname = usePathname();
   const [balance, setBalance] = useState<string>();
   const { wallet, connected } = useWallet();
@@ -180,7 +182,7 @@ export const Header = () => {
                   <HeaderNavigationLink
                     key={index}
                     href={link.href}
-                    active={pathname === link.href}
+                    active={pathname === localizePath(locale, link.href)}
                   >
                     {link.label}
                   </HeaderNavigationLink>
