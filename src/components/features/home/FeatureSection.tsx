@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import {
   BarChart3,
   Blocks,
@@ -21,7 +22,7 @@ interface FeatureSectionProps {
     description: string;
     icon?: string;
   }[];
-  variant?: "grid" | "cards";
+  layoutClassName?: string;
 }
 
 const getIconComponent = (iconName?: string) => {
@@ -53,7 +54,7 @@ export const FeatureSection = ({
   title,
   subtitle,
   features,
-  variant = "cards",
+  layoutClassName = "",
 }: FeatureSectionProps) => {
   return (
     <section>
@@ -69,13 +70,7 @@ export const FeatureSection = ({
           )}
         </div>
 
-        <div
-          className={`grid ${
-            variant === "grid"
-              ? "grid-cols-1 md:grid-cols-3 gap-8"
-              : "grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto"
-          }`}
-        >
+        <div className={clsx(`grid`, layoutClassName)}>
           {features.map((feature, index) => (
             <FeatureItem
               key={index}
