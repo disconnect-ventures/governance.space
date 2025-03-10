@@ -58,7 +58,7 @@ export function localizePath(locale: Locale, path: string) {
 
   const normalizedPath = path.startsWith("/") ? path.slice(1) : path;
 
-  return `/${locale}/${normalizedPath}`;
+  return `/${locale}${normalizedPath.length ? "/" : ""}${normalizedPath}`;
 }
 
 export function calculateEpochNumber(
