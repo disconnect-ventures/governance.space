@@ -172,10 +172,10 @@ export const Header = () => {
 
         <Separator className="hidden md:block w-[100vw] absolute left-0" />
 
-        <div className="hidden md:block">
-          <div className="h-max-content flex justify-center overflow-x-auto overflow-y-hidden">
-            <NavigationMenu>
-              <NavigationMenuList className="w-full flex gap-4 my-4">
+        <div className="hidden md:block md:w-full">
+          <div className="w-full h-max-content max-w-7xl">
+            <NavigationMenu className="w-full h-full">
+              <NavigationMenuList className="inline-flex w-full max-w-full fit-max gap-4 my-4  justify-start">
                 {headerNavLinks.map((link, index) => (
                   <HeaderNavigationLink
                     key={index}
