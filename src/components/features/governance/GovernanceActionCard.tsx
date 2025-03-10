@@ -67,11 +67,11 @@ export const GovernanceActionCard = ({
   const { dictionary } = useTranslation();
   // const views = 404; // TODO
   const title = useMemo(
-    () => (action.title || metadata ? metadata?.metadata.title : "No title"),
+    () => (action.title || metadata ? metadata?.metadata?.title : "No title"),
     [action, metadata]
   );
   const abstract = useMemo(
-    () => action.abstract || metadata?.metadata.abstract,
+    () => action.abstract || metadata?.metadata?.abstract,
     [action, metadata]
   );
 
