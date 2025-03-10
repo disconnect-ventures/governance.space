@@ -64,7 +64,7 @@ export default async function RootLayout(props: {
         <TranslationProvider value={{ dictionary, locale: params.lang }}>
           <SidebarProvider>
             <ClientProvider>
-              <div className="w-full">
+              <div className="w-full overflow-x-hidden">
                 <AnnouncementBar />
                 <Header />
                 <AppSidebar />
@@ -73,7 +73,7 @@ export default async function RootLayout(props: {
                     <Breadcrumbs />
                     {children}
                   </div>
-                  <CallToAction/>
+                  <CallToAction />
                 </main>
                 <Toaster />
                 <Footer />
