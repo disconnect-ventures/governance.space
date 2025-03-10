@@ -17,6 +17,7 @@ import {
 } from "recharts";
 import { getMockMetrics } from "~/lib/mock";
 import ComingSoon from "~/components/layout/ComingSoon";
+import { getDrepStatusBadge } from "../profile/ProfileCard";
 
 interface MetricsDisplayProps {
   data: MetricsData;
@@ -434,17 +435,7 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
                         index + 1
                       }º ${drep.givenName || "Anonymous DRep"}`}</td>
                       <td className="py-4 text-sm text-center">
-                        <span
-                          className={`px-2 py-1 rounded-full text-xs ${
-                            drep.status === "Active"
-                              ? "bg-green-500/10 text-green-500 dark:bg-green-500/20 dark:text-green-400"
-                              : drep.status === "Inactive"
-                              ? "bg-yellow-500/10 text-yellow-500 dark:bg-yellow-500/20 dark:text-yellow-400"
-                              : "bg-red-500/10 text-red-500 dark:bg-red-500/20 dark:text-red-400"
-                          }`}
-                        >
-                          {drep.status}
-                        </span>
+                        {getDrepStatusBadge(drep, "px-2 py-1 rounded-full")}
                       </td>
                       <td className="py-4 text-sm text-right font-medium text-foreground">
                         ₳ {formatNumber(drep.votingPower)}
