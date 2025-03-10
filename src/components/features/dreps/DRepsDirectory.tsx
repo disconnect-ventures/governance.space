@@ -4,7 +4,6 @@ import { TableCell, TableRow } from "~/components/ui/table";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
 import { EyeIcon } from "lucide-react";
-import clsx from "clsx";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { DRep } from "~/lib/dreps";
 import { useRouter } from "next/navigation";
@@ -15,6 +14,7 @@ import {
 import { formatVotingPower, localizePath, truncateMiddle } from "~/lib/utils";
 import { useLocale } from "~/hooks/use-locale";
 import { useTranslation } from "~/hooks/use-translation/use-translation";
+import { getDrepStatusBadge } from "../profile/ProfileCard";
 
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
@@ -50,9 +50,6 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
         pageDReps.drepName,
         pageDReps.status,
         pageDReps.votingPower,
-        // pageDReps.social,
-        // pageDReps.delegators,
-        // pageDReps.influencePower,
         pageDReps.registrationDate,
         pageDReps.actions,
       ]}
@@ -83,18 +80,7 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
               </div>
             </div>
           </TableCell>
-          <TableCell>
-            <Badge
-              variant={drep.status === "Active" ? "default" : "secondary"}
-              className={clsx(
-                drep.status === "Active" && "bg-green-500/20 text-green-500",
-                drep.status === "Retired" && "bg-yellow-500/20 text-yellow-500",
-                drep.status === "Inactive" && "bg-red-500/20 text-red-500"
-              )}
-            >
-              {drep.status}
-            </Badge>
-          </TableCell>
+          <TableCell>{getDrepStatusBadge(drep)}</TableCell>
           <TableCell>
             <Badge className="bg-primary/20 text-primary hover:bg-primary/30">
               <span className="mr-1">₳</span>
