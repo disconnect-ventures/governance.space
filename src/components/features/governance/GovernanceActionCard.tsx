@@ -124,17 +124,15 @@ export const GovernanceActionCard = ({
           </div>
         </div>
 
-        <div className="flex justify-center">
-          <Link
-            href={`/governance/${getActionIdUrl(
-              action.txHash,
-              action.index.toString()
-            )}`}
-            className={`${buttonVariants()}`}
-          >
-            {dictionary.general["view-details-and-vote"]}
-          </Link>
-        </div>
+        <Link
+          href={`/governance/${getActionIdUrl(
+            action.txHash,
+            action.index.toString()
+          )}`}
+          className={`${buttonVariants()} w-full`}
+        >
+          {dictionary.general["view-details-and-vote"]}
+        </Link>
       </CardContent>
     </Card>
   );
