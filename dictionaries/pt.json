@@ -185,7 +185,7 @@
     "description": "Ações de Governança",
     "longDescription": "Qualquer pessoa que tenha ADA em uma carteira pode propor uma Ação de Governança. Para enviar uma Ação de Governança, o proponente paga um depósito reembolsável de 100.000 ADA. O depósito será devolvido automaticamente à carteira do proponente após a conclusão do período de votação.",
     "governance-action-id": "ID da Ação de Governança",
-    "badge_text": "{count} ações de governança registradas",
+    "badge_text": "ações de governança registradas",
     "cip-129-governance-action-id": "(CIP-129) ID da Ação de Governança"
   },
   "pageGovernanceActionsDetails": {
@@ -202,7 +202,7 @@
   "pageProposals": {
     "description": "Propostas de Governança",
     "longDescription": "Participe de discussões e processos de tomada de decisão guiados pela governança comunitária.",
-    "badge_text": "{count} propostas registradas",
+    "badge_text": "propostas registradas",
     "cip-129-action-id": "ID da Ação CIP-129"
   },
   "pageProposalsDetails": {
@@ -229,7 +229,7 @@
     "description": "Eventos ao Vivo na Governança",
     "longDescription": "Veja todos os eventos de governança em tempo real.",
     "drepName": "Nome do DRep",
-    "badgeText": "{count} eventos nas últimas 24hrs",
+    "badgeText": "eventos nas últimas 24hrs",
     "vote": "Voto",
     "votingPower": "Poder de Voto",
     "submissionEpoch": "Época de Submissão",

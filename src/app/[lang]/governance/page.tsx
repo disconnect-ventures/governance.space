@@ -13,21 +13,34 @@ import {
   Metadata as ApiMetadata,
   MetadataStandard,
 } from "~/lib/metadata";
+import { getDictionary } from "~/config/dictionaries";
 
 export const metadata: Metadata = {
   title: "Governance Space - Governance Actions",
   description: "All-in-One Governance Platform",
 };
 
-export default async function GovernancePage({ searchParams: searchParamsPromise }: PageProps) {
+export default async function GovernancePage({
+  params: paramsPromise,
+  searchParams: searchParamsPromise,
+}: PageProps) {
+  const params = (await paramsPromise) ?? {};
   const searchParams = (await searchParamsPromise) ?? {};
   const page = parseInt(searchParams["page"] ?? "0");
   const pageSize = parseInt(searchParams["pageSize"] ?? "20");
-  const sort = (searchParams["sort"] as GovernanceActionSortOption) ?? "NewestCreated";
-  const filters = (searchParams["filters"]?.split(",") ?? []) as GovernanceActionFilterOption[];
+  const sort =
+    (searchParams["sort"] as GovernanceActionSortOption) ?? "NewestCreated";
+  const filters = (searchParams["filters"]?.split(",") ??
+    []) as GovernanceActionFilterOption[];
   const search = searchParams["search"] ?? "";
 
-  const governanceActions = await getGovernanceActions(page, pageSize, search, sort, filters);
+  const governanceActions = await getGovernanceActions(
+    page,
+    pageSize,
+    search,
+    sort,
+    filters
+  );
 
   const metadata: Record<string, ApiMetadata | null> = {};
   await Promise.all(
@@ -35,21 +48,25 @@ export default async function GovernancePage({ searchParams: searchParamsPromise
       const data = await getGovernanceActionMetadata(
         action.metadataHash,
         MetadataStandard.CIP108,
-        action.url,
+        action.url
       );
       metadata[action.id] = data;
-    }),
+    })
   );
+
+  const dictionary = await getDictionary(params.lang);
+  const pageDictionary = dictionary.pageGovernanceActions;
 
   return (
     <div className="space-y-4 bg-background text-foreground">
       <PageTitle
-        title="Governance Actions"
+        title={dictionary.header.titleGovernanceActions}
         icon={
           <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <BookOpenCheckIcon />
           </div>
         }
+        badge={`${governanceActions.total} ${pageDictionary.badge_text}`}
         translationPage="pageGovernanceActions"
       ></PageTitle>
       <GovernanceActionDirectory
