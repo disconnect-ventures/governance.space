@@ -14,7 +14,7 @@ export async function getDRepStatusStats(): Promise<DRepStats> {
     elements: DRep[];
     total?: number;
     totalCount?: number;
-    [key: string]: any;
+    [key: string]: unknown;
   };
 
   try {
@@ -43,14 +43,12 @@ export async function getDRepStatusStats(): Promise<DRepStats> {
           continue;
         }
 
-        let newDrepsCount = 0;
         response.elements.forEach((drep: DRep) => {
           if (drep?.drepId && !processedDrepIds.has(drep.drepId)) {
             processedDrepIds.add(drep.drepId);
 
             if (drep.status && statuses.hasOwnProperty(drep.status)) {
               statuses[drep.status]++;
-              newDrepsCount++;
             }
           }
         });
