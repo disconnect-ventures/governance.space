@@ -183,7 +183,7 @@
   },
   "pageGovernanceActions": {
     "description": "Ações de Governança",
-    "longDescription": "Qualquer pessoa que tenha ADA em uma carteira pode propor uma Ação de Governança. Para enviar uma Ação de Governança, o proponente paga um depósito reembolsável de 100.000 ADA. O depósito será devolvido automaticamente à carteira do proponente após a conclusão do período de votação.",
+    "longDescription": "Qualquer pessoa que tenha ADA em uma carteira pode propor uma Ação de Governança. Para enviar uma Ação de Governança, o proponente paga um depósito reembolsável de 100.000 ADA.",
     "governance-action-id": "ID da Ação de Governança",
     "badge_text": "ações de governança registradas",
     "cip-129-governance-action-id": "(CIP-129) ID da Ação de Governança"
