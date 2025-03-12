@@ -39,6 +39,16 @@ export function HelpAccordion() {
               </AccordionContent>
             </AccordionItem>
 
+            <AccordionItem value="influence-voting-power" className="border-none">
+              <AccordionTrigger className="hover:no-underline font-medium text-foreground">
+                What is Influence Power?
+              </AccordionTrigger>
+              <AccordionContent className="text-sm text-muted-foreground">
+                Influence Power represents the proportion of total active voting power held by a DRep. 
+                It is calculated by dividing the DRep's total active voting power by the total ADA delegated to all DReps.
+              </AccordionContent>
+            </AccordionItem>
+
             <AccordionItem value="governance-action" className="border-none">
               <AccordionTrigger className="hover:no-underline text-foreground">
                 What is a Governance Action?
