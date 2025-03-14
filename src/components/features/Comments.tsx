@@ -1,3 +1,4 @@
+"use client";
 import { Card, CardContent } from "~/components/ui/card";
 import { DRep } from "~/lib/dreps";
 import { Textarea } from "~/components/ui/textarea";
@@ -6,6 +7,7 @@ import { Button } from "~/components/ui/button";
 import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
 import { Comment } from "~/lib/comments";
 import ComingSoon from "../layout/ComingSoon";
+import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 type CommentsProps = {
   drep: DRep;
@@ -13,19 +15,22 @@ type CommentsProps = {
 };
 
 export function Comments({ comments }: CommentsProps) {
+  const {
+    dictionary: { general, pageDRepsDetails },
+  } = useTranslation();
   return (
     <Card className="w-full mx-auto bg-card text-card-foreground">
       <CardContent className="p-6">
         <div className="space-y-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-semibold text-foreground">
-              Comments ({comments.length})
+              {general.comments} ({comments.length})
             </h2>
           </div>
           <div className="space-y-4 mb-6">
             <div className="flex gap-4">
               <Textarea
-                placeholder="Ask the DRep a question..."
+                placeholder={pageDRepsDetails["ask-to-drep"]}
                 className="min-h-[100px] bg-background text-foreground border-border placeholder:text-muted-foreground"
               />
             </div>
@@ -35,7 +40,7 @@ export function Comments({ comments }: CommentsProps) {
                 disabled
               >
                 <Send className="w-4 h-4" />
-                Submit Comment
+                {general["submit-comment"]}
               </Button>
             </div>
           </div>
@@ -54,12 +59,10 @@ export function Comments({ comments }: CommentsProps) {
                         {comment.attributes.user_govtool_username}
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        {new Date(comment.attributes.updatedAt).toDateString()}
+                        {new Date(comment.attributes.updatedAt).toLocaleDateString(general.locale)}
                       </div>
                     </div>
-                    <p className="text-foreground">
-                      {comment.attributes.comment_text}
-                    </p>
+                    <p className="text-foreground">{comment.attributes.comment_text}</p>
                     <div className="flex gap-4">
                       <Button
                         variant="ghost"
