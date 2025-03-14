@@ -20,17 +20,21 @@
     "expires": "Expires",
     "author": "Author",
     "type": "Type",
-    "registration-date": "Registration Date",
+    "registration-date": "Registration Date (Newest to Oldest)",
     "submit-comment": "Submit Comment",
     "status": "Status",
     "active": "Active",
     "inactive": "Inactive",
     "retired": "Retired",
     "pending": "Pending",
+    "approved": "Approved",
+    "rejected": "Rejected",
     "yes": "Yes",
     "no": "No",
     "abstain": "Abstain",
-    "item": "Item"
+    "item": "Item",
+    "votingPower": "Voting Power (Higher to Lower)",
+    "locale": "en-US"
   },
   "homepage": {
     "banner": {
@@ -178,7 +182,7 @@
     "qualifications": "Qualifications",
     "payment-address": "Payment Address",
     "voting-history": "Voting History",
-    "ask-to-drep": "Ask to DRep"
+    "ask-to-drep": "Ask the DRep a question..."
   },
   "pageGovernanceActions": {
     "description": "Governance Actions in Governance",

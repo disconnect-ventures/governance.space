@@ -1,5 +1,5 @@
 // https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=50-19626&t=GGJEhGlKd8rVords-4
-
+"use client";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { DRep } from "~/lib/dreps";
 import { Rating } from "../Rating";
@@ -26,6 +26,7 @@ import { Badge } from "~/components/ui/badge";
 // } from "~/components/ui/tooltip";
 import { Comment } from "~/lib/comments";
 import { formatVotingPower } from "~/lib/utils";
+import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 type ProfileInfoProps = {
   drep: DRep;
@@ -33,6 +34,9 @@ type ProfileInfoProps = {
 };
 
 export function ProfileInfo({ drep }: ProfileInfoProps) {
+  const {
+    dictionary: { general, pageDReps, pageDRepsDetails },
+  } = useTranslation();
   const ratings = {
     5: { count: 30 },
     4: { count: 20 },
@@ -47,7 +51,7 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
         <CardContent className="pt-6 space-y-4">
           {[
             {
-              label: "Voting Power",
+              label: pageDReps.votingPower,
               value: (
                 <Badge
                   key={"2"}
@@ -123,7 +127,7 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
       </Card> */}
 
       <Card className="bg-card text-card-foreground">
-        <CardHeader className="text-foreground">Info</CardHeader>
+        <CardHeader className="text-foreground">{[pageDRepsDetails.info]}</CardHeader>
         <CardContent className="space-y-3">
           {/* <div className="text-sm">
             <span className="text-muted-foreground">
@@ -133,10 +137,10 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
           </div> */}
           <div className="text-sm">
             <span className="text-muted-foreground">
-              <MapPinIcon className="inline h-4 w-4 mr-1"></MapPinIcon> Registration date:
+              <MapPinIcon className="inline h-4 w-4 mr-1"></MapPinIcon> {pageDReps.registrationDate}:
             </span>
             <span className="ml-2 text-foreground">
-              {new Date(drep.latestRegistrationDate).toDateString()}
+              {new Date(drep.latestRegistrationDate).toLocaleDateString(general.locale)}
             </span>
           </div>
         </CardContent>

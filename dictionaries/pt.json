@@ -20,17 +20,21 @@
     "expires": "Expiração",
     "author": "Autor",
     "type": "Tipo",
-    "registration-date": "Data de Registro",
+    "registration-date": "Data de Registro (Do mais recente ao mais antigo)",
     "submit-comment": "Enviar Comentário",
     "status": "Status",
     "active": "Ativo",
     "inactive": "Inativo",
     "retired": "Retirado",
     "pending": "Pendente",
+    "approved": "Aprovado",
+    "rejected": "Rejeitado",
     "yes": "Sim",
     "no": "Não",
     "abstain": "Abstenção",
-    "item": "Item"
+    "item": "Item",
+    "votingPower": "Poder de Voto (Do maior ao menor)",
+    "locale": "pt-BR"
   },
   "homepage": {
     "banner": {
@@ -179,7 +183,7 @@
     "qualifications": "Qualificações",
     "payment-address": "Endereço de Pagamento",
     "voting-history": "Histórico de Votação",
-    "ask-to-drep": "Perguntar ao DRep"
+    "ask-to-drep": "Faça uma pergunta ao DRep..."
   },
   "pageGovernanceActions": {
     "description": "Ações de Governança",

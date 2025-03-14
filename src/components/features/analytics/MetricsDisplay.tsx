@@ -17,7 +17,7 @@ import {
 } from "recharts";
 import { getMockMetrics } from "~/lib/mock";
 import ComingSoon from "~/components/layout/ComingSoon";
-import { getDrepStatusBadge } from "../profile/ProfileCard";
+import { ProfileStatus } from "../profile/ProfileStatus";
 
 interface MetricsDisplayProps {
   data: MetricsData;
@@ -435,7 +435,7 @@ const MetricsDisplay = ({ data, drepList }: MetricsDisplayProps) => {
                         index + 1
                       }º ${drep.givenName || "Anonymous DRep"}`}</td>
                       <td className="py-4 text-sm text-center">
-                        {getDrepStatusBadge(drep, "px-2 py-1 rounded-full")}
+                        <ProfileStatus drep={drep} />
                       </td>
                       <td className="py-4 text-sm text-right font-medium text-foreground">
                         ₳ {formatNumber(drep.votingPower)}

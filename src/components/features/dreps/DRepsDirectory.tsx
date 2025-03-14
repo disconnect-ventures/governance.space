@@ -7,14 +7,11 @@ import { EyeIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { DRep } from "~/lib/dreps";
 import { useRouter } from "next/navigation";
-import {
-  DirectorySearchParams,
-  TableDirectory,
-} from "~/components/layout/Directory";
+import { DirectorySearchParams, TableDirectory } from "~/components/layout/Directory";
 import { formatVotingPower, localizePath, truncateMiddle } from "~/lib/utils";
 import { useLocale } from "~/hooks/use-locale";
 import { useTranslation } from "~/hooks/use-translation/use-translation";
-import { getDrepStatusBadge } from "../profile/ProfileCard";
+import { ProfileStatus } from "../profile/ProfileStatus";
 
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
@@ -31,19 +28,19 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
   return (
     <TableDirectory
       sortOptions={[
-        { value: "Random", label: "Random" },
+        { value: "Random", label: general.random },
         {
           value: "RegistrationDate",
-          label: "Registration Date (Newest to Oldest)",
+          label: general["registration-date"],
         },
-        { value: "VotingPower", label: "Voting Power (Higher to Lower)" },
-        { value: "Status", label: "Status" },
+        { value: "VotingPower", label: general.votingPower },
+        { value: "Status", label: general.status },
       ]}
       filterPopoverTitle="DRep Status"
       filterOptions={[
-        { value: "Active", label: "Active" },
-        { value: "Inactive", label: "Inactive" },
-        { value: "Retired", label: "Retired" },
+        { value: "Active", label: general.active },
+        { value: "Inactive", label: general.inactive },
+        { value: "Retired", label: general.retired },
       ]}
       searchPlaceholder={pageDReps.search}
       headers={[
@@ -57,30 +54,24 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
       rows={dreps.map((drep) => (
         <TableRow
           key={drep.view}
-          onClick={() =>
-            router.push(localizePath(locale, `/dreps/${drep.view}`))
-          }
+          onClick={() => router.push(localizePath(locale, `/dreps/${drep.view}`))}
           className="cursor-pointer hover:bg-muted/50"
         >
           <TableCell>
             <div className="flex items-center gap-2">
               <Avatar className="h-8 w-8">
                 <AvatarImage src={drep.imageUrl ?? ""} />
-                <AvatarFallback>
-                  {drep.givenName?.substring(0, 2)}
-                </AvatarFallback>
+                <AvatarFallback>{drep.givenName?.substring(0, 2)}</AvatarFallback>
               </Avatar>
               <div>
-                <div className="font-medium text-foreground">
-                  {drep.givenName}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {truncateMiddle(drep.view, 21)}
-                </div>
+                <div className="font-medium text-foreground">{drep.givenName}</div>
+                <div className="text-sm text-muted-foreground">{truncateMiddle(drep.view, 21)}</div>
               </div>
             </div>
           </TableCell>
-          <TableCell>{getDrepStatusBadge(drep)}</TableCell>
+          <TableCell>
+            <ProfileStatus drep={drep} />
+          </TableCell>
           <TableCell>
             <Badge className="bg-primary/20 text-primary hover:bg-primary/30">
               <span className="mr-1">₳</span>
@@ -96,7 +87,7 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
           {/* <TableCell>* drep.delegators</TableCell> */}
           {/* <TableCell>{drep.votingPower}</TableCell> */}
           <TableCell>
-            {new Date(drep.latestRegistrationDate).toLocaleDateString("en-US")}
+            {new Date(drep.latestRegistrationDate).toLocaleDateString(general.locale)}
           </TableCell>
           <TableCell>
             <div className="flex items-center gap-2">

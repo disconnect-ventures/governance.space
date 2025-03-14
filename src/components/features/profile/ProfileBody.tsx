@@ -1,29 +1,31 @@
 // https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=50-19626&t=GGJEhGlKd8rVords-4
-
+"use client";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { DRep } from "~/lib/dreps";
 import CopyToClipboard from "../CopyToClipboard";
+import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 type ProfileBodyProps = {
   drep: DRep;
 };
 
 export function ProfileBody({ drep }: ProfileBodyProps) {
+  const {
+    dictionary: { pageDRepsDetails },
+  } = useTranslation();
   return (
     <Card>
       <CardHeader></CardHeader>
       <CardContent className="flex flex-col gap-8">
         {[
-          ["Objectives", drep.objectives],
-          ["Motivations", drep.motivations],
-          ["Qualifications", drep.qualifications],
+          [pageDRepsDetails.objectives, drep.objectives],
+          [pageDRepsDetails.motivations, drep.motivations],
+          [pageDRepsDetails.qualifications, drep.qualifications],
           [
-            "Payment Address",
+            pageDRepsDetails["payment-address"],
             <>
               <span>{drep.paymentAddress}</span>
-              <CopyToClipboard
-                value={drep.paymentAddress ?? ""}
-              ></CopyToClipboard>
+              <CopyToClipboard value={drep.paymentAddress ?? ""}></CopyToClipboard>
             </>,
           ],
         ].map(([label, text], index) => (
