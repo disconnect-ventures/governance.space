@@ -1,4 +1,3 @@
-"use client";
 import { Card, CardContent } from "~/components/ui/card";
 import { DRep } from "~/lib/dreps";
 import { Textarea } from "~/components/ui/textarea";
@@ -7,17 +6,21 @@ import { Button } from "~/components/ui/button";
 import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
 import { Comment } from "~/lib/comments";
 import ComingSoon from "../layout/ComingSoon";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 type CommentsProps = {
   drep: DRep;
   comments: Array<Comment>;
+  general: {
+    comments: string;
+    submitComment: string;
+    locale: string;
+  };
+  pageDrepsDetails: {
+    askToDrep: string;
+  };
 };
 
-export function Comments({ comments }: CommentsProps) {
-  const {
-    dictionary: { general, pageDrepsDetails },
-  } = useTranslation();
+export function Comments({ comments, general, pageDrepsDetails }: CommentsProps) {
   return (
     <Card className="w-full mx-auto bg-card text-card-foreground">
       <CardContent className="p-6">

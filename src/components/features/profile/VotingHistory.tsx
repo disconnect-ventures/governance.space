@@ -7,19 +7,27 @@ import { Proposal } from "~/lib/proposals";
 import clsx from "clsx";
 import { Separator } from "~/components/ui/separator";
 import ComingSoon from "~/components/layout/ComingSoon";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 type VotingHistoryProps = {
   proposals: Array<Proposal>;
+  general: {
+    yes: string;
+    no: string;
+    abstain: string;
+    pending: string;
+    approved: string;
+    rejected: string;
+    locale: string;
+    item: string;
+  };
+  pageDrepsDetails: {
+    votingHistory: string;
+  };
 };
 
 type VoteType = "Yes" | "No" | "Abstain";
 
-export const VotingHistory = ({ proposals }: VotingHistoryProps) => {
-  const {
-    dictionary: { general, pageDrepsDetails },
-  } = useTranslation();
-
+export const VotingHistory = ({ proposals, general, pageDrepsDetails }: VotingHistoryProps) => {
   const [votes, setVotes] = useState<Record<string, VoteType>>({});
 
   useEffect(() => {

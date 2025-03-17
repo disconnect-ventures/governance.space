@@ -1,9 +1,7 @@
-"use client";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Star } from "lucide-react";
 import { Progress } from "~/components/ui/progress";
 import ComingSoon from "../layout/ComingSoon";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 type RatingProps = {
   ratings: {
@@ -12,12 +10,14 @@ type RatingProps = {
     };
   };
   className?: string;
+  pageDrepsDetails: {
+    rating: string;
+    reviews: string;
+    stars: string;
+  };
 };
 
-export function Rating({ ratings, className }: RatingProps) {
-  const {
-    dictionary: { pageDrepsDetails },
-  } = useTranslation();
+export function Rating({ ratings, className, pageDrepsDetails }: RatingProps) {
   const total = Object.values(ratings).reduce((total, { count }) => total + count, 0);
   const average = parseFloat(
     (

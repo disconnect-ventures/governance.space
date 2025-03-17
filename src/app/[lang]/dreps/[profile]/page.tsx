@@ -11,6 +11,8 @@ import { User } from "lucide-react";
 import { TopBar } from "~/components/layout/TopBar";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { Metadata } from "next";
+import { getDictionary } from "~/config/dictionaries";
+import { Locale } from "~/config/i18n";
 
 export async function generateMetadata({ params }: DRepProfileProps): Promise<Metadata> {
   const profileId = (await params).profile;
@@ -23,6 +25,7 @@ export async function generateMetadata({ params }: DRepProfileProps): Promise<Me
 type DRepProfileProps = {
   params: Promise<{
     profile: string;
+    lang: Locale;
   }>;
 };
 
@@ -55,10 +58,11 @@ export async function generateStaticParams() {
 }
 
 export default async function DRepProfilePage({ params }: DRepProfileProps) {
-  const { profile } = await params;
+  const { profile, lang } = await params;
   const drep = await getDRepById(profile);
   const proposals = (await getProposals(0, 3, "", "desc", [])).data;
   const comments = (await getComments(-1)).slice(0, 3);
+  const dictionary = await getDictionary(lang);
 
   if (!drep) {
     return notFound();
@@ -70,13 +74,32 @@ export default async function DRepProfilePage({ params }: DRepProfileProps) {
       <TopBar backHref="/dreps" />
       <div className="w-full flex flex-col lg:flex-row gap-4 justify-center">
         <div className="lg:w-2/3 flex flex-col gap-4">
-          <ProfileCard drep={drep} />
-          <ProfileBody drep={drep} />
-          <VotingHistory proposals={proposals} />
-          <Comments drep={drep} comments={comments} />
+          <ProfileCard
+            drep={drep}
+            general={dictionary.general}
+            pageDrepsDetails={dictionary.pageDrepsDetails}
+          />
+          <ProfileBody drep={drep} pageDrepsDetails={dictionary.pageDrepsDetails} />
+          <VotingHistory
+            proposals={proposals}
+            general={dictionary.general}
+            pageDrepsDetails={dictionary.pageDrepsDetails}
+          />
+          <Comments
+            drep={drep}
+            comments={comments}
+            general={dictionary.general}
+            pageDrepsDetails={dictionary.pageDrepsDetails}
+          />
         </div>
         <div className="lg:w-1/3">
-          <ProfileInfo drep={drep} comments={comments} />
+          <ProfileInfo
+            drep={drep}
+            comments={comments}
+            general={dictionary.general}
+            pageDreps={dictionary.pageDreps}
+            pageDrepsDetails={dictionary.pageDrepsDetails}
+          />
         </div>
       </div>
     </div>

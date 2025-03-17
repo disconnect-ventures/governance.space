@@ -1,19 +1,18 @@
-"use client";
 import { Badge } from "~/components/ui/badge";
 import { DRep } from "~/lib/dreps";
 import clsx from "clsx";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 type ProfileStatusProps = {
   drep: DRep;
   className?: string;
+  general: {
+    active: string;
+    retired: string;
+    inactive: string;
+  };
 };
 
-export function ProfileStatus({ drep, className }: ProfileStatusProps) {
-  const {
-    dictionary: { general },
-  } = useTranslation();
-
+export function ProfileStatus({ drep, className, general }: ProfileStatusProps) {
   const statusMap = {
     Active: {
       text: general.active,

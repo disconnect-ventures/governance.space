@@ -1,4 +1,3 @@
-"use client";
 import { ArrowRightCircle } from "lucide-react";
 import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { DRep } from "~/lib/dreps";
@@ -6,18 +5,22 @@ import { Avatar } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 import { Card, CardHeader, CardContent } from "~/components/ui/card";
 import CopyToClipboard from "../CopyToClipboard";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
 import { ProfileStatus } from "./ProfileStatus";
 
 type ProfileCardProps = {
   drep: DRep;
+  pageDrepsDetails: {
+    sendMessage: string;
+    drepId: string;
+  };
+  general: {
+    active: string;
+    retired: string;
+    inactive: string;
+  };
 };
 
-export function ProfileCard({ drep }: ProfileCardProps) {
-  const {
-    dictionary: { pageDrepsDetails },
-  } = useTranslation();
-
+export function ProfileCard({ drep, pageDrepsDetails, general }: ProfileCardProps) {
   return (
     <Card className="w-full bg-card text-card-foreground shadow-sm space-y-2">
       <CardHeader className="pb-4">
@@ -38,7 +41,7 @@ export function ProfileCard({ drep }: ProfileCardProps) {
                   <Star></Star>
                 </span> */}
               </div>
-              <ProfileStatus drep={drep} />
+              <ProfileStatus drep={drep} general={general} />
             </div>
           </div>
           <div className="flex flex-wrap gap-2 justify-start md:justify-end md:ml-auto">
