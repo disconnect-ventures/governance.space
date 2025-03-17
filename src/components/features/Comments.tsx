@@ -16,7 +16,7 @@ type CommentsProps = {
 
 export function Comments({ comments }: CommentsProps) {
   const {
-    dictionary: { general, pageDRepsDetails },
+    dictionary: { general, pageDrepsDetails },
   } = useTranslation();
   return (
     <Card className="w-full mx-auto bg-card text-card-foreground">
@@ -30,7 +30,7 @@ export function Comments({ comments }: CommentsProps) {
           <div className="space-y-4 mb-6">
             <div className="flex gap-4">
               <Textarea
-                placeholder={pageDRepsDetails["ask-to-drep"]}
+                placeholder={pageDrepsDetails.askToDrep}
                 className="min-h-[100px] bg-background text-foreground border-border placeholder:text-muted-foreground"
               />
             </div>
@@ -40,7 +40,7 @@ export function Comments({ comments }: CommentsProps) {
                 disabled
               >
                 <Send className="w-4 h-4" />
-                {general["submit-comment"]}
+                {general.submitComment}
               </Button>
             </div>
           </div>

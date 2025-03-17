@@ -11,18 +11,18 @@ type ProfileBodyProps = {
 
 export function ProfileBody({ drep }: ProfileBodyProps) {
   const {
-    dictionary: { pageDRepsDetails },
+    dictionary: { pageDrepsDetails },
   } = useTranslation();
   return (
     <Card>
       <CardHeader></CardHeader>
       <CardContent className="flex flex-col gap-8">
         {[
-          [pageDRepsDetails.objectives, drep.objectives],
-          [pageDRepsDetails.motivations, drep.motivations],
-          [pageDRepsDetails.qualifications, drep.qualifications],
+          [pageDrepsDetails.objectives, drep.objectives],
+          [pageDrepsDetails.motivations, drep.motivations],
+          [pageDrepsDetails.qualifications, drep.qualifications],
           [
-            pageDRepsDetails["payment-address"],
+            pageDrepsDetails.paymentAddress,
             <>
               <span>{drep.paymentAddress}</span>
               <CopyToClipboard value={drep.paymentAddress ?? ""}></CopyToClipboard>

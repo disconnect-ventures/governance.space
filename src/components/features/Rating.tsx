@@ -16,7 +16,7 @@ type RatingProps = {
 
 export function Rating({ ratings, className }: RatingProps) {
   const {
-    dictionary: { pageDRepsDetails },
+    dictionary: { pageDrepsDetails },
   } = useTranslation();
   const total = Object.values(ratings).reduce((total, { count }) => total + count, 0);
   const average = parseFloat(
@@ -31,7 +31,7 @@ export function Rating({ ratings, className }: RatingProps) {
     <Card className={`bg-card text-card-foreground ${className}`}>
       <CardHeader>
         <CardTitle className="text-foreground dark:text-neutral-100">
-          {pageDRepsDetails.rating}
+          {pageDrepsDetails.rating}
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -54,7 +54,7 @@ export function Rating({ ratings, className }: RatingProps) {
                 ))}
               </div>
               <span className="text-sm text-muted-foreground dark:text-neutral-400 whitespace-nowrap">
-                {total} {pageDRepsDetails.reviews}
+                {total} {pageDrepsDetails.reviews}
               </span>
             </div>
             <div className="space-y-2">
@@ -63,7 +63,7 @@ export function Rating({ ratings, className }: RatingProps) {
                 .map(([stars, { count }]) => (
                   <div key={stars} className="flex items-center gap-2">
                     <span className="w-16 text-sm whitespace-nowrap text-muted-foreground dark:text-neutral-400">
-                      {stars} {pageDRepsDetails.stars}
+                      {stars} {pageDrepsDetails.stars}
                     </span>
                     <Progress
                       value={(count / total) * 100}

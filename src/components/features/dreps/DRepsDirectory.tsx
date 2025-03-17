@@ -22,7 +22,7 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
   const router = useRouter();
   const { locale } = useLocale();
   const {
-    dictionary: { pageDReps, general },
+    dictionary: { pageDreps, general },
   } = useTranslation();
 
   return (
@@ -31,7 +31,7 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
         { value: "Random", label: general.random },
         {
           value: "RegistrationDate",
-          label: general["registration-date"],
+          label: general.registrationDate,
         },
         { value: "VotingPower", label: general.votingPower },
         { value: "Status", label: general.status },
@@ -42,13 +42,13 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
         { value: "Inactive", label: general.inactive },
         { value: "Retired", label: general.retired },
       ]}
-      searchPlaceholder={pageDReps.search}
+      searchPlaceholder={pageDreps.search}
       headers={[
-        pageDReps.drepName,
-        pageDReps.status,
-        pageDReps.votingPower,
-        pageDReps.registrationDate,
-        pageDReps.actions,
+        pageDreps.drepName,
+        pageDreps.status,
+        pageDreps.votingPower,
+        pageDreps.registrationDate,
+        pageDreps.actions,
       ]}
       params={params}
       rows={dreps.map((drep) => (

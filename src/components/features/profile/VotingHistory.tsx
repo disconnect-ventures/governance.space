@@ -17,7 +17,7 @@ type VoteType = "Yes" | "No" | "Abstain";
 
 export const VotingHistory = ({ proposals }: VotingHistoryProps) => {
   const {
-    dictionary: { general, pageDRepsDetails },
+    dictionary: { general, pageDrepsDetails },
   } = useTranslation();
 
   const [votes, setVotes] = useState<Record<string, VoteType>>({});
@@ -79,7 +79,7 @@ export const VotingHistory = ({ proposals }: VotingHistoryProps) => {
   return (
     <Card className="bg-card text-card-foreground">
       <CardHeader className="text-xl font-semibold text-foreground">
-        {pageDRepsDetails["voting-history"]}
+        {pageDrepsDetails.votingHistory}
       </CardHeader>
       <CardContent className="space-y-4">
         <ComingSoon>

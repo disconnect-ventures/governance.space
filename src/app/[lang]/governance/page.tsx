@@ -28,19 +28,11 @@ export default async function GovernancePage({
   const searchParams = (await searchParamsPromise) ?? {};
   const page = parseInt(searchParams["page"] ?? "0");
   const pageSize = parseInt(searchParams["pageSize"] ?? "20");
-  const sort =
-    (searchParams["sort"] as GovernanceActionSortOption) ?? "NewestCreated";
-  const filters = (searchParams["filters"]?.split(",") ??
-    []) as GovernanceActionFilterOption[];
+  const sort = (searchParams["sort"] as GovernanceActionSortOption) ?? "NewestCreated";
+  const filters = (searchParams["filters"]?.split(",") ?? []) as GovernanceActionFilterOption[];
   const search = searchParams["search"] ?? "";
 
-  const governanceActions = await getGovernanceActions(
-    page,
-    pageSize,
-    search,
-    sort,
-    filters
-  );
+  const governanceActions = await getGovernanceActions(page, pageSize, search, sort, filters);
 
   const metadata: Record<string, ApiMetadata | null> = {};
   await Promise.all(
@@ -48,10 +40,10 @@ export default async function GovernancePage({
       const data = await getGovernanceActionMetadata(
         action.metadataHash,
         MetadataStandard.CIP108,
-        action.url
+        action.url,
       );
       metadata[action.id] = data;
-    })
+    }),
   );
 
   const dictionary = await getDictionary(params.lang);
@@ -66,7 +58,7 @@ export default async function GovernancePage({
             <BookOpenCheckIcon />
           </div>
         }
-        badge={`${governanceActions.total} ${pageDictionary.badge_text}`}
+        badge={`${governanceActions.total} ${pageDictionary.badgeText}`}
         translationPage="pageGovernanceActions"
       ></PageTitle>
       <GovernanceActionDirectory

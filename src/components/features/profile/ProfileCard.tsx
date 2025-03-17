@@ -15,7 +15,7 @@ type ProfileCardProps = {
 
 export function ProfileCard({ drep }: ProfileCardProps) {
   const {
-    dictionary: { pageDRepsDetails },
+    dictionary: { pageDrepsDetails },
   } = useTranslation();
 
   return (
@@ -47,18 +47,18 @@ export function ProfileCard({ drep }: ProfileCardProps) {
               className="border-border text-foreground hover:bg-accent hover:text-accent-foreground"
               disabled
             >
-              {pageDRepsDetails["send-message"]}
+              {pageDrepsDetails.sendMessage}
             </Button>
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2" disabled>
               <ArrowRightCircle />
-              {pageDRepsDetails["delegate-voting-power"]}
+              {pageDrepsDetails.sendMessage}
             </Button>
           </div>
         </div>
       </CardHeader>
       <CardContent>
         <div className="w-full flex flex-row items-center gap-2 text-sm text-muted-foreground overflow-hidden">
-          <span>{pageDRepsDetails["drep-id"]}:</span>
+          <span>{pageDrepsDetails.drepId}:</span>
           <span className="w-full sm:w-fit text-ellipsis overflow-hidden text-foreground">
             {drep.drepId}
           </span>
