@@ -1,18 +1,19 @@
 // https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=50-19626&t=GGJEhGlKd8rVords-4
-"use client";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { DRep } from "~/lib/dreps";
 import CopyToClipboard from "../CopyToClipboard";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 type ProfileBodyProps = {
   drep: DRep;
+  pageDrepsDetails: {
+    objectives: string;
+    motivations: string;
+    qualifications: string;
+    paymentAddress: string;
+  };
 };
 
-export function ProfileBody({ drep }: ProfileBodyProps) {
-  const {
-    dictionary: { pageDrepsDetails },
-  } = useTranslation();
+export function ProfileBody({ drep, pageDrepsDetails }: ProfileBodyProps) {
   return (
     <Card>
       <CardHeader></CardHeader>

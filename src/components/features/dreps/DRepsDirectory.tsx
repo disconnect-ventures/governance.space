@@ -10,21 +10,35 @@ import { useRouter } from "next/navigation";
 import { DirectorySearchParams, TableDirectory } from "~/components/layout/Directory";
 import { formatVotingPower, localizePath, truncateMiddle } from "~/lib/utils";
 import { useLocale } from "~/hooks/use-locale";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
 import { ProfileStatus } from "../profile/ProfileStatus";
 
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
   params: DirectorySearchParams;
+  general: {
+    random: string;
+    registrationDate: string;
+    votingPower: string;
+    status: string;
+    active: string;
+    inactive: string;
+    retired: string;
+    locale: string;
+    details: string;
+  };
+  pageDreps: {
+    search: string;
+    drepName: string;
+    status: string;
+    votingPower: string;
+    registrationDate: string;
+    actions: string;
+  };
 };
 
-export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
+export const DRepsDirectory = ({ dreps, params, general, pageDreps }: DRepsDirectoryProps) => {
   const router = useRouter();
   const { locale } = useLocale();
-  const {
-    dictionary: { pageDreps, general },
-  } = useTranslation();
-
   return (
     <TableDirectory
       sortOptions={[
@@ -70,7 +84,7 @@ export const DRepsDirectory = ({ dreps, params }: DRepsDirectoryProps) => {
             </div>
           </TableCell>
           <TableCell>
-            <ProfileStatus drep={drep} />
+            <ProfileStatus drep={drep} general={general} />
           </TableCell>
           <TableCell>
             <Badge className="bg-primary/20 text-primary hover:bg-primary/30">

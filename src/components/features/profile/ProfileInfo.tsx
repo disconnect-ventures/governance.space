@@ -1,5 +1,4 @@
 // https://www.figma.com/design/bfEklPIeZVRf0P6xC6f1e7/Governance-Space?node-id=50-19626&t=GGJEhGlKd8rVords-4
-"use client";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { DRep } from "~/lib/dreps";
 import { Rating } from "../Rating";
@@ -26,17 +25,26 @@ import { Badge } from "~/components/ui/badge";
 // } from "~/components/ui/tooltip";
 import { Comment } from "~/lib/comments";
 import { formatVotingPower } from "~/lib/utils";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 type ProfileInfoProps = {
   drep: DRep;
   comments: Array<Comment>;
+  general: {
+    locale: string;
+  };
+  pageDreps: {
+    votingPower: string;
+    registrationDate: string;
+  };
+  pageDrepsDetails: {
+    info: string;
+    rating: string;
+    reviews: string;
+    stars: string;
+  };
 };
 
-export function ProfileInfo({ drep }: ProfileInfoProps) {
-  const {
-    dictionary: { general, pageDreps, pageDrepsDetails },
-  } = useTranslation();
+export function ProfileInfo({ drep, general, pageDreps, pageDrepsDetails }: ProfileInfoProps) {
   const ratings = {
     5: { count: 30 },
     4: { count: 20 },
@@ -167,7 +175,7 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
         </CardContent>
       </Card> */}
 
-      <Rating ratings={ratings} />
+      <Rating ratings={ratings} pageDrepsDetails={pageDrepsDetails} />
     </div>
   );
 }
