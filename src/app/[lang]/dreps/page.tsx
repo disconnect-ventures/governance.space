@@ -26,7 +26,7 @@ export default async function DRepsDirectoryPage({
   const { total: totalDReps } = await getDReps(0, 1, "", "Random", []);
   const locale = params.lang;
   const dictionary = await getDictionary(locale);
-  const badgeText = dictionary.pageDReps.badgeText;
+  const badgeText = dictionary.pageDreps.badgeText;
 
   return (
     <div className="space-y-4 bg-background text-foreground dark:bg-background dark:text-foreground">
@@ -38,7 +38,7 @@ export default async function DRepsDirectoryPage({
           </div>
         }
         badge={`${totalDReps} ${badgeText}`}
-        translationPage="pageDReps"
+        translationPage="pageDreps"
       />
       <DRepsDirectory
         dreps={dreps.elements}

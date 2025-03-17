@@ -6,7 +6,7 @@ import { InfoIcon } from "lucide-react";
 import { useTranslation } from "~/hooks/use-translation/use-translation";
 
 type TranslationPage =
-  | "pageDReps"
+  | "pageDreps"
   | "pageGovernanceActions"
   | "pageProposals"
   | "pageGovernanceActionsDetails"

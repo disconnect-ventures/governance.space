@@ -35,7 +35,7 @@ type ProfileInfoProps = {
 
 export function ProfileInfo({ drep }: ProfileInfoProps) {
   const {
-    dictionary: { general, pageDReps, pageDRepsDetails },
+    dictionary: { general, pageDreps, pageDrepsDetails },
   } = useTranslation();
   const ratings = {
     5: { count: 30 },
@@ -51,7 +51,7 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
         <CardContent className="pt-6 space-y-4">
           {[
             {
-              label: pageDReps.votingPower,
+              label: pageDreps.votingPower,
               value: (
                 <Badge
                   key={"2"}
@@ -127,7 +127,7 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
       </Card> */}
 
       <Card className="bg-card text-card-foreground">
-        <CardHeader className="text-foreground">{[pageDRepsDetails.info]}</CardHeader>
+        <CardHeader className="text-foreground">{[pageDrepsDetails.info]}</CardHeader>
         <CardContent className="space-y-3">
           {/* <div className="text-sm">
             <span className="text-muted-foreground">
@@ -137,7 +137,7 @@ export function ProfileInfo({ drep }: ProfileInfoProps) {
           </div> */}
           <div className="text-sm">
             <span className="text-muted-foreground">
-              <MapPinIcon className="inline h-4 w-4 mr-1"></MapPinIcon> {pageDReps.registrationDate}:
+              <MapPinIcon className="inline h-4 w-4 mr-1"></MapPinIcon> {pageDreps.registrationDate}:
             </span>
             <span className="ml-2 text-foreground">
               {new Date(drep.latestRegistrationDate).toLocaleDateString(general.locale)}
