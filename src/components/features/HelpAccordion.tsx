@@ -59,10 +59,21 @@ export function HelpAccordion() {
               <AccordionTrigger className="hover:no-underline text-foreground">
                 What is a Governance Action?
               </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground">
-                We define seven different types of governance actions. A
-                governance action is an on-chain event that is triggered by a
-                transaction and has a deadline after which it cannot be enacted.
+              <AccordionContent className="text-sm text-muted-foreground space-y-2">
+                <p>
+                  A governance action is a proposal that is submitted on-chain
+                  for voting. It is an on-chain event triggered by a transaction
+                  and typically comes with an expiration period, after which the
+                  action cannot be enacted. Any ADA holder can submit a
+                  governance action, and once it&lsquo;s recorded on the ledger,
+                  voting transactions can be submitted to approve or ratify the
+                  action.
+                </p>
+                <p>
+                  Additionally, once a governance action is ratified after
+                  reaching defined thresholds, it is enacted on-chain according
+                  to a set of rules.
+                </p>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -78,15 +89,6 @@ export function HelpAccordion() {
         </AccordionTrigger>
         <AccordionContent className="px-4">
           <Accordion type="single" collapsible className="w-full space-y-2">
-            <AccordionItem value="governance-action-2" className="border-none">
-              <AccordionTrigger className="hover:no-underline text-foreground">
-                What is a Governance Action?
-              </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground">
-                Content for governance action under delegation section.
-              </AccordionContent>
-            </AccordionItem>
-
             <AccordionItem
               value="choose-representative"
               className="border-none"
@@ -113,7 +115,22 @@ export function HelpAccordion() {
           Proposals
         </AccordionTrigger>
         <AccordionContent className="px-4">
-          Proposals content goes here.
+          <Accordion type="single" collapsible className="w-full space-y-2">
+            <AccordionItem value="governance-action-2" className="border-none">
+              <AccordionTrigger className="hover:no-underline text-foreground">
+                What is the difference between a governance proposal and a
+                governance action?
+              </AccordionTrigger>
+              <AccordionContent className="text-sm text-muted-foreground">
+                A governance proposal is essentially a draft governance
+                action—it represents a proposal that has not yet been submitted
+                on-chain. In contrast, a governance action is a proposal that
+                has been submitted on-chain for voting, making it an official
+                on-chain event that includes features such as an expiration
+                period, after which it can no longer be enacted.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </AccordionContent>
       </AccordionItem>
 
@@ -127,25 +144,24 @@ export function HelpAccordion() {
         </AccordionTrigger>
         <AccordionContent className="px-4">
           <Accordion type="single" collapsible className="w-full space-y-2">
-            <AccordionItem value="governance-action-2" className="border-none">
+            <AccordionItem value="on-chain-voting" className="border-none">
               <AccordionTrigger className="hover:no-underline text-foreground">
-                What is a Governance Action?
+                What is On-Chain Voting?
               </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground">
-                Content for governance action under delegation section.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem
-              value="choose-representative"
-              className="border-none"
-            >
-              <AccordionTrigger className="hover:no-underline text-foreground">
-                How to choose a DRep?
-              </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground">
-                Search for a DRep in the DReps Directory and after choosing,
-                click on Delegate Voting Power.
+              <AccordionContent className="text-sm text-muted-foreground space-y-2">
+                <p>
+                  On-Chain Voting is the process that allows the 3 voting bodies
+                  (DReps, SPOs, Constitutional Committee) to submit their
+                  decision about On-Chain active Governance Actions, and so
+                  allows the Cardano Community and its ADA Holders to be
+                  represented in the Governance of Cardano.
+                </p>
+                <p>
+                  In order for a Governance Action to get ratified through
+                  On-Chain voting it needs to meet voting thresholds from some
+                  or all of the voting bodies (depending on the Governance
+                  Action Type).
+                </p>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
