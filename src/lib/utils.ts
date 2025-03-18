@@ -3,6 +3,8 @@ import { twMerge } from "tailwind-merge";
 import { i18n, Locale } from "~/config/i18n";
 import { EPOCH_LENGTH_MS, FIRST_EPOCH_START } from "./constants";
 
+export type Maybe<T> = T | undefined;
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
