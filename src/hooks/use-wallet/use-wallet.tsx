@@ -5,6 +5,7 @@ import {
   useNetwork,
 } from "@meshsdk/react";
 import { useEffect } from "react";
+import { Maybe } from "~/lib/utils";
 
 export const networks = {
   0: {
@@ -18,7 +19,7 @@ export const networks = {
 export function useWallet() {
   const { wallet, connected, connect, ...mesh } = useMeshWallet();
   const balance = useLovelace();
-  const networkId = useNetwork();
+  const networkId = useNetwork() as Maybe<keyof typeof networks>;
 
   useEffect(() => {
     // Persist wallet session
@@ -29,11 +30,6 @@ export function useWallet() {
       connect(persistWallet.walletName, [], true);
     }
   }, [connected, connect]);
-
-  useEffect(() => {
-    if (!wallet || !wallet.getExtensions) return;
-    wallet?.getExtensions().then((e) => console.log(e));
-  }, [wallet]);
 
   return {
     wallet,

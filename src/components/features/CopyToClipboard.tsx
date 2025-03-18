@@ -2,18 +2,20 @@
 import React, { useCallback, useState } from "react";
 import { CopyIcon } from "lucide-react";
 import { useToast } from "~/hooks/use-toast";
-import { twMerge } from "tailwind-merge";
+import { cn } from "~/lib/utils";
 
 interface CopyToClipboardProps {
   value: string;
   className?: string;
   icon?: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
   value,
   className,
   icon,
+  children,
 }) => {
   const [isCopied, setIsCopied] = useState(false);
   const { toast } = useToast();
@@ -32,15 +34,16 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
   return (
     <button
       onClick={handleCopy}
-      className={twMerge(
-        `flex items-center justify-center hover:bg-gray-100 p-2 rounded-md transition-colors`,
+      className={cn(
+        `group flex items-center gap-2 justify-center p-2 rounded-md transition-colors`,
         className
       )}
       aria-label="Copy to clipboard"
     >
+      {children}
       {icon || (
         <CopyIcon
-          className={`w-4 h-4 ${isCopied ? "text-green-500" : "text-gray-500"}`}
+          className={`w-4 h-4 ${isCopied ? "text-green-500" : "text-gray-500"} group-hover:text-gray-100`}
         />
       )}
     </button>
