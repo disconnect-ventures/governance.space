@@ -106,7 +106,7 @@ export const Header = () => {
   const locale = (params.lang?.toString() ?? "en-us") as Locale;
   const pathname = usePathname();
   const [balance, setBalance] = useState<string>();
-  const { wallet, connected } = useWallet();
+  const { wallet, connected, connect } = useWallet();
 
   useEffect(() => {
     async function fetchBalance() {
@@ -119,6 +119,17 @@ export const Header = () => {
 
     fetchBalance();
   }, [wallet, connected]);
+
+  useEffect(() => {
+    // Persist wallet session
+    const persistWallet: { walletName?: string } = JSON.parse(
+      window?.localStorage?.getItem("mesh-wallet-persist") ?? "{}"
+    );
+
+    if (!connected && persistWallet?.walletName) {
+      connect(persistWallet.walletName);
+    }
+  }, [connected, connect]);
 
   return (
     <div className="w-full border-b border-border py-4 md:pb-0 sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -147,7 +158,7 @@ export const Header = () => {
             </Link>
 
             <div className="dark:text-background">
-              <CardanoWallet />
+              <CardanoWallet persist />
             </div>
 
             {connected && (
