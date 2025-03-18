@@ -9,7 +9,7 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import { SidebarProvider } from "~/components/ui/sidebar";
 import { AppSidebar } from "~/components/layout/AppSidebar";
 import { Inter } from "next/font/google";
-import ClientProvider from "~/hooks/MeshProvider";
+import { WalletProvider } from "~/hooks/use-wallet/wallet-context";
 import "./globals.css";
 import "@meshsdk/react/styles.css";
 import { i18n, Locale } from "~/config/i18n";
@@ -63,7 +63,7 @@ export default async function RootLayout(props: {
       >
         <TranslationProvider value={{ dictionary, locale: params.lang }}>
           <SidebarProvider>
-            <ClientProvider>
+            <WalletProvider>
               <div className="w-full overflow-x-hidden">
                 <AnnouncementBar />
                 <Header />
@@ -78,7 +78,7 @@ export default async function RootLayout(props: {
                 <Toaster />
                 <Footer />
               </div>
-            </ClientProvider>
+            </WalletProvider>
           </SidebarProvider>
         </TranslationProvider>
       </body>

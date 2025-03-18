@@ -1,11 +1,6 @@
 "use client";
-
 import { MeshProvider } from "@meshsdk/react";
 
-export default function ClientProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function WalletProvider({ children }: { children: React.ReactNode }) {
   return <MeshProvider>{children}</MeshProvider>;
 }
