@@ -10,7 +10,7 @@ import {
 import { networks, useWallet } from "~/hooks/use-wallet/use-wallet";
 import { buttonVariants } from "../ui/button";
 import { useMemo, useState } from "react";
-import { capitalize, cn, formatAda } from "~/lib/utils";
+import { capitalize, cn, formatAda, formatVotingPower } from "~/lib/utils";
 import CopyToClipboard from "./CopyToClipboard";
 import { useWalletList } from "@meshsdk/react";
 import Image from "next/image";
@@ -86,7 +86,9 @@ export const WalletWidget = () => {
       >
         <WalletIcon className="h-6" />
         {connected
-          ? `${networkName}: ${formatAda(balance ?? "0")}`
+          ? `${networkName}: ${formatAda(
+              formatVotingPower(parseFloat(balance ?? "0"))
+            )}`
           : "Connect Wallet"}
       </DropdownMenuTrigger>
       <DropdownMenuContent>
