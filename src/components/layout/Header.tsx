@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -13,13 +13,14 @@ import { SidebarTrigger, useSidebar } from "../ui/sidebar";
 import { Separator } from "../ui/separator";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import clsx from "clsx";
-import { CardanoWallet, useWallet } from "@meshsdk/react";
+import { CardanoWallet } from "@meshsdk/react";
 import LocaleSwitch from "../features/LocaleSwitch";
 import { Input } from "../ui/input";
 import { useTranslation } from "~/hooks/use-translation/use-translation";
 import { SearchIcon } from "lucide-react";
 import { localizePath } from "~/lib/utils";
 import { Locale } from "~/config/i18n";
+import { useWallet } from "~/hooks/use-wallet/use-wallet";
 
 export const headerNavLinks = [
   { label: "Home", href: "/" },
@@ -106,31 +107,7 @@ export const Header = () => {
   const params = useParams();
   const locale = (params.lang?.toString() ?? "en-us") as Locale;
   const pathname = usePathname();
-  const [balance, setBalance] = useState<string>();
-  const { wallet, connected, connect } = useWallet();
-
-  useEffect(() => {
-    async function fetchBalance() {
-      if (wallet && connected) {
-        const balance = await wallet.getBalance();
-        const ada = (Number(balance[0].quantity) / 1000000).toFixed(2);
-        setBalance(ada);
-      }
-    }
-
-    fetchBalance();
-  }, [wallet, connected]);
-
-  useEffect(() => {
-    // Persist wallet session
-    const persistWallet: { walletName?: string } = JSON.parse(
-      window?.localStorage?.getItem("mesh-wallet-persist") ?? "{}"
-    );
-
-    if (!connected && persistWallet?.walletName) {
-      connect(persistWallet.walletName);
-    }
-  }, [connected, connect]);
+  const wallet = useWallet();
 
   return (
     <div className="w-full border-b border-border py-4 md:pb-0 sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -162,13 +139,13 @@ export const Header = () => {
               <CardanoWallet persist />
             </div>
 
-            {connected && (
+            {wallet.connected && (
               <Button
                 size="sm"
                 variant="secondary"
                 className="cursor-default gap-1 text-secondary-foreground"
               >
-                Voting power: <b>₳{balance}</b>
+                Voting power: <b>₳{wallet.balance}</b>
               </Button>
             )}
             <LocaleSwitch />
