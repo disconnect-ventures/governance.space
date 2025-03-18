@@ -45,8 +45,8 @@ export function Footer() {
           path: "https://constitution.gov.tools/en",
         },
         {
-          title: "Interim Constitution",
-          path: "https://constitution.gov.tools/en/interim-constitution",
+          title: "Read the Constitution",
+          path: "https://constitution.gov.tools/en/constitution",
         },
       ],
     },
