@@ -70,10 +70,10 @@ export function HelpAccordion() {
 
             <AccordionItem value="choose-representative" className="border-none">
               <AccordionTrigger className="hover:no-underline text-foreground">
-                Como escolher um representante?
+                How to choose a DRep?
               </AccordionTrigger>
               <AccordionContent className="text-sm text-muted-foreground">
-                Content about choosing a representative.
+                Search for a DRep in the DReps Directory and after choosing, click on Delegate Voting Power.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
