@@ -14,15 +14,17 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { Button } from "../ui/button";
 import { CardanoWallet, useWallet } from "@meshsdk/react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import LocaleSwitch from "../features/LocaleSwitch";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
+import { Dictionary } from "~/config/dictionaries";
 
-export function AppSidebar() {
+export type AppSidebarProps = {
+  translations: Pick<Dictionary, "header" | "wallet" | "pageDreps">;
+};
+
+export function AppSidebar({ translations }: AppSidebarProps) {
   const pathname = usePathname();
-  const { dictionary } = useTranslation();
-  const headerTranslations = useMemo(() => dictionary.header, [dictionary]);
   const [balance, setBalance] = useState<string>();
   const { wallet, connected } = useWallet();
 
@@ -55,7 +57,7 @@ export function AppSidebar() {
                             "bg-primary/10 text-primary focus:bg-primary/10 focus:text-primary",
                         )}
                       >
-                        <span>{item.label}</span>
+                        <span>{translations.header[item.label]}</span>
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -63,14 +65,14 @@ export function AppSidebar() {
               </SidebarMenu>
               <div className="flex flex-col gap-2 mt-auto">
                 <Button variant="ghost" className="hover:bg-accent hover:text-accent-foreground">
-                  {headerTranslations.becomeDrep}
+                  {translations.header.becomeDrep}
                 </Button>
                 <div className="dark:text-background">
-                  <CardanoWallet />
+                  <CardanoWallet label={translations.wallet.connectWallet} />
                 </div>
                 {connected && (
                   <Button size="sm" className="cursor-default bg-secondary text-secondary-foreground">
-                    {dictionary.pageDreps.votingPower}: ₳{balance}
+                    {translations.pageDreps.votingPower}: ₳{balance}
                   </Button>
                 )}
               </div>

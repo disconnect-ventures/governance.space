@@ -68,7 +68,13 @@ export default async function RootLayout(props: {
                     wallet: dictionary.wallet,
                   }}
                 />
-                <AppSidebar />
+                <AppSidebar
+                  translations={{
+                    header: dictionary.header,
+                    wallet: dictionary.wallet,
+                    pageDreps: dictionary.pageDreps,
+                  }}
+                />
                 <main className="min-h-[50vh] flex flex-col gap-4 justify-between bg-background pt-2">
                   <div className="w-full max-w-7xl mx-auto relative my-4 px-4 md:px-8 mb-64">
                     <Breadcrumbs />
