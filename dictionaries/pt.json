@@ -119,7 +119,9 @@
   },
   "wallet": {
     "connectWallet": "Conectar Carteira",
-    "availableWallet": "Carteiras Disponíveis"
+    "availableWallet": "Carteiras Disponíveis",
+    "unknownNetwork": "Rede Desconhecida",
+    "noWalletFound": "Nenhuma carteira encontrada."
   },
   "newsletter": {
     "newsletterCta": "Governance Space na Blockchain Cardano",

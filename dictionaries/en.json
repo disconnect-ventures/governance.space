@@ -119,7 +119,9 @@
   },
   "wallet": {
     "connectWallet": "Connect Wallet",
-    "availableWallet": "Available Wallets"
+    "availableWallet": "Available Wallets",
+    "unknownNetwork": "Unknown Network",
+    "noWalletFound": "No wallet found."
   },
   "newsletter": {
     "newsletterCta": "Governance Space on Cardano Blockchain",

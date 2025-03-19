@@ -25,8 +25,8 @@ export const WalletWidget = ({ translations }: WalletWidgetProps) => {
   const [open, setOpen] = useState(false);
   const { connected, networkId, balance, ...walletStore } = useWallet();
   const networkName = useMemo(
-    () => (typeof networkId === "number" ? networks[networkId]?.name : "Unknown Network"),
-    [networkId],
+    () => (typeof networkId === "number" ? networks[networkId]?.name : translations.unknownNetwork),
+    [networkId, translations.unknownNetwork],
   );
   const wallets = useWalletList();
   const dropdownMenuItemClasses = useMemo(() => "flex gap-2 items-center", []);
@@ -64,9 +64,9 @@ export const WalletWidget = ({ translations }: WalletWidgetProps) => {
           ))}
         </>
       ) : (
-        "No wallet found."
+        translations.noWalletFound
       ),
-    [connected, wallets, walletStore, dropdownMenuItemClasses],
+    [connected, wallets, walletStore, dropdownMenuItemClasses, translations.noWalletFound],
   );
 
   return (
