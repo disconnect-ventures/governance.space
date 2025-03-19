@@ -13,6 +13,9 @@ import clsx from "clsx";
 import Link from "~/components/features/Link";
 import { calculateEpochNumber, formatDate } from "~/lib/utils";
 import { Dictionary } from "~/config/dictionaries";
+import Latex from "react-latex-next";
+import markdownToHtml from "~/lib/markdown";
+import { use } from "react";
 
 export type ProposalCardProps = {
   proposal: Proposal;
@@ -20,6 +23,10 @@ export type ProposalCardProps = {
 };
 
 const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
+  const abstract = use(
+    markdownToHtml(proposal.attributes.content.attributes.prop_abstract)
+  );
+
   const username = proposal.attributes.user_govtool_username;
   const proposalId = proposal.attributes.content.attributes.proposal_id;
   const isProposalActive =
@@ -84,7 +91,8 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
 
       <CardContent className="h-full flex flex-col gap-4 justify-between">
         <div className="max-h-48 h-full overflow-y-auto text-muted-foreground bg-muted/50 p-4 rounded-lg">
-          <p>{proposal.attributes.content.attributes.prop_abstract}</p>
+          <Latex>{abstract}</Latex>
+          {/* <p>{proposal.attributes.content.attributes.prop_abstract}</p> */}
         </div>
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
           <Badge
