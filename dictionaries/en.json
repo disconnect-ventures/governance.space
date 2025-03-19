@@ -107,7 +107,6 @@
   },
   "header": {
     "becomeDrep": "Become a DRep",
-    "connectWallet": "Connect Wallet",
     "titleHome": "Home",
     "titleDreps": "DReps Directory",
     "titleGovernanceActions": "Governance Actions",
@@ -117,6 +116,10 @@
     "titleAnalytics": "Analytics",
     "titleHelp": "Help",
     "titleAbout": "About"
+  },
+  "wallet": {
+    "connectWallet": "Connect Wallet",
+    "availableWallet": "Available Wallets"
   },
   "newsletter": {
     "newsletterCta": "Governance Space on Cardano Blockchain",
@@ -141,7 +144,7 @@
     "linkIntersect": "Intersect",
     "linkCardano": "Cardano",
     "linkCommitteePortal": "Const. Committee Portal",
-    "linkInterimConstitution": "Interim Constitution",
+    "linkInterimConstitution": "Read the Constitution",
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms Of Use",
     "cookiePolicy": "Cookie Policy",

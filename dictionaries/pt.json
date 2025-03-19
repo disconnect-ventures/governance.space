@@ -107,7 +107,6 @@
   },
   "header": {
     "becomeDrep": "Torne-se um DRep",
-    "connectWallet": "Conectar Carteira",
     "titleHome": "Home",
     "titleDreps": "Diretório de DReps",
     "titleGovernanceActions": "Ações de Governança",
@@ -118,6 +117,10 @@
     "titleHelp": "Ajuda",
     "titleAbout": "Sobre"
   },
+  "wallet": {
+    "connectWallet": "Conectar Carteira",
+    "availableWallet": "Carteiras Disponíveis"
+  },
   "newsletter": {
     "newsletterCta": "Governance Space na Blockchain Cardano",
     "newsletterTitle": "Você está pronto para participar?",
@@ -126,7 +129,7 @@
     "newsletterButton": "Cadastre-se"
   },
   "footer": {
-    "builtOn": "Construído na",
+    "builtOn": "Construído em",
     "titleExplore": "Explorar",
     "titleGovernance": "Governança",
     "titleLinks": "Links",
@@ -141,7 +144,7 @@
     "linkIntersect": "Intersect",
     "linkCardano": "Cardano",
     "linkCommitteePortal": "Comitê Constitucional",
-    "linkInterimConstitution": "Constituição Interina",
+    "linkInterimConstitution": "Leia a Constituição",
     "privacyPolicy": "Política de Privacidade",
     "termsOfUse": "Termos de Uso",
     "cookiePolicy": "Política de Cookies",

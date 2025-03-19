@@ -3,16 +3,18 @@ import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "../ui/button";
 import dynamic from "next/dynamic";
+import { Dictionary } from "~/config/dictionaries";
 
-export const ThemeSwitcher = dynamic(
-  () => import("~/components/features/ThemeSwitch"),
-  {
-    ssr: true,
-    loading: () => <div>Loading ... </div>,
-  }
-);
+export type ThemeSwitcherProps = {
+  translations: Dictionary["footer"];
+};
 
-const ThemeSwitcherButton = () => {
+export const ThemeSwitcher = dynamic(() => import("~/components/features/ThemeSwitch"), {
+  ssr: true,
+  loading: () => <div>Loading ... </div>,
+});
+
+const ThemeSwitcherButton = ({ translations }: ThemeSwitcherProps) => {
   const [theme, setTheme] = useState(global.window?.__theme || "light");
   const isDark = theme === "dark";
 
@@ -35,12 +37,12 @@ const ThemeSwitcherButton = () => {
         {theme === "light" ? (
           <>
             <Sun className="w-5 h-5 text-foreground" />
-            Light
+            {translations.lightMode}
           </>
         ) : (
           <>
             <Moon className="w-5 h-5 text-foreground" />
-            Dark
+            {translations.darkMode}
           </>
         )}
       </div>

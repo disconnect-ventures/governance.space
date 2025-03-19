@@ -56,17 +56,18 @@ export default async function RootLayout(props: {
         <ThemeScript />
       </head>
       <GoogleTagManager gtmId="GTM-W47W68BT" />
-      <body
-        className={clsx(
-          `${inter.className} antialiased min-h-[100vh] flex flex-col`
-        )}
-      >
+      <body className={clsx(`${inter.className} antialiased min-h-[100vh] flex flex-col`)}>
         <TranslationProvider value={{ dictionary, locale: params.lang }}>
           <SidebarProvider>
             <WalletProvider>
               <div className="w-full overflow-x-hidden">
                 <AnnouncementBar />
-                <Header />
+                <Header
+                  translations={{
+                    header: dictionary.header,
+                    wallet: dictionary.wallet,
+                  }}
+                />
                 <AppSidebar />
                 <main className="min-h-[50vh] flex flex-col gap-4 justify-between bg-background pt-2">
                   <div className="w-full max-w-7xl mx-auto relative my-4 px-4 md:px-8 mb-64">
@@ -76,7 +77,7 @@ export default async function RootLayout(props: {
                   <CallToAction />
                 </main>
                 <Toaster />
-                <Footer />
+                <Footer translations={dictionary.footer} />
               </div>
             </WalletProvider>
           </SidebarProvider>
