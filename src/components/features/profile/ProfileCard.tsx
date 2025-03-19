@@ -6,21 +6,19 @@ import { Button } from "~/components/ui/button";
 import { Card, CardHeader, CardContent } from "~/components/ui/card";
 import CopyToClipboard from "../CopyToClipboard";
 import { ProfileStatus } from "./ProfileStatus";
+import { Dictionary } from "~/config/dictionaries";
 
 type ProfileCardProps = {
   drep: DRep;
-  pageDrepsDetails: {
-    sendMessage: string;
-    drepId: string;
-  };
-  general: {
-    active: string;
-    retired: string;
-    inactive: string;
-  };
+  pageDrepsDetails: Dictionary["pageDrepsDetails"];
+  general: Dictionary["general"];
 };
 
-export function ProfileCard({ drep, pageDrepsDetails, general }: ProfileCardProps) {
+export function ProfileCard({
+  drep,
+  pageDrepsDetails,
+  general,
+}: ProfileCardProps) {
   return (
     <Card className="w-full bg-card text-card-foreground shadow-sm space-y-2">
       <CardHeader className="pb-4">
@@ -36,7 +34,9 @@ export function ProfileCard({ drep, pageDrepsDetails, general }: ProfileCardProp
             </div>
             <div className="flex-1 flex flex-col gap-2">
               <div className="flex items-center gap-2">
-                <h2 className="text-xl font-bold text-foreground">{drep.givenName}</h2>
+                <h2 className="text-xl font-bold text-foreground">
+                  {drep.givenName}
+                </h2>
                 {/* <span className="text-yellow-400">
                   <Star></Star>
                 </span> */}
@@ -52,9 +52,12 @@ export function ProfileCard({ drep, pageDrepsDetails, general }: ProfileCardProp
             >
               {pageDrepsDetails.sendMessage}
             </Button>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2" disabled>
+            <Button
+              className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2"
+              disabled
+            >
               <ArrowRightCircle />
-              {pageDrepsDetails.sendMessage}
+              {pageDrepsDetails.delegateVotingPower}
             </Button>
           </div>
         </div>
@@ -67,7 +70,9 @@ export function ProfileCard({ drep, pageDrepsDetails, general }: ProfileCardProp
           </span>
           <CopyToClipboard value={drep.drepId} />
         </div>
-        <p className="mt-4 text-muted-foreground line-clamp-2">{drep.objectives}</p>
+        <p className="mt-4 text-muted-foreground line-clamp-2">
+          {drep.objectives}
+        </p>
       </CardContent>
     </Card>
   );
