@@ -5,6 +5,7 @@ import CardanoLogo from "../../../public/assets/cardano-logo.svg";
 import Logo from "~/components/icons/Logo";
 import LocaleSwitch from "../features/LocaleSwitch";
 import { ThemeSwitcher } from "../features/ThemeSwitch";
+import { Dictionary } from "~/config/dictionaries";
 
 export type MenuSection = {
   title: string;
@@ -15,37 +16,41 @@ export type MenuSection = {
   }>;
 };
 
-export function Footer() {
+export type FooterProps = {
+  translations: Dictionary["footer"];
+};
+
+export const Footer = ({ translations }: FooterProps) => {
   const menu: MenuSection[] = [
     {
-      title: "EXPLORE",
+      title: translations.titleExplore,
       links: [
-        { title: "DReps", path: "/dreps" },
-        { title: "Governance Actions", path: "/governance" },
-        { title: "Proposals", path: "/proposals" },
-        { title: "Committee Members", path: "/committees" },
+        { title: translations.linkDreps, path: "/dreps" },
+        { title: translations.linkGovernanceActions, path: "/governance" },
+        { title: translations.linkProposals, path: "/proposals" },
+        { title: translations.linkCommittees, path: "/committees" },
       ],
     },
     {
-      title: "GOVERNANCE",
+      title: translations.titleGovernance,
       links: [
-        { title: "Live Events", path: "/live-events" },
-        { title: "Analytics", path: "/analytics" },
-        { title: "Help", path: "/help" },
-        { title: "About", path: "/about" },
+        { title: translations.linkLiveEvents, path: "/live-events" },
+        { title: translations.linkAnalytics, path: "/analytics" },
+        { title: translations.linkHelp, path: "/help" },
+        { title: translations.linkAbout, path: "/about" },
       ],
     },
     {
-      title: "LINKS",
+      title: translations.titleLinks,
       links: [
-        { title: "Intersect", path: "https://intersectmbo.org/" },
-        { title: "Cardano", path: "https://cardano.org/" },
+        { title: translations.linkIntersect, path: "https://intersectmbo.org/" },
+        { title: translations.linkCardano, path: "https://cardano.org/" },
         {
-          title: "Const. Committee Portal",
+          title: translations.linkCommitteePortal,
           path: "https://constitution.gov.tools/en",
         },
         {
-          title: "Read the Constitution",
+          title: translations.linkInterimConstitution,
           path: "https://constitution.gov.tools/en/constitution",
         },
       ],
@@ -75,7 +80,7 @@ export function Footer() {
               <p>All-in-One Governance Platform.</p>
             </div>
             <div className="flex items-center gap-2 mt-2">
-              <span className="text-sm text-muted-foreground">Built on:</span>
+              <span className="text-sm text-muted-foreground">{translations.builtOn} :</span>
               <Link
                 href="https://cardano.org/"
                 target="_blank"
@@ -128,21 +133,21 @@ export function Footer() {
 
           <div className="flex flex-wrap gap-4">
             <Link href="/privacy-policy" className="hover:text-foreground ">
-              Privacy Policy
+              {translations.privacyPolicy}
             </Link>
             <Link href="/terms" className="hover:text-foreground ">
-              Terms of Use
+              {translations.termsOfUse}
             </Link>
             <Link href="/cookie-policy" className="hover:text-foreground ">
-              Cookie Policy
+              {translations.cookiePolicy}
             </Link>
           </div>
           <div className="flex items-center space-x-2">
             <LocaleSwitch />
-            <ThemeSwitcher />
+            <ThemeSwitcher translations={translations} />
           </div>
         </div>
       </div>
     </footer>
   );
-}
+};

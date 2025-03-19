@@ -15,22 +15,24 @@ import CopyToClipboard from "./CopyToClipboard";
 import { useWalletList } from "@meshsdk/react";
 import Image from "next/image";
 import { WalletIcon } from "lucide-react";
+import { Dictionary } from "~/config/dictionaries";
 
-export const WalletWidget = () => {
+export type WalletWidgetProps = {
+  translations: Dictionary["wallet"];
+};
+
+export const WalletWidget = ({ translations }: WalletWidgetProps) => {
   const [open, setOpen] = useState(false);
   const { connected, networkId, balance, ...walletStore } = useWallet();
   const networkName = useMemo(
-    () =>
-      typeof networkId === "number"
-        ? networks[networkId]?.name
-        : "Unknown Network",
-    [networkId]
+    () => (typeof networkId === "number" ? networks[networkId]?.name : "Unknown Network"),
+    [networkId],
   );
   const wallets = useWalletList();
   const dropdownMenuItemClasses = useMemo(() => "flex gap-2 items-center", []);
   const selectedWalletApp = useMemo(
     () => wallets.find((w) => walletStore.name === w.name),
-    [walletStore, wallets]
+    [walletStore, wallets],
   );
 
   const DropdownItems = useMemo(
@@ -42,10 +44,7 @@ export const WalletWidget = () => {
               Copy Address
             </CopyToClipboard>
           </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={walletStore.disconnect}
-            className={dropdownMenuItemClasses}
-          >
+          <DropdownMenuItem onClick={walletStore.disconnect} className={dropdownMenuItemClasses}>
             Disconnect
           </DropdownMenuItem>
         </>
@@ -58,12 +57,7 @@ export const WalletWidget = () => {
               onClick={() => walletStore.connect(w.name, [], true)}
             >
               <span className="h-6 aspect-square">
-                <Image
-                  alt={`${w.name} icon`}
-                  width={45}
-                  height={45}
-                  src={w.icon}
-                ></Image>
+                <Image alt={`${w.name} icon`} width={45} height={45} src={w.icon}></Image>
               </span>
               {capitalize(w.name)}
             </DropdownMenuItem>
@@ -72,24 +66,16 @@ export const WalletWidget = () => {
       ) : (
         "No wallet found."
       ),
-    [connected, wallets, walletStore, dropdownMenuItemClasses]
+    [connected, wallets, walletStore, dropdownMenuItemClasses],
   );
 
   return (
-    <DropdownMenu
-      open={open}
-      onOpenChange={(open) => setOpen(open)}
-      modal={wallets.length > 1}
-    >
-      <DropdownMenuTrigger
-        className={cn(buttonVariants({ variant: "default" }))}
-      >
+    <DropdownMenu open={open} onOpenChange={(open) => setOpen(open)} modal={wallets.length > 1}>
+      <DropdownMenuTrigger className={cn(buttonVariants({ variant: "default" }))}>
         <WalletIcon className="h-6" />
         {connected
-          ? `${networkName}: ${formatAda(
-              formatVotingPower(parseFloat(balance ?? "0"))
-            )}`
-          : "Connect Wallet"}
+          ? `${networkName}: ${formatAda(formatVotingPower(parseFloat(balance ?? "0")))}`
+          : translations.connectWallet}
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel className={dropdownMenuItemClasses}>
@@ -103,9 +89,7 @@ export const WalletWidget = () => {
               ></Image>
             </span>
           )}
-          {connected
-            ? `${capitalize(walletStore.name ?? "")} Wallet`
-            : "Available Wallets"}
+          {connected ? `${capitalize(walletStore.name ?? "")} Wallet` : translations.availableWallet}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         {DropdownItems}

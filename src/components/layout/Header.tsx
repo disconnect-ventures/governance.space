@@ -20,17 +20,21 @@ import { SearchIcon } from "lucide-react";
 import { localizePath } from "~/lib/utils";
 import { Locale } from "~/config/i18n";
 import { WalletWidget } from "../features/WalletWidget";
+import { Dictionary } from "~/config/dictionaries";
 
-export const headerNavLinks = [
-  { label: "Home", href: "/" },
-  { label: "DReps Directory", href: "/dreps" },
-  { label: "Governance Actions", href: "/governance" },
-  { label: "Proposals", href: "/proposals" },
-  { label: "Committees Members", href: "/committees" },
-  { label: "Live Events", href: "/live-events" },
-  { label: "Analytics", href: "/analytics" },
-  { label: "Help", href: "/help" },
-  { label: "About", href: "/about" },
+export const headerNavLinks: Array<{
+  label: keyof Dictionary["header"];
+  href: string;
+}> = [
+  { label: "titleHome", href: "/" },
+  { label: "titleDreps", href: "/dreps" },
+  { label: "titleGovernanceActions", href: "/governance" },
+  { label: "titleProposals", href: "/proposals" },
+  { label: "titleCommittees", href: "/committees" },
+  { label: "titleLiveEvents", href: "/live-events" },
+  { label: "titleAnalytics", href: "/analytics" },
+  { label: "titleHelp", href: "/help" },
+  { label: "titleAbout", href: "/about" },
 ];
 
 export const HeaderNavigationLink = ({
@@ -101,7 +105,12 @@ export const HeaderSearchBar = ({ onSubmit }: HeaderSearchBarProps) => {
     </div>
   );
 };
-export const Header = () => {
+
+export type HeaderProps = {
+  translations: Pick<Dictionary, "header" | "wallet">;
+};
+
+export const Header = ({ translations }: HeaderProps) => {
   const params = useParams();
   const locale = (params.lang?.toString() ?? "en-us") as Locale;
   const pathname = usePathname();
@@ -129,10 +138,10 @@ export const Header = () => {
               target="_blank"
               className={buttonVariants({ variant: "outline" })}
             >
-              Become a DRep
+              {translations.header.becomeDrep}
             </Link>
 
-            <WalletWidget />
+            <WalletWidget translations={translations.wallet} />
 
             <LocaleSwitch />
           </div>
@@ -158,7 +167,7 @@ export const Header = () => {
                     href={link.href}
                     active={pathname === localizePath(locale, link.href)}
                   >
-                    {link.label}
+                    {translations.header[link.label]}
                   </HeaderNavigationLink>
                 ))}
               </NavigationMenuList>
