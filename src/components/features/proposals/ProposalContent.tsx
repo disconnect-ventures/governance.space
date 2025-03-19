@@ -1,6 +1,8 @@
 import { Link as LinkIcon } from "lucide-react";
 import Link from "~/components/features/Link";
 import { Proposal } from "~/lib/proposals";
+import { Markdown } from "../Markdown";
+import { Separator } from "~/components/ui/separator";
 
 interface ProposalContentProps {
   proposal: Proposal;
@@ -13,15 +15,16 @@ export const ProposalContent = ({ proposal }: ProposalContentProps) => {
 
   return (
     <div className="space-y-6">
-      <div>
+      <div className="space-y-4">
         {[
           ["Abstract", prop_abstract],
           ["Motivation", prop_motivation],
           ["Rational", prop_rationale],
         ].map(([label, link]) => (
-          <div key={label}>
-            <h3 className="font-medium mb-2 text-foreground">{label}</h3>
-            <p className="text-muted-foreground mb-4">{link}</p>
+          <div key={label} className="pb-4 space-y-4">
+            <h3 className="text-2xl text-foreground">{label}</h3>
+            <Separator />
+            <Markdown content={link} />
           </div>
         ))}
 
