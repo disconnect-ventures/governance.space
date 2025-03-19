@@ -2,7 +2,7 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, Database, Vote, Award, Clock } from "lucide-react";
-import { MetricsData } from "~/lib/analytics";
+import { NetworkInfo, NetworkMetrics, NetworkStake } from "~/lib/analytics";
 import { formatNumber, formatStake } from "./utils/formatters";
 import { DRep } from "~/lib/dreps";
 import { Bar, BarChart, Cell, Pie, PieChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
@@ -11,7 +11,7 @@ import ComingSoon from "~/components/layout/ComingSoon";
 import { ProfileStatus } from "../profile/ProfileStatus";
 
 interface MetricsDisplayProps {
-  data: MetricsData;
+  data: NetworkMetrics & NetworkInfo & NetworkStake;
   drepList: DRep[];
   general: {
     active: string;
@@ -25,7 +25,7 @@ const MetricsDisplay = ({ data, drepList, general }: MetricsDisplayProps) => {
   const mockData = getMockMetrics();
   const circulation = 35949488472 * 1e6;
 
-  const epoch = data.currentEpoch;
+  const epoch = data.epochNo;
   const chartColors = {
     dreps: "hsl(var(--chart-1))",
     spos: "hsl(var(--chart-2))",
