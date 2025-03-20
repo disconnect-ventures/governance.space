@@ -7,27 +7,16 @@ import { Proposal } from "~/lib/proposals";
 import clsx from "clsx";
 import { Separator } from "~/components/ui/separator";
 import ComingSoon from "~/components/layout/ComingSoon";
+import { Dictionary } from "~/config/dictionaries";
 
 type VotingHistoryProps = {
   proposals: Array<Proposal>;
-  general: {
-    yes: string;
-    no: string;
-    abstain: string;
-    pending: string;
-    approved: string;
-    rejected: string;
-    locale: string;
-    item: string;
-  };
-  pageDrepsDetails: {
-    votingHistory: string;
-  };
+  translations: Pick<Dictionary, "general" | "pageDrepsDetails">;
 };
 
 type VoteType = "Yes" | "No" | "Abstain";
 
-export const VotingHistory = ({ proposals, general, pageDrepsDetails }: VotingHistoryProps) => {
+export const VotingHistory = ({ proposals, translations }: VotingHistoryProps) => {
   const [votes, setVotes] = useState<Record<string, VoteType>>({});
 
   useEffect(() => {
@@ -41,23 +30,23 @@ export const VotingHistory = ({ proposals, general, pageDrepsDetails }: VotingHi
   }, [proposals]);
 
   const voteTranslations: Record<VoteType, string> = {
-    Yes: general.yes,
-    No: general.no,
-    Abstain: general.abstain,
+    Yes: translations.general.yes,
+    No: translations.general.no,
+    Abstain: translations.general.abstain,
   };
 
   const getSubmissionStatus = (proposal: Proposal) => {
     if (!proposal.attributes.content.attributes.prop_submitted) {
-      return general.pending;
+      return translations.general.pending;
     }
     if (proposal.attributes.content.attributes.prop_rev_active) {
-      return general.approved;
+      return translations.general.approved;
     }
-    return general.rejected;
+    return translations.general.rejected;
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleString(general.locale, {
+    return new Date(dateString).toLocaleString(translations.general.locale, {
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
@@ -87,7 +76,7 @@ export const VotingHistory = ({ proposals, general, pageDrepsDetails }: VotingHi
   return (
     <Card className="bg-card text-card-foreground">
       <CardHeader className="text-xl font-semibold text-foreground">
-        {pageDrepsDetails.votingHistory}
+        {translations.pageDrepsDetails.votingHistory}
       </CardHeader>
       <CardContent className="space-y-4">
         <ComingSoon>
@@ -128,7 +117,8 @@ export const VotingHistory = ({ proposals, general, pageDrepsDetails }: VotingHi
                           <span>{formatDate(proposal.attributes.content.attributes.createdAt)}</span>
                           <span className="text-muted-foreground/50">|</span>
                           <span>
-                            {general.item}: {proposal.attributes.content.attributes.proposal_id}
+                            {translations.general.item}:{" "}
+                            {proposal.attributes.content.attributes.proposal_id}
                           </span>
                         </div>
                       </div>

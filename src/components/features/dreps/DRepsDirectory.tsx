@@ -11,58 +11,41 @@ import { DirectorySearchParams, TableDirectory } from "~/components/layout/Direc
 import { formatVotingPower, localizePath, truncateMiddle } from "~/lib/utils";
 import { useLocale } from "~/hooks/use-locale";
 import { ProfileStatus } from "../profile/ProfileStatus";
+import { Dictionary } from "~/config/dictionaries";
 
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
   params: DirectorySearchParams;
-  general: {
-    random: string;
-    registrationDate: string;
-    votingPower: string;
-    status: string;
-    active: string;
-    inactive: string;
-    retired: string;
-    locale: string;
-    details: string;
-  };
-  pageDreps: {
-    search: string;
-    drepName: string;
-    status: string;
-    votingPower: string;
-    registrationDate: string;
-    actions: string;
-  };
+  translations: Pick<Dictionary, "general" | "pageDreps">;
 };
 
-export const DRepsDirectory = ({ dreps, params, general, pageDreps }: DRepsDirectoryProps) => {
+export const DRepsDirectory = ({ dreps, params, translations }: DRepsDirectoryProps) => {
   const router = useRouter();
   const { locale } = useLocale();
   return (
     <TableDirectory
       sortOptions={[
-        { value: "Random", label: general.random },
+        { value: "Random", label: translations.general.random },
         {
           value: "RegistrationDate",
-          label: general.registrationDate,
+          label: translations.general.registrationDate,
         },
-        { value: "VotingPower", label: general.votingPower },
-        { value: "Status", label: general.status },
+        { value: "VotingPower", label: translations.general.votingPower },
+        { value: "Status", label: translations.general.status },
       ]}
       filterPopoverTitle="DRep Status"
       filterOptions={[
-        { value: "Active", label: general.active },
-        { value: "Inactive", label: general.inactive },
-        { value: "Retired", label: general.retired },
+        { value: "Active", label: translations.general.active },
+        { value: "Inactive", label: translations.general.inactive },
+        { value: "Retired", label: translations.general.retired },
       ]}
-      searchPlaceholder={pageDreps.search}
+      searchPlaceholder={translations.pageDreps.search}
       headers={[
-        pageDreps.drepName,
-        pageDreps.status,
-        pageDreps.votingPower,
-        pageDreps.registrationDate,
-        pageDreps.actions,
+        translations.pageDreps.drepName,
+        translations.pageDreps.status,
+        translations.pageDreps.votingPower,
+        translations.pageDreps.registrationDate,
+        translations.pageDreps.actions,
       ]}
       params={params}
       rows={dreps.map((drep) => (
@@ -84,7 +67,7 @@ export const DRepsDirectory = ({ dreps, params, general, pageDreps }: DRepsDirec
             </div>
           </TableCell>
           <TableCell>
-            <ProfileStatus drep={drep} general={general} />
+            <ProfileStatus drep={drep} translations={translations.general} />
           </TableCell>
           <TableCell>
             <Badge className="bg-primary/20 text-primary hover:bg-primary/30">
@@ -101,13 +84,13 @@ export const DRepsDirectory = ({ dreps, params, general, pageDreps }: DRepsDirec
           {/* <TableCell>* drep.delegators</TableCell> */}
           {/* <TableCell>{drep.votingPower}</TableCell> */}
           <TableCell>
-            {new Date(drep.latestRegistrationDate).toLocaleDateString(general.locale)}
+            {new Date(drep.latestRegistrationDate).toLocaleDateString(translations.general.locale)}
           </TableCell>
           <TableCell>
             <div className="flex items-center gap-2">
               {/* <Star className="h-4 w-4 text-gray-400" /> */}
               <Button variant="secondary" size="sm" className="gap-1">
-                <EyeIcon className="h-4 w-4" /> {general.details}
+                <EyeIcon className="h-4 w-4" /> {translations.general.details}
               </Button>
             </div>
           </TableCell>

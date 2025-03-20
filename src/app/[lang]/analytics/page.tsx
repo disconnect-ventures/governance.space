@@ -1,16 +1,10 @@
 import MetricsDisplay from "~/components/features/analytics/MetricsDisplay";
-import {
-  getNetworkInfo,
-  getNetworkMetrics,
-  getNetworkStake,
-} from "~/lib/analytics";
+import { getNetworkInfo, getNetworkMetrics, getNetworkStake } from "~/lib/analytics";
 import { getDReps } from "~/lib/dreps";
 import { PageProps } from "../layout";
 import { getDictionary } from "~/config/dictionaries";
 
-export default async function AnalyticsPage({
-  params: paramsPromise,
-}: PageProps) {
+export default async function AnalyticsPage({ params: paramsPromise }: PageProps) {
   const params = await paramsPromise;
   const locale = params.lang;
   const dictionary = await getDictionary(locale);
@@ -21,13 +15,11 @@ export default async function AnalyticsPage({
 
   return (
     <div className="flex min-h-screen flex-col gap-8">
-      <h1 className="text-4xl font-bold text-foreground">
-        Epoch {info.epochNo}
-      </h1>
+      <h1 className="text-4xl font-bold text-foreground">Epoch {info.epochNo}</h1>
       <MetricsDisplay
         data={{ ...metrics, ...info, ...stake }}
         drepList={dreps.elements}
-        general={dictionary.general}
+        translations={dictionary.general}
       />
     </div>
   );

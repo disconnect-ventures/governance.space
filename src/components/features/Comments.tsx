@@ -6,34 +6,28 @@ import { Button } from "~/components/ui/button";
 import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
 import { Comment } from "~/lib/comments";
 import ComingSoon from "../layout/ComingSoon";
+import { Dictionary } from "~/config/dictionaries";
 
 type CommentsProps = {
   drep: DRep;
   comments: Array<Comment>;
-  general: {
-    comments: string;
-    submitComment: string;
-    locale: string;
-  };
-  pageDrepsDetails: {
-    askToDrep: string;
-  };
+  translations: Pick<Dictionary, "general" | "pageDrepsDetails">;
 };
 
-export function Comments({ comments, general, pageDrepsDetails }: CommentsProps) {
+export function Comments({ comments, translations }: CommentsProps) {
   return (
     <Card className="w-full mx-auto bg-card text-card-foreground">
       <CardContent className="p-6">
         <div className="space-y-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-semibold text-foreground">
-              {general.comments} ({comments.length})
+              {translations.general.comments} ({comments.length})
             </h2>
           </div>
           <div className="space-y-4 mb-6">
             <div className="flex gap-4">
               <Textarea
-                placeholder={pageDrepsDetails.askToDrep}
+                placeholder={translations.pageDrepsDetails.askToDrep}
                 className="min-h-[100px] bg-background text-foreground border-border placeholder:text-muted-foreground"
               />
             </div>
@@ -43,7 +37,7 @@ export function Comments({ comments, general, pageDrepsDetails }: CommentsProps)
                 disabled
               >
                 <Send className="w-4 h-4" />
-                {general.submitComment}
+                {translations.general.submitComment}
               </Button>
             </div>
           </div>
@@ -62,7 +56,9 @@ export function Comments({ comments, general, pageDrepsDetails }: CommentsProps)
                         {comment.attributes.user_govtool_username}
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        {new Date(comment.attributes.updatedAt).toLocaleDateString(general.locale)}
+                        {new Date(comment.attributes.updatedAt).toLocaleDateString(
+                          translations.general.locale,
+                        )}
                       </div>
                     </div>
                     <p className="text-foreground">{comment.attributes.comment_text}</p>

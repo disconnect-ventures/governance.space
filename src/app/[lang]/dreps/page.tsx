@@ -50,8 +50,10 @@ export default async function DRepsDirectoryPage({
           totalResults: dreps.total,
           filters,
         }}
-        general={dictionary.general}
-        pageDreps={dictionary.pageDreps}
+        translations={{
+          general: dictionary.general,
+          pageDreps: dictionary.pageDreps,
+        }}
       />
     </div>
   );

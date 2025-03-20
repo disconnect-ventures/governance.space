@@ -25,26 +25,15 @@ import { Badge } from "~/components/ui/badge";
 // } from "~/components/ui/tooltip";
 import { Comment } from "~/lib/comments";
 import { formatVotingPower } from "~/lib/utils";
+import { Dictionary } from "~/config/dictionaries";
 
 type ProfileInfoProps = {
   drep: DRep;
   comments: Array<Comment>;
-  general: {
-    locale: string;
-  };
-  pageDreps: {
-    votingPower: string;
-    registrationDate: string;
-  };
-  pageDrepsDetails: {
-    info: string;
-    rating: string;
-    reviews: string;
-    stars: string;
-  };
+  translations: Pick<Dictionary, "general" | "pageDreps" | "pageDrepsDetails">;
 };
 
-export function ProfileInfo({ drep, general, pageDreps, pageDrepsDetails }: ProfileInfoProps) {
+export function ProfileInfo({ drep, translations }: ProfileInfoProps) {
   const ratings = {
     5: { count: 30 },
     4: { count: 20 },
@@ -59,7 +48,7 @@ export function ProfileInfo({ drep, general, pageDreps, pageDrepsDetails }: Prof
         <CardContent className="pt-6 space-y-4">
           {[
             {
-              label: pageDreps.votingPower,
+              label: translations.pageDreps.votingPower,
               value: (
                 <Badge
                   key={"2"}
@@ -135,7 +124,7 @@ export function ProfileInfo({ drep, general, pageDreps, pageDrepsDetails }: Prof
       </Card> */}
 
       <Card className="bg-card text-card-foreground">
-        <CardHeader className="text-foreground">{[pageDrepsDetails.info]}</CardHeader>
+        <CardHeader className="text-foreground">{[translations.pageDrepsDetails.info]}</CardHeader>
         <CardContent className="space-y-3">
           {/* <div className="text-sm">
             <span className="text-muted-foreground">
@@ -145,10 +134,11 @@ export function ProfileInfo({ drep, general, pageDreps, pageDrepsDetails }: Prof
           </div> */}
           <div className="text-sm">
             <span className="text-muted-foreground">
-              <MapPinIcon className="inline h-4 w-4 mr-1"></MapPinIcon> {pageDreps.registrationDate}:
+              <MapPinIcon className="inline h-4 w-4 mr-1"></MapPinIcon>{" "}
+              {translations.pageDreps.registrationDate}:
             </span>
             <span className="ml-2 text-foreground">
-              {new Date(drep.latestRegistrationDate).toLocaleDateString(general.locale)}
+              {new Date(drep.latestRegistrationDate).toLocaleDateString(translations.general.locale)}
             </span>
           </div>
         </CardContent>
@@ -175,7 +165,7 @@ export function ProfileInfo({ drep, general, pageDreps, pageDrepsDetails }: Prof
         </CardContent>
       </Card> */}
 
-      <Rating ratings={ratings} pageDrepsDetails={pageDrepsDetails} />
+      <Rating ratings={ratings} translations={translations.pageDrepsDetails} />
     </div>
   );
 }
