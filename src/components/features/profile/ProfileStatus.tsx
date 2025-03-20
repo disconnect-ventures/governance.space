@@ -1,29 +1,26 @@
 import { Badge } from "~/components/ui/badge";
 import { DRep } from "~/lib/dreps";
 import clsx from "clsx";
+import { Dictionary } from "~/config/dictionaries";
 
 type ProfileStatusProps = {
   drep: DRep;
   className?: string;
-  general: {
-    active: string;
-    retired: string;
-    inactive: string;
-  };
+  translations: Dictionary["general"];
 };
 
-export function ProfileStatus({ drep, className, general }: ProfileStatusProps) {
+export function ProfileStatus({ drep, className, translations }: ProfileStatusProps) {
   const statusMap = {
     Active: {
-      text: general.active,
+      text: translations.active,
       className: "bg-green-500/20 text-green-500",
     },
     Retired: {
-      text: general.retired,
+      text: translations.retired,
       className: "bg-yellow-500/20 text-yellow-500",
     },
     Inactive: {
-      text: general.inactive,
+      text: translations.inactive,
       className: "bg-red-500/20 text-red-500",
     },
   };

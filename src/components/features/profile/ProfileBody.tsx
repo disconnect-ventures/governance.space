@@ -2,28 +2,24 @@
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { DRep } from "~/lib/dreps";
 import CopyToClipboard from "../CopyToClipboard";
+import { Dictionary } from "~/config/dictionaries";
 
 type ProfileBodyProps = {
   drep: DRep;
-  pageDrepsDetails: {
-    objectives: string;
-    motivations: string;
-    qualifications: string;
-    paymentAddress: string;
-  };
+  translations: Dictionary["pageDrepsDetails"];
 };
 
-export function ProfileBody({ drep, pageDrepsDetails }: ProfileBodyProps) {
+export function ProfileBody({ drep, translations }: ProfileBodyProps) {
   return (
     <Card>
       <CardHeader></CardHeader>
       <CardContent className="flex flex-col gap-8">
         {[
-          [pageDrepsDetails.objectives, drep.objectives],
-          [pageDrepsDetails.motivations, drep.motivations],
-          [pageDrepsDetails.qualifications, drep.qualifications],
+          [translations.objectives, drep.objectives],
+          [translations.motivations, drep.motivations],
+          [translations.qualifications, drep.qualifications],
           [
-            pageDrepsDetails.paymentAddress,
+            translations.paymentAddress,
             <>
               <span>{drep.paymentAddress}</span>
               <CopyToClipboard value={drep.paymentAddress ?? ""}></CopyToClipboard>

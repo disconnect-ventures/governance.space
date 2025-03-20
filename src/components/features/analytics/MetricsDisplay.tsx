@@ -9,18 +9,15 @@ import { Bar, BarChart, Cell, Pie, PieChart, ResponsiveContainer, XAxis, YAxis }
 import { getMockMetrics } from "~/lib/mock";
 import ComingSoon from "~/components/layout/ComingSoon";
 import { ProfileStatus } from "../profile/ProfileStatus";
+import { Dictionary } from "~/config/dictionaries";
 
 interface MetricsDisplayProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
   drepList: DRep[];
-  general: {
-    active: string;
-    retired: string;
-    inactive: string;
-  };
+  translations: Dictionary["general"];
 }
 
-const MetricsDisplay = ({ data, drepList, general }: MetricsDisplayProps) => {
+const MetricsDisplay = ({ data, drepList, translations }: MetricsDisplayProps) => {
   // TODO
   const mockData = getMockMetrics();
   const circulation = 35949488472 * 1e6;
@@ -378,7 +375,7 @@ const MetricsDisplay = ({ data, drepList, general }: MetricsDisplayProps) => {
                         index + 1
                       }º ${drep.givenName || "Anonymous DRep"}`}</td>
                       <td className="py-4 text-sm text-center">
-                        <ProfileStatus drep={drep} general={general} />
+                        <ProfileStatus drep={drep} translations={translations} />
                       </td>
                       <td className="py-4 text-sm text-right font-medium text-foreground">
                         ₳ {formatNumber(drep.votingPower)}
