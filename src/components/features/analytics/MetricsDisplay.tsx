@@ -1,11 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { use } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, Database, Vote, Award, Clock } from "lucide-react";
 import { NetworkInfo, NetworkMetrics, NetworkStake } from "~/lib/analytics";
 import { formatNumber, formatStake } from "./utils/formatters";
 import { DRep } from "~/lib/dreps";
-import { DRepStats, getCachedDRepStats } from "~/lib/drepStats"; // Import the new stats service
+import { DRepStats } from "~/lib/drepStats";
 import { Bar, BarChart, Cell, Pie, PieChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import { getMockMetrics } from "~/lib/mock";
 import ComingSoon from "~/components/layout/ComingSoon";
@@ -14,36 +14,23 @@ import { Dictionary } from "~/config/dictionaries";
 
 interface MetricsDisplayProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
-  drepList: DRep[];
+  drepListPromise: Promise<{ elements: DRep[] }>;
+  drepStatsPromise: Promise<DRepStats>;
   translations: Dictionary["general"];
 }
 
-const MetricsDisplay = ({ data, drepList, translations }: MetricsDisplayProps) => {
-  // Add state for DRep statistics
-  const [drepStats, setDRepStats] = useState<DRepStats | null>(null);
-  const [isLoadingStats, setIsLoadingStats] = useState(true);
+const MetricsDisplay = ({
+  data,
+  drepListPromise,
+  drepStatsPromise,
+  translations,
+}: MetricsDisplayProps) => {
+  const drepList = use(drepListPromise)?.elements;
+  const drepStats = use(drepStatsPromise);
+  const isLoadingStats = !drepStats;
 
-  // Fetch DRep statistics on component mount
-  useEffect(() => {
-    const fetchDRepStats = async () => {
-      try {
-        setIsLoadingStats(true);
-        const stats = await getCachedDRepStats();
-        setDRepStats(stats);
-      } catch (error) {
-        console.error("Failed to fetch DRep statistics:", error);
-      } finally {
-        setIsLoadingStats(false);
-      }
-    };
-
-    fetchDRepStats();
-  }, []);
-
-  // Create data for DRep status pie chart using the fetched statistics
   const drepStatusData = React.useMemo(() => {
     if (!drepStats) {
-      // Return placeholder data if stats aren't loaded yet
       return [
         { name: "Active DReps", value: 0 },
         { name: "Inactive DReps", value: 0 },
@@ -58,10 +45,8 @@ const MetricsDisplay = ({ data, drepList, translations }: MetricsDisplayProps) =
     ];
   }, [drepStats]);
 
-  // Total DReps count for percentage calculation
   const totalDReps = drepStats?.total || 0;
 
-  // For existing MetricsDisplay code
   const mockData = getMockMetrics();
   const circulation = 35949488472 * 1e6;
   const epoch = data.epochNo;
@@ -379,150 +364,69 @@ const MetricsDisplay = ({ data, drepList, translations }: MetricsDisplayProps) =
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold text-foreground mb-2">DRep Status Distribution</h3>
-            <p className="text-sm text-muted-foreground mb-6">
-              Distribution of all registered DReps by their current status
-            </p>
-            {isLoadingStats ? (
-              <div className="flex justify-center items-center h-48">
-                <p className="text-muted-foreground">Loading DRep statistics...</p>
-              </div>
-            ) : (
-              <div className="flex">
-                <div className="h-48 flex-1">
-                  <ResponsiveContainer>
-                    <PieChart>
-                      <Pie
-                        data={drepStatusData}
-                        dataKey="value"
-                        nameKey="name"
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={80}
-                        startAngle={90}
-                        endAngle={-270}
-                      >
-                        {drepStatusData.map((_, index) => (
-                          <Cell
-                            key={`cell-${index}`}
-                            fill={getDRepStatusColor(index)}
-                            strokeWidth={0}
+            <ComingSoon>
+              <p className="text-sm text-muted-foreground mb-6">
+                Distribution of all registered DReps by their current status
+              </p>
+              {isLoadingStats ? (
+                <div className="flex justify-center items-center h-48">
+                  <p className="text-muted-foreground">Loading DRep statistics...</p>
+                </div>
+              ) : (
+                <div className="flex">
+                  <div className="h-48 flex-1">
+                    <ResponsiveContainer>
+                      <PieChart>
+                        <Pie
+                          data={drepStatusData}
+                          dataKey="value"
+                          nameKey="name"
+                          cx="50%"
+                          cy="50%"
+                          outerRadius={80}
+                          startAngle={90}
+                          endAngle={-270}
+                        >
+                          {drepStatusData.map((_, index) => (
+                            <Cell
+                              key={`cell-${index}`}
+                              fill={getDRepStatusColor(index)}
+                              strokeWidth={0}
+                            />
+                          ))}
+                        </Pie>
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div className="flex-1 flex flex-col justify-center space-y-3">
+                    {drepStatusData.map((item, index) => (
+                      <div key={index} className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div
+                            className="w-3 h-3 rounded-full"
+                            style={{
+                              backgroundColor: getDRepStatusColor(index),
+                            }}
                           />
-                        ))}
-                      </Pie>
-                    </PieChart>
-                  </ResponsiveContainer>
-                </div>
-                <div className="flex-1 flex flex-col justify-center space-y-3">
-                  {drepStatusData.map((item, index) => (
-                    <div key={index} className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <div
-                          className="w-3 h-3 rounded-full"
-                          style={{
-                            backgroundColor: getDRepStatusColor(index),
-                          }}
-                        />
-                        <span className="text-sm text-muted-foreground">{item.name}</span>
+                          <span className="text-sm text-muted-foreground">{item.name}</span>
+                        </div>
+                        <span className="text-sm font-medium text-foreground">
+                          {formatNumber(item.value)}{" "}
+                          {totalDReps > 0
+                            ? `(${((item.value / totalDReps) * 100).toFixed(1)}%)`
+                            : "(0%)"}
+                        </span>
                       </div>
-                      <span className="text-sm font-medium text-foreground">
-                        {formatNumber(item.value)}{" "}
-                        {totalDReps > 0
-                          ? `(${((item.value / totalDReps) * 100).toFixed(1)}%)`
-                          : "(0%)"}
-                      </span>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </ComingSoon>
           </CardContent>
         </Card>
       </div>
 
-      {/* Rest of your existing component */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <Card className="bg-card text-card-foreground shadow-none">
-          <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">Cardano Tokenomics </h3>
-            <ComingSoon>
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-3 text-sm font-medium text-muted-foreground">
-                      Position
-                    </th>
-                    <th className="text-right py-3 text-sm font-medium text-muted-foreground">
-                      Amount in ADA
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {tokenomicsData.map((row) => (
-                    <tr key={row.position} className="border-b border-border last:border-0">
-                      <td className="py-4 text-sm text-foreground">{row.position}</td>
-                      <td className="py-4 text-sm text-right font-medium text-foreground">
-                        {formatNumber(row.amount)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </ComingSoon>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-card text-card-foreground shadow-none">
-          <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">Epoch {epoch} Metrics</h3>
-            <ComingSoon>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-border">
-                      <th className="text-left py-3 text-sm font-medium text-muted-foreground">
-                        #Item
-                      </th>
-                      <th className="text-center py-3 text-sm font-medium text-muted-foreground">
-                        Epoch {epoch}
-                      </th>
-                      <th className="text-right py-3 text-sm font-medium text-muted-foreground">
-                        Changed
-                      </th>
-                    </tr>
-                  </thead>
-
-                  <tbody className="divide-y divide-border">
-                    {epochMetricsData.map((row) => {
-                      const isError =
-                        row.item === "Active Delegated" || row.item === "Abstain/No Confidence";
-
-                      return (
-                        <tr key={row.item}>
-                          <td className="py-4 text-sm text-foreground">{row.item}</td>
-                          <td className="py-4 text-sm text-center font-medium text-foreground">
-                            {row.value}
-                          </td>
-                          <td
-                            className={`py-4 text-sm text-right font-medium ${
-                              isError
-                                ? "text-red-500 dark:text-red-400"
-                                : "text-green-500 dark:text-green-400"
-                            }`}
-                          >
-                            {isError ? `-${row.change}` : `+${row.change}`}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </ComingSoon>
-          </CardContent>
-        </Card>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold text-foreground mb-6">Top 10 DReps</h3>
@@ -606,6 +510,38 @@ const MetricsDisplay = ({ data, drepList, translations }: MetricsDisplayProps) =
                   </tbody>
                 </table>
               </div>
+            </ComingSoon>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Card className="bg-card text-card-foreground shadow-none">
+          <CardContent className="p-6">
+            <h3 className="text-lg font-semibold text-foreground mb-6">Cardano Tokenomics </h3>
+            <ComingSoon>
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-3 text-sm font-medium text-muted-foreground">
+                      Position
+                    </th>
+                    <th className="text-right py-3 text-sm font-medium text-muted-foreground">
+                      Amount in ADA
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tokenomicsData.map((row) => (
+                    <tr key={row.position} className="border-b border-border last:border-0">
+                      <td className="py-4 text-sm text-foreground">{row.position}</td>
+                      <td className="py-4 text-sm text-right font-medium text-foreground">
+                        {formatNumber(row.amount)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </ComingSoon>
           </CardContent>
         </Card>
