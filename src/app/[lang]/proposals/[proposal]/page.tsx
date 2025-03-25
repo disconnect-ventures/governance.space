@@ -9,9 +9,10 @@ import { VotingSection } from "~/components/features/proposals/VotingSection";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { TopBar } from "~/components/layout/TopBar";
 import { Card, CardContent } from "~/components/ui/card";
+import { getDictionary } from "~/config/dictionaries";
 import { getProposals, getProposalsById } from "~/lib/proposals";
 import { calculateEpochNumber } from "~/lib/utils";
-
+import { Locale } from "~/config/i18n";
 export async function generateMetadata({ params }: ProposalDetailsProps): Promise<Metadata> {
   const proposalId = (await params).proposal;
   return {
@@ -51,12 +52,13 @@ export async function generateStaticParams() {
 type ProposalDetailsProps = {
   params: Promise<{
     proposal: number;
+    lang: Locale;
   }>;
 };
-
 export default async function ProposalDetailsPage({ params }: ProposalDetailsProps) {
-  const { proposal: proposalId } = await params;
+  const { proposal: proposalId, lang } = await params;
   const { data: proposal } = await getProposalsById(proposalId);
+  const dictionary = await getDictionary(lang);
 
   const createdDate = proposal.attributes.createdAt;
   const createdEpoch = calculateEpochNumber(createdDate);
@@ -65,11 +67,9 @@ export default async function ProposalDetailsPage({ params }: ProposalDetailsPro
 
   const title = proposal.attributes.content.attributes.prop_name;
   const username = proposal.attributes.user_govtool_username;
-  const isProposalActive =
-    proposal.attributes.content.attributes.prop_rev_active;
+  const isProposalActive = proposal.attributes.content.attributes.prop_rev_active;
   const actionType =
-    proposal.attributes.content.attributes.gov_action_type.attributes
-      .gov_action_type_name;
+    proposal.attributes.content.attributes.gov_action_type.attributes.gov_action_type_name;
   const likes = proposal.attributes.prop_likes;
   const dislikes = proposal.attributes.prop_dislikes;
   const commentCount = proposal.attributes.prop_comments_number;
@@ -81,14 +81,14 @@ export default async function ProposalDetailsPage({ params }: ProposalDetailsPro
   return (
     <div className="bg-background text-foreground">
       <PageTitle
-        title="Proposal Details"
+        title={dictionary.header.titleProposals}
         icon={
           <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <FileTextIcon className="w-5 h-5 relative top-1" />
             <HandHelpingIcon className="w-6 h-6" />
           </div>
         }
-        translationPage="pageProposalsDetails"
+        translations={dictionary.pageGovernanceActionsDetails}
       />
       <TopBar backHref="/proposals" />
       <Card className="mb-4 bg-card text-card-foreground">
@@ -109,10 +109,7 @@ export default async function ProposalDetailsPage({ params }: ProposalDetailsPro
 
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr]">
               <div className="w-full col-span-full">
-                <ProposalIdentification
-                  id={proposalId.toString()}
-                  authorName={username}
-                />
+                <ProposalIdentification id={proposalId.toString()} authorName={username} />
               </div>
               <div className="w-full lg:col-span-2">
                 <ProposalTimeline

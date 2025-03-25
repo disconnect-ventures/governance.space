@@ -206,7 +206,7 @@
     "votesSubmittedBy": "Votos enviados para esta Ação de Governança por",
     "spos": "SPOs",
     "constitutionalCommittee": "Comitê Constitucional",
-    "longDescription": ""
+    "longDescription": "Qualquer pessoa que tenha ADA em uma carteira pode propor uma Ação de Governança. Para enviar uma Ação de Governança, o proponente paga um depósito reembolsável de 100.000 ADA. O depósito será devolvido automaticamente à carteira do proponente após a conclusão do período de votação."
   },
   "pageProposals": {
     "description": "Propostas de Governança",
@@ -238,7 +238,7 @@
     "description": "Eventos ao Vivo na Governança",
     "longDescription": "Veja todos os eventos de governança em tempo real.",
     "drepName": "Nome do DRep",
-    "badgeText": "eventos nas últimas 24hrs",
+    "badgeText": "200 eventos nas últimas 24hrs",
     "vote": "Voto",
     "votingPower": "Poder de Voto",
     "submissionEpoch": "Época de Submissão",
@@ -246,6 +246,7 @@
   },
   "pageAnalytics": {
     "description": "Painel e Análises sobre Governança",
+    "longDescription": "Plataforma de Governança Tudo-em-Um.",
     "delegators": "Delegadores",
     "totalDreps": "Total de DReps",
     "drepVotes": "Votos dos DReps",
@@ -300,5 +301,17 @@
   "pageAbout": {
     "description": "Sobre o Governance Space",
     "longDescription": "Plataforma de Governança Tudo-em-Um."
+  },
+  "pagePrivacyPolicy": {
+    "description": "About Governance Space",
+    "longDescription": "All-in-One Governance Platform."
+  },
+  "pageTermsOfUse": {
+    "description": "About Governance Space",
+    "longDescription": "All-in-One Governance Platform."
+  },
+  "pageCookiePolicy": {
+    "description": "About Governance Space",
+    "longDescription": "All-in-One Governance Platform."
   }
 }
