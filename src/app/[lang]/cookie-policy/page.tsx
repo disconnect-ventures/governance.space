@@ -1,22 +1,28 @@
 import { BookOpenCheckIcon } from "lucide-react";
 import { Metadata } from "next";
 import { PageTitle } from "~/components/layout/PageTitle";
+import { getDictionary } from "~/config/dictionaries";
+import { PageProps } from "../layout";
 
 export const metadata: Metadata = {
   title: "Governance Space - Cookies Policy",
   description: "All-in-One Governance Platform",
 };
 
-export default async function CookiePolicyPage() {
+export default async function CookiePolicyPage({ params: paramsPromise }: PageProps) {
+  const params = await paramsPromise;
+  const locale = params.lang;
+  const dictionary = await getDictionary(locale);
   return (
     <div className="bg-background text-foreground dark:bg-background dark:text-foreground">
       <PageTitle
-        title="Cookies Policy"
+        title={dictionary.footer.cookiePolicy}
         icon={
           <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
             <BookOpenCheckIcon className="text-foreground" />
           </div>
         }
+        translations={dictionary.pageCookiePolicy}
       />
 
       <div className="mt-6 space-y-6 text-foreground dark:text-foreground/80">

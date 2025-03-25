@@ -1,22 +1,28 @@
 import { BookOpenCheckIcon } from "lucide-react";
 import { Metadata } from "next";
 import { PageTitle } from "~/components/layout/PageTitle";
+import { PageProps } from "../layout";
+import { getDictionary } from "~/config/dictionaries";
 
 export const metadata: Metadata = {
   title: "Governance Space - Terms of Use",
   description: "All-in-One Governance Platform",
 };
 
-export default async function TermsOfUsePage() {
+export default async function TermsOfUsePage({ params: paramsPromise }: PageProps) {
+  const params = await paramsPromise;
+  const locale = params.lang;
+  const dictionary = await getDictionary(locale);
   return (
     <div className="bg-background text-foreground">
       <PageTitle
-        title="Terms of Use"
+        title={dictionary.footer.termsOfUse}
         icon={
           <div className="p-2 rounded-full bg-muted w-12 h-12 flex flex-col justify-center items-center">
             <BookOpenCheckIcon />
           </div>
         }
+        translations={dictionary.pageTermsOfUse}
       />
       <div className="mt-6 space-y-6">
         <p className="text-muted-foreground">Last updated: January 28, 2025</p>

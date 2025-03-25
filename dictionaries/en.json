@@ -172,6 +172,7 @@
   },
   "pageDrepsDetails": {
     "description": "DRep Profile",
+    "longDescription": "Learn more details about the DRep.",
     "drepId": "DRep ID",
     "sendMessage": "Send message",
     "delegateVotingPower": "Delegate Voting Power",
@@ -205,7 +206,8 @@
     "votesSubmittedBy": "Votes submitted for this Governance Action By",
     "spos": "SPOs",
     "constitutionalCommittee": "Constitutional Committee",
-    "longDescription": ""
+    "longDescription": "Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period.",
+    "badgeText": "registered governance actions"
   },
   "pageProposals": {
     "description": "Proposals in Governance",
@@ -236,7 +238,7 @@
   "pageLiveEvents": {
     "description": "Live Events in Governance",
     "longDescription": "See all governance events in real time.",
-    "badgeText": "{count} events in the last 24h",
+    "badgeText": "200 events in the last 24h",
     "drepName": "DRep Name",
     "vote": "Vote",
     "votingPower": "Voting Power",
@@ -245,6 +247,7 @@
   },
   "pageAnalytics": {
     "description": "Dashboard and Analytics about Governance",
+    "longDescription": "All-in-One Governance Platform.",
     "delegators": "Delegators",
     "totalDreps": "Total DReps",
     "drepVotes": "DRep Votes",
@@ -297,6 +300,18 @@
     "answer41": "XXXXX"
   },
   "pageAbout": {
+    "description": "About Governance Space",
+    "longDescription": "All-in-One Governance Platform."
+  },
+  "pagePrivacyPolicy": {
+    "description": "About Governance Space",
+    "longDescription": "All-in-One Governance Platform."
+  },
+  "pageCookiePolicy": {
+    "description": "About Governance Space",
+    "longDescription": "All-in-One Governance Platform."
+  },
+  "pageTermsOfUse": {
     "description": "About Governance Space",
     "longDescription": "All-in-One Governance Platform."
   }

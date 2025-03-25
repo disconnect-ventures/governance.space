@@ -2,22 +2,28 @@ import { MessageCircleQuestion } from "lucide-react";
 import { Metadata } from "next";
 import { HelpAccordion } from "~/components/features/HelpAccordion";
 import { PageTitle } from "~/components/layout/PageTitle";
+import { PageProps } from "../layout";
+import { getDictionary } from "~/config/dictionaries";
 
 export const metadata: Metadata = {
   title: "Governance Space - Help",
   description: "All-in-One Governance Platform",
 };
 
-export default async function HelpPage() {
+export default async function HelpPage({ params: paramsPromise }: PageProps) {
+  const params = await paramsPromise;
+  const locale = params.lang;
+  const dictionary = await getDictionary(locale);
   return (
     <div className="bg-background text-foreground">
       <PageTitle
-        title="Help"
+        title={dictionary.header.titleHelp}
         icon={
           <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <MessageCircleQuestion />
           </div>
         }
+        translations={dictionary.pageHelp}
       />
 
       <div className="max-w-3xl mx-auto">
