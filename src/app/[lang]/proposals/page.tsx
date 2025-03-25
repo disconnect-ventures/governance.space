@@ -28,28 +28,22 @@ export default async function ProposalsPage({
   const filters = searchParams["filters"]?.split(",").map((f) => parseInt(f)) ?? [];
   const search = searchParams["search"] ?? "";
 
-  const { data, meta } = await getProposals(
-    page,
-    pageSize,
-    search,
-    sort,
-    filters
-  );
+  const { data, meta } = await getProposals(page, pageSize, search, sort, filters);
   const { meta: totalMeta } = await getProposals(0, 1, "", "asc", []);
   const dictionary = await getDictionary(params.lang);
 
   return (
     <div className="space-y-4 bg-background text-foreground">
       <PageTitle
-        title="Proposals"
+        title={dictionary.header.titleProposals}
         icon={
           <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <FileTextIcon className="w-5 h-5 relative top-1" />
             <HandHelpingIcon className="w-6 h-6" />
           </div>
         }
-        translationPage="pageProposals"
-        badge={`${totalMeta.pagination.total} registered proposals`}
+        translations={dictionary.pageProposals}
+        badge={`${totalMeta.pagination.total} ${dictionary.pageProposals.badgeText}`}
       ></PageTitle>
       <ProposalDirectory
         proposals={data}

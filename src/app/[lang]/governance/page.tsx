@@ -47,7 +47,6 @@ export default async function GovernancePage({
   );
 
   const dictionary = await getDictionary(params.lang);
-  const pageDictionary = dictionary.pageGovernanceActions;
 
   return (
     <div className="space-y-4 bg-background text-foreground">
@@ -58,8 +57,8 @@ export default async function GovernancePage({
             <BookOpenCheckIcon />
           </div>
         }
-        badge={`${governanceActions.total} ${pageDictionary.badgeText}`}
-        translationPage="pageGovernanceActions"
+        badge={`${governanceActions.total} ${dictionary.pageGovernanceActions.badgeText}`}
+        translations={dictionary.pageGovernanceActions}
       ></PageTitle>
       <GovernanceActionDirectory
         governanceActions={governanceActions.elements}

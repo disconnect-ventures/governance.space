@@ -59,10 +59,10 @@ export async function generateStaticParams() {
 
 export default async function DRepProfilePage({ params }: DRepProfileProps) {
   const { profile, lang } = await params;
+  const dictionary = await getDictionary(lang);
   const drep = await getDRepById(profile);
   const proposals = (await getProposals(0, 3, "", "desc", [])).data;
   const comments = (await getComments(-1)).slice(0, 3);
-  const dictionary = await getDictionary(lang);
 
   if (!drep) {
     return notFound();
@@ -70,7 +70,11 @@ export default async function DRepProfilePage({ params }: DRepProfileProps) {
 
   return (
     <div className="w-full max-w-7xl mx-auto overflow-hidden">
-      <PageTitle icon={<User className="h-6 w-6" />} title="DRep Profile" />
+      <PageTitle
+        title={dictionary.pageDrepsDetails.description}
+        icon={<User className="h-6 w-6" />}
+        translations={dictionary.pageDrepsDetails}
+      />
       <TopBar backHref="/dreps" />
       <div className="w-full flex flex-col lg:flex-row gap-4 justify-center">
         <div className="lg:w-2/3 flex flex-col gap-4">

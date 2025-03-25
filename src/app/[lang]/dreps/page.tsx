@@ -16,6 +16,8 @@ export default async function DRepsDirectoryPage({
   searchParams: searchParamsPromise,
 }: PageProps) {
   const params = await paramsPromise;
+  const locale = params.lang;
+  const dictionary = await getDictionary(locale);
   const searchParams = (await searchParamsPromise) ?? {};
   const page = parseInt(searchParams["page"] ?? "0");
   const pageSize = parseInt(searchParams["pageSize"] ?? "20");
@@ -24,21 +26,18 @@ export default async function DRepsDirectoryPage({
   const search = searchParams["search"] ?? "";
   const dreps = await getDReps(page, pageSize, search, sort, filters);
   const { total: totalDReps } = await getDReps(0, 1, "", "Random", []);
-  const locale = params.lang;
-  const dictionary = await getDictionary(locale);
-  const badgeText = dictionary.pageDreps.badgeText;
 
   return (
     <div className="space-y-4 bg-background text-foreground dark:bg-background dark:text-foreground">
       <PageTitle
-        title={"DReps Directory"}
+        title={dictionary.header.titleDreps}
         icon={
           <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
             <UsersIcon className="text-foreground" />
           </div>
         }
-        badge={`${totalDReps} ${badgeText}`}
-        translationPage="pageDreps"
+        badge={`${totalDReps} ${dictionary.pageDreps.badgeText}`}
+        translations={dictionary.pageDreps}
       />
       <DRepsDirectory
         dreps={dreps.elements}

@@ -19,6 +19,7 @@ import {
 import { PageProps } from "../../layout";
 import { notFound } from "next/navigation";
 import { getGovernanceActionMetadata, MetadataStandard } from "~/lib/metadata";
+import { getDictionary } from "~/config/dictionaries";
 
 export async function generateMetadata({ params }: GovernanceActionDetailsProps): Promise<Metadata> {
   const actionId = (await params).action;
@@ -115,17 +116,18 @@ export default async function GovernanceActionDetailsPage({
     action.url,
   );
   const references = metadata?.metadata.references ?? [];
+  const dictionary = await getDictionary(params.lang);
 
   return (
     <div className="bg-background text-foreground">
       <PageTitle
-        title="Governace Action Details"
+        title={dictionary.pageGovernanceActionsDetails.description}
         icon={
           <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <BookOpenCheckIcon />
           </div>
         }
-        translationPage="pageGovernanceActionsDetails"
+        translations={dictionary.pageGovernanceActionsDetails}
       />
 
       <TopBar backHref="/governance" />

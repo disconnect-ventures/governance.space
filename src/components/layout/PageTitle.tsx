@@ -1,31 +1,32 @@
-"use client";
-
 import React from "react";
 import { Badge } from "../ui/badge";
 import { InfoIcon } from "lucide-react";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
+import { Dictionary } from "~/config/dictionaries";
 
-type TranslationPage =
+export type PageKey = keyof Pick<
+  Dictionary,
   | "pageDreps"
+  | "pageDrepsDetails"
   | "pageGovernanceActions"
-  | "pageProposals"
   | "pageGovernanceActionsDetails"
+  | "pageProposals"
+  | "pageProposalsDetails"
   | "pageCommittees"
   | "pageLiveEvents"
-  | "pageProposalsDetails";
+  | "pageAnalytics"
+  | "pageHelp"
+  | "pageAbout"
+>;
 
 export type PageTitleProps = {
   title: string;
   badge?: string;
   icon: React.ReactNode;
   children?: React.ReactNode;
-  translationPage?: TranslationPage;
+  translations?: Dictionary[PageKey];
 };
 
-export function PageTitle({ icon, title, children, badge, translationPage }: PageTitleProps) {
-  const { dictionary } = useTranslation();
-  const longDescription = translationPage ? dictionary[translationPage].longDescription : "";
-
+export function PageTitle({ icon, title, children, badge, translations }: PageTitleProps) {
   return (
     <div className="flex items-center justify-between mb-6">
       <div className="flex flex-wrap items-center gap-4 w-full">
@@ -41,13 +42,13 @@ export function PageTitle({ icon, title, children, badge, translationPage }: Pag
             {badge}
           </Badge>
         )}
-        {longDescription && (
+        {translations?.longDescription && (
           <div className="p-3 bg-muted/50 rounded-lg text-muted-foreground w-full">
             <p>
               <span className="inline-flex items-center mr-2">
                 <InfoIcon className="w-4 h-4 relative text-muted-foreground" />
               </span>
-              {longDescription}
+              {translations.longDescription}
             </p>
           </div>
         )}
