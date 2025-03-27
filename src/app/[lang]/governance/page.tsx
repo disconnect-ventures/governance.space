@@ -51,13 +51,12 @@ export default async function GovernancePage({
   return (
     <div className="space-y-4 bg-background text-foreground">
       <PageTitle
-        title={dictionary.header.titleGovernanceActions}
         icon={
           <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <BookOpenCheckIcon />
           </div>
         }
-        badge={`${governanceActions.total} ${dictionary.pageGovernanceActions.badgeText}`}
+        badge={`${governanceActions.total}`}
         translations={dictionary.pageGovernanceActions}
       ></PageTitle>
       <GovernanceActionDirectory

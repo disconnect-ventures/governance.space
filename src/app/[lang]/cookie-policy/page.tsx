@@ -16,7 +16,6 @@ export default async function CookiePolicyPage({ params: paramsPromise }: PagePr
   return (
     <div className="bg-background text-foreground dark:bg-background dark:text-foreground">
       <PageTitle
-        title={dictionary.footer.cookiePolicy}
         icon={
           <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
             <BookOpenCheckIcon className="text-foreground" />

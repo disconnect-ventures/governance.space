@@ -7,7 +7,7 @@ import { getMockCommitteeMembers } from "~/lib/mock";
 import { PageProps } from "../layout";
 
 export const metadata: Metadata = {
-  title: "Governance Space - Committees Members",
+  title: "Governance Space - Committee Members",
   description: "All-in-One Governance Platform",
 };
 
@@ -19,7 +19,6 @@ export default async function CommitteesPage({ params: paramsPromise }: PageProp
   return (
     <div className="space-y-4 bg-background text-foreground dark:bg-background dark:text-foreground">
       <PageTitle
-        title={dictionary.header.titleCommittees}
         icon={
           <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
             <UserIcon className="text-foreground" />

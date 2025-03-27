@@ -81,14 +81,13 @@ export default async function ProposalDetailsPage({ params }: ProposalDetailsPro
   return (
     <div className="bg-background text-foreground">
       <PageTitle
-        title={dictionary.header.titleProposals}
         icon={
           <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <FileTextIcon className="w-5 h-5 relative top-1" />
             <HandHelpingIcon className="w-6 h-6" />
           </div>
         }
-        translations={dictionary.pageGovernanceActionsDetails}
+        translations={dictionary.pageProposalsDetails}
       />
       <TopBar backHref="/proposals" />
       <Card className="mb-4 bg-card text-card-foreground">

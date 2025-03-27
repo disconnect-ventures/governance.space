@@ -35,7 +35,6 @@ export default async function ProposalsPage({
   return (
     <div className="space-y-4 bg-background text-foreground">
       <PageTitle
-        title={dictionary.header.titleProposals}
         icon={
           <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <FileTextIcon className="w-5 h-5 relative top-1" />
@@ -43,7 +42,7 @@ export default async function ProposalsPage({
           </div>
         }
         translations={dictionary.pageProposals}
-        badge={`${totalMeta.pagination.total} ${dictionary.pageProposals.badgeText}`}
+        badge={`${totalMeta.pagination.total}`}
       ></PageTitle>
       <ProposalDirectory
         proposals={data}
