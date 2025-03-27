@@ -1,5 +1,4 @@
 import { getDReps, DRepFilterOption } from "./dreps";
-import { cache } from "react";
 
 export interface DRepStats {
   active: number;
@@ -9,8 +8,6 @@ export interface DRepStats {
   error?: string;
   lastUpdated?: string;
 }
-
-let cachedStats: DRepStats | null = null;
 
 export async function getDRepStatusStats(): Promise<DRepStats> {
   try {
@@ -35,44 +32,6 @@ export async function getDRepStatusStats(): Promise<DRepStats> {
       lastUpdated: new Date().toISOString(),
     };
   } catch (error) {
-    if (cachedStats) {
-      return {
-        ...cachedStats,
-        error: error instanceof Error ? error.message : "Unknown error",
-      };
-    }
     throw error;
   }
-}
-
-const getCachedStatsInternal = cache(async (): Promise<DRepStats> => {
-  try {
-    const stats = await getDRepStatusStats();
-    cachedStats = stats;
-    return stats;
-  } catch (error) {
-    if (cachedStats) {
-      return {
-        ...cachedStats,
-        error: error instanceof Error ? error.message : "Error fetching fresh data",
-      };
-    }
-
-    return {
-      active: 0,
-      inactive: 0,
-      retired: 0,
-      total: 0,
-      error: error instanceof Error ? error.message : "Unknown error occurred",
-      lastUpdated: new Date().toISOString(),
-    };
-  }
-});
-
-export async function getCachedDRepStats(): Promise<DRepStats> {
-  return getCachedStatsInternal();
-}
-
-export function refreshDRepStats(): Promise<DRepStats> {
-  return getCachedDRepStats();
 }
