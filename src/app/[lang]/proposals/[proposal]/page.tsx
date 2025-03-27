@@ -12,9 +12,11 @@ import { Card, CardContent } from "~/components/ui/card";
 import { getDictionary } from "~/config/dictionaries";
 import { getProposals, getProposalsById } from "~/lib/proposals";
 import { calculateEpochNumber } from "~/lib/utils";
-import { Locale } from "~/config/i18n";
+import { PageProps } from "../../layout";
+
 export async function generateMetadata({ params }: ProposalDetailsProps): Promise<Metadata> {
   const proposalId = (await params).proposal;
+
   return {
     title: `Governance Space - Proposal ${proposalId}`,
     description: "All-in-One Governance Platform",
@@ -49,16 +51,14 @@ export async function generateStaticParams() {
   }));
 }
 
-type ProposalDetailsProps = {
-  params: Promise<{
-    proposal: number;
-    lang: Locale;
-  }>;
-};
-export default async function ProposalDetailsPage({ params }: ProposalDetailsProps) {
-  const { proposal: proposalId, lang } = await params;
+type ProposalDetailsProps = PageProps<{ proposal: number }>;
+
+export default async function ProposalDetailsPage({ params: paramsPromise }: ProposalDetailsProps) {
+  const params = await paramsPromise;
+  const locale = params.lang;
+  const dictionary = await getDictionary(locale);
+  const { proposal: proposalId } = params;
   const { data: proposal } = await getProposalsById(proposalId);
-  const dictionary = await getDictionary(lang);
 
   const createdDate = proposal.attributes.createdAt;
   const createdEpoch = calculateEpochNumber(createdDate);
