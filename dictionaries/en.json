@@ -186,6 +186,8 @@
     "motivations": "Motivations",
     "qualifications": "Qualifications",
     "paymentAddress": "Payment Address",
+    "metadataUrl": "Metadata URL",
+    "metadataHash": "Metadata Hash",
     "votingHistory": "Voting History",
     "askToDrep": "Ask the DRep a question..."
   },

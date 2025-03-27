@@ -3,6 +3,8 @@ import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { DRep } from "~/lib/dreps";
 import CopyToClipboard from "../CopyToClipboard";
 import { Dictionary } from "~/config/dictionaries";
+import { LinkIcon } from "lucide-react";
+import Link from "../Link";
 
 type ProfileBodyProps = {
   drep: DRep;
@@ -22,8 +24,22 @@ export function ProfileBody({ drep, translations }: ProfileBodyProps) {
             translations.paymentAddress,
             <>
               <span>{drep.paymentAddress}</span>
-              <CopyToClipboard value={drep.paymentAddress ?? ""}></CopyToClipboard>
+              <CopyToClipboard
+                value={drep.paymentAddress ?? ""}
+              ></CopyToClipboard>
             </>,
+          ],
+          [translations.metadataHash, drep.metadataHash],
+          [
+            translations.metadataUrl,
+            <Link
+              key={translations.metadataUrl}
+              href={drep.url}
+              className="hover:underline"
+              target="_blank"
+            >
+              {drep.url} <LinkIcon className="h-4 inline pl-2"></LinkIcon>
+            </Link>,
           ],
         ].map(([label, text], index) => (
           <div className="space-y-2 w-full" key={index}>
