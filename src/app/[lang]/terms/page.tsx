@@ -16,7 +16,6 @@ export default async function TermsOfUsePage({ params: paramsPromise }: PageProp
   return (
     <div className="bg-background text-foreground">
       <PageTitle
-        title={dictionary.footer.termsOfUse}
         icon={
           <div className="p-2 rounded-full bg-muted w-12 h-12 flex flex-col justify-center items-center">
             <BookOpenCheckIcon />

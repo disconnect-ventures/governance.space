@@ -16,7 +16,6 @@ export default async function PrivacyPolicyPage({ params: paramsPromise }: PageP
   return (
     <div className="bg-background text-foreground">
       <PageTitle
-        title={dictionary.footer.privacyPolicy}
         icon={
           <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <BookOpenCheckIcon />

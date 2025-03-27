@@ -155,9 +155,10 @@
     "darkMode": "Modo escuro"
   },
   "pageDreps": {
+    "title": "Diretório de DReps",
+    "badgeText": "DReps registrados",
     "description": "Representantes Delegados",
     "longDescription": "Os Representantes Delegados (DReps) são detentores de ADA que se registraram on-chain para permitir que outros membros da comunidade deleguem seu poder de voto a eles, para que possam votar em seu nome. Eles são como 'representantes parlamentares' no sistema de governança.",
-    "badgeText": "DReps registrados",
     "search": "Buscar DReps por nome ou ID",
     "drepName": "Nome do DRep",
     "votingPower": "Poder de Voto",
@@ -171,8 +172,10 @@
     "details": "Detalhes"
   },
   "pageDrepsDetails": {
-    "description": "Perfil do DRep",
-    "longDescription": "Conheça mais detalhes sobre o DRep.",
+    "title": "Perfil do DRep",
+    "badgeText": "",
+    "description": "Detalhes sobre o DRep",
+    "longDescription": "",
     "drepId": "ID do DRep",
     "sendMessage": "Enviar mensagem",
     "delegateVotingPower": "Delegar Poder de Voto",
@@ -191,38 +194,46 @@
     "askToDrep": "Faça uma pergunta ao DRep..."
   },
   "pageGovernanceActions": {
-    "description": "Ações de Governança",
+    "title": "Ações de Governança",
+    "badgeText": "ações de governança registradas",
+    "description": "Ações de Governança em Governança",
     "longDescription": "Qualquer pessoa que tenha ADA em uma carteira pode propor uma Ação de Governança. Para enviar uma Ação de Governança, o proponente paga um depósito reembolsável de 100.000 ADA. O depósito será devolvido automaticamente à carteira do proponente após a conclusão do período de votação.",
     "governanceActionId": "ID da Ação de Governança",
-    "badgeText": "ações de governança registradas",
     "cip129GovernanceActionId": "(CIP-129) ID da Ação de Governança"
   },
   "pageGovernanceActionsDetails": {
-    "description": "Detalhes das Ações de Governança",
+    "title": "Detalhes da Ação de Governança",
+    "badgeText": "ações de governança registradas",
+    "description": "Detalhes Sobre Ações de Governança",
+    "longDescription": "",
     "versionDetails": "Detalhes da Versão",
     "currentVersion": "Versão Atual",
     "proposedVersion": "Versão Proposta",
     "previousGovernanceActionId": "ID da Ação de Governança Anterior",
     "votesSubmittedBy": "Votos enviados para esta Ação de Governança por",
     "spos": "SPOs",
-    "constitutionalCommittee": "Comitê Constitucional",
-    "longDescription": "Qualquer pessoa que tenha ADA em uma carteira pode propor uma Ação de Governança. Para enviar uma Ação de Governança, o proponente paga um depósito reembolsável de 100.000 ADA. O depósito será devolvido automaticamente à carteira do proponente após a conclusão do período de votação."
+    "constitutionalCommittee": "Comitê Constitucional"
   },
   "pageProposals": {
+    "title": "Propostas",
+    "badgeText": "propostas registradas",
     "description": "Propostas de Governança",
     "longDescription": "Participe de discussões e processos de tomada de decisão guiados pela governança comunitária.",
-    "badgeText": "propostas registradas",
     "cip129ActionId": "ID da Ação CIP-129"
   },
   "pageProposalsDetails": {
+    "title": "Detalhes da Proposta",
+    "badgeText": "",
     "description": "Detalhes sobre esta Proposta",
-    "longDescription": "Participe de discussões e processos de tomada de decisão guiados pela governança comunitária.",
+    "longDescription": "",
     "abstract": "Resumo",
     "motivation": "Motivação",
     "rational": "Justificativa",
     "castYourVote": "Registre seu Voto"
   },
   "pageCommittees": {
+    "title": "Membros dos Comitês",
+    "badgeText": "",
     "description": "Membros dos Comitês de Governança",
     "longDescription": "Conheça os membros da comunidade Cardano que participam de todos os comitês existentes.",
     "groups": "Grupos",
@@ -235,18 +246,21 @@
     "links": "Links"
   },
   "pageLiveEvents": {
-    "description": "Eventos ao Vivo na Governança",
+    "title": "Eventos ao Vivo",
+    "badgeText": "eventos nas últimas 24 horas",
+    "description": "Eventos ao Vivo de Governança",
     "longDescription": "Veja todos os eventos de governança em tempo real.",
     "drepName": "Nome do DRep",
-    "badgeText": "200 eventos nas últimas 24hrs",
     "vote": "Voto",
     "votingPower": "Poder de Voto",
     "submissionEpoch": "Época de Submissão",
     "transaction": "Transação"
   },
   "pageAnalytics": {
-    "description": "Painel e Análises sobre Governança",
-    "longDescription": "Plataforma de Governança Tudo-em-Um.",
+    "title": "Analytics",
+    "badgeText": "",
+    "description": "Dashboards e Analytics sobre Governança",
+    "longDescription": "",
     "delegators": "Delegadores",
     "totalDreps": "Total de DReps",
     "drepVotes": "Votos dos DReps",
@@ -277,8 +291,10 @@
     "changed": "Alterado"
   },
   "pageHelp": {
+    "title": "Ajuda",
+    "badgeText": "",
     "description": "Dúvidas e Ajuda sobre Governança",
-    "longDescription": "Plataforma de Governança Tudo-em-Um. Portal Oficial de Transparência e Comunidade do Cardano Voltaire CIP-1694.",
+    "longDescription": "",
     "category1": "Governança",
     "question11": "Maneiras de usar seu Poder de Voto?",
     "answer11": "Todo detentor de ADA tem um Poder de Voto igual à quantidade de Lovelace que possui em uma carteira. Ao conectar uma carteira contendo ADA ao GovTool, ele lê o saldo de ADA e o disponibiliza para uso como Poder de Voto. O Poder de Voto pode ser usado de várias formas: Delegar seu Poder de Voto a um DRep.",
@@ -299,19 +315,27 @@
     "answer41": "XXXXX"
   },
   "pageAbout": {
+    "title": "Sobre",
+    "badgeText": "",
     "description": "Sobre o Governance Space",
-    "longDescription": "Plataforma de Governança Tudo-em-Um."
+    "longDescription": ""
   },
   "pagePrivacyPolicy": {
-    "description": "About Governance Space",
-    "longDescription": "All-in-One Governance Platform."
+    "title": "Política de Privacidade",
+    "badgeText": "",
+    "description": "",
+    "longDescription": ""
   },
   "pageTermsOfUse": {
-    "description": "About Governance Space",
-    "longDescription": "All-in-One Governance Platform."
+    "title": "Termos de Uso",
+    "badgeText": "",
+    "description": "",
+    "longDescription": ""
   },
   "pageCookiePolicy": {
-    "description": "About Governance Space",
-    "longDescription": "All-in-One Governance Platform."
+    "title": "Política de Cookies",
+    "badgeText": "",
+    "description": "",
+    "longDescription": ""
   }
 }

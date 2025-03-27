@@ -19,7 +19,6 @@ export default async function AboutPage({ params: paramsPromise }: PageProps) {
   return (
     <div className="bg-background text-foreground dark:bg-background dark:text-foreground">
       <PageTitle
-        title={dictionary.header.titleAbout}
         icon={
           <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
             <BookOpenCheckIcon className="text-foreground" />
@@ -28,7 +27,6 @@ export default async function AboutPage({ params: paramsPromise }: PageProps) {
         translations={dictionary.pageAbout}
       />
       <div className="mt-6 space-y-6 text-foreground dark:text-foreground/80">
-        <p>{dictionary.pageAbout.longDescription}</p>
         <ComingSoon>
           <p>
             Vestibulum lorem ipsum, volutpat vel sodales ut, faucibus sed nulla. Cras faucibus
@@ -68,7 +66,6 @@ export default async function AboutPage({ params: paramsPromise }: PageProps) {
             ))}
           </div>
         </ComingSoon>
-
         <p>
           <span className="text-sm text-muted-foreground dark:text-muted-foreground/80">
             Built on:

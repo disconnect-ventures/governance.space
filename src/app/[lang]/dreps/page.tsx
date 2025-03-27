@@ -30,13 +30,12 @@ export default async function DRepsDirectoryPage({
   return (
     <div className="space-y-4 bg-background text-foreground dark:bg-background dark:text-foreground">
       <PageTitle
-        title={dictionary.header.titleDreps}
         icon={
           <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
             <UsersIcon className="text-foreground" />
           </div>
         }
-        badge={`${totalDReps} ${dictionary.pageDreps.badgeText}`}
+        badge={`${totalDReps}`}
         translations={dictionary.pageDreps}
       />
       <DRepsDirectory

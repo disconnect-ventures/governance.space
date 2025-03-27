@@ -10,7 +10,7 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Governance Space - Committees Members",
+  title: "Governance Space - Analytics",
   description: "All-in-One Governance Platform",
 };
 
@@ -27,7 +27,6 @@ export default async function AnalyticsPage({ params: paramsPromise }: PageProps
   return (
     <div className="flex min-h-screen flex-col gap-8">
       <PageTitle
-        title={dictionary.header.titleAnalytics}
         icon={
           <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
             <ChartLineIcon className="text-foreground" />
