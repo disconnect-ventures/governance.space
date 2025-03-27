@@ -22,12 +22,14 @@ export function ProfileBody({ drep, translations }: ProfileBodyProps) {
           [translations.qualifications, drep.qualifications],
           [
             translations.paymentAddress,
-            <>
-              <span>{drep.paymentAddress}</span>
+            <span key={translations.paymentAddress} className="flex gap-2">
+              <span className="text-ellipsis overflow-hidden">
+                {drep.paymentAddress}
+              </span>
               <CopyToClipboard
                 value={drep.paymentAddress ?? ""}
               ></CopyToClipboard>
-            </>,
+            </span>,
           ],
           [translations.metadataHash, drep.metadataHash],
           [
@@ -35,10 +37,11 @@ export function ProfileBody({ drep, translations }: ProfileBodyProps) {
             <Link
               key={translations.metadataUrl}
               href={drep.url}
-              className="hover:underline"
+              className="flex gap-2 hover:underline"
               target="_blank"
             >
-              {drep.url} <LinkIcon className="h-4 inline pl-2"></LinkIcon>
+              <span className="overflow-hidden text-ellipsis">{drep.url}</span>
+              <LinkIcon className="h-4 inline pl-2"></LinkIcon>
             </Link>,
           ],
         ].map(([label, text], index) => (
