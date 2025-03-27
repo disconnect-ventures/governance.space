@@ -111,7 +111,7 @@
     "titleDreps": "DReps Directory",
     "titleGovernanceActions": "Governance Actions",
     "titleProposals": "Proposals",
-    "titleCommittees": "Committees Members",
+    "titleCommittees": "Committee Members",
     "titleLiveEvents": "Live Events",
     "titleAnalytics": "Analytics",
     "titleHelp": "Help",
@@ -138,7 +138,7 @@
     "linkDreps": "DReps",
     "linkGovernanceActions": "Governance Actions",
     "linkProposals": "Proposals",
-    "linkCommittees": "Committees Members",
+    "linkCommittees": "Committee Members",
     "linkLiveEvents": "Live Events",
     "linkAnalytics": "Analytics",
     "linkHelp": "Help",
@@ -149,15 +149,16 @@
     "linkInterimConstitution": "Read the Constitution",
     "privacyPolicy": "Privacy Policy",
     "termsOfUse": "Terms Of Use",
-    "cookiePolicy": "Cookie Policy",
+    "cookiePolicy": "Cookies Policy",
     "language": "Language & region",
     "lightMode": "Light mode",
     "darkMode": "Dark mode"
   },
   "pageDreps": {
+    "title": "DReps Directory",
+    "badgeText": "registered DReps",
     "description": "Delegated Representatives",
     "longDescription": "Delegated Representatives (DReps) are ADA holders who registered on-chain to allow other members of the community to delegate their voting power to them, so that they can vote on their behalf. They are are like 'parlimentary representatives' in the Governance system.",
-    "badgeText": "registered DReps",
     "search": "Search DReps by name or ID",
     "drepName": "DRep Name",
     "votingPower": "Voting Power",
@@ -171,8 +172,10 @@
     "details": "Details"
   },
   "pageDrepsDetails": {
-    "description": "DRep Profile",
-    "longDescription": "Learn more details about the DRep.",
+    "title": "DRep Profile",
+    "badgeText": "",
+    "description": "Details about DRep",
+    "longDescription": "",
     "drepId": "DRep ID",
     "sendMessage": "Send message",
     "delegateVotingPower": "Delegate Voting Power",
@@ -191,40 +194,47 @@
     "askToDrep": "Ask the DRep a question..."
   },
   "pageGovernanceActions": {
+    "title": "Governance Actions",
+    "badgeText": "registered governance actions",
     "description": "Governance Actions in Governance",
     "longDescription": "Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period.",
-    "badgeText": "registered governance actions",
     "governanceActionId": "Governance Action ID",
     "cip129GovernanceActionId": "(CIP-129) Governance Action ID"
   },
   "pageGovernanceActionsDetails": {
-    "description": "Details of Governance Actions",
+    "title": "Governance Action Details",
+    "badgeText": "registered governance actions",
+    "description": "Details About Governance Actions",
+    "longDescription": "",
     "versionDetails": "Version details",
     "currentVersion": "Current version",
     "proposedVersion": "Proposed version",
     "previousGovernanceActionId": "Previous Governance Action ID",
     "votesSubmittedBy": "Votes submitted for this Governance Action By",
     "spos": "SPOs",
-    "constitutionalCommittee": "Constitutional Committee",
-    "longDescription": "Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period.",
-    "badgeText": "registered governance actions"
+    "constitutionalCommittee": "Constitutional Committee"
   },
   "pageProposals": {
-    "description": "Proposals in Governance",
+    "title": "Proposals",
+    "badgeText": "registered proposals",
+    "description": "Governance Proposals",
     "longDescription": "Participate in discussions and decision-making processes guided by community governance.",
-    "badgeText": "{count} registered proposals",
     "cip129ActionId": "CIP-129 Action ID"
   },
   "pageProposalsDetails": {
+    "title": "Proposal Details",
+    "badgeText": "",
     "description": "Details about this Proposal",
-    "longDescription": "Participate in discussions and decision-making processes guided by community governance.",
+    "longDescription": "",
     "abstract": "Abstract",
     "motivation": "Motivation",
     "rational": "Rational",
     "castYourVote": "Cast Your Vote"
   },
   "pageCommittees": {
-    "description": "Committees Members in Governance",
+    "title": "Committee Members",
+    "badgeText": "",
+    "description": "Governance Committee Members",
     "longDescription": "Meet the Cardano community members who are participating in all existing committees.",
     "groups": "Groups",
     "committee": "Committee",
@@ -236,9 +246,10 @@
     "links": "Links"
   },
   "pageLiveEvents": {
-    "description": "Live Events in Governance",
+    "title": "Live Events",
+    "badgeText": "events in the last 24 hours",
+    "description": "Governance Live Events",
     "longDescription": "See all governance events in real time.",
-    "badgeText": "200 events in the last 24h",
     "drepName": "DRep Name",
     "vote": "Vote",
     "votingPower": "Voting Power",
@@ -246,8 +257,10 @@
     "transaction": "Transaction"
   },
   "pageAnalytics": {
+    "title": "Analytics",
+    "badgeText": "",
     "description": "Dashboard and Analytics about Governance",
-    "longDescription": "All-in-One Governance Platform.",
+    "longDescription": "",
     "delegators": "Delegators",
     "totalDreps": "Total DReps",
     "drepVotes": "DRep Votes",
@@ -278,8 +291,10 @@
     "changed": "Changed"
   },
   "pageHelp": {
+    "title": "Help",
+    "badgeText": "",
     "description": "Doubts and Help about Governance",
-    "longDescription": "All-in-One Governance Platform. Cardano Voltaire CIP-1694 Offical Transparency & Community Portal.",
+    "longDescription": "",
     "category1": "Governance",
     "question11": "Ways to use your Voting Power?",
     "answer11": "Every ADA holder has an amount of Voting Power equal to the amount of Lovelace they have in a wallet. When you link a wallet containing ADA to GovTool, GovTool will read the ADA balance in the wallet, and make it available to you to use as Voting Power. Voting Power can be used in several ways: Delegate your Voting Power to a DRep, How to delegate your Voting Power.",
@@ -300,19 +315,27 @@
     "answer41": "XXXXX"
   },
   "pageAbout": {
+    "title": "About",
+    "badgeText": "",
     "description": "About Governance Space",
-    "longDescription": "All-in-One Governance Platform."
+    "longDescription": ""
   },
   "pagePrivacyPolicy": {
-    "description": "About Governance Space",
-    "longDescription": "All-in-One Governance Platform."
-  },
-  "pageCookiePolicy": {
-    "description": "About Governance Space",
-    "longDescription": "All-in-One Governance Platform."
+    "title": "Privacy Policy",
+    "badgeText": "",
+    "description": "",
+    "longDescription": ""
   },
   "pageTermsOfUse": {
-    "description": "About Governance Space",
-    "longDescription": "All-in-One Governance Platform."
+    "title": "Terms Of Use",
+    "badgeText": "",
+    "description": "",
+    "longDescription": ""
+  },
+  "pageCookiePolicy": {
+    "title": "Cookies Policy",
+    "badgeText": "",
+    "description": "",
+    "longDescription": ""
   }
 }

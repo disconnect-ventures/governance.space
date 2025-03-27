@@ -20,8 +20,6 @@ export default async function LiveEventsPage({ params: paramsPromise }: PageProp
   return (
     <div className="space-y-4 bg-background text-foreground">
       <PageTitle
-        title={dictionary.header.titleLiveEvents}
-        badge={dictionary.pageLiveEvents.badgeText}
         icon={
           <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <RadioIcon />

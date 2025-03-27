@@ -17,7 +17,6 @@ export default async function HelpPage({ params: paramsPromise }: PageProps) {
   return (
     <div className="bg-background text-foreground">
       <PageTitle
-        title={dictionary.header.titleHelp}
         icon={
           <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
             <MessageCircleQuestion />
