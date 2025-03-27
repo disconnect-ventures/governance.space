@@ -12,7 +12,7 @@ import { TopBar } from "~/components/layout/TopBar";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { Metadata } from "next";
 import { getDictionary } from "~/config/dictionaries";
-import { Locale } from "~/config/i18n";
+import { PageProps } from "../../layout";
 
 export async function generateMetadata({ params }: DRepProfileProps): Promise<Metadata> {
   const profileId = (await params).profile;
@@ -21,13 +21,6 @@ export async function generateMetadata({ params }: DRepProfileProps): Promise<Me
     description: "All-in-One Governance Platform",
   };
 }
-
-type DRepProfileProps = {
-  params: Promise<{
-    profile: string;
-    lang: Locale;
-  }>;
-};
 
 export async function generateStaticParams() {
   let page = 0;
@@ -57,9 +50,14 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function DRepProfilePage({ params }: DRepProfileProps) {
-  const { profile, lang } = await params;
-  const dictionary = await getDictionary(lang);
+type DRepProfileProps = PageProps<{ profile: string }>;
+
+export default async function DRepProfilePage({ params: paramsPromise }: DRepProfileProps) {
+  const params = await paramsPromise;
+  const locale = params.lang;
+  const dictionary = await getDictionary(locale);
+  const { profile } = params;
+
   const drep = await getDRepById(profile);
   const proposals = (await getProposals(0, 3, "", "desc", [])).data;
   const comments = (await getComments(-1)).slice(0, 3);

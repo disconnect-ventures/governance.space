@@ -104,6 +104,8 @@ export default async function GovernanceActionDetailsPage({
   params: paramsPromise,
 }: GovernanceActionDetailsProps) {
   const params = await paramsPromise;
+  const locale = params.lang;
+  const dictionary = await getDictionary(locale);
   const proposal = await getGovernanceActionById(params.action);
   const action = proposal?.proposal;
   if (!action) {
@@ -116,7 +118,6 @@ export default async function GovernanceActionDetailsPage({
     action.url,
   );
   const references = metadata?.metadata.references ?? [];
-  const dictionary = await getDictionary(params.lang);
 
   return (
     <div className="bg-background text-foreground">
