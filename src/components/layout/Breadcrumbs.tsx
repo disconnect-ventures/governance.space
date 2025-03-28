@@ -45,7 +45,9 @@ export const Breadcrumbs = () => {
           <Link
             href={breadcrumb.href}
             className={`text-ellipsis overflow-hidden hover:text-foreground ${
-              index === breadcrumbs.length - 1 ? "font-medium text-foreground" : ""
+              index === breadcrumbs.length - 1
+                ? "font-medium text-foreground"
+                : ""
             }`}
           >
             {breadcrumb.label}

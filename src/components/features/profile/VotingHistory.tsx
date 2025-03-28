@@ -16,7 +16,10 @@ type VotingHistoryProps = {
 
 type VoteType = "Yes" | "No" | "Abstain";
 
-export const VotingHistory = ({ proposals, translations }: VotingHistoryProps) => {
+export const VotingHistory = ({
+  proposals,
+  translations,
+}: VotingHistoryProps) => {
   const [votes, setVotes] = useState<Record<string, VoteType>>({});
 
   useEffect(() => {
@@ -64,10 +67,16 @@ export const VotingHistory = ({ proposals, translations }: VotingHistoryProps) =
             : vote === "No"
               ? "bg-red-500/10 text-red-500 dark:bg-red-500/20 dark:text-red-400"
               : "bg-gray-500/10 text-gray-500 dark:bg-gray-500/20 dark:text-gray-400",
-          "p-3 text-lg flex gap-3",
+          "p-3 text-lg flex gap-3"
         )}
       >
-        {vote === "Yes" ? <CircleCheck /> : vote === "No" ? <CircleX /> : <CircleMinus />}
+        {vote === "Yes" ? (
+          <CircleCheck />
+        ) : vote === "No" ? (
+          <CircleX />
+        ) : (
+          <CircleMinus />
+        )}
         {voteTranslations[vote].toUpperCase()}
       </Badge>
     );
@@ -84,7 +93,10 @@ export const VotingHistory = ({ proposals, translations }: VotingHistoryProps) =
             const vote = votes[proposal.id] || "Abstain";
 
             return (
-              <Card key={proposal.id} className="w-full shadow-none border-border bg-background">
+              <Card
+                key={proposal.id}
+                className="w-full shadow-none border-border bg-background"
+              >
                 <CardContent className="px-0">
                   <div className="flex flex-col space-y-4">
                     {index > 0 && <Separator />}
@@ -98,10 +110,11 @@ export const VotingHistory = ({ proposals, translations }: VotingHistoryProps) =
                             <Badge
                               variant="secondary"
                               className={clsx(
-                                proposal.attributes.content.attributes.prop_submitted
+                                proposal.attributes.content.attributes
+                                  .prop_submitted
                                   ? "bg-green-500/10 text-green-500 dark:bg-green-500/20 dark:text-green-400"
                                   : "bg-yellow-500/10 text-yellow-500 dark:bg-yellow-500/20 dark:text-yellow-400",
-                                "w-fit mr-auto",
+                                "w-fit mr-auto"
                               )}
                             >
                               {getSubmissionStatus(proposal)}
@@ -114,7 +127,11 @@ export const VotingHistory = ({ proposals, translations }: VotingHistoryProps) =
                         </p>
                         <div className="flex flex-wrap items-center gap-2 text-muted-foreground text-sm">
                           <Calendar className="w-4 h-4" />
-                          <span>{formatDate(proposal.attributes.content.attributes.createdAt)}</span>
+                          <span>
+                            {formatDate(
+                              proposal.attributes.content.attributes.createdAt
+                            )}
+                          </span>
                           <span className="text-muted-foreground/50">|</span>
                           <span>
                             {translations.general.item}:{" "}

@@ -23,14 +23,21 @@ export type PageTitleProps = {
   translations?: Dictionary[PageKey];
 };
 
-export function PageTitle({ icon, children, badge, translations }: PageTitleProps) {
+export function PageTitle({
+  icon,
+  children,
+  badge,
+  translations,
+}: PageTitleProps) {
   return (
     <div className="flex items-center justify-between mb-6">
       <div className="flex flex-wrap items-center gap-4 w-full">
         <div className="p-2 rounded-full bg-secondary/50 h-12 w-12 flex items-center justify-center text-foreground">
           {icon}
         </div>
-        <h1 className="text-4xl font-bold text-foreground">{translations?.title}</h1>
+        <h1 className="text-4xl font-bold text-foreground">
+          {translations?.title}
+        </h1>
         {badge && (
           <Badge
             variant="secondary"

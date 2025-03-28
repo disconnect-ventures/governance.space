@@ -109,17 +109,25 @@ const MetricsDisplay = ({
     {
       name: "Active dReps",
       value: data.totalStakeControlledByDReps,
-      percentage: ((data.totalStakeControlledByDReps / circulation) * 100).toFixed(2),
+      percentage: (
+        (data.totalStakeControlledByDReps / circulation) *
+        100
+      ).toFixed(2),
     },
     {
       name: "Always Abstain",
       value: data.alwaysAbstainVotingPower,
-      percentage: ((data.alwaysAbstainVotingPower / circulation) * 100).toFixed(2),
+      percentage: ((data.alwaysAbstainVotingPower / circulation) * 100).toFixed(
+        2
+      ),
     },
     {
       name: "No-Confidence",
       value: data.alwaysNoConfidenceVotingPower,
-      percentage: ((data.alwaysNoConfidenceVotingPower / circulation) * 100).toFixed(2),
+      percentage: (
+        (data.alwaysNoConfidenceVotingPower / circulation) *
+        100
+      ).toFixed(2),
     },
   ];
 
@@ -201,14 +209,19 @@ const MetricsDisplay = ({
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
         {metrics.map((metric, index) => (
-          <Card key={index} className="bg-card text-card-foreground shadow-none">
+          <Card
+            key={index}
+            className="bg-card text-card-foreground shadow-none"
+          >
             <CardContent className="p-6">
               <div className="flex gap-4 items-center">
                 <div className="p-2 bg-primary/10 rounded-lg text-primary h-fit">
                   {React.cloneElement(metric.icon, { className: "h-5 w-5" })}
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">{metric.label}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {metric.label}
+                  </p>
                   <p className="text-2xl font-bold text-foreground mt-1">
                     {formatNumber(metric.value)}
                   </p>
@@ -223,7 +236,9 @@ const MetricsDisplay = ({
         <StakeDistributionGraph data={data} />
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">Voting Power</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">
+              Voting Power
+            </h3>
             <div className="flex">
               <div className="h-32 flex-1">
                 <ResponsiveContainer>
@@ -253,7 +268,10 @@ const MetricsDisplay = ({
               </div>
               <div className="flex-1 flex flex-col justify-center space-y-4">
                 {votingPowerData.map((item, index) => (
-                  <div key={index} className="flex items-center justify-between">
+                  <div
+                    key={index}
+                    className="flex items-center justify-between"
+                  >
                     <div className="flex items-center gap-2">
                       <div
                         className="w-3 h-3 rounded-full"
@@ -264,9 +282,13 @@ const MetricsDisplay = ({
                               : chartColors.votingPowerNoConfidence,
                         }}
                       />
-                      <span className="text-sm text-muted-foreground">{item.name}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {item.name}
+                      </span>
                     </div>
-                    <span className="text-sm font-medium text-foreground">{item.formatted}</span>
+                    <span className="text-sm font-medium text-foreground">
+                      {item.formatted}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -278,16 +300,23 @@ const MetricsDisplay = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-2">Governance Delegation </h3>
+            <h3 className="text-lg font-semibold text-foreground mb-2">
+              Governance Delegation{" "}
+            </h3>
             <p className="text-sm text-muted-foreground mb-6">
-              ADA taking part in Governance as of today by category in relation to the circulating
-              supply of ADA on Cardano
+              ADA taking part in Governance as of today by category in relation
+              to the circulating supply of ADA on Cardano
             </p>
             <div className="flex">
               <div className="h-48 flex-1">
                 <ResponsiveContainer>
                   <PieChart>
-                    <Pie data={governanceData} dataKey="value" startAngle={90} endAngle={-270}>
+                    <Pie
+                      data={governanceData}
+                      dataKey="value"
+                      startAngle={90}
+                      endAngle={-270}
+                    >
                       {governanceData.map((_, index) => (
                         <Cell
                           key={`cell-${index}`}
@@ -301,15 +330,22 @@ const MetricsDisplay = ({
               </div>
               <div className="flex-1 flex flex-col justify-center space-y-3">
                 {governanceData.map((item, index) => (
-                  <div key={index} className="flex items-center justify-between">
+                  <div
+                    key={index}
+                    className="flex items-center justify-between"
+                  >
                     <div className="flex items-center gap-2">
                       <div
                         className="w-3 h-3 rounded-full"
                         style={{ backgroundColor: getGovernanceColor(index) }}
                       />
-                      <span className="text-sm text-muted-foreground">{item.name}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {item.name}
+                      </span>
                     </div>
-                    <span className="text-sm font-medium text-foreground">({item.percentage}%)</span>
+                    <span className="text-sm font-medium text-foreground">
+                      ({item.percentage}%)
+                    </span>
                   </div>
                 ))}
               </div>
@@ -319,14 +355,18 @@ const MetricsDisplay = ({
 
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-2">DRep Status Distribution</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-2">
+              DRep Status Distribution
+            </h3>
             <ComingSoon>
               <p className="text-sm text-muted-foreground mb-6">
                 Distribution of all registered DReps by their current status
               </p>
               {isLoadingStats ? (
                 <div className="flex justify-center items-center h-48">
-                  <p className="text-muted-foreground">Loading DRep statistics...</p>
+                  <p className="text-muted-foreground">
+                    Loading DRep statistics...
+                  </p>
                 </div>
               ) : (
                 <div className="flex">
@@ -356,7 +396,10 @@ const MetricsDisplay = ({
                   </div>
                   <div className="flex-1 flex flex-col justify-center space-y-3">
                     {drepStatusData.map((item, index) => (
-                      <div key={index} className="flex items-center justify-between">
+                      <div
+                        key={index}
+                        className="flex items-center justify-between"
+                      >
                         <div className="flex items-center gap-2">
                           <div
                             className="w-3 h-3 rounded-full"
@@ -364,7 +407,9 @@ const MetricsDisplay = ({
                               backgroundColor: getDRepStatusColor(index),
                             }}
                           />
-                          <span className="text-sm text-muted-foreground">{item.name}</span>
+                          <span className="text-sm text-muted-foreground">
+                            {item.name}
+                          </span>
                         </div>
                         <span className="text-sm font-medium text-foreground">
                           {formatNumber(item.value)}{" "}
@@ -385,7 +430,9 @@ const MetricsDisplay = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">Top 10 DReps</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">
+              Top 10 DReps
+            </h3>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
@@ -408,7 +455,10 @@ const MetricsDisplay = ({
                         index + 1
                       }º ${drep.givenName || "Anonymous DRep"}`}</td>
                       <td className="py-4 text-sm text-center">
-                        <ProfileStatus drep={drep} translations={translations} />
+                        <ProfileStatus
+                          drep={drep}
+                          translations={translations}
+                        />
                       </td>
                       <td className="py-4 text-sm text-right font-medium text-foreground">
                         ₳ {formatNumber(drep.votingPower)}
@@ -422,7 +472,9 @@ const MetricsDisplay = ({
         </Card>
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">Epoch {epoch} Metrics</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">
+              Epoch {epoch} Metrics
+            </h3>
             <ComingSoon>
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -443,11 +495,14 @@ const MetricsDisplay = ({
                   <tbody className="divide-y divide-border">
                     {epochMetricsData.map((row) => {
                       const isError =
-                        row.item === "Active Delegated" || row.item === "Abstain/No Confidence";
+                        row.item === "Active Delegated" ||
+                        row.item === "Abstain/No Confidence";
 
                       return (
                         <tr key={row.item}>
-                          <td className="py-4 text-sm text-foreground">{row.item}</td>
+                          <td className="py-4 text-sm text-foreground">
+                            {row.item}
+                          </td>
                           <td className="py-4 text-sm text-center font-medium text-foreground">
                             {row.value}
                           </td>
@@ -474,7 +529,9 @@ const MetricsDisplay = ({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">Cardano Tokenomics </h3>
+            <h3 className="text-lg font-semibold text-foreground mb-6">
+              Cardano Tokenomics{" "}
+            </h3>
             <ComingSoon>
               <table className="w-full">
                 <thead>
@@ -489,8 +546,13 @@ const MetricsDisplay = ({
                 </thead>
                 <tbody>
                   {tokenomicsData.map((row) => (
-                    <tr key={row.position} className="border-b border-border last:border-0">
-                      <td className="py-4 text-sm text-foreground">{row.position}</td>
+                    <tr
+                      key={row.position}
+                      className="border-b border-border last:border-0"
+                    >
+                      <td className="py-4 text-sm text-foreground">
+                        {row.position}
+                      </td>
                       <td className="py-4 text-sm text-right font-medium text-foreground">
                         {formatNumber(row.amount)}
                       </td>

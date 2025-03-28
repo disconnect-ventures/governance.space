@@ -1,6 +1,10 @@
 import { ChartLineIcon } from "lucide-react";
 import MetricsDisplay from "~/components/features/analytics/MetricsDisplay";
-import { getNetworkInfo, getNetworkMetrics, getNetworkStake } from "~/lib/analytics";
+import {
+  getNetworkInfo,
+  getNetworkMetrics,
+  getNetworkStake,
+} from "~/lib/analytics";
 import { getDReps } from "~/lib/dreps";
 import { PageProps } from "../layout";
 import { getDictionary } from "~/config/dictionaries";
@@ -14,7 +18,9 @@ export const metadata: Metadata = {
   description: "All-in-One Governance Platform",
 };
 
-export default async function AnalyticsPage({ params: paramsPromise }: PageProps) {
+export default async function AnalyticsPage({
+  params: paramsPromise,
+}: PageProps) {
   const params = await paramsPromise;
   const locale = params.lang;
   const dictionary = await getDictionary(locale);
@@ -34,7 +40,9 @@ export default async function AnalyticsPage({ params: paramsPromise }: PageProps
         }
         translations={dictionary.pageAnalytics}
       />
-      <h1 className="text-4xl font-bold text-foreground">Epoch {info.epochNo}</h1>
+      <h1 className="text-4xl font-bold text-foreground">
+        Epoch {info.epochNo}
+      </h1>
       <Suspense fallback={<div>Loading...</div>}>
         <MetricsDisplay
           data={{ ...metrics, ...info, ...stake }}

@@ -14,10 +14,14 @@ type GovernanceDocumentsProps = {
   documents: Document[];
 };
 
-export const GovernanceDocuments = ({ documents }: GovernanceDocumentsProps) => {
+export const GovernanceDocuments = ({
+  documents,
+}: GovernanceDocumentsProps) => {
   return (
     <CardContent className="p-6">
-      <h2 className="mb-4 text-lg font-medium dark:text-gray-100">Related documents</h2>
+      <h2 className="mb-4 text-lg font-medium dark:text-gray-100">
+        Related documents
+      </h2>
       <ComingSoon>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {documents.map((doc, index) => (
@@ -39,7 +43,9 @@ export const GovernanceDocuments = ({ documents }: GovernanceDocumentsProps) => 
                 <p className="font-semibold text-gray-700 dark:text-gray-200 truncate">
                   {doc.fileName}
                 </p>
-                <span className="text-gray-400 dark:text-gray-500">{doc.fileType}</span>
+                <span className="text-gray-400 dark:text-gray-500">
+                  {doc.fileType}
+                </span>
               </div>
               <ExternalLink
                 className="text-gray-400 group-hover:text-gray-500

@@ -37,8 +37,13 @@ export const GovernanceVotingCard = ({
     },
   };
 
-  const totalVotes = Object.values(votes).reduce((total, { count }) => total + count, 0);
-  const yesPercentage = totalVotes ? (votes["yes"].count / totalVotes) * 100 : 0;
+  const totalVotes = Object.values(votes).reduce(
+    (total, { count }) => total + count,
+    0
+  );
+  const yesPercentage = totalVotes
+    ? (votes["yes"].count / totalVotes) * 100
+    : 0;
   const noPercentage = totalVotes ? (votes["no"].count / totalVotes) * 100 : 0;
 
   return (
@@ -49,7 +54,11 @@ export const GovernanceVotingCard = ({
         </div>
         <div className="space-y-3 mb-6">
           {Object.entries(votes).map(([type, { count, label }], index) => {
-            const { icon, text: defaultLabel, colorClass } = config[type as keyof typeof config];
+            const {
+              icon,
+              text: defaultLabel,
+              colorClass,
+            } = config[type as keyof typeof config];
             return (
               <div
                 key={index}
@@ -58,9 +67,13 @@ export const GovernanceVotingCard = ({
                   dark:bg-gray-900 dark:border-gray-700 dark:hover:border-gray-600
                   transition-colors"
               >
-                <div className={`flex items-center justify-center gap-2 ${colorClass}`}>
+                <div
+                  className={`flex items-center justify-center gap-2 ${colorClass}`}
+                >
                   {icon}
-                  <span className="font-bold">{label?.toUpperCase() ?? defaultLabel}</span>
+                  <span className="font-bold">
+                    {label?.toUpperCase() ?? defaultLabel}
+                  </span>
                 </div>
                 <span className="font-bold text-sm dark:text-gray-200">
                   {formatValue ? formatValue(count) : count}

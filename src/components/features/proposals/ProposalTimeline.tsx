@@ -23,15 +23,24 @@ export const ProposalTimeline = ({
         />
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2">
           <span>
-            Submitted: <span className="font-semibold">{formatDate(createdTime, createdEpoch)}</span>
+            Submitted:{" "}
+            <span className="font-semibold">
+              {formatDate(createdTime, createdEpoch)}
+            </span>
           </span>
         </div>
       </div>
       <div className="flex items-center gap-3">
-        <Clock className="w-6 h-6 text-muted-foreground shrink-0" aria-label="Expiry date icon" />
+        <Clock
+          className="w-6 h-6 text-muted-foreground shrink-0"
+          aria-label="Expiry date icon"
+        />
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2">
           <span>
-            Updated At: <span className="font-semibold">{formatDate(updateDate, updateEpoch)}</span>
+            Updated At:{" "}
+            <span className="font-semibold">
+              {formatDate(updateDate, updateEpoch)}
+            </span>
           </span>
         </div>
       </div>

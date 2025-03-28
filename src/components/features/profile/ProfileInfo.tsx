@@ -90,7 +90,10 @@ export function ProfileInfo({ drep, translations }: ProfileInfoProps) {
             //   icon: <MegaphoneIcon className="h-4 w-4 text-muted-foreground" />,
             // },
           ].map(({ label, value, icon }, index) => (
-            <div key={index} className="w-full flex justify-between items-center gap-8">
+            <div
+              key={index}
+              className="w-full flex justify-between items-center gap-8"
+            >
               <span className="text-sm text-muted-foreground inline-flex items-center gap-2">
                 {icon}
                 {label}
@@ -124,7 +127,9 @@ export function ProfileInfo({ drep, translations }: ProfileInfoProps) {
       </Card> */}
 
       <Card className="bg-card text-card-foreground">
-        <CardHeader className="text-foreground">{[translations.pageDrepsDetails.info]}</CardHeader>
+        <CardHeader className="text-foreground">
+          {[translations.pageDrepsDetails.info]}
+        </CardHeader>
         <CardContent className="space-y-3">
           {/* <div className="text-sm">
             <span className="text-muted-foreground">
@@ -138,7 +143,9 @@ export function ProfileInfo({ drep, translations }: ProfileInfoProps) {
               {translations.pageDreps.registrationDate}:
             </span>
             <span className="ml-2 text-foreground">
-              {new Date(drep.latestRegistrationDate).toLocaleDateString(translations.general.locale)}
+              {new Date(drep.latestRegistrationDate).toLocaleDateString(
+                translations.general.locale
+              )}
             </span>
           </div>
         </CardContent>

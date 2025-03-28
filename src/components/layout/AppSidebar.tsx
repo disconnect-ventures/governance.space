@@ -54,7 +54,7 @@ export function AppSidebar({ translations }: AppSidebarProps) {
                         className={clsx(
                           "hover:bg-accent hover:text-accent-foreground",
                           pathname === item.href &&
-                            "bg-primary/10 text-primary focus:bg-primary/10 focus:text-primary",
+                            "bg-primary/10 text-primary focus:bg-primary/10 focus:text-primary"
                         )}
                       >
                         <span>{translations.header[item.label]}</span>
@@ -64,14 +64,20 @@ export function AppSidebar({ translations }: AppSidebarProps) {
                 ))}
               </SidebarMenu>
               <div className="flex flex-col gap-2 mt-auto">
-                <Button variant="ghost" className="hover:bg-accent hover:text-accent-foreground">
+                <Button
+                  variant="ghost"
+                  className="hover:bg-accent hover:text-accent-foreground"
+                >
                   {translations.header.becomeDrep}
                 </Button>
                 <div className="dark:text-background">
                   <CardanoWallet label={translations.wallet.connectWallet} />
                 </div>
                 {connected && (
-                  <Button size="sm" className="cursor-default bg-secondary text-secondary-foreground">
+                  <Button
+                    size="sm"
+                    className="cursor-default bg-secondary text-secondary-foreground"
+                  >
                     {translations.pageDreps.votingPower}: ₳{balance}
                   </Button>
                 )}

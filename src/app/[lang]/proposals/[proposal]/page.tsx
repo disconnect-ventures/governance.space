@@ -14,7 +14,9 @@ import { getProposals, getProposalsById } from "~/lib/proposals";
 import { calculateEpochNumber } from "~/lib/utils";
 import { PageProps } from "../../layout";
 
-export async function generateMetadata({ params }: ProposalDetailsProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ProposalDetailsProps): Promise<Metadata> {
   const proposalId = (await params).proposal;
 
   return {
@@ -37,12 +39,18 @@ export async function generateStaticParams() {
     await Promise.all(
       Array.from({ length: totalPages - 1 }).map(async () => {
         try {
-          const { data } = await getProposals(page++, pageSize, search, sort, filters);
+          const { data } = await getProposals(
+            page++,
+            pageSize,
+            search,
+            sort,
+            filters
+          );
           return data;
         } catch {
           return [];
         }
-      }),
+      })
     )
   ).flat();
 
@@ -53,7 +61,9 @@ export async function generateStaticParams() {
 
 type ProposalDetailsProps = PageProps<{ proposal: number }>;
 
-export default async function ProposalDetailsPage({ params: paramsPromise }: ProposalDetailsProps) {
+export default async function ProposalDetailsPage({
+  params: paramsPromise,
+}: ProposalDetailsProps) {
   const params = await paramsPromise;
   const locale = params.lang;
   const dictionary = await getDictionary(locale);
@@ -67,9 +77,11 @@ export default async function ProposalDetailsPage({ params: paramsPromise }: Pro
 
   const title = proposal.attributes.content.attributes.prop_name;
   const username = proposal.attributes.user_govtool_username;
-  const isProposalActive = proposal.attributes.content.attributes.prop_rev_active;
+  const isProposalActive =
+    proposal.attributes.content.attributes.prop_rev_active;
   const actionType =
-    proposal.attributes.content.attributes.gov_action_type.attributes.gov_action_type_name;
+    proposal.attributes.content.attributes.gov_action_type.attributes
+      .gov_action_type_name;
   const likes = proposal.attributes.prop_likes;
   const dislikes = proposal.attributes.prop_dislikes;
   const commentCount = proposal.attributes.prop_comments_number;
@@ -108,7 +120,10 @@ export default async function ProposalDetailsPage({ params: paramsPromise }: Pro
 
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr]">
               <div className="w-full col-span-full">
-                <ProposalIdentification id={proposalId.toString()} authorName={username} />
+                <ProposalIdentification
+                  id={proposalId.toString()}
+                  authorName={username}
+                />
               </div>
               <div className="w-full lg:col-span-2">
                 <ProposalTimeline

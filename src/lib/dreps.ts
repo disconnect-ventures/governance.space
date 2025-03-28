@@ -25,7 +25,11 @@ export type DRep = {
 
 export type DRepListResponse = ApiResponse<DRep>;
 
-export type DRepSortOption = "Random" | "RegistrationDate" | "VotingPower" | "Status";
+export type DRepSortOption =
+  | "Random"
+  | "RegistrationDate"
+  | "VotingPower"
+  | "Status";
 
 export type DRepFilterOption = DRep["status"];
 
@@ -34,11 +38,12 @@ export async function getDReps(
   pageSize: number,
   search: string,
   sort: DRepSortOption,
-  filters: DRepFilterOption[],
+  filters: DRepFilterOption[]
 ): Promise<DRepListResponse> {
   const url = new URL("/drep/list", API_BASE_URL);
   Object.entries({ page, pageSize, search, sort }).forEach(
-    ([key, value]) => value !== "" && url.searchParams.append(key, value.toString()),
+    ([key, value]) =>
+      value !== "" && url.searchParams.append(key, value.toString())
   );
   if (filters.length) {
     filters.forEach((value) => url.searchParams.append("status[]", value));
@@ -53,6 +58,8 @@ export async function getDReps(
 }
 
 export async function getDRepById(id: string): Promise<DRep | null> {
-  const res = await getDReps(0, 1, id, "RegistrationDate", []).catch(() => null);
+  const res = await getDReps(0, 1, id, "RegistrationDate", []).catch(
+    () => null
+  );
   return res?.elements.length ? res?.elements[0] : null;
 }

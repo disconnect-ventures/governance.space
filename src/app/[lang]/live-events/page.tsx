@@ -12,7 +12,9 @@ export const metadata: Metadata = {
   description: "All-in-One Governance Platform",
 };
 
-export default async function LiveEventsPage({ params: paramsPromise }: PageProps) {
+export default async function LiveEventsPage({
+  params: paramsPromise,
+}: PageProps) {
   const params = await paramsPromise;
   const locale = params.lang;
   const dictionary = await getDictionary(locale);

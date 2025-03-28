@@ -9,7 +9,7 @@ type TranslationContextType = {
 };
 
 const TranslationContext = createContext<TranslationContextType | undefined>(
-  undefined,
+  undefined
 );
 
 type TranslationProviderProps = {

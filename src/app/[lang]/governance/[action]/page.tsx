@@ -21,7 +21,9 @@ import { notFound } from "next/navigation";
 import { getGovernanceActionMetadata, MetadataStandard } from "~/lib/metadata";
 import { getDictionary } from "~/config/dictionaries";
 
-export async function generateMetadata({ params }: GovernanceActionDetailsProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: GovernanceActionDetailsProps): Promise<Metadata> {
   const actionId = (await params).action;
   return {
     title: `Governance Space - Governance Action ${actionId}`,
@@ -36,19 +38,31 @@ export async function generateStaticParams() {
   const sort = "NewestCreated";
   const filters: GovernanceActionFilterOption[] = [];
 
-  const firstPage = await getGovernanceActions(page++, pageSize, search, sort, filters);
+  const firstPage = await getGovernanceActions(
+    page++,
+    pageSize,
+    search,
+    sort,
+    filters
+  );
   const totalPages = Math.ceil(firstPage.total / pageSize);
 
   const nextPages = (
     await Promise.all(
       Array.from({ length: totalPages - 1 }).map(async () => {
         try {
-          const data = await getGovernanceActions(page++, pageSize, search, sort, filters);
+          const data = await getGovernanceActions(
+            page++,
+            pageSize,
+            search,
+            sort,
+            filters
+          );
           return data.elements;
         } catch {
           return [];
         }
-      }),
+      })
     )
   ).flat();
 
@@ -115,7 +129,7 @@ export default async function GovernanceActionDetailsPage({
   const metadata = await getGovernanceActionMetadata(
     action.metadataHash,
     MetadataStandard.CIP108,
-    action.url,
+    action.url
   );
   const references = metadata?.metadata.references ?? [];
 

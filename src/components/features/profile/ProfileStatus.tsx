@@ -9,7 +9,11 @@ type ProfileStatusProps = {
   translations: Dictionary["general"];
 };
 
-export function ProfileStatus({ drep, className, translations }: ProfileStatusProps) {
+export function ProfileStatus({
+  drep,
+  className,
+  translations,
+}: ProfileStatusProps) {
   const statusMap = {
     Active: {
       text: translations.active,

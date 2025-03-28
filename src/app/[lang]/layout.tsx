@@ -56,7 +56,11 @@ export default async function RootLayout(props: {
         <ThemeScript />
       </head>
       <GoogleTagManager gtmId="GTM-W47W68BT" />
-      <body className={clsx(`${inter.className} antialiased min-h-[100vh] flex flex-col`)}>
+      <body
+        className={clsx(
+          `${inter.className} antialiased min-h-[100vh] flex flex-col`
+        )}
+      >
         <TranslationProvider value={{ dictionary, locale: params.lang }}>
           <SidebarProvider>
             <WalletProvider>

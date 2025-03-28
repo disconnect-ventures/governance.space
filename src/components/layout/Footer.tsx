@@ -43,7 +43,10 @@ export const Footer = ({ translations }: FooterProps) => {
     {
       title: translations.titleLinks,
       links: [
-        { title: translations.linkIntersect, path: "https://intersectmbo.org/" },
+        {
+          title: translations.linkIntersect,
+          path: "https://intersectmbo.org/",
+        },
         { title: translations.linkCardano, path: "https://cardano.org/" },
         {
           title: translations.linkCommitteePortal,
@@ -80,7 +83,9 @@ export const Footer = ({ translations }: FooterProps) => {
               <p>All-in-One Governance Platform.</p>
             </div>
             <div className="flex items-center gap-2 mt-2">
-              <span className="text-sm text-muted-foreground">{translations.builtOn} :</span>
+              <span className="text-sm text-muted-foreground">
+                {translations.builtOn} :
+              </span>
               <Link
                 href="https://cardano.org/"
                 target="_blank"
