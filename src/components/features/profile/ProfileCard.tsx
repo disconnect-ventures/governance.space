@@ -1,4 +1,4 @@
-import { ArrowRightCircle } from "lucide-react";
+import { ArrowRightCircle, UserIcon } from "lucide-react";
 import { DRep } from "~/lib/dreps";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
@@ -22,7 +22,11 @@ export function ProfileCard({ drep, translations }: ProfileCardProps) {
               <Avatar className="h-16 w-16">
                 <AvatarImage src={drep.imageUrl ?? ""} />
                 <AvatarFallback>
-                  {drep.givenName?.substring(0, 2)}
+                  {drep.givenName ? (
+                    drep.givenName.substring(0, 2)
+                  ) : (
+                    <UserIcon className="h-8" />
+                  )}
                 </AvatarFallback>
               </Avatar>
             </div>
