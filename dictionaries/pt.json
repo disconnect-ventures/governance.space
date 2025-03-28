@@ -190,7 +190,8 @@
     "metadataUrl": "URL de Metadados",
     "metadataHash": "Hash de Metadados",
     "votingHistory": "Histórico de Votação",
-    "askToDrep": "Faça uma pergunta ao DRep..."
+    "askToDrep": "Faça uma pergunta ao DRep...",
+    "notProvided": "Não fornecido pelo DRep"
   },
   "pageGovernanceActions": {
     "description": "Ações de Governança",

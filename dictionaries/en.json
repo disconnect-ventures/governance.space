@@ -189,7 +189,8 @@
     "metadataUrl": "Metadata URL",
     "metadataHash": "Metadata Hash",
     "votingHistory": "Voting History",
-    "askToDrep": "Ask the DRep a question..."
+    "askToDrep": "Ask the DRep a question...",
+    "notProvided": "Not provided by DRep"
   },
   "pageGovernanceActions": {
     "description": "Governance Actions in Governance",
