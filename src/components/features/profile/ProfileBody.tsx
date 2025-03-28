@@ -37,7 +37,7 @@ export function ProfileBody({ drep, translations }: ProfileBodyProps) {
             <Link
               key={translations.metadataUrl}
               href={drep.url}
-              className="flex gap-2 hover:underline"
+              className="flex gap-2 text-primary hover:underline"
               target="_blank"
             >
               <span className="overflow-hidden text-ellipsis">{drep.url}</span>
