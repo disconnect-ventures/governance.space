@@ -1,0 +1,8 @@
+
+node_modules/*
+.cloudbuild/*
+
+.next/
+out/
+build/
+dist/
