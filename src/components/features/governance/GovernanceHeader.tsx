@@ -6,9 +6,7 @@ import { Metadata } from "~/lib/metadata";
 import CopyToClipboard from "../CopyToClipboard";
 import { formatCamelCase } from "~/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import Latex from "react-latex-next";
-import "katex/dist/katex.min.css";
-import markdownToHtml from "~/lib/markdown";
+import { Markdown } from "../Markdown";
 
 type VersionDetailProps = {
   label: string;
@@ -31,7 +29,7 @@ const InfoTab = async (value: string, text: string) => (
       value={value}
       className="min-h-40vh h-full max-h-[60vh] overflow-y-auto"
     >
-      <Latex>{await markdownToHtml(text)}</Latex>
+      <Markdown content={text} />
     </TabsContent>
   </Suspense>
 );
