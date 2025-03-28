@@ -1,7 +1,6 @@
 import { ArrowRightCircle } from "lucide-react";
-import { AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { DRep } from "~/lib/dreps";
-import { Avatar } from "~/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 import { Card, CardHeader, CardContent } from "~/components/ui/card";
 import CopyToClipboard from "../CopyToClipboard";
@@ -22,14 +21,16 @@ export function ProfileCard({ drep, translations }: ProfileCardProps) {
             <div className="relative w-12 h-12">
               <Avatar className="h-16 w-16">
                 <AvatarImage src={drep.imageUrl ?? ""} />
-                <AvatarFallback className="bg-muted text-muted-foreground">
+                <AvatarFallback>
                   {drep.givenName?.substring(0, 2)}
                 </AvatarFallback>
               </Avatar>
             </div>
             <div className="flex-1 flex flex-col gap-2">
               <div className="flex items-center gap-2">
-                <h2 className="text-xl font-bold text-foreground">{drep.givenName}</h2>
+                <h2 className="text-xl font-bold text-foreground">
+                  {drep.givenName}
+                </h2>
                 {/* <span className="text-yellow-400">
                   <Star></Star>
                 </span> */}
@@ -45,7 +46,10 @@ export function ProfileCard({ drep, translations }: ProfileCardProps) {
             >
               {translations.pageDrepsDetails.sendMessage}
             </Button>
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2" disabled>
+            <Button
+              className="bg-primary text-primary-foreground hover:bg-primary/90 gap-2"
+              disabled
+            >
               <ArrowRightCircle />
               {translations.pageDrepsDetails.delegateVotingPower}
             </Button>
@@ -60,7 +64,9 @@ export function ProfileCard({ drep, translations }: ProfileCardProps) {
           </span>
           <CopyToClipboard value={drep.drepId} />
         </div>
-        <p className="mt-4 text-muted-foreground line-clamp-2">{drep.objectives}</p>
+        <p className="mt-4 text-muted-foreground line-clamp-2">
+          {drep.objectives}
+        </p>
       </CardContent>
     </Card>
   );
