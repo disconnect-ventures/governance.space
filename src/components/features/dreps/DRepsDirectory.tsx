@@ -3,11 +3,14 @@ import React from "react";
 import { TableCell, TableRow } from "~/components/ui/table";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
-import { EyeIcon } from "lucide-react";
+import { EyeIcon, UserIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
 import { DRep } from "~/lib/dreps";
 import { useRouter } from "next/navigation";
-import { DirectorySearchParams, TableDirectory } from "~/components/layout/Directory";
+import {
+  DirectorySearchParams,
+  TableDirectory,
+} from "~/components/layout/Directory";
 import { formatVotingPower, localizePath, truncateMiddle } from "~/lib/utils";
 import { useLocale } from "~/hooks/use-locale";
 import { ProfileStatus } from "../profile/ProfileStatus";
@@ -19,7 +22,11 @@ export type DRepsDirectoryProps = {
   translations: Pick<Dictionary, "general" | "pageDreps">;
 };
 
-export const DRepsDirectory = ({ dreps, params, translations }: DRepsDirectoryProps) => {
+export const DRepsDirectory = ({
+  dreps,
+  params,
+  translations,
+}: DRepsDirectoryProps) => {
   const router = useRouter();
   const { locale } = useLocale();
   return (
@@ -51,18 +58,30 @@ export const DRepsDirectory = ({ dreps, params, translations }: DRepsDirectoryPr
       rows={dreps.map((drep) => (
         <TableRow
           key={drep.view}
-          onClick={() => router.push(localizePath(locale, `/dreps/${drep.view}`))}
+          onClick={() =>
+            router.push(localizePath(locale, `/dreps/${drep.view}`))
+          }
           className="cursor-pointer hover:bg-muted/50"
         >
           <TableCell>
             <div className="flex items-center gap-2">
               <Avatar className="h-8 w-8">
                 <AvatarImage src={drep.imageUrl ?? ""} />
-                <AvatarFallback>{drep.givenName?.substring(0, 2)}</AvatarFallback>
+                <AvatarFallback>
+                  {drep.givenName ? (
+                    drep.givenName.substring(0, 2)
+                  ) : (
+                    <UserIcon className="h-4" />
+                  )}
+                </AvatarFallback>
               </Avatar>
               <div>
-                <div className="font-medium text-foreground">{drep.givenName}</div>
-                <div className="text-sm text-muted-foreground">{truncateMiddle(drep.view, 21)}</div>
+                <div className="font-medium text-foreground">
+                  {drep.givenName}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {truncateMiddle(drep.view, 21)}
+                </div>
               </div>
             </div>
           </TableCell>
@@ -84,7 +103,9 @@ export const DRepsDirectory = ({ dreps, params, translations }: DRepsDirectoryPr
           {/* <TableCell>* drep.delegators</TableCell> */}
           {/* <TableCell>{drep.votingPower}</TableCell> */}
           <TableCell>
-            {new Date(drep.latestRegistrationDate).toLocaleDateString(translations.general.locale)}
+            {new Date(drep.latestRegistrationDate).toLocaleDateString(
+              translations.general.locale
+            )}
           </TableCell>
           <TableCell>
             <div className="flex items-center gap-2">
