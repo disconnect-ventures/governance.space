@@ -6,11 +6,12 @@ import { NetworkInfo, NetworkMetrics, NetworkStake } from "~/lib/analytics";
 import { formatNumber, formatStake } from "./utils/formatters";
 import { DRep } from "~/lib/dreps";
 import { DRepStats } from "~/lib/drepStats";
-import { Bar, BarChart, Cell, Pie, PieChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import { getMockMetrics } from "~/lib/mock";
 import ComingSoon from "~/components/layout/ComingSoon";
 import { ProfileStatus } from "../profile/ProfileStatus";
 import { Dictionary } from "~/config/dictionaries";
+import StakeDistributionGraph from "./StakeDistributionGraph";
 
 interface MetricsDisplayProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
@@ -78,11 +79,6 @@ const MetricsDisplay = ({
       label: "Gov Actions",
       value: data.totalGovernanceActions,
     },
-  ];
-
-  const stakeData = [
-    { name: "DReps", value: data.totalStakeControlledByDReps },
-    { name: "SPOs", value: data.totalStakeControlledBySPOs },
   ];
 
   const votingPowerData = [
@@ -224,47 +220,7 @@ const MetricsDisplay = ({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <Card className="bg-card text-card-foreground shadow-none">
-          <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">Stake Distribution</h3>
-            <div className="h-32">
-              <ResponsiveContainer>
-                <BarChart data={stakeData} layout="vertical" margin={{ right: 80, left: 60 }}>
-                  <XAxis type="number" hide />
-                  <YAxis
-                    type="category"
-                    dataKey="name"
-                    tick={{
-                      fill: "hsl(var(--muted-foreground))",
-                      fontSize: 12,
-                    }}
-                    width={50}
-                  />
-                  <Bar
-                    dataKey="value"
-                    radius={4}
-                    barSize={20}
-                    label={{
-                      position: "right",
-                      formatter: formatStake,
-                      fill: "hsl(var(--muted-foreground))",
-                      fontSize: 12,
-                      dx: 8,
-                    }}
-                  >
-                    {stakeData.map((_, index) => (
-                      <Cell
-                        key={`cell-${index}`}
-                        fill={index === 0 ? chartColors.dreps : chartColors.spos}
-                      />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </CardContent>
-        </Card>
-
+        <StakeDistributionGraph data={data} />
         <Card className="bg-card text-card-foreground shadow-none">
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold text-foreground mb-6">Voting Power</h3>
