@@ -10,8 +10,9 @@ type LinkProps = React.ComponentProps<typeof NextLink>;
 export default function Link(props: LinkProps) {
   const { locale } = useLocale();
   const href = useMemo(() => {
+    if (typeof props.href === "undefined") return "#";
     if (!(typeof props.href === "string")) {
-      return props.href.href ?? "/";
+      return props.href?.href ?? "/";
     }
     return props.href;
   }, [props]);
