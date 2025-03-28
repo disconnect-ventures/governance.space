@@ -22,7 +22,8 @@ export default async function DRepsDirectoryPage({
   const page = parseInt(searchParams["page"] ?? "0");
   const pageSize = parseInt(searchParams["pageSize"] ?? "20");
   const sort = (searchParams["sort"] as DRepSortOption) ?? "Random";
-  const filters = (searchParams["filters"]?.split(",") ?? []) as DRepFilterOption[];
+  const filters = (searchParams["filters"]?.split(",") ??
+    []) as DRepFilterOption[];
   const search = searchParams["search"] ?? "";
   const dreps = await getDReps(page, pageSize, search, sort, filters);
   const { total: totalDReps } = await getDReps(0, 1, "", "Random", []);

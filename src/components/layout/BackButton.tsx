@@ -15,7 +15,9 @@ export const BackButton = ({ href }: BackButtonProps) => {
 
   return (
     <Button
-      onClick={() => (href ? router.push(localizePath(locale, href)) : router.back())}
+      onClick={() =>
+        href ? router.push(localizePath(locale, href)) : router.back()
+      }
       className="flex items-center text-primary hover:text-primary/90"
       variant="ghost"
     >

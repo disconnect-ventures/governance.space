@@ -1,6 +1,12 @@
 "use client";
 import { BackButton } from "./BackButton";
-import { Twitter, Facebook, Linkedin, LinkIcon, CheckCircle } from "lucide-react";
+import {
+  Twitter,
+  Facebook,
+  Linkedin,
+  LinkIcon,
+  CheckCircle,
+} from "lucide-react";
 import { useEffect, useMemo, useState, useRef } from "react";
 import CopyToClipboard from "../features/CopyToClipboard";
 import { PUBLIC_APP_DOMAIN } from "~/lib/constants";
@@ -24,7 +30,9 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
   const searchParams = useSearchParams();
   const [documentTitle, setDocumentTitle] = useState("");
 
-  const [activePlatform, setActivePlatform] = useState<SocialPlatform | null>(null);
+  const [activePlatform, setActivePlatform] = useState<SocialPlatform | null>(
+    null
+  );
   const [showHelper, setShowHelper] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -42,12 +50,12 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
 
   const shareUrl = useMemo(
     () => props.shareUrl || getShareUrl(path, searchParams.toString()),
-    [path, searchParams, props],
+    [path, searchParams, props]
   );
 
   const shareTitle = useMemo(
     () => props.shareTitle || documentTitle,
-    [props.shareTitle, documentTitle],
+    [props.shareTitle, documentTitle]
   );
 
   const baseIconClasses = "w-4 h-4 inline cursor-pointer";
@@ -58,7 +66,7 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
       facebook: `https://www.facebook.com/sharer/sharer.php?`,
       linkedin: `https://www.linkedin.com/sharing/share-offsite/?`,
     }),
-    [],
+    []
   );
 
   const getShareText = (platform: SocialPlatform): string => {
@@ -102,7 +110,11 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
         }
 
         timerRef.current = setTimeout(() => {
-          window.open(shareUrls[platform], `${platform}-share-dialog`, "width=626,height=436");
+          window.open(
+            shareUrls[platform],
+            `${platform}-share-dialog`,
+            "width=626,height=436"
+          );
         }, 800);
 
         timerRef.current = setTimeout(() => {
@@ -112,7 +124,11 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
       })
       .catch((err) => {
         console.error(`Failed to copy text for ${platform}:`, err);
-        window.open(shareUrls[platform], `${platform}-share-dialog`, "width=626,height=436");
+        window.open(
+          shareUrls[platform],
+          `${platform}-share-dialog`,
+          "width=626,height=436"
+        );
       });
   };
 
@@ -128,15 +144,24 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
         <span>Share:</span>
         <div className="space-x-2 relative">
           <span className="relative inline-block">
-            <Twitter className={baseIconClasses} onClick={() => handleShare("twitter")} />
+            <Twitter
+              className={baseIconClasses}
+              onClick={() => handleShare("twitter")}
+            />
           </span>
 
           <span className="relative inline-block">
-            <Facebook className={baseIconClasses} onClick={() => handleShare("facebook")} />
+            <Facebook
+              className={baseIconClasses}
+              onClick={() => handleShare("facebook")}
+            />
           </span>
 
           <span className="relative inline-block">
-            <Linkedin className={baseIconClasses} onClick={() => handleShare("linkedin")} />
+            <Linkedin
+              className={baseIconClasses}
+              onClick={() => handleShare("linkedin")}
+            />
           </span>
 
           {showHelper && activePlatform && (
@@ -154,7 +179,9 @@ export const TopBar = withSuspense(({ backHref, ...props }: TopBarProps) => {
                 </button>
               </div>
 
-              <p className="text-xs mb-2">{getPlatformInstructions(activePlatform)}</p>
+              <p className="text-xs mb-2">
+                {getPlatformInstructions(activePlatform)}
+              </p>
 
               <div className="text-xs bg-muted dark:bg-muted text-muted-foreground dark:text-muted-foreground px-2 py-1 rounded flex items-center gap-1.5">
                 <span className="font-medium capitalize">{activePlatform}</span>

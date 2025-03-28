@@ -49,8 +49,8 @@ export default function ThemeScript() {
     const theme = window.__theme
       ? window.__theme
       : storedTheme
-      ? storedTheme
-      : "light";
+        ? storedTheme
+        : "light";
     window.__setPreferredTheme(theme);
   }, []);
   return <script dangerouslySetInnerHTML={{ __html: `(${code})();` }} />;

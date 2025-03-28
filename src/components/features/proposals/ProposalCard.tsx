@@ -1,7 +1,12 @@
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 import { Avatar, AvatarFallback } from "~/components/ui/avatar";
-import { MessageSquare, Calendar, ThumbsUpIcon, ThumbsDownIcon } from "lucide-react";
+import {
+  MessageSquare,
+  Calendar,
+  ThumbsUpIcon,
+  ThumbsDownIcon,
+} from "lucide-react";
 import { buttonVariants } from "~/components/ui/button";
 import { Proposal } from "~/lib/proposals";
 import clsx from "clsx";
@@ -17,16 +22,22 @@ export type ProposalCardProps = {
 const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
   const username = proposal.attributes.user_govtool_username;
   const proposalId = proposal.attributes.content.attributes.proposal_id;
-  const isProposalActive = proposal.attributes.content.attributes.prop_rev_active;
+  const isProposalActive =
+    proposal.attributes.content.attributes.prop_rev_active;
   const actionType =
-    proposal.attributes.content.attributes.gov_action_type.attributes.gov_action_type_name;
+    proposal.attributes.content.attributes.gov_action_type.attributes
+      .gov_action_type_name;
 
   const getStatusBadgeClasses = () => {
-    return isProposalActive ? "bg-green-500/20 text-green-500" : "bg-red-500/20 text-red-500";
+    return isProposalActive
+      ? "bg-green-500/20 text-green-500"
+      : "bg-red-500/20 text-red-500";
   };
 
   const getActionTypeBadgeClasses = () => {
-    return actionType === "Info" ? "bg-primary/20 text-primary" : "bg-muted text-muted-foreground";
+    return actionType === "Info"
+      ? "bg-primary/20 text-primary"
+      : "bg-muted text-muted-foreground";
   };
 
   const createdDate = proposal.attributes.createdAt;
@@ -39,12 +50,17 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
       <CardHeader className="space-y-4">
         <div className="flex items-start justify-between">
           <div className="space-y-1">
-            <div className="text-sm text-muted-foreground"># ID: {proposalId}</div>
+            <div className="text-sm text-muted-foreground">
+              # ID: {proposalId}
+            </div>
             <h2 className="text-2xl text-foreground font-semibold leading-[1.5rem] h-[3rem] overflow-hidden">
               {proposal.attributes.content.attributes.prop_name}
             </h2>
           </div>
-          <Badge variant="secondary" className={clsx("p-2 rounded-full", getStatusBadgeClasses())}>
+          <Badge
+            variant="secondary"
+            className={clsx("p-2 rounded-full", getStatusBadgeClasses())}
+          >
             {isProposalActive
               ? dictionary.general.active.toUpperCase()
               : dictionary.general.inactive.toUpperCase()}
@@ -58,7 +74,9 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
           <div className="flex flex-col">
             <div className="flex gap-x-4 items-center flex-wrap">
               <div className="font-medium">{username}</div>
-              <div className="text-sm text-muted-foreground">{dictionary.general.author}</div>
+              <div className="text-sm text-muted-foreground">
+                {dictionary.general.author}
+              </div>
             </div>
           </div>
         </div>
@@ -71,7 +89,10 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
           <Badge
             variant="outline"
-            className={clsx("text-lg px-6 rounded-full", getActionTypeBadgeClasses())}
+            className={clsx(
+              "text-lg px-6 rounded-full",
+              getActionTypeBadgeClasses()
+            )}
           >
             {actionType}
           </Badge>
@@ -97,19 +118,27 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
               <Calendar className="h-4 w-4" />
               <span>
                 Submitted:{" "}
-                <span className="font-semibold">{formatDate(createdDate, createdEpoch)}</span>
+                <span className="font-semibold">
+                  {formatDate(createdDate, createdEpoch)}
+                </span>
               </span>
             </div>
             <div className="flex items-center space-x-2">
               <Calendar className="h-4 w-4" />
               <span>
-                Updated: <span className="font-semibold">{formatDate(updatedAt, updatedEpoch)}</span>
+                Updated:{" "}
+                <span className="font-semibold">
+                  {formatDate(updatedAt, updatedEpoch)}
+                </span>
               </span>
             </div>
           </div>
         </div>
 
-        <Link href={`/proposals/${proposal.id}`} className={buttonVariants({ variant: "default" })}>
+        <Link
+          href={`/proposals/${proposal.id}`}
+          className={buttonVariants({ variant: "default" })}
+        >
           {dictionary.general.viewDetailsAndVote}
         </Link>
       </CardContent>

@@ -2,8 +2,17 @@
 import React from "react";
 import { TableCell, TableRow } from "~/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
-import { DirectorySearchParams, TableDirectory } from "~/components/layout/Directory";
-import { GlobeIcon, LinkedinIcon, SquareCheckIcon, TwitterIcon, XSquareIcon } from "lucide-react";
+import {
+  DirectorySearchParams,
+  TableDirectory,
+} from "~/components/layout/Directory";
+import {
+  GlobeIcon,
+  LinkedinIcon,
+  SquareCheckIcon,
+  TwitterIcon,
+  XSquareIcon,
+} from "lucide-react";
 import { Badge } from "~/components/ui/badge";
 import Link from "~/components/features/Link";
 import clsx from "clsx";
@@ -109,7 +118,9 @@ export const CommitteeMembersDirectory = ({
               </Avatar>
 
               <div>
-                <div className="font-medium text-foreground">{committee.member.name}</div>
+                <div className="font-medium text-foreground">
+                  {committee.member.name}
+                </div>
                 <div className="text-sm text-muted-foreground">
                   <a
                     className="hover:underline"
@@ -123,7 +134,9 @@ export const CommitteeMembersDirectory = ({
             </div>
           </TableCell>
           <TableCell className="text-foreground">{committee.role}</TableCell>
-          <TableCell className="whitespace-nowrap text-foreground">{committee.country}</TableCell>
+          <TableCell className="whitespace-nowrap text-foreground">
+            {committee.country}
+          </TableCell>
           <TableCell>
             {committee.dRep ? (
               <SquareCheckIcon className="h-5 w-5 text-green-500" />

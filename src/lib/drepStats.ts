@@ -17,7 +17,11 @@ export async function getDRepStatusStats(): Promise<DRepStats> {
       Retired: 0,
     };
 
-    for (const status of ["Active", "Inactive", "Retired"] as DRepFilterOption[]) {
+    for (const status of [
+      "Active",
+      "Inactive",
+      "Retired",
+    ] as DRepFilterOption[]) {
       const dreps = await getDReps(0, 1, "", "Random", [status]);
       statuses[status] = dreps.total;
     }

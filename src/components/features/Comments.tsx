@@ -56,12 +56,14 @@ export function Comments({ comments, translations }: CommentsProps) {
                         {comment.attributes.user_govtool_username}
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        {new Date(comment.attributes.updatedAt).toLocaleDateString(
-                          translations.general.locale,
-                        )}
+                        {new Date(
+                          comment.attributes.updatedAt
+                        ).toLocaleDateString(translations.general.locale)}
                       </div>
                     </div>
-                    <p className="text-foreground">{comment.attributes.comment_text}</p>
+                    <p className="text-foreground">
+                      {comment.attributes.comment_text}
+                    </p>
                     <div className="flex gap-4">
                       <Button
                         variant="ghost"

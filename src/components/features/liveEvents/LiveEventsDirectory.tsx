@@ -31,7 +31,10 @@ export type LiveEventsDirectoryProps = {
   params: DirectorySearchParams;
 };
 
-export const LiveEventsDirectory = ({ liveEvents, params }: LiveEventsDirectoryProps) => {
+export const LiveEventsDirectory = ({
+  liveEvents,
+  params,
+}: LiveEventsDirectoryProps) => {
   const getVoteBadge = (vote: LiveEvent["vote"]) => {
     switch (vote) {
       case "Yes":
@@ -97,14 +100,18 @@ export const LiveEventsDirectory = ({ liveEvents, params }: LiveEventsDirectoryP
                 </div>
               </div>
             </TableCell>
-            <TableCell className="text-center">{getVoteBadge(liveEvent.vote)}</TableCell>
+            <TableCell className="text-center">
+              {getVoteBadge(liveEvent.vote)}
+            </TableCell>
             <TableCell className="text-right">
               <Badge className="bg-purple-500/10 text-purple-500 dark:bg-purple-500/20 dark:text-purple-400 rounded-full hover:bg-purple-500/20 dark:hover:bg-purple-500/30">
                 <span className="mr-1">₳</span>
                 {liveEvent.votingPower.toLocaleString()}
               </Badge>
             </TableCell>
-            <TableCell className="text-center text-foreground">{liveEvent.voterRole}</TableCell>
+            <TableCell className="text-center text-foreground">
+              {liveEvent.voterRole}
+            </TableCell>
             <TableCell className="text-center">
               <Badge className="bg-blue-500/10 text-blue-500 dark:bg-blue-500/20 dark:text-blue-400 rounded-full hover:bg-blue-500/20 dark:hover:bg-blue-500/30">
                 {capitalize(liveEvent.type)}

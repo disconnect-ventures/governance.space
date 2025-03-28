@@ -52,7 +52,8 @@ export const HeaderNavigationLink = ({
         <NavigationMenuLink
           className={clsx(
             "px-3 py-2 hover:text-blue-500 rounded-full border-border border whitespace-nowrap",
-            active && "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950",
+            active &&
+              "bg-blue-50 text-blue-950 focus:bg-blue-50 focus:text-blue-950"
           )}
         >
           {children}
@@ -80,7 +81,7 @@ export const HeaderSearchBar = ({ onSubmit }: HeaderSearchBarProps) => {
       router.push(localizePath(locale as Locale, newUrl));
       onSubmit?.();
     },
-    [router, locale, setOpen, onSubmit, setOpenMobile],
+    [router, locale, setOpen, onSubmit, setOpenMobile]
   );
 
   return (

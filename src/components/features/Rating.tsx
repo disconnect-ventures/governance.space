@@ -15,19 +15,24 @@ type RatingProps = {
 };
 
 export function Rating({ ratings, className, translations }: RatingProps) {
-  const total = Object.values(ratings).reduce((total, { count }) => total + count, 0);
+  const total = Object.values(ratings).reduce(
+    (total, { count }) => total + count,
+    0
+  );
   const average = parseFloat(
     (
       Object.entries(ratings).reduce(
         (score, [stars, { count }]) => score + parseInt(stars) * count,
-        0,
+        0
       ) / total
-    ).toFixed(1),
+    ).toFixed(1)
   );
   return (
     <Card className={`bg-card text-card-foreground ${className}`}>
       <CardHeader>
-        <CardTitle className="text-foreground dark:text-neutral-100">{translations.rating}</CardTitle>
+        <CardTitle className="text-foreground dark:text-neutral-100">
+          {translations.rating}
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
@@ -54,7 +59,9 @@ export function Rating({ ratings, className, translations }: RatingProps) {
             </div>
             <div className="space-y-2">
               {Object.entries(ratings)
-                .sort(([starsA], [starsB]) => parseInt(starsB) - parseInt(starsA))
+                .sort(
+                  ([starsA], [starsB]) => parseInt(starsB) - parseInt(starsA)
+                )
                 .map(([stars, { count }]) => (
                   <div key={stars} className="flex items-center gap-2">
                     <span className="w-16 text-sm whitespace-nowrap text-muted-foreground dark:text-neutral-400">

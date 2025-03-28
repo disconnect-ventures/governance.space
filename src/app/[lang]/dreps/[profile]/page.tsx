@@ -14,7 +14,9 @@ import { Metadata } from "next";
 import { getDictionary } from "~/config/dictionaries";
 import { PageProps } from "../../layout";
 
-export async function generateMetadata({ params }: DRepProfileProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: DRepProfileProps): Promise<Metadata> {
   const profileId = (await params).profile;
   return {
     title: `Governance Space - DRep Profile ${profileId}`,
@@ -41,7 +43,7 @@ export async function generateStaticParams() {
         } catch {
           return [];
         }
-      }),
+      })
     )
   ).flat();
 
@@ -52,7 +54,9 @@ export async function generateStaticParams() {
 
 type DRepProfileProps = PageProps<{ profile: string }>;
 
-export default async function DRepProfilePage({ params: paramsPromise }: DRepProfileProps) {
+export default async function DRepProfilePage({
+  params: paramsPromise,
+}: DRepProfileProps) {
   const params = await paramsPromise;
   const locale = params.lang;
   const dictionary = await getDictionary(locale);
@@ -68,7 +72,10 @@ export default async function DRepProfilePage({ params: paramsPromise }: DRepPro
 
   return (
     <div className="w-full max-w-7xl mx-auto overflow-hidden">
-      <PageTitle icon={<User className="h-6 w-6" />} translations={dictionary.pageDrepsDetails} />
+      <PageTitle
+        icon={<User className="h-6 w-6" />}
+        translations={dictionary.pageDrepsDetails}
+      />
       <TopBar backHref="/dreps" />
       <div className="w-full flex flex-col lg:flex-row gap-4 justify-center">
         <div className="lg:w-2/3 flex flex-col gap-4">

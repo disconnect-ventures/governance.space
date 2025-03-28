@@ -375,8 +375,8 @@ export function TableDirectory({
                     headerAlign === "start"
                       ? "text-start"
                       : headerAlign === "center"
-                      ? "text-center"
-                      : "text-end"
+                        ? "text-center"
+                        : "text-end"
                   )}
                 >
                   {header}

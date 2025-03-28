@@ -9,10 +9,13 @@ export type ThemeSwitcherProps = {
   translations: Dictionary["footer"];
 };
 
-export const ThemeSwitcher = dynamic(() => import("~/components/features/ThemeSwitch"), {
-  ssr: true,
-  loading: () => <div>Loading ... </div>,
-});
+export const ThemeSwitcher = dynamic(
+  () => import("~/components/features/ThemeSwitch"),
+  {
+    ssr: true,
+    loading: () => <div>Loading ... </div>,
+  }
+);
 
 const ThemeSwitcherButton = ({ translations }: ThemeSwitcherProps) => {
   const [theme, setTheme] = useState(global.window?.__theme || "light");

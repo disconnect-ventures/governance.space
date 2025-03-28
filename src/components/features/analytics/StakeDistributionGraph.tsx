@@ -1,7 +1,14 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { NetworkStake } from "~/lib/analytics";
 import { formatStake } from "./utils/formatters";
-import { Bar, BarChart, Cell, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import {
+  Bar,
+  BarChart,
+  Cell,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+} from "recharts";
 import { useMemo } from "react";
 
 interface StakeDistributionGraphProps {
@@ -14,7 +21,7 @@ const StakeDistributionGraph = ({ data }: StakeDistributionGraphProps) => {
       { name: "DReps", value: data.totalStakeControlledByDReps },
       { name: "SPOs", value: data.totalStakeControlledBySPOs },
     ],
-    [data],
+    [data]
   );
 
   const chartColors = useMemo(
@@ -22,16 +29,22 @@ const StakeDistributionGraph = ({ data }: StakeDistributionGraphProps) => {
       dreps: "hsl(var(--chart-1))",
       spos: "hsl(var(--chart-2))",
     }),
-    [],
+    []
   );
 
   return (
     <Card className="bg-card text-card-foreground shadow-none">
       <CardContent className="p-6">
-        <h3 className="text-lg font-semibold text-foreground mb-6">Stake Distribution</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-6">
+          Stake Distribution
+        </h3>
         <div className="h-32">
           <ResponsiveContainer>
-            <BarChart data={stakeData} layout="vertical" margin={{ right: 80, left: 60 }}>
+            <BarChart
+              data={stakeData}
+              layout="vertical"
+              margin={{ right: 80, left: 60 }}
+            >
               <XAxis type="number" hide />
               <YAxis
                 type="category"

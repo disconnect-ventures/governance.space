@@ -25,10 +25,17 @@ export default async function ProposalsPage({
   const page = parseInt(searchParams["page"] ?? "0");
   const pageSize = parseInt(searchParams["pageSize"] ?? "20");
   const sort = (searchParams["sort"] as ProposalSortOrderOption) ?? "desc";
-  const filters = searchParams["filters"]?.split(",").map((f) => parseInt(f)) ?? [];
+  const filters =
+    searchParams["filters"]?.split(",").map((f) => parseInt(f)) ?? [];
   const search = searchParams["search"] ?? "";
 
-  const { data, meta } = await getProposals(page, pageSize, search, sort, filters);
+  const { data, meta } = await getProposals(
+    page,
+    pageSize,
+    search,
+    sort,
+    filters
+  );
   const { meta: totalMeta } = await getProposals(0, 1, "", "asc", []);
   const dictionary = await getDictionary(params.lang);
 
