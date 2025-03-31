@@ -11,11 +11,11 @@ import {
 } from "recharts";
 import { useMemo } from "react";
 
-interface StakeDistributionGraphProps {
+interface StakeDistributionCardProps {
   data: NetworkStake;
 }
 
-const StakeDistributionGraph = ({ data }: StakeDistributionGraphProps) => {
+const StakeDistributionCard = ({ data }: StakeDistributionCardProps) => {
   const stakeData = useMemo(
     () => [
       { name: "DReps", value: data.totalStakeControlledByDReps },
@@ -81,4 +81,4 @@ const StakeDistributionGraph = ({ data }: StakeDistributionGraphProps) => {
     </Card>
   );
 };
-export default StakeDistributionGraph;
+export default StakeDistributionCard;
