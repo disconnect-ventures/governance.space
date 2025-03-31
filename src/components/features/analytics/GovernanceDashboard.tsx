@@ -55,10 +55,6 @@ const GovernanceDashboard = ({
   const epoch = data.epochNo;
 
   const chartColors = {
-    dreps: "hsl(var(--chart-1))",
-    spos: "hsl(var(--chart-2))",
-    governanceAbstain: "hsl(var(--chart-2))",
-    governanceNoConfidence: "hsl(var(--chart-3))",
     notTakingPart: "hsl(var(--muted))",
     activeDReps: "hsl(var(--chart-1))",
     inactiveDReps: "hsl(var(--chart-2))",
