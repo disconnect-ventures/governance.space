@@ -1,7 +1,6 @@
 "use client";
 import React, { use } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Database, Vote, Award, Clock } from "lucide-react";
 import { NetworkInfo, NetworkMetrics, NetworkStake } from "~/lib/analytics";
 import { formatNumber } from "./utils/formatters";
 import { DRep } from "~/lib/dreps";
@@ -11,8 +10,9 @@ import { getMockMetrics } from "~/lib/mock";
 import ComingSoon from "~/components/layout/ComingSoon";
 import { ProfileStatus } from "../profile/ProfileStatus";
 import { Dictionary } from "~/config/dictionaries";
-import StakeDistributionGraph from "./StakeDistributionGraph";
-import VotingPowerGraph from "./VotingPowerGraph";
+import StakeDistributionCard from "./StakeDistributionCard";
+import VotingPowerCard from "./VotingPowerCard";
+import MetricsCard from "./MetricsCard";
 
 interface MetricsDisplayProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
@@ -63,22 +63,6 @@ const MetricsDisplay = ({
     inactiveDReps: "hsl(var(--chart-2))",
     retiredDReps: "hsl(var(--chart-3))",
   };
-
-  const metrics = [
-    { icon: <Users />, label: "Delegators", value: data.uniqueDelegators },
-    {
-      icon: <Database />,
-      label: "Total DReps",
-      value: data.totalRegisteredDReps,
-    },
-    { icon: <Vote />, label: "DRep Votes", value: data.totalDRepVotes },
-    { icon: <Award />, label: "Active DReps", value: data.totalActiveDReps },
-    {
-      icon: <Clock />,
-      label: "Gov Actions",
-      value: data.totalGovernanceActions,
-    },
-  ];
 
   const notTakingPart =
     circulation -
@@ -194,33 +178,12 @@ const MetricsDisplay = ({
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
-        {metrics.map((metric, index) => (
-          <Card
-            key={index}
-            className="bg-card text-card-foreground shadow-none"
-          >
-            <CardContent className="p-6">
-              <div className="flex gap-4 items-center">
-                <div className="p-2 bg-primary/10 rounded-lg text-primary h-fit">
-                  {React.cloneElement(metric.icon, { className: "h-5 w-5" })}
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">
-                    {metric.label}
-                  </p>
-                  <p className="text-2xl font-bold text-foreground mt-1">
-                    {formatNumber(metric.value)}
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+        <MetricsCard data={data} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <StakeDistributionGraph data={data} />
-        <VotingPowerGraph data={data} />
+        <StakeDistributionCard data={data} />
+        <VotingPowerCard data={data} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">

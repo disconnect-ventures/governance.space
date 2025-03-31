@@ -4,11 +4,11 @@ import { formatStake } from "./utils/formatters";
 import { Pie, PieChart, Cell, ResponsiveContainer } from "recharts";
 import { useMemo } from "react";
 
-interface VotingPowerGraphProps {
+interface VotingPowerCardProps {
   data: NetworkStake;
 }
 
-const VotingPowerGraph = ({ data }: VotingPowerGraphProps) => {
+const VotingPowerCard = ({ data }: VotingPowerCardProps) => {
   const votingPowerData = useMemo(
     () => [
       {
@@ -94,4 +94,4 @@ const VotingPowerGraph = ({ data }: VotingPowerGraphProps) => {
     </Card>
   );
 };
-export default VotingPowerGraph;
+export default VotingPowerCard;
