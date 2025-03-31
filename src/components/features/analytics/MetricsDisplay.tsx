@@ -3,7 +3,7 @@ import React, { use } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, Database, Vote, Award, Clock } from "lucide-react";
 import { NetworkInfo, NetworkMetrics, NetworkStake } from "~/lib/analytics";
-import { formatNumber, formatStake } from "./utils/formatters";
+import { formatNumber } from "./utils/formatters";
 import { DRep } from "~/lib/dreps";
 import { DRepStats } from "~/lib/drepStats";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
@@ -12,6 +12,7 @@ import ComingSoon from "~/components/layout/ComingSoon";
 import { ProfileStatus } from "../profile/ProfileStatus";
 import { Dictionary } from "~/config/dictionaries";
 import StakeDistributionGraph from "./StakeDistributionGraph";
+import VotingPowerGraph from "./VotingPowerGraph";
 
 interface MetricsDisplayProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
@@ -55,8 +56,6 @@ const MetricsDisplay = ({
   const chartColors = {
     dreps: "hsl(var(--chart-1))",
     spos: "hsl(var(--chart-2))",
-    votingPowerAbstain: "hsl(var(--chart-1))",
-    votingPowerNoConfidence: "hsl(var(--chart-2))",
     governanceAbstain: "hsl(var(--chart-2))",
     governanceNoConfidence: "hsl(var(--chart-3))",
     notTakingPart: "hsl(var(--muted))",
@@ -78,19 +77,6 @@ const MetricsDisplay = ({
       icon: <Clock />,
       label: "Gov Actions",
       value: data.totalGovernanceActions,
-    },
-  ];
-
-  const votingPowerData = [
-    {
-      name: "Always Abstain",
-      value: data.alwaysAbstainVotingPower,
-      formatted: formatStake(data.alwaysAbstainVotingPower),
-    },
-    {
-      name: "No Confidence",
-      value: data.alwaysNoConfidenceVotingPower,
-      formatted: formatStake(data.alwaysNoConfidenceVotingPower),
     },
   ];
 
@@ -234,67 +220,7 @@ const MetricsDisplay = ({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <StakeDistributionGraph data={data} />
-        <Card className="bg-card text-card-foreground shadow-none">
-          <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">
-              Voting Power
-            </h3>
-            <div className="flex">
-              <div className="h-32 flex-1">
-                <ResponsiveContainer>
-                  <PieChart>
-                    <Pie
-                      data={votingPowerData}
-                      innerRadius="65%"
-                      outerRadius="100%"
-                      dataKey="value"
-                      startAngle={90}
-                      endAngle={-270}
-                    >
-                      {votingPowerData.map((_, index) => (
-                        <Cell
-                          key={`cell-${index}`}
-                          fill={
-                            index === 0
-                              ? chartColors.votingPowerAbstain
-                              : chartColors.votingPowerNoConfidence
-                          }
-                          strokeWidth={0}
-                        />
-                      ))}
-                    </Pie>
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="flex-1 flex flex-col justify-center space-y-4">
-                {votingPowerData.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between"
-                  >
-                    <div className="flex items-center gap-2">
-                      <div
-                        className="w-3 h-3 rounded-full"
-                        style={{
-                          backgroundColor:
-                            index === 0
-                              ? chartColors.votingPowerAbstain
-                              : chartColors.votingPowerNoConfidence,
-                        }}
-                      />
-                      <span className="text-sm text-muted-foreground">
-                        {item.name}
-                      </span>
-                    </div>
-                    <span className="text-sm font-medium text-foreground">
-                      {item.formatted}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <VotingPowerGraph data={data} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
