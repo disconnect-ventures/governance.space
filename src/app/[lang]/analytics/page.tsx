@@ -1,5 +1,5 @@
 import { ChartLineIcon } from "lucide-react";
-import MetricsDisplay from "~/components/features/analytics/MetricsDisplay";
+import GovernanceDashboard from "~/components/features/analytics/GovernanceDashboard";
 import {
   getNetworkInfo,
   getNetworkMetrics,
@@ -44,7 +44,7 @@ export default async function AnalyticsPage({
         Epoch {info.epochNo}
       </h1>
       <Suspense fallback={<div>Loading...</div>}>
-        <MetricsDisplay
+        <GovernanceDashboard
           data={{ ...metrics, ...info, ...stake }}
           drepListPromise={drepsPromise}
           drepStatsPromise={statsPromise}

@@ -14,19 +14,19 @@ import StakeDistributionCard from "./StakeDistributionCard";
 import VotingPowerCard from "./VotingPowerCard";
 import MetricsCard from "./MetricsCard";
 
-interface MetricsDisplayProps {
+interface GovernanceDashboardProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
   drepListPromise: Promise<{ elements: DRep[] }>;
   drepStatsPromise: Promise<DRepStats>;
   translations: Dictionary["general"];
 }
 
-const MetricsDisplay = ({
+const GovernanceDashboard = ({
   data,
   drepListPromise,
   drepStatsPromise,
   translations,
-}: MetricsDisplayProps) => {
+}: GovernanceDashboardProps) => {
   const drepList = use(drepListPromise)?.elements;
   const drepStats = use(drepStatsPromise);
   const isLoadingStats = !drepStats;
@@ -457,4 +457,4 @@ const MetricsDisplay = ({
   );
 };
 
-export default MetricsDisplay;
+export default GovernanceDashboard;
