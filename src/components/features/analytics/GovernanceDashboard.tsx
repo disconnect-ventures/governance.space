@@ -14,6 +14,7 @@ import MetricsCard from "./MetricsCard";
 import GovernanceDelegationCard from "./GovernanceDelegationCard";
 import DRepStatusDistributionCard from "./DRepStatusDistributionCard";
 import Top10DRepsCard from "./Top10DRepsCard";
+import EpochMetricsCard from "./EpochMetricsCard";
 
 interface GovernanceDashboardProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
@@ -30,7 +31,6 @@ const GovernanceDashboard = ({
 }: GovernanceDashboardProps) => {
   const mockData = getMockMetrics();
   const circulation = 35949488472 * 1e6;
-  const epoch = data.epochNo;
 
   const tokenomicsData = [
     { position: "Circulation", amount: circulation },
@@ -38,44 +38,6 @@ const GovernanceDashboard = ({
     { position: "Reserves", amount: mockData.reserves },
     { position: "Rewards", amount: mockData.rewards },
     { position: "Deposits", amount: mockData.deposits },
-  ];
-
-  const epochMetricsData = [
-    {
-      item: "Total DReps",
-      value: mockData.dashboard.metrics.totalDReps.value,
-      change: mockData.dashboard.metrics.totalDReps.change,
-    },
-    {
-      item: "Total Delegators",
-      value: mockData.dashboard.metrics.totalDelegators.value,
-      change: mockData.dashboard.metrics.totalDelegators.change,
-    },
-    {
-      item: "New DReps",
-      value: mockData.dashboard.metrics.newDReps.value,
-      change: mockData.dashboard.metrics.newDReps.change,
-    },
-    {
-      item: "New Delegators",
-      value: mockData.dashboard.metrics.newDelegators.value,
-      change: mockData.dashboard.metrics.newDelegators.change,
-    },
-    {
-      item: "Delegation Rate",
-      value: mockData.dashboard.metrics.delegationRate.value,
-      change: mockData.dashboard.metrics.delegationRate.change,
-    },
-    {
-      item: "Active Delegated",
-      value: mockData.dashboard.metrics.activeDelegated.value,
-      change: mockData.dashboard.metrics.activeDelegated.change,
-    },
-    {
-      item: "Abstain/No Confidence",
-      value: mockData.dashboard.metrics.abstainNoConfidence.value,
-      change: mockData.dashboard.metrics.abstainNoConfidence.change,
-    },
   ];
 
   return (
@@ -99,60 +61,7 @@ const GovernanceDashboard = ({
           drepListPromise={drepListPromise}
           translations={translations}
         />
-        <Card className="bg-card text-card-foreground shadow-none">
-          <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground mb-6">
-              Epoch {epoch} Metrics
-            </h3>
-            <ComingSoon>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b border-border">
-                      <th className="text-left py-3 text-sm font-medium text-muted-foreground">
-                        #Item
-                      </th>
-                      <th className="text-center py-3 text-sm font-medium text-muted-foreground">
-                        Epoch {epoch}
-                      </th>
-                      <th className="text-right py-3 text-sm font-medium text-muted-foreground">
-                        Changed
-                      </th>
-                    </tr>
-                  </thead>
-
-                  <tbody className="divide-y divide-border">
-                    {epochMetricsData.map((row) => {
-                      const isError =
-                        row.item === "Active Delegated" ||
-                        row.item === "Abstain/No Confidence";
-
-                      return (
-                        <tr key={row.item}>
-                          <td className="py-4 text-sm text-foreground">
-                            {row.item}
-                          </td>
-                          <td className="py-4 text-sm text-center font-medium text-foreground">
-                            {row.value}
-                          </td>
-                          <td
-                            className={`py-4 text-sm text-right font-medium ${
-                              isError
-                                ? "text-red-500 dark:text-red-400"
-                                : "text-green-500 dark:text-green-400"
-                            }`}
-                          >
-                            {isError ? `-${row.change}` : `+${row.change}`}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </ComingSoon>
-          </CardContent>
-        </Card>
+        <EpochMetricsCard data={data} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
