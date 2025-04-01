@@ -12,8 +12,21 @@ import {
   truncateMiddle,
 } from "~/lib/utils";
 import CopyToClipboard from "../CopyToClipboard";
+import {
+  Tooltip,
+  TooltipProvider,
+  TooltipTrigger,
+  TooltipContent,
+} from "~/components/ui/tooltip";
+import { Dictionary } from "~/config/dictionaries";
 
-export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
+export const GovernaceVoting = ({
+  action,
+  translations,
+}: {
+  action: GovernanceAction;
+  translations: Dictionary;
+}) => {
   // TODO:Get correct threshold
   const sposVotingData: GovernanceVotingCardProps = {
     title: "SPOS",
@@ -85,25 +98,53 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
           </div>
 
           <div className="space-y-3">
-            <div className="flex flex-wrap items-center gap-2">
-              <Calendar className="h-5 w-5 text-gray-400 dark:text-gray-600 flex-shrink-0" />
-              <span className="text-gray-500 dark:text-gray-400 font-bold">
-                Submitted:
-              </span>
-              <span className="text-[#4B5563] dark:text-gray-300">
-                {formatDate(action.createdDate, action.createdEpochNo)}
-              </span>
-            </div>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Calendar className="h-5 w-5 text-gray-400 dark:text-gray-600 flex-shrink-0" />
+                    <span className="text-gray-500 dark:text-gray-400 font-bold">
+                      {translations.pageGovernanceActionsDetails.submitted}:
+                    </span>
+                    <span className="text-[#4B5563] dark:text-gray-300">
+                      {formatDate(action.createdDate, action.createdEpochNo)}
+                    </span>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <div className="w-64 max-w-[90vw]">
+                    <span className="block text-lg font-semibold">
+                      {translations.pageGovernanceActionsDetails.submitted}
+                    </span>
+                    {translations.pageGovernanceActionsDetails.submittedTooltip}
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
 
-            <div className="flex flex-wrap items-center gap-2">
-              <Clock className="h-5 w-5 text-gray-400 dark:text-gray-600 flex-shrink-0" />
-              <span className="text-gray-500 dark:text-gray-400 font-bold">
-                Expires:
-              </span>
-              <span className="text-[#4B5563] dark:text-gray-300">
-                {formatDate(action.expiryDate, action.expiryEpochNo)}
-              </span>
-            </div>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Clock className="h-5 w-5 text-gray-400 dark:text-gray-600 flex-shrink-0" />
+                    <span className="text-gray-500 dark:text-gray-400 font-bold">
+                      {translations.pageGovernanceActionsDetails.expires}:
+                    </span>
+                    <span className="text-[#4B5563] dark:text-gray-300">
+                      {formatDate(action.expiryDate, action.expiryEpochNo)}
+                    </span>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <div className="w-64 max-w-[90vw]">
+                    <span className="block text-lg font-semibold">
+                      {translations.pageGovernanceActionsDetails.expires}
+                    </span>
+                    {translations.pageGovernanceActionsDetails.expiresTooltip}
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </div>
 
