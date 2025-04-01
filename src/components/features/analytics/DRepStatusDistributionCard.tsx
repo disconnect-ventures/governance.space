@@ -1,42 +1,22 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import ComingSoon from "~/components/layout/ComingSoon";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import { formatNumber } from "./utils/formatters";
-import React, { use } from "react";
-import { DRepStats } from "~/lib/drepStats";
+import React from "react";
+import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
 
-interface DRepStatusDistributionCardProps {
-  drepStatsPromise: Promise<DRepStats>;
-}
+type DRepStatusDistributionCardProps = Pick<
+  AnalyticsDashboardProps,
+  "drepStatsPromise"
+>;
 
 const DRepStatusDistributionCard = ({
   drepStatsPromise,
 }: DRepStatusDistributionCardProps) => {
-  const chartColors = useMemo(
-    () => ({
-      activeDReps: "hsl(var(--chart-1))",
-      inactiveDReps: "hsl(var(--chart-2))",
-      retiredDReps: "hsl(var(--chart-3))",
-    }),
-    []
-  );
-
-  const getDRepStatusColor = (index: number) => {
-    switch (index) {
-      case 0:
-        return chartColors.activeDReps;
-      case 1:
-        return chartColors.inactiveDReps;
-      case 2:
-        return chartColors.retiredDReps;
-    }
-  };
-
-  const drepStats = use(drepStatsPromise);
-  const totalDReps = drepStats?.total || 0;
-
-  const isLoadingStats = !drepStats;
+  const drepStats = React.use(drepStatsPromise);
+  const totalDReps = useMemo(() => drepStats?.total || 0, [drepStats]);
+  const isLoadingStats = useMemo(() => !drepStats, [drepStats]);
 
   const drepStatusData = useMemo(() => {
     if (!drepStats) {
@@ -53,6 +33,29 @@ const DRepStatusDistributionCard = ({
       { name: "Retired DReps", value: drepStats.retired },
     ];
   }, [drepStats]);
+
+  const chartColors = useMemo(
+    () => ({
+      activeDReps: "hsl(var(--chart-1))",
+      inactiveDReps: "hsl(var(--chart-2))",
+      retiredDReps: "hsl(var(--chart-3))",
+    }),
+    []
+  );
+
+  const getDRepStatusColor = useCallback(
+    (index: number) => {
+      switch (index) {
+        case 0:
+          return chartColors.activeDReps;
+        case 1:
+          return chartColors.inactiveDReps;
+        case 2:
+          return chartColors.retiredDReps;
+      }
+    },
+    [chartColors]
+  );
 
   return (
     <Card className="bg-card text-card-foreground shadow-none">
