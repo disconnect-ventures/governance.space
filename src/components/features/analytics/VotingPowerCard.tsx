@@ -1,12 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { NetworkStake } from "~/lib/analytics";
 import { formatStake } from "./utils/formatters";
 import { Pie, PieChart, Cell, ResponsiveContainer } from "recharts";
 import { useMemo } from "react";
+import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
 
-interface VotingPowerCardProps {
-  data: NetworkStake;
-}
+type VotingPowerCardProps = Pick<AnalyticsDashboardProps, "data">;
 
 const VotingPowerCard = ({ data }: VotingPowerCardProps) => {
   const votingPowerData = useMemo(

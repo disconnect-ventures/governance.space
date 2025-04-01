@@ -2,13 +2,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ProfileStatus } from "../profile/ProfileStatus";
 import { formatNumber } from "./utils/formatters";
 import { use } from "react";
-import { Dictionary } from "~/config/dictionaries";
-import { DRep } from "~/lib/dreps";
+import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
 
-interface Top10DRepsCardProps {
-  drepListPromise: Promise<{ elements: DRep[] }>;
-  translations: Dictionary["general"];
-}
+type Top10DRepsCardProps = Pick<
+  AnalyticsDashboardProps,
+  "drepListPromise" | "translations"
+>;
 
 const Top10DRepsCard = ({
   drepListPromise,

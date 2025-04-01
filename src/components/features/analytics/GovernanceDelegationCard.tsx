@@ -1,35 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { NetworkStake } from "~/lib/analytics";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
+import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
 
-interface GovernanceDelegationCardProps {
-  data: NetworkStake;
-}
+type GovernanceDelegationCardProps = Pick<AnalyticsDashboardProps, "data">;
 
 const GovernanceDelegationCard = ({ data }: GovernanceDelegationCardProps) => {
-  const chartColors = {
-    notTakingPart: "hsl(var(--muted))",
-    activeDReps: "hsl(var(--chart-1))",
-    governanceAbstain: "hsl(var(--chart-2))",
-    governanceNoConfidence: "hsl(var(--chart-3))",
-  };
-
-  const getGovernanceColor = (index: number) => {
-    switch (index) {
-      case 0:
-        return chartColors.notTakingPart;
-      case 1:
-        return chartColors.activeDReps;
-      case 2:
-        return chartColors.governanceAbstain;
-      case 3:
-        return chartColors.governanceNoConfidence;
-      default:
-        return chartColors.notTakingPart;
-    }
-  };
-
   const circulation = 35949488472 * 1e6;
 
   const notTakingPart = useMemo(
@@ -74,6 +50,34 @@ const GovernanceDelegationCard = ({ data }: GovernanceDelegationCardProps) => {
       },
     ],
     [data, circulation, notTakingPart]
+  );
+
+  const chartColors = useMemo(
+    () => ({
+      notTakingPart: "hsl(var(--muted))",
+      activeDReps: "hsl(var(--chart-1))",
+      governanceAbstain: "hsl(var(--chart-2))",
+      governanceNoConfidence: "hsl(var--chart-3))",
+    }),
+    []
+  );
+
+  const getGovernanceColor = useCallback(
+    (index: number) => {
+      switch (index) {
+        case 0:
+          return chartColors.notTakingPart;
+        case 1:
+          return chartColors.activeDReps;
+        case 2:
+          return chartColors.governanceAbstain;
+        case 3:
+          return chartColors.governanceNoConfidence;
+        default:
+          return chartColors.notTakingPart;
+      }
+    },
+    [chartColors]
   );
 
   return (
