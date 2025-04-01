@@ -3,7 +3,7 @@ import { useCallback, useMemo } from "react";
 import ComingSoon from "~/components/layout/ComingSoon";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import { formatNumber } from "./utils/formatters";
-import React from "react";
+import { use } from "react";
 import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
 
 type DRepStatusDistributionCardProps = Pick<
@@ -14,7 +14,7 @@ type DRepStatusDistributionCardProps = Pick<
 const DRepStatusDistributionCard = ({
   drepStatsPromise,
 }: DRepStatusDistributionCardProps) => {
-  const drepStats = React.use(drepStatsPromise);
+  const drepStats = use(drepStatsPromise);
   const totalDReps = useMemo(() => drepStats?.total || 0, [drepStats]);
   const isLoadingStats = useMemo(() => !drepStats, [drepStats]);
 

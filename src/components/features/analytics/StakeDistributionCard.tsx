@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { NetworkStake } from "~/lib/analytics";
 import { formatStake } from "./utils/formatters";
 import {
   Bar,
@@ -10,10 +9,9 @@ import {
   YAxis,
 } from "recharts";
 import { useMemo } from "react";
+import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
 
-interface StakeDistributionCardProps {
-  data: NetworkStake;
-}
+type StakeDistributionCardProps = Pick<AnalyticsDashboardProps, "data">;
 
 const StakeDistributionCard = ({ data }: StakeDistributionCardProps) => {
   const stakeData = useMemo(

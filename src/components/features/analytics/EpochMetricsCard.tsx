@@ -1,15 +1,13 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { NetworkInfo } from "~/lib/analytics";
 import { useMemo } from "react";
 import ComingSoon from "~/components/layout/ComingSoon";
 import { getMockMetrics } from "~/lib/mock";
+import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
 
-interface EpochMetricsCardProps {
-  data: NetworkInfo;
-}
+type EpochMetricsCardProps = Pick<AnalyticsDashboardProps, "data">;
 
 const EpochMetricsCard = ({ data }: EpochMetricsCardProps) => {
-  const epoch = data.epochNo;
+  const epoch = useMemo(() => [data.epochNo], [data]);
   const mockData = getMockMetrics();
 
   const epochMetricsData = useMemo(
