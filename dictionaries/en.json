@@ -215,7 +215,11 @@
     "previousGovernanceActionId": "Previous Governance Action ID",
     "votesSubmittedBy": "Votes submitted for this Governance Action By",
     "spos": "SPOs",
-    "constitutionalCommittee": "Constitutional Committee"
+    "constitutionalCommittee": "Constitutional Committee",
+    "submitted": "Submitted",
+    "submittedTooltip": "The date when the governance action was submitted on-chain.",
+    "expires": "Expires",
+    "expiresTooltip": "The date when the governance action will expire if it doesn't reach ratification thresholds. IMPORTANT: If the governance action is ratified before the expiry date, it will be considered ratified and it will not be available to vote on afterwards."
   },
   "pageProposals": {
     "title": "Proposals",
