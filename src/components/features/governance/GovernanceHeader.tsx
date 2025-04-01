@@ -62,7 +62,9 @@ export const GovernanceHeader = ({
     [action]
   );
   const actionId = `${action.txHash}#${action.index}`;
-  const prevActionId = `${action.prevGovActionTxHash}#${action.prevGovActionTxHash}`;
+  const prevActionId = action.prevGovActionTxHash
+    ? `${action.prevGovActionTxHash}#${action.prevGovActionTxHash}`
+    : null;
 
   return (
     <CardContent className="p-6">

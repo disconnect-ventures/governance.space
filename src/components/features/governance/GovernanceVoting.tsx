@@ -23,6 +23,7 @@ export const GovernaceVoting = ({ action }: { action: GovernanceAction }) => {
       abstain: { count: action.poolAbstainVotes },
     },
     threshold: 0.51,
+    formatValue: (value) => formatAda(formatVotingPower(value)),
   };
 
   const constitutionalCommitteeVotingData: GovernanceVotingCardProps = {
