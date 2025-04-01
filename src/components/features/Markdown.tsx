@@ -29,7 +29,7 @@ export const Markdown = ({ content }: { content: string }) => {
       prose-em:text-foreground"
     >
       <RemarkMarkdown
-        remarkPlugins={[remarkMath]}
+        remarkPlugins={[[remarkMath, { singleDollarTextMath: false }]]}
         rehypePlugins={[rehypeKatex]}
       >
         {content}
