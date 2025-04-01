@@ -1,18 +1,6 @@
 import { CACHE_CONFIG, fetchApi } from ".";
 import { PDF_API_URL } from "./constants";
 
-export const getProposalBadgeColor = (actionType: string) => {
-  switch (actionType.toLowerCase()) {
-    case "info action":
-      return "purple";
-    case "no confidence":
-      return "red";
-    case "treasury requests":
-      return "yellow";
-    default:
-      return "gray";
-  }
-};
 export type Proposal = {
   id: number;
   attributes: {
