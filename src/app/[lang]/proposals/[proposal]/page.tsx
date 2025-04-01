@@ -104,7 +104,7 @@ export default async function ProposalDetailsPage({
       <TopBar backHref="/proposals" />
       <Card className="mb-4 bg-card text-card-foreground">
         <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
-          <div className="grid gap-4 sm:gap-6">
+          <div className="w-full flex flex-col gap-4 sm:gap-6">
             <ProposalHeader
               title={title}
               isActive={isProposalActive}
