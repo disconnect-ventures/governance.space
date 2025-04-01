@@ -8,7 +8,6 @@ import {
 import { getDReps } from "~/lib/dreps";
 import { PageProps } from "../layout";
 import { getDictionary } from "~/config/dictionaries";
-import { Suspense } from "react";
 import { getDRepStatusStats } from "~/lib/drepStats";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { Metadata } from "next";
@@ -41,14 +40,12 @@ export default async function AnalyticsPage({
         }
         translations={dictionary.pageAnalytics}
       />
-      <Suspense fallback={<div>Loading...</div>}>
-        <AnalyticsDashboard
-          data={{ ...metrics, ...info, ...stake }}
-          drepListPromise={drepsPromise}
-          drepStatsPromise={statsPromise}
-          translations={dictionary.general}
-        />
-      </Suspense>
+      <AnalyticsDashboard
+        data={{ ...metrics, ...info, ...stake }}
+        drepListPromise={drepsPromise}
+        drepStatsPromise={statsPromise}
+        translations={dictionary.general}
+      />
     </div>
   );
 }

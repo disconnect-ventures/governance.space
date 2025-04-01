@@ -3,6 +3,7 @@ import { NetworkInfo, NetworkMetrics, NetworkStake } from "~/lib/analytics";
 import { DRep } from "~/lib/dreps";
 import { DRepStats } from "~/lib/drepStats";
 import { Dictionary } from "~/config/dictionaries";
+import { Suspense } from "react";
 import StakeDistributionCard from "./StakeDistributionCard";
 import VotingPowerCard from "./VotingPowerCard";
 import MetricsCard from "./MetricsCard";
@@ -33,7 +34,9 @@ const AnalyticsDashboard = ({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <StakeDistributionCard data={data} />
-        <VotingPowerCard data={data} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <VotingPowerCard data={data} />
+        </Suspense>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -42,10 +45,12 @@ const AnalyticsDashboard = ({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <Top10DRepsCard
-          drepListPromise={drepListPromise}
-          translations={translations}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Top10DRepsCard
+            drepListPromise={drepListPromise}
+            translations={translations}
+          />
+        </Suspense>
         <EpochMetricsCard data={data} />
       </div>
 
