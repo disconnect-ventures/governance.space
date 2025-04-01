@@ -1,5 +1,5 @@
 import { ChartLineIcon } from "lucide-react";
-import GovernanceDashboard from "~/components/features/analytics/GovernanceDashboard";
+import AnalyticsDashboard from "~/components/features/analytics/AnalyticsDashboard";
 import {
   getNetworkInfo,
   getNetworkMetrics,
@@ -33,6 +33,7 @@ export default async function AnalyticsPage({
   return (
     <div className="flex min-h-screen flex-col gap-8">
       <PageTitle
+        title={`${dictionary.pageAnalytics.title} - Epoch ${info.epochNo}`}
         icon={
           <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
             <ChartLineIcon className="text-foreground" />
@@ -40,11 +41,8 @@ export default async function AnalyticsPage({
         }
         translations={dictionary.pageAnalytics}
       />
-      <h1 className="text-4xl font-bold text-foreground">
-        Epoch {info.epochNo}
-      </h1>
       <Suspense fallback={<div>Loading...</div>}>
-        <GovernanceDashboard
+        <AnalyticsDashboard
           data={{ ...metrics, ...info, ...stake }}
           drepListPromise={drepsPromise}
           drepStatsPromise={statsPromise}

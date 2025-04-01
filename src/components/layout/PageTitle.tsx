@@ -17,6 +17,7 @@ export type PageKey =
   | "pageAbout";
 
 export type PageTitleProps = {
+  title?: string;
   badge?: string;
   icon: React.ReactNode;
   children?: React.ReactNode;
@@ -24,6 +25,7 @@ export type PageTitleProps = {
 };
 
 export function PageTitle({
+  title,
   icon,
   children,
   badge,
@@ -36,7 +38,7 @@ export function PageTitle({
           {icon}
         </div>
         <h1 className="text-4xl font-bold text-foreground">
-          {translations?.title}
+          {title ? title : translations?.title}
         </h1>
         {badge && (
           <Badge
