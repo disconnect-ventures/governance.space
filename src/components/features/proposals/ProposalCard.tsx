@@ -16,6 +16,7 @@ import { Dictionary } from "~/config/dictionaries";
 import Latex from "react-latex-next";
 import markdownToHtml from "~/lib/markdown";
 import { use } from "react";
+import { ProposalTypeBadge } from "./ProposalBadge";
 
 export type ProposalCardProps = {
   proposal: Proposal;
@@ -39,12 +40,6 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
     return isProposalActive
       ? "bg-green-500/20 text-green-500"
       : "bg-red-500/20 text-red-500";
-  };
-
-  const getActionTypeBadgeClasses = () => {
-    return actionType === "Info"
-      ? "bg-primary/20 text-primary"
-      : "bg-muted text-muted-foreground";
   };
 
   const createdDate = proposal.attributes.createdAt;
@@ -95,15 +90,7 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
           {/* <p>{proposal.attributes.content.attributes.prop_abstract}</p> */}
         </div>
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-          <Badge
-            variant="outline"
-            className={clsx(
-              "text-lg px-6 rounded-full",
-              getActionTypeBadgeClasses()
-            )}
-          >
-            {actionType}
-          </Badge>
+          <ProposalTypeBadge type={actionType} />
           <div className="text-muted-foreground">Governance Action Type</div>
         </div>
 

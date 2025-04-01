@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { Badge } from "~/components/ui/badge";
 import {
   CalendarIcon,
@@ -7,7 +6,7 @@ import {
   ThumbsUpIcon,
 } from "lucide-react";
 import { formatDate } from "~/lib/utils";
-import { getProposalBadgeColor } from "~/lib/proposals";
+import { ProposalTypeBadge } from "./ProposalBadge";
 
 interface ProposalHeaderProps {
   type: string;
@@ -34,20 +33,10 @@ export const ProposalHeader = ({
   dislikes,
   commentCount,
 }: ProposalHeaderProps) => {
-  const badgeColor = getProposalBadgeColor(type);
-
   return (
     <div>
       <div className="flex items-center gap-4 mb-4 text-center w-full">
-        <Badge
-          variant="secondary"
-          className={clsx(
-            "text-lg px-6 rounded-full",
-            `bg-${badgeColor}-100 text-${badgeColor}-800`
-          )}
-        >
-          {type}
-        </Badge>
+        <ProposalTypeBadge type={type} />
         <span className="text-sm text-muted-foreground">
           Governance Action Type
         </span>
