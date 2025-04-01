@@ -1,13 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { NetworkMetrics } from "~/lib/analytics";
 import { formatNumber } from "./utils/formatters";
 import { useMemo } from "react";
 import { Users, Database, Vote, Award, Clock } from "lucide-react";
 import React from "react";
+import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
 
-interface VotingPowerCardProps {
-  data: NetworkMetrics;
-}
+type VotingPowerCardProps = Pick<AnalyticsDashboardProps, "data">;
 
 const VotingPowerCard = ({ data }: VotingPowerCardProps) => {
   const metrics = useMemo(

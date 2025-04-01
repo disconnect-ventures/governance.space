@@ -12,19 +12,19 @@ import Top10DRepsCard from "./Top10DRepsCard";
 import EpochMetricsCard from "./EpochMetricsCard";
 import CardanoTokenomicsCard from "./CardanoTokenomicsCard";
 
-interface GovernanceDashboardProps {
+export interface AnalyticsDashboardProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
   drepListPromise: Promise<{ elements: DRep[] }>;
   drepStatsPromise: Promise<DRepStats>;
   translations: Dictionary["general"];
 }
 
-const GovernanceDashboard = ({
+const AnalyticsDashboard = ({
   data,
   drepListPromise,
   drepStatsPromise,
   translations,
-}: GovernanceDashboardProps) => {
+}: AnalyticsDashboardProps) => {
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
@@ -56,4 +56,4 @@ const GovernanceDashboard = ({
   );
 };
 
-export default GovernanceDashboard;
+export default AnalyticsDashboard;
