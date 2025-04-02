@@ -34,7 +34,8 @@
     "abstain": "Abstenção",
     "item": "Item",
     "votingPower": "Poder de Voto (Do maior ao menor)",
-    "locale": "pt-BR"
+    "locale": "pt-BR",
+    "share": "Compartilhar"
   },
   "homepage": {
     "banner": {

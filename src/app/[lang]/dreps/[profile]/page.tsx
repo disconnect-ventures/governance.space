@@ -76,7 +76,7 @@ export default async function DRepProfilePage({
         icon={<User className="h-6 w-6" />}
         translations={dictionary.pageDrepsDetails}
       />
-      <TopBar backHref="/dreps" />
+      <TopBar backHref="/dreps" translations={dictionary.general} />
       <div className="w-full flex flex-col lg:flex-row gap-4 justify-center">
         <div className="lg:w-2/3 flex flex-col gap-4">
           <ProfileCard
