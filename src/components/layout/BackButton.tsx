@@ -4,12 +4,14 @@ import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { useLocale } from "~/hooks/use-locale";
 import { localizePath } from "~/lib/utils";
+import { Dictionary } from "~/config/dictionaries";
 
-type BackButtonProps = {
+export type BackButtonProps = {
   href?: string;
+  translations: Dictionary["general"];
 };
 
-export const BackButton = ({ href }: BackButtonProps) => {
+export const BackButton = ({ href, translations }: BackButtonProps) => {
   const router = useRouter();
   const { locale } = useLocale();
 
@@ -22,7 +24,7 @@ export const BackButton = ({ href }: BackButtonProps) => {
       variant="ghost"
     >
       <ArrowLeft className="w-5 h-5 mr-2" />
-      Back
+      {translations.back}
     </Button>
   );
 };

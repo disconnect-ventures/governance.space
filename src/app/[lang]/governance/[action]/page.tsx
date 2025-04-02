@@ -144,7 +144,7 @@ export default async function GovernanceActionDetailsPage({
         translations={dictionary.pageGovernanceActionsDetails}
       />
 
-      <TopBar backHref="/governance" />
+      <TopBar backHref="/governance" translations={dictionary.general} />
 
       <Card className="bg-card text-card-foreground rounded-xl overflow-hidden">
         <GovernanceHeader action={action} metadata={metadata} />

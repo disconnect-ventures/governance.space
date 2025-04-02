@@ -34,7 +34,8 @@
     "abstain": "Abstain",
     "item": "Item",
     "votingPower": "Voting Power (Higher to Lower)",
-    "locale": "en-US"
+    "locale": "en-US",
+    "share": "Share"
   },
   "homepage": {
     "banner": {

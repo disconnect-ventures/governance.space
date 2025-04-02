@@ -101,7 +101,7 @@ export default async function ProposalDetailsPage({
         }
         translations={dictionary.pageProposalsDetails}
       />
-      <TopBar backHref="/proposals" />
+      <TopBar backHref="/proposals" translations={dictionary.general} />
       <Card className="mb-4 bg-card text-card-foreground">
         <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           <div className="w-full flex flex-col gap-4 sm:gap-6">

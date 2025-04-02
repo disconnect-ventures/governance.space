@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Header } from "~/components/layout/Header";
 import { Footer } from "~/components/layout/Footer";
-// import { CallToAction } from "~/components/features/CallToAction";
 import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 import { Toaster } from "~/components/ui/toaster";
 import { AnnouncementBar } from "~/components/layout/AnnouncementBar";
@@ -65,7 +64,7 @@ export default async function RootLayout(props: {
           <SidebarProvider>
             <WalletProvider>
               <div className="w-full overflow-x-hidden">
-                <AnnouncementBar />
+                <AnnouncementBar translations={dictionary.announcementBar} />
                 <Header
                   translations={{
                     header: dictionary.header,
