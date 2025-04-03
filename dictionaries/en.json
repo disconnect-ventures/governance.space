@@ -118,6 +118,20 @@
     "titleHelp": "Help",
     "titleAbout": "About"
   },
+  "breadcrumbs": {
+    "home": "Home",
+    "dreps": "DReps",
+    "governance": "Governance",
+    "proposals": "Proposals",
+    "committees": "Committees",
+    "liveEvents": "Live Events",
+    "analytics": "Analytics",
+    "help": "Help",
+    "about": "About",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "cookiePolicy": "Cookies Policy"
+  },
   "wallet": {
     "connectWallet": "Connect Wallet",
     "availableWallet": "Available Wallets",
@@ -149,7 +163,7 @@
     "linkCommitteePortal": "Const. Committee Portal",
     "linkInterimConstitution": "Read the Constitution",
     "privacyPolicy": "Privacy Policy",
-    "termsOfUse": "Terms Of Use",
+    "termsOfUse": "Terms of Use",
     "cookiePolicy": "Cookies Policy",
     "language": "Language & region",
     "lightMode": "Light mode",
@@ -335,7 +349,7 @@
     "longDescription": ""
   },
   "pageTermsOfUse": {
-    "title": "Terms Of Use",
+    "title": "Terms of Use",
     "badgeText": "",
     "description": "",
     "longDescription": ""

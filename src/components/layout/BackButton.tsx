@@ -6,7 +6,7 @@ import { useLocale } from "~/hooks/use-locale";
 import { localizePath } from "~/lib/utils";
 import { Dictionary } from "~/config/dictionaries";
 
-export type BackButtonProps = {
+type BackButtonProps = {
   href?: string;
   translations: Dictionary["general"];
 };
