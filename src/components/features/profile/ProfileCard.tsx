@@ -66,7 +66,10 @@ export function ProfileCard({ drep, translations }: ProfileCardProps) {
           <span className="w-full sm:w-fit text-ellipsis overflow-hidden text-foreground">
             {drep.drepId}
           </span>
-          <CopyToClipboard value={drep.drepId} />
+          <CopyToClipboard
+            value={drep.drepId}
+            translations={translations.general}
+          />
         </div>
         <p className="mt-4 text-muted-foreground line-clamp-2">
           {drep.objectives}

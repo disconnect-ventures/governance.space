@@ -1,7 +1,7 @@
 {
   "metatags": {
     "title": "Governance Space",
-    "description": "Plataforma de Governança Tudo-em-Um."
+    "description": "Plataforma Completa de Governança."
   },
   "general": {
     "back": "Voltar",
@@ -35,7 +35,15 @@
     "item": "Item",
     "votingPower": "Poder de Voto (Do maior ao menor)",
     "locale": "pt-BR",
-    "share": "Compartilhar"
+    "share": "Compartilhar",
+    "textCopied": "Texto copiado!",
+    "pressToPaste": "Pressione Ctrl+V (ou ⌘+V) para colar",
+    "topBarTwitter": "O Twitter abrirá em um momento. Por favor, cole o texto no campo do tweet.",
+    "topBarFacebook": "O Facebook abrirá em um momento. Por favor, cole o texto no campo de publicação.",
+    "topBarLinkedIn": "O LinkedIn abrirá em um momento. Por favor, cole o texto no campo de publicação.",
+    "topBarDefault": "Por favor, cole o texto copiado quando a janela de compartilhamento abrir.",
+    "clipboardCopied": "Copiado para a área de transferência",
+    "clipboardFailed": "Falha ao copiar"
   },
   "homepage": {
     "banner": {
@@ -146,7 +154,7 @@
     "newsletterButton": "Cadastre-se"
   },
   "footer": {
-    "builtOn": "Construído em",
+    "builtOn": "Construída em",
     "titleExplore": "Explorar",
     "titleGovernance": "Governança",
     "titleLinks": "Links",
@@ -167,7 +175,8 @@
     "cookiePolicy": "Política de Cookies",
     "language": "Idioma & região",
     "lightMode": "Modo claro",
-    "darkMode": "Modo escuro"
+    "darkMode": "Modo escuro",
+    "description": "Plataforma Completa de Governança."
   },
   "pageDreps": {
     "title": "Diretório de DReps",

@@ -86,7 +86,13 @@ export default async function DRepProfilePage({
               pageDrepsDetails: dictionary.pageDrepsDetails,
             }}
           />
-          <ProfileBody drep={drep} translations={dictionary.pageDrepsDetails} />
+          <ProfileBody
+            drep={drep}
+            translations={{
+              general: dictionary.general,
+              pageDrepsDetails: dictionary.pageDrepsDetails,
+            }}
+          />
           <VotingHistory
             proposals={proposals}
             translations={{

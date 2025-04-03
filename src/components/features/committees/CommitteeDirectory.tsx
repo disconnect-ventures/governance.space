@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { TableCell, TableRow } from "~/components/ui/table";
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
@@ -16,7 +15,7 @@ import {
 import { Badge } from "~/components/ui/badge";
 import Link from "~/components/features/Link";
 import clsx from "clsx";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
+import { Dictionary } from "~/config/dictionaries";
 
 export interface CommitteeMember {
   url: string;
@@ -43,11 +42,13 @@ export interface CommitteeMember {
 export type CommitteeMembersDirectoryProps = {
   committeeMembers: Array<CommitteeMember>;
   params: DirectorySearchParams;
+  translations: Pick<Dictionary, "general" | "pageCommittees">;
 };
 
 export const CommitteeMembersDirectory = ({
   committeeMembers,
   params,
+  translations,
 }: CommitteeMembersDirectoryProps) => {
   const colorMap = {
     blue: "bg-blue-500/10 text-blue-500 dark:bg-blue-500/20 dark:text-blue-400 hover:bg-blue-500/20 dark:hover:bg-blue-500/30",
@@ -58,23 +59,19 @@ export const CommitteeMembersDirectory = ({
     red: "bg-red-500/10 text-red-500 dark:bg-red-500/20 dark:text-red-400 hover:bg-red-500/20 dark:hover:bg-red-500/30",
   };
 
-  const {
-    dictionary: { pageCommittees },
-  } = useTranslation();
-
   return (
     <TableDirectory
       showParams={false}
       searchPlaceholder="Search members..."
       headers={[
-        pageCommittees.groups,
-        pageCommittees.committee,
-        pageCommittees.member,
-        pageCommittees.role,
-        pageCommittees.country,
-        pageCommittees.drep,
-        pageCommittees.spo,
-        pageCommittees.links,
+        translations.pageCommittees.groups,
+        translations.pageCommittees.committee,
+        translations.pageCommittees.member,
+        translations.pageCommittees.role,
+        translations.pageCommittees.country,
+        translations.pageCommittees.drep,
+        translations.pageCommittees.spo,
+        translations.pageCommittees.links,
       ]}
       params={params}
       rows={committeeMembers.map((committee, index) => (
@@ -184,6 +181,7 @@ export const CommitteeMembersDirectory = ({
           </TableCell>
         </TableRow>
       ))}
+      translations={translations.general}
     ></TableDirectory>
   );
 };

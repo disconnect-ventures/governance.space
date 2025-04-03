@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { TableCell, TableRow } from "~/components/ui/table";
 import { Avatar, AvatarFallback } from "~/components/ui/avatar";
@@ -11,7 +9,7 @@ import { capitalize } from "~/lib/utils";
 import { Badge } from "~/components/ui/badge";
 import { CircleCheck, CircleMinusIcon, CircleXIcon } from "lucide-react";
 import CopyToClipboard from "../CopyToClipboard";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
+import { Dictionary } from "~/config/dictionaries";
 
 export interface LiveEvent {
   name: string;
@@ -29,11 +27,13 @@ export interface LiveEvent {
 export type LiveEventsDirectoryProps = {
   liveEvents: Array<LiveEvent>;
   params: DirectorySearchParams;
+  translations: Pick<Dictionary, "general" | "pageLiveEvents">;
 };
 
 export const LiveEventsDirectory = ({
   liveEvents,
   params,
+  translations,
 }: LiveEventsDirectoryProps) => {
   const getVoteBadge = (vote: LiveEvent["vote"]) => {
     switch (vote) {
@@ -63,22 +63,18 @@ export const LiveEventsDirectory = ({
     }
   };
 
-  const {
-    dictionary: { pageLiveEvents },
-  } = useTranslation();
-
   return (
     <TableDirectory
       showParams={false}
       searchPlaceholder="Search by name or ID"
       headers={[
-        pageLiveEvents.drepName,
-        pageLiveEvents.vote,
-        pageLiveEvents.votingPower,
+        translations.pageLiveEvents.drepName,
+        translations.pageLiveEvents.vote,
+        translations.pageLiveEvents.votingPower,
         "Voter Role",
         "Type",
-        pageLiveEvents.submissionEpoch,
-        pageLiveEvents.transaction,
+        translations.pageLiveEvents.submissionEpoch,
+        translations.pageLiveEvents.transaction,
         "Registration Date",
       ]}
       params={params}
@@ -125,7 +121,10 @@ export const LiveEventsDirectory = ({
                 <div className="text-ellipsis w-32 overflow-hidden text-foreground">
                   {liveEvent.transactionId}
                 </div>
-                <CopyToClipboard value={liveEvent.transactionId} />
+                <CopyToClipboard
+                  value={liveEvent.transactionId}
+                  translations={translations.general}
+                />
               </div>
             </TableCell>
             <TableCell className="text-center">
@@ -141,6 +140,7 @@ export const LiveEventsDirectory = ({
           </TableRow>
         );
       })}
+      translations={translations.general}
     ></TableDirectory>
   );
 };

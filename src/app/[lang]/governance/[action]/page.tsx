@@ -147,7 +147,11 @@ export default async function GovernanceActionDetailsPage({
       <TopBar backHref="/governance" translations={dictionary.general} />
 
       <Card className="bg-card text-card-foreground rounded-xl overflow-hidden">
-        <GovernanceHeader action={action} metadata={metadata} />
+        <GovernanceHeader
+          action={action}
+          metadata={metadata}
+          translations={dictionary.general}
+        />
         <Separator className="bg-border my-4" />
         <GovernaceVoting action={action} translations={dictionary} />
         <GovernanceLinks links={references} />

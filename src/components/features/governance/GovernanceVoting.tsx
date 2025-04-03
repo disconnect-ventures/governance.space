@@ -94,7 +94,10 @@ export const GovernaceVoting = ({
             <code className="text-xs sm:text-sm font-mono break-all dark:text-gray-300">
               {truncateMiddle(actionId, 25)}
             </code>
-            <CopyToClipboard value={actionId} />
+            <CopyToClipboard
+              value={actionId}
+              translations={translations.general}
+            />
           </div>
 
           <div className="space-y-3">

@@ -35,7 +35,15 @@
     "item": "Item",
     "votingPower": "Voting Power (Higher to Lower)",
     "locale": "en-US",
-    "share": "Share"
+    "share": "Share",
+    "textCopied": "Text copied!",
+    "pressToPaste": "Press Ctrl+V (or ⌘+V) to paste",
+    "topBarTwitter": "Twitter will open in a moment. Please paste the text into the tweet field.",
+    "topBarFacebook": "Facebook will open in a moment. Please paste the text into the tweet field.",
+    "topBarLinkedIn": "LinkedIn will open in a moment. Please paste the text into the tweet field.",
+    "topBarDefault": "Please paste the copied text when the sharing window opens.",
+    "clipboardCopied": "Copied to clipboard",
+    "clipboardFailed": "Failed to copy"
   },
   "homepage": {
     "banner": {
@@ -167,7 +175,8 @@
     "cookiePolicy": "Cookies Policy",
     "language": "Language & region",
     "lightMode": "Light mode",
-    "darkMode": "Dark mode"
+    "darkMode": "Dark mode",
+    "description": "All-in-One Governance Platform."
   },
   "pageDreps": {
     "title": "DReps Directory",

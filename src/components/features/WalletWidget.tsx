@@ -18,7 +18,7 @@ import { WalletIcon } from "lucide-react";
 import { Dictionary } from "~/config/dictionaries";
 
 export type WalletWidgetProps = {
-  translations: Dictionary["wallet"];
+  translations: Pick<Dictionary, "wallet" | "general">;
 };
 
 export const WalletWidget = ({ translations }: WalletWidgetProps) => {
@@ -28,8 +28,8 @@ export const WalletWidget = ({ translations }: WalletWidgetProps) => {
     () =>
       typeof networkId === "number"
         ? networks[networkId]?.name
-        : translations.unknownNetwork,
-    [networkId, translations.unknownNetwork]
+        : translations.wallet.unknownNetwork,
+    [networkId, translations.wallet.unknownNetwork]
   );
   const wallets = useWalletList();
   const dropdownMenuItemClasses = useMemo(() => "flex gap-2 items-center", []);
@@ -43,7 +43,11 @@ export const WalletWidget = ({ translations }: WalletWidgetProps) => {
       connected ? (
         <>
           <DropdownMenuItem className={dropdownMenuItemClasses}>
-            <CopyToClipboard value={walletStore.address} className="p-0">
+            <CopyToClipboard
+              value={walletStore.address}
+              className="p-0"
+              translations={translations.general}
+            >
               Copy Address
             </CopyToClipboard>
           </DropdownMenuItem>
@@ -75,14 +79,15 @@ export const WalletWidget = ({ translations }: WalletWidgetProps) => {
           ))}
         </>
       ) : (
-        translations.noWalletFound
+        translations.wallet.noWalletFound
       ),
     [
       connected,
       wallets,
       walletStore,
       dropdownMenuItemClasses,
-      translations.noWalletFound,
+      translations.wallet.noWalletFound,
+      translations.general,
     ]
   );
 
@@ -98,7 +103,7 @@ export const WalletWidget = ({ translations }: WalletWidgetProps) => {
         <WalletIcon className="h-6" />
         {connected
           ? `${networkName}: ${formatAda(formatVotingPower(parseFloat(balance ?? "0")))}`
-          : translations.connectWallet}
+          : translations.wallet.connectWallet}
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel className={dropdownMenuItemClasses}>
@@ -114,7 +119,7 @@ export const WalletWidget = ({ translations }: WalletWidgetProps) => {
           )}
           {connected
             ? `${capitalize(walletStore.name ?? "")} Wallet`
-            : translations.availableWallet}
+            : translations.wallet.availableWallet}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         {DropdownItems}

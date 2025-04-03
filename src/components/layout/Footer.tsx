@@ -80,7 +80,7 @@ export const Footer = ({ translations }: FooterProps) => {
               </div>
             </div>
             <div className="text-sm text-muted-foreground mt-2">
-              <p>All-in-One Governance Platform.</p>
+              <p>{translations.description}</p>
             </div>
             <div className="flex items-center gap-2 mt-2">
               <span className="text-sm text-muted-foreground">

@@ -7,33 +7,39 @@ import Link from "../Link";
 
 type ProfileBodyProps = {
   drep: DRep;
-  translations: Dictionary["pageDrepsDetails"];
+  translations: Pick<Dictionary, "general" | "pageDrepsDetails">;
 };
 
 export function ProfileBody({ drep, translations }: ProfileBodyProps) {
   const infoSections = [
-    [translations.objectives, drep.objectives],
-    [translations.motivations, drep.motivations],
-    [translations.qualifications, drep.qualifications],
+    [translations.pageDrepsDetails.objectives, drep.objectives],
+    [translations.pageDrepsDetails.motivations, drep.motivations],
+    [translations.pageDrepsDetails.qualifications, drep.qualifications],
     [
-      translations.paymentAddress,
+      translations.pageDrepsDetails.paymentAddress,
       drep.paymentAddress ? (
-        <span key={translations.paymentAddress} className="flex gap-2">
+        <span
+          key={translations.pageDrepsDetails.paymentAddress}
+          className="flex gap-2"
+        >
           <span className="text-ellipsis overflow-hidden">
             {drep.paymentAddress}
           </span>
           {drep.paymentAddress && (
-            <CopyToClipboard value={drep.paymentAddress}></CopyToClipboard>
+            <CopyToClipboard
+              translations={translations.general}
+              value={drep.paymentAddress}
+            ></CopyToClipboard>
           )}
         </span>
       ) : null,
     ],
-    [translations.metadataHash, drep.metadataHash],
+    [translations.pageDrepsDetails.metadataHash, drep.metadataHash],
     [
-      translations.metadataUrl,
+      translations.pageDrepsDetails.metadataUrl,
       drep.url ? (
         <Link
-          key={translations.metadataUrl}
+          key={translations.pageDrepsDetails.metadataUrl}
           href={drep.url}
           className="flex gap-2 text-primary hover:underline"
           target="_blank"
@@ -55,7 +61,7 @@ export function ProfileBody({ drep, translations }: ProfileBodyProps) {
             <p className="text-ellipsis overflow-hidden">
               {text ?? (
                 <span className="text-muted-foreground">
-                  {translations.notProvided}
+                  {translations.pageDrepsDetails.notProvided}
                 </span>
               )}
             </p>

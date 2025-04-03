@@ -88,13 +88,13 @@ export const TopBar = withSuspense(
     const getPlatformInstructions = (platform: SocialPlatform): string => {
       switch (platform) {
         case "twitter":
-          return "Twitter will open in a moment. Please paste the text into the tweet field.";
+          return translations.topBarTwitter;
         case "facebook":
-          return "Facebook will open in a moment. Please paste the text into the post field.";
+          return translations.topBarFacebook;
         case "linkedin":
-          return "LinkedIn will open in a moment. Please paste the text when sharing.";
+          return translations.topBarLinkedIn;
         default:
-          return "Please paste the copied text when the sharing window opens.";
+          return translations.topBarDefault;
       }
     };
 
@@ -172,7 +172,9 @@ export const TopBar = withSuspense(
                 <div className="flex justify-between items-center mb-2">
                   <div className="flex items-center gap-1.5">
                     <CheckCircle className="w-4 h-4 text-primary dark:text-primary" />
-                    <span className="text-sm font-medium">Text copied!</span>
+                    <span className="text-sm font-medium">
+                      {translations.textCopied}
+                    </span>
                   </div>
                   <button
                     onClick={closeHelper}
@@ -190,7 +192,7 @@ export const TopBar = withSuspense(
                   <span className="font-medium capitalize">
                     {activePlatform}
                   </span>
-                  <span>Press Ctrl+V (or ⌘+V) to paste</span>
+                  <span>{translations.pressToPaste}</span>
                 </div>
               </div>
             )}
@@ -200,6 +202,7 @@ export const TopBar = withSuspense(
               className="inline p-0"
               value={shareUrl}
               icon={<LinkIcon className={baseIconClasses} />}
+              translations={translations}
             />
           </div>
         </div>
