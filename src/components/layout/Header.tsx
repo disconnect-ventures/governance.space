@@ -108,7 +108,7 @@ export const HeaderSearchBar = ({ onSubmit }: HeaderSearchBarProps) => {
 };
 
 export type HeaderProps = {
-  translations: Pick<Dictionary, "header" | "wallet">;
+  translations: Pick<Dictionary, "general" | "header" | "wallet">;
 };
 
 export const Header = ({ translations }: HeaderProps) => {
@@ -142,7 +142,12 @@ export const Header = ({ translations }: HeaderProps) => {
               {translations.header.becomeDrep}
             </Link>
 
-            <WalletWidget translations={translations.wallet} />
+            <WalletWidget
+              translations={{
+                wallet: translations.wallet,
+                general: translations.general,
+              }}
+            />
 
             <LocaleSwitch />
           </div>

@@ -33,9 +33,9 @@ import { Label } from "../ui/label";
 import { Checkbox } from "../ui/checkbox";
 import { useLocale } from "~/hooks/use-locale";
 import { localizePath } from "~/lib/utils";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
 import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
+import { Dictionary } from "~/config/dictionaries";
 
 export type DirectoryParamOption = {
   value: string;
@@ -53,6 +53,7 @@ export type DirectoryProps = {
   sortOptions?: Array<DirectoryParamOption>;
   filterOptions?: Array<DirectoryParamOption>;
   className?: string;
+  translations?: Dictionary["general"];
 };
 
 export type DirectorySearchParams<S = string, F = string[]> = {
@@ -77,6 +78,7 @@ export function Directory({
   filterOptions,
   showParams = true,
   className,
+  translations,
 }: DirectoryProps) {
   const { page = 0, pageSize = 15, totalResults = 0 } = params;
   const [search, setSearch] = useState(params.search ?? "");
@@ -85,8 +87,6 @@ export function Directory({
 
   const router = useRouter();
   const { locale } = useLocale();
-  const { dictionary } = useTranslation();
-
   const totalPages = useMemo(
     () => Math.ceil(totalResults / pageSize),
     [totalResults, pageSize]
@@ -239,13 +239,12 @@ export function Directory({
               <Popover>
                 <PopoverTrigger asChild>
                   <Button variant="outline" className="w-full">
-                    <ArrowUpDown className="h-4 w-4" />{" "}
-                    {dictionary.general.sort}
+                    <ArrowUpDown className="h-4 w-4" /> {translations?.sort}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-80 flex flex-col gap-2 ml-4 mx-4 md:mx-8">
                   <span className="font-semibold">
-                    {sortPopoverTitle || dictionary.general.sort}
+                    {sortPopoverTitle || translations?.sort}
                   </span>
                   <RadioGroup defaultValue={params.sort}>
                     {sortOptions?.map(({ label, value }) => (
@@ -264,7 +263,7 @@ export function Directory({
               <Popover>
                 <PopoverTrigger asChild>
                   <Button variant="outline" className="w-full">
-                    <Filter className="h-4 w-4" /> {dictionary.general.filter}
+                    <Filter className="h-4 w-4" /> {translations?.filter}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-80 flex flex-col gap-2 mx-4 md:mx-8">

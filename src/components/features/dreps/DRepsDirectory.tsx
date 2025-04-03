@@ -117,6 +117,7 @@ export const DRepsDirectory = ({
           </TableCell>
         </TableRow>
       ))}
+      translations={translations.general}
     ></TableDirectory>
   );
 };

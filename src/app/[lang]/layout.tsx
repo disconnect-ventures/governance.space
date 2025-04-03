@@ -67,6 +67,7 @@ export default async function RootLayout(props: {
                 <AnnouncementBar translations={dictionary.announcementBar} />
                 <Header
                   translations={{
+                    general: dictionary.general,
                     header: dictionary.header,
                     wallet: dictionary.wallet,
                   }}

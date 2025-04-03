@@ -3,12 +3,14 @@ import React, { useCallback, useState } from "react";
 import { CopyIcon } from "lucide-react";
 import { useToast } from "~/hooks/use-toast";
 import { cn } from "~/lib/utils";
+import { Dictionary } from "~/config/dictionaries";
 
 interface CopyToClipboardProps {
   value: string;
   className?: string;
   icon?: React.ReactNode;
   children?: React.ReactNode;
+  translations: Dictionary["general"];
 }
 
 export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
@@ -16,6 +18,7 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
   className,
   icon,
   children,
+  translations,
 }) => {
   const [isCopied, setIsCopied] = useState(false);
   const { toast } = useToast();
@@ -24,12 +27,12 @@ export const CopyToClipboard: React.FC<CopyToClipboardProps> = ({
     try {
       await navigator.clipboard.writeText(value);
       setIsCopied(true);
-      toast({ title: "Copied to clipboard", description: "" });
+      toast({ title: translations.clipboardCopied, description: "" });
       setTimeout(() => setIsCopied(false), 2000);
     } catch {
-      toast({ title: "Failed to copy", description: "" });
+      toast({ title: translations.clipboardFailed, description: "" });
     }
-  }, [toast, value]);
+  }, [toast, value, translations]);
 
   return (
     <button
