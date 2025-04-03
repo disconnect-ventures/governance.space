@@ -118,6 +118,20 @@
     "titleHelp": "Ajuda",
     "titleAbout": "Sobre"
   },
+  "breadcrumbs": {
+    "home": "Home",
+    "dreps": "DReps",
+    "governance": "Governança",
+    "proposals": "Propostas",
+    "committees": "Comitês",
+    "liveEvents": "Eventos ao Vivo",
+    "analytics": "Analytics",
+    "help": "Ajuda",
+    "about": "Sobre",
+    "privacyPolicy": "Política de Privacidade",
+    "terms": "Termos de Uso",
+    "cookiePolicy": "Política de Cookies"
+  },
   "wallet": {
     "connectWallet": "Conectar Carteira",
     "availableWallet": "Carteiras Disponíveis",
