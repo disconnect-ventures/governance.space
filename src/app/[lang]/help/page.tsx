@@ -37,7 +37,7 @@ export default async function HelpPage({ params: paramsPromise }: PageProps) {
           /> */}
 
           <div className="mt-6">
-            <HelpAccordion />
+            <HelpAccordion translations={dictionary.pageHelp} />
           </div>
         </div>
       </div>
