@@ -144,7 +144,9 @@
     "connectWallet": "Connect Wallet",
     "availableWallet": "Available Wallets",
     "unknownNetwork": "Unknown Network",
-    "noWalletFound": "No wallet found."
+    "noWalletFound": "No wallet found.",
+    "copyAddress": "Copy Address",
+    "disconnect": "Disconnect"
   },
   "newsletter": {
     "newsletterCta": "Governance Space on Cardano Blockchain",
