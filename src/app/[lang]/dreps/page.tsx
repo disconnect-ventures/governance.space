@@ -5,6 +5,7 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { DRepFilterOption, DRepSortOption, getDReps } from "~/lib/dreps";
 import { PageProps } from "../layout";
 import { getDictionary } from "~/config/dictionaries";
+import { getNetworkMetrics } from "~/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Governance Space - DReps Directory",
@@ -26,7 +27,7 @@ export default async function DRepsDirectoryPage({
     []) as DRepFilterOption[];
   const search = searchParams["search"] ?? "";
   const dreps = await getDReps(page, pageSize, search, sort, filters);
-  const { total: totalDReps } = await getDReps(0, 1, "", "Random", []);
+  const { totalRegisteredDReps: totalDReps } = await getNetworkMetrics();
 
   return (
     <div className="space-y-4 bg-background text-foreground dark:bg-background dark:text-foreground">
