@@ -144,7 +144,9 @@
     "connectWallet": "Conectar Carteira",
     "availableWallet": "Carteiras Disponíveis",
     "unknownNetwork": "Rede Desconhecida",
-    "noWalletFound": "Nenhuma carteira encontrada."
+    "noWalletFound": "Nenhuma carteira encontrada.",
+    "copyAddress": "Copiar Endereço",
+    "disconnect": "Desconectar"
   },
   "newsletter": {
     "newsletterCta": "Governance Space na Blockchain Cardano",

@@ -48,14 +48,14 @@ export const WalletWidget = ({ translations }: WalletWidgetProps) => {
               className="p-0"
               translations={translations.general}
             >
-              Copy Address
+              {translations.wallet.copyAddress}
             </CopyToClipboard>
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={walletStore.disconnect}
             className={dropdownMenuItemClasses}
           >
-            Disconnect
+            {translations.wallet.disconnect}
           </DropdownMenuItem>
         </>
       ) : wallets.length > 0 ? (
@@ -87,6 +87,8 @@ export const WalletWidget = ({ translations }: WalletWidgetProps) => {
       walletStore,
       dropdownMenuItemClasses,
       translations.wallet.noWalletFound,
+      translations.wallet.copyAddress,
+      translations.wallet.disconnect,
       translations.general,
     ]
   );
