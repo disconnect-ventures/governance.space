@@ -1,22 +1,26 @@
 import { ArrowRightIcon } from "lucide-react";
 import React from "react";
 import Link from "~/components/features/Link"; // assuming you're using your custom Link component
+import { Dictionary } from "~/config/dictionaries";
 
-export const CallToAction = () => {
+type CallToActionProps = {
+  translations: Dictionary["newsletter"];
+};
+
+export const CallToAction = ({ translations }: CallToActionProps) => {
   return (
     <div className="flex flex-col items-center justify-center py-12 bg-secondary text-center px-4 ">
       <Link
         href="https://governance.beehiiv.com/subscribe"
         className="text-primary text-sm font-medium hover:text-primary/90 transition-colors mb-2 whitespace-nowrap"
       >
-        Governance Space on Cardano Blockchain{" "}
-        <ArrowRightIcon className="inline" />
+        {translations.newsletterCta} <ArrowRightIcon className="inline" />
       </Link>
       <h1 className="text-2xl font-bold text-foreground mb-2">
-        Are You Ready to Participate?
+        {translations.newsletterTitle}
       </h1>
       <p className="text-muted-foreground mb-6">
-        Building Together to Drive Cardano Forward.
+        {translations.newsletterDescription}
       </p>
       <div className="flex w-full max-w-md justify-center">
         <iframe

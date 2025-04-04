@@ -84,7 +84,7 @@ export default async function RootLayout(props: {
                     <Breadcrumbs translations={dictionary.breadcrumbs} />
                     {children}
                   </div>
-                  <CallToAction />
+                  <CallToAction translations={dictionary.newsletter} />
                 </main>
                 <Toaster />
                 <Footer translations={dictionary.footer} />

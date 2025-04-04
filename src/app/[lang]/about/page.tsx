@@ -1,7 +1,5 @@
 import { BookOpenCheckIcon, StarIcon } from "lucide-react";
 import { Metadata } from "next";
-import Image from "next/image";
-import Link from "~/components/features/Link";
 import ComingSoon from "~/components/layout/ComingSoon";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { getDictionary } from "~/config/dictionaries";
@@ -75,28 +73,6 @@ export default async function AboutPage({ params: paramsPromise }: PageProps) {
             ))}
           </div>
         </ComingSoon>
-        <p>
-          <span className="text-sm text-muted-foreground dark:text-muted-foreground/80">
-            Built on:
-          </span>
-          <Link href="https://cardano.org/" target="_blank">
-            <Image
-              src={"/assets/cardano-logo.svg"}
-              alt="Cardano's logo"
-              width={140}
-              height={30}
-              className="object-contain"
-            />
-          </Link>
-        </p>
-        <p>
-          <Link
-            href="mailto:hello@governancespace.com"
-            className="text-sm text-muted-foreground dark:text-muted-foreground/80"
-          >
-            hello@governancespace.com
-          </Link>
-        </p>
       </div>
     </div>
   );
