@@ -287,7 +287,10 @@
     "vote": "Vote",
     "votingPower": "Voting Power",
     "submissionEpoch": "Submission Epoch",
-    "transaction": "Transaction"
+    "transaction": "Transaction",
+    "voterRole": "Voter Role",
+    "type": "Type",
+    "registrationDate": "Registration Date"
   },
   "pageAnalytics": {
     "title": "Analytics",

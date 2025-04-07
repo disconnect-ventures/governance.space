@@ -287,7 +287,10 @@
     "vote": "Voto",
     "votingPower": "Poder de Voto",
     "submissionEpoch": "Época de Submissão",
-    "transaction": "Transação"
+    "transaction": "Transação",
+    "voterRole": "Função do Eleitor",
+    "type": "Tipo",
+    "registrationDate": "Data de Registro"
   },
   "pageAnalytics": {
     "title": "Analytics",
