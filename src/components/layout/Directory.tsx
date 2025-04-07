@@ -322,6 +322,7 @@ export function Directory({
                 <PaginationPrevious
                   href={getNewUrl({ page: Math.max(page - 1, 0).toString() })}
                   className={page === 0 ? "pointer-events-none opacity-50" : ""}
+                  translations={translations}
                 />
               </PaginationItem>
 
@@ -355,6 +356,7 @@ export function Directory({
                       ? "pointer-events-none opacity-50"
                       : ""
                   }
+                  translations={translations}
                 />
               </PaginationItem>
             </PaginationContent>

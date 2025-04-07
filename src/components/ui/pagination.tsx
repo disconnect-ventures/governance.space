@@ -1,9 +1,9 @@
 import * as React from "react";
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
-
 import { cn } from "~/lib/utils";
 import { ButtonProps, buttonVariants } from "~/components/ui/button";
 import Link from "~/components/features/Link";
+import { Dictionary } from "~/config/dictionaries";
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
@@ -60,10 +60,15 @@ const PaginationLink = ({
 );
 PaginationLink.displayName = "PaginationLink";
 
+type PaginationPreviousProps = {
+  translations?: Dictionary["general"];
+} & React.ComponentProps<typeof PaginationLink>;
+
 const PaginationPrevious = ({
+  translations,
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) => (
+}: PaginationPreviousProps) => (
   <PaginationLink
     aria-label="Go to previous page"
     size="default"
@@ -71,22 +76,27 @@ const PaginationPrevious = ({
     {...props}
   >
     <ChevronLeft className="h-4 w-4" />
-    <span>Previous</span>
+    <span>{translations?.previous}</span>
   </PaginationLink>
 );
 PaginationPrevious.displayName = "PaginationPrevious";
 
+type PaginationNextProps = {
+  translations?: Dictionary["general"];
+} & React.ComponentProps<typeof PaginationLink>;
+
 const PaginationNext = ({
+  translations,
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) => (
+}: PaginationNextProps) => (
   <PaginationLink
     aria-label="Go to next page"
     size="default"
     className={cn("gap-1 pr-2.5", className)}
     {...props}
   >
-    <span>Next</span>
+    <span>{translations?.next}</span>
     <ChevronRight className="h-4 w-4" />
   </PaginationLink>
 );
