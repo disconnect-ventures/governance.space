@@ -66,6 +66,7 @@ export type DirectorySearchParams<S = string, F = string[]> = {
 };
 
 const SEARCH_DEBOUNCE_MS = 200;
+const ELLIPSIS = "...";
 
 export function Directory({
   rows,
@@ -105,22 +106,36 @@ export function Directory({
     [params]
   );
 
-  // TODO: simplify logic here
   const getPageNumbers = useCallback(() => {
-    const pages = [];
-    const buffer = 2;
-    for (let i = 0; i < totalPages; i++) {
-      if (i === 0 || Math.abs(page - i) < buffer) {
-        pages.push(i);
-      } else {
-        pages.push("...");
-      }
+    const adjacentPages = 1;
+    const pageNumbers = [];
+
+    pageNumbers.push(0);
+
+    if (page - adjacentPages > 1) {
+      pageNumbers.push(ELLIPSIS);
     }
-    return [
-      ...new Set(pages),
-      ...(totalPages - page > buffer && page > buffer ? ["..."] : []),
-      ...(totalPages - page > buffer ? [totalPages - 1] : []),
-    ];
+
+    const firstAdjacentPage = Math.max(1, page - adjacentPages);
+    const lastAdjacentPage = Math.min(totalPages - 2, page + adjacentPages);
+
+    for (
+      let pageIndex = firstAdjacentPage;
+      pageIndex <= lastAdjacentPage;
+      pageIndex++
+    ) {
+      pageNumbers.push(pageIndex);
+    }
+
+    if (page + adjacentPages < totalPages - 2) {
+      pageNumbers.push(ELLIPSIS);
+    }
+
+    if (totalPages > 1) {
+      pageNumbers.push(totalPages - 1);
+    }
+
+    return pageNumbers;
   }, [totalPages, page]);
 
   const getNewUrl = useCallback(
@@ -312,7 +327,7 @@ export function Directory({
 
               {getPageNumbers().map((pageNumber, index) => (
                 <PaginationItem key={index}>
-                  {pageNumber === "..." ? (
+                  {pageNumber === ELLIPSIS ? (
                     <PaginationEllipsis />
                   ) : (
                     <PaginationLink
@@ -321,7 +336,9 @@ export function Directory({
                       })}
                       isActive={page === pageNumber}
                     >
-                      {pageNumber}
+                      {typeof pageNumber === "number"
+                        ? pageNumber + 1
+                        : pageNumber}{" "}
                     </PaginationLink>
                   )}
                 </PaginationItem>
