@@ -71,11 +71,11 @@ export const LiveEventsDirectory = ({
         translations.pageLiveEvents.drepName,
         translations.pageLiveEvents.vote,
         translations.pageLiveEvents.votingPower,
-        "Voter Role",
-        "Type",
+        translations.pageLiveEvents.voterRole,
+        translations.pageLiveEvents.type,
         translations.pageLiveEvents.submissionEpoch,
         translations.pageLiveEvents.transaction,
-        "Registration Date",
+        translations.pageLiveEvents.registrationDate,
       ]}
       params={params}
       rows={liveEvents.map((liveEvent, index) => {
