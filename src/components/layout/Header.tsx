@@ -142,12 +142,7 @@ export const Header = ({ translations }: HeaderProps) => {
               {translations.header.becomeDrep}
             </Link>
 
-            <WalletWidget
-              translations={{
-                wallet: translations.wallet,
-                general: translations.general,
-              }}
-            />
+            <WalletWidget translations={translations} />
 
             <LocaleSwitch />
           </div>

@@ -5,10 +5,14 @@ import { ButtonProps, buttonVariants } from "~/components/ui/button";
 import Link from "~/components/features/Link";
 import { Dictionary } from "~/config/dictionaries";
 
-const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
+type PaginationProps = {
+  translations: Dictionary["accessibility"];
+} & React.ComponentProps<"nav">;
+
+const Pagination = ({ translations, className, ...props }: PaginationProps) => (
   <nav
     role="navigation"
-    aria-label="pagination"
+    aria-label={translations.pagination}
     className={cn("mx-auto flex w-full justify-center", className)}
     {...props}
   />
@@ -61,7 +65,7 @@ const PaginationLink = ({
 PaginationLink.displayName = "PaginationLink";
 
 type PaginationPreviousProps = {
-  translations: Dictionary["general"];
+  translations: Pick<Dictionary, "general" | "accessibility">;
 } & React.ComponentProps<typeof PaginationLink>;
 
 const PaginationPrevious = ({
@@ -70,19 +74,19 @@ const PaginationPrevious = ({
   ...props
 }: PaginationPreviousProps) => (
   <PaginationLink
-    aria-label="Go to previous page"
+    aria-label={translations.accessibility.goToPreviousPage}
     size="default"
     className={cn("gap-1 pl-2.5", className)}
     {...props}
   >
     <ChevronLeft className="h-4 w-4" />
-    <span>{translations.previous}</span>
+    <span>{translations.general.previous}</span>
   </PaginationLink>
 );
 PaginationPrevious.displayName = "PaginationPrevious";
 
 type PaginationNextProps = {
-  translations: Dictionary["general"];
+  translations: Pick<Dictionary, "general" | "accessibility">;
 } & React.ComponentProps<typeof PaginationLink>;
 
 const PaginationNext = ({
@@ -91,28 +95,33 @@ const PaginationNext = ({
   ...props
 }: PaginationNextProps) => (
   <PaginationLink
-    aria-label="Go to next page"
+    aria-label={translations.accessibility.goToNextPage}
     size="default"
     className={cn("gap-1 pr-2.5", className)}
     {...props}
   >
-    <span>{translations.next}</span>
+    <span>{translations.general.next}</span>
     <ChevronRight className="h-4 w-4" />
   </PaginationLink>
 );
 PaginationNext.displayName = "PaginationNext";
 
+type PaginationEllipsisProps = {
+  translations: Dictionary["accessibility"];
+} & React.ComponentProps<"span">;
+
 const PaginationEllipsis = ({
+  translations,
   className,
   ...props
-}: React.ComponentProps<"span">) => (
+}: PaginationEllipsisProps) => (
   <span
     aria-hidden
     className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}
   >
     <MoreHorizontal className="h-4 w-4" />
-    <span className="sr-only">More pages</span>
+    <span className="sr-only">{translations.morePages}</span>
   </span>
 );
 PaginationEllipsis.displayName = "PaginationEllipsis";

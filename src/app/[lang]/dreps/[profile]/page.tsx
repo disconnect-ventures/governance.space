@@ -79,45 +79,16 @@ export default async function DRepProfilePage({
       <TopBar backHref="/dreps" translations={dictionary.general} />
       <div className="w-full flex flex-col lg:flex-row gap-4 justify-center">
         <div className="lg:w-2/3 flex flex-col gap-4">
-          <ProfileCard
-            drep={drep}
-            translations={{
-              general: dictionary.general,
-              pageDrepsDetails: dictionary.pageDrepsDetails,
-            }}
-          />
-          <ProfileBody
-            drep={drep}
-            translations={{
-              general: dictionary.general,
-              pageDrepsDetails: dictionary.pageDrepsDetails,
-            }}
-          />
-          <VotingHistory
-            proposals={proposals}
-            translations={{
-              general: dictionary.general,
-              pageDrepsDetails: dictionary.pageDrepsDetails,
-            }}
-          />
-          <Comments
-            drep={drep}
-            comments={comments}
-            translations={{
-              general: dictionary.general,
-              pageDrepsDetails: dictionary.pageDrepsDetails,
-            }}
-          />
+          <ProfileCard drep={drep} translations={dictionary} />
+          <ProfileBody drep={drep} translations={dictionary} />
+          <VotingHistory proposals={proposals} translations={dictionary} />
+          <Comments drep={drep} comments={comments} translations={dictionary} />
         </div>
         <div className="lg:w-1/3">
           <ProfileInfo
             drep={drep}
             comments={comments}
-            translations={{
-              general: dictionary.general,
-              pageDreps: dictionary.pageDreps,
-              pageDrepsDetails: dictionary.pageDrepsDetails,
-            }}
+            translations={dictionary}
           />
         </div>
       </div>

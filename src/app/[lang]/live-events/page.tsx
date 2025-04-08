@@ -33,10 +33,7 @@ export default async function LiveEventsPage({
         <LiveEventsDirectory
           liveEvents={liveEvents}
           params={{}}
-          translations={{
-            general: dictionary.general,
-            pageLiveEvents: dictionary.pageLiveEvents,
-          }}
+          translations={dictionary}
         />
       </ComingSoon>
     </div>

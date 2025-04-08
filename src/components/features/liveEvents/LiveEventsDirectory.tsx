@@ -27,7 +27,10 @@ export interface LiveEvent {
 export type LiveEventsDirectoryProps = {
   liveEvents: Array<LiveEvent>;
   params: DirectorySearchParams;
-  translations: Pick<Dictionary, "general" | "pageLiveEvents">;
+  translations: Pick<
+    Dictionary,
+    "general" | "pageLiveEvents" | "accessibility"
+  >;
 };
 
 export const LiveEventsDirectory = ({
@@ -140,7 +143,7 @@ export const LiveEventsDirectory = ({
           </TableRow>
         );
       })}
-      translations={translations.general}
+      translations={translations}
     ></TableDirectory>
   );
 };

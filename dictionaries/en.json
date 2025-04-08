@@ -45,6 +45,12 @@
     "clipboardCopied": "Copied to clipboard",
     "clipboardFailed": "Failed to copy"
   },
+  "accessibility": {
+    "pagination": "pagination",
+    "goToPreviousPage": "Go to previous page",
+    "goToNextPage": "Go to next page",
+    "morePages": "More pages"
+  },
   "homepage": {
     "banner": {
       "title": "Decentralized Governance for Everyone",
