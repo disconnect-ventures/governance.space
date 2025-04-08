@@ -130,7 +130,7 @@ type BDProposalOwnership = BaseEntity & {
   };
 };
 
-type BudgetDiscussion = BaseEntity & {
+export type BudgetDiscussion = BaseEntity & {
   attributes: {
     privacy_policy: boolean;
     intersect_named_administrator: boolean;

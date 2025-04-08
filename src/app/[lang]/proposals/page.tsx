@@ -49,7 +49,7 @@ export default async function ProposalsPage({
           </div>
         }
         translations={dictionary.pageProposals}
-        badge={`${totalMeta.pagination.total}`}
+        badge={`${totalMeta.pagination?.total}`}
       ></PageTitle>
       <ProposalDirectory
         proposals={data}
@@ -57,7 +57,7 @@ export default async function ProposalsPage({
         params={{
           page,
           pageSize,
-          totalResults: meta.pagination.total,
+          totalResults: meta.pagination?.total,
           sort,
           search,
           filters: filters.map(String),

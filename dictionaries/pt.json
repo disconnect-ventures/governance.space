@@ -254,6 +254,12 @@
     "longDescription": "Participe de discussões e processos de tomada de decisão guiados pela governança comunitária.",
     "cip129ActionId": "ID da Ação CIP-129"
   },
+  "pageBudgetDiscussions": {
+    "title": "Discussões de Orçamento",
+    "badgeText": "discussões",
+    "description": "",
+    "longDescription": ""
+  },
   "pageProposalsDetails": {
     "title": "Detalhes da Proposta",
     "badgeText": "",
