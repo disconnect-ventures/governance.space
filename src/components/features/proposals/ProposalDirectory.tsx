@@ -12,14 +12,14 @@ export type ProposalDirectoryProps = {
   proposals: Array<Proposal>;
   params: DirectorySearchParams;
   proposalTypes: Array<ProposalType>;
-  dictionary: Dictionary;
+  translations: Dictionary["general"];
 };
 
 export async function ProposalDirectory({
   proposals,
   params,
   proposalTypes,
-  dictionary,
+  translations,
 }: ProposalDirectoryProps) {
   return (
     <Directory
@@ -38,8 +38,13 @@ export async function ProposalDirectory({
         })),
       ]}
       rows={proposals.map((proposal, index) => (
-        <ProposalCard key={index} proposal={proposal} dictionary={dictionary} />
+        <ProposalCard
+          key={index}
+          proposal={proposal}
+          translations={translations}
+        />
       ))}
+      translations={translations}
     ></Directory>
   );
 }

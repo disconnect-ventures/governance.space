@@ -53,7 +53,7 @@ export type DirectoryProps = {
   sortOptions?: Array<DirectoryParamOption>;
   filterOptions?: Array<DirectoryParamOption>;
   className?: string;
-  translations?: Dictionary["general"];
+  translations: Dictionary["general"];
 };
 
 export type DirectorySearchParams<S = string, F = string[]> = {
@@ -254,12 +254,12 @@ export function Directory({
               <Popover>
                 <PopoverTrigger asChild>
                   <Button variant="outline" className="w-full">
-                    <ArrowUpDown className="h-4 w-4" /> {translations?.sort}
+                    <ArrowUpDown className="h-4 w-4" /> {translations.sort}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-80 flex flex-col gap-2 ml-4 mx-4 md:mx-8">
                   <span className="font-semibold">
-                    {sortPopoverTitle || translations?.sort}
+                    {sortPopoverTitle || translations.sort}
                   </span>
                   <RadioGroup defaultValue={params.sort}>
                     {sortOptions?.map(({ label, value }) => (
@@ -278,7 +278,7 @@ export function Directory({
               <Popover>
                 <PopoverTrigger asChild>
                   <Button variant="outline" className="w-full">
-                    <Filter className="h-4 w-4" /> {translations?.filter}
+                    <Filter className="h-4 w-4" /> {translations.filter}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-80 flex flex-col gap-2 mx-4 md:mx-8">
