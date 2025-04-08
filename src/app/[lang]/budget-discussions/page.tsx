@@ -6,6 +6,7 @@ import { PageProps } from "../layout";
 import {
   getBudgetDiscussionTypes,
   listBudgetDiscussions,
+  ListBudgetDiscussionsParams,
 } from "~/lib/budgetDiscussions";
 import { BudgetDiscussionDirectory } from "~/components/features/budget/BudgetDirectory";
 
@@ -24,12 +25,22 @@ export default async function BudgetDiscussionsPage({
   const searchParams = (await searchParamsPromise) ?? {};
   const page = parseInt(searchParams["page"] ?? "0");
   const pageSize = parseInt(searchParams["pageSize"] ?? "20");
+
+  const types = await getBudgetDiscussionTypes();
+  const search = searchParams["search"] ?? "";
+  const sort =
+    (searchParams["sort"] as ListBudgetDiscussionsParams["sortDirection"]) ??
+    "desc";
+  const filters =
+    searchParams["filters"]?.split(",").map((f) => parseInt(f)) ?? [];
+
   const discussions = await listBudgetDiscussions({
-    page,
+    page: page,
     pageSize,
     search: searchParams["search"] ?? "",
+    sortDirection: sort,
+    typeIds: filters,
   });
-  const types = await getBudgetDiscussionTypes();
 
   return (
     <div className="space-y-4 bg-background text-foreground">
@@ -49,9 +60,9 @@ export default async function BudgetDiscussionsPage({
           page,
           pageSize,
           totalResults: discussions?.meta.pagination?.total,
-          // sort,
-          // search,
-          // filters: filters.map(String),
+          sort,
+          search,
+          filters: filters.map(String),
         }}
       />
     </div>

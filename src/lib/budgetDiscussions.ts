@@ -240,9 +240,9 @@ export async function getBudgetDiscussionPollById(
   return getBudgetDiscussionPolls(1, 1, isActive, id.toString());
 }
 
-interface ListBudgetDiscussionsParams {
+export interface ListBudgetDiscussionsParams {
   isActive?: boolean;
-  typeNameId?: number;
+  typeIds?: number[];
   search?: string;
   page?: number;
   pageSize?: number;
@@ -253,7 +253,7 @@ interface ListBudgetDiscussionsParams {
 
 export async function listBudgetDiscussions({
   isActive = true,
-  typeNameId,
+  typeIds = [],
   search = "",
   page = 1,
   pageSize = 25,
@@ -278,12 +278,13 @@ export async function listBudgetDiscussions({
   );
   filterIndex++;
 
-  if (typeNameId) {
-    url.searchParams.append(
-      `filters[$and][${filterIndex}][bd_psapb][type_name][id]`,
-      String(typeNameId)
+  if (typeIds.length) {
+    typeIds.forEach((type, index) =>
+      url.searchParams.append(
+        `filters[$or][${index}][bd_psapb][type_name][id]`,
+        String(type)
+      )
     );
-    filterIndex++;
   }
 
   if (search) {
@@ -294,7 +295,7 @@ export async function listBudgetDiscussions({
     filterIndex++;
   }
 
-  url.searchParams.append("pagination[page]", String(page));
+  url.searchParams.append("pagination[page]", String(page + 1));
   url.searchParams.append("pagination[pageSize]", String(pageSize));
 
   url.searchParams.append(`sort[${sortField}]`, sortDirection);

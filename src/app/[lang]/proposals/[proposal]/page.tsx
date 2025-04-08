@@ -33,7 +33,7 @@ export async function generateStaticParams() {
   const filters: number[] = [];
 
   const firstPage = await getProposals(page++, pageSize, search, sort, filters);
-  const totalPages = firstPage.meta.pagination.pageCount;
+  const totalPages = firstPage.meta.pagination?.pageCount ?? 0;
 
   const nextPages = (
     await Promise.all(
