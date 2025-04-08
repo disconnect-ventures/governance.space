@@ -5,6 +5,18 @@ export type ApiResponse<Element> = {
   total: number;
 };
 
+export type PdfApiResponse<Element> = {
+  data: Element;
+  meta: {
+    pagination?: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+};
+
 export const CACHE_CONFIG = {
   tags: {
     dreps: "dreps",

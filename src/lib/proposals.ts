@@ -1,4 +1,4 @@
-import { CACHE_CONFIG, fetchApi } from ".";
+import { CACHE_CONFIG, fetchApi, PdfApiResponse } from ".";
 import { PDF_API_URL } from "./constants";
 
 export type Proposal = {
@@ -51,29 +51,17 @@ export type ProposalType = {
   };
 };
 
-export type ProposalResponse<Element> = {
-  data: Element[];
-  meta: {
-    pagination: {
-      page: number;
-      pageSize: number;
-      pageCount: number;
-      total: number;
-    };
-  };
-};
-
 export type ProposalSortOption = "createdAt";
 export type ProposalSortOrderOption = "desc" | "asc";
 
 export async function getGovernanceActionProposalTypes(): Promise<
-  ProposalResponse<ProposalType>
+  PdfApiResponse<ProposalType[]>
 > {
   const response = await fetch(
     `${PDF_API_URL}/api/governance-action-types`,
     {}
   );
-  const data = (await response.json()) as ProposalResponse<ProposalType>;
+  const data = (await response.json()) as PdfApiResponse<ProposalType[]>;
   return data;
 }
 
@@ -106,7 +94,7 @@ export async function getProposals(
   url.searchParams.append("populate[0]", "proposal_links");
   url.searchParams.append("populate[1]", "proposal_withdrawals");
 
-  const response = await fetchApi<ProposalResponse<Proposal>>(url);
+  const response = await fetchApi<PdfApiResponse<Proposal>>(url);
   return response;
 }
 
