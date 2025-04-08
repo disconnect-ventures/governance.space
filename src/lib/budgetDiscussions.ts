@@ -239,3 +239,107 @@ export async function getBudgetDiscussionPollById(
 ) {
   return getBudgetDiscussionPolls(1, 1, isActive, id.toString());
 }
+
+interface ListBudgetDiscussionsParams {
+  isActive?: boolean;
+  typeNameId?: number;
+  search?: string;
+  page?: number;
+  pageSize?: number;
+  sortField?: string;
+  sortDirection?: "asc" | "desc";
+  populate?: string[];
+}
+
+export async function listBudgetDiscussions({
+  isActive = true,
+  typeNameId,
+  search = "",
+  page = 1,
+  pageSize = 25,
+  sortField = "createdAt",
+  sortDirection = "desc",
+  populate = [
+    "bd_costing",
+    "bd_psapb.type_name",
+    "bd_proposal_detail",
+    "creator",
+  ],
+}: ListBudgetDiscussionsParams = {}): Promise<PdfApiResponse<
+  BudgetDiscussion[]
+> | null> {
+  const url = new URL("/api/bds", PDF_API_URL);
+
+  let filterIndex = 0;
+
+  url.searchParams.append(
+    `filters[$and][${filterIndex}][is_active]`,
+    String(isActive)
+  );
+  filterIndex++;
+
+  if (typeNameId) {
+    url.searchParams.append(
+      `filters[$and][${filterIndex}][bd_psapb][type_name][id]`,
+      String(typeNameId)
+    );
+    filterIndex++;
+  }
+
+  if (search) {
+    url.searchParams.append(
+      `filters[$and][${filterIndex}][bd_proposal_detail][proposal_name][$containsi]`,
+      search
+    );
+    filterIndex++;
+  }
+
+  url.searchParams.append("pagination[page]", String(page));
+  url.searchParams.append("pagination[pageSize]", String(pageSize));
+
+  url.searchParams.append(`sort[${sortField}]`, sortDirection);
+
+  populate.forEach((p, index) => {
+    url.searchParams.append(`populate[${index}]`, p);
+  });
+
+  try {
+    const res = await fetchApi<PdfApiResponse<BudgetDiscussion[]>>(url);
+    return res || null;
+  } catch {
+    return null;
+  }
+}
+
+export type BudgetDiscussionType = BaseEntity & {
+  attributes: {
+    type_name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
+};
+
+type GetBudgetDiscussionTypesParams = {
+  page?: number;
+  pageSize?: number;
+};
+
+export async function getBudgetDiscussionTypes({
+  page = 1,
+  pageSize = 25,
+}: GetBudgetDiscussionTypesParams = {}): Promise<PdfApiResponse<
+  BudgetDiscussionType[]
+> | null> {
+  const url = new URL("/api/bd-types", PDF_API_URL);
+
+  url.searchParams.append("pagination[page]", String(page));
+  url.searchParams.append("pagination[pageSize]", String(pageSize));
+
+  try {
+    const res = await fetchApi<PdfApiResponse<BudgetDiscussionType[]>>(url);
+    return res || null;
+  } catch {
+    return null;
+  }
+}
