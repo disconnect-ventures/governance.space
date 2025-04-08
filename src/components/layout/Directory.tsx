@@ -336,9 +336,7 @@ export function Directory({
                       })}
                       isActive={page === pageNumber}
                     >
-                      {typeof pageNumber === "number"
-                        ? pageNumber + 1
-                        : pageNumber}{" "}
+                      {pageNumber}
                     </PaginationLink>
                   )}
                 </PaginationItem>
