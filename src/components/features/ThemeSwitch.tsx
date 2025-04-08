@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import dynamic from "next/dynamic";
 import { Dictionary } from "~/config/dictionaries";
 
-export type ThemeSwitcherProps = {
+type ThemeSwitcherProps = {
   translations: Dictionary["footer"];
 };
 

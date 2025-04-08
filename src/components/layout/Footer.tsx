@@ -16,7 +16,7 @@ export type MenuSection = {
   }>;
 };
 
-export type FooterProps = {
+type FooterProps = {
   translations: Dictionary["footer"];
 };
 

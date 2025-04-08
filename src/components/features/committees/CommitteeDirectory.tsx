@@ -39,7 +39,7 @@ export interface CommitteeMember {
   };
 }
 
-export type CommitteeMembersDirectoryProps = {
+type CommitteeMembersDirectoryProps = {
   committeeMembers: Array<CommitteeMember>;
   params: DirectorySearchParams;
   translations: Pick<

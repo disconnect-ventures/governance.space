@@ -3,7 +3,7 @@ import { Badge } from "../ui/badge";
 import { InfoIcon } from "lucide-react";
 import { Dictionary } from "~/config/dictionaries";
 
-export type PageKey =
+type PageKey =
   | "pageDreps"
   | "pageDrepsDetails"
   | "pageGovernanceActions"
@@ -16,7 +16,7 @@ export type PageKey =
   | "pageHelp"
   | "pageAbout";
 
-export type PageTitleProps = {
+type PageTitleProps = {
   title?: string;
   badge?: string;
   icon: React.ReactNode;

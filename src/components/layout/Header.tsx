@@ -107,7 +107,7 @@ export const HeaderSearchBar = ({ onSubmit }: HeaderSearchBarProps) => {
   );
 };
 
-export type HeaderProps = {
+type HeaderProps = {
   translations: Pick<Dictionary, "general" | "header" | "wallet">;
 };
 

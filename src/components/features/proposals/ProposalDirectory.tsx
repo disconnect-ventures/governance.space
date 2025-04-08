@@ -8,7 +8,7 @@ import {
 } from "~/components/layout/Directory";
 import { Dictionary } from "~/config/dictionaries";
 
-export type ProposalDirectoryProps = {
+type ProposalDirectoryProps = {
   proposals: Array<Proposal>;
   params: DirectorySearchParams;
   proposalTypes: Array<ProposalType>;
