@@ -42,7 +42,10 @@ export interface CommitteeMember {
 export type CommitteeMembersDirectoryProps = {
   committeeMembers: Array<CommitteeMember>;
   params: DirectorySearchParams;
-  translations: Pick<Dictionary, "general" | "pageCommittees">;
+  translations: Pick<
+    Dictionary,
+    "general" | "pageCommittees" | "accessibility"
+  >;
 };
 
 export const CommitteeMembersDirectory = ({
@@ -181,7 +184,7 @@ export const CommitteeMembersDirectory = ({
           </TableCell>
         </TableRow>
       ))}
-      translations={translations.general}
+      translations={translations}
     ></TableDirectory>
   );
 };

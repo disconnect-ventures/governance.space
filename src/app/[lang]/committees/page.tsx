@@ -31,10 +31,7 @@ export default async function CommitteesPage({
       <CommitteeMembersDirectory
         committeeMembers={[...committees, ...committees, ...committees]}
         params={{}}
-        translations={{
-          general: dictionary.general,
-          pageCommittees: dictionary.pageCommittees,
-        }}
+        translations={dictionary}
       />
     </div>
   );

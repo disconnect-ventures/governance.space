@@ -12,7 +12,7 @@ type GovernanceActionDirectoryProps = {
   metadata: Record<string, Metadata | null>;
   governanceActions: Array<GovernanceAction>;
   params: DirectorySearchParams;
-  translations: Dictionary["general"];
+  translations: Pick<Dictionary, "general" | "accessibility">;
 };
 
 export function GovernanceActionDirectory({

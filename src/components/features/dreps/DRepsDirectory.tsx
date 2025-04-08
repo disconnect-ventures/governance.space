@@ -19,7 +19,7 @@ import { Dictionary } from "~/config/dictionaries";
 export type DRepsDirectoryProps = {
   dreps: Array<DRep>;
   params: DirectorySearchParams;
-  translations: Pick<Dictionary, "general" | "pageDreps">;
+  translations: Pick<Dictionary, "general" | "pageDreps" | "accessibility">;
 };
 
 export const DRepsDirectory = ({
@@ -117,7 +117,7 @@ export const DRepsDirectory = ({
           </TableCell>
         </TableRow>
       ))}
-      translations={translations.general}
+      translations={translations}
     ></TableDirectory>
   );
 };

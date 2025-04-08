@@ -12,7 +12,7 @@ export type ProposalDirectoryProps = {
   proposals: Array<Proposal>;
   params: DirectorySearchParams;
   proposalTypes: Array<ProposalType>;
-  translations: Dictionary["general"];
+  translations: Pick<Dictionary, "general" | "accessibility">;
 };
 
 export async function ProposalDirectory({
@@ -41,7 +41,7 @@ export async function ProposalDirectory({
         <ProposalCard
           key={index}
           proposal={proposal}
-          translations={translations}
+          translations={translations.general}
         />
       ))}
       translations={translations}

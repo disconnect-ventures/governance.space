@@ -45,6 +45,13 @@
     "clipboardCopied": "Copiado para a área de transferência",
     "clipboardFailed": "Falha ao copiar"
   },
+  "accessibility": {
+    "pagination": "paginação",
+    "goToPreviousPage": "Ir para a página anterior",
+    "goToNextPage": "Ir para a próxima página",
+    "morePages": "Mais páginas"
+  },
+
   "homepage": {
     "banner": {
       "title": "Governança Descentralizada para Todos",
