@@ -44,7 +44,7 @@ export function AppSidebar({ translations }: AppSidebarProps) {
         <SidebarContent className="pb-8">
           <SidebarGroup className="h-full">
             <SidebarGroupContent className="h-full flex flex-col gap-4">
-              <HeaderSearchBar />
+              <HeaderSearchBar translations={translations.pageDreps} />
               <SidebarMenu>
                 {headerNavLinks.map((item, index) => (
                   <SidebarMenuItem key={index}>

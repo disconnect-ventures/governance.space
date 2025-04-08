@@ -65,11 +65,15 @@ export const HeaderNavigationLink = ({
 
 type HeaderSearchBarProps = {
   onSubmit?: () => void;
+  translations: Dictionary["pageDreps"];
 };
 
-export const HeaderSearchBar = ({ onSubmit }: HeaderSearchBarProps) => {
+export const HeaderSearchBar = ({
+  onSubmit,
+  translations,
+}: HeaderSearchBarProps) => {
   const [search, setSearch] = useState("");
-  const { dictionary, locale } = useTranslation();
+  const { locale } = useTranslation();
   const router = useRouter();
   const { setOpen, setOpenMobile } = useSidebar();
 
@@ -87,7 +91,7 @@ export const HeaderSearchBar = ({ onSubmit }: HeaderSearchBarProps) => {
   return (
     <div className="relative w-full lg:w-64">
       <Input
-        placeholder={dictionary.pageDreps.search}
+        placeholder={translations.search}
         className="w-full bg-background"
         value={search}
         onChange={(event) => {
@@ -108,7 +112,7 @@ export const HeaderSearchBar = ({ onSubmit }: HeaderSearchBarProps) => {
 };
 
 type HeaderProps = {
-  translations: Pick<Dictionary, "general" | "header" | "wallet">;
+  translations: Pick<Dictionary, "general" | "header" | "wallet" | "pageDreps">;
 };
 
 export const Header = ({ translations }: HeaderProps) => {
@@ -129,7 +133,7 @@ export const Header = ({ translations }: HeaderProps) => {
               <Logo />
             </div>
             <div className="hidden md:inline-flex">
-              <HeaderSearchBar />
+              <HeaderSearchBar translations={translations.pageDreps} />
             </div>
           </div>
 
