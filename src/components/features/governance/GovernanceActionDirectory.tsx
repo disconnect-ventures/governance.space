@@ -6,17 +6,20 @@ import {
   DirectorySearchParams,
 } from "~/components/layout/Directory";
 import { Metadata } from "~/lib/metadata";
+import { Dictionary } from "~/config/dictionaries";
 
 type GovernanceActionDirectoryProps = {
   metadata: Record<string, Metadata | null>;
   governanceActions: Array<GovernanceAction>;
   params: DirectorySearchParams;
+  translations: Dictionary["general"];
 };
 
 export function GovernanceActionDirectory({
   governanceActions,
   params,
   metadata,
+  translations,
 }: GovernanceActionDirectoryProps) {
   return (
     <Directory
@@ -54,6 +57,7 @@ export function GovernanceActionDirectory({
           />
         );
       })}
+      translations={translations}
     />
   );
 }

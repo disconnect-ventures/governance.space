@@ -18,10 +18,10 @@ import { Markdown } from "../Markdown";
 
 export type ProposalCardProps = {
   proposal: Proposal;
-  dictionary: Dictionary;
+  translations: Dictionary["general"];
 };
 
-const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
+const ProposalCard = ({ proposal, translations }: ProposalCardProps) => {
   const abstract = proposal.attributes.content.attributes.prop_abstract;
   const username = proposal.attributes.user_govtool_username;
   const proposalId = proposal.attributes.content.attributes.proposal_id;
@@ -59,8 +59,8 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
             className={clsx("p-2 rounded-full", getStatusBadgeClasses())}
           >
             {isProposalActive
-              ? dictionary.general.active.toUpperCase()
-              : dictionary.general.inactive.toUpperCase()}
+              ? translations.active.toUpperCase()
+              : translations.inactive.toUpperCase()}
           </Badge>
         </div>
 
@@ -72,7 +72,7 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
             <div className="flex gap-x-4 items-center flex-wrap">
               <div className="font-medium">{username}</div>
               <div className="text-sm text-muted-foreground">
-                {dictionary.general.author}
+                {translations.author}
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ const ProposalCard = ({ proposal, dictionary }: ProposalCardProps) => {
           href={`/proposals/${proposal.id}`}
           className={buttonVariants({ variant: "default" })}
         >
-          {dictionary.general.viewDetailsAndVote}
+          {translations.viewDetailsAndVote}
         </Link>
       </CardContent>
     </Card>

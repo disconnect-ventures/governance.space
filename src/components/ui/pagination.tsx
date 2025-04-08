@@ -61,7 +61,7 @@ const PaginationLink = ({
 PaginationLink.displayName = "PaginationLink";
 
 type PaginationPreviousProps = {
-  translations?: Dictionary["general"];
+  translations: Dictionary["general"];
 } & React.ComponentProps<typeof PaginationLink>;
 
 const PaginationPrevious = ({
@@ -76,13 +76,13 @@ const PaginationPrevious = ({
     {...props}
   >
     <ChevronLeft className="h-4 w-4" />
-    <span>{translations?.previous}</span>
+    <span>{translations.previous}</span>
   </PaginationLink>
 );
 PaginationPrevious.displayName = "PaginationPrevious";
 
 type PaginationNextProps = {
-  translations?: Dictionary["general"];
+  translations: Dictionary["general"];
 } & React.ComponentProps<typeof PaginationLink>;
 
 const PaginationNext = ({
@@ -96,7 +96,7 @@ const PaginationNext = ({
     className={cn("gap-1 pr-2.5", className)}
     {...props}
   >
-    <span>{translations?.next}</span>
+    <span>{translations.next}</span>
     <ChevronRight className="h-4 w-4" />
   </PaginationLink>
 );

@@ -62,7 +62,7 @@ export default async function ProposalsPage({
           search,
           filters: filters.map(String),
         }}
-        dictionary={dictionary}
+        translations={dictionary.general}
       />
     </div>
   );

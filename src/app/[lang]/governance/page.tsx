@@ -78,6 +78,7 @@ export default async function GovernancePage({
           filters,
         }}
         metadata={metadata}
+        translations={dictionary.general}
       />
     </div>
   );
