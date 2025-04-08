@@ -94,7 +94,7 @@ export async function getProposals(
   url.searchParams.append("populate[0]", "proposal_links");
   url.searchParams.append("populate[1]", "proposal_withdrawals");
 
-  const response = await fetchApi<PdfApiResponse<Proposal>>(url);
+  const response = await fetchApi<PdfApiResponse<Proposal[]>>(url);
   return response;
 }
 

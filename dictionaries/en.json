@@ -260,6 +260,12 @@
     "longDescription": "Participate in discussions and decision-making processes guided by community governance.",
     "cip129ActionId": "CIP-129 Action ID"
   },
+  "pageBudgetDiscussions": {
+    "title": "Budget Discussions",
+    "badgeText": "discussions",
+    "description": "",
+    "longDescription": ""
+  },
   "pageProposalsDetails": {
     "title": "Proposal Details",
     "badgeText": "",
