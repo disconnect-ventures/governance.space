@@ -17,7 +17,7 @@ import Image from "next/image";
 import { WalletIcon } from "lucide-react";
 import { Dictionary } from "~/config/dictionaries";
 
-export type WalletWidgetProps = {
+type WalletWidgetProps = {
   translations: Pick<Dictionary, "wallet" | "general">;
 };
 

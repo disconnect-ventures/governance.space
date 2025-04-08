@@ -19,7 +19,7 @@ import { useEffect } from "react";
 import LocaleSwitch from "../features/LocaleSwitch";
 import { Dictionary } from "~/config/dictionaries";
 
-export type AppSidebarProps = {
+type AppSidebarProps = {
   translations: Pick<Dictionary, "header" | "wallet" | "pageDreps">;
 };
 

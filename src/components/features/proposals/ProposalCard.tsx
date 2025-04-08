@@ -16,7 +16,7 @@ import { Dictionary } from "~/config/dictionaries";
 import { ProposalTypeBadge } from "./ProposalBadge";
 import { Markdown } from "../Markdown";
 
-export type ProposalCardProps = {
+type ProposalCardProps = {
   proposal: Proposal;
   translations: Dictionary["general"];
 };

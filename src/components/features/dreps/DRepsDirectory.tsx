@@ -16,7 +16,7 @@ import { useLocale } from "~/hooks/use-locale";
 import { ProfileStatus } from "../profile/ProfileStatus";
 import { Dictionary } from "~/config/dictionaries";
 
-export type DRepsDirectoryProps = {
+type DRepsDirectoryProps = {
   dreps: Array<DRep>;
   params: DirectorySearchParams;
   translations: Pick<Dictionary, "general" | "pageDreps" | "accessibility">;

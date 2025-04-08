@@ -24,7 +24,7 @@ export interface LiveEvent {
   registrationDate: number;
 }
 
-export type LiveEventsDirectoryProps = {
+type LiveEventsDirectoryProps = {
   liveEvents: Array<LiveEvent>;
   params: DirectorySearchParams;
   translations: Pick<

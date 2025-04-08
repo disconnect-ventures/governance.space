@@ -42,7 +42,7 @@ export type DirectoryParamOption = {
   label: string;
 };
 
-export type DirectoryProps = {
+type DirectoryProps = {
   container?: (children: React.ReactNode) => React.ReactNode;
   rows: React.ReactNode[];
   searchPlaceholder: string;
