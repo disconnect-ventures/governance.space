@@ -12,7 +12,10 @@ type GovernanceActionDirectoryProps = {
   metadata: Record<string, Metadata | null>;
   governanceActions: Array<GovernanceAction>;
   params: DirectorySearchParams;
-  translations: Pick<Dictionary, "general" | "accessibility">;
+  translations: Pick<
+    Dictionary,
+    "general" | "accessibility" | "pageGovernanceActions"
+  >;
 };
 
 export function GovernanceActionDirectory({
@@ -23,28 +26,54 @@ export function GovernanceActionDirectory({
 }: GovernanceActionDirectoryProps) {
   return (
     <Directory
-      searchPlaceholder="Search"
+      searchPlaceholder={translations.pageGovernanceActions.search}
       params={params}
       sortOptions={[
-        { value: "SoonestToExpire", label: "Soon to Expire" },
+        {
+          value: "SoonestToExpire",
+          label: translations.pageGovernanceActions.soonestToExpire,
+        },
         {
           value: "NewestCreated",
-          label: "Newest First",
+          label: translations.pageGovernanceActions.newestCreated,
         },
         {
           value: "MostYesVotes",
-          label: 'Highest Amount of "Yes" votes',
+          label: translations.pageGovernanceActions.mostYesVotes,
         },
       ]}
-      filterPopoverTitle="Governance Action Type"
+      filterPopoverTitle={
+        translations.pageGovernanceActions.governanceActionType
+      }
       filterOptions={[
-        { value: "NoConfidence", label: "No Confidence" },
-        { value: "NewCommittee", label: "New Committee" },
-        { value: "NewConstitution", label: "New Constitution" },
-        { value: "HardForkInitiation", label: "Hard Fork Initiation" },
-        { value: "ParameterChange", label: "Parameter Change" },
-        { value: "TreasuryWithdrawals", label: "Treasury Withdrawals" },
-        { value: "InfoAction", label: "Info Action" },
+        {
+          value: "NoConfidence",
+          label: translations.pageGovernanceActions.noConfidence,
+        },
+        {
+          value: "NewCommittee",
+          label: translations.pageGovernanceActions.newCommittee,
+        },
+        {
+          value: "NewConstitution",
+          label: translations.pageGovernanceActions.newConstitution,
+        },
+        {
+          value: "HardForkInitiation",
+          label: translations.pageGovernanceActions.HardForkInitiation,
+        },
+        {
+          value: "ParameterChange",
+          label: translations.pageGovernanceActions.parameterChange,
+        },
+        {
+          value: "TreasuryWithdrawals",
+          label: translations.pageGovernanceActions.treasuryWithdrawals,
+        },
+        {
+          value: "InfoAction",
+          label: translations.pageGovernanceActions.infoAction,
+        },
       ]}
       rows={governanceActions.map((action, index) => {
         const isExpired = new Date(action.expiryDate) < new Date();
