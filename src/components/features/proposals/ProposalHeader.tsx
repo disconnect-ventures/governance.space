@@ -17,8 +17,8 @@ interface ProposalHeaderProps {
   updatedAt: string;
   updatedEpoch: number;
   commentCount: number;
-  dislikes: number;
-  likes: number;
+  dislikes?: number;
+  likes?: number;
 }
 
 export const ProposalHeader = ({
@@ -48,14 +48,18 @@ export const ProposalHeader = ({
       <h2 className="text-2xl font-bold mb-4">{title}</h2>
 
       <div className="grid grid-cols-3 justify-between sm:space-y-0 text-sm gap-4">
-        <div className="flex items-center space-x-2">
-          <ThumbsUpIcon className="h-4 w-4" />
-          <span>{likes} likes</span>
-        </div>
-        <div className="flex items-center space-x-2">
-          <ThumbsDownIcon className="h-4 w-4" />
-          <span>{dislikes} dislikes</span>
-        </div>
+        {typeof likes !== "undefined" ? (
+          <div className="flex items-center space-x-2">
+            <ThumbsUpIcon className="h-4 w-4" />
+            <span>{likes} likes</span>
+          </div>
+        ) : null}
+        {typeof dislikes !== "undefined" ? (
+          <div className="flex items-center space-x-2">
+            <ThumbsDownIcon className="h-4 w-4" />
+            <span>{dislikes} dislikes</span>
+          </div>
+        ) : null}
         <div className="flex items-center space-x-2">
           <MessageSquareIcon className="h-4 w-4" />
           <span>{commentCount} comments</span>
