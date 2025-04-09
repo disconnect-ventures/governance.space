@@ -5,22 +5,21 @@ import { Dictionary } from "~/config/dictionaries";
 import Link from "next/link";
 import clsx from "clsx";
 
-export const Banner = ({
-  title,
-  description,
-  buttonMain,
-  buttonSecondary,
-}: Dictionary["homepage"]["banner"]) => {
+type BannerProps = {
+  translations: Dictionary["homepage"]["banner"];
+};
+
+export const Banner = ({ translations }: BannerProps) => {
   return (
     <div className="w-full bg-background bg-gradient-to-b from-blue-50 to-white dark:from-blue-950 dark:background py-16 md:py-24  rounded">
       <div className="container mx-auto px-4 lg:px-8 xl:px-16">
         <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-8">
           <div className="w-full md:w-fit md:max-w-1/2 space-y-4">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-              {title}
+              {translations.title}
             </h1>
             <p className="text-base md:text-lg text-muted-foreground max-w-md">
-              {description}
+              {translations.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Link
@@ -30,7 +29,8 @@ export const Banner = ({
                 )}
                 href="/dreps"
               >
-                {buttonMain} <ArrowRightIcon className="ml-2 h-4 w-4" />
+                {translations.buttonMain}{" "}
+                <ArrowRightIcon className="ml-2 h-4 w-4" />
               </Link>
               <Link
                 href="/help"
@@ -39,7 +39,7 @@ export const Banner = ({
                   "w-full sm:w-auto border-border hover:bg-accent hover:text-accent-foreground"
                 )}
               >
-                {buttonSecondary}
+                {translations.buttonSecondary}
               </Link>
             </div>
           </div>
