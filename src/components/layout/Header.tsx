@@ -30,6 +30,7 @@ export const headerNavLinks: Array<{
   { label: "titleDreps", href: "/dreps" },
   { label: "titleGovernanceActions", href: "/governance" },
   { label: "titleProposals", href: "/proposals" },
+  { label: "titleBudgetDiscussions", href: "/budget-discussions" },
   { label: "titleCommittees", href: "/committees" },
   { label: "titleLiveEvents", href: "/live-events" },
   { label: "titleAnalytics", href: "/analytics" },

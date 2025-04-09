@@ -42,11 +42,7 @@ export const BudgetDiscussionContent = ({
 
   return (
     <div className="space-y-8">
-      {/* Proposal Overview Section */}
       <div className="space-y-4">
-        <h2 className="text-3xl font-semibold text-foreground">
-          {proposalDetails?.proposal_name}
-        </h2>
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
           <div className="flex flex-col">
             <span className="text-sm text-muted-foreground">Budget</span>
