@@ -81,8 +81,8 @@
         }
       ]
     },
-    "features": {
-      "title": "Funcionalidades Principais",
+    "mainFunctionalities": {
+      "title": "Principais Funcionalidades",
       "features": [
         {
           "title": "Multi-Chain",
