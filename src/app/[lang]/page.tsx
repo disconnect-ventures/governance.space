@@ -10,7 +10,7 @@ export default async function IndexPage({ params: paramsPromise }: PageProps) {
 
   return (
     <div className="space-y-24">
-      <Banner {...dictionary.homepage.banner} />
+      <Banner translations={dictionary.homepage.banner} />
       <FeatureSection
         title={dictionary.homepage.whyChooseUs.title}
         subtitle={dictionary.homepage.whyChooseUs.subtitle}
