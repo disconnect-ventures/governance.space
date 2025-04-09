@@ -258,7 +258,13 @@
     "title": "Budget Discussions",
     "badgeText": "discussions",
     "description": "",
-    "longDescription": ""
+    "longDescription": "Discussion of budget proposals related to the Cardano blockchain ecosystem for inclusion in a Cardano Budget facilitated by Intersect.",
+    "search": "Search budget discussions...",
+    "cardTypeLabel": "Budget Discussion Type",
+    "filterByLabel": "Filter by Discussion Type",
+    "sortByLabel": "Sort by Creation Date",
+    "sortByLabelAsc": "Ascending",
+    "sortByLabelDesc": "Descending"
   },
   "pageProposalsDetails": {
     "title": "Proposal Details",
