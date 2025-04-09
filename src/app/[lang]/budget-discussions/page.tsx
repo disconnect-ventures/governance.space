@@ -50,6 +50,7 @@ export default async function BudgetDiscussionsPage({
             <SpeechIcon />
           </div>
         }
+        badge={`${discussions?.meta.pagination?.total ?? 0}`}
         translations={dictionary.pageBudgetDiscussions}
       ></PageTitle>
       <BudgetDiscussionDirectory
