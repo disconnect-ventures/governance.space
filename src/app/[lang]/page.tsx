@@ -12,16 +12,13 @@ export default async function IndexPage({ params: paramsPromise }: PageProps) {
     <div className="space-y-24">
       <Banner translations={dictionary.homepage.banner} />
       <FeatureSection
-        title={dictionary.homepage.whyChooseUs.title}
-        subtitle={dictionary.homepage.whyChooseUs.subtitle}
-        features={dictionary.homepage.whyChooseUs.features}
+        translations={dictionary.homepage.whyChooseUs}
         layoutClassName={
           "grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto"
         }
       />
       <FeatureSection
-        title={dictionary.homepage.features.title}
-        features={dictionary.homepage.features.features}
+        translations={dictionary.homepage.mainFunctionalities}
         layoutClassName={"grid-cols-1 md:grid-cols-3 gap-8"}
       />
     </div>
