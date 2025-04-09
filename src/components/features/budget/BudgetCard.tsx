@@ -104,20 +104,25 @@ const BudgetDiscussionCard = ({
         </div>
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
           <BudgetTypeBadge type={discussionType?.type_name ?? ""} />
-          <div className="text-muted-foreground">Governance Action Type</div>
+          <div className="text-muted-foreground">
+            {dictionary.pageBudgetDiscussions.cardTypeLabel}
+          </div>
         </div>
 
         <div className="grid grid-cols-3 justify-between sm:space-y-0 text-sm gap-4 text-muted-foreground">
           <div className="flex items-center space-x-2">
             <MessageSquare className="h-4 w-4" />
-            <span>{discussion.attributes.prop_comments_number} comments</span>
+            <span>
+              {discussion.attributes.prop_comments_number}{" "}
+              {dictionary.general.comments}
+            </span>
           </div>
 
           <div className="col-span-full space-y-2 text-foreground">
             <div className="flex items-center space-x-2">
               <Calendar className="h-4 w-4" />
               <span>
-                Submitted:{" "}
+                {dictionary.general.submitted}:{" "}
                 <span className="font-semibold">
                   {formatDate(createdAt, calculateEpochNumber(createdAt))}
                 </span>
@@ -127,7 +132,7 @@ const BudgetDiscussionCard = ({
               <div className="flex items-center space-x-2">
                 <Calendar className="h-4 w-4" />
                 <span>
-                  Updated:{" "}
+                  {dictionary.general.expires}:{" "}
                   <span className="font-semibold">
                     {formatDate(updatedAt, calculateEpochNumber(updatedAt))}
                   </span>

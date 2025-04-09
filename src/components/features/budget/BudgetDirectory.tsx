@@ -26,14 +26,21 @@ export async function BudgetDiscussionDirectory({
 }: BudgetDiscussionDirectoryProps) {
   return (
     <Directory
-      searchPlaceholder="Search proposals..."
+      
+      searchPlaceholder={dictionary.pageBudgetDiscussions.search}
       params={params}
-      sortPopoverTitle="Sort by Creation Date"
+      sortPopoverTitle={dictionary.pageBudgetDiscussions.sortByLabel}
       sortOptions={[
-        { label: "Descending", value: "desc" },
-        { label: "Ascending", value: "Asc" },
+        {
+          label: dictionary.pageBudgetDiscussions.sortByLabelAsc,
+          value: "desc",
+        },
+        {
+          label: dictionary.pageBudgetDiscussions.sortByLabelDesc,
+          value: "asc",
+        },
       ]}
-      filterPopoverTitle="Filter by Action Type"
+      filterPopoverTitle={dictionary.pageBudgetDiscussions.filterByLabel}
       filterOptions={[
         ...budgetDiscussionTypes.map((p) => ({
           label: p.attributes.type_name,
