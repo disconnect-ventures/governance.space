@@ -267,6 +267,13 @@
     "sortByLabelAsc": "Ascending",
     "sortByLabelDesc": "Descending"
   },
+  "pageBudgetDiscussionDetails": {
+    "title": "Discussion Details",
+    "badgeText": "",
+    "description": "Details about this discussion",
+    "longDescription": "",
+    "castYourVote": "Cast Your Vote"
+  },
   "pageProposalsDetails": {
     "title": "Proposal Details",
     "badgeText": "",
