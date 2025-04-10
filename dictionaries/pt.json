@@ -45,7 +45,8 @@
     "topBarLinkedIn": "O LinkedIn abrirá em um momento. Por favor, cole o texto no campo de publicação.",
     "topBarDefault": "Por favor, cole o texto copiado quando a janela de compartilhamento abrir.",
     "clipboardCopied": "Copiado para a área de transferência",
-    "clipboardFailed": "Falha ao copiar"
+    "clipboardFailed": "Falha ao copiar",
+    "noTitle": "Sem título"
   },
   "accessibility": {
     "pagination": "paginação",
