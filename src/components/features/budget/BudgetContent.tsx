@@ -57,9 +57,20 @@ export const BudgetDiscussionContent = ({
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm text-muted-foreground">Type</span>
+            <span className="text-sm text-muted-foreground">
+              Preferred Currency
+            </span>
             <span className="font-medium">
-              {psapbDetails?.type_name.data.attributes.type_name}
+              {
+                costingDetails?.preferred_currency.data?.attributes
+                  .currency_name
+              }{" "}
+              (
+              {
+                costingDetails?.preferred_currency.data?.attributes
+                  .currency_letter_code
+              }
+              )
             </span>
           </div>
           <div className="flex flex-col">

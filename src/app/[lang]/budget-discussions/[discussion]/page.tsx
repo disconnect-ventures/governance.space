@@ -3,7 +3,6 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProposalHeader } from "~/components/features/proposals/ProposalHeader";
 import { ProposalIdentification } from "~/components/features/proposals/ProposalIdentification";
-import { ProposalTimeline } from "~/components/features/proposals/ProposalTimeline";
 import { VotingSection } from "~/components/features/proposals/VotingSection";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { TopBar } from "~/components/layout/TopBar";
@@ -128,14 +127,6 @@ export default async function ProposalDetailsPage({
                 <ProposalIdentification
                   id={discussionId.toString()}
                   authorName={username}
-                />
-              </div>
-              <div className="w-full lg:col-span-2">
-                <ProposalTimeline
-                  createdTime={createdDate}
-                  createdEpoch={createdEpoch}
-                  updateDate={updatedAt}
-                  updateEpoch={updatedEpoch}
                 />
               </div>
             </div>
