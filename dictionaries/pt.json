@@ -17,7 +17,8 @@
     "views": "visualizações",
     "comments": "comentários",
     "submitted": "Enviado",
-    "expires": "Expiração",
+    "expires": "Expira",
+    "expired": "Expirado",
     "author": "Autor",
     "type": "Tipo",
     "registrationDate": "Data de Registro (Do mais recente ao mais antigo)",
@@ -46,7 +47,9 @@
     "topBarDefault": "Por favor, cole o texto copiado quando a janela de compartilhamento abrir.",
     "clipboardCopied": "Copiado para a área de transferência",
     "clipboardFailed": "Falha ao copiar",
-    "noTitle": "Sem título"
+    "noTitle": "Sem título",
+    "days": "dias",
+    "remaining": "restantes"
   },
   "accessibility": {
     "pagination": "paginação",
@@ -253,7 +256,6 @@
     "treasuryWithdrawals": "Retiradas do Tesouro",
     "infoAction": "Ação Informativa",
     "submitted": "Enviado",
-    "expires": "Expira",
     "legacyGovernanceActionID": "ID da Ação de Governança Legada"
   },
   "pageGovernanceActionsDetails": {
@@ -266,16 +268,19 @@
     "proposedVersion": "Versão Proposta",
     "previousGovernanceActionId": "ID da Ação de Governança Anterior",
     "votesSubmittedBy": "Votos enviados para esta Ação de Governança por",
+    "dreps": "DReps",
     "spos": "SPOs",
     "constitutionalCommittee": "Comitê Constitucional",
     "submitted": "Submetido",
     "submittedTooltip": "A data em que a ação de governança foi submetida na blockchain.",
-    "expires": "Expira",
     "expiresTooltip": "A data em que a ação de governança expirará se não atingir os limiares de ratificação. IMPORTANTE: Se a ação de governança for ratificada antes da data de expiração, será considerada ratificada e não estará disponível para votação posteriormente.",
     "relatedDocuments": "Documentos relacionados",
     "tasks": "Tarefas",
     "history": "Histórico",
-    "supportingLinks": "Links de apoio"
+    "supportingLinks": "Links de apoio",
+    "deadline": "Prazo",
+    "constitutional": "Constitucional",
+    "unconstitutional": "Inconstitucional"
   },
   "pageProposals": {
     "title": "Propostas",

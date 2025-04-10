@@ -25,39 +25,60 @@ export const GovernaceVoting = ({
   translations,
 }: {
   action: GovernanceAction;
-  translations: Dictionary;
+  translations: Pick<
+    Dictionary,
+    "general" | "pageGovernanceActions" | "pageGovernanceActionsDetails"
+  >;
 }) => {
   // TODO:Get correct threshold
-  const sposVotingData: GovernanceVotingCardProps = {
-    title: "SPOS",
+  const dRepsVotingData: GovernanceVotingCardProps = {
+    title: translations.pageGovernanceActionsDetails.dreps,
     votes: {
-      yes: { count: action.poolYesVotes },
-      no: { count: action.poolNoVotes },
-      abstain: { count: action.poolAbstainVotes },
+      yes: {
+        label: translations.general.yes,
+        count: action.dRepYesVotes,
+      },
+      no: { label: translations.general.no, count: action.dRepNoVotes },
+      abstain: {
+        label: translations.general.abstain,
+        count: action.dRepAbstainVotes,
+      },
+    },
+    threshold: 0.51,
+    formatValue: (value) => formatAda(formatVotingPower(value)),
+  };
+
+  const sposVotingData: GovernanceVotingCardProps = {
+    title: translations.pageGovernanceActionsDetails.spos,
+    votes: {
+      yes: { label: translations.general.yes, count: action.poolYesVotes },
+      no: { label: translations.general.no, count: action.poolNoVotes },
+      abstain: {
+        label: translations.general.abstain,
+        count: action.poolAbstainVotes,
+      },
     },
     threshold: 0.51,
     formatValue: (value) => formatAda(formatVotingPower(value)),
   };
 
   const constitutionalCommitteeVotingData: GovernanceVotingCardProps = {
-    title: "Constitutional Committee",
+    title: translations.pageGovernanceActionsDetails.constitutionalCommittee,
     votes: {
-      yes: { label: "Constitutional", count: action.ccYesVotes },
-      no: { label: "Unconstitutional", count: action.ccNoVotes },
-      abstain: { label: "Abstain", count: action.ccAbstainVotes },
+      yes: {
+        label: translations.pageGovernanceActionsDetails.constitutional,
+        count: action.ccYesVotes,
+      },
+      no: {
+        label: translations.pageGovernanceActionsDetails.unconstitutional,
+        count: action.ccNoVotes,
+      },
+      abstain: {
+        label: translations.general.abstain,
+        count: action.ccAbstainVotes,
+      },
     },
     threshold: 0.51,
-  };
-
-  const dRepsVotingData: GovernanceVotingCardProps = {
-    title: "DReps",
-    votes: {
-      yes: { count: action.dRepYesVotes },
-      no: { count: action.dRepNoVotes },
-      abstain: { count: action.dRepAbstainVotes },
-    },
-    threshold: 0.51,
-    formatValue: (value) => formatAda(formatVotingPower(value)),
   };
 
   const totalDuration =
@@ -75,7 +96,7 @@ export const GovernaceVoting = ({
   return (
     <div className="m-8">
       <h2 className="text-lg font-bold mb-6 dark:text-gray-100">
-        Votes submitted for this Governance Action By:
+        {translations.pageGovernanceActionsDetails.votesSubmittedBy}:
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
@@ -87,7 +108,7 @@ export const GovernaceVoting = ({
       <div className="w-full flex flex-col md:flex-row gap-8 mt-6">
         <div className="w-full md:flex-1">
           <p className="mb-4 font-bold text-gray-600 dark:text-gray-400">
-            Legacy Governance Action ID:
+            {translations.pageGovernanceActions.legacyGovernanceActionID}:
           </p>
 
           <div className="flex items-center gap-2 mb-8">
@@ -131,7 +152,7 @@ export const GovernaceVoting = ({
                   <div className="flex flex-wrap items-center gap-2">
                     <Clock className="h-5 w-5 text-gray-400 dark:text-gray-600 flex-shrink-0" />
                     <span className="text-gray-500 dark:text-gray-400 font-bold">
-                      {translations.pageGovernanceActionsDetails.expires}:
+                      {translations.general.expires}:
                     </span>
                     <span className="text-[#4B5563] dark:text-gray-300">
                       {formatDate(action.expiryDate, action.expiryEpochNo)}
@@ -141,7 +162,7 @@ export const GovernaceVoting = ({
                 <TooltipContent>
                   <div className="w-64 max-w-[90vw]">
                     <span className="block text-lg font-semibold">
-                      {translations.pageGovernanceActionsDetails.expires}
+                      {translations.general.expires}
                     </span>
                     {translations.pageGovernanceActionsDetails.expiresTooltip}
                   </div>
@@ -154,7 +175,9 @@ export const GovernaceVoting = ({
         <div className="w-full md:flex-1 flex flex-col gap-2">
           <div className="space-y-2">
             <div className="flex justify-between">
-              <p className="text-gray-600 dark:text-gray-400">Deadline</p>
+              <p className="text-gray-600 dark:text-gray-400">
+                {translations.pageGovernanceActionsDetails.deadline}:
+              </p>
               <span className="font-medium text-[#2563EB] dark:text-blue-400">
                 {progressPercentage.toFixed(2)} %
               </span>
@@ -167,14 +190,15 @@ export const GovernaceVoting = ({
           </div>
           <div>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              {daysPassed} / {totalDays} days
+              {daysPassed} / {totalDays} {translations.general.days}
               {daysRemaining > 0 ? (
                 <span className="text-[#2563EB] dark:text-blue-400 ml-1">
-                  ({daysRemaining} days remaining)
+                  ({daysRemaining} {translations.general.days}{" "}
+                  {translations.general.remaining})
                 </span>
               ) : (
                 <span className="text-red-500 dark:text-red-400 ml-1">
-                  (Expired)
+                  ({translations.general.expired})
                 </span>
               )}
             </p>
