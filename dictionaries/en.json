@@ -238,7 +238,7 @@
     "longDescription": "Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period.",
     "governanceActionId": "Governance Action ID",
     "cip129GovernanceActionId": "(CIP-129) Governance Action ID",
-    "search": "Search actions",
+    "search": "Search Actions",
     "soonestToExpire": "Soon to Expire",
     "newestCreated": "Newest First",
     "mostYesVotes": "Highest Amount of 'Yes' votes",
@@ -249,7 +249,10 @@
     "HardForkInitiation": "Hard Fork Initiation",
     "parameterChange": "Parameter Change",
     "treasuryWithdrawals": "Treasury Withdrawals",
-    "infoAction": "Info Action"
+    "infoAction": "Info Action",
+    "submitted": "Submitted",
+    "expires": "Expires",
+    "legacyGovernanceActionID": "Legacy Governance Action ID"
   },
   "pageGovernanceActionsDetails": {
     "title": "Governance Action Details",
