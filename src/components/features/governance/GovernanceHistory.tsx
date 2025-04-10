@@ -1,6 +1,7 @@
 import { History } from "lucide-react";
 import ComingSoon from "~/components/layout/ComingSoon";
 import { CardContent } from "~/components/ui/card";
+import { Dictionary } from "~/config/dictionaries";
 
 type HistoryEntry = {
   action: string;
@@ -10,6 +11,7 @@ type HistoryEntry = {
 
 interface GovernanceHistoryProps {
   entries: HistoryEntry[];
+  translations: Dictionary["pageGovernanceActionsDetails"];
 }
 
 const formatDate = (dateString: string) => {
@@ -20,10 +22,15 @@ const formatDate = (dateString: string) => {
   });
 };
 
-export const GovernanceHistory = ({ entries }: GovernanceHistoryProps) => {
+export const GovernanceHistory = ({
+  entries,
+  translations,
+}: GovernanceHistoryProps) => {
   return (
     <CardContent className="p-6 ">
-      <h2 className="mb-4 text-lg font-medium dark:text-gray-100">History</h2>
+      <h2 className="mb-4 text-lg font-medium dark:text-gray-100">
+        {translations.history}
+      </h2>
       <ComingSoon>
         <div className="space-y-1">
           {entries.map((entry, index) => (
