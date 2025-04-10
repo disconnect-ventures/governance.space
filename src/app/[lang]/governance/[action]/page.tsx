@@ -156,7 +156,10 @@ export default async function GovernanceActionDetailsPage({
         <GovernaceVoting action={action} translations={dictionary} />
         <GovernanceLinks links={references} />
         <Separator className="bg-border" />
-        <GovernanceDocuments documents={DOCUMENTS} />
+        <GovernanceDocuments
+          documents={DOCUMENTS}
+          translations={dictionary.pageGovernanceActionsDetails}
+        />
         <Separator className="bg-border" />
         <GovernanceTasks tasks={GOVERNANCE_TASKS} />
         <Separator className="bg-border" />
