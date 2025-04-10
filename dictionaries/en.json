@@ -18,6 +18,7 @@
     "comments": "comments",
     "submitted": "Submitted",
     "expires": "Expires",
+    "expired": "Expired",
     "author": "Author",
     "type": "Type",
     "registrationDate": "Registration Date (Newest to Oldest)",
@@ -46,7 +47,9 @@
     "topBarDefault": "Please paste the copied text when the sharing window opens.",
     "clipboardCopied": "Copied to clipboard",
     "clipboardFailed": "Failed to copy",
-    "noTitle": "No title"
+    "noTitle": "No title",
+    "days": "days",
+    "remaining": "remaining"
   },
   "accessibility": {
     "pagination": "pagination",
@@ -252,7 +255,6 @@
     "treasuryWithdrawals": "Treasury Withdrawals",
     "infoAction": "Info Action",
     "submitted": "Submitted",
-    "expires": "Expires",
     "legacyGovernanceActionID": "Legacy Governance Action ID"
   },
   "pageGovernanceActionsDetails": {
@@ -265,16 +267,19 @@
     "proposedVersion": "Proposed version",
     "previousGovernanceActionId": "Previous Governance Action ID",
     "votesSubmittedBy": "Votes submitted for this Governance Action By",
+    "dreps": "DReps",
     "spos": "SPOs",
     "constitutionalCommittee": "Constitutional Committee",
     "submitted": "Submitted",
     "submittedTooltip": "The date when the governance action was submitted on-chain.",
-    "expires": "Expires",
     "expiresTooltip": "The date when the governance action will expire if it doesn't reach ratification thresholds. IMPORTANT: If the governance action is ratified before the expiry date, it will be considered ratified and it will not be available to vote on afterwards.",
     "relatedDocuments": "Related documents",
     "tasks": "Tasks",
     "history": "History",
-    "supportingLinks": "Supporting links"
+    "supportingLinks": "Supporting links",
+    "deadline": "Deadline",
+    "constitutional": "Constitutional",
+    "unconstitutional": "Unconstitutional"
   },
   "pageProposals": {
     "title": "Proposals",
