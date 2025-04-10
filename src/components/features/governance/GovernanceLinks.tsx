@@ -2,16 +2,21 @@ import { ExternalLink } from "lucide-react";
 import { CardContent } from "~/components/ui/card";
 import { Reference } from "~/lib/metadata";
 import Link from "../Link";
+import { Dictionary } from "~/config/dictionaries";
 
 type GovernanceLinksProps = {
   links: Reference[];
+  translations: Dictionary["pageGovernanceActionsDetails"];
 };
 
-export const GovernanceLinks = ({ links }: GovernanceLinksProps) => {
+export const GovernanceLinks = ({
+  links,
+  translations,
+}: GovernanceLinksProps) => {
   return (
     <CardContent className="p-6">
       <h2 className="mb-4 text-lg font-medium dark:text-gray-100">
-        Supporting links
+        {translations.supportingLinks}
       </h2>
       <div className="grid grid-cols-2 gap-4">
         {links.map((link, index) => (
