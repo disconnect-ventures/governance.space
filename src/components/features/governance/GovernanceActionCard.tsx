@@ -82,8 +82,11 @@ export const GovernanceActionCard = ({
   translations,
 }: GovernanceActionCardProps) => {
   const title = useMemo(
-    () => (action.title || metadata ? metadata?.metadata?.title : "No title"),
-    [action, metadata]
+    () =>
+      action.title || metadata
+        ? metadata?.metadata?.title
+        : translations.general.noTitle,
+    [action, metadata, translations.general.noTitle]
   );
   const abstract = useMemo(
     () => action.abstract || metadata?.metadata?.abstract,
@@ -121,7 +124,7 @@ export const GovernanceActionCard = ({
           <div className="flex items-center gap-2">
             <Calendar className="h-4 w-4" />
             <span>
-              {translations.pageGovernanceActions?.submitted || "Submitted"}:{" "}
+              {translations.pageGovernanceActions.submitted}
               <span className="font-semibold">
                 {formatDate(action.createdDate, action.createdEpochNo)}
               </span>
@@ -130,7 +133,7 @@ export const GovernanceActionCard = ({
           <div className="flex items-center gap-2">
             <Clock className="h-4 w-4" />
             <span>
-              {translations.pageGovernanceActions?.expires || "Expires"}:{" "}
+              {translations.pageGovernanceActions.expires}
               <span className="font-semibold">
                 {formatDate(action.expiryDate, action.expiryEpochNo)}
               </span>
@@ -141,9 +144,7 @@ export const GovernanceActionCard = ({
         <div className="text-gray-600 dark:text-gray-400 space-y-2 mb-4">
           <div className="text-sm">
             <span className="font-semibold">
-              {translations.pageGovernanceActions?.legacyGovernanceActionID ||
-                "Legacy Governance Action ID"}
-              :
+              {translations.pageGovernanceActions.legacyGovernanceActionID}
             </span>
             <div className="font-mono text-xs break-all">{action.txHash}</div>
           </div>
