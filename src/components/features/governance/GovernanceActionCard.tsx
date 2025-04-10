@@ -18,8 +18,19 @@ import { formatCamelCase, formatDate } from "~/lib/utils";
 import { twMerge } from "tailwind-merge";
 import { Dictionary } from "~/config/dictionaries";
 
-const getTypeLabel = (type: GovernanceAction["type"]) => {
-  return formatCamelCase(type);
+const getTypeLabel = (
+  _type: GovernanceAction["type"],
+  typeLabelText: string,
+  className?: string
+) => {
+  return (
+    <Badge
+      variant="outline"
+      className={`font-normal bg-blue-200 dark:bg-blue-900/50 p-2 dark:text-blue-300 ${className}`}
+    >
+      {typeLabelText}
+    </Badge>
+  );
 };
 
 const getStatusBadge = (
@@ -57,8 +68,8 @@ const getStatusBadge = (
 
 type GovernanceActionCardProps = {
   action: GovernanceAction;
-  metadata: Metadata | null;
   status: "In Progress" | "Completed";
+  metadata: Metadata | null;
   className?: string;
   translations: Pick<Dictionary, "general" | "pageGovernanceActions">;
 };
@@ -79,6 +90,12 @@ export const GovernanceActionCard = ({
     [action, metadata]
   );
 
+  const typeLabelText =
+    translations.pageGovernanceActions[
+      (action.type.charAt(0).toLowerCase() +
+        action.type.slice(1)) as keyof typeof translations.pageGovernanceActions
+    ] || formatCamelCase(action.type);
+
   const statusLabel =
     status === "Completed"
       ? translations.general.completed
@@ -88,13 +105,7 @@ export const GovernanceActionCard = ({
     <Card className={twMerge("mb-4", className)}>
       <CardContent className="pt-6">
         <div className="flex items-center gap-2 mb-2">
-          <Badge
-            variant="outline"
-            className="font-normal bg-blue-200 dark:bg-blue-900/50 p-2 dark:text-blue-300"
-          >
-            {getTypeLabel(action.type)}
-          </Badge>
-
+          {getTypeLabel(action.type, typeLabelText)}
           {getStatusBadge(status, statusLabel, "ml-auto")}
         </div>
 
