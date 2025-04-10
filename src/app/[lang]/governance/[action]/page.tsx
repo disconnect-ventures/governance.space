@@ -166,7 +166,10 @@ export default async function GovernanceActionDetailsPage({
           translations={dictionary.pageGovernanceActionsDetails}
         />
         <Separator className="bg-border" />
-        <GovernanceHistory entries={HISTORY_ENTRIES} />
+        <GovernanceHistory
+          entries={HISTORY_ENTRIES}
+          translations={dictionary.pageGovernanceActionsDetails}
+        />
       </Card>
     </div>
   );
