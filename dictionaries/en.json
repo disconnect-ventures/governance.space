@@ -271,7 +271,8 @@
     "submittedTooltip": "The date when the governance action was submitted on-chain.",
     "expires": "Expires",
     "expiresTooltip": "The date when the governance action will expire if it doesn't reach ratification thresholds. IMPORTANT: If the governance action is ratified before the expiry date, it will be considered ratified and it will not be available to vote on afterwards.",
-    "relatedDocuments": "Related documents"
+    "relatedDocuments": "Related documents",
+    "tasks": "Tasks"
   },
   "pageProposals": {
     "title": "Proposals",

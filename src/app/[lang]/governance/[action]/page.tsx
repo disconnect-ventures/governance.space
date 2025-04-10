@@ -161,7 +161,10 @@ export default async function GovernanceActionDetailsPage({
           translations={dictionary.pageGovernanceActionsDetails}
         />
         <Separator className="bg-border" />
-        <GovernanceTasks tasks={GOVERNANCE_TASKS} />
+        <GovernanceTasks
+          tasks={GOVERNANCE_TASKS}
+          translations={dictionary.pageGovernanceActionsDetails}
+        />
         <Separator className="bg-border" />
         <GovernanceHistory entries={HISTORY_ENTRIES} />
       </Card>

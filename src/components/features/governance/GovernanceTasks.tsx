@@ -1,6 +1,7 @@
 import { SquareCheckBig } from "lucide-react";
 import ComingSoon from "~/components/layout/ComingSoon";
 import { CardContent } from "~/components/ui/card";
+import { Dictionary } from "~/config/dictionaries";
 
 type Task = {
   description: string;
@@ -9,12 +10,18 @@ type Task = {
 
 interface GovernanceTasksProps {
   tasks: Task[];
+  translations: Dictionary["pageGovernanceActionsDetails"];
 }
 
-export const GovernanceTasks = ({ tasks }: GovernanceTasksProps) => {
+export const GovernanceTasks = ({
+  tasks,
+  translations,
+}: GovernanceTasksProps) => {
   return (
     <CardContent className="p-6 ">
-      <h2 className="mb-4 text-lg font-medium dark:text-gray-100">Tasks</h2>
+      <h2 className="mb-4 text-lg font-medium dark:text-gray-100">
+        {translations.tasks}
+      </h2>
       <ComingSoon>
         <div className="space-y-3">
           {tasks.map((task, index) => (

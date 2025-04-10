@@ -272,7 +272,8 @@
     "submittedTooltip": "A data em que a ação de governança foi submetida na blockchain.",
     "expires": "Expira",
     "expiresTooltip": "A data em que a ação de governança expirará se não atingir os limiares de ratificação. IMPORTANTE: Se a ação de governança for ratificada antes da data de expiração, será considerada ratificada e não estará disponível para votação posteriormente.",
-    "relatedDocuments": "Documentos relacionados"
+    "relatedDocuments": "Documentos relacionados",
+    "tasks": "Tarefas"
   },
   "pageProposals": {
     "title": "Propostas",
