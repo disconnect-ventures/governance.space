@@ -14,9 +14,9 @@ import {
 import { getActionIdUrl, GovernanceAction } from "~/lib/governance-actions";
 import { Metadata } from "~/lib/metadata";
 import Link from "~/components/features/Link";
-import { useTranslation } from "~/hooks/use-translation/use-translation";
 import { formatCamelCase, formatDate } from "~/lib/utils";
 import { twMerge } from "tailwind-merge";
+import { Dictionary } from "~/config/dictionaries";
 
 const getTypeLabel = (type: GovernanceAction["type"]) => {
   return formatCamelCase(type);
@@ -24,6 +24,7 @@ const getTypeLabel = (type: GovernanceAction["type"]) => {
 
 const getStatusBadge = (
   status: "Pending" | "In Progress" | "Completed",
+  statusLabel: string,
   className?: string
 ) => {
   const variants = {
@@ -40,6 +41,7 @@ const getStatusBadge = (
     "In Progress": ClockIcon,
     Completed: CircleCheckBig,
   };
+
   const Icon = icons[status];
 
   return (
@@ -48,9 +50,17 @@ const getStatusBadge = (
       className={`rounded-full space-x-2 p-2 px-4 ${variants[status]} hover:${variants[status]} ${className}`}
     >
       <Icon className="h-4 w-4" />
-      <span>{status}</span>
+      <span>{statusLabel}</span>
     </Badge>
   );
+};
+
+type GovernanceActionCardProps = {
+  action: GovernanceAction;
+  metadata: Metadata | null;
+  status: "In Progress" | "Completed";
+  className?: string;
+  translations: Pick<Dictionary, "general" | "pageGovernanceActions">;
 };
 
 export const GovernanceActionCard = ({
@@ -58,14 +68,8 @@ export const GovernanceActionCard = ({
   status,
   metadata,
   className,
-}: {
-  action: GovernanceAction;
-  metadata: Metadata | null;
-  status: "In Progress" | "Completed";
-  className?: string;
-}) => {
-  const { dictionary } = useTranslation();
-  // const views = 404; // TODO
+  translations,
+}: GovernanceActionCardProps) => {
   const title = useMemo(
     () => (action.title || metadata ? metadata?.metadata?.title : "No title"),
     [action, metadata]
@@ -74,6 +78,11 @@ export const GovernanceActionCard = ({
     () => action.abstract || metadata?.metadata?.abstract,
     [action, metadata]
   );
+
+  const statusLabel =
+    status === "Completed"
+      ? translations.general.completed
+      : translations.general.inProgress;
 
   return (
     <Card className={twMerge("mb-4", className)}>
@@ -85,7 +94,8 @@ export const GovernanceActionCard = ({
           >
             {getTypeLabel(action.type)}
           </Badge>
-          {getStatusBadge(status, "ml-auto")}
+
+          {getStatusBadge(status, statusLabel, "ml-auto")}
         </div>
 
         <h3 className="text-lg font-semibold mb-2 dark:text-gray-100">
@@ -100,7 +110,7 @@ export const GovernanceActionCard = ({
           <div className="flex items-center gap-2">
             <Calendar className="h-4 w-4" />
             <span>
-              Submitted:{" "}
+              {translations.pageGovernanceActions?.submitted || "Submitted"}:{" "}
               <span className="font-semibold">
                 {formatDate(action.createdDate, action.createdEpochNo)}
               </span>
@@ -109,7 +119,7 @@ export const GovernanceActionCard = ({
           <div className="flex items-center gap-2">
             <Clock className="h-4 w-4" />
             <span>
-              Expires:{" "}
+              {translations.pageGovernanceActions?.expires || "Expires"}:{" "}
               <span className="font-semibold">
                 {formatDate(action.expiryDate, action.expiryEpochNo)}
               </span>
@@ -119,7 +129,11 @@ export const GovernanceActionCard = ({
 
         <div className="text-gray-600 dark:text-gray-400 space-y-2 mb-4">
           <div className="text-sm">
-            <span className="font-semibold">Legacy Governance Action ID:</span>
+            <span className="font-semibold">
+              {translations.pageGovernanceActions?.legacyGovernanceActionID ||
+                "Legacy Governance Action ID"}
+              :
+            </span>
             <div className="font-mono text-xs break-all">{action.txHash}</div>
           </div>
         </div>
@@ -128,7 +142,7 @@ export const GovernanceActionCard = ({
           href={`/governance/${getActionIdUrl(action.txHash, action.index.toString())}`}
           className={`${buttonVariants()} w-full`}
         >
-          {dictionary.general.viewDetailsAndVote}
+          {translations.general.viewDetailsAndVote}
         </Link>
       </CardContent>
     </Card>

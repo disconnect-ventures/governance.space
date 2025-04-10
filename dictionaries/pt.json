@@ -83,8 +83,8 @@
         }
       ]
     },
+
     "mainFunctionalities": {
-      "title": "Principais Funcionalidades",
       "features": [
         {
           "title": "Multi-Chain",
@@ -239,7 +239,7 @@
     "longDescription": "Qualquer pessoa que tenha ADA em uma carteira pode propor uma Ação de Governança. Para enviar uma Ação de Governança, o proponente paga um depósito reembolsável de 100.000 ADA. O depósito será devolvido automaticamente à carteira do proponente após a conclusão do período de votação.",
     "governanceActionId": "ID da Ação de Governança",
     "cip129GovernanceActionId": "(CIP-129) ID da Ação de Governança",
-    "search": "Buscar ações",
+    "search": "Buscar Ações",
     "soonestToExpire": "Prestes a Expirar",
     "newestCreated": "Mais Recentes",
     "mostYesVotes": "Maior Quantidade de Votos 'Sim'",
@@ -250,7 +250,10 @@
     "HardForkInitiation": "Iniciação de Hard Fork",
     "parameterChange": "Alteração de Parâmetros",
     "treasuryWithdrawals": "Retiradas do Tesouro",
-    "infoAction": "Ação Informativa"
+    "infoAction": "Ação Informativa",
+    "submitted": "Enviado",
+    "expires": "Expira",
+    "legacyGovernanceActionID": "ID da Ação de Governança Legada"
   },
   "pageGovernanceActionsDetails": {
     "title": "Detalhes da Ação de Governança",
