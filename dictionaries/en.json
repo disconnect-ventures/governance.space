@@ -45,7 +45,8 @@
     "topBarLinkedIn": "LinkedIn will open in a moment. Please paste the text into the tweet field.",
     "topBarDefault": "Please paste the copied text when the sharing window opens.",
     "clipboardCopied": "Copied to clipboard",
-    "clipboardFailed": "Failed to copy"
+    "clipboardFailed": "Failed to copy",
+    "noTitle": "No title"
   },
   "accessibility": {
     "pagination": "pagination",
