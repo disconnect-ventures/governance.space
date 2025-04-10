@@ -3,6 +3,7 @@ import ComingSoon from "~/components/layout/ComingSoon";
 import { CardContent } from "~/components/ui/card";
 import Link from "../Link";
 import { ExternalLink } from "lucide-react";
+import { Dictionary } from "~/config/dictionaries";
 
 type Document = {
   fileName: string;
@@ -12,15 +13,17 @@ type Document = {
 
 type GovernanceDocumentsProps = {
   documents: Document[];
+  translations: Dictionary["pageGovernanceActionsDetails"];
 };
 
 export const GovernanceDocuments = ({
   documents,
+  translations,
 }: GovernanceDocumentsProps) => {
   return (
     <CardContent className="p-6">
       <h2 className="mb-4 text-lg font-medium dark:text-gray-100">
-        Related documents
+        {translations.relatedDocuments}
       </h2>
       <ComingSoon>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
