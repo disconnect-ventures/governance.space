@@ -133,7 +133,7 @@ export const GovernanceActionCard = ({
           <div className="flex items-center gap-2">
             <Clock className="h-4 w-4" />
             <span>
-              {translations.pageGovernanceActions.expires}:{" "}
+              {translations.general.expires}:{" "}
               <span className="font-semibold">
                 {formatDate(action.expiryDate, action.expiryEpochNo)}
               </span>

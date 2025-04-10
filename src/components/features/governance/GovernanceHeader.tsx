@@ -48,8 +48,11 @@ export const GovernanceHeader = ({
   translations,
 }: GovernanceHeaderProps) => {
   const title = useMemo(
-    () => (action.title || metadata ? metadata?.metadata.title : "No title"),
-    [action, metadata]
+    () =>
+      action.title || metadata
+        ? metadata?.metadata.title
+        : translations.noTitle,
+    [action, metadata, translations.noTitle]
   );
   const abstract = useMemo(
     () => action.abstract || metadata?.metadata.abstract,
