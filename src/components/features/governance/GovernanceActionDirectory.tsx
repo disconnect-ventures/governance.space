@@ -83,6 +83,7 @@ export function GovernanceActionDirectory({
             action={action}
             status={isExpired ? "Completed" : "In Progress"}
             metadata={metadata[action.id]}
+            translations={translations}
           />
         );
       })}
