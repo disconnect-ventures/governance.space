@@ -22,7 +22,7 @@ export async function generateMetadata({
   const proposalId = (await params).discussion;
 
   return {
-    title: `Governance Space - Proposal ${proposalId}`,
+    title: `Governance Space - Budget Discussion ${proposalId}`,
     description: "All-in-One Governance Platform",
   };
 }
@@ -105,9 +105,12 @@ export default async function ProposalDetailsPage({
             <HandHelpingIcon className="w-6 h-6" />
           </div>
         }
-        translations={dictionary.pageProposalsDetails}
+        translations={dictionary.pageBudgetDiscussionDetails}
       />
-      <TopBar backHref="/proposals" translations={dictionary.general} />
+      <TopBar
+        backHref="/budget-discussions"
+        translations={dictionary.general}
+      />
       <Card className="mb-4 bg-card text-card-foreground">
         <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           <div className="w-full flex flex-col gap-4 sm:gap-6">
