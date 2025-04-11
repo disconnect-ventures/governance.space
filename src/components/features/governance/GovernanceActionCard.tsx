@@ -20,7 +20,7 @@ import { Dictionary } from "~/config/dictionaries";
 
 const getTypeLabel = (
   _type: GovernanceAction["type"],
-  typeLabelText: string,
+  actionTypeLabel: string,
   className?: string
 ) => {
   return (
@@ -28,7 +28,7 @@ const getTypeLabel = (
       variant="outline"
       className={`font-normal bg-blue-200 dark:bg-blue-900/50 p-2 dark:text-blue-300 ${className}`}
     >
-      {typeLabelText}
+      {actionTypeLabel}
     </Badge>
   );
 };
@@ -93,7 +93,7 @@ export const GovernanceActionCard = ({
     [action, metadata]
   );
 
-  const typeLabelText =
+  const actionTypeLabel =
     translations.pageGovernanceActions[
       (action.type.charAt(0).toLowerCase() +
         action.type.slice(1)) as keyof typeof translations.pageGovernanceActions
@@ -108,7 +108,7 @@ export const GovernanceActionCard = ({
     <Card className={twMerge("mb-4", className)}>
       <CardContent className="pt-6">
         <div className="flex items-center gap-2 mb-2">
-          {getTypeLabel(action.type, typeLabelText)}
+          {getTypeLabel(action.type, actionTypeLabel)}
           {getStatusBadge(status, statusLabel, "ml-auto")}
         </div>
 
