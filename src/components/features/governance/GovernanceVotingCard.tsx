@@ -1,5 +1,6 @@
 import { CircleMinus, ThumbsDown, ThumbsUp } from "lucide-react";
 import { Card, CardContent } from "~/components/ui/card";
+import { Dictionary } from "~/config/dictionaries";
 
 type VoteOption = {
   count: number;
@@ -11,6 +12,7 @@ export type GovernanceVotingCardProps = {
   votes: Record<"yes" | "no" | "abstain", VoteOption>;
   threshold: number;
   formatValue?: (v: number) => string;
+  translations: Dictionary["general"];
 };
 
 export const GovernanceVotingCard = ({
@@ -18,21 +20,22 @@ export const GovernanceVotingCard = ({
   votes,
   // threshold,
   formatValue,
+  translations,
 }: GovernanceVotingCardProps) => {
   const config = {
     yes: {
       icon: <ThumbsUp />,
-      text: "YES",
+      text: translations.yes,
       colorClass: "text-green-600 dark:text-green-400",
     },
     no: {
       icon: <ThumbsDown />,
-      text: "NO",
+      text: translations.no,
       colorClass: "text-red-600 dark:text-red-400",
     },
     abstain: {
       icon: <CircleMinus />,
-      text: "ABSTAIN",
+      text: translations.abstain,
       colorClass: "text-gray-500 dark:text-gray-400",
     },
   };
@@ -72,7 +75,7 @@ export const GovernanceVotingCard = ({
                 >
                   {icon}
                   <span className="font-bold">
-                    {label?.toUpperCase() ?? defaultLabel}
+                    {(label ?? defaultLabel).toUpperCase()}
                   </span>
                 </div>
                 <span className="font-bold text-sm dark:text-gray-200">
