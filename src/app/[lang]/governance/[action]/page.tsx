@@ -150,17 +150,29 @@ export default async function GovernanceActionDetailsPage({
         <GovernanceHeader
           action={action}
           metadata={metadata}
-          translations={dictionary.general}
+          translations={dictionary}
         />
         <Separator className="bg-border my-4" />
         <GovernaceVoting action={action} translations={dictionary} />
-        <GovernanceLinks links={references} />
+        <GovernanceLinks
+          links={references}
+          translations={dictionary.pageGovernanceActionsDetails}
+        />
         <Separator className="bg-border" />
-        <GovernanceDocuments documents={DOCUMENTS} />
+        <GovernanceDocuments
+          documents={DOCUMENTS}
+          translations={dictionary.pageGovernanceActionsDetails}
+        />
         <Separator className="bg-border" />
-        <GovernanceTasks tasks={GOVERNANCE_TASKS} />
+        <GovernanceTasks
+          tasks={GOVERNANCE_TASKS}
+          translations={dictionary.pageGovernanceActionsDetails}
+        />
         <Separator className="bg-border" />
-        <GovernanceHistory entries={HISTORY_ENTRIES} />
+        <GovernanceHistory
+          entries={HISTORY_ENTRIES}
+          translations={dictionary.pageGovernanceActionsDetails}
+        />
       </Card>
     </div>
   );

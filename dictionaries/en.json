@@ -18,6 +18,7 @@
     "comments": "comments",
     "submitted": "Submitted",
     "expires": "Expires",
+    "expired": "Expired",
     "author": "Author",
     "type": "Type",
     "registrationDate": "Registration Date (Newest to Oldest)",
@@ -29,6 +30,8 @@
     "pending": "Pending",
     "approved": "Approved",
     "rejected": "Rejected",
+    "completed": "Completed",
+    "inProgress": " In Progress",
     "yes": "Yes",
     "no": "No",
     "abstain": "Abstain",
@@ -43,7 +46,15 @@
     "topBarLinkedIn": "LinkedIn will open in a moment. Please paste the text into the tweet field.",
     "topBarDefault": "Please paste the copied text when the sharing window opens.",
     "clipboardCopied": "Copied to clipboard",
-    "clipboardFailed": "Failed to copy"
+    "clipboardFailed": "Failed to copy",
+    "noTitle": "No title",
+    "days": "days",
+    "remaining": "remaining",
+    "abstract": "Abstract",
+    "motivation": "Motivation",
+    "rationale": "Rationale",
+    "currentHash": "Current Hash",
+    "previousId": "Previous Id"
   },
   "accessibility": {
     "pagination": "pagination",
@@ -235,7 +246,21 @@
     "description": "Governance Actions in Governance",
     "longDescription": "Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period.",
     "governanceActionId": "Governance Action ID",
-    "cip129GovernanceActionId": "(CIP-129) Governance Action ID"
+    "cip129GovernanceActionId": "(CIP-129) Governance Action ID",
+    "search": "Search Actions",
+    "soonestToExpire": "Soon to Expire",
+    "newestCreated": "Newest First",
+    "mostYesVotes": "Highest Amount of 'Yes' votes",
+    "governanceActionType": "Governance Action Type",
+    "noConfidence": "No Confidence",
+    "newCommittee": "New Committee",
+    "newConstitution": "New Constitution",
+    "HardForkInitiation": "Hard Fork Initiation",
+    "parameterChange": "Parameter Change",
+    "treasuryWithdrawals": "Treasury Withdrawals",
+    "infoAction": "Info Action",
+    "submitted": "Submitted",
+    "legacyGovernanceActionID": "Legacy Governance Action ID"
   },
   "pageGovernanceActionsDetails": {
     "title": "Governance Action Details",
@@ -247,12 +272,19 @@
     "proposedVersion": "Proposed version",
     "previousGovernanceActionId": "Previous Governance Action ID",
     "votesSubmittedBy": "Votes submitted for this Governance Action By",
+    "dreps": "DReps",
     "spos": "SPOs",
     "constitutionalCommittee": "Constitutional Committee",
     "submitted": "Submitted",
     "submittedTooltip": "The date when the governance action was submitted on-chain.",
-    "expires": "Expires",
-    "expiresTooltip": "The date when the governance action will expire if it doesn't reach ratification thresholds. IMPORTANT: If the governance action is ratified before the expiry date, it will be considered ratified and it will not be available to vote on afterwards."
+    "expiresTooltip": "The date when the governance action will expire if it doesn't reach ratification thresholds. IMPORTANT: If the governance action is ratified before the expiry date, it will be considered ratified and it will not be available to vote on afterwards.",
+    "relatedDocuments": "Related documents",
+    "tasks": "Tasks",
+    "history": "History",
+    "supportingLinks": "Supporting links",
+    "deadline": "Deadline",
+    "constitutional": "Constitutional",
+    "unconstitutional": "Unconstitutional"
   },
   "pageProposals": {
     "title": "Proposals",
@@ -285,9 +317,6 @@
     "badgeText": "",
     "description": "Details about this Proposal",
     "longDescription": "",
-    "abstract": "Abstract",
-    "motivation": "Motivation",
-    "rational": "Rational",
     "castYourVote": "Cast Your Vote"
   },
   "pageCommittees": {
