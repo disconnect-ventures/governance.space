@@ -26,7 +26,7 @@ export async function BudgetDiscussionDirectory({
 }: BudgetDiscussionDirectoryProps) {
   return (
     <Directory
-      
+      translations={dictionary}
       searchPlaceholder={dictionary.pageBudgetDiscussions.search}
       params={params}
       sortPopoverTitle={dictionary.pageBudgetDiscussions.sortByLabel}
