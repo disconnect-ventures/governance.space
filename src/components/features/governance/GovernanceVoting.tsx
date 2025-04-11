@@ -35,31 +35,30 @@ export const GovernaceVoting = ({
     title: translations.pageGovernanceActionsDetails.dreps,
     votes: {
       yes: {
-        label: translations.general.yes,
         count: action.dRepYesVotes,
       },
-      no: { label: translations.general.no, count: action.dRepNoVotes },
+      no: { count: action.dRepNoVotes },
       abstain: {
-        label: translations.general.abstain,
         count: action.dRepAbstainVotes,
       },
     },
     threshold: 0.51,
     formatValue: (value) => formatAda(formatVotingPower(value)),
+    translations: translations.general,
   };
 
   const sposVotingData: GovernanceVotingCardProps = {
     title: translations.pageGovernanceActionsDetails.spos,
     votes: {
-      yes: { label: translations.general.yes, count: action.poolYesVotes },
-      no: { label: translations.general.no, count: action.poolNoVotes },
+      yes: { count: action.poolYesVotes },
+      no: { count: action.poolNoVotes },
       abstain: {
-        label: translations.general.abstain,
         count: action.poolAbstainVotes,
       },
     },
     threshold: 0.51,
     formatValue: (value) => formatAda(formatVotingPower(value)),
+    translations: translations.general,
   };
 
   const constitutionalCommitteeVotingData: GovernanceVotingCardProps = {
@@ -79,6 +78,7 @@ export const GovernaceVoting = ({
       },
     },
     threshold: 0.51,
+    translations: translations.general,
   };
 
   const totalDuration =
