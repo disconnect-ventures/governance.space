@@ -150,7 +150,7 @@ export default async function GovernanceActionDetailsPage({
         <GovernanceHeader
           action={action}
           metadata={metadata}
-          translations={dictionary.general}
+          translations={dictionary}
         />
         <Separator className="bg-border my-4" />
         <GovernaceVoting action={action} translations={dictionary} />

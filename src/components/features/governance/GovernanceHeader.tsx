@@ -17,7 +17,7 @@ type VersionDetailProps = {
 
 const VersionDetail = ({ label, value, translations }: VersionDetailProps) => (
   <div className="w-64 flex gap-2 items-start flex-col overflow-hidden">
-    <p className="text-muted-foreground pr-2">{label}</p>
+    <p className="text-muted-foreground pr-2">{label}:</p>
     <div className="w-full flex gap-2 items-center">
       <p className="font-bold w-full overflow-hidden text-ellipsis">{value}</p>
       <CopyToClipboard value={value} translations={translations} />
@@ -39,7 +39,10 @@ const InfoTab = async (value: string, text: string) => (
 type GovernanceHeaderProps = {
   action: GovernanceAction;
   metadata: Metadata | null;
-  translations: Dictionary["general"];
+  translations: Pick<
+    Dictionary,
+    "general" | "pageGovernanceActions" | "pageGovernanceActionsDetails"
+  >;
 };
 
 export const GovernanceHeader = ({
@@ -51,8 +54,8 @@ export const GovernanceHeader = ({
     () =>
       action.title || metadata
         ? metadata?.metadata.title
-        : translations.noTitle,
-    [action, metadata, translations.noTitle]
+        : translations.general.noTitle,
+    [action, metadata, translations.general.noTitle]
   );
   const abstract = useMemo(
     () => action.abstract || metadata?.metadata.abstract,
@@ -75,6 +78,12 @@ export const GovernanceHeader = ({
     ? `${action.prevGovActionTxHash}#${action.prevGovActionTxHash}`
     : null;
 
+  const actionTypeLabel =
+    translations.pageGovernanceActions[
+      (action.type.charAt(0).toLowerCase() +
+        action.type.slice(1)) as keyof typeof translations.pageGovernanceActions
+    ] || formatCamelCase(action.type);
+
   return (
     <CardContent className="p-6">
       <div className="flex items-center gap-4 mb-4 text-center w-full">
@@ -82,10 +91,10 @@ export const GovernanceHeader = ({
           variant="secondary"
           className="text-sm bg-[#C5D0EC] color-black dark:bg-blue-900/50 dark:text-blue-300"
         >
-          {formatCamelCase(action.type)}
+          {actionTypeLabel}
         </Badge>
         <span className="text-sm text-muted-foreground dark:text-gray-400">
-          Governance Action Type
+          {translations.pageGovernanceActions.governanceActionType}
         </span>
         <Badge
           className={`text-sm ml-auto ${
@@ -94,7 +103,9 @@ export const GovernanceHeader = ({
               : "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-400"
           }`}
         >
-          {isExpired ? "Completed" : "In Progress"}
+          {isExpired
+            ? translations.general.completed
+            : translations.general.inProgress}
         </Badge>
       </div>
 
@@ -107,19 +118,19 @@ export const GovernanceHeader = ({
               value="abstract"
               className="data-[state=active]:shadow-none data-[state=active]:scale-125 dark:text-gray-300 dark:data-[state=active]:text-white"
             >
-              Abstract
+              {translations.general.abstract}
             </TabsTrigger>
             <TabsTrigger
               value="motivation"
               className="data-[state=active]:shadow-none data-[state=active]:scale-125 dark:text-gray-300 dark:data-[state=active]:text-white"
             >
-              Motivation
+              {translations.general.motivation}
             </TabsTrigger>
             <TabsTrigger
               value="rationale"
               className="data-[state=active]:shadow-none data-[state=active]:scale-125 dark:text-gray-300 dark:data-[state=active]:text-white"
             >
-              Rationale
+              {translations.general.rationale}
             </TabsTrigger>
           </TabsList>
           {InfoTab("abstract", abstract ?? "")}
@@ -130,19 +141,19 @@ export const GovernanceHeader = ({
         <Card className="dark:bg-gray-800 dark:border-gray-700">
           <CardContent className="w-auto p-4">
             <h3 className="font-semibold mb-4 dark:text-gray-100">
-              Version details
+              {translations.pageGovernanceActionsDetails.versionDetails}
             </h3>
             <div className="space-y-3">
               <VersionDetail
-                label="Current Hash:"
+                label={translations.general.currentHash}
                 value={actionId}
-                translations={translations}
+                translations={translations.general}
               />
               {prevActionId !== null && (
                 <VersionDetail
-                  label="Previous Id:"
+                  label={translations.general.previousId}
                   value={prevActionId}
-                  translations={translations}
+                  translations={translations.general}
                 />
               )}
             </div>
