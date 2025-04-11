@@ -49,7 +49,12 @@
     "clipboardFailed": "Falha ao copiar",
     "noTitle": "Sem título",
     "days": "dias",
-    "remaining": "restantes"
+    "remaining": "restantes",
+    "abstract": "Resumo",
+    "motivation": "Motivação",
+    "rationale": "Justificativa",
+    "currentHash": "Hash Atual",
+    "previousId": "Id Anterior"
   },
   "accessibility": {
     "pagination": "paginação",
@@ -313,9 +318,6 @@
     "badgeText": "",
     "description": "Detalhes sobre esta Proposta",
     "longDescription": "",
-    "abstract": "Resumo",
-    "motivation": "Motivação",
-    "rational": "Justificativa",
     "castYourVote": "Registre seu Voto"
   },
   "pageCommittees": {

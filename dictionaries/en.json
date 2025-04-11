@@ -49,7 +49,12 @@
     "clipboardFailed": "Failed to copy",
     "noTitle": "No title",
     "days": "days",
-    "remaining": "remaining"
+    "remaining": "remaining",
+    "abstract": "Abstract",
+    "motivation": "Motivation",
+    "rationale": "Rationale",
+    "currentHash": "Current Hash",
+    "previousId": "Previous Id"
   },
   "accessibility": {
     "pagination": "pagination",
@@ -312,9 +317,6 @@
     "badgeText": "",
     "description": "Details about this Proposal",
     "longDescription": "",
-    "abstract": "Abstract",
-    "motivation": "Motivation",
-    "rational": "Rational",
     "castYourVote": "Cast Your Vote"
   },
   "pageCommittees": {
