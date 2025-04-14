@@ -18,11 +18,23 @@ import { formatCamelCase, formatDate } from "~/lib/utils";
 import { twMerge } from "tailwind-merge";
 import { Dictionary } from "~/config/dictionaries";
 
-const getTypeLabel = (
-  _type: GovernanceAction["type"],
-  actionTypeLabel: string,
-  className?: string
-) => {
+export const GovernanceActionTypeBadge = ({
+  type,
+  translations,
+  className,
+}: {
+  type: GovernanceAction["type"];
+  translations: Pick<Dictionary, "general" | "pageGovernanceActions">;
+  className?: string;
+}) => {
+  const actionTypeLabel = useMemo(
+    () =>
+      translations.pageGovernanceActions[
+        (type.charAt(0).toLowerCase() +
+          type.slice(1)) as keyof typeof translations.pageGovernanceActions
+      ] || formatCamelCase(type),
+    [translations, type]
+  );
   return (
     <Badge
       variant="outline"
@@ -33,11 +45,19 @@ const getTypeLabel = (
   );
 };
 
-const getStatusBadge = (
-  status: "Pending" | "In Progress" | "Completed",
-  statusLabel: string,
-  className?: string
-) => {
+export const GovernanceActionStatusBadge = ({
+  status,
+  translations,
+  className,
+}: {
+  status: "Pending" | "In Progress" | "Completed";
+  translations: Pick<Dictionary, "general" | "pageGovernanceActions">;
+  className?: string;
+}) => {
+  const statusLabel =
+    status === "Completed"
+      ? translations.general.completed
+      : translations.general.inProgress;
   const variants = {
     Pending:
       "bg-yellow-500/10 text-yellow-400 dark:bg-yellow-500/20 dark:text-yellow-300",
@@ -93,23 +113,19 @@ export const GovernanceActionCard = ({
     [action, metadata]
   );
 
-  const actionTypeLabel =
-    translations.pageGovernanceActions[
-      (action.type.charAt(0).toLowerCase() +
-        action.type.slice(1)) as keyof typeof translations.pageGovernanceActions
-    ] || formatCamelCase(action.type);
-
-  const statusLabel =
-    status === "Completed"
-      ? translations.general.completed
-      : translations.general.inProgress;
-
   return (
     <Card className={twMerge("mb-4", className)}>
       <CardContent className="pt-6">
         <div className="flex items-center gap-2 mb-2">
-          {getTypeLabel(action.type, actionTypeLabel)}
-          {getStatusBadge(status, statusLabel, "ml-auto")}
+          <GovernanceActionTypeBadge
+            translations={translations}
+            type={action.type}
+          />
+          <GovernanceActionStatusBadge
+            status={status}
+            translations={translations}
+            className="ml-auto"
+          />
         </div>
 
         <h3 className="text-lg font-semibold mb-2 dark:text-gray-100">

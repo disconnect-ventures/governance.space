@@ -1,13 +1,15 @@
 import { Suspense, useMemo } from "react";
-import { Badge } from "~/components/ui/badge";
 import { Card, CardContent } from "~/components/ui/card";
 import { GovernanceAction } from "~/lib/governance-actions";
 import { Metadata } from "~/lib/metadata";
 import CopyToClipboard from "../CopyToClipboard";
-import { formatCamelCase } from "~/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { Markdown } from "../Markdown";
 import { Dictionary } from "~/config/dictionaries";
+import {
+  GovernanceActionStatusBadge,
+  GovernanceActionTypeBadge,
+} from "./GovernanceActionCard";
 
 type VersionDetailProps = {
   label: string;
@@ -78,35 +80,21 @@ export const GovernanceHeader = ({
     ? `${action.prevGovActionTxHash}#${action.prevGovActionTxHash}`
     : null;
 
-  const actionTypeLabel =
-    translations.pageGovernanceActions[
-      (action.type.charAt(0).toLowerCase() +
-        action.type.slice(1)) as keyof typeof translations.pageGovernanceActions
-    ] || formatCamelCase(action.type);
-
   return (
     <CardContent className="p-6">
       <div className="flex items-center gap-4 mb-4 text-center w-full">
-        <Badge
-          variant="secondary"
-          className="text-sm bg-[#C5D0EC] color-black dark:bg-blue-900/50 dark:text-blue-300"
-        >
-          {actionTypeLabel}
-        </Badge>
+        <GovernanceActionTypeBadge
+          translations={translations}
+          type={action.type}
+        />
         <span className="text-sm text-muted-foreground dark:text-gray-400">
           {translations.pageGovernanceActions.governanceActionType}
         </span>
-        <Badge
-          className={`text-sm ml-auto ${
-            isExpired
-              ? "bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-400"
-              : "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-400"
-          }`}
-        >
-          {isExpired
-            ? translations.general.completed
-            : translations.general.inProgress}
-        </Badge>
+        <GovernanceActionStatusBadge
+          status={isExpired ? "Completed" : "In Progress"}
+          translations={translations}
+          className="ml-auto"
+        />
       </div>
 
       <h2 className="text-2xl font-bold mb-4 dark:text-gray-100">{title}</h2>
