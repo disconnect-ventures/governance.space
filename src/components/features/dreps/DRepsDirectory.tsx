@@ -49,7 +49,7 @@ export const DRepsDirectory = ({
       searchPlaceholder={translations.pageDreps.search}
       headers={[
         translations.pageDreps.drepName,
-        translations.pageDreps.status,
+        translations.general.status,
         translations.pageDreps.votingPower,
         translations.pageDreps.registrationDate,
         translations.pageDreps.actions,

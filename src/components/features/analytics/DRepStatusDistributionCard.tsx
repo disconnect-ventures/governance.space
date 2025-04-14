@@ -5,12 +5,11 @@ import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import { formatNumber } from "./utils/formatters";
 import { use } from "react";
 import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
-import { Dictionary } from "~/config/dictionaries";
 
-type DRepStatusDistributionCardProps = {
-  drepStatsPromise: AnalyticsDashboardProps["drepStatsPromise"];
-  translations: Dictionary["pageAnalytics"];
-};
+type DRepStatusDistributionCardProps = Pick<
+  AnalyticsDashboardProps,
+  "drepStatsPromise" | "translations"
+>;
 
 const DRepStatusDistributionCard = ({
   drepStatsPromise,
@@ -21,16 +20,22 @@ const DRepStatusDistributionCard = ({
   const drepStatusData = useMemo(() => {
     if (!drepStats) {
       return [
-        { name: translations.activeDreps, value: 0 },
-        { name: translations.inactiveDreps, value: 0 },
-        { name: translations.retiredDreps, value: 0 },
+        { name: translations.pageAnalytics.activeDreps, value: 0 },
+        { name: translations.pageAnalytics.inactiveDreps, value: 0 },
+        { name: translations.pageAnalytics.retiredDreps, value: 0 },
       ];
     }
 
     return [
-      { name: translations.activeDreps, value: drepStats.active },
-      { name: translations.inactiveDreps, value: drepStats.inactive },
-      { name: translations.retiredDreps, value: drepStats.retired },
+      { name: translations.pageAnalytics.activeDreps, value: drepStats.active },
+      {
+        name: translations.pageAnalytics.inactiveDreps,
+        value: drepStats.inactive,
+      },
+      {
+        name: translations.pageAnalytics.retiredDreps,
+        value: drepStats.retired,
+      },
     ];
   }, [drepStats, translations]);
 
@@ -61,11 +66,11 @@ const DRepStatusDistributionCard = ({
     <Card className="bg-card text-card-foreground shadow-none">
       <CardContent className="p-6">
         <h3 className="text-lg font-semibold text-foreground mb-2">
-          {translations.drepsStatusDistribution}
+          {translations.pageAnalytics.drepsStatusDistribution}
         </h3>
         <ComingSoon>
           <p className="text-sm text-muted-foreground mb-6">
-            {translations.drepsStatusDistributionDesc}
+            {translations.pageAnalytics.drepsStatusDistributionDesc}
           </p>
           <div className="flex">
             <div className="h-48 flex-1">

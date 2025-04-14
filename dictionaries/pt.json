@@ -217,7 +217,6 @@
     "influencePower": "Poder de Influência",
     "voting": "Votação",
     "actions": "Ações",
-    "status": "Status",
     "registrationDate": "Data de Registro",
     "details": "Detalhes"
   },
@@ -381,7 +380,6 @@
     "deposits": "Depósitos",
     "topDreps": "TOP 10 DReps",
     "drepName": "Nome do DRep",
-    "status": "Ativo",
     "epochMetrics": "Métricas da Época",
     "epoch": "Época",
     "changed": "Alterado",

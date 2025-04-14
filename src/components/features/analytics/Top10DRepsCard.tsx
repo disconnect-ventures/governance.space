@@ -19,20 +19,20 @@ const Top10DRepsCard = ({
     <Card className="bg-card text-card-foreground shadow-none">
       <CardContent className="p-6">
         <h3 className="text-lg font-semibold text-foreground mb-6">
-          Top 10 DReps
+          {translations.pageAnalytics.topDreps}
         </h3>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-b border-border">
                 <th className="text-left py-3 text-sm font-medium text-muted-foreground">
-                  DRep Name
+                  {translations.pageAnalytics.drepName}
                 </th>
                 <th className="text-center py-3 text-sm font-medium text-muted-foreground">
-                  Status
+                  {translations.general.status}
                 </th>
                 <th className="text-right py-3 text-sm font-medium text-muted-foreground">
-                  Voting Power
+                  {translations.pageAnalytics.votingPower}
                 </th>
               </tr>
             </thead>
