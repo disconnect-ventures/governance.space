@@ -110,8 +110,17 @@ const CommentCard = ({
               {comment.attributes.user_govtool_username}
             </div>
             <div className="text-sm text-muted-foreground">
-              {new Date(comment.attributes.updatedAt).toLocaleDateString(
-                translations.general.locale
+              {new Date(comment.attributes.updatedAt).toLocaleString(
+                translations.general.locale,
+                {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  timeZone: "UTC",
+                  timeZoneName: "short",
+                }
               )}
             </div>
           </div>
