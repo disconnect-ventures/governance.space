@@ -46,7 +46,10 @@ const AnalyticsDashboard = ({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <GovernanceDelegationCard data={data} />
+        <GovernanceDelegationCard
+          data={data}
+          translations={translations.pageAnalytics}
+        />
         <DRepStatusDistributionCard drepStatsPromise={drepStatsPromise} />
       </div>
 

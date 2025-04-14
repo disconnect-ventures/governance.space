@@ -2,10 +2,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import { useCallback, useMemo } from "react";
 import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
+import { Dictionary } from "~/config/dictionaries";
 
-type GovernanceDelegationCardProps = Pick<AnalyticsDashboardProps, "data">;
+type GovernanceDelegationCardProps = {
+  data: AnalyticsDashboardProps["data"];
+  translations: Dictionary["pageAnalytics"];
+};
 
-const GovernanceDelegationCard = ({ data }: GovernanceDelegationCardProps) => {
+const GovernanceDelegationCard = ({
+  data,
+  translations,
+}: GovernanceDelegationCardProps) => {
   const circulation = 35949488472 * 1e6;
 
   const notTakingPart = useMemo(
@@ -20,12 +27,12 @@ const GovernanceDelegationCard = ({ data }: GovernanceDelegationCardProps) => {
   const governanceData = useMemo(
     () => [
       {
-        name: "Not taking part in Governance",
+        name: translations.notTakingPartGovernance,
         value: notTakingPart,
         percentage: ((notTakingPart / circulation) * 100).toFixed(2),
       },
       {
-        name: "Active dReps",
+        name: translations.activeDreps,
         value: data.totalStakeControlledByDReps,
         percentage: (
           (data.totalStakeControlledByDReps / circulation) *
@@ -33,7 +40,7 @@ const GovernanceDelegationCard = ({ data }: GovernanceDelegationCardProps) => {
         ).toFixed(2),
       },
       {
-        name: "Always Abstain",
+        name: translations.alwaysAbstain,
         value: data.alwaysAbstainVotingPower,
         percentage: (
           (data.alwaysAbstainVotingPower / circulation) *
@@ -41,7 +48,7 @@ const GovernanceDelegationCard = ({ data }: GovernanceDelegationCardProps) => {
         ).toFixed(2),
       },
       {
-        name: "No-Confidence",
+        name: translations.noConfidence,
         value: data.alwaysNoConfidenceVotingPower,
         percentage: (
           (data.alwaysNoConfidenceVotingPower / circulation) *
@@ -49,7 +56,15 @@ const GovernanceDelegationCard = ({ data }: GovernanceDelegationCardProps) => {
         ).toFixed(2),
       },
     ],
-    [data, circulation, notTakingPart]
+    [
+      data,
+      circulation,
+      notTakingPart,
+      translations.notTakingPartGovernance,
+      translations.activeDreps,
+      translations.alwaysAbstain,
+      translations.noConfidence,
+    ]
   );
 
   const chartColors = useMemo(
@@ -57,7 +72,7 @@ const GovernanceDelegationCard = ({ data }: GovernanceDelegationCardProps) => {
       notTakingPart: "hsl(var(--muted))",
       activeDReps: "hsl(var(--chart-1))",
       governanceAbstain: "hsl(var(--chart-2))",
-      governanceNoConfidence: "hsl(var--chart-3))",
+      governanceNoConfidence: "hsl(var(--chart-3))",
     }),
     []
   );
@@ -84,11 +99,10 @@ const GovernanceDelegationCard = ({ data }: GovernanceDelegationCardProps) => {
     <Card className="bg-card text-card-foreground shadow-none">
       <CardContent className="p-6">
         <h3 className="text-lg font-semibold text-foreground mb-2">
-          Governance Delegation{" "}
+          {translations.governanceDelegation}
         </h3>
         <p className="text-sm text-muted-foreground mb-6">
-          ADA taking part in Governance as of today by category in relation to
-          the circulating supply of ADA on Cardano
+          {translations.governanceDelegationDesc}
         </p>
         <div className="flex">
           <div className="h-48 flex-1">
