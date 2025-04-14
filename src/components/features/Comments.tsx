@@ -23,6 +23,7 @@ type CommentsProps = {
   ) => Promise<CommentResponse>;
   translations: Pick<Dictionary, "general">;
   proposalId: string;
+  totalCommentCount: number;
 };
 
 const CommentCard = ({
@@ -212,6 +213,7 @@ export function Comments({
   loadChildCommentsAction,
   translations,
   proposalId,
+  totalCommentCount,
 }: CommentsProps) {
   const commentsResponse = use(commentsPromise);
   const comments = useMemo(() => commentsResponse.data, [commentsResponse]);
@@ -281,7 +283,7 @@ export function Comments({
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-semibold text-foreground">
               {capitalize(translations.general.comments)} (
-              {commentsResponse.meta.pagination?.total || allComments.length})
+              {totalCommentCount || allComments.length})
             </h2>
           </div>
 
