@@ -96,97 +96,115 @@ const CommentCard = ({
     loadChildComments(currentPage + 1);
   }, [loadChildComments, currentPage]);
 
-  return (
-    <div className="comment-thread">
-      <div className="flex gap-4">
-        <Avatar className="w-10 h-10">
-          <AvatarFallback className="bg-muted text-muted-foreground">
-            {comment.attributes.user_govtool_username.substring(0, 2)}
-          </AvatarFallback>
-        </Avatar>
-        <div className="flex-1 space-y-2">
-          <div className="flex items-center justify-between">
-            <div className="font-medium text-foreground">
-              {comment.attributes.user_govtool_username}
-            </div>
-            <div className="text-sm text-muted-foreground">
-              {new Date(comment.attributes.updatedAt).toLocaleString(
-                translations.general.locale,
-                {
-                  year: "numeric",
-                  month: "short",
-                  day: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                  timeZone: "UTC",
-                  timeZoneName: "short",
-                }
-              )}
-            </div>
+  const commentContent = (
+    <div className="flex gap-4">
+      <Avatar className="w-10 h-10">
+        <AvatarFallback className="bg-background text-muted-foreground">
+          {comment.attributes.user_govtool_username.substring(0, 2)}
+        </AvatarFallback>
+      </Avatar>
+      <div className="flex-1 space-y-2">
+        <div className="flex items-center justify-between">
+          <div className="font-medium text-foreground">
+            {comment.attributes.user_govtool_username}
           </div>
-          <p className="text-foreground">{comment.attributes.comment_text}</p>
+          <div className="text-sm text-muted-foreground">
+            {new Date(comment.attributes.updatedAt).toLocaleString(
+              translations.general.locale,
+              {
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+                timeZone: "UTC",
+                timeZoneName: "short",
+              }
+            )}
+          </div>
+        </div>
+        <p className="text-foreground">{comment.attributes.comment_text}</p>
 
-          {hasChildren && (
+        {hasChildren && (
+          <Button
+            variant="ghost"
+            size="sm"
+            className="flex items-center gap-1 text-sm text-muted-foreground mt-2"
+            onClick={handleToggleChildren}
+            disabled={isPending}
+          >
+            {isPending ? (
+              <Loader2 className="w-4 h-4 mr-1 animate-spin" />
+            ) : expanded ? (
+              <ChevronDownIcon className="w-4 h-4" />
+            ) : (
+              <ChevronRightIcon className="w-4 h-4" />
+            )}
+            {translations.general.replies} (
+            {comment.attributes.subcommens_number})
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+
+  const childCommentsContainer = expanded && (
+    <div
+      className={`ml-8 pl-4 border-l border-muted-foreground mt-4 space-y-10`}
+    >
+      {loading && childComments.length === 0 ? (
+        <CommentSkeleton />
+      ) : (
+        <>
+          {childComments.map((childComment) => (
+            <CommentCard
+              key={childComment.id}
+              comment={childComment}
+              translations={translations}
+              level={level + 1}
+            />
+          ))}
+
+          {hasMore && (
             <Button
               variant="ghost"
               size="sm"
-              className="flex items-center gap-1 text-sm text-muted-foreground mt-2"
-              onClick={handleToggleChildren}
-              disabled={isPending}
+              className="text-sm text-muted-foreground"
+              onClick={handleLoadMore}
+              disabled={loading}
             >
-              {isPending ? (
-                <Loader2 className="w-4 h-4 mr-1 animate-spin" />
-              ) : expanded ? (
-                <ChevronDownIcon className="w-4 h-4" />
+              {loading ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-1 animate-spin" />
+                  {translations.general.loading}
+                </>
               ) : (
-                <ChevronRightIcon className="w-4 h-4" />
+                translations.general.loadMore
               )}
-              {translations.general.replies} (
-              {comment.attributes.subcommens_number})
             </Button>
           )}
-        </div>
-      </div>
-
-      {expanded && (
-        <div className={`ml-8 pl-4 border-l border-border mt-4 space-y-6`}>
-          {loading && childComments.length === 0 ? (
-            <CommentSkeleton />
-          ) : (
-            <>
-              {childComments.map((childComment) => (
-                <CommentCard
-                  key={childComment.id}
-                  comment={childComment}
-                  translations={translations}
-                  level={level + 1}
-                />
-              ))}
-
-              {hasMore && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-sm text-muted-foreground"
-                  onClick={handleLoadMore}
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <>
-                      <Loader2 className="w-4 h-4 mr-1 animate-spin" />
-                      {translations.general.loading}
-                    </>
-                  ) : (
-                    translations.general.loadMore
-                  )}
-                </Button>
-              )}
-            </>
-          )}
-        </div>
+        </>
       )}
     </div>
   );
+
+  if (level === 0) {
+    return (
+      <Card className="bg-secondary">
+        <CardContent className="p-4">
+          {commentContent}
+          {childCommentsContainer}
+        </CardContent>
+      </Card>
+    );
+  } else {
+    return (
+      <div className="bg-secondary">
+        {commentContent}
+        {childCommentsContainer}
+      </div>
+    );
+  }
 };
 
 export function Comments({
@@ -291,7 +309,7 @@ export function Comments({
             </div>
           </div> */}
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {allComments.length === 0 ? (
               <div className="text-center py-8 text-muted-foreground">
                 <MessageCircleIcon className="mx-auto h-12 w-12 opacity-50 mb-2" />
