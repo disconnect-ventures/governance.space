@@ -93,7 +93,6 @@ export default async function ProposalDetailsPage({
     return notFound();
   }
 
-  // TODO: Add pagination params
   const proposalComments = getProposalComments({
     proposalId: proposalId.toString(),
   });
