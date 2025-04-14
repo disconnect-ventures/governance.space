@@ -23,13 +23,13 @@ import { Badge } from "~/components/ui/badge";
 //   TooltipProvider,
 //   TooltipTrigger,
 // } from "~/components/ui/tooltip";
-import { Comment } from "~/lib/comments";
+// import { Comment } from "~/lib/comments";
 import { formatVotingPower } from "~/lib/utils";
 import { Dictionary } from "~/config/dictionaries";
 
 type ProfileInfoProps = {
   drep: DRep;
-  comments: Array<Comment>;
+  // comments: Array<Comment>;
   translations: Pick<Dictionary, "general" | "pageDreps" | "pageDrepsDetails">;
 };
 

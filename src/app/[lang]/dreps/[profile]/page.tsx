@@ -4,9 +4,7 @@ import { VotingHistory } from "~/components/features/profile/VotingHistory";
 import { ProfileInfo } from "~/components/features/profile/ProfileInfo";
 import { ProfileCard } from "~/components/features/profile/ProfileCard";
 import { ProfileBody } from "~/components/features/profile/ProfileBody";
-import { Comments } from "~/components/features/Comments";
 import { getProposals } from "~/lib/proposals";
-import { getComments } from "~/lib/comments";
 import { User } from "lucide-react";
 import { TopBar } from "~/components/layout/TopBar";
 import { PageTitle } from "~/components/layout/PageTitle";
@@ -64,7 +62,6 @@ export default async function DRepProfilePage({
 
   const drep = await getDRepById(profile);
   const proposals = (await getProposals(0, 3, "", "desc", [])).data;
-  const comments = (await getComments(-1)).slice(0, 3);
 
   if (!drep) {
     return notFound();
@@ -82,12 +79,11 @@ export default async function DRepProfilePage({
           <ProfileCard drep={drep} translations={dictionary} />
           <ProfileBody drep={drep} translations={dictionary} />
           <VotingHistory proposals={proposals} translations={dictionary} />
-          <Comments drep={drep} comments={comments} translations={dictionary} />
+          {/* <Comments drep={drep} comments={comments} translations={dictionary} /> */}
         </div>
         <div className="lg:w-1/3">
           <ProfileInfo
             drep={drep}
-            comments={comments}
             translations={dictionary}
           />
         </div>
