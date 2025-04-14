@@ -14,7 +14,8 @@ import { getProposals, getProposalsById } from "~/lib/proposals";
 import { calculateEpochNumber } from "~/lib/utils";
 import { PageProps } from "../../layout";
 import { getProposalComments } from "~/lib/comments";
-import { Comments } from "~/components/features/Comments";
+import { Comments, CommentsSkeleton } from "~/components/features/Comments";
+import { Suspense } from "react";
 
 export async function generateMetadata({
   params,
@@ -93,7 +94,7 @@ export default async function ProposalDetailsPage({
   }
 
   // TODO: Add pagination params
-  const proposalComments = await getProposalComments({
+  const proposalComments = getProposalComments({
     proposalId: proposalId.toString(),
   });
 
@@ -151,7 +152,12 @@ export default async function ProposalDetailsPage({
           <VotingSection />
         </CardContent>
       </Card>
-      <Comments comments={proposalComments.data} translations={dictionary} />
+      <Suspense fallback={<CommentsSkeleton />}>
+        <Comments
+          commentsPromise={proposalComments}
+          translations={dictionary}
+        />
+      </Suspense>
     </div>
   );
 }
