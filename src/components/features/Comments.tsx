@@ -1,17 +1,23 @@
+"use client";
 import { Card, CardContent } from "~/components/ui/card";
 import { Textarea } from "~/components/ui/textarea";
 import { Avatar, AvatarFallback } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
-import { Comment } from "~/lib/comments";
+import { CommentResponse } from "~/lib/comments";
 import { Dictionary } from "~/config/dictionaries";
+import { use, useMemo } from "react";
+import { Skeleton } from "~/components/ui/skeleton";
 
 type CommentsProps = {
-  comments: Array<Comment>;
+  commentsPromise: Promise<CommentResponse>;
   translations: Pick<Dictionary, "general">;
 };
 
-export function Comments({ comments, translations }: CommentsProps) {
+export function Comments({ commentsPromise, translations }: CommentsProps) {
+  const commentsResponse = use(commentsPromise);
+  const comments = useMemo(() => commentsResponse.data, [commentsResponse]);
+
   return (
     <Card className="w-full mx-auto bg-card text-card-foreground">
       <CardContent className="p-6">
@@ -77,6 +83,49 @@ export function Comments({ comments, translations }: CommentsProps) {
                       <ThumbsDown className="w-4 h-4" />
                       <span>0</span>
                     </Button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+export function CommentsSkeleton() {
+  const skeletonComments = Array(3).fill(null);
+
+  return (
+    <Card className="w-full mx-auto bg-card text-card-foreground">
+      <CardContent className="p-6">
+        <div className="space-y-6">
+          <div className="flex items-center justify-between mb-4">
+            <Skeleton className="h-7 w-36" />
+          </div>
+          <div className="space-y-4 mb-6">
+            <div className="flex gap-4">
+              <Skeleton className="w-full min-h-[100px] rounded-md" />
+            </div>
+            <div className="flex justify-end">
+              <Skeleton className="h-10 w-40 rounded-md" />
+            </div>
+          </div>
+          <div className="space-y-6">
+            {skeletonComments.map((_, index) => (
+              <div key={index} className="flex gap-4">
+                <Skeleton className="w-10 h-10 rounded-full" />
+                <div className="flex-1 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Skeleton className="h-5 w-32" />
+                    <Skeleton className="h-4 w-24" />
+                  </div>
+                  <Skeleton className="h-4 w-full" />
+                  <Skeleton className="h-4 w-4/5" />
+                  <div className="flex gap-4 mt-2">
+                    <Skeleton className="h-8 w-16 rounded-md" />
+                    <Skeleton className="h-8 w-16 rounded-md" />
                   </div>
                 </div>
               </div>
