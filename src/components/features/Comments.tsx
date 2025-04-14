@@ -8,6 +8,7 @@ import {
   ChevronRightIcon,
   MessageCircleIcon,
   Send,
+  Loader2,
 } from "lucide-react";
 import { Comment, CommentResponse, GetCommentsParams } from "~/lib/comments";
 import { Dictionary } from "~/config/dictionaries";
@@ -79,11 +80,15 @@ const CommentCard = ({
 
   const handleToggleChildren = useCallback(async () => {
     if (!expanded && childComments.length === 0) {
+      startTransition(() => {
+        setExpanded(true);
+      });
       await loadChildComments();
+    } else {
+      startTransition(() => {
+        setExpanded(!expanded);
+      });
     }
-    startTransition(() => {
-      setExpanded(!expanded);
-    });
   }, [expanded, loadChildComments, childComments]);
 
   const handleLoadMore = useCallback(() => {
@@ -119,7 +124,9 @@ const CommentCard = ({
               onClick={handleToggleChildren}
               disabled={isPending}
             >
-              {expanded ? (
+              {isPending ? (
+                <Loader2 className="w-4 h-4 mr-1 animate-spin" />
+              ) : expanded ? (
                 <ChevronDownIcon className="w-4 h-4" />
               ) : (
                 <ChevronRightIcon className="w-4 h-4" />
@@ -154,9 +161,14 @@ const CommentCard = ({
                   onClick={handleLoadMore}
                   disabled={loading}
                 >
-                  {loading
-                    ? translations.general.loading
-                    : translations.general.loadMore}
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-1 animate-spin" />
+                      {translations.general.loading}
+                    </>
+                  ) : (
+                    translations.general.loadMore
+                  )}
                 </Button>
               )}
             </>
@@ -180,6 +192,7 @@ export function Comments({
   const [currentPage, setCurrentPage] = useState(1);
   const [allComments, setAllComments] = useState<Comment[]>([]);
   const [hasMore, setHasMore] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
 
   useMemo(() => {
     setAllComments(comments);
@@ -206,13 +219,14 @@ export function Comments({
   );
 
   const loadMoreComments = useCallback(async () => {
+    setLoadingMore(true);
     startTransition(async () => {
       try {
         const nextPage = currentPage + 1;
         const params: GetCommentsParams = {
           proposalId,
           page: nextPage,
-          pageSize: 10,
+          pageSize: 25,
           sortBy: { field: "createdAt", direction: "desc" },
         };
 
@@ -226,6 +240,8 @@ export function Comments({
         }
       } catch (error) {
         console.error("Error loading more comments:", error);
+      } finally {
+        setLoadingMore(false);
       }
     });
   }, [loadChildCommentsAction, currentPage, proposalId]);
@@ -255,7 +271,11 @@ export function Comments({
                 className="flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90"
                 disabled={!newCommentText.trim() || isPending}
               >
-                <Send className="w-4 h-4" />
+                {isPending ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  <Send className="w-4 h-4" />
+                )}
                 {translations.general.submitComment}
               </Button>
             </div>
@@ -285,11 +305,16 @@ export function Comments({
                     variant="outline"
                     className="w-full text-center"
                     onClick={loadMoreComments}
-                    disabled={isPending}
+                    disabled={isPending || loadingMore}
                   >
-                    {isPending
-                      ? translations.general.loading
-                      : translations.general.loadMore}
+                    {loadingMore ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        {translations.general.loading}
+                      </>
+                    ) : (
+                      translations.general.loadMore
+                    )}
                   </Button>
                 )}
               </>
