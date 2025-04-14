@@ -1,19 +1,20 @@
 "use client";
 import { Card, CardContent } from "~/components/ui/card";
-import { Textarea } from "~/components/ui/textarea";
+// import { Textarea } from "~/components/ui/textarea";
 import { Avatar, AvatarFallback } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 import {
   ChevronDownIcon,
   ChevronRightIcon,
   MessageCircleIcon,
-  Send,
+  // Send,
   Loader2,
 } from "lucide-react";
 import { Comment, CommentResponse, GetCommentsParams } from "~/lib/comments";
 import { Dictionary } from "~/config/dictionaries";
 import { use, useCallback, useMemo, useState, useTransition } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
+import { capitalize } from "~/lib/utils";
 
 type CommentsProps = {
   commentsPromise: Promise<CommentResponse>;
@@ -187,7 +188,7 @@ export function Comments({
 }: CommentsProps) {
   const commentsResponse = use(commentsPromise);
   const comments = useMemo(() => commentsResponse.data, [commentsResponse]);
-  const [newCommentText, setNewCommentText] = useState("");
+  // const [newCommentText, setNewCommentText] = useState("");
   const [isPending, startTransition] = useTransition();
   const [currentPage, setCurrentPage] = useState(1);
   const [allComments, setAllComments] = useState<Comment[]>([]);
@@ -252,12 +253,12 @@ export function Comments({
         <div className="space-y-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-semibold text-foreground">
-              {translations.general.comments} (
+              {capitalize(translations.general.comments)} (
               {commentsResponse.meta.pagination?.total || allComments.length})
             </h2>
           </div>
 
-          <div className="space-y-4 mb-6">
+          {/* <div className="space-y-4 mb-6">
             <div className="flex gap-4">
               <Textarea
                 placeholder={translations.general.commentPlaceholder}
@@ -279,7 +280,7 @@ export function Comments({
                 {translations.general.submitComment}
               </Button>
             </div>
-          </div>
+          </div> */}
 
           <div className="space-y-6">
             {allComments.length === 0 ? (
