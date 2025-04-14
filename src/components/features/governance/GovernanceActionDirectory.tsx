@@ -60,7 +60,7 @@ export function GovernanceActionDirectory({
         },
         {
           value: "HardForkInitiation",
-          label: translations.pageGovernanceActions.HardForkInitiation,
+          label: translations.pageGovernanceActions.hardForkInitiation,
         },
         {
           value: "ParameterChange",
