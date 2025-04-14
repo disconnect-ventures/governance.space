@@ -3,7 +3,7 @@ import { Card, CardContent } from "~/components/ui/card";
 import { Textarea } from "~/components/ui/textarea";
 import { Avatar, AvatarFallback } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
-import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { CommentResponse } from "~/lib/comments";
 import { Dictionary } from "~/config/dictionaries";
 import { use, useMemo } from "react";
@@ -66,24 +66,6 @@ export function Comments({ commentsPromise, translations }: CommentsProps) {
                   <p className="text-foreground">
                     {comment.attributes.comment_text}
                   </p>
-                  <div className="flex gap-4">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="flex items-center gap-1 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-                    >
-                      <ThumbsUp className="w-4 h-4" />
-                      <span>0</span>
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="flex items-center gap-1 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-                    >
-                      <ThumbsDown className="w-4 h-4" />
-                      <span>0</span>
-                    </Button>
-                  </div>
                 </div>
               </div>
             ))}
