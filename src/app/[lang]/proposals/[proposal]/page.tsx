@@ -13,6 +13,8 @@ import { getDictionary } from "~/config/dictionaries";
 import { getProposals, getProposalsById } from "~/lib/proposals";
 import { calculateEpochNumber } from "~/lib/utils";
 import { PageProps } from "../../layout";
+import { getProposalComments } from "~/lib/comments";
+import { Comments } from "~/components/features/Comments";
 
 export async function generateMetadata({
   params,
@@ -90,6 +92,11 @@ export default async function ProposalDetailsPage({
     return notFound();
   }
 
+  // TODO: Add pagination params
+  const proposalComments = await getProposalComments({
+    proposalId: proposalId.toString(),
+  });
+
   return (
     <div className="bg-background text-foreground">
       <PageTitle
@@ -144,6 +151,7 @@ export default async function ProposalDetailsPage({
           <VotingSection />
         </CardContent>
       </Card>
+      <Comments comments={proposalComments.data} translations={dictionary} />
     </div>
   );
 }

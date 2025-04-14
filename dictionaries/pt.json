@@ -22,6 +22,7 @@
     "author": "Autor",
     "type": "Tipo",
     "registrationDate": "Data de Registro (Do mais recente ao mais antigo)",
+    "commentPlaceholder": "Escreva seu comentário aqui...",
     "submitComment": "Enviar Comentário",
     "status": "Status",
     "active": "Ativo",
