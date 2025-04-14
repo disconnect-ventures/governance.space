@@ -3,24 +3,28 @@ import { formatStake } from "./utils/formatters";
 import { Pie, PieChart, Cell, ResponsiveContainer } from "recharts";
 import { useMemo } from "react";
 import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
+import { Dictionary } from "~/config/dictionaries";
 
-type VotingPowerCardProps = Pick<AnalyticsDashboardProps, "data">;
+type VotingPowerCardProps = {
+  data: AnalyticsDashboardProps["data"];
+  translations: Dictionary["pageAnalytics"];
+};
 
-const VotingPowerCard = ({ data }: VotingPowerCardProps) => {
+const VotingPowerCard = ({ data, translations }: VotingPowerCardProps) => {
   const votingPowerData = useMemo(
     () => [
       {
-        name: "Always Abstain",
+        name: translations.alwaysAbstain,
         value: data.alwaysAbstainVotingPower,
         formatted: formatStake(data.alwaysAbstainVotingPower),
       },
       {
-        name: "No Confidence",
+        name: translations.noConfidence,
         value: data.alwaysNoConfidenceVotingPower,
         formatted: formatStake(data.alwaysNoConfidenceVotingPower),
       },
     ],
-    [data]
+    [data, translations.alwaysAbstain, translations.noConfidence]
   );
 
   const chartColors = useMemo(
@@ -35,7 +39,7 @@ const VotingPowerCard = ({ data }: VotingPowerCardProps) => {
     <Card className="bg-card text-card-foreground shadow-none">
       <CardContent className="p-6">
         <h3 className="text-lg font-semibold text-foreground mb-6">
-          Voting Power
+          {translations.votingPower}
         </h3>
         <div className="flex">
           <div className="h-32 flex-1">
