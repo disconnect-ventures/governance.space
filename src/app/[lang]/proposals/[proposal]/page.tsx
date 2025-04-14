@@ -157,6 +157,7 @@ export default async function ProposalDetailsPage({
           commentsPromise={proposalComments}
           translations={dictionary}
           proposalId={proposalId.toString()}
+          totalCommentCount={proposal.attributes.prop_comments_number}
         />
       </Suspense>
     </div>
