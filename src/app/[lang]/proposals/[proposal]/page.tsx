@@ -154,8 +154,10 @@ export default async function ProposalDetailsPage({
       </Card>
       <Suspense fallback={<CommentsSkeleton />}>
         <Comments
+          loadChildCommentsAction={getProposalComments}
           commentsPromise={proposalComments}
           translations={dictionary}
+          proposalId={proposalId.toString()}
         />
       </Suspense>
     </div>

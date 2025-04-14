@@ -1,3 +1,4 @@
+"use server";
 import { fetchApi, PdfApiResponse } from ".";
 import { PDF_API_URL } from "./constants";
 
@@ -43,9 +44,9 @@ interface CommentReport {
   };
 }
 
-interface GetCommentsParams {
+export interface GetCommentsParams {
   proposalId: string;
-  parentCommentsOnly?: boolean;
+  parentCommentId?: string;
   page?: number;
   pageSize?: number;
   sortBy?: {
@@ -61,7 +62,7 @@ export async function getProposalComments(
 ): Promise<CommentResponse> {
   const {
     proposalId,
-    parentCommentsOnly = true,
+    parentCommentId = null,
     page = 1,
     pageSize = 25,
     sortBy = { field: "createdAt", direction: "desc" },
@@ -70,7 +71,9 @@ export async function getProposalComments(
   const url = new URL("/api/comments", PDF_API_URL);
   const queryParams = url.searchParams;
   queryParams.append("filters[$and][0][proposal_id]", proposalId);
-  if (parentCommentsOnly) {
+  if (parentCommentId) {
+    queryParams.append("filters[$and][1][comment_parent_id]", parentCommentId);
+  } else {
     queryParams.append("filters[$and][1][comment_parent_id][$null]", "true");
   }
   queryParams.append(`sort[${sortBy.field}]`, sortBy.direction);

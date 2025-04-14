@@ -55,7 +55,11 @@
     "motivation": "Motivation",
     "rationale": "Rationale",
     "currentHash": "Current Hash",
-    "previousId": "Previous Id"
+    "previousId": "Previous Id",
+    "replies": "Replies",
+    "loadMore": "Load More",
+    "loading": "Loading...",
+    "noComments": "No comments yet. Be the first to comment!"
   },
   "accessibility": {
     "pagination": "pagination",
