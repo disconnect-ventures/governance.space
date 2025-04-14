@@ -1,17 +1,14 @@
 import { Card, CardContent } from "~/components/ui/card";
-import { DRep } from "~/lib/dreps";
 import { Textarea } from "~/components/ui/textarea";
 import { Avatar, AvatarFallback } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 import { ThumbsUp, ThumbsDown, Send } from "lucide-react";
 import { Comment } from "~/lib/comments";
-import ComingSoon from "../layout/ComingSoon";
 import { Dictionary } from "~/config/dictionaries";
 
 type CommentsProps = {
-  drep: DRep;
   comments: Array<Comment>;
-  translations: Pick<Dictionary, "general" | "pageDrepsDetails">;
+  translations: Pick<Dictionary, "general">;
 };
 
 export function Comments({ comments, translations }: CommentsProps) {
@@ -27,7 +24,7 @@ export function Comments({ comments, translations }: CommentsProps) {
           <div className="space-y-4 mb-6">
             <div className="flex gap-4">
               <Textarea
-                placeholder={translations.pageDrepsDetails.askToDrep}
+                placeholder={translations.general.commentPlaceholder}
                 className="min-h-[100px] bg-background text-foreground border-border placeholder:text-muted-foreground"
               />
             </div>
@@ -42,50 +39,48 @@ export function Comments({ comments, translations }: CommentsProps) {
             </div>
           </div>
           <div className="space-y-6">
-            <ComingSoon>
-              {comments.map((comment) => (
-                <div key={comment.id} className="flex gap-4">
-                  <Avatar className="w-10 h-10">
-                    <AvatarFallback className="bg-muted text-muted-foreground">
-                      {comment.attributes.user_govtool_username.substring(0, 2)}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <div className="font-medium text-foreground">
-                        {comment.attributes.user_govtool_username}
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {new Date(
-                          comment.attributes.updatedAt
-                        ).toLocaleDateString(translations.general.locale)}
-                      </div>
+            {comments.map((comment) => (
+              <div key={comment.id} className="flex gap-4">
+                <Avatar className="w-10 h-10">
+                  <AvatarFallback className="bg-muted text-muted-foreground">
+                    {comment.attributes.user_govtool_username.substring(0, 2)}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex-1 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="font-medium text-foreground">
+                      {comment.attributes.user_govtool_username}
                     </div>
-                    <p className="text-foreground">
-                      {comment.attributes.comment_text}
-                    </p>
-                    <div className="flex gap-4">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="flex items-center gap-1 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-                      >
-                        <ThumbsUp className="w-4 h-4" />
-                        <span>0</span>
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="flex items-center gap-1 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-                      >
-                        <ThumbsDown className="w-4 h-4" />
-                        <span>0</span>
-                      </Button>
+                    <div className="text-sm text-muted-foreground">
+                      {new Date(
+                        comment.attributes.updatedAt
+                      ).toLocaleDateString(translations.general.locale)}
                     </div>
                   </div>
+                  <p className="text-foreground">
+                    {comment.attributes.comment_text}
+                  </p>
+                  <div className="flex gap-4">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="flex items-center gap-1 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                    >
+                      <ThumbsUp className="w-4 h-4" />
+                      <span>0</span>
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="flex items-center gap-1 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+                    >
+                      <ThumbsDown className="w-4 h-4" />
+                      <span>0</span>
+                    </Button>
+                  </div>
                 </div>
-              ))}
-            </ComingSoon>
+              </div>
+            ))}
           </div>
         </div>
       </CardContent>
