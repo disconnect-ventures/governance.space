@@ -44,7 +44,7 @@ export default async function AnalyticsPage({
         data={{ ...metrics, ...info, ...stake }}
         drepListPromise={drepsPromise}
         drepStatsPromise={statsPromise}
-        translations={dictionary.general}
+        translations={dictionary}
       />
     </div>
   );

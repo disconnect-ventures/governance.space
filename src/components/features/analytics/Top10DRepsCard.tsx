@@ -43,7 +43,10 @@ const Top10DRepsCard = ({
                     index + 1
                   }º ${drep.givenName || "Anonymous DRep"}`}</td>
                   <td className="py-4 text-sm text-center">
-                    <ProfileStatus drep={drep} translations={translations} />
+                    <ProfileStatus
+                      drep={drep}
+                      translations={translations.general}
+                    />
                   </td>
                   <td className="py-4 text-sm text-right font-medium text-foreground">
                     ₳ {formatNumber(drep.votingPower)}

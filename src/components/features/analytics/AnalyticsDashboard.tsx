@@ -17,7 +17,7 @@ export interface AnalyticsDashboardProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
   drepListPromise: Promise<{ elements: DRep[] }>;
   drepStatsPromise: Promise<DRepStats>;
-  translations: Dictionary["general"];
+  translations: Pick<Dictionary, "general" | "pageAnalytics">;
 }
 
 const AnalyticsDashboard = ({
@@ -33,7 +33,10 @@ const AnalyticsDashboard = ({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <StakeDistributionCard data={data} />
+        <StakeDistributionCard
+          data={data}
+          translations={translations.pageAnalytics}
+        />
         <Suspense fallback={<div>Loading...</div>}>
           <VotingPowerCard data={data} />
         </Suspense>
