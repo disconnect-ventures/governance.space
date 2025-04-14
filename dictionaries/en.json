@@ -216,7 +216,6 @@
     "influencePower": "Influence Power",
     "voting": "Voting",
     "actions": "Actions",
-    "status": "Status",
     "registrationDate": "Registration Date",
     "details": "Details"
   },
@@ -380,7 +379,6 @@
     "deposits": "Deposits",
     "topDreps": "TOP 10 DReps",
     "drepName": "DRep Name",
-    "status": "Active",
     "epochMetrics": "Epoch Metrics",
     "epoch": "Epoch",
     "changed": "Changed",

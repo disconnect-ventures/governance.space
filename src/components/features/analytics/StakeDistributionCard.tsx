@@ -10,12 +10,11 @@ import {
 } from "recharts";
 import { useMemo } from "react";
 import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
-import { Dictionary } from "~/config/dictionaries";
 
-type StakeDistributionCardProps = {
-  data: AnalyticsDashboardProps["data"];
-  translations: Dictionary["pageAnalytics"];
-};
+type StakeDistributionCardProps = Pick<
+  AnalyticsDashboardProps,
+  "data" | "translations"
+>;
 
 const StakeDistributionCard = ({
   data,
@@ -23,10 +22,16 @@ const StakeDistributionCard = ({
 }: StakeDistributionCardProps) => {
   const stakeData = useMemo(
     () => [
-      { name: translations.dreps, value: data.totalStakeControlledByDReps },
-      { name: translations.spos, value: data.totalStakeControlledBySPOs },
+      {
+        name: translations.pageAnalytics.dreps,
+        value: data.totalStakeControlledByDReps,
+      },
+      {
+        name: translations.pageAnalytics.spos,
+        value: data.totalStakeControlledBySPOs,
+      },
     ],
-    [data, translations.dreps, translations.spos]
+    [data, translations]
   );
 
   const chartColors = useMemo(
@@ -41,7 +46,7 @@ const StakeDistributionCard = ({
     <Card className="bg-card text-card-foreground shadow-none">
       <CardContent className="p-6">
         <h3 className="text-lg font-semibold text-foreground mb-6">
-          {translations.stakeDistribution}
+          {translations.pageAnalytics.stakeDistribution}
         </h3>
         <div className="h-32">
           <ResponsiveContainer>

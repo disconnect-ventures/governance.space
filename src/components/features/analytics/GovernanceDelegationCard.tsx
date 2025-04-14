@@ -2,12 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import { useCallback, useMemo } from "react";
 import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
-import { Dictionary } from "~/config/dictionaries";
 
-type GovernanceDelegationCardProps = {
-  data: AnalyticsDashboardProps["data"];
-  translations: Dictionary["pageAnalytics"];
-};
+type GovernanceDelegationCardProps = Pick<
+  AnalyticsDashboardProps,
+  "data" | "translations"
+>;
 
 const GovernanceDelegationCard = ({
   data,
@@ -27,12 +26,12 @@ const GovernanceDelegationCard = ({
   const governanceData = useMemo(
     () => [
       {
-        name: translations.notTakingPartGovernance,
+        name: translations.pageAnalytics.notTakingPartGovernance,
         value: notTakingPart,
         percentage: ((notTakingPart / circulation) * 100).toFixed(2),
       },
       {
-        name: translations.activeDreps,
+        name: translations.pageAnalytics.activeDreps,
         value: data.totalStakeControlledByDReps,
         percentage: (
           (data.totalStakeControlledByDReps / circulation) *
@@ -40,7 +39,7 @@ const GovernanceDelegationCard = ({
         ).toFixed(2),
       },
       {
-        name: translations.alwaysAbstain,
+        name: translations.pageAnalytics.alwaysAbstain,
         value: data.alwaysAbstainVotingPower,
         percentage: (
           (data.alwaysAbstainVotingPower / circulation) *
@@ -48,7 +47,7 @@ const GovernanceDelegationCard = ({
         ).toFixed(2),
       },
       {
-        name: translations.noConfidence,
+        name: translations.pageAnalytics.noConfidence,
         value: data.alwaysNoConfidenceVotingPower,
         percentage: (
           (data.alwaysNoConfidenceVotingPower / circulation) *
@@ -56,15 +55,7 @@ const GovernanceDelegationCard = ({
         ).toFixed(2),
       },
     ],
-    [
-      data,
-      circulation,
-      notTakingPart,
-      translations.notTakingPartGovernance,
-      translations.activeDreps,
-      translations.alwaysAbstain,
-      translations.noConfidence,
-    ]
+    [data, circulation, notTakingPart, translations]
   );
 
   const chartColors = useMemo(
@@ -99,10 +90,10 @@ const GovernanceDelegationCard = ({
     <Card className="bg-card text-card-foreground shadow-none">
       <CardContent className="p-6">
         <h3 className="text-lg font-semibold text-foreground mb-2">
-          {translations.governanceDelegation}
+          {translations.pageAnalytics.governanceDelegation}
         </h3>
         <p className="text-sm text-muted-foreground mb-6">
-          {translations.governanceDelegationDesc}
+          {translations.pageAnalytics.governanceDelegationDesc}
         </p>
         <div className="flex">
           <div className="h-48 flex-1">
