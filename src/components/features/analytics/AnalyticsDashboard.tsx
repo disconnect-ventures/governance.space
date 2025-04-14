@@ -38,7 +38,10 @@ const AnalyticsDashboard = ({
           translations={translations.pageAnalytics}
         />
         <Suspense fallback={<div>Loading...</div>}>
-          <VotingPowerCard data={data} />
+          <VotingPowerCard
+            data={data}
+            translations={translations.pageAnalytics}
+          />
         </Suspense>
       </div>
 
