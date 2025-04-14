@@ -4,7 +4,7 @@ steps:
       - build
       - >-
         $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/pr-$_PR_NUMBER:$COMMIT_SHA
-      - '--builder=gcr.io/buildpacks/builder:v1'
+      - '--builder=gcr.io/buildpacks/builder:latest'
       - '--network=cloudbuild'
       - '--path=.'
       - '--env=API_BASE_URL=${_API_BASE_URL}'
