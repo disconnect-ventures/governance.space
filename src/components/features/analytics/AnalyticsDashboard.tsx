@@ -37,12 +37,10 @@ const AnalyticsDashboard = ({
           data={data}
           translations={translations.pageAnalytics}
         />
-        <Suspense fallback={<div>Loading...</div>}>
-          <VotingPowerCard
-            data={data}
-            translations={translations.pageAnalytics}
-          />
-        </Suspense>
+        <VotingPowerCard
+          data={data}
+          translations={translations.pageAnalytics}
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -50,11 +48,16 @@ const AnalyticsDashboard = ({
           data={data}
           translations={translations.pageAnalytics}
         />
-        <DRepStatusDistributionCard drepStatsPromise={drepStatsPromise} />
+        <Suspense fallback={<div>{translations.general.loading}</div>}>
+          <DRepStatusDistributionCard
+            drepStatsPromise={drepStatsPromise}
+            translations={translations.pageAnalytics}
+          />
+        </Suspense>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>{translations.general.loading}</div>}>
           <Top10DRepsCard
             drepListPromise={drepListPromise}
             translations={translations}

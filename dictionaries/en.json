@@ -370,7 +370,6 @@
     "governanceDelegation": "Governance Delegation",
     "governanceDelegationDesc": "ADA taking part in Governance as of today by category in relation to the circulating supply of ADA on Cardano.",
     "notTakingPartGovernance": "Not taking part in Governance",
-    "activeDreps": "Active DReps",
     "tokenomics": "Cardano Tokenomics",
     "amountInAda": "Amount in ADA",
     "position": "Position",
@@ -384,7 +383,12 @@
     "status": "Active",
     "epochMetrics": "Epoch Metrics",
     "epoch": "Epoch",
-    "changed": "Changed"
+    "changed": "Changed",
+    "activeDreps": "Active DReps",
+    "inactiveDreps": "Inactive DReps",
+    "retiredDreps": "Retired DReps",
+    "drepsStatusDistribution": "DRep Status Distribution",
+    "drepsStatusDistributionDesc": "Distribution of all registered DReps by their current status"
   },
   "pageHelp": {
     "title": "Help",

@@ -366,12 +366,11 @@
     "dreps": "DReps",
     "spos": "SPOs",
     "votingPower": "Poder de Voto",
-    "alwaysAbstain": "Sempre se Abster",
+    "alwaysAbstain": "Abster-se",
     "noConfidence": "Sem Confiança",
     "governanceDelegation": "Delegação de Governança",
     "governanceDelegationDesc": "ADA participando da Governança hoje por categoria em relação ao suprimento circulante de ADA na Cardano.",
     "notTakingPartGovernance": "Sem Participar da Governança",
-    "activeDreps": "DReps Ativos",
     "tokenomics": "Tokenomics da Cardano",
     "amountInAda": "Quantidade em ADA",
     "position": "Posição",
@@ -385,7 +384,12 @@
     "status": "Ativo",
     "epochMetrics": "Métricas da Época",
     "epoch": "Época",
-    "changed": "Alterado"
+    "changed": "Alterado",
+    "activeDreps": "DReps Ativos",
+    "inactiveDreps": "DReps Inativos",
+    "retiredDreps": "DReps Retirados",
+    "drepsStatusDistribution": "Distribuição de Status dos DReps",
+    "drepsStatusDistributionDesc": "Distribuição de todos os DReps registrados por seu status atual"
   },
   "pageHelp": {
     "title": "Ajuda",
