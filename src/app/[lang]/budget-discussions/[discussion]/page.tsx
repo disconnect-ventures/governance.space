@@ -63,13 +63,13 @@ export async function generateStaticParams() {
   ).flat();
 
   return [...(firstPage?.data ?? []), ...nextPages].map((p) => ({
-    proposal: p.id,
+    discussion: p.id.toString(),
   }));
 }
 
 type BudgetDiscussionDetailsProps = PageProps<{ discussion: number }>;
 
-export default async function ProposalDetailsPage({
+export default async function BudgetDiscussionDetailsPage({
   params: paramsPromise,
 }: BudgetDiscussionDetailsProps) {
   const params = await paramsPromise;
@@ -157,6 +157,7 @@ export default async function ProposalDetailsPage({
           translations={dictionary}
           proposalId={discussionId.toString()}
           totalCommentCount={commentCount}
+          type="budgetDiscussion"
         />
       </Suspense>
     </div>

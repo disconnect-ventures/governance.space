@@ -15,6 +15,7 @@ import { Dictionary } from "~/config/dictionaries";
 import { use, useCallback, useMemo, useState, useTransition } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
 import { capitalize } from "~/lib/utils";
+import { Markdown } from "./Markdown";
 
 type CommentsProps = {
   commentsPromise: Promise<CommentResponse>;
@@ -22,6 +23,7 @@ type CommentsProps = {
     params: GetCommentsParams
   ) => Promise<CommentResponse>;
   translations: Pick<Dictionary, "general">;
+  type: GetCommentsParams["type"];
   proposalId: string;
   totalCommentCount: number;
 };
@@ -124,7 +126,7 @@ const CommentCard = ({
             )}
           </div>
         </div>
-        <p className="text-foreground">{comment.attributes.comment_text}</p>
+        <Markdown content={comment.attributes.comment_text}></Markdown>
 
         {hasChildren && (
           <Button
@@ -214,6 +216,7 @@ export function Comments({
   translations,
   proposalId,
   totalCommentCount,
+  type,
 }: CommentsProps) {
   const commentsResponse = use(commentsPromise);
   const comments = useMemo(() => commentsResponse.data, [commentsResponse]);
@@ -236,6 +239,7 @@ export function Comments({
   const loadChildComments = useCallback(
     async (parentId: string, page = 1) => {
       const params: GetCommentsParams = {
+        type,
         proposalId,
         parentCommentId: parentId,
         page,
@@ -245,7 +249,7 @@ export function Comments({
 
       return await loadChildCommentsAction(params);
     },
-    [loadChildCommentsAction, proposalId]
+    [loadChildCommentsAction, proposalId, type]
   );
 
   const loadMoreComments = useCallback(async () => {
@@ -254,6 +258,7 @@ export function Comments({
       try {
         const nextPage = currentPage + 1;
         const params: GetCommentsParams = {
+          type,
           proposalId,
           page: nextPage,
           pageSize: 25,
@@ -274,7 +279,7 @@ export function Comments({
         setLoadingMore(false);
       }
     });
-  }, [loadChildCommentsAction, currentPage, proposalId]);
+  }, [loadChildCommentsAction, currentPage, proposalId, type]);
 
   return (
     <Card className="w-full mx-auto bg-card text-card-foreground">
