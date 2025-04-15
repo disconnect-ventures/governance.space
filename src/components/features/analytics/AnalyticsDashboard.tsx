@@ -54,7 +54,7 @@ const AnalyticsDashboard = ({
             translations={translations}
           />
         </Suspense>
-        <EpochMetricsCard data={data} />
+        <EpochMetricsCard data={data} translations={translations} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
