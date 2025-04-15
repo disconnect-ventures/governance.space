@@ -44,7 +44,19 @@ interface CommentReport {
   };
 }
 
-export interface GetCommentsParams {
+export type GetCommentsParams =
+  | ProposalGetCommentsParams
+  | BudgetDiscussionGetCommentsParams;
+
+export type ProposalGetCommentsParams = BaseGetCommentsParams & {
+  type: "proposal";
+};
+
+export type BudgetDiscussionGetCommentsParams = BaseGetCommentsParams & {
+  type: "budgetDiscussion";
+};
+
+export type BaseGetCommentsParams = {
   proposalId: string;
   parentCommentId?: string;
   page?: number;
@@ -53,14 +65,15 @@ export interface GetCommentsParams {
     field: string;
     direction: "asc" | "desc";
   };
-}
+};
 
 export type CommentResponse = PdfApiResponse<Comment[]>;
 
-export async function getProposalComments(
+export async function getComments(
   params: GetCommentsParams
 ): Promise<CommentResponse> {
   const {
+    type,
     proposalId,
     parentCommentId = null,
     page = 1,
@@ -70,7 +83,13 @@ export async function getProposalComments(
 
   const url = new URL("/api/comments", PDF_API_URL);
   const queryParams = url.searchParams;
-  queryParams.append("filters[$and][0][proposal_id]", proposalId);
+
+  if (type === "budgetDiscussion") {
+    queryParams.append("filters[$and][0][bd_proposal_id]", proposalId);
+  } else {
+    queryParams.append("filters[$and][0][proposal_id]", proposalId);
+  }
+
   if (parentCommentId) {
     queryParams.append("filters[$and][1][comment_parent_id]", parentCommentId);
   } else {
@@ -95,4 +114,28 @@ export async function getProposalComments(
     console.error("Error fetching proposal comments:", error);
     throw error;
   }
+}
+
+export async function getProposalComments(
+  params: Pick<
+    ProposalGetCommentsParams,
+    Exclude<keyof ProposalGetCommentsParams, "type">
+  >
+): Promise<CommentResponse> {
+  return getComments({
+    ...params,
+    type: "proposal",
+  });
+}
+
+export async function getBudgetDiscussionComments(
+  params: Pick<
+    BudgetDiscussionGetCommentsParams,
+    Exclude<keyof BudgetDiscussionGetCommentsParams, "type">
+  >
+): Promise<CommentResponse> {
+  return getComments({
+    ...params,
+    type: "budgetDiscussion",
+  });
 }
