@@ -15,6 +15,9 @@ import {
   listBudgetDiscussions,
 } from "~/lib/budgetDiscussions";
 import { BudgetDiscussionContent } from "~/components/features/budget/BudgetContent";
+import { getBudgetDiscussionComments } from "~/lib/comments";
+import { Suspense } from "react";
+import { Comments, CommentsSkeleton } from "~/components/features/Comments";
 
 export async function generateMetadata({
   params,
@@ -96,6 +99,10 @@ export default async function ProposalDetailsPage({
 
   const commentCount = budgetDiscussion.attributes.prop_comments_number;
 
+  const commentsPromise = getBudgetDiscussionComments({
+    proposalId: discussionId.toString(),
+  });
+
   return (
     <div className="bg-background text-foreground">
       <PageTitle
@@ -142,6 +149,16 @@ export default async function ProposalDetailsPage({
           <VotingSection />
         </CardContent>
       </Card>
+
+      <Suspense fallback={<CommentsSkeleton />}>
+        <Comments
+          loadChildCommentsAction={getBudgetDiscussionComments}
+          commentsPromise={commentsPromise}
+          translations={dictionary}
+          proposalId={discussionId.toString()}
+          totalCommentCount={commentCount}
+        />
+      </Suspense>
     </div>
   );
 }
