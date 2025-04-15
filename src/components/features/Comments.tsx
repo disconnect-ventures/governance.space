@@ -100,16 +100,18 @@ const CommentCard = ({
   }, [loadChildComments, currentPage]);
 
   const commentContent = (
-    <div className="flex gap-4">
-      <Avatar className="w-10 h-10">
-        <AvatarFallback className="bg-background text-muted-foreground">
-          {comment.attributes.user_govtool_username.substring(0, 2)}
-        </AvatarFallback>
-      </Avatar>
-      <div className="flex-1 space-y-2">
-        <div className="flex items-center justify-between">
-          <div className="font-medium text-foreground">
-            {comment.attributes.user_govtool_username}
+    <div className="flex gap-4 p-2">
+      <div className="flex-1 space-y-8 w-full break-words">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <Avatar className="w-10 h-10">
+              <AvatarFallback className="bg-background text-muted-foreground">
+                {comment.attributes.user_govtool_username.substring(0, 2)}
+              </AvatarFallback>
+            </Avatar>
+            <div className="font-medium text-foreground">
+              {comment.attributes.user_govtool_username}
+            </div>
           </div>
           <div className="text-sm text-muted-foreground">
             {new Date(comment.attributes.updatedAt).toLocaleString(
@@ -194,7 +196,7 @@ const CommentCard = ({
   if (level === 0) {
     return (
       <Card className="bg-secondary">
-        <CardContent className="p-4">
+        <CardContent className="p-2 md:p-4">
           {commentContent}
           {childCommentsContainer}
         </CardContent>
@@ -283,7 +285,7 @@ export function Comments({
 
   return (
     <Card className="w-full mx-auto bg-card text-card-foreground">
-      <CardContent className="p-6">
+      <CardContent className="p-3 md:p-6">
         <div className="space-y-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-semibold text-foreground">
