@@ -5,38 +5,38 @@ import { Users, Database, Vote, Award, Clock } from "lucide-react";
 import React from "react";
 import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
 
-type VotingPowerCardProps = Pick<AnalyticsDashboardProps, "data">;
+type MetricsCardProps = Pick<AnalyticsDashboardProps, "data" | "translations">;
 
-const VotingPowerCard = ({ data }: VotingPowerCardProps) => {
+const MetricsCard = ({ data, translations }: MetricsCardProps) => {
   const metrics = useMemo(
     () => [
       {
         icon: <Users />,
-        label: "Delegators",
+        label: translations.pageAnalytics.delegators,
         value: data.uniqueDelegators,
       },
       {
         icon: <Database />,
-        label: "Total DReps",
+        label: translations.pageAnalytics.totalDreps,
         value: data.totalRegisteredDReps,
       },
       {
         icon: <Vote />,
-        label: "DRep Votes",
+        label: translations.pageAnalytics.drepVotes,
         value: data.totalDRepVotes,
       },
       {
         icon: <Award />,
-        label: "Active DReps",
+        label: translations.pageAnalytics.activeDreps,
         value: data.totalActiveDReps,
       },
       {
         icon: <Clock />,
-        label: "Gov Actions",
+        label: translations.pageAnalytics.governanceActions,
         value: data.totalGovernanceActions,
       },
     ],
-    [data]
+    [data, translations]
   );
 
   return metrics.map((metric, index) => (
@@ -57,4 +57,4 @@ const VotingPowerCard = ({ data }: VotingPowerCardProps) => {
     </Card>
   ));
 };
-export default VotingPowerCard;
+export default MetricsCard;
