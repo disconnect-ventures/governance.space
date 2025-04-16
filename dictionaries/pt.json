@@ -304,7 +304,7 @@
     "description": "",
     "longDescription": "Discussão de propostas orçamentárias relacionadas ao ecossistema blockchain Cardano para inclusão em um Orçamento Cardano facilitado pela Intersect.",
     "search": "Pesquisar discussões orçamentárias...",
-    "cardTypeLabel": "Tipo de Discussão Orçamentária",
+    "cardTypeLabel": "Tipo",
     "filterByLabel": "Filtrar por Tipo de Discussão",
     "sortByLabel": "Ordenar por Data de Criação",
     "sortByLabelAsc": "Crescente",
