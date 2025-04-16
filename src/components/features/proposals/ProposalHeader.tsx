@@ -37,10 +37,14 @@ export const ProposalHeader = ({
 }: ProposalHeaderProps) => {
   return (
     <div>
-      <div className="flex items-center gap-4 mb-4 text-center w-full">
-        <ProposalTypeBadge type={type} />
-        <span className="text-sm text-muted-foreground">{typeLabel}</span>
-        <Badge className="text-sm ml-auto bg-green-100 text-green-800">
+      <div className="flex items-center justify-between gap-4 mb-4 text-center w-full">
+        <div className="flex items-center gap-2 flex-wrap-reverse">
+          <ProposalTypeBadge type={type} />
+          <span className="text-sm text-muted-foreground text-left">
+            {typeLabel}
+          </span>
+        </div>
+        <Badge className="text-sm bg-green-100 text-green-800">
           {isActive ? "ACTIVE" : "INACTIVE"}
         </Badge>
       </div>
