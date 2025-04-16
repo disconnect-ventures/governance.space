@@ -37,7 +37,7 @@ export const ProposalHeader = ({
 }: ProposalHeaderProps) => {
   return (
     <div>
-      <div className="flex items-center justify-between gap-4 mb-4 text-center w-full">
+      <div className="flex items-end justify-between gap-4 mb-4 text-center w-full">
         <div className="flex items-center gap-2 flex-wrap-reverse">
           <ProposalTypeBadge type={type} />
           <span className="text-sm text-muted-foreground text-left">
@@ -49,7 +49,7 @@ export const ProposalHeader = ({
         </Badge>
       </div>
 
-      <h2 className="text-2xl font-bold mb-4">{title}</h2>
+      <h2 className="text-xl md:text-2xl font-bold mb-4">{title}</h2>
 
       <div className="grid grid-cols-3 justify-between sm:space-y-0 text-sm gap-4">
         {typeof likes !== "undefined" ? (

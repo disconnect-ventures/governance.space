@@ -20,7 +20,7 @@ export const ProposalTypeBadge = ({ type }: { type: string }) => {
     <Badge
       variant="outline"
       className={cn(
-        "inline-flex items-center border border-gray-300 py-1 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-white text-lg px-6 rounded-full",
+        "inline-flex items-center border border-gray-300 py-1 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-white text-sm md:text-md px-6 rounded-full",
         badgeColor
       )}
     >

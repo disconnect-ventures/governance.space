@@ -97,7 +97,9 @@ export const GovernanceHeader = ({
         />
       </div>
 
-      <h2 className="text-2xl font-bold mb-4 dark:text-gray-100">{title}</h2>
+      <h2 className="text-xl md:text-2xl font-bold mb-4 dark:text-gray-100">
+        {title}
+      </h2>
 
       <div className="flex flex-col sm:flex-row gap-3 justify-between items-start">
         <Tabs defaultValue="abstract" className="w-full">

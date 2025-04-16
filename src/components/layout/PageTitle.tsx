@@ -37,7 +37,7 @@ export function PageTitle({
         <div className="p-2 rounded-full bg-secondary/50 h-12 w-12 flex items-center justify-center text-foreground">
           {icon}
         </div>
-        <h1 className="text-4xl font-bold text-foreground">
+        <h1 className="text-2xl md:text-4xl font-bold text-foreground">
           {title ? title : translations?.title}
         </h1>
         {badge && (
