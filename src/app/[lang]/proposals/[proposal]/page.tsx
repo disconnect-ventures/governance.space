@@ -142,7 +142,7 @@ export default async function ProposalDetailsPage({
               </div>
             </div>
 
-            <ProposalContent proposal={proposal} />
+            <ProposalContent proposal={proposal} translations={dictionary} />
           </div>
         </CardContent>
       </Card>

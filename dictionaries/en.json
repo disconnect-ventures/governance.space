@@ -314,14 +314,16 @@
     "badgeText": "",
     "description": "Details about this discussion",
     "longDescription": "",
-    "castYourVote": "Cast Your Vote"
+    "castYourVote": "Cast Your Vote",
+    "noSupportingLinks": "No supporting links provided"
   },
   "pageProposalsDetails": {
     "title": "Proposal Details",
     "badgeText": "",
     "description": "Details about this Proposal",
     "longDescription": "",
-    "castYourVote": "Cast Your Vote"
+    "castYourVote": "Cast Your Vote",
+    "noSupportingLinks": "No supporting links provided"
   },
   "pageCommittees": {
     "title": "Committee Members",

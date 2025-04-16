@@ -4,13 +4,16 @@ import { Markdown } from "../Markdown";
 import { Separator } from "~/components/ui/separator";
 import { BudgetDiscussion } from "~/lib/budgetDiscussions";
 import { useMemo } from "react";
+import { Dictionary } from "~/config/dictionaries";
 
 interface BudgetDiscussionContentProps {
   discussion: BudgetDiscussion;
+  translations: Dictionary;
 }
 
 export const BudgetDiscussionContent = ({
   discussion,
+  translations,
 }: BudgetDiscussionContentProps) => {
   const proposalDetails =
     discussion.attributes.bd_proposal_detail?.data.attributes;
@@ -165,12 +168,12 @@ export const BudgetDiscussionContent = ({
         </div>
       )}
 
-      {proposalLinks.length > 0 && (
-        <div className="pb-4 space-y-4">
-          <h3 className="text-2xl text-foreground">Supporting Links</h3>
-          <Separator />
-          <div className="space-y-3">
-            {proposalLinks.map(({ prop_link_text, prop_link, id }) => (
+      <div className="pb-4 space-y-4">
+        <h3 className="text-2xl text-foreground">Supporting Links</h3>
+        <Separator />
+        <div className="space-y-3">
+          {proposalLinks.length > 0 ? (
+            proposalLinks.map(({ prop_link_text, prop_link, id }) => (
               <Link
                 key={id}
                 href={prop_link}
@@ -183,10 +186,14 @@ export const BudgetDiscussionContent = ({
                   {prop_link_text}
                 </span>
               </Link>
-            ))}
-          </div>
+            ))
+          ) : (
+            <div className="text-sm text-muted-foreground">
+              {translations.pageProposalsDetails.noSupportingLinks}
+            </div>
+          )}
         </div>
-      )}
+      </div>
 
       <div className="text-sm text-muted-foreground">
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-8">

@@ -4,12 +4,17 @@ import { Proposal } from "~/lib/proposals";
 import { Markdown } from "../Markdown";
 import { Separator } from "~/components/ui/separator";
 import { useMemo } from "react";
+import { Dictionary } from "~/config/dictionaries";
 
 interface ProposalContentProps {
   proposal: Proposal;
+  translations: Dictionary;
 }
 
-export const ProposalContent = ({ proposal }: ProposalContentProps) => {
+export const ProposalContent = ({
+  proposal,
+  translations,
+}: ProposalContentProps) => {
   const { prop_rationale, prop_abstract, prop_motivation } =
     proposal.attributes.content.attributes;
   const proposalLinks = useMemo(
@@ -35,11 +40,11 @@ export const ProposalContent = ({ proposal }: ProposalContentProps) => {
           </div>
         ))}
 
-        {proposalLinks.length ? (
-          <div>
-            <h3 className="font-medium mb-2">Supporting links</h3>
-            <div className="space-y-3">
-              {proposalLinks.map(({ prop_link_text, prop_link }, index) => (
+        <div>
+          <h3 className="font-medium mb-2">Supporting links</h3>
+          <div className="space-y-3">
+            {proposalLinks.length > 0 ? (
+              proposalLinks.map(({ prop_link_text, prop_link }, index) => (
                 <Link
                   key={index}
                   href={prop_link}
@@ -52,10 +57,14 @@ export const ProposalContent = ({ proposal }: ProposalContentProps) => {
                     {prop_link_text}
                   </span>
                 </Link>
-              ))}
-            </div>
+              ))
+            ) : (
+              <div className="text-sm text-muted-foreground">
+                {translations.pageProposalsDetails.noSupportingLinks}
+              </div>
+            )}
           </div>
-        ) : null}
+        </div>
       </div>
     </div>
   );
