@@ -5,6 +5,7 @@ import { Separator } from "~/components/ui/separator";
 import { BudgetDiscussion } from "~/lib/budgetDiscussions";
 import { useMemo } from "react";
 import { Dictionary } from "~/config/dictionaries";
+import { cn } from "~/lib/utils";
 
 interface BudgetDiscussionContentProps {
   discussion: BudgetDiscussion;
@@ -47,6 +48,24 @@ export const BudgetDiscussionContent = ({
   const formattedAdaAmount = Number(
     costingDetails?.ada_amount ?? 0
   ).toLocaleString();
+
+  const InfoSection = ({
+    title,
+    children,
+  }: {
+    title: string;
+    children: React.ReactNode;
+  }) => {
+    return (
+      <div>
+        <div key={title} className="pb-4 space-y-4">
+          <h4 className="text-2xl text-foreground">{title}</h4>
+          <Separator />
+          {children}
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="space-y-8">
@@ -109,90 +128,118 @@ export const BudgetDiscussionContent = ({
           ],
           ["Experience", proposalDetails?.experience],
           ["Maintenance & Support", proposalDetails?.maintain_and_support],
-          ["Roadmap Alignment", psapbDetails?.explain_proposal_roadmap],
           [
             "Supplementary Endorsement",
             psapbDetails?.supplementary_endorsement,
           ],
         ].map(([label, content]) => (
-          <div key={label} className="pb-4 space-y-4">
-            <h3 className="text-2xl text-foreground">{label}</h3>
-            <Separator />
-            {content && <Markdown content={content} />}
-          </div>
+          <InfoSection key={label} title={label ?? ""}>
+            <Markdown content={content ?? ""} />
+          </InfoSection>
         ))}
-      </div>
 
-      <div className="pb-4 space-y-4">
-        <h3 className="text-2xl text-foreground">Ownership Information</h3>
-        <Separator />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <span className="text-sm text-muted-foreground">
-              Submitted On Behalf Of
-            </span>
-            <p className="font-medium">
-              {ownershipDetails?.submited_on_behalf}
-            </p>
+        <InfoSection title="Roadmap Alignment">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              ["", psapbDetails?.explain_proposal_roadmap, "col-span-full"],
+              [
+                "Does your proposal align with any of the Intersect Committees?",
+                psapbDetails?.committee_name.data.attributes.committee_name,
+              ],
+              [
+                "Does this proposal align to the Product Roadmap and Roadmap Goals?",
+                psapbDetails?.roadmap_name.data.attributes.roadmap_name,
+              ],
+            ]
+              .filter(([, content]) => !!content)
+              .map(([label, content, className], index) => (
+                <div
+                  key={`${label}-${index}`}
+                  className={cn("pb-4 space-y-4", className)}
+                >
+                  {label && (
+                    <h4 className="text-sm text-foreground mb-2">{label}</h4>
+                  )}
+                  <Markdown content={content ?? ""} />
+                </div>
+              ))}
           </div>
-          <div>
-            <span className="text-sm text-muted-foreground">Group Name</span>
-            <p className="font-medium">{ownershipDetails?.group_name}</p>
+        </InfoSection>
+
+        <InfoSection title="Administration and Auditing">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              [
+                "Would you like Intersect to be your named Administrator, including acting as the auditor, as per the Cardano Constitution?",
+                discussion.attributes.intersect_named_administrator
+                  ? translations.general.yes
+                  : translations.general.no,
+              ],
+            ]
+              .filter(([, content]) => !!content)
+              .map(([label, content, className], index) => (
+                <div
+                  key={`${label}-${index}`}
+                  className={cn("pb-4 space-y-4", className)}
+                >
+                  <h4 className="text-sm text-foreground mb-2">{label}</h4>
+                  <Markdown content={content ?? ""} />
+                </div>
+              ))}
           </div>
-          <div>
-            <span className="text-sm text-muted-foreground">Type of Group</span>
-            <p className="font-medium">{ownershipDetails?.type_of_group}</p>
+        </InfoSection>
+
+        <InfoSection title="Ownership Information">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              ["Submitted On Behalf Of", ownershipDetails?.submited_on_behalf],
+              ["Group Name", ownershipDetails?.group_name],
+              ["Type of Group", ownershipDetails?.type_of_group],
+              ["Social Handles", ownershipDetails?.social_handles],
+            ]
+              .filter(([, content]) => !!content)
+              .map(([label, content, className], index) => (
+                <div
+                  key={`${label}-${index}`}
+                  className={cn("pb-4 space-y-4", className)}
+                >
+                  <h4 className="text-sm text-foreground mb-2">{label}</h4>
+                  <span className="text-muted-foreground">{content}</span>
+                </div>
+              ))}
           </div>
-          <div>
-            <span className="text-sm text-muted-foreground">
-              Social Handles
-            </span>
-            <p className="font-medium">{ownershipDetails?.social_handles}</p>
-          </div>
-        </div>
-        {ownershipDetails?.key_info_to_identify_group && (
-          <div>
-            <span className="text-sm text-muted-foreground">
-              Key Information
-            </span>
-            <p>{ownershipDetails.key_info_to_identify_group}</p>
-          </div>
+        </InfoSection>
+
+        {proposalDetails?.key_dependencies && (
+          <InfoSection title="Key Dependencies">
+            <Markdown content={proposalDetails.key_dependencies} />
+          </InfoSection>
         )}
-      </div>
 
-      {proposalDetails?.key_dependencies && (
-        <div className="pb-4 space-y-4">
-          <h3 className="text-2xl text-foreground">Key Dependencies</h3>
-          <Separator />
-          <Markdown content={proposalDetails.key_dependencies} />
-        </div>
-      )}
-
-      <div className="pb-4 space-y-4">
-        <h3 className="text-2xl text-foreground">Supporting Links</h3>
-        <Separator />
-        <div className="space-y-3">
-          {proposalLinks.length > 0 ? (
-            proposalLinks.map(({ prop_link_text, prop_link, id }) => (
-              <Link
-                key={id}
-                href={prop_link}
-                className="flex items-center gap-2 transition-colors hover:text-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <LinkIcon className="w-4 h-4 text-primary" />
-                <span className="text-primary hover:text-primary/80">
-                  {prop_link_text}
-                </span>
-              </Link>
-            ))
-          ) : (
-            <div className="text-sm text-muted-foreground">
-              {translations.pageProposalsDetails.noSupportingLinks}
-            </div>
-          )}
-        </div>
+        <InfoSection title="Supporting Links">
+          <div className="space-y-3">
+            {proposalLinks.length > 0 ? (
+              proposalLinks.map(({ prop_link_text, prop_link, id }) => (
+                <Link
+                  key={id}
+                  href={prop_link}
+                  className="flex items-center gap-2 transition-colors hover:text-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkIcon className="w-4 h-4 text-primary" />
+                  <span className="text-primary hover:text-primary/80">
+                    {prop_link_text}
+                  </span>
+                </Link>
+              ))
+            ) : (
+              <div className="text-sm text-muted-foreground">
+                {translations.pageProposalsDetails.noSupportingLinks}
+              </div>
+            )}
+          </div>
+        </InfoSection>
       </div>
 
       <div className="text-sm text-muted-foreground">
