@@ -18,7 +18,7 @@ import { Markdown } from "../Markdown";
 
 type ProposalCardProps = {
   proposal: Proposal;
-  translations: Dictionary["general"];
+  translations: Dictionary;
 };
 
 const ProposalCard = ({ proposal, translations }: ProposalCardProps) => {
@@ -48,7 +48,7 @@ const ProposalCard = ({ proposal, translations }: ProposalCardProps) => {
         <div className="flex items-start justify-between">
           <div className="space-y-1">
             <div className="text-sm text-muted-foreground">
-              # ID: {proposalId}
+              {translations.general.idNumber}: {proposalId}
             </div>
             <h2 className="text-2xl text-foreground font-semibold leading-[1.5rem] h-[3rem] overflow-hidden">
               {proposal.attributes.content.attributes.prop_name}
@@ -59,8 +59,8 @@ const ProposalCard = ({ proposal, translations }: ProposalCardProps) => {
             className={clsx("p-2 rounded-full", getStatusBadgeClasses())}
           >
             {isProposalActive
-              ? translations.active.toUpperCase()
-              : translations.inactive.toUpperCase()}
+              ? translations.general.active.toUpperCase()
+              : translations.general.inactive.toUpperCase()}
           </Badge>
         </div>
 
@@ -72,7 +72,7 @@ const ProposalCard = ({ proposal, translations }: ProposalCardProps) => {
             <div className="flex gap-x-4 items-center flex-wrap">
               <div className="font-medium">{username}</div>
               <div className="text-sm text-muted-foreground">
-                {translations.author}
+                {translations.general.author}
               </div>
             </div>
           </div>
@@ -85,28 +85,38 @@ const ProposalCard = ({ proposal, translations }: ProposalCardProps) => {
         </div>
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
           <ProposalTypeBadge type={actionType} />
-          <div className="text-muted-foreground">Governance Action Type</div>
+          <div className="text-muted-foreground">
+            {translations.pageGovernanceActions.governanceActionType}
+          </div>
         </div>
 
         <div className="grid grid-cols-3 justify-between sm:space-y-0 text-sm gap-4 text-muted-foreground">
           <div className="flex items-center space-x-2">
             <ThumbsUpIcon className="h-4 w-4" />
-            <span>{proposal.attributes.prop_likes} likes</span>
+            <span>
+              {proposal.attributes.prop_likes} {translations.general.likes}
+            </span>
           </div>
           <div className="flex items-center space-x-2">
             <ThumbsDownIcon className="h-4 w-4" />
-            <span>{proposal.attributes.prop_dislikes} dislikes</span>
+            <span>
+              {proposal.attributes.prop_dislikes}{" "}
+              {translations.general.dislikes}
+            </span>
           </div>
           <div className="flex items-center space-x-2">
             <MessageSquare className="h-4 w-4" />
-            <span>{proposal.attributes.prop_comments_number} comments</span>
+            <span>
+              {proposal.attributes.prop_comments_number}{" "}
+              {translations.general.comments}
+            </span>
           </div>
 
           <div className="col-span-full space-y-2 text-foreground">
             <div className="flex items-center space-x-2">
               <Calendar className="h-4 w-4" />
               <span>
-                Submitted:{" "}
+                {translations.general.submitted}:{" "}
                 <span className="font-semibold">
                   {formatDate(createdDate, createdEpoch)}
                 </span>
@@ -115,7 +125,7 @@ const ProposalCard = ({ proposal, translations }: ProposalCardProps) => {
             <div className="flex items-center space-x-2">
               <Calendar className="h-4 w-4" />
               <span>
-                Updated:{" "}
+                {translations.general.updated}:{" "}
                 <span className="font-semibold">
                   {formatDate(updatedAt, updatedEpoch)}
                 </span>
@@ -128,7 +138,7 @@ const ProposalCard = ({ proposal, translations }: ProposalCardProps) => {
           href={`/proposals/${proposal.id}`}
           className={buttonVariants({ variant: "default" })}
         >
-          {translations.viewDetailsAndVote}
+          {translations.general.viewDetailsAndVote}
         </Link>
       </CardContent>
     </Card>

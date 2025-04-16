@@ -17,6 +17,7 @@
     "views": "visualizações",
     "comments": "comentários",
     "submitted": "Enviado",
+    "updated": "Atualizado",
     "expires": "Expira",
     "expired": "Expirado",
     "author": "Autor",
@@ -61,7 +62,10 @@
     "loading": "Carregando...",
     "noComments": "Ainda não há comentários. Seja o primeiro a comentar!",
     "ascending": "Crescente",
-    "descending": "Decrescente"
+    "descending": "Decrescente",
+    "idNumber": "# ID",
+    "likes": "gostei",
+    "dislikes": "não gostei"
   },
   "accessibility": {
     "pagination": "paginação",

@@ -17,6 +17,7 @@
     "views": "views",
     "comments": "comments",
     "submitted": "Submitted",
+    "updated": "Updated",
     "expires": "Expires",
     "expired": "Expired",
     "author": "Author",
@@ -61,7 +62,10 @@
     "loading": "Loading...",
     "noComments": "No comments yet. Be the first to comment!",
     "ascending": "Ascending",
-    "descending": "Descending"
+    "descending": "Descending",
+    "idNumber": "# ID",
+    "likes": "likes",
+    "dislikes": "dislikes"
   },
   "accessibility": {
     "pagination": "pagination",
