@@ -47,7 +47,7 @@ export async function ProposalDirectory({
         <ProposalCard
           key={index}
           proposal={proposal}
-          translations={translations.general}
+          translations={translations}
         />
       ))}
       translations={translations}
