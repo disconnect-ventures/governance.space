@@ -11,12 +11,12 @@ export default function Logo() {
             height={512}
             width={512}
             alt="logo-icon"
-            className="h-10 w-10 mr-1 relative bottom-1"
+            className="h-8 w-8 md:h-10 md:w-10 mr-1 relative bottom-1"
           />
-          <span className="text-xl font-semibold text-foreground">
+          <span className="md:text-xl font-semibold text-foreground">
             GOVERNANCE
           </span>
-          <span className="text-xl text-muted-foreground">SPACE</span>
+          <span className="md:text-xl text-muted-foreground">SPACE</span>
         </div>
       </Link>
     </div>
