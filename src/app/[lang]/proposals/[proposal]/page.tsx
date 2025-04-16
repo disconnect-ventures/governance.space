@@ -123,6 +123,7 @@ export default async function ProposalDetailsPage({
               likes={likes}
               dislikes={dislikes}
               commentCount={commentCount}
+              translations={dictionary}
             />
 
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr]">

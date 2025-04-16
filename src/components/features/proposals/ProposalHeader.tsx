@@ -6,7 +6,8 @@ import {
   ThumbsUpIcon,
 } from "lucide-react";
 import { formatDate } from "~/lib/utils";
-import { ProposalTypeBadge } from "./ProposalBadge";
+import { ProposalBadge } from "./ProposalBadge";
+import { Dictionary } from "~/config/dictionaries";
 
 interface ProposalHeaderProps {
   type: string;
@@ -20,6 +21,7 @@ interface ProposalHeaderProps {
   dislikes?: number;
   likes?: number;
   typeLabel?: string;
+  translations: Dictionary;
 }
 
 export const ProposalHeader = ({
@@ -34,12 +36,13 @@ export const ProposalHeader = ({
   dislikes,
   commentCount,
   typeLabel = "Governance Action Type",
+  translations,
 }: ProposalHeaderProps) => {
   return (
     <div>
       <div className="flex items-end justify-between gap-4 mb-4 text-center w-full">
         <div className="flex items-center gap-2 flex-wrap-reverse">
-          <ProposalTypeBadge type={type} />
+          <ProposalBadge type={type} translations={translations} />
           <span className="text-sm text-muted-foreground text-left">
             {typeLabel}
           </span>
