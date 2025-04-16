@@ -140,7 +140,10 @@ export default async function BudgetDiscussionDetailsPage({
                 />
               </div>
             </div>
-            <BudgetDiscussionContent discussion={budgetDiscussion} />
+            <BudgetDiscussionContent
+              discussion={budgetDiscussion}
+              translations={dictionary}
+            />
           </div>
         </CardContent>
       </Card>

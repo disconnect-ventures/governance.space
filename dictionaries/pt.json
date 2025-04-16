@@ -316,14 +316,16 @@
     "badgeText": "",
     "description": "Detalhes sobre esta discussão",
     "longDescription": "",
-    "castYourVote": "Vote Agora"
+    "castYourVote": "Vote Agora",
+    "noSupportingLinks": "Nenhum link de apoio fornecido"
   },
   "pageProposalsDetails": {
     "title": "Detalhes da Proposta",
     "badgeText": "",
     "description": "Detalhes sobre esta Proposta",
     "longDescription": "",
-    "castYourVote": "Registre seu Voto"
+    "castYourVote": "Registre seu Voto",
+    "noSupportingLinks": "Nenhum link de apoio fornecido"
   },
   "pageCommittees": {
     "title": "Membros dos Comitês",
