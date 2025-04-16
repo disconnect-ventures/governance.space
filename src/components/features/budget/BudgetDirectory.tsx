@@ -29,18 +29,18 @@ export async function BudgetDiscussionDirectory({
       translations={dictionary}
       searchPlaceholder={dictionary.pageBudgetDiscussions.search}
       params={params}
-      sortPopoverTitle={dictionary.pageBudgetDiscussions.sortByLabel}
+      sortPopoverTitle={dictionary.pageBudgetDiscussions.sort}
       sortOptions={[
         {
-          label: dictionary.pageBudgetDiscussions.sortByLabelAsc,
+          label: dictionary.general.descending,
           value: "desc",
         },
         {
-          label: dictionary.pageBudgetDiscussions.sortByLabelDesc,
+          label: dictionary.general.ascending,
           value: "asc",
         },
       ]}
-      filterPopoverTitle={dictionary.pageBudgetDiscussions.filterByLabel}
+      filterPopoverTitle={dictionary.pageBudgetDiscussions.filter}
       filterOptions={[
         ...budgetDiscussionTypes.map((p) => ({
           label: p.attributes.type_name,
