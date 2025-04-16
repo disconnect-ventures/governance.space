@@ -175,6 +175,8 @@ export const BudgetDiscussionContent = ({
                 key={id}
                 href={prop_link}
                 className="flex items-center gap-2 transition-colors hover:text-primary"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <LinkIcon className="w-4 h-4 text-primary" />
                 <span className="text-primary hover:text-primary/80">
