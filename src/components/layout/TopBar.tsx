@@ -141,11 +141,11 @@ export const TopBar = withSuspense(
     };
 
     return (
-      <div className="flex justify-between gap-8">
+      <div className="flex justify-between items-center gap-4md:gap-8 py-2">
         <BackButton href={backHref} translations={translations} />
         <div className="flex gap-4 items-center">
           <span>{translations.share}:</span>
-          <div className="space-x-2 relative">
+          <div className="flex gap-2 flex-wrap">
             <span className="relative inline-block">
               <Twitter
                 className={baseIconClasses}
