@@ -7,18 +7,7 @@ import {
   DirectorySearchParams,
 } from "~/components/layout/Directory";
 import { Dictionary } from "~/config/dictionaries";
-import { formatCamelCase } from "~/lib/utils";
-
-export function toDictionaryKey(actionType: string): string {
-  return actionType
-    .split(" ")
-    .map((word, index) =>
-      index === 0
-        ? word.toLowerCase()
-        : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-    )
-    .join("");
-}
+import { toCamelCase } from "~/lib/utils";
 
 type ProposalDirectoryProps = {
   proposals: Array<Proposal>;
@@ -47,10 +36,10 @@ export async function ProposalDirectory({
         ...proposalTypes.map((p) => ({
           label:
             translations.pageProposals[
-              toDictionaryKey(
+              toCamelCase(
                 p.attributes.gov_action_type_name
               ) as keyof typeof translations.pageProposals
-            ] || formatCamelCase(p.attributes.gov_action_type_name),
+            ],
           value: p.id.toString(),
         })),
       ]}
