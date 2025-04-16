@@ -3,6 +3,7 @@ import Link from "~/components/features/Link";
 import { Markdown } from "../Markdown";
 import { Separator } from "~/components/ui/separator";
 import { BudgetDiscussion } from "~/lib/budgetDiscussions";
+import { useMemo } from "react";
 
 interface BudgetDiscussionContentProps {
   discussion: BudgetDiscussion;
@@ -17,9 +18,13 @@ export const BudgetDiscussionContent = ({
   const psapbDetails = discussion.attributes.bd_psapb?.data.attributes;
   const ownershipDetails =
     discussion.attributes.bd_proposal_ownership?.data.attributes;
-  const proposalLinks =
-    discussion.attributes.bd_further_information?.data.attributes
-      .proposal_links ?? [];
+  const proposalLinks = useMemo(
+    () =>
+      discussion.attributes.bd_further_information?.data.attributes.proposal_links.filter(
+        (l) => !!l.prop_link
+      ) ?? [],
+    [discussion]
+  );
 
   const formatCurrency = (amount: string, currencyCode: string) => {
     return new Intl.NumberFormat("en-US", {

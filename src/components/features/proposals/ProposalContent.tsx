@@ -3,6 +3,7 @@ import Link from "~/components/features/Link";
 import { Proposal } from "~/lib/proposals";
 import { Markdown } from "../Markdown";
 import { Separator } from "~/components/ui/separator";
+import { useMemo } from "react";
 
 interface ProposalContentProps {
   proposal: Proposal;
@@ -11,7 +12,13 @@ interface ProposalContentProps {
 export const ProposalContent = ({ proposal }: ProposalContentProps) => {
   const { prop_rationale, prop_abstract, prop_motivation } =
     proposal.attributes.content.attributes;
-  const proposalLinks = proposal.attributes.content.attributes.proposal_links;
+  const proposalLinks = useMemo(
+    () =>
+      proposal.attributes.content.attributes.proposal_links.filter(
+        (l) => !!l.prop_link
+      ) ?? [],
+    [proposal]
+  );
 
   return (
     <div className="space-y-6">
