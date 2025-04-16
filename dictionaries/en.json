@@ -59,7 +59,9 @@
     "replies": "Replies",
     "loadMore": "Load More",
     "loading": "Loading...",
-    "noComments": "No comments yet. Be the first to comment!"
+    "noComments": "No comments yet. Be the first to comment!",
+    "ascending": "Ascending",
+    "descending": "Descending"
   },
   "accessibility": {
     "pagination": "pagination",
@@ -208,7 +210,7 @@
     "badgeText": "registered DReps",
     "description": "Delegated Representatives",
     "longDescription": "Delegated Representatives (DReps) are ADA holders who registered on-chain to allow other members of the community to delegate their voting power to them, so that they can vote on their behalf. They are are like 'parlimentary representatives' in the Governance system.",
-    "search": "Search DReps by name or ID",
+    "search": "Search DReps by name or ID...",
     "drepName": "DRep Name",
     "votingPower": "Voting Power",
     "social": "Social",
@@ -251,7 +253,7 @@
     "longDescription": "Anyone that has ADA in a wallet can propose a Governace Action. To submit a Governance Action, the submitter pays a refundable deposit of 100,000 Ada. The deposit will be returned automatically back to the submitter's wallet upon completion of the Voting period.",
     "governanceActionId": "Governance Action ID",
     "cip129GovernanceActionId": "(CIP-129) Governance Action ID",
-    "search": "Search Actions",
+    "search": "Search actions...",
     "soonestToExpire": "Soon to Expire",
     "newestCreated": "Newest First",
     "mostYesVotes": "Highest Amount of 'Yes' votes",
@@ -295,7 +297,14 @@
     "badgeText": "registered proposals",
     "description": "Governance Proposals",
     "longDescription": "Participate in discussions and decision-making processes guided by community governance.",
-    "cip129ActionId": "CIP-129 Action ID"
+    "cip129ActionId": "CIP-129 Action ID",
+    "search": "Search proposals...",
+    "sort": "Sort by Creation Date",
+    "filter": "Filter by Action Type",
+    "infoAction": "Info Action",
+    "treasuryRequests": "Treasury Requests",
+    "updatesToTheConstitution": "Updates to the Constitution",
+    "motionOfNoConfidence": "Motion of No Confidence"
   },
   "pageBudgetDiscussions": {
     "title": "Budget Discussions",
@@ -325,6 +334,24 @@
     "castYourVote": "Cast Your Vote",
     "noSupportingLinks": "No supporting links provided"
   },
+  "pageBudgetDiscussions": {
+    "title": "Budget Discussions",
+    "badgeText": "discussions",
+    "description": "",
+    "longDescription": "Discussion of budget proposals related to the Cardano blockchain ecosystem for inclusion in a Cardano Budget facilitated by Intersect.",
+    "search": "Search budget discussions...",
+    "sort": "Sort by Creation Date",
+    "filter": "Filter by Discussion Type",
+    "cardTypeLabel": "Budget Discussion Type"
+  },
+  "pageBudgetDiscussionDetails": {
+    "title": "Discussion Details",
+    "badgeText": "",
+    "description": "Details about this discussion",
+    "longDescription": "",
+    "castYourVote": "Cast Your Vote"
+  },
+
   "pageCommittees": {
     "title": "Committee Members",
     "badgeText": "",

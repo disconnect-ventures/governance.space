@@ -59,7 +59,9 @@
     "replies": "Respostas",
     "loadMore": "Carregar mais",
     "loading": "Carregando...",
-    "noComments": "Ainda não há comentários. Seja o primeiro a comentar!"
+    "noComments": "Ainda não há comentários. Seja o primeiro a comentar!",
+    "ascending": "Crescente",
+    "descending": "Decrescente"
   },
   "accessibility": {
     "pagination": "paginação",
@@ -209,7 +211,7 @@
     "badgeText": "DReps registrados",
     "description": "Representantes Delegados",
     "longDescription": "Os Representantes Delegados (DReps) são detentores de ADA que se registraram on-chain para permitir que outros membros da comunidade deleguem seu poder de voto a eles, para que possam votar em seu nome. Eles são como 'representantes parlamentares' no sistema de governança.",
-    "search": "Buscar DReps por nome ou ID",
+    "search": "Buscar DReps por nome ou ID...",
     "drepName": "Nome do DRep",
     "votingPower": "Poder de Voto",
     "social": "Social",
@@ -252,7 +254,7 @@
     "longDescription": "Qualquer pessoa que tenha ADA em uma carteira pode propor uma Ação de Governança. Para enviar uma Ação de Governança, o proponente paga um depósito reembolsável de 100.000 ADA. O depósito será devolvido automaticamente à carteira do proponente após a conclusão do período de votação.",
     "governanceActionId": "ID da Ação de Governança",
     "cip129GovernanceActionId": "(CIP-129) ID da Ação de Governança",
-    "search": "Buscar Ações",
+    "search": "Buscar ações...",
     "soonestToExpire": "Prestes a Expirar",
     "newestCreated": "Mais Recentes",
     "mostYesVotes": "Maior Quantidade de Votos 'Sim'",
@@ -296,7 +298,14 @@
     "badgeText": "propostas registradas",
     "description": "Propostas de Governança",
     "longDescription": "Participe de discussões e processos de tomada de decisão guiados pela governança comunitária.",
-    "cip129ActionId": "ID da Ação CIP-129"
+    "cip129ActionId": "ID da Ação CIP-129",
+    "search": "Buscar propostas...",
+    "sort": "Ordenar por Data de Criação",
+    "filter": "Filtrar por Tipo de Ação",
+    "infoAction": "Ação de Informação",
+    "treasuryRequests": "Solicitações ao Tesouro",
+    "updatesToTheConstitution": "Atualizações à Constituição",
+    "motionOfNoConfidence": "Moção de Desconfiança"
   },
   "pageBudgetDiscussions": {
     "title": "Discussões de Orçamento",
@@ -326,6 +335,24 @@
     "castYourVote": "Registre seu Voto",
     "noSupportingLinks": "Nenhum link de apoio fornecido"
   },
+  "pageBudgetDiscussions": {
+    "title": "Discussões de Orçamento",
+    "badgeText": "discussões",
+    "description": "",
+    "longDescription": "Discussão de propostas orçamentárias relacionadas ao ecossistema blockchain Cardano para inclusão em um Orçamento Cardano facilitado pela Intersect.",
+    "search": "Buscar discussões orçamentárias...",
+    "sort": "Ordenar por Data de Criação",
+    "filter": "Filtrar por Tipo de Discussão",
+    "cardTypeLabel": "Tipo de Discussão Orçamentária"
+  },
+  "pageBudgetDiscussionDetails": {
+    "title": "Detalhes da Discussão",
+    "badgeText": "",
+    "description": "Detalhes sobre esta discussão",
+    "longDescription": "",
+    "castYourVote": "Vote Agora"
+  },
+
   "pageCommittees": {
     "title": "Membros dos Comitês",
     "badgeText": "",
