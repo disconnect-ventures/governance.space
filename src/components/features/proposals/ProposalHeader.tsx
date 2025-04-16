@@ -65,8 +65,8 @@ export const ProposalHeader = ({
           </div>
         ) : null}
         <div className="flex items-center space-x-2">
-          <MessageSquareIcon className="h-4 w-4" />
-          <span>{commentCount} comments</span>
+          <MessageSquareIcon className="h-4 w-4 shrink-0" />
+          <span className="whitespace-nowrap">{commentCount} comments</span>
         </div>
 
         <div className="col-span-full space-y-2">
