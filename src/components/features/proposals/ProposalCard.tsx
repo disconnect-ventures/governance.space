@@ -13,7 +13,7 @@ import clsx from "clsx";
 import Link from "~/components/features/Link";
 import { calculateEpochNumber, formatDate } from "~/lib/utils";
 import { Dictionary } from "~/config/dictionaries";
-import { ProposalTypeBadge } from "./ProposalBadge";
+import { ProposalBadge } from "./ProposalBadge";
 import { Markdown } from "../Markdown";
 
 type ProposalCardProps = {
@@ -84,7 +84,7 @@ const ProposalCard = ({ proposal, translations }: ProposalCardProps) => {
           <Markdown content={abstract}></Markdown>
         </div>
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-          <ProposalTypeBadge type={actionType} />
+          <ProposalBadge type={actionType} translations={translations} />
           <div className="text-muted-foreground">
             {translations.pageGovernanceActions.governanceActionType}
           </div>
