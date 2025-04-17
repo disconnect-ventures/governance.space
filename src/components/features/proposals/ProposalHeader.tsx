@@ -20,7 +20,6 @@ interface ProposalHeaderProps {
   commentCount: number;
   dislikes?: number;
   likes?: number;
-  typeLabel?: string;
   translations: Dictionary;
 }
 
@@ -35,7 +34,6 @@ export const ProposalHeader = ({
   likes,
   dislikes,
   commentCount,
-  typeLabel = "Governance Action Type",
   translations,
 }: ProposalHeaderProps) => {
   return (
@@ -44,11 +42,13 @@ export const ProposalHeader = ({
         <div className="flex items-center gap-2 flex-wrap-reverse">
           <ProposalBadge type={type} translations={translations} />
           <span className="text-sm text-muted-foreground text-left">
-            {typeLabel}
+            {translations.pageGovernanceActions.governanceActionType}
           </span>
         </div>
         <Badge className="text-sm bg-green-100 text-green-800">
-          {isActive ? "ACTIVE" : "INACTIVE"}
+          {isActive
+            ? translations.general.active.toUpperCase()
+            : translations.general.inactive.toUpperCase()}
         </Badge>
       </div>
 
@@ -58,25 +58,31 @@ export const ProposalHeader = ({
         {typeof likes !== "undefined" ? (
           <div className="flex items-center space-x-2">
             <ThumbsUpIcon className="h-4 w-4" />
-            <span>{likes} likes</span>
+            <span>
+              {likes} {translations.general.likes}
+            </span>
           </div>
         ) : null}
         {typeof dislikes !== "undefined" ? (
           <div className="flex items-center space-x-2">
             <ThumbsDownIcon className="h-4 w-4" />
-            <span>{dislikes} dislikes</span>
+            <span>
+              {dislikes} {translations.general.dislikes}
+            </span>
           </div>
         ) : null}
         <div className="flex items-center space-x-2">
           <MessageSquareIcon className="h-4 w-4 shrink-0" />
-          <span className="whitespace-nowrap">{commentCount} comments</span>
+          <span className="whitespace-nowrap">
+            {commentCount} {translations.general.comments}
+          </span>
         </div>
 
         <div className="col-span-full space-y-2">
           <div className="flex items-center space-x-2">
             <CalendarIcon className="h-4 w-4" />
             <span>
-              Submitted:{" "}
+              {translations.general.submitted}:{" "}
               <span className="font-semibold">
                 {formatDate(createdDate, createdEpoch)}
               </span>
@@ -85,7 +91,7 @@ export const ProposalHeader = ({
           <div className="flex items-center space-x-2">
             <CalendarIcon className="h-4 w-4" />
             <span>
-              Updated:{" "}
+              {translations.general.updated}:{" "}
               <span className="font-semibold">
                 {formatDate(updatedAt, updatedEpoch)}
               </span>
