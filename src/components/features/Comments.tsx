@@ -1,7 +1,6 @@
 "use client";
 import { Card, CardContent } from "~/components/ui/card";
 // import { Textarea } from "~/components/ui/textarea";
-import { Avatar, AvatarFallback } from "~/components/ui/avatar";
 import { Button } from "~/components/ui/button";
 import {
   ChevronDownIcon,
@@ -9,13 +8,32 @@ import {
   MessageCircleIcon,
   // Send,
   Loader2,
+  AtSignIcon,
 } from "lucide-react";
 import { Comment, CommentResponse, GetCommentsParams } from "~/lib/comments";
 import { Dictionary } from "~/config/dictionaries";
 import { use, useCallback, useMemo, useState, useTransition } from "react";
 import { Skeleton } from "~/components/ui/skeleton";
-import { capitalize } from "~/lib/utils";
+import { capitalize, truncateMiddle } from "~/lib/utils";
 import { Markdown } from "./Markdown";
+import { Badge } from "~/components/ui/badge";
+import { cn } from "~/lib/utils";
+import Link from "./Link";
+
+export const DRepBadge = ({ drepId }: { drepId: string }) => {
+  return (
+    <Badge
+      variant="outline"
+      className={cn(
+        "inline-flex items-center border border-gray-300 py-1 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-xs px-6 rounded-full bg-blue-100 text-blue-800"
+      )}
+    >
+      <Link href={`/dreps/${drepId}`} target="_blank">
+        DRep: {truncateMiddle(drepId, 20)}
+      </Link>
+    </Badge>
+  );
+};
 
 type CommentsProps = {
   commentsPromise: Promise<CommentResponse>;
@@ -47,6 +65,7 @@ const CommentCard = ({
   const [hasMore, setHasMore] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [isPending, startTransition] = useTransition();
+  const isDrep = useMemo(() => comment.attributes.drep_id, [comment]);
 
   const hasChildren = useMemo(
     () => comment.attributes.subcommens_number > 0,
@@ -103,15 +122,12 @@ const CommentCard = ({
     <div className="flex gap-4 p-2">
       <div className="flex-1 space-y-8 w-full break-words">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <Avatar className="w-10 h-10">
-              <AvatarFallback className="bg-background text-muted-foreground">
-                {comment.attributes.user_govtool_username.substring(0, 2)}
-              </AvatarFallback>
-            </Avatar>
+          <div className="flex items-center gap-4 flex-wrap">
             <div className="font-medium text-foreground">
+              <AtSignIcon className="h-6 w-6 inline-block mr-2 text-muted-foreground" />
               {comment.attributes.user_govtool_username}
             </div>
+            {isDrep && <DRepBadge drepId={comment.attributes.drep_id} />}
           </div>
           <div className="text-sm text-muted-foreground">
             {new Date(comment.attributes.updatedAt).toLocaleString(
