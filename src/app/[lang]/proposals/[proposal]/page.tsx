@@ -140,6 +140,7 @@ export default async function ProposalDetailsPage({
                   createdEpoch={createdEpoch}
                   updateDate={updatedAt}
                   updateEpoch={updatedEpoch}
+                  translations={dictionary}
                 />
               </div>
             </div>

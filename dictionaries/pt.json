@@ -72,7 +72,9 @@
     "pagination": "paginação",
     "goToPreviousPage": "Ir para a página anterior",
     "goToNextPage": "Ir para a próxima página",
-    "morePages": "Mais páginas"
+    "morePages": "Mais páginas",
+    "submissionDateIcon": "Ícone de data de submissão",
+    "expireDateIcon": "Ícone de data de expiração"
   },
 
   "homepage": {
