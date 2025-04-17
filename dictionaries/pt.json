@@ -66,7 +66,8 @@
     "idNumber": "# ID",
     "likes": "gostei",
     "dislikes": "não gostei",
-    "supportingLinks": "Links de apoio"
+    "supportingLinks": "Links de apoio",
+    "castYourVote": "Registre seu Voto"
   },
   "accessibility": {
     "pagination": "paginação",
@@ -355,8 +356,7 @@
     "title": "Detalhes da Discussão",
     "badgeText": "",
     "description": "Detalhes sobre esta discussão",
-    "longDescription": "",
-    "castYourVote": "Vote Agora"
+    "longDescription": ""
   },
 
   "pageCommittees": {
