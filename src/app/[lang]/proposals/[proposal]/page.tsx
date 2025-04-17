@@ -131,6 +131,7 @@ export default async function ProposalDetailsPage({
                 <ProposalIdentification
                   id={proposalId.toString()}
                   authorName={username}
+                  translations={dictionary}
                 />
               </div>
               <div className="w-full lg:col-span-2">
