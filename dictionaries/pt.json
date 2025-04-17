@@ -65,7 +65,8 @@
     "descending": "Decrescente",
     "idNumber": "# ID",
     "likes": "gostei",
-    "dislikes": "não gostei"
+    "dislikes": "não gostei",
+    "supportingLinks": "Links de apoio"
   },
   "accessibility": {
     "pagination": "paginação",
@@ -237,7 +238,6 @@
     "influencePowerHelp": "Porcentagem do poder de voto total",
     "contacts": "Contatos",
     "info": "Informações",
-    "supportingLinks": "Links de Apoio",
     "rating": "Avaliação",
     "reviews": "avaliações",
     "stars": "estrelas",
@@ -292,7 +292,7 @@
     "relatedDocuments": "Documentos relacionados",
     "tasks": "Tarefas",
     "history": "Histórico",
-    "supportingLinks": "Links de apoio",
+
     "deadline": "Prazo",
     "constitutional": "Constitucional",
     "unconstitutional": "Inconstitucional"
