@@ -457,7 +457,11 @@
     "title": "About",
     "badgeText": "",
     "description": "About Governance Space",
-    "longDescription": ""
+    "longDescription": "",
+    "paragraph1": "All-in-One Governance Platform. Revolutionizing Decentralized Governance with Transparency and Accountability.",
+    "paragraph2": "GovernanceSpace.com provides a transparency portal for decentralized governance. ",
+    "paragraph3": "A complete multi-chain blockchain governance platform for DAOs, projects, and institutions seeking transparency, security, and efficiency in their decision-making processes. We offer interactive dashboards, proposal tracking, voting and treasury management.",
+    "paragraph4": "Our purpose is to empower communities and institutions to govern with full transparency and participation, eliminating technological barriers and promoting traceable decisions on the blockchain."
   },
   "pagePrivacyPolicy": {
     "title": "Privacy Policy",
