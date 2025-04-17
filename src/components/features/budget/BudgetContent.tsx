@@ -229,7 +229,7 @@ export const BudgetDiscussionContent = ({
                 >
                   <LinkIcon className="w-4 h-4 text-primary shrink-0" />
                   <span className="text-primary hover:text-primary/80 break-all">
-                    {prop_link_text}
+                    {prop_link_text || prop_link}
                   </span>
                 </Link>
               ))
