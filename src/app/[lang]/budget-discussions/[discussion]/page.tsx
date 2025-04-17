@@ -137,6 +137,7 @@ export default async function BudgetDiscussionDetailsPage({
                 <ProposalIdentification
                   id={discussionId.toString()}
                   authorName={username}
+                  translations={dictionary}
                 />
               </div>
             </div>
