@@ -130,13 +130,14 @@ export default async function BudgetDiscussionDetailsPage({
               updatedAt={updatedAt}
               updatedEpoch={updatedEpoch}
               commentCount={commentCount}
-              typeLabel={dictionary.pageBudgetDiscussions.cardTypeLabel}
+              translations={dictionary}
             />
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr]">
               <div className="w-full col-span-full">
                 <ProposalIdentification
                   id={discussionId.toString()}
                   authorName={username}
+                  translations={dictionary}
                 />
               </div>
             </div>
@@ -149,7 +150,7 @@ export default async function BudgetDiscussionDetailsPage({
       </Card>
       <Card className="mb-4 sm:mb-6 bg-card text-card-foreground">
         <CardContent className="p-4 sm:p-6">
-          <VotingSection />
+          <VotingSection translations={dictionary} />
         </CardContent>
       </Card>
 

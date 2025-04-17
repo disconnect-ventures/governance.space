@@ -1,8 +1,17 @@
-import { useMemo } from "react";
+import React, { useMemo } from "react";
 import { Badge } from "~/components/ui/badge";
-import { cn } from "~/lib/utils";
+import { Dictionary } from "~/config/dictionaries";
+import { cn, toCamelCase } from "~/lib/utils";
 
-export const ProposalTypeBadge = ({ type }: { type: string }) => {
+export const ProposalBadge = ({
+  type,
+  translations,
+  className,
+}: {
+  type: string;
+  translations: Dictionary;
+  className?: string;
+}) => {
   const badgeColor = useMemo(() => {
     switch (type.trim().toLowerCase()) {
       case "info action":
@@ -16,15 +25,24 @@ export const ProposalTypeBadge = ({ type }: { type: string }) => {
     }
   }, [type]);
 
+  const proposalTypeLabel = useMemo(
+    () =>
+      translations.pageProposals[
+        toCamelCase(type) as keyof typeof translations.pageProposals
+      ],
+    [translations, type]
+  );
+
   return (
     <Badge
       variant="outline"
       className={cn(
         "inline-flex items-center border border-gray-300 py-1 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-white text-sm md:text-md px-6 rounded-full",
-        badgeColor
+        badgeColor,
+        className
       )}
     >
-      {type}
+      {proposalTypeLabel}
     </Badge>
   );
 };

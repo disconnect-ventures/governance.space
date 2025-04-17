@@ -25,20 +25,11 @@ export default async function AboutPage({ params: paramsPromise }: PageProps) {
         translations={dictionary.pageAbout}
       />
       <div className="mt-6 space-y-6 text-foreground dark:text-foreground/80">
+        <p>{dictionary.pageAbout.paragraph1}</p>
+        <p>{dictionary.pageAbout.paragraph2}</p>
+        <p>{dictionary.pageAbout.paragraph3}</p>
+        <p>{dictionary.pageAbout.paragraph4}</p>
         <ComingSoon>
-          <p>
-            Vestibulum lorem ipsum, volutpat vel sodales ut, faucibus sed nulla.
-            Cras faucibus ullamcorper elit eget pharetra. Mauris sit amet ante
-            volutpat, porttitor massa condimentum, faucibus ante. Duis porta
-            laoreet quam, vel volutpat erat maximus nec. Integer dolor velit,
-            auctor in metus eget, ornare lacinia urna. Cras vitae blandit
-            libero. Duis egestas interdum tellus, vitae auctor nulla molestie
-            vitae. Pellentesque fermentum, mauris vitae mattis maximus, erat dui
-            tempor nibh, ut rhoncus ex erat ut lectus. Curabitur fringilla leo
-            massa, vel viverra ante finibus sed. Nam pellentesque, lacus sed
-            condimentum fermentum, est elit semper libero, in commodo erat lacus
-            sagittis nisi.
-          </p>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { name: "Steven Laff", role: "Developer" },

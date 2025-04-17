@@ -25,6 +25,17 @@ export function formatCamelCase(input: string) {
   return input.replace(/([a-z])([A-Z])/g, "$1 $2");
 }
 
+export function toCamelCase(input: string): string {
+  return input
+    .split(" ")
+    .map((word, index) =>
+      index === 0
+        ? word.toLowerCase()
+        : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+    )
+    .join("");
+}
+
 export const formatAda = (amount: number | string) => {
   return `₳ ${
     typeof amount === "string"

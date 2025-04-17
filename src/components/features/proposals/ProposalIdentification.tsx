@@ -1,18 +1,23 @@
 import { Avatar, AvatarFallback } from "~/components/ui/avatar";
+import { Dictionary } from "~/config/dictionaries";
 
 type ProposalIdentificationProps = {
   authorName: string;
   id: string;
+  translations: Dictionary;
 };
 
 export const ProposalIdentification = ({
   id,
   authorName,
+  translations,
 }: ProposalIdentificationProps) => {
   return (
     <div className="space-y-4">
       <div className="space-x-2">
-        <span className="text-muted-foreground font-bold">ID:</span>
+        <span className="text-muted-foreground font-bold">
+          {translations.general.idNumber}:
+        </span>
         <span className="text-muted-foreground font-normal break-all">
           {id}
         </span>

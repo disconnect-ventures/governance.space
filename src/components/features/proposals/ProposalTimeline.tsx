@@ -1,4 +1,5 @@
 import { Calendar, Clock } from "lucide-react";
+import { Dictionary } from "~/config/dictionaries";
 import { formatDate } from "~/lib/utils";
 
 type ProposalTimelineProps = {
@@ -6,6 +7,7 @@ type ProposalTimelineProps = {
   createdEpoch: number;
   updateDate: string;
   updateEpoch: number;
+  translations: Dictionary;
 };
 
 export const ProposalTimeline = ({
@@ -13,17 +15,18 @@ export const ProposalTimeline = ({
   createdEpoch,
   updateDate,
   updateEpoch,
+  translations,
 }: ProposalTimelineProps) => {
   return (
     <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-8 text-foreground mb-4">
       <div className="flex items-center gap-3">
         <Calendar
           className="w-6 h-6 text-muted-foreground shrink-0"
-          aria-label="Submission date icon"
+          aria-label={translations.accessibility.submissionDateIcon}
         />
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2">
           <span>
-            Submitted:{" "}
+            {translations.general.submitted}:{" "}
             <span className="font-semibold">
               {formatDate(createdTime, createdEpoch)}
             </span>
@@ -33,11 +36,11 @@ export const ProposalTimeline = ({
       <div className="flex items-center gap-3">
         <Clock
           className="w-6 h-6 text-muted-foreground shrink-0"
-          aria-label="Expiry date icon"
+          aria-label={translations.accessibility.expireDateIcon}
         />
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2">
           <span>
-            Updated At:{" "}
+            {translations.general.updated}:{" "}
             <span className="font-semibold">
               {formatDate(updateDate, updateEpoch)}
             </span>

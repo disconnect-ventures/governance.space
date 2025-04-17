@@ -7,12 +7,13 @@ import {
   DirectorySearchParams,
 } from "~/components/layout/Directory";
 import { Dictionary } from "~/config/dictionaries";
+import { toCamelCase } from "~/lib/utils";
 
 type ProposalDirectoryProps = {
   proposals: Array<Proposal>;
   params: DirectorySearchParams;
   proposalTypes: Array<ProposalType>;
-  translations: Pick<Dictionary, "general" | "accessibility">;
+  translations: Dictionary;
 };
 
 export async function ProposalDirectory({
@@ -23,17 +24,22 @@ export async function ProposalDirectory({
 }: ProposalDirectoryProps) {
   return (
     <Directory
-      searchPlaceholder="Search proposals..."
+      searchPlaceholder={translations.pageProposals.search}
       params={params}
-      sortPopoverTitle="Sort by Creation Date"
+      sortPopoverTitle={translations.pageProposals.sort}
       sortOptions={[
-        { label: "Descending", value: "desc" },
-        { label: "Ascending", value: "Asc" },
+        { label: translations.general.descending, value: "desc" },
+        { label: translations.general.ascending, value: "Asc" },
       ]}
-      filterPopoverTitle="Filter by Action Type"
+      filterPopoverTitle={translations.pageProposals.filter}
       filterOptions={[
         ...proposalTypes.map((p) => ({
-          label: p.attributes.gov_action_type_name,
+          label:
+            translations.pageProposals[
+              toCamelCase(
+                p.attributes.gov_action_type_name
+              ) as keyof typeof translations.pageProposals
+            ],
           value: p.id.toString(),
         })),
       ]}
@@ -41,7 +47,7 @@ export async function ProposalDirectory({
         <ProposalCard
           key={index}
           proposal={proposal}
-          translations={translations.general}
+          translations={translations}
         />
       ))}
       translations={translations}

@@ -14,7 +14,7 @@ import {
 import { getActionIdUrl, GovernanceAction } from "~/lib/governance-actions";
 import { Metadata } from "~/lib/metadata";
 import Link from "~/components/features/Link";
-import { formatCamelCase, formatDate } from "~/lib/utils";
+import { toCamelCase, formatDate } from "~/lib/utils";
 import { twMerge } from "tailwind-merge";
 import { Dictionary } from "~/config/dictionaries";
 
@@ -30,9 +30,8 @@ export const GovernanceActionTypeBadge = ({
   const actionTypeLabel = useMemo(
     () =>
       translations.pageGovernanceActions[
-        (type.charAt(0).toLowerCase() +
-          type.slice(1)) as keyof typeof translations.pageGovernanceActions
-      ] || formatCamelCase(type),
+        toCamelCase(type) as keyof typeof translations.pageGovernanceActions
+      ],
     [translations, type]
   );
   return (

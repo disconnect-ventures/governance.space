@@ -123,6 +123,7 @@ export default async function ProposalDetailsPage({
               likes={likes}
               dislikes={dislikes}
               commentCount={commentCount}
+              translations={dictionary}
             />
 
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr]">
@@ -130,6 +131,7 @@ export default async function ProposalDetailsPage({
                 <ProposalIdentification
                   id={proposalId.toString()}
                   authorName={username}
+                  translations={dictionary}
                 />
               </div>
               <div className="w-full lg:col-span-2">
@@ -138,6 +140,7 @@ export default async function ProposalDetailsPage({
                   createdEpoch={createdEpoch}
                   updateDate={updatedAt}
                   updateEpoch={updatedEpoch}
+                  translations={dictionary}
                 />
               </div>
             </div>
@@ -148,7 +151,7 @@ export default async function ProposalDetailsPage({
       </Card>
       <Card className="mb-4 sm:mb-6 bg-card text-card-foreground">
         <CardContent className="p-4 sm:p-6">
-          <VotingSection />
+          <VotingSection translations={dictionary} />
         </CardContent>
       </Card>
       <Suspense fallback={<CommentsSkeleton />}>

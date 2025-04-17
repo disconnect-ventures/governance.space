@@ -14,7 +14,12 @@ type PageKey =
   | "pageLiveEvents"
   | "pageAnalytics"
   | "pageHelp"
-  | "pageAbout";
+  | "pageAbout"
+  | "pageBudgetDiscussions"
+  | "pageBudgetDiscussionDetails"
+  | "pagePrivacyPolicy"
+  | "pageTermsOfUse"
+  | "pageCookiePolicy";
 
 type PageTitleProps = {
   title?: string;
