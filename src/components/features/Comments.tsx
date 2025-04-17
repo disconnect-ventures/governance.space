@@ -119,8 +119,8 @@ const CommentCard = ({
   }, [loadChildComments, currentPage]);
 
   const commentContent = (
-    <div className="flex gap-4 p-2">
-      <div className="flex-1 space-y-8 w-full break-words">
+    <div className="flex gap-4 p-1">
+      <div className="flex-1 space-y-4 w-full break-words">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
           <div className="flex items-center gap-4 flex-wrap">
             <div className="font-medium text-foreground">
