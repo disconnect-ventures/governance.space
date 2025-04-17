@@ -29,9 +29,9 @@ export const ProposalContent = ({
     <div className="space-y-6">
       <div className="space-y-4">
         {[
-          ["Abstract", prop_abstract],
-          ["Motivation", prop_motivation],
-          ["Rational", prop_rationale],
+          [translations.general.abstract, prop_abstract],
+          [translations.general.motivation, prop_motivation],
+          [translations.general.rationale, prop_rationale],
         ].map(([label, link]) => (
           <div key={label} className="pb-4 space-y-4">
             <h3 className="text-2xl text-foreground">{label}</h3>
@@ -39,9 +39,10 @@ export const ProposalContent = ({
             <Markdown content={link} />
           </div>
         ))}
-
         <div>
-          <h3 className="font-medium mb-2">Supporting links</h3>
+          <h3 className="font-medium mb-2">
+            {translations.general.supportingLinks}
+          </h3>
           <div className="space-y-3">
             {proposalLinks.length > 0 ? (
               proposalLinks.map(({ prop_link_text, prop_link }, index) => (

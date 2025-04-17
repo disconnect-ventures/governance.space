@@ -65,7 +65,8 @@
     "descending": "Descending",
     "idNumber": "# ID",
     "likes": "likes",
-    "dislikes": "dislikes"
+    "dislikes": "dislikes",
+    "supportingLinks": "Supporting Links"
   },
   "accessibility": {
     "pagination": "pagination",
@@ -236,7 +237,6 @@
     "influencePowerHelp": "Percentage of total voting power",
     "contacts": "Contacts",
     "info": "Info",
-    "supportingLinks": "Supporting Links",
     "rating": "Rating",
     "reviews": "reviews",
     "stars": "stars",
@@ -291,7 +291,6 @@
     "relatedDocuments": "Related documents",
     "tasks": "Tasks",
     "history": "History",
-    "supportingLinks": "Supporting links",
     "deadline": "Deadline",
     "constitutional": "Constitutional",
     "unconstitutional": "Unconstitutional"

@@ -6,7 +6,7 @@ import { Dictionary } from "~/config/dictionaries";
 
 type GovernanceLinksProps = {
   links: Reference[];
-  translations: Dictionary["pageGovernanceActionsDetails"];
+  translations: Dictionary;
 };
 
 export const GovernanceLinks = ({
@@ -16,7 +16,7 @@ export const GovernanceLinks = ({
   return (
     <CardContent className="p-6">
       <h2 className="mb-4 text-lg font-medium dark:text-gray-100">
-        {translations.supportingLinks}
+        {translations.general.supportingLinks}
       </h2>
       <div className="grid grid-cols-2 gap-4">
         {links.map((link, index) => (
