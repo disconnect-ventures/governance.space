@@ -158,7 +158,9 @@ export const BudgetDiscussionContent = ({
                   className={cn("pb-4 space-y-4", className)}
                 >
                   {label && (
-                    <h4 className="text-sm text-foreground mb-2">{label}</h4>
+                    <h4 className="text-sm text-muted-foreground mb-2">
+                      {label}
+                    </h4>
                   )}
                   <Markdown content={content ?? ""} />
                 </div>
@@ -182,7 +184,9 @@ export const BudgetDiscussionContent = ({
                   key={`${label}-${index}`}
                   className={cn("pb-4 space-y-4", className)}
                 >
-                  <h4 className="text-sm text-foreground mb-2">{label}</h4>
+                  <h4 className="text-sm text-muted-foreground mb-2">
+                    {label}
+                  </h4>
                   <Markdown content={content ?? ""} />
                 </div>
               ))}
@@ -203,8 +207,10 @@ export const BudgetDiscussionContent = ({
                   key={`${label}-${index}`}
                   className={cn("pb-4 space-y-4", className)}
                 >
-                  <h4 className="text-sm text-foreground mb-2">{label}</h4>
-                  <span className="text-muted-foreground">{content}</span>
+                  <h4 className="text-sm text-muted-foreground mb-2">
+                    {label}
+                  </h4>
+                  <span className="text-foreground">{content}</span>
                 </div>
               ))}
           </div>
