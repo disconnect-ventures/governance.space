@@ -295,7 +295,6 @@
     "relatedDocuments": "Documentos relacionados",
     "tasks": "Tarefas",
     "history": "Histórico",
-
     "deadline": "Prazo",
     "constitutional": "Constitucional",
     "unconstitutional": "Inconstitucional"
@@ -313,26 +312,6 @@
     "treasuryRequests": "Solicitações ao Tesouro",
     "updatesToTheConstitution": "Atualizações à Constituição",
     "motionOfNoConfidence": "Moção de Desconfiança"
-  },
-  "pageBudgetDiscussions": {
-    "title": "Discussões de Orçamento",
-    "badgeText": "discussões",
-    "description": "",
-    "longDescription": "Discussão de propostas orçamentárias relacionadas ao ecossistema blockchain Cardano para inclusão em um Orçamento Cardano facilitado pela Intersect.",
-    "search": "Pesquisar discussões orçamentárias...",
-    "cardTypeLabel": "Tipo",
-    "filterByLabel": "Filtrar por Tipo de Discussão",
-    "sortByLabel": "Ordenar por Data de Criação",
-    "sortByLabelAsc": "Crescente",
-    "sortByLabelDesc": "Decrescente"
-  },
-  "pageBudgetDiscussionDetails": {
-    "title": "Detalhes da Discussão",
-    "badgeText": "",
-    "description": "Detalhes sobre esta discussão",
-    "longDescription": "",
-    "castYourVote": "Vote Agora",
-    "noSupportingLinks": "Nenhum link de apoio fornecido"
   },
   "pageProposalsDetails": {
     "title": "Detalhes da Proposta",
@@ -356,9 +335,10 @@
     "title": "Detalhes da Discussão",
     "badgeText": "",
     "description": "Detalhes sobre esta discussão",
-    "longDescription": ""
+    "longDescription": "",
+    "castYourVote": "Vote Agora",
+    "noSupportingLinks": "Nenhum link de apoio fornecido"
   },
-
   "pageCommittees": {
     "title": "Membros dos Comitês",
     "badgeText": "",

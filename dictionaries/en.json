@@ -312,26 +312,6 @@
     "updatesToTheConstitution": "Updates to the Constitution",
     "motionOfNoConfidence": "Motion of No Confidence"
   },
-  "pageBudgetDiscussions": {
-    "title": "Budget Discussions",
-    "badgeText": "discussions",
-    "description": "",
-    "longDescription": "Discussion of budget proposals related to the Cardano blockchain ecosystem for inclusion in a Cardano Budget facilitated by Intersect.",
-    "search": "Search budget discussions...",
-    "cardTypeLabel": "Type",
-    "filterByLabel": "Filter by Discussion Type",
-    "sortByLabel": "Sort by Creation Date",
-    "sortByLabelAsc": "Ascending",
-    "sortByLabelDesc": "Descending"
-  },
-  "pageBudgetDiscussionDetails": {
-    "title": "Discussion Details",
-    "badgeText": "",
-    "description": "Details about this discussion",
-    "longDescription": "",
-    "castYourVote": "Cast Your Vote",
-    "noSupportingLinks": "No supporting links provided"
-  },
   "pageProposalsDetails": {
     "title": "Proposal Details",
     "badgeText": "",
@@ -354,9 +334,10 @@
     "title": "Discussion Details",
     "badgeText": "",
     "description": "Details about this discussion",
-    "longDescription": ""
+    "longDescription": "",
+    "castYourVote": "Cast Your Vote",
+    "noSupportingLinks": "No supporting links provided"
   },
-
   "pageCommittees": {
     "title": "Committee Members",
     "badgeText": "",
