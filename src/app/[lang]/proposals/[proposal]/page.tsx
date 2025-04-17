@@ -151,7 +151,7 @@ export default async function ProposalDetailsPage({
       </Card>
       <Card className="mb-4 sm:mb-6 bg-card text-card-foreground">
         <CardContent className="p-4 sm:p-6">
-          <VotingSection />
+          <VotingSection translations={dictionary} />
         </CardContent>
       </Card>
       <Suspense fallback={<CommentsSkeleton />}>
