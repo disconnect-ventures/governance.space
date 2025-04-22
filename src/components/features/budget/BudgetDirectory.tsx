@@ -10,40 +10,46 @@ import {
   BudgetDiscussion,
   BudgetDiscussionType,
 } from "~/lib/budgetDiscussions";
+import { toCamelCase } from "~/lib/utils";
 
 export type BudgetDiscussionDirectoryProps = {
   budgetDiscussions: Array<BudgetDiscussion>;
   params: DirectorySearchParams;
   budgetDiscussionTypes: Array<BudgetDiscussionType>;
-  dictionary: Dictionary;
+  translations: Dictionary;
 };
 
 export async function BudgetDiscussionDirectory({
   budgetDiscussions,
   params,
   budgetDiscussionTypes,
-  dictionary,
+  translations,
 }: BudgetDiscussionDirectoryProps) {
   return (
     <Directory
-      translations={dictionary}
-      searchPlaceholder={dictionary.pageBudgetDiscussions.search}
+      translations={translations}
+      searchPlaceholder={translations.pageBudgetDiscussions.search}
       params={params}
-      sortPopoverTitle={dictionary.pageBudgetDiscussions.sort}
+      sortPopoverTitle={translations.pageBudgetDiscussions.sort}
       sortOptions={[
         {
-          label: dictionary.general.descending,
+          label: translations.general.descending,
           value: "desc",
         },
         {
-          label: dictionary.general.ascending,
+          label: translations.general.ascending,
           value: "asc",
         },
       ]}
-      filterPopoverTitle={dictionary.pageBudgetDiscussions.filter}
+      filterPopoverTitle={translations.pageBudgetDiscussions.filter}
       filterOptions={[
         ...budgetDiscussionTypes.map((p) => ({
-          label: p.attributes.type_name,
+          label:
+            translations.pageBudgetDiscussions[
+              toCamelCase(
+                p.attributes.type_name
+              ) as keyof typeof translations.pageBudgetDiscussions
+            ],
           value: p.id.toString(),
         })),
       ]}
@@ -51,7 +57,7 @@ export async function BudgetDiscussionDirectory({
         <BudgetDiscussionCard
           key={index}
           discussion={proposal}
-          dictionary={dictionary}
+          dictionary={translations}
         />
       ))}
     ></Directory>

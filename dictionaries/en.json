@@ -328,7 +328,12 @@
     "search": "Search budget discussions...",
     "sort": "Sort by Creation Date",
     "filter": "Filter by Discussion Type",
-    "cardTypeLabel": "Budget Discussion Type"
+    "cardTypeLabel": "Budget Discussion Type",
+    "core": "Core",
+    "research": "Research",
+    "governanceSupport": "Governance Support",
+    "marketing&Innovation": "Marketing & Innovation",
+    "noneOfThese": "None of these"
   },
   "pageBudgetDiscussionDetails": {
     "title": "Discussion Details",
