@@ -103,7 +103,10 @@ const BudgetDiscussionCard = ({
           <Markdown content={discussionBenefit ?? ""}></Markdown>
         </div>
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-          <BudgetTypeBadge type={discussionType?.type_name ?? ""} />
+          <BudgetTypeBadge
+            type={discussionType?.type_name ?? ""}
+            translations={translations}
+          />
           <div className="text-muted-foreground">
             {translations.pageBudgetDiscussions.cardTypeLabel}
           </div>
