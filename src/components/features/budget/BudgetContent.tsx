@@ -72,20 +72,25 @@ export const BudgetDiscussionContent = ({
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
           <div className="flex flex-col">
-            <span className="text-sm text-muted-foreground">Budget</span>
+            <span className="text-sm text-muted-foreground">
+              {translations.pageBudgetDiscussionDetails.budget}
+            </span>
             <span className="font-medium">
-              {formattedAmount} ({formattedAdaAmount} ADA)
+              {formattedAmount} ({formattedAdaAmount} {translations.general.ada}
+              )
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm text-muted-foreground">ADA Rate</span>
+            <span className="text-sm text-muted-foreground">
+              {translations.pageBudgetDiscussionDetails.adaRate}
+            </span>
             <span className="font-medium">
               ${costingDetails?.usd_to_ada_conversion_rate}
             </span>
           </div>
           <div className="flex flex-col">
             <span className="text-sm text-muted-foreground">
-              Preferred Currency
+              {translations.pageBudgetDiscussionDetails.preferredCurrency}
             </span>
             <span className="font-medium">
               {
@@ -101,7 +106,9 @@ export const BudgetDiscussionContent = ({
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm text-muted-foreground">Contract Type</span>
+            <span className="text-sm text-muted-foreground">
+              {translations.pageBudgetDiscussionDetails.contractType}
+            </span>
             <span className="font-medium">
               {
                 proposalDetails?.contract_type_name.data.attributes
@@ -114,22 +121,40 @@ export const BudgetDiscussionContent = ({
 
       <div className="space-y-6">
         {[
-          ["Description", proposalDetails?.proposal_description],
-          ["Problem Statement", psapbDetails?.problem_statement],
-          ["Proposal Benefit", psapbDetails?.proposal_benefit],
           [
-            "Key Proposal Deliverables",
+            translations.general.description,
+            proposalDetails?.proposal_description,
+          ],
+          [
+            translations.pageBudgetDiscussionDetails.problemStatement,
+            psapbDetails?.problem_statement,
+          ],
+          [
+            translations.pageBudgetDiscussionDetails.proposalBenefit,
+            psapbDetails?.proposal_benefit,
+          ],
+          [
+            translations.pageBudgetDiscussionDetails.keyProposalDeliverables,
             proposalDetails?.key_proposal_deliverables,
           ],
-          ["Cost Breakdown", costingDetails?.cost_breakdown],
           [
-            "Resourcing & Duration",
+            translations.pageBudgetDiscussionDetails.costBreakdown,
+            costingDetails?.cost_breakdown,
+          ],
+          [
+            translations.pageBudgetDiscussionDetails.resourcingAndDuration,
             proposalDetails?.resourcing_duration_estimates,
           ],
-          ["Experience", proposalDetails?.experience],
-          ["Maintenance & Support", proposalDetails?.maintain_and_support],
           [
-            "Supplementary Endorsement",
+            translations.pageBudgetDiscussionDetails.experience,
+            proposalDetails?.experience,
+          ],
+          [
+            translations.pageBudgetDiscussionDetails.maintenanceAndSupport,
+            proposalDetails?.maintain_and_support,
+          ],
+          [
+            translations.pageBudgetDiscussionDetails.supplementaryEndorsement,
             psapbDetails?.supplementary_endorsement,
           ],
         ].map(([label, content]) => (
@@ -138,16 +163,20 @@ export const BudgetDiscussionContent = ({
           </InfoSection>
         ))}
 
-        <InfoSection title="Roadmap Alignment">
+        <InfoSection
+          title={translations.pageBudgetDiscussionDetails.roadmapAlignment}
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               ["", psapbDetails?.explain_proposal_roadmap, "col-span-full"],
               [
-                "Does your proposal align with any of the Intersect Committees?",
+                translations.pageBudgetDiscussionDetails
+                  .alignIntersectCommittees,
                 psapbDetails?.committee_name.data.attributes.committee_name,
               ],
               [
-                "Does this proposal align to the Product Roadmap and Roadmap Goals?",
+                translations.pageBudgetDiscussionDetails
+                  .alignProductRoadmapAndRoadmapGoals,
                 psapbDetails?.roadmap_name.data.attributes.roadmap_name,
               ],
             ]
@@ -168,11 +197,15 @@ export const BudgetDiscussionContent = ({
           </div>
         </InfoSection>
 
-        <InfoSection title="Administration and Auditing">
+        <InfoSection
+          title={
+            translations.pageBudgetDiscussionDetails.administrationAndAuditing
+          }
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               [
-                "Would you like Intersect to be your named Administrator, including acting as the auditor, as per the Cardano Constitution?",
+                translations.pageBudgetDiscussionDetails.namedAdministrator,
                 discussion.attributes.intersect_named_administrator
                   ? translations.general.yes
                   : translations.general.no,
@@ -193,13 +226,27 @@ export const BudgetDiscussionContent = ({
           </div>
         </InfoSection>
 
-        <InfoSection title="Ownership Information">
+        <InfoSection
+          title={translations.pageBudgetDiscussionDetails.ownershipInformation}
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              ["Submitted On Behalf Of", ownershipDetails?.submited_on_behalf],
-              ["Group Name", ownershipDetails?.group_name],
-              ["Type of Group", ownershipDetails?.type_of_group],
-              ["Social Handles", ownershipDetails?.social_handles],
+              [
+                translations.pageBudgetDiscussionDetails.submittedOnBehalfOf,
+                ownershipDetails?.submited_on_behalf,
+              ],
+              [
+                translations.pageBudgetDiscussionDetails.groupName,
+                ownershipDetails?.group_name,
+              ],
+              [
+                translations.pageBudgetDiscussionDetails.typeOfGroup,
+                ownershipDetails?.type_of_group,
+              ],
+              [
+                translations.pageBudgetDiscussionDetails.socialHandles,
+                ownershipDetails?.social_handles,
+              ],
             ]
               .filter(([, content]) => !!content)
               .map(([label, content, className], index) => (
@@ -217,12 +264,14 @@ export const BudgetDiscussionContent = ({
         </InfoSection>
 
         {proposalDetails?.key_dependencies && (
-          <InfoSection title="Key Dependencies">
+          <InfoSection
+            title={translations.pageBudgetDiscussionDetails.keyDependencies}
+          >
             <Markdown content={proposalDetails.key_dependencies} />
           </InfoSection>
         )}
 
-        <InfoSection title="Supporting Links">
+        <InfoSection title={translations.general.supportingLinks}>
           <div className="space-y-3">
             {proposalLinks.length > 0 ? (
               proposalLinks.map(({ prop_link_text, prop_link, id }) => (
@@ -251,15 +300,15 @@ export const BudgetDiscussionContent = ({
       <div className="text-sm text-muted-foreground">
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-8">
           <div>
-            <span className="mr-2">Created:</span>
+            <span className="mr-2">{translations.general.created}:</span>
             {new Date(discussion.attributes.createdAt).toLocaleDateString()}
           </div>
           <div>
-            <span className="mr-2">Last updated:</span>
+            <span className="mr-2">{translations.general.updated}:</span>
             {new Date(discussion.attributes.updatedAt).toLocaleDateString()}
           </div>
           <div>
-            <span className="mr-2">ID:</span>
+            <span className="mr-2">{translations.general.id}:</span>
             {discussion.id}
           </div>
         </div>
