@@ -57,7 +57,7 @@ export async function BudgetDiscussionDirectory({
         <BudgetDiscussionCard
           key={index}
           discussion={proposal}
-          dictionary={translations}
+          translations={translations}
         />
       ))}
     ></Directory>
