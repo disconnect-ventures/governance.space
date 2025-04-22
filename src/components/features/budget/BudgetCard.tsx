@@ -14,12 +14,12 @@ import { useCallback, useMemo } from "react";
 
 export type BudgetDiscussionCardProps = {
   discussion: BudgetDiscussion;
-  dictionary: Dictionary;
+  translations: Dictionary;
 };
 
 const BudgetDiscussionCard = ({
   discussion,
-  dictionary,
+  translations,
 }: BudgetDiscussionCardProps) => {
   const proposalId = useMemo(() => discussion.id, [discussion]);
   const proposalName = useMemo(
@@ -67,7 +67,7 @@ const BudgetDiscussionCard = ({
         <div className="flex items-start justify-between">
           <div className="space-y-1">
             <div className="text-sm text-muted-foreground">
-              # ID: {proposalId}
+              {translations.general.idNumber}: {proposalId}
             </div>
             <h2 className="text-2xl text-foreground font-semibold leading-[1.5rem] h-[3rem] overflow-hidden">
               {proposalName}
@@ -78,8 +78,8 @@ const BudgetDiscussionCard = ({
             className={clsx("p-2 rounded-full", getStatusBadgeClasses())}
           >
             {isDiscussionActive
-              ? dictionary.general.active.toUpperCase()
-              : dictionary.general.inactive.toUpperCase()}
+              ? translations.general.active.toUpperCase()
+              : translations.general.inactive.toUpperCase()}
           </Badge>
         </div>
 
@@ -91,7 +91,7 @@ const BudgetDiscussionCard = ({
             <div className="flex gap-x-4 items-center flex-wrap">
               <div className="font-medium">{creatorUsername}</div>
               <div className="text-sm text-muted-foreground">
-                {dictionary.general.author}
+                {translations.general.author}
               </div>
             </div>
           </div>
@@ -105,7 +105,7 @@ const BudgetDiscussionCard = ({
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
           <BudgetTypeBadge type={discussionType?.type_name ?? ""} />
           <div className="text-muted-foreground">
-            {dictionary.pageBudgetDiscussions.cardTypeLabel}
+            {translations.pageBudgetDiscussions.cardTypeLabel}
           </div>
         </div>
 
@@ -114,7 +114,7 @@ const BudgetDiscussionCard = ({
             <MessageSquare className="h-4 w-4" />
             <span>
               {discussion.attributes.prop_comments_number}{" "}
-              {dictionary.general.comments}
+              {translations.general.comments}
             </span>
           </div>
 
@@ -122,7 +122,7 @@ const BudgetDiscussionCard = ({
             <div className="flex items-center space-x-2">
               <Calendar className="h-4 w-4" />
               <span>
-                {dictionary.general.submitted}:{" "}
+                {translations.general.submitted}:{" "}
                 <span className="font-semibold">
                   {formatDate(createdAt, calculateEpochNumber(createdAt))}
                 </span>
@@ -132,7 +132,7 @@ const BudgetDiscussionCard = ({
               <div className="flex items-center space-x-2">
                 <Calendar className="h-4 w-4" />
                 <span>
-                  {dictionary.general.expires}:{" "}
+                  {translations.general.expires}:{" "}
                   <span className="font-semibold">
                     {formatDate(updatedAt, calculateEpochNumber(updatedAt))}
                   </span>
@@ -146,7 +146,7 @@ const BudgetDiscussionCard = ({
           href={`/budget-discussions/${discussion.id}`}
           className={buttonVariants({ variant: "default" })}
         >
-          {dictionary.general.viewDetailsAndVote}
+          {translations.general.viewDetailsAndVote}
         </Link>
       </CardContent>
     </Card>
