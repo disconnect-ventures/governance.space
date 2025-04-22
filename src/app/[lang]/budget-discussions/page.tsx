@@ -56,7 +56,7 @@ export default async function BudgetDiscussionsPage({
       <BudgetDiscussionDirectory
         budgetDiscussions={discussions?.data ?? []}
         budgetDiscussionTypes={types?.data ?? []}
-        dictionary={dictionary}
+        translations={dictionary}
         params={{
           page,
           pageSize,
