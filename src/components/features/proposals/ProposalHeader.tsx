@@ -21,6 +21,7 @@ interface ProposalHeaderProps {
   dislikes?: number;
   likes?: number;
   translations: Dictionary;
+  contentType?: "proposal" | "budgetDiscussion";
 }
 
 export const ProposalHeader = ({
@@ -35,14 +36,20 @@ export const ProposalHeader = ({
   dislikes,
   commentCount,
   translations,
+  contentType,
 }: ProposalHeaderProps) => {
+  const typeLabel =
+    contentType === "budgetDiscussion"
+      ? translations.pageBudgetDiscussions.cardTypeLabel
+      : translations.pageGovernanceActions.governanceActionType;
+
   return (
     <div>
       <div className="flex items-end justify-between gap-4 mb-4 text-center w-full">
         <div className="flex items-center gap-2 flex-wrap-reverse">
           <ProposalBadge type={type} translations={translations} />
           <span className="text-sm text-muted-foreground text-left">
-            {translations.pageGovernanceActions.governanceActionType}
+            {typeLabel}
           </span>
         </div>
         <Badge className="text-sm bg-green-100 text-green-800">

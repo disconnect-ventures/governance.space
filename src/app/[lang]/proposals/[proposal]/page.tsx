@@ -124,6 +124,7 @@ export default async function ProposalDetailsPage({
               dislikes={dislikes}
               commentCount={commentCount}
               translations={dictionary}
+              contentType="proposal"
             />
 
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr]">

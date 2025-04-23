@@ -20,18 +20,38 @@ export const ProposalBadge = ({
         return "bg-red-100 text-red-800";
       case "treasury requests":
         return "bg-blue-100 text-blue-800";
+      case "core":
+        return "bg-purple-100 text-purple-800";
+      case "research":
+        return "bg-amber-100 text-amber-800";
+      case "governance support":
+        return "bg-blue-100 text-blue-800";
+      case "marketing & innovation":
+        return "bg-emerald-100 text-emerald-800";
       default:
         return "bg-gray-100 text-gray-800";
     }
   }, [type]);
 
-  const proposalTypeLabel = useMemo(
-    () =>
-      translations.pageProposals[
-        toCamelCase(type) as keyof typeof translations.pageProposals
-      ],
-    [translations, type]
-  );
+  const proposalTypeLabel = useMemo(() => {
+    const typeKey = toCamelCase(type);
+    const isProposalType = typeKey in translations.pageProposals;
+    const isbudgetType = typeKey in translations.pageBudgetDiscussions;
+
+    let label = type;
+    if (isProposalType) {
+      label =
+        translations.pageProposals[
+          typeKey as keyof typeof translations.pageProposals
+        ];
+    } else if (isbudgetType) {
+      label =
+        translations.pageBudgetDiscussions[
+          typeKey as keyof typeof translations.pageBudgetDiscussions
+        ];
+    }
+    return label;
+  }, [translations, type]);
 
   return (
     <Badge
