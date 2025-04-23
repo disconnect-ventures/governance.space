@@ -7,10 +7,10 @@ import clsx from "clsx";
 import Link from "~/components/features/Link";
 import { calculateEpochNumber, formatDate } from "~/lib/utils";
 import { Dictionary } from "~/config/dictionaries";
-import { BudgetTypeBadge } from "./BudgetBadge";
 import { Markdown } from "../Markdown";
 import { BudgetDiscussion } from "~/lib/budgetDiscussions";
 import { useCallback, useMemo } from "react";
+import { ProposalBadge } from "../proposals/ProposalBadge";
 
 export type BudgetDiscussionCardProps = {
   discussion: BudgetDiscussion;
@@ -103,7 +103,7 @@ const BudgetDiscussionCard = ({
           <Markdown content={discussionBenefit ?? ""}></Markdown>
         </div>
         <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-          <BudgetTypeBadge
+          <ProposalBadge
             type={discussionType?.type_name ?? ""}
             translations={translations}
           />
