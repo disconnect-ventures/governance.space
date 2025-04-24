@@ -32,7 +32,6 @@ const BudgetDiscussionCard = ({
   poll,
   translations,
 }: BudgetDiscussionCardProps) => {
-  console.log({ poll });
   const proposalId = useMemo(() => discussion.id, [discussion]);
   const proposalName = useMemo(
     () =>
@@ -173,7 +172,7 @@ const BudgetDiscussionCard = ({
               <div className="flex items-center space-x-2">
                 <Calendar className="h-4 w-4" />
                 <span>
-                  {translations.general.expires}:{" "}
+                  {translations.general.updated}:{" "}
                   <span className="font-semibold">
                     {formatDate(updatedAt, calculateEpochNumber(updatedAt))}
                   </span>
