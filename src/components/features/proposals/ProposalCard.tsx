@@ -50,7 +50,7 @@ const ProposalCard = ({ proposal, translations }: ProposalCardProps) => {
             <div className="text-sm text-muted-foreground">
               {translations.general.idNumber}: {proposalId}
             </div>
-            <h2 className="text-2xl text-foreground font-semibold leading-[1.5rem] h-[3rem] overflow-hidden">
+            <h2 className="text-2xl text-foreground font-semibold leading-[1.5rem] line-clamp-2">
               {proposal.attributes.content.attributes.prop_name}
             </h2>
           </div>
