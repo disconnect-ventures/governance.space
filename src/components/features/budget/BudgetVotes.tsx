@@ -1,6 +1,6 @@
 import { Dictionary } from "~/config/dictionaries";
 import { getBudgetDiscussionPollById } from "~/lib/budgetDiscussions";
-import { GovernanceVotingCard } from "../governance/GovernanceVotingCard";
+import { VoteResults } from "../VoteResults";
 
 type BudgetVotesProps = {
   discussionId: number;
@@ -15,8 +15,8 @@ export async function BudgetVotes({
   const data = voteResponse?.data[0];
 
   return data ? (
-    <GovernanceVotingCard
-      title={"Votes"}
+    <VoteResults
+      title={dictionary.pageBudgetDiscussionDetails.pollResults}
       votes={{
         no: { count: data.attributes.poll_no },
         yes: { count: data.attributes.poll_yes },

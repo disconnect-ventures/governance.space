@@ -368,7 +368,8 @@
     "groupName": "Group Name",
     "typeOfGroup": "Type of Group",
     "socialHandles": "Social Handles",
-    "keyDependencies": "Key Dependencies"
+    "keyDependencies": "Key Dependencies",
+    "pollResults": "Poll Results"
   },
   "pageCommittees": {
     "title": "Committee Members",
