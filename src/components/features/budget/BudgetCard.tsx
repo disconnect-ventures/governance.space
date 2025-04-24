@@ -7,11 +7,17 @@ import {
   ThumbsUp,
   ThumbsDown,
   VoteIcon,
+  CircleDollarSignIcon,
 } from "lucide-react";
 import { buttonVariants } from "~/components/ui/button";
 import clsx from "clsx";
 import Link from "~/components/features/Link";
-import { calculateEpochNumber, formatDate } from "~/lib/utils";
+import {
+  calculateEpochNumber,
+  formatAda,
+  formatDate,
+  getPercentage,
+} from "~/lib/utils";
 import { Dictionary } from "~/config/dictionaries";
 import { Markdown } from "../Markdown";
 import {
@@ -72,6 +78,38 @@ const BudgetDiscussionCard = ({
       : "bg-red-500/20 text-red-500";
   }, [isDiscussionActive]);
 
+  const totalVotes = useMemo(
+    () => (poll?.attributes.poll_yes ?? 0) + (poll?.attributes.poll_no ?? 0),
+    [poll]
+  );
+  const yesPercentage = useMemo(
+    () => getPercentage(poll?.attributes.poll_yes ?? 0, totalVotes),
+    [poll, totalVotes]
+  );
+  const noPercentage = useMemo(
+    () => getPercentage(poll?.attributes.poll_no ?? 0, totalVotes),
+    [poll, totalVotes]
+  );
+
+  const bdCost = useMemo(
+    () => discussion.attributes.bd_costing?.data.attributes,
+    [discussion]
+  );
+  const adaValue = useMemo(
+    () => parseFloat(bdCost?.ada_amount ?? "0.0"),
+    [bdCost]
+  );
+  const usdValue = useMemo(() => {
+    const rawValue =
+      adaValue * parseFloat(bdCost?.usd_to_ada_conversion_rate ?? "0.0");
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(rawValue);
+  }, [bdCost, adaValue]);
+
   return (
     <Card className="w-full flex flex-col mx-auto border-border bg-card">
       <CardHeader className="space-y-4">
@@ -124,32 +162,48 @@ const BudgetDiscussionCard = ({
         </div>
 
         <div className="grid grid-cols-3 justify-between sm:space-y-0 text-sm gap-4 text-muted-foreground">
-          {poll?.attributes !== undefined && (
-            <div className="flex items-center space-x-2">
-              <VoteIcon className="h-4 w-4" />
-              <span>
-                {poll?.attributes.poll_yes + poll?.attributes.poll_no}{" "}
-                {translations.general.totalVotes}
-              </span>
-            </div>
-          )}
+          <div className="w-full col-span-full grid grid-cols-3 gap-2 justify-between">
+            {poll?.attributes !== undefined && (
+              <div className="flex items-center space-x-2 text-yellow-500 dark:text-yellow-600">
+                <VoteIcon className="h-4 w-4" />
+                <span>
+                  {poll?.attributes.poll_yes + poll?.attributes.poll_no}{" "}
+                  {translations.general.totalVotes}
+                </span>
+              </div>
+            )}
 
-          {poll?.attributes.poll_yes !== undefined && (
-            <div className="flex items-center space-x-2">
-              <ThumbsUp className="h-4 w-4" />
-              <span>
-                {poll?.attributes.poll_yes} {translations.general.yes}
-              </span>
+            {poll?.attributes.poll_yes !== undefined && (
+              <div className="flex items-center space-x-2 text-green-500 dark:text-green-600">
+                <ThumbsUp className="h-4 w-4" />
+                <span>
+                  {poll?.attributes.poll_yes} {translations.general.yes}
+                </span>
+              </div>
+            )}
+            {poll?.attributes.poll_no !== undefined && (
+              <div className="flex items-center space-x-2 text-red-500 dark:text-red-600">
+                <ThumbsDown className="h-4 w-4" />
+                <span>
+                  {poll?.attributes.poll_no} {translations.general.no}
+                </span>
+              </div>
+            )}
+
+            <div className="w-full col-span-full h-1 rounded-full bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
+              <div
+                className="h-full rounded-l-full bg-green-500 dark:bg-green-600 absolute"
+                style={{ width: `${yesPercentage}%` }}
+              />
+              <div
+                className="h-full bg-red-500 dark:bg-red-600 absolute"
+                style={{
+                  width: `${noPercentage}%`,
+                  left: `${yesPercentage}%`,
+                }}
+              />
             </div>
-          )}
-          {poll?.attributes.poll_no !== undefined && (
-            <div className="flex items-center space-x-2">
-              <ThumbsDown className="h-4 w-4" />
-              <span>
-                {poll?.attributes.poll_no} {translations.general.no}
-              </span>
-            </div>
-          )}
+          </div>
           <div className="flex items-center space-x-2">
             <MessageSquare className="h-4 w-4" />
             <span>
@@ -159,6 +213,18 @@ const BudgetDiscussionCard = ({
           </div>
 
           <div className="col-span-full space-y-2 text-foreground">
+            <div className="flex items-center space-x-2">
+              <CircleDollarSignIcon className="h-4 w-4" />
+              <span>{"Budget"}: </span>
+              <span className="whitespace-nowrap">
+                {formatAda(adaValue, {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 0,
+                })}
+              </span>
+              <span>/</span>
+              <span className="whitespace-nowrap">{usdValue}</span>
+            </div>
             <div className="flex items-center space-x-2">
               <Calendar className="h-4 w-4" />
               <span>

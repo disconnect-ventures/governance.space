@@ -2,7 +2,7 @@ import { CircleMinus, ThumbsDown, ThumbsUp } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Dictionary } from "~/config/dictionaries";
 import { TooltipProvider } from "~/components/ui/tooltip";
-import { cn } from "~/lib/utils";
+import { cn, getPercentage } from "~/lib/utils";
 
 type VoteOption = {
   count: number;
@@ -53,15 +53,12 @@ export function VoteResults({
     0
   );
 
-  const getPercentage = (count: number) =>
-    totalVotes ? Math.round((count / totalVotes) * 100) : 0;
-
-  const yesPercentage = getPercentage(votes.yes.count);
-  const noPercentage = getPercentage(votes.no.count);
-  const abstainPercentage = getPercentage(votes.abstain.count);
+  const yesPercentage = getPercentage(votes.yes.count, totalVotes);
+  const noPercentage = getPercentage(votes.no.count, totalVotes);
+  const abstainPercentage = getPercentage(votes.abstain.count, totalVotes);
 
   const formatCount = (count: number, showPercentage = true) => {
-    const percentage = getPercentage(count);
+    const percentage = getPercentage(count, totalVotes);
     const displayValue = formatValue
       ? formatValue(count)
       : count.toLocaleString();

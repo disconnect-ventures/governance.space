@@ -36,13 +36,17 @@ export function toCamelCase(input: string): string {
     .join("");
 }
 
-export const formatAda = (amount: number | string) => {
+export const formatAda = (
+  amount: number | string,
+  options?: Intl.NumberFormatOptions
+) => {
   return `₳ ${
     typeof amount === "string"
       ? amount
       : amount.toLocaleString("en-US", {
           minimumFractionDigits: 3,
           maximumFractionDigits: 3,
+          ...options,
         })
   }`;
 };
@@ -101,3 +105,6 @@ export const formatDate = (
   });
   return `${formattedDate} (Epoch ${epoch})`;
 };
+
+export const getPercentage = (count: number, total: number) =>
+  total ? Math.round((count / total) * 100) : 0;
