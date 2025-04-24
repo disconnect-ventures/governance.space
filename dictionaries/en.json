@@ -71,7 +71,10 @@
     "ada": "ADA",
     "description": "Description",
     "created": "Created",
-    "id": "ID"
+    "id": "ID",
+    "threshold": "Threshold",
+    "thresholdDescription": "Threshold for ratification",
+    "totalVotes": "Total Votes"
   },
   "accessibility": {
     "pagination": "pagination",
@@ -369,7 +372,8 @@
     "typeOfGroup": "Type of Group",
     "socialHandles": "Social Handles",
     "keyDependencies": "Key Dependencies",
-    "pollResults": "Poll Results"
+    "pollResults": "Poll Results",
+    "pollDescription": "Should this proposal be funded in the next Cardano Budget round?"
   },
   "pageCommittees": {
     "title": "Committee Members",

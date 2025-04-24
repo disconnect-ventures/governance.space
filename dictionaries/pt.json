@@ -71,7 +71,10 @@
     "ada": "ADA",
     "description": "Descrição",
     "created": "Criado",
-    "id": "ID"
+    "id": "ID",
+    "threshold": "",
+    "thresholdDescription": "Limite de votos necessários para ratificar a ação de governança.",
+    "totalVotes": "Total de Votos"
   },
   "accessibility": {
     "pagination": "paginação",
@@ -370,7 +373,8 @@
     "typeOfGroup": "Tipo de Grupo",
     "socialHandles": "Perfis Sociais",
     "keyDependencies": "Principais Dependências",
-    "pollResults": "Resultados da Pesquisa"
+    "pollResults": "Resultados da Pesquisa",
+    "pollDescription": "Esta proposta deve ser financiada na próxima rodada do Orçamento Cardano?"
   },
   "pageCommittees": {
     "title": "Membros dos Comitês",
