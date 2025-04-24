@@ -3,7 +3,6 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProposalHeader } from "~/components/features/proposals/ProposalHeader";
 import { ProposalIdentification } from "~/components/features/proposals/ProposalIdentification";
-import { VotingSection } from "~/components/features/proposals/VotingSection";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { TopBar } from "~/components/layout/TopBar";
 import { Card, CardContent } from "~/components/ui/card";
@@ -18,6 +17,7 @@ import { BudgetDiscussionContent } from "~/components/features/budget/BudgetCont
 import { getBudgetDiscussionComments } from "~/lib/comments";
 import { Suspense } from "react";
 import { Comments, CommentsSkeleton } from "~/components/features/Comments";
+import { BudgetVotes } from "~/components/features/budget/BudgetVotes";
 
 export async function generateMetadata({
   params,
@@ -151,7 +151,9 @@ export default async function BudgetDiscussionDetailsPage({
       </Card>
       <Card className="mb-4 sm:mb-6 bg-card text-card-foreground">
         <CardContent className="p-4 sm:p-6">
-          <VotingSection translations={dictionary} />
+          <Suspense>
+            <BudgetVotes discussionId={discussionId} dictionary={dictionary} />
+          </Suspense>
         </CardContent>
       </Card>
 

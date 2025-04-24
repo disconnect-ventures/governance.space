@@ -192,18 +192,7 @@ type BudgetDiscussionPoll = {
   };
 };
 
-type BudgetDiscussionPollPagination = {
-  page: number;
-  pageSize: number;
-  pageCount: number;
-  total: number;
-};
-
-type BudgetDiscussionPollsResponse = PdfApiResponse<BudgetDiscussionPoll[]> & {
-  meta: {
-    pagination: BudgetDiscussionPollPagination;
-  };
-};
+type BudgetDiscussionPollsResponse = PdfApiResponse<BudgetDiscussionPoll[]>;
 
 export async function getBudgetDiscussionPolls(
   page: number = 1,
@@ -225,9 +214,8 @@ export async function getBudgetDiscussionPolls(
   url.searchParams.append("sort[createdAt]", "desc");
 
   try {
-    const res =
-      await fetchApi<PdfApiResponse<BudgetDiscussionPollsResponse>>(url);
-    return res.data ? res.data : null;
+    const res = await fetchApi<BudgetDiscussionPollsResponse>(url);
+    return res;
   } catch {
     return null;
   }
