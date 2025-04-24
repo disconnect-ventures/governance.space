@@ -2,6 +2,7 @@ import { CircleMinus, ThumbsDown, ThumbsUp } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Dictionary } from "~/config/dictionaries";
 import { TooltipProvider } from "~/components/ui/tooltip";
+import { cn } from "~/lib/utils";
 
 type VoteOption = {
   count: number;
@@ -9,7 +10,7 @@ type VoteOption = {
   hide?: boolean;
 };
 
-type VoteResultsProps = {
+export type VoteResultsProps = {
   title: string;
   description?: string;
   votes: Record<"yes" | "no" | "abstain", VoteOption>;
@@ -59,12 +60,12 @@ export function VoteResults({
   const noPercentage = getPercentage(votes.no.count);
   const abstainPercentage = getPercentage(votes.abstain.count);
 
-  const formatCount = (count: number) => {
+  const formatCount = (count: number, showPercentage = true) => {
     const percentage = getPercentage(count);
     const displayValue = formatValue
       ? formatValue(count)
       : count.toLocaleString();
-    return `${displayValue} (${percentage}%)`;
+    return `${displayValue}` + `${showPercentage ? ` (${percentage}%)` : ""}`;
   };
 
   // const thresholdPercentage = threshold * 100;
@@ -74,12 +75,12 @@ export function VoteResults({
     <TooltipProvider>
       <Card className="dark:bg-gray-800 dark:border-gray-700 shadow-md">
         <CardHeader className="pb-2">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2 flex-wrap">
             <CardTitle className="text-lg font-semibold dark:text-gray-100">
               {title}
             </CardTitle>
             <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-              {translations.totalVotes}: {totalVotes.toLocaleString()}
+              {translations.totalVotes}: {formatCount(totalVotes, false)}
             </div>
           </div>
           {description && (
@@ -88,7 +89,7 @@ export function VoteResults({
             </div>
           )}
         </CardHeader>
-        <CardContent className="p-6 pt-2">
+        <CardContent className="p-3 pt-2">
           <div className="space-y-3 mb-4">
             {Object.entries(votes).map(
               ([type, { count, label, hide = false }], index) => {
@@ -98,15 +99,18 @@ export function VoteResults({
                   colorClass,
                 } = config[type as keyof typeof config];
 
-                const percentage = getPercentage(count);
+                // const percentage = getPercentage(count);
 
                 return !hide ? (
                   <div
                     key={index}
-                    className="flex items-center justify-between p-3 gap-6 rounded-lg
+                    className={cn(
+                      `rounded-lg
                     bg-white border border-gray-200 hover:border-gray-300
                     dark:bg-gray-900 dark:border-gray-700 dark:hover:border-gray-600
-                    transition-colors"
+                    transition-colors`,
+                      "flex items-center justify-between p-3 gap-3 flex-wrap"
+                    )}
                   >
                     <div
                       className={`flex items-center justify-center gap-2 ${colorClass}`}
@@ -117,12 +121,12 @@ export function VoteResults({
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <div className="w-16 h-2 rounded-full bg-gray-200 dark:bg-gray-700 relative">
+                      {/* <div className="w-16 h-2 rounded-full bg-gray-200 dark:bg-gray-700 relative">
                         <div
                           className={`h-full rounded-full ${config[type as keyof typeof config].bgClass}`}
                           style={{ width: `${percentage}%` }}
                         />
-                      </div>
+                      </div> */}
                       <span className="font-bold text-sm dark:text-gray-200 min-w-[90px] text-right">
                         {formatCount(count)}
                       </span>
