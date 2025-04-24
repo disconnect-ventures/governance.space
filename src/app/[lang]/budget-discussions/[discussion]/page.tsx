@@ -17,7 +17,10 @@ import { BudgetDiscussionContent } from "~/components/features/budget/BudgetCont
 import { getBudgetDiscussionComments } from "~/lib/comments";
 import { Suspense } from "react";
 import { Comments, CommentsSkeleton } from "~/components/features/Comments";
-import { BudgetVotes } from "~/components/features/budget/BudgetVotes";
+import {
+  BudgetVotes,
+  VoteResultsSkeleton,
+} from "~/components/features/budget/BudgetVotes";
 
 export async function generateMetadata({
   params,
@@ -149,13 +152,12 @@ export default async function BudgetDiscussionDetailsPage({
           </div>
         </CardContent>
       </Card>
-      <Card className="mb-4 sm:mb-6 bg-card text-card-foreground">
-        <CardContent className="p-4 sm:p-6">
-          <Suspense>
-            <BudgetVotes discussionId={discussionId} dictionary={dictionary} />
-          </Suspense>
-        </CardContent>
-      </Card>
+
+      <div className="mb-4 bg-card text-card-foreground">
+        <Suspense fallback={<VoteResultsSkeleton></VoteResultsSkeleton>}>
+          <BudgetVotes discussionId={discussionId} dictionary={dictionary} />
+        </Suspense>
+      </div>
 
       <Suspense fallback={<CommentsSkeleton />}>
         <Comments
