@@ -1,8 +1,5 @@
 import { Calendar, Clock } from "lucide-react";
-import {
-  GovernanceVotingCard,
-  GovernanceVotingCardProps,
-} from "./GovernanceVotingCard";
+
 import { Progress } from "~/components/ui/progress";
 import { GovernanceAction } from "~/lib/governance-actions";
 import {
@@ -19,6 +16,7 @@ import {
   TooltipContent,
 } from "~/components/ui/tooltip";
 import { Dictionary } from "~/config/dictionaries";
+import { VoteResults, VoteResultsProps } from "../VoteResults";
 
 export const GovernaceVoting = ({
   action,
@@ -31,7 +29,7 @@ export const GovernaceVoting = ({
   >;
 }) => {
   // TODO:Get correct threshold
-  const dRepsVotingData: GovernanceVotingCardProps = {
+  const dRepsVotingData: VoteResultsProps = {
     title: translations.pageGovernanceActionsDetails.dreps,
     votes: {
       yes: {
@@ -47,7 +45,7 @@ export const GovernaceVoting = ({
     translations: translations.general,
   };
 
-  const sposVotingData: GovernanceVotingCardProps = {
+  const sposVotingData: VoteResultsProps = {
     title: translations.pageGovernanceActionsDetails.spos,
     votes: {
       yes: { count: action.poolYesVotes },
@@ -61,7 +59,7 @@ export const GovernaceVoting = ({
     translations: translations.general,
   };
 
-  const constitutionalCommitteeVotingData: GovernanceVotingCardProps = {
+  const constitutionalCommitteeVotingData: VoteResultsProps = {
     title: translations.pageGovernanceActionsDetails.constitutionalCommittee,
     votes: {
       yes: {
@@ -100,9 +98,9 @@ export const GovernaceVoting = ({
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-        <GovernanceVotingCard {...dRepsVotingData} />
-        <GovernanceVotingCard {...sposVotingData} />
-        <GovernanceVotingCard {...constitutionalCommitteeVotingData} />
+        <VoteResults {...dRepsVotingData} />
+        <VoteResults {...sposVotingData} />
+        <VoteResults {...constitutionalCommitteeVotingData} />
       </div>
 
       <div className="w-full flex flex-col md:flex-row gap-8 mt-6">
