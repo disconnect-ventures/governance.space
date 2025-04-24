@@ -369,7 +369,8 @@
     "groupName": "Nome do Grupo",
     "typeOfGroup": "Tipo de Grupo",
     "socialHandles": "Perfis Sociais",
-    "keyDependencies": "Principais Dependências"
+    "keyDependencies": "Principais Dependências",
+    "pollResults": "Resultados da Pesquisa"
   },
   "pageCommittees": {
     "title": "Membros dos Comitês",
