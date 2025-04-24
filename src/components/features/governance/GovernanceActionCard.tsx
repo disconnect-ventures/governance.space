@@ -130,7 +130,7 @@ export const GovernanceActionCard = ({
           />
         </div>
 
-        <h3 className="text-lg font-semibold mb-2 dark:text-gray-100">
+        <h3 className="text-lg font-semibold mb-2 dark:text-gray-100 line-clamp-2">
           {title}
         </h3>
 
