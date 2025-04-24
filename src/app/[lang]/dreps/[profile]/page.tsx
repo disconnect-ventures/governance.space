@@ -13,12 +13,14 @@ import { getDictionary } from "~/config/dictionaries";
 import { PageProps } from "../../layout";
 
 export async function generateMetadata({
-  params,
+  params: paramsPromise,
 }: DRepProfileProps): Promise<Metadata> {
-  const profileId = (await params).profile;
+  const params = await paramsPromise;
+  const dictionary = await getDictionary(params.lang);
+  const profileId = params.profile;
   return {
-    title: `Governance Space - DRep Profile ${profileId}`,
-    description: "All-in-One Governance Platform",
+    title: `${profileId} - ${dictionary.metatags.title}`,
+    description: dictionary.metatags.description,
   };
 }
 
@@ -82,10 +84,7 @@ export default async function DRepProfilePage({
           {/* <Comments drep={drep} comments={comments} translations={dictionary} /> */}
         </div>
         <div className="lg:w-1/3">
-          <ProfileInfo
-            drep={drep}
-            translations={dictionary}
-          />
+          <ProfileInfo drep={drep} translations={dictionary} />
         </div>
       </div>
     </div>

@@ -4,10 +4,17 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { getDictionary } from "~/config/dictionaries";
 import { PageProps } from "../layout";
 
-export const metadata: Metadata = {
-  title: "Governance Space - Cookies Policy",
-  description: "All-in-One Governance Platform",
-};
+export async function generateMetadata({
+  params: paramsPromise,
+}: PageProps): Promise<Metadata> {
+  const params = await paramsPromise;
+  const dictionary = await getDictionary(params.lang);
+
+  return {
+    title: `${dictionary.pageCookiePolicy.title} - ${dictionary.metatags.title}`,
+    description: dictionary.metatags.description,
+  };
+}
 
 export default async function CookiePolicyPage({
   params: paramsPromise,

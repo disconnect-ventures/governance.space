@@ -22,12 +22,14 @@ import { getGovernanceActionMetadata, MetadataStandard } from "~/lib/metadata";
 import { getDictionary } from "~/config/dictionaries";
 
 export async function generateMetadata({
-  params,
+  params: paramsPromise,
 }: GovernanceActionDetailsProps): Promise<Metadata> {
-  const actionId = (await params).action;
+  const params = await paramsPromise;
+  const dictionary = await getDictionary(params.lang);
+  const actionId = params.action;
   return {
-    title: `Governance Space - Governance Action ${actionId}`,
-    description: "All-in-One Governance Platform",
+    title: `${actionId} - ${dictionary.metatags.title}`,
+    description: dictionary.metatags.description,
   };
 }
 

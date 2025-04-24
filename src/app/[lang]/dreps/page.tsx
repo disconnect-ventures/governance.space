@@ -7,10 +7,17 @@ import { PageProps } from "../layout";
 import { getDictionary } from "~/config/dictionaries";
 import { getNetworkMetrics } from "~/lib/analytics";
 
-export const metadata: Metadata = {
-  title: "Governance Space - DReps Directory",
-  description: "All-in-One Governance Platform",
-};
+export async function generateMetadata({
+  params: paramsPromise,
+}: PageProps): Promise<Metadata> {
+  const params = await paramsPromise;
+  const dictionary = await getDictionary(params.lang);
+
+  return {
+    title: `${dictionary.pageDreps.title} - ${dictionary.metatags.title}`,
+    description: dictionary.metatags.description,
+  };
+}
 
 export default async function DRepsDirectoryPage({
   params: paramsPromise,

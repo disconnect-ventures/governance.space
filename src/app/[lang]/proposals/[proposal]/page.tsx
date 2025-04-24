@@ -18,13 +18,15 @@ import { Comments, CommentsSkeleton } from "~/components/features/Comments";
 import { Suspense } from "react";
 
 export async function generateMetadata({
-  params,
+  params: paramsPromise,
 }: ProposalDetailsProps): Promise<Metadata> {
-  const proposalId = (await params).proposal;
+  const params = await paramsPromise;
+  const dictionary = await getDictionary(params.lang);
+  const proposalId = params.proposal;
 
   return {
-    title: `Governance Space - Proposal ${proposalId}`,
-    description: "All-in-One Governance Platform",
+    title: `${proposalId} - ${dictionary.metatags.title}`,
+    description: dictionary.metatags.description,
   };
 }
 

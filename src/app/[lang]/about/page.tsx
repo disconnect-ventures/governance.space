@@ -5,10 +5,17 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { getDictionary } from "~/config/dictionaries";
 import { PageProps } from "../layout";
 
-export const metadata: Metadata = {
-  title: "Governance Space - About",
-  description: "All-in-One Governance Platform",
-};
+export async function generateMetadata({
+  params: paramsPromise,
+}: PageProps): Promise<Metadata> {
+  const params = await paramsPromise;
+  const dictionary = await getDictionary(params.lang);
+
+  return {
+    title: `${dictionary.pageAbout.title} - ${dictionary.metatags.title}`,
+    description: dictionary.metatags.description,
+  };
+}
 
 export default async function AboutPage({ params: paramsPromise }: PageProps) {
   const params = await paramsPromise;

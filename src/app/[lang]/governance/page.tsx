@@ -15,10 +15,17 @@ import {
 } from "~/lib/metadata";
 import { getDictionary } from "~/config/dictionaries";
 
-export const metadata: Metadata = {
-  title: "Governance Space - Governance Actions",
-  description: "All-in-One Governance Platform",
-};
+export async function generateMetadata({
+  params: paramsPromise,
+}: PageProps): Promise<Metadata> {
+  const params = await paramsPromise;
+  const dictionary = await getDictionary(params.lang);
+
+  return {
+    title: `${dictionary.pageGovernanceActions.title} - ${dictionary.metatags.title}`,
+    description: dictionary.metatags.description,
+  };
+}
 
 export default async function GovernancePage({
   params: paramsPromise,

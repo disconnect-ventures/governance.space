@@ -175,7 +175,8 @@
     "about": "About",
     "privacyPolicy": "Privacy Policy",
     "terms": "Terms of Use",
-    "cookiePolicy": "Cookies Policy"
+    "cookiePolicy": "Cookies Policy",
+    "budgetDiscussions": "Budget Discussions"
   },
   "wallet": {
     "connectWallet": "Connect Wallet",
