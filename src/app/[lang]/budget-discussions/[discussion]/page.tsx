@@ -23,13 +23,15 @@ import {
 } from "~/components/features/budget/BudgetVotes";
 
 export async function generateMetadata({
-  params,
+  params: paramsPromise,
 }: BudgetDiscussionDetailsProps): Promise<Metadata> {
-  const proposalId = (await params).discussion;
+  const params = await paramsPromise;
+  const dictionary = await getDictionary(params.lang);
+  const proposalId = params.discussion;
 
   return {
-    title: `Governance Space - Budget Discussion ${proposalId}`,
-    description: "All-in-One Governance Platform",
+    title: `${proposalId} - ${dictionary.metatags.title}`,
+    description: dictionary.metatags.description,
   };
 }
 

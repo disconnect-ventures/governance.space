@@ -12,10 +12,17 @@ import { getDRepStatusStats } from "~/lib/drepStats";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Governance Space - Analytics",
-  description: "All-in-One Governance Platform",
-};
+export async function generateMetadata({
+  params: paramsPromise,
+}: PageProps): Promise<Metadata> {
+  const params = await paramsPromise;
+  const dictionary = await getDictionary(params.lang);
+
+  return {
+    title: `${dictionary.pageAnalytics.title} - ${dictionary.metatags.title}`,
+    description: dictionary.metatags.description,
+  };
+}
 
 export default async function AnalyticsPage({
   params: paramsPromise,

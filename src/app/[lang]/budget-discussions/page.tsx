@@ -11,10 +11,17 @@ import {
 } from "~/lib/budgetDiscussions";
 import { BudgetDiscussionDirectory } from "~/components/features/budget/BudgetDirectory";
 
-export const metadata: Metadata = {
-  title: "Governance Space - Budget Discussions",
-  description: "All-in-One Governance Platform",
-};
+export async function generateMetadata({
+  params: paramsPromise,
+}: PageProps): Promise<Metadata> {
+  const params = await paramsPromise;
+  const dictionary = await getDictionary(params.lang);
+
+  return {
+    title: `${dictionary.pageBudgetDiscussions.title} - ${dictionary.metatags.title}`,
+    description: dictionary.metatags.description,
+  };
+}
 
 export default async function BudgetDiscussionsPage({
   params: paramsPromise,
