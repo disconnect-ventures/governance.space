@@ -74,7 +74,7 @@
     "id": "ID",
     "threshold": "Threshold",
     "thresholdDescription": "Threshold for ratification",
-    "totalVotes": "Total Votes"
+    "totalVotes": "Votes"
   },
   "accessibility": {
     "pagination": "pagination",

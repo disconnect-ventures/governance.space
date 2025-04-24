@@ -1,26 +1,38 @@
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 import { Avatar, AvatarFallback } from "~/components/ui/avatar";
-import { MessageSquare, Calendar } from "lucide-react";
+import {
+  MessageSquare,
+  Calendar,
+  ThumbsUp,
+  ThumbsDown,
+  VoteIcon,
+} from "lucide-react";
 import { buttonVariants } from "~/components/ui/button";
 import clsx from "clsx";
 import Link from "~/components/features/Link";
 import { calculateEpochNumber, formatDate } from "~/lib/utils";
 import { Dictionary } from "~/config/dictionaries";
 import { Markdown } from "../Markdown";
-import { BudgetDiscussion } from "~/lib/budgetDiscussions";
+import {
+  BudgetDiscussion,
+  BudgetDiscussionPoll,
+} from "~/lib/budgetDiscussions";
 import { useCallback, useMemo } from "react";
 import { ProposalBadge } from "../proposals/ProposalBadge";
 
 export type BudgetDiscussionCardProps = {
   discussion: BudgetDiscussion;
+  poll?: BudgetDiscussionPoll;
   translations: Dictionary;
 };
 
 const BudgetDiscussionCard = ({
   discussion,
+  poll,
   translations,
 }: BudgetDiscussionCardProps) => {
+  console.log({ poll });
   const proposalId = useMemo(() => discussion.id, [discussion]);
   const proposalName = useMemo(
     () =>
@@ -113,6 +125,32 @@ const BudgetDiscussionCard = ({
         </div>
 
         <div className="grid grid-cols-3 justify-between sm:space-y-0 text-sm gap-4 text-muted-foreground">
+          {poll?.attributes !== undefined && (
+            <div className="flex items-center space-x-2">
+              <VoteIcon className="h-4 w-4" />
+              <span>
+                {poll?.attributes.poll_yes + poll?.attributes.poll_no}{" "}
+                {translations.general.totalVotes}
+              </span>
+            </div>
+          )}
+
+          {poll?.attributes.poll_yes !== undefined && (
+            <div className="flex items-center space-x-2">
+              <ThumbsUp className="h-4 w-4" />
+              <span>
+                {poll?.attributes.poll_yes} {translations.general.yes}
+              </span>
+            </div>
+          )}
+          {poll?.attributes.poll_no !== undefined && (
+            <div className="flex items-center space-x-2">
+              <ThumbsDown className="h-4 w-4" />
+              <span>
+                {poll?.attributes.poll_no} {translations.general.no}
+              </span>
+            </div>
+          )}
           <div className="flex items-center space-x-2">
             <MessageSquare className="h-4 w-4" />
             <span>

@@ -180,7 +180,7 @@ export async function getBudgetDiscussion(
   }
 }
 
-type BudgetDiscussionPoll = {
+export type BudgetDiscussionPoll = {
   id: number;
   attributes: {
     bd_proposal_id: string;
@@ -192,23 +192,45 @@ type BudgetDiscussionPoll = {
   };
 };
 
-type BudgetDiscussionPollsResponse = PdfApiResponse<BudgetDiscussionPoll[]>;
+export type BudgetDiscussionPollsResponse = PdfApiResponse<BudgetDiscussionPoll[]>;
 
 export async function getBudgetDiscussionPolls(
   page: number = 1,
   pageSize: number = 1,
   isActive: boolean = true,
-  proposalId?: string
+  proposalIds?: string | string[]
 ): Promise<BudgetDiscussionPollsResponse | null> {
   const url = new URL(`/api/bd-polls`, PDF_API_URL);
 
-  if (proposalId) {
+  if (proposalIds) {
+    if (typeof proposalIds === "string") {
+      url.searchParams.append(
+        "filters[$and][0][bd_proposal_id][$eq]",
+        proposalIds
+      );
+    }
+    else if (Array.isArray(proposalIds) && proposalIds.length > 0) {
+      proposalIds.forEach((id, index) => {
+        url.searchParams.append(
+          `filters[$or][${index}][bd_proposal_id][$eq]`,
+          id
+        );
+      });
+    }
+  }
+
+  if (Array.isArray(proposalIds) && proposalIds.length > 0) {
     url.searchParams.append(
-      "filters[$and][0][bd_proposal_id][$eq]",
-      proposalId
+      "filters[$and][0][is_poll_active]",
+      String(isActive)
+    );
+  } else {
+    url.searchParams.append(
+      "filters[$and][1][is_poll_active]",
+      String(isActive)
     );
   }
-  url.searchParams.append("filters[$and][1][is_poll_active]", String(isActive));
+
   url.searchParams.append("pagination[page]", String(page));
   url.searchParams.append("pagination[pageSize]", String(pageSize));
   url.searchParams.append("sort[createdAt]", "desc");
@@ -226,6 +248,20 @@ export async function getBudgetDiscussionPollById(
   isActive: boolean = true
 ) {
   return getBudgetDiscussionPolls(1, 1, isActive, id.toString());
+}
+
+export async function getBudgetDiscussionPollsByIds(
+  ids: number[],
+  isActive: boolean = true,
+  page: number = 1,
+  pageSize: number = 10
+) {
+  return getBudgetDiscussionPolls(
+    page,
+    pageSize,
+    isActive,
+    ids.map((id) => id.toString())
+  );
 }
 
 export interface ListBudgetDiscussionsParams {

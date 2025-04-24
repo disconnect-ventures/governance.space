@@ -8,6 +8,7 @@ import { Dictionary } from "~/config/dictionaries";
 import BudgetDiscussionCard from "./BudgetCard";
 import {
   BudgetDiscussion,
+  BudgetDiscussionPoll,
   BudgetDiscussionType,
 } from "~/lib/budgetDiscussions";
 import { toCamelCase } from "~/lib/utils";
@@ -16,6 +17,7 @@ export type BudgetDiscussionDirectoryProps = {
   budgetDiscussions: Array<BudgetDiscussion>;
   params: DirectorySearchParams;
   budgetDiscussionTypes: Array<BudgetDiscussionType>;
+  polls: Array<BudgetDiscussionPoll>;
   translations: Dictionary;
 };
 
@@ -24,6 +26,7 @@ export async function BudgetDiscussionDirectory({
   params,
   budgetDiscussionTypes,
   translations,
+  polls,
 }: BudgetDiscussionDirectoryProps) {
   return (
     <Directory
@@ -57,6 +60,10 @@ export async function BudgetDiscussionDirectory({
         <BudgetDiscussionCard
           key={index}
           discussion={proposal}
+          poll={polls.find(
+            (p) =>
+              proposal.id.toString() === p.attributes.bd_proposal_id.toString()
+          )}
           translations={translations}
         />
       ))}
