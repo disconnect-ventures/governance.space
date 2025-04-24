@@ -4,6 +4,7 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { getDictionary } from "~/config/dictionaries";
 import { PageProps } from "../layout";
 import {
+  getBudgetDiscussionPollsByIds,
   getBudgetDiscussionTypes,
   listBudgetDiscussions,
   ListBudgetDiscussionsParams,
@@ -42,6 +43,13 @@ export default async function BudgetDiscussionsPage({
     typeIds: filters,
   });
 
+  const polls = await getBudgetDiscussionPollsByIds(
+    discussions?.data.map((d) => d.id) ?? [],
+    true,
+    1,
+    pageSize
+  );
+
   return (
     <div className="space-y-4 bg-background text-foreground">
       <PageTitle
@@ -56,6 +64,7 @@ export default async function BudgetDiscussionsPage({
       <BudgetDiscussionDirectory
         budgetDiscussions={discussions?.data ?? []}
         budgetDiscussionTypes={types?.data ?? []}
+        polls={polls?.data ?? []}
         translations={dictionary}
         params={{
           page,

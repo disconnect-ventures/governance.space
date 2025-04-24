@@ -74,7 +74,7 @@
     "id": "ID",
     "threshold": "",
     "thresholdDescription": "Limite de votos necessários para ratificar a ação de governança.",
-    "totalVotes": "Total de Votos"
+    "totalVotes": "Votos"
   },
   "accessibility": {
     "pagination": "paginação",
