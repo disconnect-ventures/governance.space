@@ -120,6 +120,9 @@ export const GovernanceActionCard = ({
             translations={translations}
             type={action.type}
           />
+          <span className="text-sm text-muted-foreground dark:text-gray-400">
+            {translations.pageGovernanceActions.governanceActionType}
+          </span>
           <GovernanceActionStatusBadge
             status={status}
             translations={translations}
