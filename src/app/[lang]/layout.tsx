@@ -24,17 +24,24 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale.key }));
 }
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://governancespace.com"),
-  title: "Governance Space",
-  description: "All-in-One Governance Platform",
-  openGraph: {
-    url: "https://governancespace.com",
-    title: "Governance Space",
-    description: "All-in-One Governance Platform",
-    images: [{ url: "/assets/open-graph.png", width: 1512, height: 589 }],
-  },
-};
+export async function generateMetadata({
+  params: paramsPromise,
+}: PageProps): Promise<Metadata> {
+  const params = await paramsPromise;
+  const dictionary = await getDictionary(params.lang);
+
+  return {
+    metadataBase: new URL("https://governancespace.com"),
+    title: dictionary.metatags.title,
+    description: dictionary.metatags.description,
+    openGraph: {
+      url: "https://governancespace.com",
+      title: dictionary.metatags.title,
+      description: dictionary.metatags.description,
+      images: [{ url: "/assets/open-graph.png", width: 1512, height: 589 }],
+    },
+  };
+}
 
 export type PageProps<Params = {}> = {
   params: Promise<{ lang: Locale } & Params>;
