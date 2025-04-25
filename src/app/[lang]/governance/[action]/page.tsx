@@ -26,9 +26,13 @@ export async function generateMetadata({
 }: GovernanceActionDetailsProps): Promise<Metadata> {
   const params = await paramsPromise;
   const dictionary = await getDictionary(params.lang);
+  const governanceActionById = await getGovernanceActionById(params.action);
+  const actionName = governanceActionById?.proposal.title;
   const actionId = params.action;
+  const title = actionName ?? actionId;
+
   return {
-    title: `${actionId} - ${dictionary.metatags.title}`,
+    title: `${title} - ${dictionary.metatags.title}`,
     description: dictionary.metatags.description,
   };
 }

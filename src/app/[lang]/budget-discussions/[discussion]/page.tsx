@@ -24,10 +24,15 @@ export async function generateMetadata({
 }: BudgetDiscussionDetailsProps): Promise<Metadata> {
   const params = await paramsPromise;
   const dictionary = await getDictionary(params.lang);
+  const budgetDiscussion = await getBudgetDiscussion(params.discussion);
+  const proposalName =
+    budgetDiscussion?.attributes.bd_proposal_detail?.data.attributes
+      .proposal_name;
   const proposalId = params.discussion;
+  const title = proposalName ?? proposalId;
 
   return {
-    title: `${proposalId} - ${dictionary.metatags.title}`,
+    title: `${title} - ${dictionary.metatags.title}`,
     description: dictionary.metatags.description,
   };
 }

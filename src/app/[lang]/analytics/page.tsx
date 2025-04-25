@@ -17,9 +17,10 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const params = await paramsPromise;
   const dictionary = await getDictionary(params.lang);
+  const info = await getNetworkInfo();
 
   return {
-    title: `${dictionary.pageAnalytics.title} - ${dictionary.metatags.title}`,
+    title: `${dictionary.pageAnalytics.title} - Epoch ${info.epochNo} - ${dictionary.metatags.title}`,
     description: dictionary.metatags.description,
   };
 }
