@@ -22,10 +22,14 @@ export async function generateMetadata({
 }: ProposalDetailsProps): Promise<Metadata> {
   const params = await paramsPromise;
   const dictionary = await getDictionary(params.lang);
+  const proposalsById = await getProposalsById(params.proposal);
+  const proposalName =
+    proposalsById.data.attributes.content.attributes.prop_name;
   const proposalId = params.proposal;
+  const title = proposalName ?? proposalId;
 
   return {
-    title: `${proposalId} - ${dictionary.metatags.title}`,
+    title: `${title} - ${dictionary.metatags.title}`,
     description: dictionary.metatags.description,
   };
 }

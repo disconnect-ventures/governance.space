@@ -17,9 +17,13 @@ export async function generateMetadata({
 }: DRepProfileProps): Promise<Metadata> {
   const params = await paramsPromise;
   const dictionary = await getDictionary(params.lang);
+  const drepById = await getDRepById(params.profile);
+  const profileName = drepById?.givenName;
   const profileId = params.profile;
+  const title = profileName ?? profileId;
+
   return {
-    title: `${profileId} - ${dictionary.metatags.title}`,
+    title: `${title} - ${dictionary.metatags.title}`,
     description: dictionary.metatags.description,
   };
 }
