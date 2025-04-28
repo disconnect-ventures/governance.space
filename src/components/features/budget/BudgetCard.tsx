@@ -205,8 +205,8 @@ const BudgetDiscussionCard = ({
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <MessageSquare className="h-4 w-4" />
-            <span>
+            <MessageSquare className="h-4 w-4 shrink-0" />
+            <span className="whitespace-nowrap">
               {discussion.attributes.prop_comments_number}{" "}
               {translations.general.comments}
             </span>
