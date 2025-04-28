@@ -18,7 +18,7 @@ import {
 } from "~/lib/governance-actions";
 import { PageProps } from "../../layout";
 import { notFound } from "next/navigation";
-import { getGovernanceActionMetadata, MetadataStandard } from "~/lib/metadata";
+import { getGovernanceActionMetadata } from "~/lib/metadata";
 import { getDictionary } from "~/config/dictionaries";
 
 export async function generateMetadata({
@@ -134,10 +134,9 @@ export default async function GovernanceActionDetailsPage({
 
   const metadata = await getGovernanceActionMetadata(
     action.metadataHash,
-    MetadataStandard.CIP108,
     action.url
   );
-  const references = metadata?.metadata.references ?? [];
+  const references = metadata?.metadata?.references ?? [];
 
   return (
     <div className="bg-background text-foreground">

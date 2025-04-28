@@ -10,8 +10,8 @@ import {
 import { PageProps } from "../layout";
 import {
   getGovernanceActionMetadata,
+  GovernanceActionMetadataPayload,
   Metadata as ApiMetadata,
-  MetadataStandard,
 } from "~/lib/metadata";
 import { getDictionary } from "~/config/dictionaries";
 
@@ -49,12 +49,14 @@ export default async function GovernancePage({
     filters
   );
 
-  const metadata: Record<string, ApiMetadata | null> = {};
+  const metadata: Record<
+    string,
+    ApiMetadata<GovernanceActionMetadataPayload> | null
+  > = {};
   await Promise.all(
     governanceActions.elements.map(async (action) => {
       const data = await getGovernanceActionMetadata(
         action.metadataHash,
-        MetadataStandard.CIP108,
         action.url
       );
       metadata[action.id] = data;

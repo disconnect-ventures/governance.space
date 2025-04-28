@@ -11,6 +11,7 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { Metadata } from "next";
 import { getDictionary } from "~/config/dictionaries";
 import { PageProps } from "../../layout";
+import { getDrepMetadata } from "~/lib/metadata";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -69,6 +70,9 @@ export default async function DRepProfilePage({
   const drep = await getDRepById(profile);
   const proposals = (await getProposals(0, 3, "", "desc", [])).data;
 
+  const metadata =
+    (await getDrepMetadata(drep?.metadataHash ?? "", drep?.url ?? "")) ?? null;
+
   if (!drep) {
     return notFound();
   }
@@ -88,7 +92,11 @@ export default async function DRepProfilePage({
           {/* <Comments drep={drep} comments={comments} translations={dictionary} /> */}
         </div>
         <div className="lg:w-1/3">
-          <ProfileInfo drep={drep} translations={dictionary} />
+          <ProfileInfo
+            drep={drep}
+            translations={dictionary}
+            metadata={metadata}
+          />
         </div>
       </div>
     </div>
