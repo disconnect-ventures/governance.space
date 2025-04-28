@@ -336,7 +336,7 @@
     "search": "Search budget discussions...",
     "sort": "Sort by Creation Date",
     "filter": "Filter by Discussion Type",
-    "cardTypeLabel": "Budget Discussion Type",
+    "cardTypeLabel": "Type",
     "core": "Core",
     "research": "Research",
     "governanceSupport": "Governance Support",
