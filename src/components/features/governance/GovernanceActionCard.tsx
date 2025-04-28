@@ -12,7 +12,7 @@ import {
   CircleAlert,
 } from "lucide-react";
 import { getActionIdUrl, GovernanceAction } from "~/lib/governance-actions";
-import { Metadata } from "~/lib/metadata";
+import { GovernanceActionMetadataPayload, Metadata } from "~/lib/metadata";
 import Link from "~/components/features/Link";
 import { toCamelCase, formatDate } from "~/lib/utils";
 import { twMerge } from "tailwind-merge";
@@ -88,7 +88,7 @@ export const GovernanceActionStatusBadge = ({
 type GovernanceActionCardProps = {
   action: GovernanceAction;
   status: "In Progress" | "Completed";
-  metadata: Metadata | null;
+  metadata: Metadata<GovernanceActionMetadataPayload> | null;
   className?: string;
   translations: Pick<Dictionary, "general" | "pageGovernanceActions">;
 };

@@ -5,11 +5,11 @@ import {
   Directory,
   DirectorySearchParams,
 } from "~/components/layout/Directory";
-import { Metadata } from "~/lib/metadata";
+import { GovernanceActionMetadataPayload, Metadata } from "~/lib/metadata";
 import { Dictionary } from "~/config/dictionaries";
 
 type GovernanceActionDirectoryProps = {
-  metadata: Record<string, Metadata | null>;
+  metadata: Record<string, Metadata<GovernanceActionMetadataPayload> | null>;
   governanceActions: Array<GovernanceAction>;
   params: DirectorySearchParams;
   translations: Pick<

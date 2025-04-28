@@ -1,7 +1,7 @@
 import { Suspense, useMemo } from "react";
 import { Card, CardContent } from "~/components/ui/card";
 import { GovernanceAction } from "~/lib/governance-actions";
-import { Metadata } from "~/lib/metadata";
+import { GovernanceActionMetadataPayload, Metadata } from "~/lib/metadata";
 import CopyToClipboard from "../CopyToClipboard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { Markdown } from "../Markdown";
@@ -40,7 +40,7 @@ const InfoTab = async (value: string, text: string) => (
 
 type GovernanceHeaderProps = {
   action: GovernanceAction;
-  metadata: Metadata | null;
+  metadata: Metadata<GovernanceActionMetadataPayload> | null;
   translations: Pick<
     Dictionary,
     "general" | "pageGovernanceActions" | "pageGovernanceActionsDetails"
@@ -55,20 +55,20 @@ export const GovernanceHeader = ({
   const title = useMemo(
     () =>
       action.title || metadata
-        ? metadata?.metadata.title
+        ? metadata?.metadata?.title
         : translations.general.noTitle,
     [action, metadata, translations.general.noTitle]
   );
   const abstract = useMemo(
-    () => action.abstract || metadata?.metadata.abstract,
+    () => action.abstract || metadata?.metadata?.abstract,
     [action, metadata]
   );
   const motivation = useMemo(
-    () => action.motivation || metadata?.metadata.motivation,
+    () => action.motivation || metadata?.metadata?.motivation,
     [action, metadata]
   );
   const rationale = useMemo(
-    () => action.rationale || metadata?.metadata.rationale,
+    () => action.rationale || metadata?.metadata?.rationale,
     [action, metadata]
   );
   const isExpired = useMemo(

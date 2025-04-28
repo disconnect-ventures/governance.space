@@ -5,7 +5,7 @@ import MockGovernanceActionsResult from "~/lib/fixtures/governance-actions.json"
 import { GovernanceAction } from "./governance-actions";
 import { Proposal } from "~/lib/proposals";
 import { Comment } from "~/lib/comments";
-import { Metadata } from "./metadata";
+// import { Metadata } from "./metadata";
 import GovernanceActionMetadataResponse from "~/lib/fixtures/governance-action-metadata.json";
 import { CommitteeMember } from "~/components/features/committees/CommitteeDirectory";
 import MockCommitteeMembers from "~/lib/fixtures/committees.json";
@@ -30,7 +30,7 @@ export function getMockComments(): Array<Comment> {
   return [];
 }
 
-export function getMockGovernanceActionMetadata(): Metadata {
+export function getMockGovernanceActionMetadata() {
   return GovernanceActionMetadataResponse;
 }
 
