@@ -116,7 +116,9 @@ export function ProfileInfo({
 
       {contactLinks.length > 0 && (
         <Card>
-          <CardHeader className="text-foreground">Contacts</CardHeader>
+          <CardHeader className="text-foreground">
+            {translations.pageDrepsDetails.contacts}
+          </CardHeader>
           <CardContent>
             {contactLinks?.map(({ label, icon: Icon, value }, index) => (
               <Link
@@ -136,7 +138,7 @@ export function ProfileInfo({
 
       <Card className="bg-card text-card-foreground">
         <CardHeader className="text-foreground">
-          {[translations.pageDrepsDetails.info]}
+          {translations.pageDrepsDetails.info}
         </CardHeader>
         <CardContent className="space-y-3">
           {metadata?.metadata?.email && (
