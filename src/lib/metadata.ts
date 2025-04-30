@@ -114,6 +114,19 @@ export const getContactLinkIcon = (reference: Reference) => {
   return GlobeIcon;
 };
 
+export const isSocialMediaLink = (uri: string) => {
+  const lowerUri = uri.toLowerCase();
+  return [
+    "twitter.com",
+    "x.com",
+    "linkedin.com",
+    "youtube.com",
+    "youtu.be",
+    "instagram.com",
+    "t.me",
+  ].some((domain) => lowerUri.includes(domain));
+};
+
 export const formatReferenceUri = (uri: string): string => {
   try {
     return uri.replace(/(https?:\/\/)?(www\.)?/, "").replace(/\/$/, "");
