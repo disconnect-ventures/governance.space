@@ -1,6 +1,9 @@
 "use client";
 import React, { use } from "react";
-import { TableCell, TableRow } from "~/components/ui/table";
+import {
+  TableCell,
+  TableRow,
+} from "~/components/ui/table";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
 import { EyeIcon, UserIcon } from "lucide-react";

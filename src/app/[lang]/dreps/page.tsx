@@ -8,6 +8,7 @@ import { getDictionary } from "~/config/dictionaries";
 import { getNetworkMetrics } from "~/lib/analytics";
 import { getDrepMetadata } from "~/lib/metadata";
 import { Suspense } from "react";
+import { TableDirectorySkeleton } from "~/components/layout/Directory";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -57,7 +58,7 @@ export default async function DRepsDirectoryPage({
         badge={`${totalDReps}`}
         translations={dictionary.pageDreps}
       />
-      <Suspense>
+      <Suspense fallback={<TableDirectorySkeleton translations={dictionary} />}>
         <DRepsDirectory
           metadataPromise={metadata}
           dreps={dreps.elements}

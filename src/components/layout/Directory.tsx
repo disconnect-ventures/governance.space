@@ -9,7 +9,7 @@ import React, {
 import { Card, CardContent } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
-import { ArrowUpDown, Filter } from "lucide-react";
+import { ArrowUpDown, EyeIcon, Filter, UserIcon } from "lucide-react";
 import {
   Pagination,
   PaginationContent,
@@ -22,6 +22,7 @@ import {
 import {
   Table,
   TableBody,
+  TableCell,
   TableHead,
   TableHeader,
   TableRow,
@@ -36,6 +37,9 @@ import { localizePath } from "~/lib/utils";
 import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Dictionary } from "~/config/dictionaries";
+import { AvatarFallback } from "@radix-ui/react-avatar";
+import { Avatar } from "../ui/avatar";
+import { Skeleton } from "../ui/skeleton";
 
 export type DirectoryParamOption = {
   value: string;
@@ -410,3 +414,66 @@ export function TableDirectory({
     ></Directory>
   );
 }
+
+export const TableDirectorySkeleton = ({
+  translations,
+}: {
+  translations: Dictionary;
+}) => {
+  const ROW_COUNT = 20;
+
+  return (
+    <Table className="bg-background">
+      <TableHeader>
+        <TableRow>
+          <TableHead>{translations.pageDreps.drepName}</TableHead>
+          <TableHead>{translations.general.status}</TableHead>
+          <TableHead>{translations.pageDreps.votingPower}</TableHead>
+          <TableHead>{translations.pageDreps.social}</TableHead>
+          <TableHead>{translations.pageDreps.registrationDate}</TableHead>
+          <TableHead>{translations.pageDreps.actions}</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {Array.from({ length: ROW_COUNT }).map((_, i) => (
+          <TableRow key={i}>
+            <TableCell>
+              <div className="flex items-center gap-2">
+                <Avatar className="h-8 w-8">
+                  <AvatarFallback>
+                    <UserIcon className="h-4" />
+                  </AvatarFallback>
+                </Avatar>
+                <div className="space-y-1">
+                  <Skeleton className="h-4 w-24" />
+                  <Skeleton className="h-3 w-20" />
+                </div>
+              </div>
+            </TableCell>
+            <TableCell>
+              <Skeleton className="h-4 w-16" />
+            </TableCell>
+            <TableCell>
+              <Skeleton className="h-6 w-20 rounded-full" />
+            </TableCell>
+            <TableCell>
+              <div className="flex gap-2">
+                <Skeleton className="h-5 w-5 rounded-md" />
+                <Skeleton className="h-5 w-5 rounded-md" />
+              </div>
+            </TableCell>
+            <TableCell>
+              <Skeleton className="h-4 w-24" />
+            </TableCell>
+            <TableCell>
+              <Button variant="secondary" size="sm" disabled className="gap-1">
+                <EyeIcon className="h-4 w-4" />{" "}
+                <Skeleton className="h-4 w-12" />
+              </Button>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
