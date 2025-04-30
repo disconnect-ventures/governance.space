@@ -3,6 +3,7 @@ import {
   GlobeIcon,
   InstagramIcon,
   LinkedinIcon,
+  SendIcon,
   TwitterIcon,
   YoutubeIcon,
 } from "lucide-react";
@@ -104,7 +105,7 @@ export const getContactLinkIcon = (reference: Reference) => {
   } else if (uri.match(/instagram\.com/)) {
     return InstagramIcon;
   } else if (uri.match(/t\.me/)) {
-    // return TelegramIcon;
+    return SendIcon;
   } else if (uri.match(/github\.com/)) {
     return GithubIcon;
   } else if (uri.match(/(http|https):\/\//)) {
