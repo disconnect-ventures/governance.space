@@ -6,6 +6,8 @@ import { DRepFilterOption, DRepSortOption, getDReps } from "~/lib/dreps";
 import { PageProps } from "../layout";
 import { getDictionary } from "~/config/dictionaries";
 import { getNetworkMetrics } from "~/lib/analytics";
+import { getDrepMetadata } from "~/lib/metadata";
+import { Suspense } from "react";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -35,6 +37,14 @@ export default async function DRepsDirectoryPage({
   const search = searchParams["search"] ?? "";
   const dreps = await getDReps(page, pageSize, search, sort, filters);
   const { totalRegisteredDReps: totalDReps } = await getNetworkMetrics();
+  const metadata = Promise.all(
+    dreps.elements.map((d) =>
+      getDrepMetadata(d.metadataHash, d.url).then((m) => ({
+        ...m?.metadata,
+        drepId: d.drepId,
+      }))
+    )
+  );
 
   return (
     <div className="space-y-4 bg-background text-foreground dark:bg-background dark:text-foreground">
@@ -47,18 +57,21 @@ export default async function DRepsDirectoryPage({
         badge={`${totalDReps}`}
         translations={dictionary.pageDreps}
       />
-      <DRepsDirectory
-        dreps={dreps.elements}
-        params={{
-          page,
-          pageSize,
-          sort,
-          search,
-          totalResults: dreps.total,
-          filters,
-        }}
-        translations={dictionary}
-      />
+      <Suspense>
+        <DRepsDirectory
+          metadataPromise={metadata}
+          dreps={dreps.elements}
+          params={{
+            page,
+            pageSize,
+            sort,
+            search,
+            totalResults: dreps.total,
+            filters,
+          }}
+          translations={dictionary}
+        />
+      </Suspense>
     </div>
   );
 }
