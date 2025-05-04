@@ -249,7 +249,7 @@ const BudgetDiscussionCard = ({
         </div>
 
         <Link
-          href={`/budget-discussions/${discussion.id}`}
+          href={`/budget-discussions/${discussion.attributes.master_id ?? discussion.id}`}
           className={buttonVariants({ variant: "default" })}
         >
           {translations.general.viewDetailsAndVote}

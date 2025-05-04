@@ -136,6 +136,7 @@ export type BudgetDiscussion = BaseEntity & {
     intersect_named_administrator: boolean;
     prop_comments_number: number;
     is_active: boolean;
+    master_id?: string;
     intersect_admin_further_text: null;
     createdAt: string;
     updatedAt: string;

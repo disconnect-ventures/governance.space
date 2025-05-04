@@ -51,7 +51,9 @@ export default async function BudgetDiscussionsPage({
   });
 
   const polls = await getBudgetDiscussionPollsByIds(
-    discussions?.data.map((d) => d.id) ?? [],
+    discussions?.data.map((d) =>
+      parseInt(d.attributes.master_id ?? d.id.toString())
+    ) ?? [],
     true,
     1,
     pageSize
