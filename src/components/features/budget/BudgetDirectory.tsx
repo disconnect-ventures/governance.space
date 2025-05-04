@@ -62,6 +62,7 @@ export async function BudgetDiscussionDirectory({
           discussion={proposal}
           poll={polls.find(
             (p) =>
+              proposal.attributes.master_id === p.attributes.bd_proposal_id ||
               proposal.id.toString() === p.attributes.bd_proposal_id.toString()
           )}
           translations={translations}
