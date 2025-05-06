@@ -449,8 +449,8 @@
     "retiredDreps": "Retired DReps",
     "drepsStatusDistribution": "DRep Status Distribution",
     "drepsStatusDistributionDesc": "Distribution of all registered DReps by their current status",
-    "drepsRegistryDateDistribution": "DReps by Registration Date",
-    "drepsRegistryDateDistributionDesc": "Distribution of DReps by their registration date"
+    "drepsRegistryDateDistribution": "DReps Registry by Month",
+    "drepsRegistryDateDistributionDesc": "Distribution of DReps by their registration month"
   },
   "pageHelp": {
     "title": "Help",
