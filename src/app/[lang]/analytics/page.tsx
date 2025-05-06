@@ -9,6 +9,7 @@ import { getDReps } from "~/lib/dreps";
 import { PageProps } from "../layout";
 import { getDictionary } from "~/config/dictionaries";
 import { getDRepStatusStats } from "~/lib/drepStats";
+import { getDrepRegistrationData } from "~/lib/drepRegistrationDate";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { Metadata } from "next";
 
@@ -18,7 +19,6 @@ export async function generateMetadata({
   const params = await paramsPromise;
   const dictionary = await getDictionary(params.lang);
   const info = await getNetworkInfo();
-
   return {
     title: `${dictionary.pageAnalytics.title} - Epoch ${info.epochNo} - ${dictionary.metatags.title}`,
     description: dictionary.metatags.description,
@@ -36,6 +36,7 @@ export default async function AnalyticsPage({
   const metrics = await getNetworkMetrics();
   const drepsPromise = getDReps(0, 10, "", "VotingPower", []);
   const statsPromise = getDRepStatusStats();
+  const registrationDataPromise = getDrepRegistrationData();
 
   return (
     <div className="flex min-h-screen flex-col gap-8">
@@ -52,6 +53,7 @@ export default async function AnalyticsPage({
         data={{ ...metrics, ...info, ...stake }}
         drepListPromise={drepsPromise}
         drepStatsPromise={statsPromise}
+        drepRegistrationDataPromise={registrationDataPromise}
         translations={dictionary}
       />
     </div>
