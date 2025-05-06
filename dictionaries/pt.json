@@ -75,7 +75,9 @@
     "threshold": "",
     "thresholdDescription": "Limite de votos necessários para ratificar a ação de governança.",
     "totalVotes": "Votos",
-    "goToHome": "Ir para a Página Inicial"
+    "goToHome": "Ir para a Página Inicial",
+    "registrations": "Registros",
+    "count": "quantidade"
   },
   "accessibility": {
     "pagination": "paginação",
@@ -451,7 +453,9 @@
     "drepsStatusDistributionDesc": "Distribuição de todos os DReps registrados por seu status atual",
     "drepTreemapTitle": "Concentração de Poder de Voto dos DReps",
     "drepTreemapDesc": "do poder de voto controlado pelos top 20 DReps",
-    "shareOfTotal": "Parcela do total"
+    "shareOfTotal": "Parcela do total",
+    "drepsRegistryDateDistribution": "DReps por Data de Registro",
+    "drepsRegistryDateDistributionDesc": "Distribuição de DReps por data de registro"
   },
   "pageHelp": {
     "title": "Ajuda",
