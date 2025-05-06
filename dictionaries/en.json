@@ -75,7 +75,9 @@
     "threshold": "Threshold",
     "thresholdDescription": "Threshold for ratification",
     "totalVotes": "Votes",
-    "goToHome": "Go to Home"
+    "goToHome": "Go to Home",
+    "registrations": "Registrations",
+    "count": "count"
   },
   "accessibility": {
     "pagination": "pagination",
@@ -450,7 +452,9 @@
     "drepsStatusDistributionDesc": "Distribution of all registered DReps by their current status",
     "drepTreemapTitle": "DRep Voting Power Concentration",
     "drepTreemapDesc": "of voting power controlled by top 20 DReps",
-    "shareOfTotal": "Share of total"
+    "shareOfTotal": "Share of total",
+    "drepsRegistryDateDistribution": "DReps by Registration Date",
+    "drepsRegistryDateDistributionDesc": "Distribution of DReps by their registration date"
   },
   "pageHelp": {
     "title": "Help",

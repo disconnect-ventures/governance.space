@@ -3,6 +3,7 @@ import { NetworkInfo, NetworkMetrics, NetworkStake } from "~/lib/analytics";
 import { DRep } from "~/lib/dreps";
 import { DRepStats } from "~/lib/drepStats";
 import { VotingPowerDataPoint } from "~/lib/drepTreemap";
+import { RegistrationDataPoint } from "~/lib/drepRegistrationDate";
 import { Dictionary } from "~/config/dictionaries";
 import { Suspense } from "react";
 import StakeDistributionCard from "./StakeDistributionCard";
@@ -14,6 +15,7 @@ import Top10DRepsCard from "./Top10DRepsCard";
 import EpochMetricsCard from "./EpochMetricsCard";
 import CardanoTokenomicsCard from "./CardanoTokenomicsCard";
 // import DRepTreemapCard from "./DRepTreemapCard";
+import DRepRegistrationDateCard from "./DRepRegistrationDateCard";
 
 export interface AnalyticsDashboardProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
@@ -21,6 +23,7 @@ export interface AnalyticsDashboardProps {
   drepStatsPromise: Promise<DRepStats>;
   drepVotingPowerDataPromise: Promise<VotingPowerDataPoint[]>;
   translations: Pick<Dictionary, "general" | "pageAnalytics">;
+  drepRegistrationDataPromise: Promise<RegistrationDataPoint[]>;
 }
 
 const AnalyticsDashboard = ({
@@ -28,6 +31,7 @@ const AnalyticsDashboard = ({
   drepListPromise,
   drepStatsPromise,
   // drepVotingPowerDataPromise,
+  drepRegistrationDataPromise,
   translations,
 }: AnalyticsDashboardProps) => {
   return (
@@ -57,9 +61,6 @@ const AnalyticsDashboard = ({
         </Suspense>
         <CardanoTokenomicsCard translations={translations} />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <EpochMetricsCard data={data} translations={translations} />
-      </div>
       {/* <div className="grid grid-cols-1 gap-4 mb-4">
         <Suspense fallback={<div>{translations.general.loading}</div>}>
           <DRepTreemapCard
@@ -68,6 +69,17 @@ const AnalyticsDashboard = ({
           />
         </Suspense>
       </div> */}
+      <div className="grid grid-cols-1 gap-4 mb-4">
+        <Suspense fallback={<div>{translations.general.loading}</div>}>
+          <DRepRegistrationDateCard
+            drepRegistrationDataPromise={drepRegistrationDataPromise}
+            translations={translations}
+          />
+        </Suspense>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <EpochMetricsCard data={data} translations={translations} />
+      </div>
     </div>
   );
 };
