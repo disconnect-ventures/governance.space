@@ -74,7 +74,9 @@
     "id": "ID",
     "threshold": "Threshold",
     "thresholdDescription": "Threshold for ratification",
-    "totalVotes": "Votes"
+    "totalVotes": "Votes",
+    "month": "Month",
+    "total": "Total"
   },
   "accessibility": {
     "pagination": "pagination",
@@ -446,7 +448,9 @@
     "inactiveDreps": "Inactive DReps",
     "retiredDreps": "Retired DReps",
     "drepsStatusDistribution": "DRep Status Distribution",
-    "drepsStatusDistributionDesc": "Distribution of all registered DReps by their current status"
+    "drepsStatusDistributionDesc": "Distribution of all registered DReps by their current status",
+    "drepRegistrationDateTitle": "DRep Registration Timeline",
+    "drepRegistrationDateDesc": "Tracks monthly registration activity and total DRep growth."
   },
   "pageHelp": {
     "title": "Help",
