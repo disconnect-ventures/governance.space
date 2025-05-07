@@ -16,9 +16,9 @@ export default function NotFound() {
         <p>{dictionary[404].description}</p>
       </div>
       <div className="flex gap-4 items-center">
-        <BackButton translations={dictionary.general} className="px-2"/>
+        <BackButton translations={dictionary.general} className="px-2" />
         <Link href="/" className={buttonVariants({ variant: "default" })}>
-          {dictionary[404].goToHome}
+          {dictionary.general.goToHome}
         </Link>
       </div>
     </div>

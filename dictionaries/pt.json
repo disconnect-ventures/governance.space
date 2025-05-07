@@ -74,7 +74,8 @@
     "id": "ID",
     "threshold": "",
     "thresholdDescription": "Limite de votos necessários para ratificar a ação de governança.",
-    "totalVotes": "Votos"
+    "totalVotes": "Votos",
+    "goToHome": "Ir para a Página Inicial"
   },
   "accessibility": {
     "pagination": "paginação",
@@ -503,7 +504,11 @@
   },
   "404": {
     "title": "Página Não Encontrada",
-    "description": "Desculpe, não conseguimos encontrar a página que você estava procurando.",
-    "goToHome": "Ir para a Página Inicial"
+    "description": "Desculpe, não conseguimos encontrar a página que você estava procurando."
+  },
+  "error": {
+    "title": "Algo deu errado",
+    "description": "Por favor, tente novamente.",
+    "tryAgain": "Tentar Novamente"
   }
 }
