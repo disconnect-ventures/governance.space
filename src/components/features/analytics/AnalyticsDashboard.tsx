@@ -48,14 +48,6 @@ const AnalyticsDashboard = ({
           />
         </Suspense>
       </div>
-      <div className="grid grid-cols-1 gap-4 mb-4">
-        <Suspense fallback={<div>{translations.general.loading}</div>}>
-          <DRepRegistrationDateCard
-            drepRegistrationDataPromise={drepRegistrationDataPromise}
-            translations={translations}
-          />
-        </Suspense>
-      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <Suspense fallback={<div>{translations.general.loading}</div>}>
           <Top10DRepsCard
@@ -64,6 +56,14 @@ const AnalyticsDashboard = ({
           />
         </Suspense>
         <EpochMetricsCard data={data} translations={translations} />
+      </div>
+      <div className="grid grid-cols-1 gap-4 mb-4">
+        <Suspense fallback={<div>{translations.general.loading}</div>}>
+          <DRepRegistrationDateCard
+            drepRegistrationDataPromise={drepRegistrationDataPromise}
+            translations={translations}
+          />
+        </Suspense>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <CardanoTokenomicsCard translations={translations} />

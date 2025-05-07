@@ -3,7 +3,6 @@ import { getDReps, DRep, DRepFilterOption } from "./dreps";
 export type RegistrationDataPoint = {
   date: string;
   count: number;
-  formattedDate: string;
 };
 
 async function getAllDReps(): Promise<DRep[]> {
@@ -59,30 +58,10 @@ export async function getDrepRegistrationData(): Promise<
     }
   });
 
-  const monthNames = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-
   return Array.from(monthlyRegistrations.entries())
-    .map(([date, count]) => {
-      const [year, month] = date.split("-");
-      const formattedDate = `${monthNames[parseInt(month) - 1]} ${year.substring(2)}`;
-      return {
-        date,
-        count,
-        formattedDate,
-      };
-    })
+    .map(([date, count]) => ({
+      date,
+      count,
+    }))
     .sort((a, b) => a.date.localeCompare(b.date));
 }
