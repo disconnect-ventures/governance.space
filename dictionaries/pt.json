@@ -500,5 +500,10 @@
     "badgeText": "",
     "description": "",
     "longDescription": ""
+  },
+  "404": {
+    "title": "Página Não Encontrada",
+    "description": "Desculpe, não conseguimos encontrar a página que você estava procurando.",
+    "goToHome": "Ir para a Página Inicial"
   }
 }
