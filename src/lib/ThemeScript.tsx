@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-function code() {
+function setupTheme() {
   window.__onThemeChange = function () {};
 
   function setTheme(newTheme: Theme) {
@@ -51,7 +51,12 @@ export default function ThemeScript() {
       : storedTheme
         ? storedTheme
         : "light";
+
+    if (typeof window.__setPreferredTheme !== "function") {
+      setupTheme();
+    }
+
     window.__setPreferredTheme(theme);
   }, []);
-  return <script dangerouslySetInnerHTML={{ __html: `(${code})();` }} />;
+  return <script dangerouslySetInnerHTML={{ __html: `(${setupTheme})();` }} />;
 }
