@@ -11,6 +11,7 @@ import { getDictionary } from "~/config/dictionaries";
 import { getDRepStatusStats } from "~/lib/drepStats";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { Metadata } from "next";
+import { getDRepVotingPowerData } from "~/lib/drepService";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -36,6 +37,7 @@ export default async function AnalyticsPage({
   const metrics = await getNetworkMetrics();
   const drepsPromise = getDReps(0, 10, "", "VotingPower", []);
   const statsPromise = getDRepStatusStats();
+  const drepVotingPowerDataPromise = getDRepVotingPowerData();
 
   return (
     <div className="flex min-h-screen flex-col gap-8">
@@ -52,6 +54,7 @@ export default async function AnalyticsPage({
         data={{ ...metrics, ...info, ...stake }}
         drepListPromise={drepsPromise}
         drepStatsPromise={statsPromise}
+        drepVotingPowerDataPromise={drepVotingPowerDataPromise}
         translations={dictionary}
       />
     </div>
