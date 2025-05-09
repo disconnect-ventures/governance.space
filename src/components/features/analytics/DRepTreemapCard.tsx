@@ -14,24 +14,6 @@ import {
   calculateDynamicFontSize,
 } from "~/lib/drepService";
 
-const PowerConcentrationBar = ({ top20Percent }: { top20Percent: number }) => {
-  return (
-    <div className="mt-4 mb-6">
-      <div className="w-full bg-muted h-2 rounded-full overflow-hidden">
-        <div
-          className="bg-primary h-full"
-          style={{ width: `${top20Percent}%` }}
-        />
-      </div>
-      <div className="flex justify-between text-xs text-muted-foreground mt-1">
-        <span>0%</span>
-        <span>Top 20 DReps: {top20Percent}% of total voting power</span>
-        <span>100%</span>
-      </div>
-    </div>
-  );
-};
-
 type DRepTreemapCardProps = Pick<
   AnalyticsDashboardProps,
   "translations" | "drepVotingPowerDataPromise"
@@ -58,7 +40,6 @@ const DRepTreemapCard = ({
       chart2: "hsl(var(--chart-2))",
       chart3: "hsl(var(--chart-3))",
       chart4: "hsl(var(--chart-4))",
-      chart5: "hsl(var(--chart-5))",
       background: "hsl(var(--background))",
       muted: "hsl(var(--muted))",
       mutedForeground: "hsl(var(--muted-foreground))",
@@ -68,7 +49,7 @@ const DRepTreemapCard = ({
 
   const getChartColor = useCallback(
     (index: number) => {
-      const colorNumber = (index % 5) + 1;
+      const colorNumber = (index % 4) + 1;
       return chartColors[`chart${colorNumber}` as keyof typeof chartColors];
     },
     [chartColors]
@@ -84,13 +65,36 @@ const DRepTreemapCard = ({
     [drepList, top20Dreps]
   );
 
-  // Enhanced treemap data with fill colors
   const enhancedTreemapData = useMemo(() => {
     return prepareTreemapData(top20Dreps).map((item, index) => ({
       ...item,
       fill: getChartColor(index),
     }));
   }, [top20Dreps, getChartColor]);
+
+  const PowerConcentrationBar = ({
+    top20Percent,
+  }: {
+    top20Percent: number;
+  }) => {
+    return (
+      <div className="mt-4 mb-6">
+        <div className="w-full bg-muted h-2 rounded-full overflow-hidden">
+          <div
+            className="bg-chart-1 h-full"
+            style={{ width: `${top20Percent}%` }}
+          />
+        </div>
+        <div className="flex justify-between text-xs text-muted-foreground mt-1">
+          <span>0%</span>
+          <span>
+            {translations.pageAnalytics.votingPower} {top20Percent}%
+          </span>
+          <span>100%</span>
+        </div>
+      </div>
+    );
+  };
 
   const CustomTooltip = useCallback(
     ({ active, payload }: TooltipProps<number, string>) => {
@@ -106,17 +110,20 @@ const DRepTreemapCard = ({
             <p className="text-card-foreground font-semibold mb-1 text-sm">
               {data.fullName || data.name}
             </p>
-            <div className="flex justify-between items-center text-xs mt-2">
-              <span className="text-muted-foreground">
-                {translations.pageAnalytics?.votingPower || "Voting Power"}
-                :{" "}
-              </span>
-              <span className="font-medium">{formatNumber(data.size)}</span>
-            </div>
-            <div className="flex justify-between items-center text-xs mt-1">
-              <span className="text-muted-foreground">Share of Total: </span>
-              <span className="font-medium text-primary">{percentage}% </span>
-            </div>
+
+            <dl className="text-xs">
+              <div className="flex justify-between mt-2">
+                <dt className="text-muted-foreground">
+                  {translations.pageAnalytics?.votingPower}:
+                </dt>
+                <dd className="font-medium ml-2">{formatNumber(data.size)}</dd>
+              </div>
+
+              <div className="flex justify-between mt-1">
+                <dt className="text-muted-foreground">Share of Total:</dt>
+                <dd className="font-medium ml-2">{percentage}%</dd>
+              </div>
+            </dl>
           </div>
         );
       }
@@ -129,7 +136,6 @@ const DRepTreemapCard = ({
     (props: TreemapContentProps) => {
       const { x, y, width, height, index, name } = props;
 
-      // Simplified area calculation
       const rectArea = width * height;
 
       const rectElement = (
@@ -141,14 +147,10 @@ const DRepTreemapCard = ({
           style={{
             fill: getChartColor(index || 0),
             stroke: chartColors.background,
-            strokeWidth: 2,
-            opacity: 0.85,
-            cursor: "pointer",
           }}
         />
       );
 
-      // Adjusted threshold for text display
       if (width < 40 || height < 30) {
         return <g>{rectElement}</g>;
       }
@@ -168,11 +170,9 @@ const DRepTreemapCard = ({
             y={y + height / 2}
             textAnchor="middle"
             dominantBaseline="central"
-            className="fill-background font-light"
+            className="fill-background font-medium"
             style={{
               fontSize: `${fontSize}px`,
-              pointerEvents: "none",
-              textShadow: "0 0 3px rgba(0,0,0,0.3)",
             }}
           >
             {displayText}
@@ -183,67 +183,35 @@ const DRepTreemapCard = ({
     [getChartColor, chartColors.background]
   );
 
-  const cardTitle = "Top DReps by Voting Power";
-  const concentrationDescription = "Voting power concentration";
-
-  if (!drepList || drepList.length === 0) {
-    return (
-      <Card className="bg-card text-card-foreground shadow-none">
-        <CardContent className="p-6">
-          <h3 className="text-lg font-semibold text-foreground mb-2">
-            {cardTitle}
-          </h3>
-          <div className="h-80 flex items-center justify-center">
-            <p className="text-muted-foreground">
-              No voting power data available
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  }
-
   return (
-    <Card className="bg-card text-card-foreground shadow-none flex flex-col">
-      <CardContent className="p-6 flex flex-col grow">
+    <Card className="bg-card text-card-foreground shadow-none">
+      <CardContent className="p-6">
         <h3 className="text-lg font-semibold text-foreground mb-2">
-          {cardTitle}
+          DRep Voting Power Concentration
         </h3>
 
         <div className="flex items-center justify-between mb-2">
           <p className="text-sm text-muted-foreground">
-            {concentrationDescription}
+            <span className="text-chart-1 font-semibold">
+              {top20Percentage}%
+            </span>{" "}
+            of voting power controlled by top 20 DReps
           </p>
-
-          <div className="text-sm font-medium">
-            <span className="text-primary">{top20Percentage}%</span> of power in
-            top 20 DReps
-          </div>
         </div>
 
         <PowerConcentrationBar top20Percent={top20Percentage} />
 
-        <div className="w-full grow">
-          {enhancedTreemapData.length > 0 ? (
-            <ResponsiveContainer width="100%" height="100%">
-              <Treemap
-                data={enhancedTreemapData}
-                dataKey="size"
-                nameKey="name"
-                stroke={chartColors.background}
-                fill={chartColors.chart1}
-                animationDuration={0}
-                isAnimationActive={false}
-                content={TreemapCustomContent as unknown as React.ReactElement}
-              >
-                <Tooltip content={<CustomTooltip />} />
-              </Treemap>
-            </ResponsiveContainer>
-          ) : (
-            <div className="h-full flex items-center justify-center">
-              <p className="text-muted-foreground">No data to display</p>
-            </div>
-          )}
+        <div className="h-80 w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <Treemap
+              data={enhancedTreemapData}
+              dataKey="size"
+              nameKey="name"
+              content={TreemapCustomContent as unknown as React.ReactElement}
+            >
+              <Tooltip content={<CustomTooltip />} />
+            </Treemap>
+          </ResponsiveContainer>
         </div>
       </CardContent>
     </Card>

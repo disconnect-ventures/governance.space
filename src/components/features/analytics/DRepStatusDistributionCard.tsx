@@ -68,10 +68,11 @@ const DRepStatusDistributionCard = ({
         <h3 className="text-lg font-semibold text-foreground mb-2">
           {translations.pageAnalytics.drepsStatusDistribution}
         </h3>
+
+        <p className="text-sm text-muted-foreground mb-6">
+          {translations.pageAnalytics.drepsStatusDistributionDesc}
+        </p>
         <ComingSoon>
-          <p className="text-sm text-muted-foreground mb-6">
-            {translations.pageAnalytics.drepsStatusDistributionDesc}
-          </p>
           <div className="flex">
             <div className="h-48 flex-1">
               <ResponsiveContainer>
