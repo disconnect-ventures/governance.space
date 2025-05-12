@@ -19,14 +19,15 @@ type DRepTreemapCardProps = Pick<
   "translations" | "drepVotingPowerDataPromise"
 >;
 
-type TreemapContentProps = {
+interface TreemapContentProps {
   x: number;
   y: number;
   width: number;
   height: number;
   index: number;
   name: string;
-};
+  value: number;
+}
 
 const DRepTreemapCard = ({
   translations,
@@ -136,7 +137,7 @@ const DRepTreemapCard = ({
 
   const TreemapCustomContent = useCallback(
     (props: TreemapContentProps) => {
-      const { x, y, width, height, index, name } = props;
+      const { x, y, width, height, index, name, value } = props;
 
       const rectArea = width * height;
 
@@ -158,18 +159,22 @@ const DRepTreemapCard = ({
       }
 
       const fontSize = calculateDynamicFontSize(rectArea);
+
       const displayText = getTruncatedDisplayName(
         name || "",
         width - 10,
         fontSize
       );
 
+      const percentage = calculatePercentageOfTotal(value, drepList);
+      const percentageText = `${percentage}%`;
+
       return (
         <g>
           {rectElement}
           <text
             x={x + width / 2}
-            y={y + height / 2}
+            y={y + height / 2 - fontSize / 2}
             textAnchor="middle"
             dominantBaseline="central"
             className="font-semibold"
@@ -180,10 +185,24 @@ const DRepTreemapCard = ({
           >
             {displayText}
           </text>
+
+          <text
+            x={x + width / 2}
+            y={y + height / 2 + fontSize / 1}
+            textAnchor="middle"
+            dominantBaseline="central"
+            className="font-semibold"
+            fill="white"
+            style={{
+              fontSize: `${fontSize}px`,
+            }}
+          >
+            {percentageText}
+          </text>
         </g>
       );
     },
-    [getChartColor, chartColors.background]
+    [getChartColor, chartColors.background, drepList]
   );
 
   return (
