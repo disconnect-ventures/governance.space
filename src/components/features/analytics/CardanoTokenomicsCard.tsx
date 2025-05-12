@@ -1,39 +1,47 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { formatNumber } from "./utils/formatters";
-import { useMemo } from "react";
-import ComingSoon from "~/components/layout/ComingSoon";
-import { getMockMetrics } from "~/lib/mock";
+import { use, useMemo } from "react";
 import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
+import { KoiosTokenomics } from "~/lib/koios";
+import { formatAda, formatVotingPower } from "~/lib/utils";
 
-type CardanoTokenomicsCardProps = Pick<AnalyticsDashboardProps, "translations">;
+type CardanoTokenomicsCardProps = {
+  tokenomicsPromise: Promise<KoiosTokenomics[]>;
+} & Pick<AnalyticsDashboardProps, "translations">;
 
 const CardanoTokenomicsCard = ({
   translations,
+  tokenomicsPromise,
 }: CardanoTokenomicsCardProps) => {
-  const circulation = 35949488472 * 1e6;
-  const mockData = getMockMetrics();
+  const [tokenomics] = use(tokenomicsPromise);
 
   const tokenomicsData = useMemo(
     () => [
-      { position: translations.pageAnalytics.circulation, amount: circulation },
+      {
+        position: translations.pageAnalytics.circulation,
+        amount: Number(tokenomics?.circulation ?? -1),
+      },
       {
         position: translations.pageAnalytics.treasury,
-        amount: mockData.treasury,
+        amount: Number(tokenomics?.treasury ?? -1),
       },
       {
         position: translations.pageAnalytics.reserves,
-        amount: mockData.reserves,
+        amount: Number(tokenomics?.reserves ?? -1),
       },
       {
         position: translations.pageAnalytics.rewards,
-        amount: mockData.rewards,
+        amount: Number(tokenomics?.reward ?? -1),
       },
       {
         position: translations.pageAnalytics.deposits,
-        amount: mockData.deposits,
+        amount: tokenomics
+          ? Number(tokenomics?.deposits_stake) +
+            Number(tokenomics?.deposits_drep) +
+            Number(tokenomics?.deposits_proposal)
+          : -1,
       },
     ],
-    [mockData, circulation, translations]
+    [tokenomics, translations]
   );
 
   return (
@@ -42,35 +50,31 @@ const CardanoTokenomicsCard = ({
         <h3 className="text-lg font-semibold text-foreground mb-6">
           {translations.pageAnalytics.tokenomics}
         </h3>
-        <ComingSoon>
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-border">
-                <th className="text-left py-3 text-sm font-medium text-muted-foreground">
-                  {translations.pageAnalytics.position}
-                </th>
-                <th className="text-right py-3 text-sm font-medium text-muted-foreground">
-                  {translations.pageAnalytics.amountInAda}
-                </th>
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-border">
+              <th className="text-left py-3 text-sm font-medium text-muted-foreground">
+                {translations.pageAnalytics.position}
+              </th>
+              <th className="text-right py-3 text-sm font-medium text-muted-foreground">
+                {translations.pageAnalytics.amountInAda}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {tokenomicsData.map((row) => (
+              <tr
+                key={row.position}
+                className="border-b border-border last:border-0"
+              >
+                <td className="py-4 text-sm text-foreground">{row.position}</td>
+                <td className="py-4 text-sm text-right font-medium text-foreground">
+                  {formatAda(formatVotingPower(row.amount))}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {tokenomicsData.map((row) => (
-                <tr
-                  key={row.position}
-                  className="border-b border-border last:border-0"
-                >
-                  <td className="py-4 text-sm text-foreground">
-                    {row.position}
-                  </td>
-                  <td className="py-4 text-sm text-right font-medium text-foreground">
-                    {formatNumber(row.amount)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </ComingSoon>
+            ))}
+          </tbody>
+        </table>
       </CardContent>
     </Card>
   );
