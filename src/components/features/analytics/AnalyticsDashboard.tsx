@@ -32,7 +32,11 @@ const AnalyticsDashboard = ({
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
-        <MetricsCard data={data} translations={translations} />
+        <MetricsCard
+          data={data}
+          drepStatsPromise={drepStatsPromise}
+          translations={translations}
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -57,7 +61,11 @@ const AnalyticsDashboard = ({
             translations={translations}
           />
         </Suspense>
-        <EpochMetricsCard data={data} translations={translations} />
+        <EpochMetricsCard
+          data={data}
+          translations={translations}
+          drepStatsPromise={drepStatsPromise}
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
