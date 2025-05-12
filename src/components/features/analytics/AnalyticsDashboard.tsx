@@ -12,11 +12,13 @@ import DRepStatusDistributionCard from "./DRepStatusDistributionCard";
 import Top10DRepsCard from "./Top10DRepsCard";
 import EpochMetricsCard from "./EpochMetricsCard";
 import CardanoTokenomicsCard from "./CardanoTokenomicsCard";
+import { KoiosTokenomics } from "~/lib/koios";
 
 export interface AnalyticsDashboardProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
   drepListPromise: Promise<{ elements: DRep[] }>;
   drepStatsPromise: Promise<DRepStats>;
+  tokenomicsPromise: Promise<KoiosTokenomics[]>;
   translations: Pick<Dictionary, "general" | "pageAnalytics">;
 }
 
@@ -24,12 +26,17 @@ const AnalyticsDashboard = ({
   data,
   drepListPromise,
   drepStatsPromise,
+  tokenomicsPromise,
   translations,
 }: AnalyticsDashboardProps) => {
   return (
     <div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 mb-6">
-        <MetricsCard data={data} translations={translations} />
+        <MetricsCard
+          data={data}
+          drepStatsPromise={drepStatsPromise}
+          translations={translations}
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -54,11 +61,20 @@ const AnalyticsDashboard = ({
             translations={translations}
           />
         </Suspense>
-        <EpochMetricsCard data={data} translations={translations} />
+        <EpochMetricsCard
+          data={data}
+          translations={translations}
+          drepStatsPromise={drepStatsPromise}
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <CardanoTokenomicsCard translations={translations} />
+        <Suspense fallback={<div>{translations.general.loading}</div>}>
+          <CardanoTokenomicsCard
+            tokenomicsPromise={tokenomicsPromise}
+            translations={translations}
+          />
+        </Suspense>
       </div>
     </div>
   );

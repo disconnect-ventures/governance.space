@@ -1,8 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { ProfileStatus } from "../profile/ProfileStatus";
-import { formatNumber } from "./utils/formatters";
 import { use } from "react";
 import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
+import { formatAda, formatVotingPower } from "~/lib/utils";
 
 type Top10DRepsCardProps = Pick<
   AnalyticsDashboardProps,
@@ -49,7 +49,7 @@ const Top10DRepsCard = ({
                     />
                   </td>
                   <td className="py-4 text-sm text-right font-medium text-foreground">
-                    ₳ {formatNumber(drep.votingPower)}
+                    {formatAda(formatVotingPower(drep.votingPower))}
                   </td>
                 </tr>
               ))}
