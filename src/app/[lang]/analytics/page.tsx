@@ -11,7 +11,7 @@ import { getDictionary } from "~/config/dictionaries";
 import { getDRepStatusStats } from "~/lib/drepStats";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { Metadata } from "next";
-import { getDRepVotingPowerData } from "~/lib/drepService";
+import { getDRepVotingPowerData } from "~/lib/drepTreemap";
 
 export async function generateMetadata({
   params: paramsPromise,

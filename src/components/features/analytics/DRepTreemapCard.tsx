@@ -12,7 +12,7 @@ import {
   calculatePercentageOfTotal,
   getTruncatedDisplayName,
   calculateDynamicFontSize,
-} from "~/lib/drepService";
+} from "~/lib/drepTreemap";
 
 type DRepTreemapCardProps = Pick<
   AnalyticsDashboardProps,
@@ -172,7 +172,8 @@ const DRepTreemapCard = ({
             y={y + height / 2}
             textAnchor="middle"
             dominantBaseline="central"
-            className="fill-background font-medium"
+            className="font-semibold"
+            fill="white"
             style={{
               fontSize: `${fontSize}px`,
             }}
@@ -209,7 +210,8 @@ const DRepTreemapCard = ({
               data={enhancedTreemapData}
               dataKey="size"
               nameKey="name"
-              content={TreemapCustomContent as unknown as React.ReactElement}
+              isAnimationActive={false}
+              content={React.createElement(TreemapCustomContent)}
             >
               <Tooltip content={<CustomTooltip />} />
             </Treemap>
