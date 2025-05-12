@@ -1,13 +1,21 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { formatNumber } from "./utils/formatters";
-import { useMemo } from "react";
+import { use, useMemo } from "react";
 import { Users, Database, Vote, Award, Clock } from "lucide-react";
 import React from "react";
 import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
 
-type MetricsCardProps = Pick<AnalyticsDashboardProps, "data" | "translations">;
+type MetricsCardProps = Pick<
+  AnalyticsDashboardProps,
+  "data" | "translations" | "drepStatsPromise"
+>;
 
-const MetricsCard = ({ data, translations }: MetricsCardProps) => {
+const MetricsCard = ({
+  data,
+  drepStatsPromise,
+  translations,
+}: MetricsCardProps) => {
+  const drepStats = use(drepStatsPromise);
   const metrics = useMemo(
     () => [
       {
@@ -18,7 +26,7 @@ const MetricsCard = ({ data, translations }: MetricsCardProps) => {
       {
         icon: <Database />,
         label: translations.pageAnalytics.totalDreps,
-        value: data.totalRegisteredDReps,
+        value: drepStats.total,
       },
       {
         icon: <Vote />,
@@ -28,7 +36,7 @@ const MetricsCard = ({ data, translations }: MetricsCardProps) => {
       {
         icon: <Award />,
         label: translations.pageAnalytics.activeDreps,
-        value: data.totalActiveDReps,
+        value: drepStats.active,
       },
       {
         icon: <Clock />,
@@ -36,7 +44,7 @@ const MetricsCard = ({ data, translations }: MetricsCardProps) => {
         value: data.totalGovernanceActions,
       },
     ],
-    [data, translations]
+    [drepStats, data, translations]
   );
 
   return metrics.map((metric, index) => (
