@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model DRepStatsSnapshot {
+  epoch Int @id @map("_id")
+
+  activeCount Int
+  inactiveCount Int
+  retiredCount Int
+  totalCount Int
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+}
+
+model TokenomicsSnapshot {
+  epoch Int @id @map("_id")
+
+  circulatingSupply Int
+  treasury Int
+  reserves Int
+  rewards Int
+
+  depositStake Int
+  depositDrep Int
+  depositProposal Int
+
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+}
