@@ -138,63 +138,60 @@ const DRepTreemapCard = ({
   const TreemapCustomContent = useCallback(
     (props: TreemapContentProps) => {
       const { x, y, width, height, index, name, value } = props;
-
       const rectArea = width * height;
-
       const rectElement = (
         <rect
           x={x}
           y={y}
           width={width}
           height={height}
+          className="dark:brightness-125"
           style={{
             fill: getChartColor(index || 0),
             stroke: chartColors.background,
           }}
         />
       );
-
       if (width < 40 || height < 30) {
         return <g>{rectElement}</g>;
       }
 
-      const fontSize = calculateDynamicFontSize(rectArea);
+      const fontSize = Math.max(calculateDynamicFontSize(rectArea), 9);
+      const percentageFontSize = Math.max(fontSize * 0.9, 8);
 
       const displayText = getTruncatedDisplayName(
         name || "",
         width - 10,
         fontSize
       );
-
       const percentage = calculatePercentageOfTotal(value, drepList);
       const percentageText = `${percentage}%`;
+
+      const verticalOffset = fontSize * 0.8;
 
       return (
         <g>
           {rectElement}
           <text
             x={x + width / 2}
-            y={y + height / 2 - fontSize / 2}
+            y={y + height / 2 - verticalOffset}
             textAnchor="middle"
             dominantBaseline="central"
-            className="font-semibold"
-            fill="white"
+            className="fill-background font-medium"
             style={{
               fontSize: `${fontSize}px`,
             }}
           >
             {displayText}
           </text>
-
           <text
             x={x + width / 2}
-            y={y + height / 2 + fontSize / 1}
+            y={y + height / 2 + verticalOffset}
             textAnchor="middle"
             dominantBaseline="central"
-            className="font-semibold"
-            fill="white"
+            className="fill-background font-medium"
             style={{
-              fontSize: `${fontSize}px`,
+              fontSize: `${percentageFontSize}px`,
             }}
           >
             {percentageText}
