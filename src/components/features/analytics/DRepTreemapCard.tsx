@@ -120,7 +120,9 @@ const DRepTreemapCard = ({
               </div>
 
               <div className="flex justify-between mt-1">
-                <dt className="text-muted-foreground">Share of Total:</dt>
+                <dt className="text-muted-foreground">
+                  {translations.pageAnalytics.shareOfTotal}:
+                </dt>
                 <dd className="font-medium ml-2">{percentage}%</dd>
               </div>
             </dl>
@@ -187,7 +189,7 @@ const DRepTreemapCard = ({
     <Card className="bg-card text-card-foreground shadow-none">
       <CardContent className="p-6">
         <h3 className="text-lg font-semibold text-foreground mb-2">
-          DRep Voting Power Concentration
+          {translations.pageAnalytics.drepTreemapTitle}
         </h3>
 
         <div className="flex items-center justify-between mb-2">
@@ -195,7 +197,7 @@ const DRepTreemapCard = ({
             <span className="text-chart-1 font-semibold">
               {top20Percentage}%
             </span>{" "}
-            of voting power controlled by top 20 DReps
+            {translations.pageAnalytics.drepTreemapDesc}
           </p>
         </div>
 

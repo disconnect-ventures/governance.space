@@ -448,7 +448,10 @@
     "inactiveDreps": "DReps Inativos",
     "retiredDreps": "DReps Retirados",
     "drepsStatusDistribution": "Distribuição de Status dos DReps",
-    "drepsStatusDistributionDesc": "Distribuição de todos os DReps registrados por seu status atual"
+    "drepsStatusDistributionDesc": "Distribuição de todos os DReps registrados por seu status atual",
+    "drepTreemapTitle": "Concentração de Poder de Voto dos DReps",
+    "drepTreemapDesc": "do poder de voto controlado pelos top 20 DReps",
+    "shareOfTotal": "Parcela do total"
   },
   "pageHelp": {
     "title": "Ajuda",
