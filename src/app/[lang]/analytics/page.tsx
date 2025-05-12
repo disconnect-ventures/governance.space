@@ -13,6 +13,7 @@ import { getDrepRegistrationData } from "~/lib/drepRegistrationDate";
 import { PageTitle } from "~/components/layout/PageTitle";
 import { Metadata } from "next";
 import { getDRepVotingPowerData } from "~/lib/drepTreemap";
+import { getTokenomics } from "~/lib/koios";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -39,6 +40,7 @@ export default async function AnalyticsPage({
   const statsPromise = getDRepStatusStats();
   const drepVotingPowerDataPromise = getDRepVotingPowerData();
   const registrationDataPromise = getDrepRegistrationData();
+  const tokenomicsPromise = getTokenomics(info.epochNo);
 
   return (
     <div className="flex min-h-screen flex-col gap-8">
@@ -57,6 +59,7 @@ export default async function AnalyticsPage({
         drepStatsPromise={statsPromise}
         drepVotingPowerDataPromise={drepVotingPowerDataPromise}
         drepRegistrationDataPromise={registrationDataPromise}
+        tokenomicsPromise={tokenomicsPromise}
         translations={dictionary}
       />
     </div>
