@@ -2,7 +2,7 @@
 import { NetworkInfo, NetworkMetrics, NetworkStake } from "~/lib/analytics";
 import { DRep } from "~/lib/dreps";
 import { DRepStats } from "~/lib/drepStats";
-import { VotingPowerDataPoint } from "~/lib/drepService";
+import { VotingPowerDataPoint } from "~/lib/drepTreemap";
 import { Dictionary } from "~/config/dictionaries";
 import { Suspense } from "react";
 import StakeDistributionCard from "./StakeDistributionCard";
