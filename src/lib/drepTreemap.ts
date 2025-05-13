@@ -130,10 +130,18 @@ export function getTruncatedDisplayName(
   fontSize: number
 ): string {
   if (!name) return "";
+  const averageCharWidth = fontSize * 0.65;
 
-  const charsPerWidth = availableWidth / (fontSize * 0.6);
+  const safeWidth = availableWidth * 0.9;
 
-  if (name.length <= charsPerWidth) return name;
+  const maxChars = Math.floor(safeWidth / averageCharWidth);
+
+  if (name.length <= maxChars) return name;
+
+  if (/[\u3000-\u9fff]/.test(name)) {
+    const nonLatinMaxChars = Math.floor(maxChars * 0.6);
+    return name.substring(0, Math.max(1, nonLatinMaxChars)) + "...";
+  }
 
   const words = name.split(" ");
   if (words.length > 1) {
@@ -144,17 +152,16 @@ export function getTruncatedDisplayName(
       .join("");
     const abbreviated = `${firstWord} ${initials}`;
 
-    if (abbreviated.length > charsPerWidth) {
-      return (
-        abbreviated.substring(0, Math.max(3, Math.floor(charsPerWidth) - 3)) +
-        "..."
-      );
+    if (abbreviated.length <= maxChars) {
+      return abbreviated;
     }
 
-    return abbreviated;
+    if (firstWord.length <= maxChars - 3) {
+      return firstWord + "...";
+    }
   }
 
-  return name.substring(0, Math.max(3, Math.floor(charsPerWidth) - 3)) + "...";
+  return name.substring(0, Math.max(3, maxChars - 3)) + "...";
 }
 
 export function calculateDynamicFontSize(area: number): number {
