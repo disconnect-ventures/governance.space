@@ -13,7 +13,7 @@ import DRepStatusDistributionCard from "./DRepStatusDistributionCard";
 import Top10DRepsCard from "./Top10DRepsCard";
 import EpochMetricsCard from "./EpochMetricsCard";
 import CardanoTokenomicsCard from "./CardanoTokenomicsCard";
-import DRepTreemapCard from "./DRepTreemapCard";
+// import DRepTreemapCard from "./DRepTreemapCard";
 
 export interface AnalyticsDashboardProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
@@ -27,7 +27,7 @@ const AnalyticsDashboard = ({
   data,
   drepListPromise,
   drepStatsPromise,
-  drepVotingPowerDataPromise,
+  // drepVotingPowerDataPromise,
   translations,
 }: AnalyticsDashboardProps) => {
   return (
@@ -54,18 +54,20 @@ const AnalyticsDashboard = ({
             drepListPromise={drepListPromise}
             translations={translations}
           />
-          <Suspense fallback={<div>{translations.general.loading}</div>}>
-            <DRepTreemapCard
-              drepVotingPowerDataPromise={drepVotingPowerDataPromise}
-              translations={translations}
-            />
-          </Suspense>
         </Suspense>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <CardanoTokenomicsCard translations={translations} />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <EpochMetricsCard data={data} translations={translations} />
       </div>
+      {/* <div className="grid grid-cols-1 gap-4 mb-4">
+        <Suspense fallback={<div>{translations.general.loading}</div>}>
+          <DRepTreemapCard
+            drepVotingPowerDataPromise={drepVotingPowerDataPromise}
+            translations={translations}
+          />
+        </Suspense>
+      </div> */}
     </div>
   );
 };
