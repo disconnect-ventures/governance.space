@@ -75,7 +75,9 @@
     "threshold": "",
     "thresholdDescription": "Limite de votos necessários para ratificar a ação de governança.",
     "totalVotes": "Votos",
-    "goToHome": "Ir para a Página Inicial"
+    "goToHome": "Ir para a Página Inicial",
+    "sitemap": "Mapa do site",
+    "sitemapDescription": "Mapa completo do site governance.space"
   },
   "accessibility": {
     "pagination": "paginação",

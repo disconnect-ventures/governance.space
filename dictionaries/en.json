@@ -75,7 +75,9 @@
     "threshold": "Threshold",
     "thresholdDescription": "Threshold for ratification",
     "totalVotes": "Votes",
-    "goToHome": "Go to Home"
+    "goToHome": "Go to Home",
+    "sitemap": "Sitemap",
+    "sitemapDescription": "Complete site map of governance.space"
   },
   "accessibility": {
     "pagination": "pagination",
