@@ -17,6 +17,7 @@ import CardanoTokenomicsCard from "./CardanoTokenomicsCard";
 import { KoiosTokenomics } from "~/lib/koios";
 import DRepRegistrationDateCard from "./DRepRegistrationDateCard";
 import DRepTreemapCard from "./DRepTreemapCard";
+import { Card, CardContent, CardHeader } from "~/components/ui/card";
 
 export interface AnalyticsDashboardProps {
   data: NetworkMetrics & NetworkInfo & NetworkStake;
@@ -27,6 +28,26 @@ export interface AnalyticsDashboardProps {
   translations: Pick<Dictionary, "general" | "pageAnalytics">;
   drepRegistrationDataPromise: Promise<RegistrationDataPoint[]>;
 }
+
+const LoadingCardSkeleton = ({
+  translations,
+}: Pick<AnalyticsDashboardProps, "translations">) => {
+  return (
+    <Card className="w-full h-full">
+      <CardHeader className="sr-only">
+        <div>{translations.general.loading}</div>
+      </CardHeader>
+      <CardContent className="p-6">
+        <div className="animate-pulse flex flex-col gap-4">
+          <div className="h-6 bg-gray-300 dark:bg-gray-700 rounded"></div>
+          <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/2"></div>
+          <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-1/3"></div>
+          <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
 
 const AnalyticsDashboard = ({
   data,
@@ -52,7 +73,7 @@ const AnalyticsDashboard = ({
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <GovernanceDelegationCard data={data} translations={translations} />
-        <Suspense fallback={<div>{translations.general.loading}</div>}>
+        <Suspense fallback={<LoadingCardSkeleton translations={translations}/>}>
           <DRepStatusDistributionCard
             drepStatsPromise={drepStatsPromise}
             translations={translations}
@@ -60,26 +81,26 @@ const AnalyticsDashboard = ({
         </Suspense>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <Suspense fallback={<div>{translations.general.loading}</div>}>
+        <Suspense fallback={<LoadingCardSkeleton translations={translations}/>}>
           <Top10DRepsCard
             drepListPromise={drepListPromise}
             translations={translations}
           />
         </Suspense>
-        <Suspense fallback={<div>{translations.general.loading}</div>}>
+        <Suspense fallback={<LoadingCardSkeleton translations={translations}/>}>
           <CardanoTokenomicsCard
             tokenomicsPromise={tokenomicsPromise}
             translations={translations}
           />
         </Suspense>
-        <Suspense>
+        <Suspense fallback={<LoadingCardSkeleton translations={translations}/>}>
           <EpochMetricsCard
             data={data}
             translations={translations}
             drepStatsPromise={drepStatsPromise}
           />
         </Suspense>
-        <Suspense fallback={<div>{translations.general.loading}</div>}>
+        <Suspense fallback={<LoadingCardSkeleton translations={translations}/>}>
           <DRepRegistrationDateCard
             drepRegistrationDataPromise={drepRegistrationDataPromise}
             translations={translations}
@@ -88,7 +109,7 @@ const AnalyticsDashboard = ({
       </div>
 
       <div className="grid grid-cols-1 gap-4 mb-4">
-        <Suspense fallback={<div>{translations.general.loading}</div>}>
+        <Suspense fallback={<LoadingCardSkeleton translations={translations}/>}>
           <DRepTreemapCard
             drepVotingPowerDataPromise={drepVotingPowerDataPromise}
             translations={translations}
