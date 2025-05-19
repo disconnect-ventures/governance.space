@@ -16,7 +16,7 @@ import clsx from "clsx";
 import LocaleSwitch from "../features/LocaleSwitch";
 import { Input } from "../ui/input";
 import { useTranslation } from "~/hooks/use-translation/use-translation";
-import { SearchIcon, MapIcon } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import { localizePath } from "~/lib/utils";
 import { Locale } from "~/config/i18n";
 import { WalletWidget } from "../features/WalletWidget";
@@ -121,11 +121,6 @@ export const Header = ({ translations }: HeaderProps) => {
   const locale = (params.lang?.toString() ?? "en-us") as Locale;
   const pathname = usePathname();
 
-  const isSitemapPath = (pathname: string, locale: Locale) => {
-    const sitemapPath = localizePath(locale, "/sitemap-page");
-    return pathname === sitemapPath;
-  };
-
   return (
     <div className="w-full border-b border-border py-4 md:pb-0 sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto px-4 md:px-8 max-w-7xl">
@@ -145,19 +140,6 @@ export const Header = ({ translations }: HeaderProps) => {
 
           <div className="hidden md:flex items-center gap-2 flex-wrap w-fit lg:w-full min-w-[40%] justify-end">
             <Link
-              href={localizePath(locale, "/sitemap-page")}
-              className={buttonVariants({
-                variant: isSitemapPath(pathname, locale)
-                  ? "default"
-                  : "outline",
-                className: "gap-2",
-              })}
-            >
-              <MapIcon size={18} />
-              <span>{translations.general.sitemap || "Sitemap"}</span>
-            </Link>
-
-            <Link
               href="https://gov.tools/register_drep"
               target="_blank"
               className={buttonVariants({ variant: "outline" })}
@@ -169,6 +151,14 @@ export const Header = ({ translations }: HeaderProps) => {
 
             <LocaleSwitch />
           </div>
+
+          {/* <div className="lg:flex items-center hidden">
+            <Avatar className="h-8 w-8">
+              <AvatarImage src="https://avatars.githubusercontent.com/t/11181162?s=116&v=4" />
+              <AvatarFallback>DV</AvatarFallback>
+            </Avatar>
+            <ChevronDown></ChevronDown>
+          </div> */}
         </div>
 
         <Separator className="hidden md:block w-[100vw] absolute left-0" />
@@ -176,7 +166,7 @@ export const Header = ({ translations }: HeaderProps) => {
         <div className="hidden md:block md:w-full">
           <div className="w-full h-max-content max-w-7xl">
             <NavigationMenu className="w-full h-full">
-              <NavigationMenuList className="inline-flex w-full max-w-full fit-max gap-4 my-4 justify-start">
+              <NavigationMenuList className="inline-flex w-full max-w-full fit-max gap-4 my-4  justify-start">
                 {headerNavLinks.map((link, index) => (
                   <HeaderNavigationLink
                     key={index}

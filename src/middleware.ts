@@ -31,6 +31,7 @@ export function middleware(request: NextRequest) {
   if (
     [
       "/manifest.json",
+      "/sitemap.xml",
       "/icon-96.png",
       "/icon-192.png",
       "/icon-512.png",

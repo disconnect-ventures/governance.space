@@ -16,7 +16,6 @@ interface RouteEntry {
 
 const getSitemapRoutes = (): RouteEntry[] => {
   const navLinks = Array.isArray(headerNavLinks) ? headerNavLinks : [];
-
   const routes = navLinks.map((link) => ({
     path: link.href,
     priority: link.href === "/" ? 1.0 : 0.8,
@@ -64,12 +63,12 @@ const getSitemapRoutes = (): RouteEntry[] => {
       priority: 0.5,
       changeFrequency: "yearly" as const,
     },
-    { path: "/terms", priority: 0.5, changeFrequency: "yearly" as const },
     {
-      path: "/sitemap-page",
-      priority: 0.3,
-      changeFrequency: "monthly" as const,
+      path: "/terms",
+      priority: 0.5,
+      changeFrequency: "yearly" as const,
     },
+    // Removed the sitemap-page entry
   ];
 
   return [...routes, ...subpages];
@@ -77,8 +76,8 @@ const getSitemapRoutes = (): RouteEntry[] => {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.SITE_URL || "https://governance.space";
-
   let routes: RouteEntry[] = [];
+
   try {
     routes = getSitemapRoutes();
   } catch (error) {
@@ -86,7 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return [
       {
         url: baseUrl,
-        lastModified: new Date().toISOString(),
+        lastModified: new Date(),
         changeFrequency: "weekly",
         priority: 1.0,
       },
@@ -94,40 +93,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   const supportedLocales = ["en-us", "pt"];
-
   const sitemap: MetadataRoute.Sitemap = [];
 
   for (const route of routes) {
-    const sitemapEntry: MetadataRoute.Sitemap[number] = {
+    // Create main entry
+    sitemap.push({
       url: `${baseUrl}${route.path}`,
-      lastModified: new Date().toISOString(),
+      lastModified: new Date(),
       changeFrequency: route.changeFrequency,
       priority: route.priority,
-    };
+    });
 
-    if (supportedLocales.length > 1) {
-      const languageAlternates: { [locale: string]: string } = {};
-
-      supportedLocales.forEach((locale) => {
-        if (locale !== "en-us") {
-          languageAlternates[locale] = `${baseUrl}/${locale}${route.path}`;
-        }
-      });
-
-      if (Object.keys(languageAlternates).length > 0) {
-        sitemapEntry.alternates = {
-          languages: languageAlternates,
-        };
-      }
-    }
-
-    sitemap.push(sitemapEntry);
-
+    // Add localized entries
     supportedLocales.forEach((locale) => {
       if (locale !== "en-us") {
         sitemap.push({
           url: `${baseUrl}/${locale}${route.path}`,
-          lastModified: new Date().toISOString(),
+          lastModified: new Date(),
           changeFrequency: route.changeFrequency,
           priority: route.priority - 0.1,
         });
