@@ -10,12 +10,14 @@ steps:
       - '--env=API_BASE_URL=${_API_BASE_URL}'
       - '--env=API_PDF_BASE_URL=${_API_PDF_BASE_URL}'
       - '--env=METADATA_BASE_URL=${_METADATA_BASE_URL}'
+      - '--env=DATABASE_URL=${_DATABASE_URL}'
     id: Buildpack
     entrypoint: pack
     env:
       - 'API_BASE_URL=${_API_BASE_URL}'
       - 'API_PDF_BASE_URL=${_API_PDF_BASE_URL}'
       - 'METADATA_BASE_URL=${_METADATA_BASE_URL}'
+      - 'DATABASE_URL=${_DATABASE_URL}'
   - name: gcr.io/cloud-builders/docker
     args:
       - push
@@ -35,7 +37,7 @@ steps:
       - '--region=$_DEPLOY_REGION'
       - '--vpc-connector=cr-vpc-connector'
       - '--egress-settings=all-traffic'
-      - '--set-env-vars=API_BASE_URL=${_API_BASE_URL},API_PDF_BASE_URL=${_API_PDF_BASE_URL},METADATA_BASE_URL=${_METADATA_BASE_URL}'
+      - '--set-env-vars=API_BASE_URL=${_API_BASE_URL},API_PDF_BASE_URL=${_API_PDF_BASE_URL},METADATA_BASE_URL=${_METADATA_BASE_URL},DATABASE_URL=${_DATABASE_URL}'
       - '--allow-unauthenticated'
       - '--quiet'
     id: Deploy
