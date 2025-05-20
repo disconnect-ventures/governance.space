@@ -37,7 +37,7 @@ steps:
         --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID
       - '--region=$_DEPLOY_REGION'
       - '--vpc-connector=cr-vpc-connector'
-      - '--egress-settings=all-traffic'
+      - '--vpc-egress=all-traffic'
       - '--set-env-vars=API_BASE_URL=${_API_BASE_URL},API_PDF_BASE_URL=${_API_PDF_BASE_URL},METADATA_BASE_URL=${_METADATA_BASE_URL},DISCORD_WEBHOOK_URL=${_DISCORD_WEBHOOK_URL}'
       - '--quiet'
     id: Deploy
