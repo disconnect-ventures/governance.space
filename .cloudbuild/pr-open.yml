@@ -35,6 +35,8 @@ steps:
       - >-
         --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID,pr-number=$_PR_NUMBER
       - '--region=$_DEPLOY_REGION'
+      - '--vpc-connector=cr-vpc-connector'
+      - '--egress-settings=all-traffic'
       - '--set-env-vars=API_BASE_URL=${_API_BASE_URL},API_PDF_BASE_URL=${_API_PDF_BASE_URL},METADATA_BASE_URL=${_METADATA_BASE_URL},DISCORD_WEBHOOK_URL=${_DISCORD_WEBHOOK_URL}'
       - '--allow-unauthenticated'
       - '--quiet'
@@ -46,6 +48,8 @@ images:
 options:
   substitutionOption: ALLOW_LOOSE
   logging: CLOUD_LOGGING_ONLY
+  pool:
+    name: projects/governance-space/locations/us-central1/workerPools/gov-space-worker-pool
 substitutions:
   _PLATFORM: managed
   _DEPLOY_REGION: us-central1
