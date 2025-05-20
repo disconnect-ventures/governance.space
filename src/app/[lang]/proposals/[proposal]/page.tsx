@@ -1,176 +1,215 @@
-import { FileTextIcon, HandHelpingIcon } from "lucide-react";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { ProposalContent } from "~/components/features/proposals/ProposalContent";
-import { ProposalHeader } from "~/components/features/proposals/ProposalHeader";
-import { ProposalIdentification } from "~/components/features/proposals/ProposalIdentification";
-import { ProposalTimeline } from "~/components/features/proposals/ProposalTimeline";
-import { VotingSection } from "~/components/features/proposals/VotingSection";
-import { PageTitle } from "~/components/layout/PageTitle";
-import { TopBar } from "~/components/layout/TopBar";
-import { Card, CardContent } from "~/components/ui/card";
-import { getDictionary } from "~/config/dictionaries";
-import { getProposals, getProposalsById } from "~/lib/proposals";
-import { calculateEpochNumber } from "~/lib/utils";
-import { PageProps } from "../../layout";
-import { getProposalComments } from "~/lib/comments";
-import { Comments, CommentsSkeleton } from "~/components/features/Comments";
-import { Suspense } from "react";
+import { MetadataRoute } from "next";
+import { getDReps, DRepFilterOption } from "~/lib/dreps";
+import { getProposals } from "~/lib/proposals";
+import { getGovernanceActions, getActionIdUrl } from "~/lib/governance-actions";
+import { listBudgetDiscussions } from "~/lib/budgetDiscussions";
+import { i18n } from "~/config/i18n";
 
-export async function generateMetadata({
-  params: paramsPromise,
-}: ProposalDetailsProps): Promise<Metadata> {
-  const params = await paramsPromise;
-  const dictionary = await getDictionary(params.lang);
-  const proposalsById = await getProposalsById(params.proposal);
-  const proposalName =
-    proposalsById.data.attributes.content.attributes.prop_name;
-  const proposalId = params.proposal;
-  const title = proposalName ?? proposalId;
-
-  return {
-    title: `${title} - ${dictionary.metatags.title}`,
-    description: dictionary.metatags.description,
-  };
+// Use interfaces with different names to avoid conflicts
+interface ProposalData {
+  id: number;
+  attributes?: { updatedAt: string };
 }
 
-export async function generateStaticParams() {
+interface ActionData {
+  txHash: string;
+  index: number | string;
+}
+
+interface DiscussionData {
+  id: number;
+  attributes?: { updatedAt: string };
+}
+
+interface DRepData {
+  view: string;
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = "https://governance.space";
+
+  const staticRoutes = [
+    "",
+    "/about",
+    "/analytics",
+    "/budget-discussions",
+    "/committees",
+    "/cookie-policy",
+    "/dreps",
+    "/governance",
+    "/help",
+    "/live-events",
+    "/privacy-policy",
+    "/proposals",
+    "/terms",
+  ];
+
+  const staticSitemapEntries = staticRoutes.flatMap((route) =>
+    i18n.locales.map((locale) => ({
+      url: `${baseUrl}/${locale.key}${route}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: route === "" ? 1 : 0.8,
+    }))
+  );
+
+  const [proposals, governanceActions, budgetDiscussions, dreps] =
+    await Promise.all([
+      fetchAllProposals(),
+      fetchAllGovernanceActions(),
+      fetchAllBudgetDiscussions(),
+      fetchAllDReps(),
+    ]);
+
+  const proposalSitemapEntries = proposals.flatMap((proposal) =>
+    i18n.locales.map((locale) => ({
+      url: `${baseUrl}/${locale.key}/proposals/${proposal.id}`,
+      lastModified: new Date(proposal.attributes?.updatedAt || Date.now()),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }))
+  );
+
+  const governanceActionSitemapEntries = governanceActions.flatMap((action) =>
+    i18n.locales.map((locale) => ({
+      url: `${baseUrl}/${locale.key}/governance/${getActionIdUrl(action.txHash, action.index.toString())}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }))
+  );
+
+  const budgetDiscussionSitemapEntries = budgetDiscussions.flatMap(
+    (discussion) =>
+      i18n.locales.map((locale) => ({
+        url: `${baseUrl}/${locale.key}/budget-discussions/${discussion.id}`,
+        lastModified: new Date(discussion.attributes?.updatedAt || Date.now()),
+        changeFrequency: "weekly" as const,
+        priority: 0.7,
+      }))
+  );
+
+  const drepSitemapEntries = dreps.flatMap((drep) =>
+    i18n.locales.map((locale) => ({
+      url: `${baseUrl}/${locale.key}/dreps/${drep.view}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }))
+  );
+
+  return [
+    ...staticSitemapEntries,
+    ...proposalSitemapEntries,
+    ...governanceActionSitemapEntries,
+    ...budgetDiscussionSitemapEntries,
+    ...drepSitemapEntries,
+  ];
+}
+
+async function fetchAllProposals(): Promise<ProposalData[]> {
+  const pageSize = 100;
   let page = 0;
-  const pageSize = 50;
-  const search = "";
-  const sort = "desc";
-  const filters: number[] = [];
+  let allProposals: ProposalData[] = [];
+  let hasMore = true;
 
-  const firstPage = await getProposals(page++, pageSize, search, sort, filters);
-  const totalPages = firstPage.meta.pagination?.pageCount ?? 0;
+  while (hasMore) {
+    const response = await getProposals(page, pageSize, "", "desc", []);
+    const { data, meta } = response;
 
-  const nextPages = (
-    await Promise.all(
-      Array.from({ length: totalPages - 1 }).map(async () => {
-        try {
-          const { data } = await getProposals(
-            page++,
-            pageSize,
-            search,
-            sort,
-            filters
-          );
-          return data;
-        } catch {
-          return [];
-        }
-      })
-    )
-  ).flat();
+    if (!data || data.length === 0) {
+      break;
+    }
 
-  return [...firstPage.data, ...nextPages].map((p) => ({
-    proposal: p.id.toString(),
-  }));
-}
-
-type ProposalDetailsProps = PageProps<{ proposal: number }>;
-
-export default async function ProposalDetailsPage({
-  params: paramsPromise,
-}: ProposalDetailsProps) {
-  const params = await paramsPromise;
-  const locale = params.lang;
-  const dictionary = await getDictionary(locale);
-  const { proposal: proposalId } = params;
-  const { data: proposal } = await getProposalsById(proposalId);
-
-  const createdDate = proposal.attributes.createdAt;
-  const createdEpoch = calculateEpochNumber(createdDate);
-  const updatedAt = proposal.attributes.updatedAt;
-  const updatedEpoch = calculateEpochNumber(updatedAt);
-
-  const title = proposal.attributes.content.attributes.prop_name;
-  const username = proposal.attributes.user_govtool_username;
-  const isProposalActive =
-    proposal.attributes.content.attributes.prop_rev_active;
-  const actionType =
-    proposal.attributes.content.attributes.gov_action_type.attributes
-      .gov_action_type_name;
-  const likes = proposal.attributes.prop_likes;
-  const dislikes = proposal.attributes.prop_dislikes;
-  const commentCount = proposal.attributes.prop_comments_number;
-
-  if (!proposal) {
-    return notFound();
+    allProposals = [...allProposals, ...(data as ProposalData[])];
+    hasMore = meta?.pagination ? page < meta.pagination.pageCount - 1 : false;
+    page++;
   }
 
-  const proposalComments = getProposalComments({
-    proposalId: proposalId.toString(),
-  });
+  return allProposals;
+}
 
-  return (
-    <div className="bg-background text-foreground">
-      <PageTitle
-        icon={
-          <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
-            <FileTextIcon className="w-5 h-5 relative top-1" />
-            <HandHelpingIcon className="w-6 h-6" />
-          </div>
-        }
-        translations={dictionary.pageProposalsDetails}
-      />
-      <TopBar backHref="/proposals" translations={dictionary.general} />
-      <Card className="mb-4 bg-card text-card-foreground">
-        <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
-          <div className="w-full flex flex-col gap-4 sm:gap-6">
-            <ProposalHeader
-              title={title}
-              isActive={isProposalActive}
-              type={actionType}
-              createdDate={createdDate}
-              createdEpoch={createdEpoch}
-              updatedAt={updatedAt}
-              updatedEpoch={updatedEpoch}
-              likes={likes}
-              dislikes={dislikes}
-              commentCount={commentCount}
-              translations={dictionary}
-              contentType="proposal"
-            />
+async function fetchAllGovernanceActions(): Promise<ActionData[]> {
+  const pageSize = 100;
+  let page = 0;
+  let allActions: ActionData[] = [];
+  let hasMore = true;
 
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr]">
-              <div className="w-full col-span-full">
-                <ProposalIdentification
-                  id={proposalId.toString()}
-                  authorName={username}
-                  translations={dictionary}
-                />
-              </div>
-              <div className="w-full lg:col-span-2">
-                <ProposalTimeline
-                  createdTime={createdDate}
-                  createdEpoch={createdEpoch}
-                  updateDate={updatedAt}
-                  updateEpoch={updatedEpoch}
-                  translations={dictionary}
-                />
-              </div>
-            </div>
+  while (hasMore) {
+    const response = await getGovernanceActions(
+      page,
+      pageSize,
+      "",
+      "NewestCreated",
+      []
+    );
+    const { elements, total } = response;
 
-            <ProposalContent proposal={proposal} translations={dictionary} />
-          </div>
-        </CardContent>
-      </Card>
-      <Card className="mb-4 sm:mb-6 bg-card text-card-foreground">
-        <CardContent className="p-4 sm:p-6">
-          <VotingSection translations={dictionary} />
-        </CardContent>
-      </Card>
-      <Suspense fallback={<CommentsSkeleton />}>
-        <Comments
-          loadChildCommentsAction={getProposalComments}
-          commentsPromise={proposalComments}
-          translations={dictionary}
-          proposalId={proposalId.toString()}
-          totalCommentCount={proposal.attributes.prop_comments_number}
-          type="proposal"
-        />
-      </Suspense>
-    </div>
-  );
+    if (!elements || elements.length === 0) {
+      break;
+    }
+
+    allActions = [...allActions, ...(elements as ActionData[])];
+    const fetchedCount = (page + 1) * pageSize;
+    hasMore = typeof total === "number" ? fetchedCount < total : false;
+    page++;
+  }
+
+  return allActions;
+}
+
+async function fetchAllBudgetDiscussions(): Promise<DiscussionData[]> {
+  const pageSize = 100;
+  let page = 0;
+  let allDiscussions: DiscussionData[] = [];
+  let hasMore = true;
+
+  while (hasMore) {
+    const response = await listBudgetDiscussions({
+      page,
+      pageSize,
+      search: "",
+      sortDirection: "desc",
+    });
+
+    if (!response || !response.data || response.data.length === 0) {
+      break;
+    }
+
+    const { data, meta } = response;
+    allDiscussions = [...allDiscussions, ...(data as DiscussionData[])];
+    hasMore = meta?.pagination ? page < meta.pagination.pageCount - 1 : false;
+    page++;
+  }
+
+  return allDiscussions;
+}
+
+async function fetchAllDReps(): Promise<DRepData[]> {
+  const pageSize = 100;
+  let page = 0;
+  let allDReps: DRepData[] = [];
+  let hasMore = true;
+
+  while (hasMore) {
+    const response = await getDReps(
+      page,
+      pageSize,
+      "",
+      "RegistrationDate",
+      [] as DRepFilterOption[]
+    );
+    const { elements, total } = response;
+
+    if (!elements || elements.length === 0) {
+      break;
+    }
+
+    allDReps = [...allDReps, ...(elements as DRepData[])];
+    const fetchedCount = (page + 1) * pageSize;
+    hasMore = typeof total === "number" ? fetchedCount < total : false;
+    page++;
+  }
+
+  return allDReps;
 }
