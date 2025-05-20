@@ -73,7 +73,9 @@ const AnalyticsDashboard = ({
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <GovernanceDelegationCard data={data} translations={translations} />
-        <Suspense fallback={<LoadingCardSkeleton translations={translations}/>}>
+        <Suspense
+          fallback={<LoadingCardSkeleton translations={translations} />}
+        >
           <DRepStatusDistributionCard
             drepStatsPromise={drepStatsPromise}
             translations={translations}
@@ -81,35 +83,49 @@ const AnalyticsDashboard = ({
         </Suspense>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <Suspense fallback={<LoadingCardSkeleton translations={translations}/>}>
+        <Suspense
+          fallback={<LoadingCardSkeleton translations={translations} />}
+        >
           <Top10DRepsCard
             drepListPromise={drepListPromise}
             translations={translations}
           />
         </Suspense>
-        <Suspense fallback={<LoadingCardSkeleton translations={translations}/>}>
-          <CardanoTokenomicsCard
-            tokenomicsPromise={tokenomicsPromise}
-            translations={translations}
-          />
-        </Suspense>
-        <Suspense fallback={<LoadingCardSkeleton translations={translations}/>}>
-          <EpochMetricsCard
-            data={data}
-            translations={translations}
-            drepStatsPromise={drepStatsPromise}
-          />
-        </Suspense>
-        <Suspense fallback={<LoadingCardSkeleton translations={translations}/>}>
-          <DRepRegistrationDateCard
-            drepRegistrationDataPromise={drepRegistrationDataPromise}
-            translations={translations}
-          />
-        </Suspense>
+        <div className="flex flex-col gap-4">
+          <Suspense
+            fallback={<LoadingCardSkeleton translations={translations} />}
+          >
+            <CardanoTokenomicsCard
+              tokenomicsPromise={tokenomicsPromise}
+              translations={translations}
+            />
+          </Suspense>
+          <Suspense
+            fallback={<LoadingCardSkeleton translations={translations} />}
+          >
+            <EpochMetricsCard
+              data={data}
+              translations={translations}
+              drepStatsPromise={drepStatsPromise}
+            />
+          </Suspense>
+        </div>
+        <div className="col-span-full">
+          <Suspense
+            fallback={<LoadingCardSkeleton translations={translations} />}
+          >
+            <DRepRegistrationDateCard
+              drepRegistrationDataPromise={drepRegistrationDataPromise}
+              translations={translations}
+            />
+          </Suspense>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-4 mb-4">
-        <Suspense fallback={<LoadingCardSkeleton translations={translations}/>}>
+        <Suspense
+          fallback={<LoadingCardSkeleton translations={translations} />}
+        >
           <DRepTreemapCard
             drepVotingPowerDataPromise={drepVotingPowerDataPromise}
             translations={translations}
