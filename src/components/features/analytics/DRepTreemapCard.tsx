@@ -220,7 +220,7 @@ const DRepTreemapCard = ({
 
         <PowerConcentrationBar top20Percent={top20Percentage} />
 
-        <div className="h-80 w-full">
+        <div className="h-[28rem] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <Treemap
               data={enhancedTreemapData}
