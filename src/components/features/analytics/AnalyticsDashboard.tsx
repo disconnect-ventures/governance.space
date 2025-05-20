@@ -132,6 +132,11 @@ const AnalyticsDashboard = ({
           />
         </Suspense>
       </div>
+      <Card className="bg-muted text-muted-foreground rounded-xl shadow-sm border p-4">
+        <CardContent className="p-0 text-sm text-center">
+          Data supplied by Govtools, Koios, and the Cardano Blockchain.
+        </CardContent>
+      </Card>
     </div>
   );
 };
