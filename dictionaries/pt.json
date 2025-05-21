@@ -75,9 +75,7 @@
     "threshold": "",
     "thresholdDescription": "Limite de votos necessários para ratificar a ação de governança.",
     "totalVotes": "Votos",
-    "goToHome": "Ir para a Página Inicial",
-    "sitemap": "Mapa do site",
-    "sitemapDescription": "Mapa completo do site governance.space"
+    "goToHome": "Ir para a Página Inicial"
   },
   "accessibility": {
     "pagination": "paginação",
@@ -223,7 +221,8 @@
     "language": "Idioma & região",
     "lightMode": "Modo claro",
     "darkMode": "Modo escuro",
-    "description": "Plataforma Completa de Governança."
+    "description": "Plataforma Completa de Governança.",
+    "sitemap": "Mapa do site"
   },
   "pageDreps": {
     "title": "Diretório de DReps",

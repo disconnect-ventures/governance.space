@@ -75,9 +75,7 @@
     "threshold": "Threshold",
     "thresholdDescription": "Threshold for ratification",
     "totalVotes": "Votes",
-    "goToHome": "Go to Home",
-    "sitemap": "Sitemap",
-    "sitemapDescription": "Complete site map of governance.space"
+    "goToHome": "Go to Home"
   },
   "accessibility": {
     "pagination": "pagination",
@@ -222,7 +220,8 @@
     "language": "Language & region",
     "lightMode": "Light mode",
     "darkMode": "Dark mode",
-    "description": "All-in-One Governance Platform."
+    "description": "All-in-One Governance Platform.",
+    "sitemap": "Site Map"
   },
   "pageDreps": {
     "title": "DReps Directory",
