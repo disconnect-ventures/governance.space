@@ -20,6 +20,27 @@ model DRepStatsSnapshot {
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
 }
 
+model BudgetDiscussionStatsSnapshot {
+  epoch Int @id @map("_id")
+
+  coreBudgetTotal Int
+  coreTotal Int
+
+  researchBudgetTotal Int
+  researchTotal Int
+
+  governanceSupportBudgetTotal Int
+  governanceSupportTotal Int
+
+  marketingInnovationBudgetTotal Int
+  marketingInnovationTotal Int
+
+  noneBudgetTotal Int
+  noneTotal Int
+
+  budgetTotal Int
+}
+
 model TokenomicsSnapshot {
   epoch Int @id @map("_id")
 
@@ -31,7 +52,6 @@ model TokenomicsSnapshot {
   depositStake Int
   depositDrep Int
   depositProposal Int
-
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at")

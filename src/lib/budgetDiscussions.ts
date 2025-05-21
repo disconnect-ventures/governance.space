@@ -193,7 +193,9 @@ export type BudgetDiscussionPoll = {
   };
 };
 
-export type BudgetDiscussionPollsResponse = PdfApiResponse<BudgetDiscussionPoll[]>;
+export type BudgetDiscussionPollsResponse = PdfApiResponse<
+  BudgetDiscussionPoll[]
+>;
 
 export async function getBudgetDiscussionPolls(
   page: number = 1,
@@ -209,8 +211,7 @@ export async function getBudgetDiscussionPolls(
         "filters[$and][0][bd_proposal_id][$eq]",
         proposalIds
       );
-    }
-    else if (Array.isArray(proposalIds) && proposalIds.length > 0) {
+    } else if (Array.isArray(proposalIds) && proposalIds.length > 0) {
       proposalIds.forEach((id, index) => {
         url.searchParams.append(
           `filters[$or][${index}][bd_proposal_id][$eq]`,
@@ -335,6 +336,37 @@ export async function listBudgetDiscussions({
   } catch {
     return null;
   }
+}
+
+export async function listAllBudgetDiscussions({
+  typeIds = [],
+}: { typeIds?: number[] } = {}): Promise<BudgetDiscussion[]> {
+  const firstPage = await listBudgetDiscussions({
+    isActive: true,
+    page: 0,
+    pageSize: 99,
+    typeIds,
+  });
+  const budgetDiscussions: BudgetDiscussion[] = firstPage?.data ?? [];
+  const totalPages = firstPage?.meta.pagination?.pageCount ?? 0;
+  const allData = await Promise.all(
+    Array.from(
+      { length: totalPages - 1 },
+      async (_, i) =>
+        await listBudgetDiscussions({
+          page: i + 1,
+          pageSize: 99,
+          isActive: true,
+          typeIds,
+        }).then((pageData) => {
+          if (!pageData) throw new Error(`Error fetching page ${i + 2}`);
+          return pageData.data;
+        })
+    )
+  );
+  budgetDiscussions.push(...allData.flat());
+
+  return budgetDiscussions;
 }
 
 export type BudgetDiscussionType = BaseEntity & {
