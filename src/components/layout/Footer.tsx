@@ -146,6 +146,9 @@ export const Footer = ({ translations }: FooterProps) => {
             <Link href="/cookie-policy" className="hover:text-foreground ">
               {translations.cookiePolicy}
             </Link>
+            <Link href="/sitemap.xml" className="hover:text-foreground ">
+              {translations.sitemap}
+            </Link>
           </div>
           <div className="flex items-center space-x-2">
             <LocaleSwitch />
