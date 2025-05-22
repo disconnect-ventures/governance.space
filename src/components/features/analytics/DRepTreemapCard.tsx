@@ -145,7 +145,7 @@ const DRepTreemapCard = ({
           y={y}
           width={width}
           height={height}
-          className="dark:brightness-125"
+          className="brightness-95 dark:brightness-125"
           style={{
             fill: getChartColor(index || 0),
             stroke: chartColors.background,
