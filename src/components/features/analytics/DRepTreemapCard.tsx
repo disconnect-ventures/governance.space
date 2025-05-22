@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from "react";
 import { Treemap, ResponsiveContainer, Tooltip, TooltipProps } from "recharts";
 import { Card, CardContent } from "@/components/ui/card";
 import { use } from "react";
-import { formatNumber } from "./utils/formatters";
+import { formatAda, formatVotingPower } from "~/lib/utils";
 import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
 import {
   TreemapDataPoint,
@@ -117,7 +117,9 @@ const DRepTreemapCard = ({
                 <dt className="text-muted-foreground">
                   {translations.pageAnalytics?.votingPower}:
                 </dt>
-                <dd className="font-medium ml-2">{formatNumber(data.size)}</dd>
+                <dd className="font-medium ml-2">
+                  {formatAda(formatVotingPower(data.size))}
+                </dd>
               </div>
 
               <div className="flex justify-between mt-1">

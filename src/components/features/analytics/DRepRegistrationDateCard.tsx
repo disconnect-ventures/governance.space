@@ -63,7 +63,7 @@ const DRepRegistrationDateCard = ({
       const formattedMonth = new Intl.DateTimeFormat(locale, {
         month: "short",
       }).format(date);
-      const formattedYear = year.substring(2);
+      const formattedYear = year;
       const formattedDate = `${formattedMonth} ${formattedYear}`;
 
       return {
