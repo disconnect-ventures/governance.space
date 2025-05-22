@@ -118,18 +118,18 @@ const DRepRegistrationDateCard = ({
 
   return (
     <Card className="bg-card text-card-foreground shadow-none">
-      <CardContent className="p-6">
+      <CardContent className="p-4">
         <h3 className="text-lg font-semibold text-foreground mb-2">
           {translations.pageAnalytics.drepRegistrationDateTitle}
         </h3>
-        <p className="text-sm text-muted-foreground mb-6">
+        <p className="text-sm text-muted-foreground mb-4">
           {translations.pageAnalytics.drepRegistrationDateDesc}
         </p>
-        <div className="h-80 w-full">
+        <div className="h-96 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart
               data={formattedData}
-              margin={{ top: 20, right: 40, left: 20, bottom: 50 }}
+              margin={{ top: 10, right: 15, left: 5, bottom: 35 }}
               layout="horizontal"
               stackOffset="none"
               barCategoryGap="10%"
@@ -144,14 +144,14 @@ const DRepRegistrationDateCard = ({
                 dataKey="formattedDate"
                 angle={-40}
                 textAnchor="end"
-                height={60}
+                height={50}
                 tick={{
                   fontSize: 12,
                   fill: getChartColor("mutedForeground"),
                 }}
                 axisLine={{ stroke: getChartColor("muted"), opacity: 0.5 }}
                 tickLine={{ stroke: getChartColor("muted"), opacity: 0.5 }}
-                dy={10}
+                dy={8}
               />
               <YAxis
                 yAxisId="left"
@@ -163,7 +163,7 @@ const DRepRegistrationDateCard = ({
                 }}
                 axisLine={{ stroke: getChartColor("muted"), opacity: 0.5 }}
                 tickLine={{ stroke: getChartColor("muted"), opacity: 0.5 }}
-                width={60}
+                width={45}
                 domain={[0, "auto"]}
               />
               <YAxis
@@ -176,14 +176,14 @@ const DRepRegistrationDateCard = ({
                 }}
                 axisLine={{ stroke: getChartColor("muted"), opacity: 0.5 }}
                 tickLine={{ stroke: getChartColor("muted"), opacity: 0.5 }}
-                width={70}
+                width={50}
                 domain={[0, "auto"]}
                 allowDecimals={false}
               />
               <Tooltip content={<CustomTooltip />} />
               <Legend
                 wrapperStyle={{
-                  paddingTop: 15,
+                  paddingTop: 10,
                   fontSize: 12,
                 }}
                 iconType="square"
