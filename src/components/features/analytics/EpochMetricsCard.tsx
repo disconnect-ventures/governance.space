@@ -75,7 +75,7 @@ const EpochMetricsCard = ({
                 <th className="text-left py-3 text-sm font-medium text-muted-foreground">
                   {translations.general.item}
                 </th>
-                <th className="text-center py-3 text-sm font-medium text-muted-foreground">
+                <th className="text-right py-3 text-sm font-medium text-muted-foreground">
                   {translations.pageAnalytics.epoch} {epoch}
                 </th>
                 {/* <th className="text-right py-3 text-sm font-medium text-muted-foreground">
@@ -93,7 +93,7 @@ const EpochMetricsCard = ({
                 return (
                   <tr key={row.item}>
                     <td className="py-4 text-sm text-foreground">{row.item}</td>
-                    <td className="py-4 text-sm text-center font-medium text-foreground">
+                    <td className="py-4 text-sm text-right font-medium text-foreground">
                       {row.value}
                     </td>
                     {/* <td
