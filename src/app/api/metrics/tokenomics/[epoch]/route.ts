@@ -1,11 +1,15 @@
 import prisma from "~/../prisma";
 import { Prisma } from "~/../generated/prisma";
 import { getTokenomics } from "~/lib/koios";
+import { isAuthorized } from "~/lib/auth";
 
 export async function POST(
   request: Request,
   { params }: { params: Promise<{ epoch: string }> }
 ) {
+  if (!isAuthorized(request)) {
+    return new Response("Unauthorized", { status: 401 });
+  }
   const { epoch: epochStr } = await params;
   const epoch = Number(epochStr);
   if (isNaN(epoch)) {
