@@ -10,6 +10,9 @@ import {
   ListBudgetDiscussionsParams,
 } from "~/lib/budgetDiscussions";
 import { BudgetDiscussionDirectory } from "~/components/features/budget/BudgetDirectory";
+import BudgetStats from "~/components/features/budget/BudgetStats";
+import prisma from "../../../../prisma";
+import { BudgetDiscussionStatsSnapshot } from "../../../../generated/prisma";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -59,6 +62,15 @@ export default async function BudgetDiscussionsPage({
     pageSize
   );
 
+  const budgetStatsPromise: Promise<BudgetDiscussionStatsSnapshot | null> = new Promise(async (resolve, reject) => {
+    try {
+      const data = await prisma.budgetDiscussionStatsSnapshot.findFirst({ orderBy: { epoch: "desc" } });
+      resolve(data);
+    } catch (error) {
+      reject(error);
+    }
+  });
+
   return (
     <div className="space-y-4 bg-background text-foreground">
       <PageTitle
@@ -70,6 +82,7 @@ export default async function BudgetDiscussionsPage({
         badge={`${discussions?.meta.pagination?.total ?? 0}`}
         translations={dictionary.pageBudgetDiscussions}
       ></PageTitle>
+      <BudgetStats dataPromise={budgetStatsPromise} translations={dictionary}/>
       <BudgetDiscussionDirectory
         budgetDiscussions={discussions?.data ?? []}
         budgetDiscussionTypes={types?.data ?? []}

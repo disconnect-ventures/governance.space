@@ -346,7 +346,18 @@
     "research": "Pesquisa",
     "governanceSupport": "Suporte de Governança",
     "marketing&Innovation": "Marketing & Inovação",
-    "noneOfThese": "Nenhuma das opções"
+    "noneOfThese": "Nenhuma das opções",
+    "coreBudget": "Orçamento Núcleo",
+    "researchBudget": "Orçamento Pesquisa",
+    "governanceSupportBudget": "Orçamento Apoio à Governança",
+    "marketingInnovationBudget": "Orçamento Marketing e Inovação",
+    "noneBudget": "Orçamento Nenhuma das opções",
+    "coreTotal": "Total Núcleo",
+    "researchTotal": "Total Pesquisa",
+    "governanceSupportTotal": "Total Apoio à Governança",
+    "marketingInnovationTotal": "Total Marketing e Inovação",
+    "noneTotal": "Total Nenhuma das opções",
+    "totalBudget": "Orçamento Total"
   },
   "pageBudgetDiscussionDetails": {
     "title": "Detalhes da Discussão",
