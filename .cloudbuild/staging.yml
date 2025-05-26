@@ -1,0 +1,58 @@
+steps:
+  - name: gcr.io/k8s-skaffold/pack
+    args:
+      - build
+      - >-
+        $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      - '--builder=gcr.io/buildpacks/builder:latest'
+      - '--network=cloudbuild'
+      - '--path=.'
+      - '--env=API_BASE_URL=${_API_BASE_URL}'
+      - '--env=API_PDF_BASE_URL=${_API_PDF_BASE_URL}'
+      - '--env=METADATA_BASE_URL=${_METADATA_BASE_URL}'
+      - '--env=DISCORD_WEBHOOK_URL=${_DISCORD_WEBHOOK_URL}'
+    id: Buildpack
+    entrypoint: pack
+    env:
+      - 'API_BASE_URL=${_API_BASE_URL}'
+      - 'API_PDF_BASE_URL=${_API_PDF_BASE_URL}'
+      - 'METADATA_BASE_URL=${_METADATA_BASE_URL}'
+      - 'DISCORD_WEBHOOK_URL=${_DISCORD_WEBHOOK_URL}'
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - >-
+        $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+    id: Push
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    args:
+      - run
+      - deploy
+      - $_SERVICE_NAME
+      - '--platform=managed'
+      - >-
+        --image=$_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      - >-
+        --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID
+      - '--region=$_DEPLOY_REGION'
+      - '--set-env-vars=API_BASE_URL=${_API_BASE_URL},API_PDF_BASE_URL=${_API_PDF_BASE_URL},METADATA_BASE_URL=${_METADATA_BASE_URL},DISCORD_WEBHOOK_URL=${_DISCORD_WEBHOOK_URL}'
+      - '--allow-unauthenticated'
+      - '--quiet'
+    id: Deploy
+    entrypoint: gcloud
+images:
+  - >-
+    $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+options:
+  substitutionOption: ALLOW_LOOSE
+  logging: CLOUD_LOGGING_ONLY
+substitutions:
+  _SERVICE_NAME: governance-space-staging
+  _DEPLOY_REGION: us-central1
+  _AR_HOSTNAME: us-central1-docker.pkg.dev
+  _TRIGGER_ID: ce2d4240-b930-4524-99c0-051019f9ebc2
+  _PLATFORM: managed
+tags:
+  - gcp-cloud-build-deploy-cloud-run
+  - gcp-cloud-build-deploy-cloud-run-managed
+  - governance-space-staging
