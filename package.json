@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "init-db": "tsx prisma/init-db.ts",
-    "build": "npm run init-db && next build",
-    "start": "next start -p ${PORT:-3000}",
+    "build": "prisma generate && next build",
+    "start": "npm run init-db && next start -p ${PORT:-3000}",
     "lint": "next lint",
     "format": "prettier --write ."
   },
