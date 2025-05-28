@@ -77,7 +77,10 @@
     "totalVotes": "Votes",
     "goToHome": "Go to Home",
     "month": "Month",
-    "total": "Total"
+    "total": "Total",
+    "viewStats": "View Stats",
+    "show": "Show",
+    "hide": "Hide"
   },
   "accessibility": {
     "pagination": "pagination",
