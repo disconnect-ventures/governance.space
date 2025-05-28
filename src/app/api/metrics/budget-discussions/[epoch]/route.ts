@@ -5,17 +5,18 @@ import {
   listAllBudgetDiscussions,
 } from "~/lib/budgetDiscussions";
 import { isAuthorized } from "~/lib/auth";
+import { calculateEpochNumber } from "~/lib/utils";
 
 export async function POST(
   request: Request,
-  { params }: { params: Promise<{ epoch: string }> }
+  // { params }: { params: Promise<{ epoch: string }> }
 ) {
   if (!isAuthorized(request)) {
     return new Response("Unauthorized", { status: 401 });
   }
 
-  const { epoch: epochStr } = await params;
-  const epoch = Number(epochStr);
+  const epoch = calculateEpochNumber();
+  
   if (isNaN(epoch)) {
     return new Response("Invalid epoch", {
       status: 400,
