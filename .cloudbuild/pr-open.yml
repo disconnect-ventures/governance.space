@@ -11,6 +11,8 @@ steps:
       - '--env=API_PDF_BASE_URL=${_API_PDF_BASE_URL}'
       - '--env=METADATA_BASE_URL=${_METADATA_BASE_URL}'
       - '--env=DISCORD_WEBHOOK_URL=${_DISCORD_WEBHOOK_URL}'
+      - '--env=DATABASE_URL=${_DATABASE_URL}'
+      - '--env=AUTH_KEY=${_AUTH_KEY}'
     id: Buildpack
     entrypoint: pack
     env:
@@ -18,6 +20,8 @@ steps:
       - 'API_PDF_BASE_URL=${_API_PDF_BASE_URL}'
       - 'METADATA_BASE_URL=${_METADATA_BASE_URL}'
       - 'DISCORD_WEBHOOK_URL=${_DISCORD_WEBHOOK_URL}'
+      - 'DATABASE_URL=${_DATABASE_URL}'
+      - 'AUTH_KEY=${_AUTH_KEY}'
   - name: gcr.io/cloud-builders/docker
     args:
       - push
@@ -35,7 +39,9 @@ steps:
       - >-
         --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID,pr-number=$_PR_NUMBER
       - '--region=$_DEPLOY_REGION'
-      - '--set-env-vars=API_BASE_URL=${_API_BASE_URL},API_PDF_BASE_URL=${_API_PDF_BASE_URL},METADATA_BASE_URL=${_METADATA_BASE_URL},DISCORD_WEBHOOK_URL=${_DISCORD_WEBHOOK_URL}'
+      - '--vpc-connector=cr-vpc-connector'
+      - '--vpc-egress=all-traffic'
+      - '--set-env-vars=API_BASE_URL=${_API_BASE_URL},API_PDF_BASE_URL=${_API_PDF_BASE_URL},METADATA_BASE_URL=${_METADATA_BASE_URL},DATABASE_URL=${_DATABASE_URL},AUTH_KEY=${_AUTH_KEY},DISCORD_WEBHOOK_URL=${_DISCORD_WEBHOOK_URL}'
       - '--allow-unauthenticated'
       - '--quiet'
     id: Deploy
@@ -46,10 +52,13 @@ images:
 options:
   substitutionOption: ALLOW_LOOSE
   logging: CLOUD_LOGGING_ONLY
+  pool:
+    name: projects/governance-space/locations/us-central1/workerPools/gov-space-worker-pool
 substitutions:
   _PLATFORM: managed
   _DEPLOY_REGION: us-central1
   _AR_HOSTNAME: us-central1-docker.pkg.dev
+  _DATABASE_URL: mongodb+srv://${_DB_USER}:${_DB_PASSWORD}@${_DB_HOST}/gov-space-pr-${_PR_NUMBER}?retryWrites=true&w=majority&appName=gov-space-dev
 tags:
   - gcp-cloud-build-deploy-cloud-run
   - gcp-cloud-build-deploy-cloud-run-managed

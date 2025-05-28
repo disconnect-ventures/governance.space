@@ -52,6 +52,7 @@ substitutions:
   _AR_HOSTNAME: us-central1-docker.pkg.dev
   _TRIGGER_ID: ce2d4240-b930-4524-99c0-051019f9ebc2
   _PLATFORM: managed
+  _DATABASE_URL: mongodb+srv://${_DB_USER}:${_DB_PASSWORD}@${_DB_HOST}/gov-space-staging?retryWrites=true&w=majority&appName=gov-space-dev
 tags:
   - gcp-cloud-build-deploy-cloud-run
   - gcp-cloud-build-deploy-cloud-run-managed

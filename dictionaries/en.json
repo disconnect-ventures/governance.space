@@ -77,7 +77,10 @@
     "totalVotes": "Votes",
     "goToHome": "Go to Home",
     "month": "Month",
-    "total": "Total"
+    "total": "Total",
+    "viewStats": "View Stats",
+    "show": "Show",
+    "hide": "Hide"
   },
   "accessibility": {
     "pagination": "pagination",
@@ -345,7 +348,18 @@
     "research": "Research",
     "governanceSupport": "Governance Support",
     "marketing&Innovation": "Marketing & Innovation",
-    "noneOfThese": "None of these"
+    "noneOfThese": "None of these",
+    "coreBudget": "Core Budget",
+    "researchBudget": "Research Budget",
+    "governanceSupportBudget": "Governance Support Budget",
+    "marketingInnovationBudget": "Marketing & Innovation Budget",
+    "noneBudget": "None of These Budget",
+    "coreTotal": "Core Total",
+    "researchTotal": "Research Total",
+    "governanceSupportTotal": "Governance Support Total",
+    "marketingInnovationTotal": "Marketing & Innovation Total",
+    "noneTotal": "None of These Total",
+    "totalBudget": "Total Budget"
   },
   "pageBudgetDiscussionDetails": {
     "title": "Discussion Details",
