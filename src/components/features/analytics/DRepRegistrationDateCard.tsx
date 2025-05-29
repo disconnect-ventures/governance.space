@@ -103,7 +103,7 @@ const DRepRegistrationDateCard = ({
               style={{ backgroundColor: getChartColor("monthly") }}
             ></div>
             <p className="text-card-foreground">
-              {translations.general.month}:{" "}
+              {translations.general.monthly}:{" "}
               <span className="font-medium">
                 {formatNumber(data?.monthlyRegistrations || 0)}
               </span>
@@ -128,7 +128,7 @@ const DRepRegistrationDateCard = ({
               style={{ backgroundColor: getChartColor("inactive") }}
             ></div>
             <p className="text-card-foreground">
-              {translations.general.inactive}:{" "}
+              {translations.pageAnalytics.totalInactive}:{" "}
               <span className="font-medium">
                 {formatNumber(data?.inactiveDReps || 0)}
               </span>
@@ -180,13 +180,13 @@ const DRepRegistrationDateCard = ({
                 allowDecimals={false}
                 tickFormatter={(value) => formatNumber(value)}
                 label={{
-                  value: "Monthly Registrations",
+                  value: translations.pageAnalytics.monthlyRegistrations,
                   angle: -90,
                   position: "insideLeft",
                   style: {
                     textAnchor: "middle",
                     fill: getChartColor("mutedForeground"),
-                    fontSize: "12px",
+                    fontSize: "14px",
                   },
                 }}
               />
@@ -204,13 +204,13 @@ const DRepRegistrationDateCard = ({
                 allowDecimals={false}
                 tickFormatter={(value) => formatNumber(value)}
                 label={{
-                  value: "Cumulative Total",
+                  value: translations.pageAnalytics.totalRegistrations,
                   angle: 90,
                   position: "insideRight",
                   style: {
                     textAnchor: "middle",
                     fill: getChartColor("mutedForeground"),
-                    fontSize: "12px",
+                    fontSize: "14px",
                   },
                 }}
               />
@@ -234,7 +234,7 @@ const DRepRegistrationDateCard = ({
               />
               <Bar
                 yAxisId="left"
-                name={translations.general.month}
+                name={translations.general.monthly}
                 dataKey="monthlyRegistrations"
                 fill={getChartColor("monthly")}
                 fillOpacity={0.85}
@@ -263,7 +263,7 @@ const DRepRegistrationDateCard = ({
               />
               <Line
                 yAxisId="right"
-                name={translations.general.inactive}
+                name={translations.pageAnalytics.totalInactive}
                 type="monotone"
                 dataKey="inactiveDReps"
                 stroke={getChartColor("inactive")}

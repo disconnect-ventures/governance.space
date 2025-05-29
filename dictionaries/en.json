@@ -77,7 +77,8 @@
     "totalVotes": "Votes",
     "goToHome": "Go to Home",
     "month": "Month",
-    "total": "Total"
+    "total": "Total",
+    "monthly": "Monthly"
   },
   "accessibility": {
     "pagination": "pagination",
@@ -455,7 +456,10 @@
     "drepTreemapDesc": "of voting power controlled by top 20 DReps",
     "shareOfTotal": "Share of total",
     "drepRegistrationDateTitle": "DRep Registration Timeline",
-    "drepRegistrationDateDesc": "Tracks monthly registration activity and total DRep growth."
+    "drepRegistrationDateDesc": "Tracks DRep monthly registrations, total DRep growth, and total DRep inactivity.",
+    "monthlyRegistrations": "Monthly Registrations",
+    "totalRegistrations": "Total Registrations",
+    "totalInactive": "Total Inactive"
   },
   "pageHelp": {
     "title": "Help",
