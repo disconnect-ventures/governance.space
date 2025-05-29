@@ -456,7 +456,7 @@
     "drepTreemapDesc": "of voting power controlled by top 20 DReps",
     "shareOfTotal": "Share of total",
     "drepRegistrationDateTitle": "DRep Registration Timeline",
-    "drepRegistrationDateDesc": "Tracks DRep monthly registrations, total DRep growth, and total DRep inactivity.",
+    "drepRegistrationDateDesc": "Tracks DRep monthly registrations, total DRep growth and total DRep inactivity.",
     "monthlyRegistrations": "Monthly Registrations",
     "totalRegistrations": "Total Registrations",
     "totalInactive": "Total Inactive"
