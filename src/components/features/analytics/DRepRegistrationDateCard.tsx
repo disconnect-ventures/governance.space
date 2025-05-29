@@ -10,8 +10,8 @@ import {
   ResponsiveContainer,
   Tooltip,
   CartesianGrid,
-  Legend,
   TooltipProps,
+  Legend,
 } from "recharts";
 import { formatNumber } from "./utils/formatters";
 import { AnalyticsDashboardProps } from "./AnalyticsDashboard";
@@ -29,8 +29,9 @@ const DRepRegistrationDateCard = ({
 
   const chartColors = useMemo(
     () => ({
-      total: "hsl(var(--chart-1))",
-      monthly: "hsl(var(--chart-2))",
+      total: "hsl(var(--chart-8))",
+      monthly: "hsl(var(--chart-6))",
+      inactive: "hsl(var(--chart-13))",
       background: "hsl(var(--background))",
       muted: "hsl(var(--muted))",
       mutedForeground: "hsl(var(--muted-foreground))",
@@ -40,7 +41,13 @@ const DRepRegistrationDateCard = ({
 
   const getChartColor = useCallback(
     (
-      type: "total" | "monthly" | "background" | "muted" | "mutedForeground"
+      type:
+        | "total"
+        | "monthly"
+        | "inactive"
+        | "background"
+        | "muted"
+        | "mutedForeground"
     ) => {
       return chartColors[type];
     },
@@ -49,14 +56,16 @@ const DRepRegistrationDateCard = ({
 
   const formattedData = useMemo(() => {
     const locale = translations.general.locale || "en-US";
-
     const sortedData = [...registrationData].sort((a, b) =>
       a.date.localeCompare(b.date)
     );
 
-    let cumulativeCount = 0;
+    let cumulativeTotal = 0;
+    let cumulativeInactive = 0;
+
     const cumulativeData = sortedData.map((item) => {
-      cumulativeCount += item.count;
+      cumulativeTotal += item.count;
+      cumulativeInactive += item.inactiveCount;
 
       const [year, month] = item.date.split("-");
       const date = new Date(parseInt(year), parseInt(month) - 1, 1);
@@ -68,8 +77,9 @@ const DRepRegistrationDateCard = ({
 
       return {
         ...item,
-        totalCount: cumulativeCount,
-        monthlyCount: item.count,
+        totalDReps: cumulativeTotal,
+        monthlyRegistrations: item.count,
+        inactiveDReps: cumulativeInactive,
         formattedDate,
       };
     });
@@ -83,10 +93,11 @@ const DRepRegistrationDateCard = ({
     label,
   }: TooltipProps<number, string>) => {
     if (active && payload && payload.length) {
+      const data = payload[0]?.payload;
       return (
         <div className="bg-popover p-4 rounded-md shadow-md border border-border text-sm">
           <p className="font-semibold mb-2">{label}</p>
-          <div className="flex items-center gap-2 mb-1.5">
+          <div className="flex items-center gap-2">
             <div
               className="w-3 h-3 rounded-sm"
               style={{ backgroundColor: getChartColor("monthly") }}
@@ -94,10 +105,11 @@ const DRepRegistrationDateCard = ({
             <p className="text-card-foreground">
               {translations.general.month}:{" "}
               <span className="font-medium">
-                {formatNumber(payload[0].value as number)}
+                {formatNumber(data?.monthlyRegistrations || 0)}
               </span>
             </p>
           </div>
+
           <div className="flex items-center gap-2">
             <div
               className="w-3 h-3 rounded-sm"
@@ -106,7 +118,19 @@ const DRepRegistrationDateCard = ({
             <p className="text-card-foreground">
               {translations.general.total}:{" "}
               <span className="font-medium">
-                {formatNumber(payload[1].value as number)}
+                {formatNumber(data?.totalDReps || 0)}
+              </span>
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <div
+              className="w-3 h-3 rounded-sm"
+              style={{ backgroundColor: getChartColor("inactive") }}
+            ></div>
+            <p className="text-card-foreground">
+              {translations.general.inactive}:{" "}
+              <span className="font-medium">
+                {formatNumber(data?.inactiveDReps || 0)}
               </span>
             </p>
           </div>
@@ -127,19 +151,8 @@ const DRepRegistrationDateCard = ({
         </p>
         <div className="h-96 w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <ComposedChart
-              data={formattedData}
-              margin={{ top: 10, right: 15, left: 5, bottom: 35 }}
-              layout="horizontal"
-              stackOffset="none"
-              barCategoryGap="10%"
-              barGap={4}
-            >
-              <CartesianGrid
-                strokeDasharray="3 3"
-                className="stroke-muted opacity-20"
-                vertical={false}
-              />
+            <ComposedChart data={formattedData}>
+              <CartesianGrid className="stroke-muted opacity-0" />
               <XAxis
                 dataKey="formattedDate"
                 angle={-40}
@@ -156,61 +169,115 @@ const DRepRegistrationDateCard = ({
               <YAxis
                 yAxisId="left"
                 orientation="left"
-                tickFormatter={(value) => formatNumber(value)}
                 tick={{
                   fontSize: 12,
                   fill: getChartColor("mutedForeground"),
                 }}
                 axisLine={{ stroke: getChartColor("muted"), opacity: 0.5 }}
                 tickLine={{ stroke: getChartColor("muted"), opacity: 0.5 }}
-                width={45}
+                width={55}
                 domain={[0, "auto"]}
+                allowDecimals={false}
+                tickFormatter={(value) => formatNumber(value)}
+                label={{
+                  value: "Monthly Registrations",
+                  angle: -90,
+                  position: "insideLeft",
+                  style: {
+                    textAnchor: "middle",
+                    fill: getChartColor("mutedForeground"),
+                    fontSize: "12px",
+                  },
+                }}
               />
               <YAxis
                 yAxisId="right"
                 orientation="right"
-                tickFormatter={(value) => formatNumber(value)}
                 tick={{
                   fontSize: 12,
                   fill: getChartColor("mutedForeground"),
                 }}
                 axisLine={{ stroke: getChartColor("muted"), opacity: 0.5 }}
                 tickLine={{ stroke: getChartColor("muted"), opacity: 0.5 }}
-                width={50}
+                width={55}
                 domain={[0, "auto"]}
                 allowDecimals={false}
+                tickFormatter={(value) => formatNumber(value)}
+                label={{
+                  value: "Cumulative Total",
+                  angle: 90,
+                  position: "insideRight",
+                  style: {
+                    textAnchor: "middle",
+                    fill: getChartColor("mutedForeground"),
+                    fontSize: "12px",
+                  },
+                }}
               />
               <Tooltip content={<CustomTooltip />} />
               <Legend
                 wrapperStyle={{
-                  paddingTop: 10,
-                  fontSize: 12,
+                  paddingTop: 16,
                 }}
-                iconType="square"
-                iconSize={10}
-                align="center"
-                verticalAlign="bottom"
+                iconType={"circle"}
+                iconSize={12}
+                formatter={(value) => (
+                  <span
+                    style={{
+                      color: getChartColor("mutedForeground"),
+                      fontSize: "12px",
+                    }}
+                  >
+                    {value}
+                  </span>
+                )}
               />
               <Bar
                 yAxisId="left"
-                dataKey="monthlyCount"
                 name={translations.general.month}
+                dataKey="monthlyRegistrations"
                 fill={getChartColor("monthly")}
                 fillOpacity={0.85}
                 radius={[4, 4, 0, 0]}
-                barSize={24}
+                maxBarSize={25}
               />
               <Line
                 yAxisId="right"
-                type="monotone"
-                dataKey="totalCount"
                 name={translations.general.total}
+                type="monotone"
+                dataKey="totalDReps"
                 stroke={getChartColor("total")}
-                strokeWidth={3}
-                dot={{ r: 4, strokeWidth: 0, fill: getChartColor("total") }}
+                strokeWidth={2}
+                dot={{
+                  r: 4,
+                  strokeWidth: 0.4,
+                  fill: getChartColor("total"),
+                  stroke: getChartColor("background"),
+                }}
                 activeDot={{
                   r: 6,
-                  strokeWidth: 1,
+                  strokeWidth: 0.4,
+                  fill: getChartColor("total"),
+                  stroke: getChartColor("background"),
+                }}
+              />
+              <Line
+                yAxisId="right"
+                name={translations.general.inactive}
+                type="monotone"
+                dataKey="inactiveDReps"
+                stroke={getChartColor("inactive")}
+                strokeWidth={2}
+                dot={{
+                  r: 4,
+                  strokeWidth: 0.4,
+                  fill: getChartColor("inactive"),
+                  stroke: getChartColor("background"),
+                }}
+                activeDot={{
+                  r: 6,
+                  strokeWidth: 0.4,
+                  fill: getChartColor("inactive"),
                   stroke: getChartColor("background"),
                 }}
               />
