@@ -29,11 +29,26 @@ body {
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-1: 12 76% 61%; /* Coral red */
+    --chart-2: 173 58% 39%; /* Teal */
+    --chart-3: 197 37% 24%; /* Dark blue */
+    --chart-4: 43 74% 66%; /* Yellow-green */
+    --chart-5: 27 87% 67%; /* Orange */
+    --chart-6: 173 58% 39%; /* Teal */
+    --chart-7: 12 76% 61%; /* Coral red */
+    --chart-8: 220 70% 50%; /* Blue */
+    --chart-9: 280 65% 60%; /* Purple */
+    --chart-10: 340 75% 55%; /* Pink */
+    --chart-11: 213 47% 49%; /* Blue #4E79A7 */
+    --chart-12: 31 88% 56%; /* Orange #F28E2C */
+    --chart-13: 359 75% 62%; /* Red #E15759 */
+    --chart-14: 177 36% 59%; /* Teal #76B7B2 */
+    --chart-15: 112 40% 47%; /* Green #59A14F */
+    --chart-16: 46 80% 61%; /* Yellow #EDC949 */
+    --chart-17: 315 24% 55%; /* Purple #AF7AA1 */
+    --chart-18: 350 100% 80%; /* Pink #FF9DA7 */
+    --chart-19: 23 40% 49%; /* Brown #9C755F */
+    --chart-20: 36 10% 71%; /* Gray #BAB0AB */
     --radius: 0.5rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -65,11 +80,26 @@ body {
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: 220 70% 50%; /* Blue */
+    --chart-2: 160 60% 45%; /* Teal */
+    --chart-3: 30 80% 55%; /* Orange */
+    --chart-4: 280 65% 60%; /* Purple */
+    --chart-5: 340 75% 55%; /* Pink */
+    --chart-6: 160 60% 45%; /* Teal */
+    --chart-7: 30 80% 55%; /* Orange */
+    --chart-8: 220 70% 50%; /* Blue */
+    --chart-9: 280 65% 60%; /* Purple */
+    --chart-10: 340 75% 55%; /* Pink */
+    --chart-11: 210 70% 55%; /* Blue - enhanced for dark mode */
+    --chart-12: 30 90% 50%; /* Orange - enhanced for dark mode */
+    --chart-13: 0 80% 60%; /* Red - enhanced for dark mode */
+    --chart-14: 175 55% 50%; /* Teal - enhanced for dark mode */
+    --chart-15: 120 60% 45%; /* Green - enhanced for dark mode */
+    --chart-16: 45 85% 50%; /* Yellow - enhanced for dark mode */
+    --chart-17: 285 45% 55%; /* Purple - enhanced for dark mode */
+    --chart-18: 350 75% 65%; /* Pink - enhanced for dark mode */
+    --chart-19: 25 50% 50%; /* Brown - enhanced for dark mode */
+    --chart-20: 35 25% 65%; /* Gray - enhanced for dark mode */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
