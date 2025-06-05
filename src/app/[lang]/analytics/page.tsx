@@ -14,6 +14,7 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { Metadata } from "next";
 import { getDRepVotingPowerData } from "~/lib/drepTreemap";
 import { getTokenomics } from "~/lib/koios";
+import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -43,25 +44,28 @@ export default async function AnalyticsPage({
   const tokenomicsPromise = getTokenomics(info.epochNo);
 
   return (
-    <div className="flex min-h-screen flex-col gap-8">
-      <PageTitle
-        title={`${dictionary.pageAnalytics.title} - Epoch ${info.epochNo}`}
-        icon={
-          <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
-            <ChartLineIcon className="text-foreground" />
-          </div>
-        }
-        translations={dictionary.pageAnalytics}
-      />
-      <AnalyticsDashboard
-        data={{ ...metrics, ...info, ...stake }}
-        drepListPromise={drepsPromise}
-        drepStatsPromise={statsPromise}
-        drepVotingPowerDataPromise={drepVotingPowerDataPromise}
-        drepRegistrationDataPromise={registrationDataPromise}
-        tokenomicsPromise={tokenomicsPromise}
-        translations={dictionary}
-      />
-    </div>
+    <>
+      <Breadcrumbs translations={dictionary.breadcrumbs} />
+      <div className="flex min-h-screen flex-col gap-8">
+        <PageTitle
+          title={`${dictionary.pageAnalytics.title} - Epoch ${info.epochNo}`}
+          icon={
+            <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
+              <ChartLineIcon className="text-foreground" />
+            </div>
+          }
+          translations={dictionary.pageAnalytics}
+        />
+        <AnalyticsDashboard
+          data={{ ...metrics, ...info, ...stake }}
+          drepListPromise={drepsPromise}
+          drepStatsPromise={statsPromise}
+          drepVotingPowerDataPromise={drepVotingPowerDataPromise}
+          drepRegistrationDataPromise={registrationDataPromise}
+          tokenomicsPromise={tokenomicsPromise}
+          translations={dictionary}
+        />
+      </div>
+    </>
   );
 }

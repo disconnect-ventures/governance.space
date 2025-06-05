@@ -20,6 +20,7 @@ import { PageProps } from "../../layout";
 import { notFound } from "next/navigation";
 import { getGovernanceActionMetadata } from "~/lib/metadata";
 import { getDictionary } from "~/config/dictionaries";
+import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -138,44 +139,52 @@ export default async function GovernanceActionDetailsPage({
   );
   const references = metadata?.metadata?.references ?? [];
 
+  const breadcrumbsTitle = action.title ?? metadata?.metadata?.title;
+
   return (
-    <div className="bg-background text-foreground">
-      <PageTitle
-        icon={
-          <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
-            <BookOpenCheckIcon />
-          </div>
-        }
-        translations={dictionary.pageGovernanceActionsDetails}
+    <>
+      <Breadcrumbs
+        translations={dictionary.breadcrumbs}
+        additionalSegment={breadcrumbsTitle}
       />
+      <div className="bg-background text-foreground">
+        <PageTitle
+          icon={
+            <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
+              <BookOpenCheckIcon />
+            </div>
+          }
+          translations={dictionary.pageGovernanceActionsDetails}
+        />
 
-      <TopBar backHref="/governance" translations={dictionary.general} />
+        <TopBar backHref="/governance" translations={dictionary.general} />
 
-      <Card className="bg-card text-card-foreground rounded-xl overflow-hidden">
-        <GovernanceHeader
-          action={action}
-          metadata={metadata}
-          translations={dictionary}
-        />
-        <Separator className="bg-border my-4" />
-        <GovernaceVoting action={action} translations={dictionary} />
-        <GovernanceLinks links={references} translations={dictionary} />
-        <Separator className="bg-border" />
-        <GovernanceDocuments
-          documents={DOCUMENTS}
-          translations={dictionary.pageGovernanceActionsDetails}
-        />
-        <Separator className="bg-border" />
-        <GovernanceTasks
-          tasks={GOVERNANCE_TASKS}
-          translations={dictionary.pageGovernanceActionsDetails}
-        />
-        <Separator className="bg-border" />
-        <GovernanceHistory
-          entries={HISTORY_ENTRIES}
-          translations={dictionary.pageGovernanceActionsDetails}
-        />
-      </Card>
-    </div>
+        <Card className="bg-card text-card-foreground rounded-xl overflow-hidden">
+          <GovernanceHeader
+            action={action}
+            metadata={metadata}
+            translations={dictionary}
+          />
+          <Separator className="bg-border my-4" />
+          <GovernaceVoting action={action} translations={dictionary} />
+          <GovernanceLinks links={references} translations={dictionary} />
+          <Separator className="bg-border" />
+          <GovernanceDocuments
+            documents={DOCUMENTS}
+            translations={dictionary.pageGovernanceActionsDetails}
+          />
+          <Separator className="bg-border" />
+          <GovernanceTasks
+            tasks={GOVERNANCE_TASKS}
+            translations={dictionary.pageGovernanceActionsDetails}
+          />
+          <Separator className="bg-border" />
+          <GovernanceHistory
+            entries={HISTORY_ENTRIES}
+            translations={dictionary.pageGovernanceActionsDetails}
+          />
+        </Card>
+      </div>
+    </>
   );
 }

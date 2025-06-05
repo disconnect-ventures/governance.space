@@ -21,6 +21,7 @@ import {
   BudgetVotes,
   VoteResultsSkeleton,
 } from "~/components/features/budget/BudgetVotes";
+import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -113,69 +114,77 @@ export default async function BudgetDiscussionDetailsPage({
     proposalId: discussionId.toString(),
   });
 
-  return (
-    <div className="bg-background text-foreground">
-      <PageTitle
-        icon={
-          <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
-            <FileTextIcon className="w-5 h-5 relative top-1" />
-            <HandHelpingIcon className="w-6 h-6" />
-          </div>
-        }
-        translations={dictionary.pageBudgetDiscussionDetails}
-      />
-      <TopBar
-        backHref="/budget-discussions"
-        translations={dictionary.general}
-      />
-      <Card className="mb-4 bg-card text-card-foreground">
-        <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
-          <div className="w-full flex flex-col gap-4 sm:gap-6">
-            <ProposalHeader
-              title={title}
-              isActive={isProposalActive}
-              type={actionType?.type_name ?? ""}
-              createdDate={createdDate}
-              createdEpoch={createdEpoch}
-              updatedAt={updatedAt}
-              updatedEpoch={updatedEpoch}
-              commentCount={commentCount}
-              translations={dictionary}
-              contentType="budgetDiscussion"
-            />
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr]">
-              <div className="w-full col-span-full">
-                <ProposalIdentification
-                  id={discussionId.toString()}
-                  authorName={username}
-                  translations={dictionary}
-                />
-              </div>
-            </div>
-            <BudgetDiscussionContent
-              discussion={budgetDiscussion}
-              translations={dictionary}
-            />
-          </div>
-        </CardContent>
-      </Card>
+  const breadcrumbsTitle = title ?? undefined;
 
-      <div className="mb-4 bg-card text-card-foreground">
-        <Suspense fallback={<VoteResultsSkeleton></VoteResultsSkeleton>}>
-          <BudgetVotes discussionId={discussionId} dictionary={dictionary} />
+  return (
+    <>
+      <Breadcrumbs
+        translations={dictionary.breadcrumbs}
+        additionalSegment={breadcrumbsTitle}
+      />
+      <div className="bg-background text-foreground">
+        <PageTitle
+          icon={
+            <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
+              <FileTextIcon className="w-5 h-5 relative top-1" />
+              <HandHelpingIcon className="w-6 h-6" />
+            </div>
+          }
+          translations={dictionary.pageBudgetDiscussionDetails}
+        />
+        <TopBar
+          backHref="/budget-discussions"
+          translations={dictionary.general}
+        />
+        <Card className="mb-4 bg-card text-card-foreground">
+          <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+            <div className="w-full flex flex-col gap-4 sm:gap-6">
+              <ProposalHeader
+                title={title}
+                isActive={isProposalActive}
+                type={actionType?.type_name ?? ""}
+                createdDate={createdDate}
+                createdEpoch={createdEpoch}
+                updatedAt={updatedAt}
+                updatedEpoch={updatedEpoch}
+                commentCount={commentCount}
+                translations={dictionary}
+                contentType="budgetDiscussion"
+              />
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr]">
+                <div className="w-full col-span-full">
+                  <ProposalIdentification
+                    id={discussionId.toString()}
+                    authorName={username}
+                    translations={dictionary}
+                  />
+                </div>
+              </div>
+              <BudgetDiscussionContent
+                discussion={budgetDiscussion}
+                translations={dictionary}
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        <div className="mb-4 bg-card text-card-foreground">
+          <Suspense fallback={<VoteResultsSkeleton></VoteResultsSkeleton>}>
+            <BudgetVotes discussionId={discussionId} dictionary={dictionary} />
+          </Suspense>
+        </div>
+
+        <Suspense fallback={<CommentsSkeleton />}>
+          <Comments
+            loadChildCommentsAction={getBudgetDiscussionComments}
+            commentsPromise={commentsPromise}
+            translations={dictionary}
+            proposalId={discussionId.toString()}
+            totalCommentCount={commentCount}
+            type="budgetDiscussion"
+          />
         </Suspense>
       </div>
-
-      <Suspense fallback={<CommentsSkeleton />}>
-        <Comments
-          loadChildCommentsAction={getBudgetDiscussionComments}
-          commentsPromise={commentsPromise}
-          translations={dictionary}
-          proposalId={discussionId.toString()}
-          totalCommentCount={commentCount}
-          type="budgetDiscussion"
-        />
-      </Suspense>
-    </div>
+    </>
   );
 }

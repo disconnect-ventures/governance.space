@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Header } from "~/components/layout/Header";
 import { Footer } from "~/components/layout/Footer";
-import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 import { Toaster } from "~/components/ui/toaster";
 import { AnnouncementBar } from "~/components/layout/AnnouncementBar";
 import { GoogleTagManager } from "@next/third-parties/google";
@@ -76,7 +75,6 @@ export default async function RootLayout(props: {
                 <AppSidebar translations={dictionary} />
                 <main className="min-h-[50vh] flex flex-col gap-4 justify-between bg-background pt-2">
                   <div className="w-full max-w-7xl mx-auto relative my-4 px-4 md:px-8 mb-64">
-                    <Breadcrumbs translations={dictionary.breadcrumbs} />
                     {children}
                   </div>
                   <CallToAction translations={dictionary.newsletter} />
