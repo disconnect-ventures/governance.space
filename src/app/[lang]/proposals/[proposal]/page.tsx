@@ -16,6 +16,7 @@ import { PageProps } from "../../layout";
 import { getProposalComments } from "~/lib/comments";
 import { Comments, CommentsSkeleton } from "~/components/features/Comments";
 import { Suspense } from "react";
+import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -103,74 +104,82 @@ export default async function ProposalDetailsPage({
     proposalId: proposalId.toString(),
   });
 
+  const breadcrumbsTitle = title ?? undefined;
+
   return (
-    <div className="bg-background text-foreground">
-      <PageTitle
-        icon={
-          <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
-            <FileTextIcon className="w-5 h-5 relative top-1" />
-            <HandHelpingIcon className="w-6 h-6" />
-          </div>
-        }
-        translations={dictionary.pageProposalsDetails}
+    <>
+      <Breadcrumbs
+        translations={dictionary.breadcrumbs}
+        additionalSegment={breadcrumbsTitle}
       />
-      <TopBar backHref="/proposals" translations={dictionary.general} />
-      <Card className="mb-4 bg-card text-card-foreground">
-        <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
-          <div className="w-full flex flex-col gap-4 sm:gap-6">
-            <ProposalHeader
-              title={title}
-              isActive={isProposalActive}
-              type={actionType}
-              createdDate={createdDate}
-              createdEpoch={createdEpoch}
-              updatedAt={updatedAt}
-              updatedEpoch={updatedEpoch}
-              likes={likes}
-              dislikes={dislikes}
-              commentCount={commentCount}
-              translations={dictionary}
-              contentType="proposal"
-            />
-
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr]">
-              <div className="w-full col-span-full">
-                <ProposalIdentification
-                  id={proposalId.toString()}
-                  authorName={username}
-                  translations={dictionary}
-                />
-              </div>
-              <div className="w-full lg:col-span-2">
-                <ProposalTimeline
-                  createdTime={createdDate}
-                  createdEpoch={createdEpoch}
-                  updateDate={updatedAt}
-                  updateEpoch={updatedEpoch}
-                  translations={dictionary}
-                />
-              </div>
+      <div className="bg-background text-foreground">
+        <PageTitle
+          icon={
+            <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
+              <FileTextIcon className="w-5 h-5 relative top-1" />
+              <HandHelpingIcon className="w-6 h-6" />
             </div>
-
-            <ProposalContent proposal={proposal} translations={dictionary} />
-          </div>
-        </CardContent>
-      </Card>
-      <Card className="mb-4 sm:mb-6 bg-card text-card-foreground">
-        <CardContent className="p-4 sm:p-6">
-          <VotingSection translations={dictionary} />
-        </CardContent>
-      </Card>
-      <Suspense fallback={<CommentsSkeleton />}>
-        <Comments
-          loadChildCommentsAction={getProposalComments}
-          commentsPromise={proposalComments}
-          translations={dictionary}
-          proposalId={proposalId.toString()}
-          totalCommentCount={proposal.attributes.prop_comments_number}
-          type="proposal"
+          }
+          translations={dictionary.pageProposalsDetails}
         />
-      </Suspense>
-    </div>
+        <TopBar backHref="/proposals" translations={dictionary.general} />
+        <Card className="mb-4 bg-card text-card-foreground">
+          <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+            <div className="w-full flex flex-col gap-4 sm:gap-6">
+              <ProposalHeader
+                title={title}
+                isActive={isProposalActive}
+                type={actionType}
+                createdDate={createdDate}
+                createdEpoch={createdEpoch}
+                updatedAt={updatedAt}
+                updatedEpoch={updatedEpoch}
+                likes={likes}
+                dislikes={dislikes}
+                commentCount={commentCount}
+                translations={dictionary}
+                contentType="proposal"
+              />
+
+              <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1fr]">
+                <div className="w-full col-span-full">
+                  <ProposalIdentification
+                    id={proposalId.toString()}
+                    authorName={username}
+                    translations={dictionary}
+                  />
+                </div>
+                <div className="w-full lg:col-span-2">
+                  <ProposalTimeline
+                    createdTime={createdDate}
+                    createdEpoch={createdEpoch}
+                    updateDate={updatedAt}
+                    updateEpoch={updatedEpoch}
+                    translations={dictionary}
+                  />
+                </div>
+              </div>
+
+              <ProposalContent proposal={proposal} translations={dictionary} />
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="mb-4 sm:mb-6 bg-card text-card-foreground">
+          <CardContent className="p-4 sm:p-6">
+            <VotingSection translations={dictionary} />
+          </CardContent>
+        </Card>
+        <Suspense fallback={<CommentsSkeleton />}>
+          <Comments
+            loadChildCommentsAction={getProposalComments}
+            commentsPromise={proposalComments}
+            translations={dictionary}
+            proposalId={proposalId.toString()}
+            totalCommentCount={proposal.attributes.prop_comments_number}
+            type="proposal"
+          />
+        </Suspense>
+      </div>
+    </>
   );
 }

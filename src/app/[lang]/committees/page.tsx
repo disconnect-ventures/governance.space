@@ -5,6 +5,7 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { getDictionary } from "~/config/dictionaries";
 import { getMockCommitteeMembers } from "~/lib/mock";
 import { PageProps } from "../layout";
+import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -26,20 +27,23 @@ export default async function CommitteesPage({
   const dictionary = await getDictionary(locale);
   const committees = getMockCommitteeMembers();
   return (
-    <div className="space-y-4 bg-background text-foreground dark:bg-background dark:text-foreground">
-      <PageTitle
-        icon={
-          <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
-            <UserIcon className="text-foreground" />
-          </div>
-        }
-        translations={dictionary.pageCommittees}
-      />
-      <CommitteeMembersDirectory
-        committeeMembers={[...committees, ...committees, ...committees]}
-        params={{}}
-        translations={dictionary}
-      />
-    </div>
+    <>
+      <Breadcrumbs translations={dictionary.breadcrumbs} />
+      <div className="space-y-4 bg-background text-foreground dark:bg-background dark:text-foreground">
+        <PageTitle
+          icon={
+            <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
+              <UserIcon className="text-foreground" />
+            </div>
+          }
+          translations={dictionary.pageCommittees}
+        />
+        <CommitteeMembersDirectory
+          committeeMembers={[...committees, ...committees, ...committees]}
+          params={{}}
+          translations={dictionary}
+        />
+      </div>
+    </>
   );
 }

@@ -12,6 +12,7 @@ import { Metadata } from "next";
 import { getDictionary } from "~/config/dictionaries";
 import { PageProps } from "../../layout";
 import { getDrepMetadata } from "~/lib/metadata";
+import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -22,7 +23,6 @@ export async function generateMetadata({
   const profileName = drepById?.givenName;
   const profileId = params.profile;
   const title = profileName ?? profileId;
-
   return {
     title: `${title} - ${dictionary.metatags.title}`,
     description: dictionary.metatags.description,
@@ -35,10 +35,8 @@ export async function generateStaticParams() {
   const search = "";
   const sort = "RegistrationDate";
   const filters: DRepFilterOption[] = [];
-
   const firstPage = await getDReps(page++, pageSize, search, sort, filters);
   const totalPages = Math.ceil(firstPage.total / pageSize);
-
   const nextPages = (
     await Promise.all(
       Array.from({ length: totalPages - 1 }).map(async () => {
@@ -51,7 +49,6 @@ export async function generateStaticParams() {
       })
     )
   ).flat();
-
   return [...firstPage.elements, ...nextPages].map((p) => ({
     profile: p.view,
   }));
@@ -66,10 +63,8 @@ export default async function DRepProfilePage({
   const locale = params.lang;
   const dictionary = await getDictionary(locale);
   const { profile } = params;
-
   const drep = await getDRepById(profile);
   const proposals = (await getProposals(0, 3, "", "desc", [])).data;
-
   const metadata =
     (await getDrepMetadata(drep?.metadataHash ?? "", drep?.url ?? "")) ?? null;
 
@@ -77,28 +72,36 @@ export default async function DRepProfilePage({
     return notFound();
   }
 
+  const breadcrumbsTitle = drep.givenName ?? metadata?.metadata?.givenName;
+
   return (
-    <div className="w-full max-w-7xl mx-auto overflow-hidden">
-      <PageTitle
-        icon={<User className="h-6 w-6" />}
-        translations={dictionary.pageDrepsDetails}
+    <>
+      <Breadcrumbs
+        translations={dictionary.breadcrumbs}
+        additionalSegment={breadcrumbsTitle}
       />
-      <TopBar backHref="/dreps" translations={dictionary.general} />
-      <div className="w-full flex flex-col lg:flex-row gap-4 justify-center">
-        <div className="lg:w-2/3 flex flex-col gap-4">
-          <ProfileCard drep={drep} translations={dictionary} />
-          <ProfileBody drep={drep} translations={dictionary} />
-          <VotingHistory proposals={proposals} translations={dictionary} />
-          {/* <Comments drep={drep} comments={comments} translations={dictionary} /> */}
-        </div>
-        <div className="lg:w-1/3">
-          <ProfileInfo
-            drep={drep}
-            translations={dictionary}
-            metadata={metadata}
-          />
+      <div className="w-full max-w-7xl mx-auto overflow-hidden">
+        <PageTitle
+          icon={<User className="h-6 w-6" />}
+          translations={dictionary.pageDrepsDetails}
+        />
+        <TopBar backHref="/dreps" translations={dictionary.general} />
+        <div className="w-full flex flex-col lg:flex-row gap-4 justify-center">
+          <div className="lg:w-2/3 flex flex-col gap-4">
+            <ProfileCard drep={drep} translations={dictionary} />
+            <ProfileBody drep={drep} translations={dictionary} />
+            <VotingHistory proposals={proposals} translations={dictionary} />
+            {/* <Comments drep={drep} comments={comments} translations={dictionary} /> */}
+          </div>
+          <div className="lg:w-1/3">
+            <ProfileInfo
+              drep={drep}
+              translations={dictionary}
+              metadata={metadata}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

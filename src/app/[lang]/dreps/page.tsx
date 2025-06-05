@@ -9,6 +9,7 @@ import { getNetworkMetrics } from "~/lib/analytics";
 import { getDrepMetadata } from "~/lib/metadata";
 import { Suspense } from "react";
 import { TableDirectorySkeleton } from "~/components/layout/Directory";
+import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -48,31 +49,36 @@ export default async function DRepsDirectoryPage({
   );
 
   return (
-    <div className="space-y-4 bg-background text-foreground dark:bg-background dark:text-foreground">
-      <PageTitle
-        icon={
-          <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
-            <UsersIcon className="text-foreground" />
-          </div>
-        }
-        badge={`${totalDReps}`}
-        translations={dictionary.pageDreps}
-      />
-      <Suspense fallback={<TableDirectorySkeleton translations={dictionary} />}>
-        <DRepsDirectory
-          metadataPromise={metadata}
-          dreps={dreps.elements}
-          params={{
-            page,
-            pageSize,
-            sort,
-            search,
-            totalResults: dreps.total,
-            filters,
-          }}
-          translations={dictionary}
+    <>
+      <Breadcrumbs translations={dictionary.breadcrumbs} />
+      <div className="space-y-4 bg-background text-foreground dark:bg-background dark:text-foreground">
+        <PageTitle
+          icon={
+            <div className="p-2 rounded-full bg-muted dark:bg-muted/50 w-12 h-12 flex flex-col justify-center items-center">
+              <UsersIcon className="text-foreground" />
+            </div>
+          }
+          badge={`${totalDReps}`}
+          translations={dictionary.pageDreps}
         />
-      </Suspense>
-    </div>
+        <Suspense
+          fallback={<TableDirectorySkeleton translations={dictionary} />}
+        >
+          <DRepsDirectory
+            metadataPromise={metadata}
+            dreps={dreps.elements}
+            params={{
+              page,
+              pageSize,
+              sort,
+              search,
+              totalResults: dreps.total,
+              filters,
+            }}
+            translations={dictionary}
+          />
+        </Suspense>
+      </div>
+    </>
   );
 }
