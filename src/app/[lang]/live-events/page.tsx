@@ -6,6 +6,7 @@ import { PageTitle } from "~/components/layout/PageTitle";
 import { getDictionary } from "~/config/dictionaries";
 import { getMockLiveEvents } from "~/lib/mock";
 import { PageProps } from "../layout";
+import { Breadcrumbs } from "~/components/layout/Breadcrumbs";
 
 export async function generateMetadata({
   params: paramsPromise,
@@ -27,22 +28,25 @@ export default async function LiveEventsPage({
   const dictionary = await getDictionary(locale);
   const liveEvents = getMockLiveEvents();
   return (
-    <div className="space-y-4 bg-background text-foreground">
-      <PageTitle
-        icon={
-          <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
-            <RadioIcon />
-          </div>
-        }
-        translations={dictionary.pageLiveEvents}
-      ></PageTitle>
-      <ComingSoon>
-        <LiveEventsDirectory
-          liveEvents={liveEvents}
-          params={{}}
-          translations={dictionary}
-        />
-      </ComingSoon>
-    </div>
+    <>
+      <Breadcrumbs translations={dictionary.breadcrumbs} />
+      <div className="space-y-4 bg-background text-foreground">
+        <PageTitle
+          icon={
+            <div className="p-2 rounded-full bg-muted text-muted-foreground w-12 h-12 flex flex-col justify-center items-center">
+              <RadioIcon />
+            </div>
+          }
+          translations={dictionary.pageLiveEvents}
+        ></PageTitle>
+        <ComingSoon>
+          <LiveEventsDirectory
+            liveEvents={liveEvents}
+            params={{}}
+            translations={dictionary}
+          />
+        </ComingSoon>
+      </div>
+    </>
   );
 }
